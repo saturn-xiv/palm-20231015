@@ -236,13 +236,11 @@ namespace Palm.Ops.Router.V1 {
 
     /// <summary>Field number for the "phone" field.</summary>
     public const int PhoneFieldNumber = 1;
-    private readonly static string PhoneDefaultValue = "";
-
     private string phone_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Phone {
-      get { return phone_ ?? PhoneDefaultValue; }
+      get { return phone_ ?? ""; }
       set {
         phone_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -262,13 +260,11 @@ namespace Palm.Ops.Router.V1 {
 
     /// <summary>Field number for the "wechat" field.</summary>
     public const int WechatFieldNumber = 2;
-    private readonly static string WechatDefaultValue = "";
-
     private string wechat_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Wechat {
-      get { return wechat_ ?? WechatDefaultValue; }
+      get { return wechat_ ?? ""; }
       set {
         wechat_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -288,13 +284,11 @@ namespace Palm.Ops.Router.V1 {
 
     /// <summary>Field number for the "email" field.</summary>
     public const int EmailFieldNumber = 3;
-    private readonly static string EmailDefaultValue = "";
-
     private string email_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Email {
-      get { return email_ ?? EmailDefaultValue; }
+      get { return email_ ?? ""; }
       set {
         email_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -314,13 +308,11 @@ namespace Palm.Ops.Router.V1 {
 
     /// <summary>Field number for the "address" field.</summary>
     public const int AddressFieldNumber = 99;
-    private readonly static string AddressDefaultValue = "";
-
     private string address_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Address {
-      get { return address_ ?? AddressDefaultValue; }
+      get { return address_ ?? ""; }
       set {
         address_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -2477,13 +2469,11 @@ namespace Palm.Ops.Router.V1 {
 
     /// <summary>Field number for the "location" field.</summary>
     public const int LocationFieldNumber = 9;
-    private readonly static string LocationDefaultValue = "";
-
     private string location_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Location {
-      get { return location_ ?? LocationDefaultValue; }
+      get { return location_ ?? ""; }
       set {
         location_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -3538,13 +3528,11 @@ namespace Palm.Ops.Router.V1 {
 
     /// <summary>Field number for the "location" field.</summary>
     public const int LocationFieldNumber = 11;
-    private readonly static string LocationDefaultValue = "";
-
     private string location_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Location {
-      get { return location_ ?? LocationDefaultValue; }
+      get { return location_ ?? ""; }
       set {
         location_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -4633,13 +4621,11 @@ namespace Palm.Ops.Router.V1 {
 
         /// <summary>Field number for the "source" field.</summary>
         public const int SourceFieldNumber = 4;
-        private readonly static string SourceDefaultValue = "";
-
         private string source_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string Source {
-          get { return source_ ?? SourceDefaultValue; }
+          get { return source_ ?? ""; }
           set {
             source_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
@@ -5515,13 +5501,11 @@ namespace Palm.Ops.Router.V1 {
 
             /// <summary>Field number for the "up" field.</summary>
             public const int UpFieldNumber = 1;
-            private readonly static uint UpDefaultValue = 0;
-
             private uint up_;
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
             public uint Up {
-              get { if ((_hasBits0 & 1) != 0) { return up_; } else { return UpDefaultValue; } }
+              get { if ((_hasBits0 & 1) != 0) { return up_; } else { return 0; } }
               set {
                 _hasBits0 |= 1;
                 up_ = value;
@@ -5542,13 +5526,11 @@ namespace Palm.Ops.Router.V1 {
 
             /// <summary>Field number for the "down" field.</summary>
             public const int DownFieldNumber = 2;
-            private readonly static uint DownDefaultValue = 0;
-
             private uint down_;
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
             public uint Down {
-              get { if ((_hasBits0 & 2) != 0) { return down_; } else { return DownDefaultValue; } }
+              get { if ((_hasBits0 & 2) != 0) { return down_; } else { return 0; } }
               set {
                 _hasBits0 |= 2;
                 down_ = value;
@@ -7343,7 +7325,7 @@ namespace Palm.Ops.Router.V1 {
       if (other == null) {
         return;
       }
-      interfaces_.MergeFrom(other.interfaces_);
+      interfaces_.Add(other.interfaces_);
       if (other.lan_ != null) {
         if (lan_ == null) {
           Lan = new global::Palm.Ops.Router.V1.Lan();
@@ -9162,13 +9144,11 @@ namespace Palm.Ops.Router.V1 {
 
     /// <summary>Field number for the "dns2" field.</summary>
     public const int Dns2FieldNumber = 5;
-    private readonly static string Dns2DefaultValue = "";
-
     private string dns2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Dns2 {
-      get { return dns2_ ?? Dns2DefaultValue; }
+      get { return dns2_ ?? ""; }
       set {
         dns2_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }

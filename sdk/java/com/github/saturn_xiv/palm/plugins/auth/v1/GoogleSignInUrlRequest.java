@@ -26,6 +26,11 @@ private static final long serialVersionUID = 0L;
     return new GoogleSignInUrlRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.auth.v1.Auth.internal_static_palm_auth_v1_GoogleSignInUrlRequest_descriptor;
@@ -39,7 +44,6 @@ private static final long serialVersionUID = 0L;
             com.github.saturn_xiv.palm.plugins.auth.v1.GoogleSignInUrlRequest.class, com.github.saturn_xiv.palm.plugins.auth.v1.GoogleSignInUrlRequest.Builder.class);
   }
 
-  private int bitField0_;
   public static final int REDIRECT_URI_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object redirectUri_ = "";
@@ -87,7 +91,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasState() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return state_ != null;
   }
   /**
    * <code>.palm.auth.v1.Oauth2State state = 2;</code>
@@ -122,7 +126,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(redirectUri_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, redirectUri_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (state_ != null) {
       output.writeMessage(2, getState());
     }
     getUnknownFields().writeTo(output);
@@ -137,7 +141,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(redirectUri_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, redirectUri_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (state_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getState());
     }
@@ -229,13 +233,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.GoogleSignInUrlRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.GoogleSignInUrlRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -299,19 +301,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.auth.v1.GoogleSignInUrlRequest.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getStateFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -359,14 +355,11 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.redirectUri_ = redirectUri_;
       }
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.state_ = stateBuilder_ == null
             ? state_
             : stateBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -614,10 +607,8 @@ private static final long serialVersionUID = 0L;
       } else {
         stateBuilder_.mergeFrom(value);
       }
-      if (state_ != null) {
-        bitField0_ |= 0x00000002;
-        onChanged();
-      }
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**

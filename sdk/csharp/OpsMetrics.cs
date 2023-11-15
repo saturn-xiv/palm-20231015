@@ -710,24 +710,10 @@ namespace Palm.Ops.Metrics.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Error {
-      get { return HasError ? (string) payload_ : ""; }
+      get { return payloadCase_ == PayloadOneofCase.Error ? (string) payload_ : ""; }
       set {
         payload_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
         payloadCase_ = PayloadOneofCase.Error;
-      }
-    }
-    /// <summary>Gets whether the "error" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasError {
-      get { return payloadCase_ == PayloadOneofCase.Error; }
-    }
-    /// <summary> Clears the value of the oneof if it's currently set to "error" </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearError() {
-      if (HasError) {
-        ClearPayload();
       }
     }
 
@@ -791,7 +777,7 @@ namespace Palm.Ops.Metrics.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (payloadCase_ == PayloadOneofCase.Access) hash ^= Access.GetHashCode();
-      if (HasError) hash ^= Error.GetHashCode();
+      if (payloadCase_ == PayloadOneofCase.Error) hash ^= Error.GetHashCode();
       if (createdAt_ != null) hash ^= CreatedAt.GetHashCode();
       hash ^= (int) payloadCase_;
       if (_unknownFields != null) {
@@ -816,7 +802,7 @@ namespace Palm.Ops.Metrics.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Access);
       }
-      if (HasError) {
+      if (payloadCase_ == PayloadOneofCase.Error) {
         output.WriteRawTag(18);
         output.WriteString(Error);
       }
@@ -838,7 +824,7 @@ namespace Palm.Ops.Metrics.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Access);
       }
-      if (HasError) {
+      if (payloadCase_ == PayloadOneofCase.Error) {
         output.WriteRawTag(18);
         output.WriteString(Error);
       }
@@ -859,7 +845,7 @@ namespace Palm.Ops.Metrics.V1 {
       if (payloadCase_ == PayloadOneofCase.Access) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Access);
       }
-      if (HasError) {
+      if (payloadCase_ == PayloadOneofCase.Error) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Error);
       }
       if (createdAt_ != null) {
@@ -1112,13 +1098,11 @@ namespace Palm.Ops.Metrics.V1 {
 
         /// <summary>Field number for the "http_referer" field.</summary>
         public const int HttpRefererFieldNumber = 8;
-        private readonly static string HttpRefererDefaultValue = "";
-
         private string httpReferer_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string HttpReferer {
-          get { return httpReferer_ ?? HttpRefererDefaultValue; }
+          get { return httpReferer_ ?? ""; }
           set {
             httpReferer_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }

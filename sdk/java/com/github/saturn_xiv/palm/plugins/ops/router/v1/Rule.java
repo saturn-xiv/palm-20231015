@@ -27,6 +27,11 @@ private static final long serialVersionUID = 0L;
     return new Rule();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_Rule_descriptor;
@@ -226,6 +231,11 @@ private static final long serialVersionUID = 0L;
       return new InBound();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_Rule_InBound_descriptor;
@@ -494,13 +504,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.InBound parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.InBound parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -840,7 +848,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setTcp(boolean value) {
-
+        
         tcp_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
@@ -872,7 +880,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setPort(int value) {
-
+        
         port_ = value;
         bitField0_ |= 0x00000004;
         onChanged();
@@ -1080,7 +1088,7 @@ private static final long serialVersionUID = 0L;
      */
     com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.TimeOrBuilder getTimeOrBuilder();
 
-    com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.PayloadCase getPayloadCase();
+    public com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.PayloadCase getPayloadCase();
   }
   /**
    * Protobuf type {@code palm.ops.router.v1.Rule.OutBound}
@@ -1104,6 +1112,11 @@ private static final long serialVersionUID = 0L;
       return new OutBound();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_Rule_OutBound_descriptor;
@@ -1174,6 +1187,11 @@ private static final long serialVersionUID = 0L;
         return new Host();
       }
 
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_Rule_OutBound_Host_descriptor;
@@ -1384,13 +1402,11 @@ private static final long serialVersionUID = 0L;
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-
       public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.Host parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-
       public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.Host parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1766,7 +1782,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setPort(int value) {
-
+          
           port_ = value;
           bitField0_ |= 0x00000004;
           onChanged();
@@ -1894,6 +1910,11 @@ private static final long serialVersionUID = 0L;
         return new Speed();
       }
 
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_Rule_OutBound_Speed_descriptor;
@@ -2076,13 +2097,11 @@ private static final long serialVersionUID = 0L;
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-
       public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.Speed parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-
       public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.Speed parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2331,7 +2350,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setUp(int value) {
-
+          
           up_ = value;
           bitField0_ |= 0x00000001;
           onChanged();
@@ -2371,7 +2390,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setDown(int value) {
-
+          
           down_ = value;
           bitField0_ |= 0x00000002;
           onChanged();
@@ -2549,6 +2568,11 @@ private static final long serialVersionUID = 0L;
         return new Time();
       }
 
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_Rule_OutBound_Time_descriptor;
@@ -2562,7 +2586,6 @@ private static final long serialVersionUID = 0L;
                 com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.Time.class, com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.Time.Builder.class);
       }
 
-      private int bitField0_;
       public static final int FROM_FIELD_NUMBER = 1;
       private com.google.protobuf.Timestamp from_;
       /**
@@ -2571,7 +2594,7 @@ private static final long serialVersionUID = 0L;
        */
       @java.lang.Override
       public boolean hasFrom() {
-        return ((bitField0_ & 0x00000001) != 0);
+        return from_ != null;
       }
       /**
        * <code>.google.protobuf.Timestamp from = 1;</code>
@@ -2597,7 +2620,7 @@ private static final long serialVersionUID = 0L;
        */
       @java.lang.Override
       public boolean hasTo() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return to_ != null;
       }
       /**
        * <code>.google.protobuf.Timestamp to = 2;</code>
@@ -2706,10 +2729,10 @@ private static final long serialVersionUID = 0L;
       @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (((bitField0_ & 0x00000001) != 0)) {
+        if (from_ != null) {
           output.writeMessage(1, getFrom());
         }
-        if (((bitField0_ & 0x00000002) != 0)) {
+        if (to_ != null) {
           output.writeMessage(2, getTo());
         }
         if (monday_ != false) {
@@ -2742,11 +2765,11 @@ private static final long serialVersionUID = 0L;
         if (size != -1) return size;
 
         size = 0;
-        if (((bitField0_ & 0x00000001) != 0)) {
+        if (from_ != null) {
           size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(1, getFrom());
         }
-        if (((bitField0_ & 0x00000002) != 0)) {
+        if (to_ != null) {
           size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(2, getTo());
         }
@@ -2906,13 +2929,11 @@ private static final long serialVersionUID = 0L;
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-
       public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.Time parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-
       public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.Time parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2976,20 +2997,13 @@ private static final long serialVersionUID = 0L;
 
         // Construct using com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.Time.newBuilder()
         private Builder() {
-          maybeForceBuilderInitialization();
+
         }
 
         private Builder(
             com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
-            getFromFieldBuilder();
-            getToFieldBuilder();
-          }
+
         }
         @java.lang.Override
         public Builder clear() {
@@ -3045,18 +3059,15 @@ private static final long serialVersionUID = 0L;
 
         private void buildPartial0(com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound.Time result) {
           int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
             result.from_ = fromBuilder_ == null
                 ? from_
                 : fromBuilder_.build();
-            to_bitField0_ |= 0x00000001;
           }
           if (((from_bitField0_ & 0x00000002) != 0)) {
             result.to_ = toBuilder_ == null
                 ? to_
                 : toBuilder_.build();
-            to_bitField0_ |= 0x00000002;
           }
           if (((from_bitField0_ & 0x00000004) != 0)) {
             result.monday_ = monday_;
@@ -3079,7 +3090,6 @@ private static final long serialVersionUID = 0L;
           if (((from_bitField0_ & 0x00000100) != 0)) {
             result.sunday_ = sunday_;
           }
-          result.bitField0_ |= to_bitField0_;
         }
 
         @java.lang.Override
@@ -3311,10 +3321,8 @@ private static final long serialVersionUID = 0L;
           } else {
             fromBuilder_.mergeFrom(value);
           }
-          if (from_ != null) {
-            bitField0_ |= 0x00000001;
-            onChanged();
-          }
+          bitField0_ |= 0x00000001;
+          onChanged();
           return this;
         }
         /**
@@ -3432,10 +3440,8 @@ private static final long serialVersionUID = 0L;
           } else {
             toBuilder_.mergeFrom(value);
           }
-          if (to_ != null) {
-            bitField0_ |= 0x00000002;
-            onChanged();
-          }
+          bitField0_ |= 0x00000002;
+          onChanged();
           return this;
         }
         /**
@@ -3502,7 +3508,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setMonday(boolean value) {
-
+          
           monday_ = value;
           bitField0_ |= 0x00000004;
           onChanged();
@@ -3534,7 +3540,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setTuesday(boolean value) {
-
+          
           tuesday_ = value;
           bitField0_ |= 0x00000008;
           onChanged();
@@ -3566,7 +3572,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setWednesday(boolean value) {
-
+          
           wednesday_ = value;
           bitField0_ |= 0x00000010;
           onChanged();
@@ -3598,7 +3604,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setThursday(boolean value) {
-
+          
           thursday_ = value;
           bitField0_ |= 0x00000020;
           onChanged();
@@ -3630,7 +3636,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setFriday(boolean value) {
-
+          
           friday_ = value;
           bitField0_ |= 0x00000040;
           onChanged();
@@ -3662,7 +3668,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setSaturday(boolean value) {
-
+          
           saturday_ = value;
           bitField0_ |= 0x00000080;
           onChanged();
@@ -3694,7 +3700,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setSunday(boolean value) {
-
+          
           sunday_ = value;
           bitField0_ |= 0x00000100;
           onChanged();
@@ -3775,7 +3781,6 @@ private static final long serialVersionUID = 0L;
     }
 
     private int payloadCase_ = 0;
-    @SuppressWarnings("serial")
     private java.lang.Object payload_;
     public enum PayloadCase
         implements com.google.protobuf.Internal.EnumLite,
@@ -4063,13 +4068,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.OutBound parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4900,6 +4903,11 @@ private static final long serialVersionUID = 0L;
       return new Nat();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_Rule_Nat_descriptor;
@@ -4958,6 +4966,11 @@ private static final long serialVersionUID = 0L;
         return new Source();
       }
 
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_Rule_Nat_Source_descriptor;
@@ -5140,13 +5153,11 @@ private static final long serialVersionUID = 0L;
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-
       public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.Nat.Source parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-
       public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.Nat.Source parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5457,7 +5468,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setPort(int value) {
-
+          
           port_ = value;
           bitField0_ |= 0x00000002;
           onChanged();
@@ -5582,6 +5593,11 @@ private static final long serialVersionUID = 0L;
         return new Destination();
       }
 
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_Rule_Nat_Destination_descriptor;
@@ -5764,13 +5780,11 @@ private static final long serialVersionUID = 0L;
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-
       public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.Nat.Destination parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-
       public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.Nat.Destination parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -6081,7 +6095,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setPort(int value) {
-
+          
           port_ = value;
           bitField0_ |= 0x00000002;
           onChanged();
@@ -6161,7 +6175,6 @@ private static final long serialVersionUID = 0L;
 
     }
 
-    private int bitField0_;
     public static final int SOURCE_FIELD_NUMBER = 1;
     private com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.Nat.Source source_;
     /**
@@ -6170,7 +6183,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasSource() {
-      return ((bitField0_ & 0x00000001) != 0);
+      return source_ != null;
     }
     /**
      * <code>.palm.ops.router.v1.Rule.Nat.Source source = 1;</code>
@@ -6207,7 +6220,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasDestination() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return destination_ != null;
     }
     /**
      * <code>.palm.ops.router.v1.Rule.Nat.Destination destination = 3;</code>
@@ -6239,13 +6252,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (source_ != null) {
         output.writeMessage(1, getSource());
       }
       if (tcp_ != false) {
         output.writeBool(2, tcp_);
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (destination_ != null) {
         output.writeMessage(3, getDestination());
       }
       getUnknownFields().writeTo(output);
@@ -6257,7 +6270,7 @@ private static final long serialVersionUID = 0L;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (source_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getSource());
       }
@@ -6265,7 +6278,7 @@ private static final long serialVersionUID = 0L;
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, tcp_);
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (destination_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getDestination());
       }
@@ -6367,13 +6380,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.Nat parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.Nat parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -6437,20 +6448,13 @@ private static final long serialVersionUID = 0L;
 
       // Construct using com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.Nat.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getSourceFieldBuilder();
-          getDestinationFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
@@ -6500,12 +6504,10 @@ private static final long serialVersionUID = 0L;
 
       private void buildPartial0(com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.Nat result) {
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.source_ = sourceBuilder_ == null
               ? source_
               : sourceBuilder_.build();
-          to_bitField0_ |= 0x00000001;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.tcp_ = tcp_;
@@ -6514,9 +6516,7 @@ private static final long serialVersionUID = 0L;
           result.destination_ = destinationBuilder_ == null
               ? destination_
               : destinationBuilder_.build();
-          to_bitField0_ |= 0x00000002;
         }
-        result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
@@ -6700,10 +6700,8 @@ private static final long serialVersionUID = 0L;
         } else {
           sourceBuilder_.mergeFrom(value);
         }
-        if (source_ != null) {
-          bitField0_ |= 0x00000001;
-          onChanged();
-        }
+        bitField0_ |= 0x00000001;
+        onChanged();
         return this;
       }
       /**
@@ -6770,7 +6768,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setTcp(boolean value) {
-
+        
         tcp_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
@@ -6853,10 +6851,8 @@ private static final long serialVersionUID = 0L;
         } else {
           destinationBuilder_.mergeFrom(value);
         }
-        if (destination_ != null) {
-          bitField0_ |= 0x00000004;
-          onChanged();
-        }
+        bitField0_ |= 0x00000004;
+        onChanged();
         return this;
       }
       /**
@@ -6972,7 +6968,6 @@ private static final long serialVersionUID = 0L;
   }
 
   private int payloadCase_ = 0;
-  @SuppressWarnings("serial")
   private java.lang.Object payload_;
   public enum PayloadCase
       implements com.google.protobuf.Internal.EnumLite,
@@ -7358,13 +7353,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)

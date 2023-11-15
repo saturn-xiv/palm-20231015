@@ -26,6 +26,11 @@ private static final long serialVersionUID = 0L;
     return new PermissionsResponse();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.rbac.v1.Rbac.internal_static_palm_rbac_v1_PermissionsResponse_descriptor;
@@ -93,6 +98,11 @@ private static final long serialVersionUID = 0L;
       return new Item();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.rbac.v1.Rbac.internal_static_palm_rbac_v1_PermissionsResponse_Item_descriptor;
@@ -106,7 +116,6 @@ private static final long serialVersionUID = 0L;
               com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionsResponse.Item.class, com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionsResponse.Item.Builder.class);
     }
 
-    private int bitField0_;
     public static final int OPERATION_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
     private volatile java.lang.Object operation_ = "";
@@ -154,7 +163,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasResource() {
-      return ((bitField0_ & 0x00000001) != 0);
+      return resource_ != null;
     }
     /**
      * <code>.palm.rbac.v1.ResourcesResponse.Item resource = 2;</code>
@@ -189,7 +198,7 @@ private static final long serialVersionUID = 0L;
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(operation_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, operation_);
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (resource_ != null) {
         output.writeMessage(2, getResource());
       }
       getUnknownFields().writeTo(output);
@@ -204,7 +213,7 @@ private static final long serialVersionUID = 0L;
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(operation_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, operation_);
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (resource_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getResource());
       }
@@ -296,13 +305,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionsResponse.Item parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionsResponse.Item parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -366,19 +373,13 @@ private static final long serialVersionUID = 0L;
 
       // Construct using com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionsResponse.Item.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getResourceFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
@@ -426,14 +427,11 @@ private static final long serialVersionUID = 0L;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.operation_ = operation_;
         }
-        int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.resource_ = resourceBuilder_ == null
               ? resource_
               : resourceBuilder_.build();
-          to_bitField0_ |= 0x00000001;
         }
-        result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
@@ -681,10 +679,8 @@ private static final long serialVersionUID = 0L;
         } else {
           resourceBuilder_.mergeFrom(value);
         }
-        if (resource_ != null) {
-          bitField0_ |= 0x00000002;
-          onChanged();
-        }
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -951,13 +947,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionsResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionsResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)

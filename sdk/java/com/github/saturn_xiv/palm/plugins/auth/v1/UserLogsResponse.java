@@ -26,6 +26,11 @@ private static final long serialVersionUID = 0L;
     return new UserLogsResponse();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.auth.v1.Auth.internal_static_palm_auth_v1_UserLogsResponse_descriptor;
@@ -145,6 +150,11 @@ private static final long serialVersionUID = 0L;
       return new Item();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.auth.v1.Auth.internal_static_palm_auth_v1_UserLogsResponse_Item_descriptor;
@@ -293,7 +303,6 @@ private static final long serialVersionUID = 0L;
       // @@protoc_insertion_point(enum_scope:palm.auth.v1.UserLogsResponse.Item.Level)
     }
 
-    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
     private int id_ = 0;
     /**
@@ -420,7 +429,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasResource() {
-      return ((bitField0_ & 0x00000001) != 0);
+      return resource_ != null;
     }
     /**
      * <code>.palm.rbac.v1.ResourcesResponse.Item resource = 6;</code>
@@ -446,7 +455,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasCreatedAt() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return createdAt_ != null;
     }
     /**
      * <code>.google.protobuf.Timestamp created_at = 11;</code>
@@ -493,10 +502,10 @@ private static final long serialVersionUID = 0L;
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, message_);
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (resource_ != null) {
         output.writeMessage(6, getResource());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (createdAt_ != null) {
         output.writeMessage(11, getCreatedAt());
       }
       getUnknownFields().writeTo(output);
@@ -526,11 +535,11 @@ private static final long serialVersionUID = 0L;
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, message_);
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (resource_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, getResource());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (createdAt_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(11, getCreatedAt());
       }
@@ -646,13 +655,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.auth.v1.UserLogsResponse.Item parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.auth.v1.UserLogsResponse.Item parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -716,20 +723,13 @@ private static final long serialVersionUID = 0L;
 
       // Construct using com.github.saturn_xiv.palm.plugins.auth.v1.UserLogsResponse.Item.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getResourceFieldBuilder();
-          getCreatedAtFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
@@ -798,20 +798,16 @@ private static final long serialVersionUID = 0L;
         if (((from_bitField0_ & 0x00000010) != 0)) {
           result.message_ = message_;
         }
-        int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000020) != 0)) {
           result.resource_ = resourceBuilder_ == null
               ? resource_
               : resourceBuilder_.build();
-          to_bitField0_ |= 0x00000001;
         }
         if (((from_bitField0_ & 0x00000040) != 0)) {
           result.createdAt_ = createdAtBuilder_ == null
               ? createdAt_
               : createdAtBuilder_.build();
-          to_bitField0_ |= 0x00000002;
         }
-        result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
@@ -980,7 +976,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setId(int value) {
-
+        
         id_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
@@ -1012,7 +1008,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setUserId(int value) {
-
+        
         userId_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
@@ -1292,10 +1288,8 @@ private static final long serialVersionUID = 0L;
         } else {
           resourceBuilder_.mergeFrom(value);
         }
-        if (resource_ != null) {
-          bitField0_ |= 0x00000020;
-          onChanged();
-        }
+        bitField0_ |= 0x00000020;
+        onChanged();
         return this;
       }
       /**
@@ -1413,10 +1407,8 @@ private static final long serialVersionUID = 0L;
         } else {
           createdAtBuilder_.mergeFrom(value);
         }
-        if (createdAt_ != null) {
-          bitField0_ |= 0x00000040;
-          onChanged();
-        }
+        bitField0_ |= 0x00000040;
+        onChanged();
         return this;
       }
       /**
@@ -1531,7 +1523,6 @@ private static final long serialVersionUID = 0L;
 
   }
 
-  private int bitField0_;
   public static final int PAGINATION_FIELD_NUMBER = 1;
   private com.github.saturn_xiv.palm.plugins.nut.v1.Pagination pagination_;
   /**
@@ -1540,7 +1531,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasPagination() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return pagination_ != null;
   }
   /**
    * <code>.palm.nut.v1.Pagination pagination = 1;</code>
@@ -1613,7 +1604,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (pagination_ != null) {
       output.writeMessage(1, getPagination());
     }
     for (int i = 0; i < items_.size(); i++) {
@@ -1628,7 +1619,7 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (pagination_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getPagination());
     }
@@ -1726,13 +1717,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.UserLogsResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.UserLogsResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1796,20 +1785,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.auth.v1.UserLogsResponse.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getPaginationFieldBuilder();
-        getItemsFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -1873,14 +1855,11 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.auth.v1.UserLogsResponse result) {
       int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.pagination_ = paginationBuilder_ == null
             ? pagination_
             : paginationBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -2085,10 +2064,8 @@ private static final long serialVersionUID = 0L;
       } else {
         paginationBuilder_.mergeFrom(value);
       }
-      if (pagination_ != null) {
-        bitField0_ |= 0x00000001;
-        onChanged();
-      }
+      bitField0_ |= 0x00000001;
+      onChanged();
       return this;
     }
     /**

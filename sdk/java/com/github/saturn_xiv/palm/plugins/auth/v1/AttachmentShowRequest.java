@@ -25,6 +25,11 @@ private static final long serialVersionUID = 0L;
     return new AttachmentShowRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.auth.v1.Auth.internal_static_palm_auth_v1_AttachmentShowRequest_descriptor;
@@ -38,7 +43,6 @@ private static final long serialVersionUID = 0L;
             com.github.saturn_xiv.palm.plugins.auth.v1.AttachmentShowRequest.class, com.github.saturn_xiv.palm.plugins.auth.v1.AttachmentShowRequest.Builder.class);
   }
 
-  private int bitField0_;
   public static final int ID_FIELD_NUMBER = 1;
   private int id_ = 0;
   /**
@@ -58,7 +62,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasTtl() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return ttl_ != null;
   }
   /**
    * <code>.google.protobuf.Duration ttl = 2;</code>
@@ -93,7 +97,7 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0) {
       output.writeInt32(1, id_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (ttl_ != null) {
       output.writeMessage(2, getTtl());
     }
     getUnknownFields().writeTo(output);
@@ -109,7 +113,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, id_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (ttl_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getTtl());
     }
@@ -201,13 +205,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.AttachmentShowRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.AttachmentShowRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -271,19 +273,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.auth.v1.AttachmentShowRequest.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getTtlFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -331,14 +327,11 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.id_ = id_;
       }
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.ttl_ = ttlBuilder_ == null
             ? ttl_
             : ttlBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -461,7 +454,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setId(int value) {
-
+      
       id_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
@@ -544,10 +537,8 @@ private static final long serialVersionUID = 0L;
       } else {
         ttlBuilder_.mergeFrom(value);
       }
-      if (ttl_ != null) {
-        bitField0_ |= 0x00000002;
-        onChanged();
-      }
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**

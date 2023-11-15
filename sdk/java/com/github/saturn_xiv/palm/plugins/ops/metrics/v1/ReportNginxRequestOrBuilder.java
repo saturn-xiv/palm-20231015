@@ -54,5 +54,5 @@ public interface ReportNginxRequestOrBuilder extends
    */
   com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder();
 
-  com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportNginxRequest.PayloadCase getPayloadCase();
+  public com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportNginxRequest.PayloadCase getPayloadCase();
 }

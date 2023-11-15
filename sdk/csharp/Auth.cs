@@ -584,13 +584,11 @@ namespace Palm.Auth.V1 {
 
     /// <summary>Field number for the "user" field.</summary>
     public const int UserFieldNumber = 3;
-    private readonly static string UserDefaultValue = "";
-
     private string user_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string User {
-      get { return user_ ?? UserDefaultValue; }
+      get { return user_ ?? ""; }
       set {
         user_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -884,24 +882,10 @@ namespace Palm.Auth.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Nickname {
-      get { return HasNickname ? (string) user_ : ""; }
+      get { return userCase_ == UserOneofCase.Nickname ? (string) user_ : ""; }
       set {
         user_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
         userCase_ = UserOneofCase.Nickname;
-      }
-    }
-    /// <summary>Gets whether the "nickname" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasNickname {
-      get { return userCase_ == UserOneofCase.Nickname; }
-    }
-    /// <summary> Clears the value of the oneof if it's currently set to "nickname" </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearNickname() {
-      if (HasNickname) {
-        ClearUser();
       }
     }
 
@@ -910,24 +894,10 @@ namespace Palm.Auth.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Email {
-      get { return HasEmail ? (string) user_ : ""; }
+      get { return userCase_ == UserOneofCase.Email ? (string) user_ : ""; }
       set {
         user_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
         userCase_ = UserOneofCase.Email;
-      }
-    }
-    /// <summary>Gets whether the "email" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasEmail {
-      get { return userCase_ == UserOneofCase.Email; }
-    }
-    /// <summary> Clears the value of the oneof if it's currently set to "email" </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearEmail() {
-      if (HasEmail) {
-        ClearUser();
       }
     }
 
@@ -1003,8 +973,8 @@ namespace Palm.Auth.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HasNickname) hash ^= Nickname.GetHashCode();
-      if (HasEmail) hash ^= Email.GetHashCode();
+      if (userCase_ == UserOneofCase.Nickname) hash ^= Nickname.GetHashCode();
+      if (userCase_ == UserOneofCase.Email) hash ^= Email.GetHashCode();
       if (Password.Length != 0) hash ^= Password.GetHashCode();
       if (ttl_ != null) hash ^= Ttl.GetHashCode();
       hash ^= (int) userCase_;
@@ -1026,11 +996,11 @@ namespace Palm.Auth.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HasNickname) {
+      if (userCase_ == UserOneofCase.Nickname) {
         output.WriteRawTag(10);
         output.WriteString(Nickname);
       }
-      if (HasEmail) {
+      if (userCase_ == UserOneofCase.Email) {
         output.WriteRawTag(18);
         output.WriteString(Email);
       }
@@ -1052,11 +1022,11 @@ namespace Palm.Auth.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HasNickname) {
+      if (userCase_ == UserOneofCase.Nickname) {
         output.WriteRawTag(10);
         output.WriteString(Nickname);
       }
-      if (HasEmail) {
+      if (userCase_ == UserOneofCase.Email) {
         output.WriteRawTag(18);
         output.WriteString(Email);
       }
@@ -1078,10 +1048,10 @@ namespace Palm.Auth.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HasNickname) {
+      if (userCase_ == UserOneofCase.Nickname) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Nickname);
       }
-      if (HasEmail) {
+      if (userCase_ == UserOneofCase.Email) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
       }
       if (Password.Length != 0) {
@@ -1253,24 +1223,10 @@ namespace Palm.Auth.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Nickname {
-      get { return HasNickname ? (string) user_ : ""; }
+      get { return userCase_ == UserOneofCase.Nickname ? (string) user_ : ""; }
       set {
         user_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
         userCase_ = UserOneofCase.Nickname;
-      }
-    }
-    /// <summary>Gets whether the "nickname" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasNickname {
-      get { return userCase_ == UserOneofCase.Nickname; }
-    }
-    /// <summary> Clears the value of the oneof if it's currently set to "nickname" </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearNickname() {
-      if (HasNickname) {
-        ClearUser();
       }
     }
 
@@ -1279,24 +1235,10 @@ namespace Palm.Auth.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Email {
-      get { return HasEmail ? (string) user_ : ""; }
+      get { return userCase_ == UserOneofCase.Email ? (string) user_ : ""; }
       set {
         user_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
         userCase_ = UserOneofCase.Email;
-      }
-    }
-    /// <summary>Gets whether the "email" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasEmail {
-      get { return userCase_ == UserOneofCase.Email; }
-    }
-    /// <summary> Clears the value of the oneof if it's currently set to "email" </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearEmail() {
-      if (HasEmail) {
-        ClearUser();
       }
     }
 
@@ -1359,8 +1301,8 @@ namespace Palm.Auth.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HasNickname) hash ^= Nickname.GetHashCode();
-      if (HasEmail) hash ^= Email.GetHashCode();
+      if (userCase_ == UserOneofCase.Nickname) hash ^= Nickname.GetHashCode();
+      if (userCase_ == UserOneofCase.Email) hash ^= Email.GetHashCode();
       if (Home.Length != 0) hash ^= Home.GetHashCode();
       hash ^= (int) userCase_;
       if (_unknownFields != null) {
@@ -1381,11 +1323,11 @@ namespace Palm.Auth.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HasNickname) {
+      if (userCase_ == UserOneofCase.Nickname) {
         output.WriteRawTag(10);
         output.WriteString(Nickname);
       }
-      if (HasEmail) {
+      if (userCase_ == UserOneofCase.Email) {
         output.WriteRawTag(18);
         output.WriteString(Email);
       }
@@ -1403,11 +1345,11 @@ namespace Palm.Auth.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HasNickname) {
+      if (userCase_ == UserOneofCase.Nickname) {
         output.WriteRawTag(10);
         output.WriteString(Nickname);
       }
-      if (HasEmail) {
+      if (userCase_ == UserOneofCase.Email) {
         output.WriteRawTag(18);
         output.WriteString(Email);
       }
@@ -1425,10 +1367,10 @@ namespace Palm.Auth.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HasNickname) {
+      if (userCase_ == UserOneofCase.Nickname) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Nickname);
       }
-      if (HasEmail) {
+      if (userCase_ == UserOneofCase.Email) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
       }
       if (Home.Length != 0) {
@@ -5091,13 +5033,11 @@ namespace Palm.Auth.V1 {
 
         /// <summary>Field number for the "last_sign_in_ip" field.</summary>
         public const int LastSignInIpFieldNumber = 12;
-        private readonly static string LastSignInIpDefaultValue = "";
-
         private string lastSignInIp_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string LastSignInIp {
-          get { return lastSignInIp_ ?? LastSignInIpDefaultValue; }
+          get { return lastSignInIp_ ?? ""; }
           set {
             lastSignInIp_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
@@ -5129,13 +5069,11 @@ namespace Palm.Auth.V1 {
 
         /// <summary>Field number for the "current_sign_in_ip" field.</summary>
         public const int CurrentSignInIpFieldNumber = 14;
-        private readonly static string CurrentSignInIpDefaultValue = "";
-
         private string currentSignInIp_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string CurrentSignInIp {
-          get { return currentSignInIp_ ?? CurrentSignInIpDefaultValue; }
+          get { return currentSignInIp_ ?? ""; }
           set {
             currentSignInIp_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
@@ -7782,13 +7720,11 @@ namespace Palm.Auth.V1 {
 
         /// <summary>Field number for the "nickname" field.</summary>
         public const int NicknameFieldNumber = 11;
-        private readonly static string NicknameDefaultValue = "";
-
         private string nickname_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string Nickname {
-          get { return nickname_ ?? NicknameDefaultValue; }
+          get { return nickname_ ?? ""; }
           set {
             nickname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
@@ -7808,13 +7744,11 @@ namespace Palm.Auth.V1 {
 
         /// <summary>Field number for the "avatar_url" field.</summary>
         public const int AvatarUrlFieldNumber = 12;
-        private readonly static string AvatarUrlDefaultValue = "";
-
         private string avatarUrl_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string AvatarUrl {
-          get { return avatarUrl_ ?? AvatarUrlDefaultValue; }
+          get { return avatarUrl_ ?? ""; }
           set {
             avatarUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
@@ -8473,13 +8407,11 @@ namespace Palm.Auth.V1 {
 
         /// <summary>Field number for the "head_img_url" field.</summary>
         public const int HeadImgUrlFieldNumber = 16;
-        private readonly static string HeadImgUrlDefaultValue = "";
-
         private string headImgUrl_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string HeadImgUrl {
-          get { return headImgUrl_ ?? HeadImgUrlDefaultValue; }
+          get { return headImgUrl_ ?? ""; }
           set {
             headImgUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
@@ -9820,13 +9752,11 @@ namespace Palm.Auth.V1 {
 
     /// <summary>Field number for the "nickname" field.</summary>
     public const int NicknameFieldNumber = 21;
-    private readonly static string NicknameDefaultValue = "";
-
     private string nickname_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Nickname {
-      get { return nickname_ ?? NicknameDefaultValue; }
+      get { return nickname_ ?? ""; }
       set {
         nickname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -9846,13 +9776,11 @@ namespace Palm.Auth.V1 {
 
     /// <summary>Field number for the "avatar_url" field.</summary>
     public const int AvatarUrlFieldNumber = 22;
-    private readonly static string AvatarUrlDefaultValue = "";
-
     private string avatarUrl_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string AvatarUrl {
-      get { return avatarUrl_ ?? AvatarUrlDefaultValue; }
+      get { return avatarUrl_ ?? ""; }
       set {
         avatarUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }

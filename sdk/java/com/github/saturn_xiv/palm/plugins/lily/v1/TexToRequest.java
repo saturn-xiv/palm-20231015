@@ -27,6 +27,11 @@ private static final long serialVersionUID = 0L;
     return new TexToRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.lily.v1.Lily.internal_static_palm_lily_v1_TexToRequest_descriptor;
@@ -428,13 +433,11 @@ com.google.protobuf.ByteString defaultValue) {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.lily.v1.TexToRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.lily.v1.TexToRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1006,10 +1009,8 @@ com.google.protobuf.ByteString defaultValue) {
       } else {
         ttlBuilder_.mergeFrom(value);
       }
-      if (ttl_ != null) {
-        bitField0_ |= 0x00000004;
-        onChanged();
-      }
+      bitField0_ |= 0x00000004;
+      onChanged();
       return this;
     }
     /**
@@ -1155,7 +1156,7 @@ com.google.protobuf.ByteString defaultValue) {
      * @return This builder for chaining.
      */
     public Builder setPublished(boolean value) {
-
+      
       published_ = value;
       bitField0_ |= 0x00000010;
       onChanged();

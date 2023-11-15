@@ -18,8 +18,7 @@ private static final long serialVersionUID = 0L;
   private UserSignInResponse() {
     token_ = "";
     providerType_ = "";
-    roles_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    roles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     permissions_ = java.util.Collections.emptyList();
   }
 
@@ -30,6 +29,11 @@ private static final long serialVersionUID = 0L;
     return new UserSignInResponse();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.auth.v1.Auth.internal_static_palm_auth_v1_UserSignInResponse_descriptor;
@@ -43,7 +47,6 @@ private static final long serialVersionUID = 0L;
             com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInResponse.class, com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInResponse.Builder.class);
   }
 
-  private int bitField0_;
   public static final int TOKEN_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object token_ = "";
@@ -91,7 +94,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasUser() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return user_ != null;
   }
   /**
    * <code>.palm.auth.v1.UserIndexResponse.Item user = 2;</code>
@@ -150,8 +153,7 @@ private static final long serialVersionUID = 0L;
 
   public static final int ROLES_FIELD_NUMBER = 11;
   @SuppressWarnings("serial")
-  private com.google.protobuf.LazyStringArrayList roles_ =
-      com.google.protobuf.LazyStringArrayList.emptyList();
+  private com.google.protobuf.LazyStringList roles_;
   /**
    * <code>repeated string roles = 11;</code>
    * @return A list containing the roles.
@@ -276,7 +278,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(token_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, token_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (user_ != null) {
       output.writeMessage(2, getUser());
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(providerType_)) {
@@ -309,7 +311,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(token_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, token_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (user_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getUser());
     }
@@ -459,13 +461,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -529,20 +529,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInResponse.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getUserFieldBuilder();
-        getPermissionsFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -555,8 +548,8 @@ private static final long serialVersionUID = 0L;
         userBuilder_ = null;
       }
       providerType_ = "";
-      roles_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      roles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000008);
       if (permissionsBuilder_ == null) {
         permissions_ = java.util.Collections.emptyList();
       } else {
@@ -600,6 +593,11 @@ private static final long serialVersionUID = 0L;
     }
 
     private void buildPartialRepeatedFields(com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInResponse result) {
+      if (((bitField0_ & 0x00000008) != 0)) {
+        roles_ = roles_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000008);
+      }
+      result.roles_ = roles_;
       if (permissionsBuilder_ == null) {
         if (((bitField0_ & 0x00000010) != 0)) {
           permissions_ = java.util.Collections.unmodifiableList(permissions_);
@@ -616,19 +614,13 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.token_ = token_;
       }
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.user_ = userBuilder_ == null
             ? user_
             : userBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.providerType_ = providerType_;
-      }
-      if (((from_bitField0_ & 0x00000008) != 0)) {
-        roles_.makeImmutable();
-        result.roles_ = roles_;
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
         result.hasGoogle_ = hasGoogle_;
@@ -639,7 +631,6 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000080) != 0)) {
         result.hasWechatOauth2_ = hasWechatOauth2_;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -702,7 +693,7 @@ private static final long serialVersionUID = 0L;
       if (!other.roles_.isEmpty()) {
         if (roles_.isEmpty()) {
           roles_ = other.roles_;
-          bitField0_ |= 0x00000008;
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           ensureRolesIsMutable();
           roles_.addAll(other.roles_);
@@ -976,10 +967,8 @@ private static final long serialVersionUID = 0L;
       } else {
         userBuilder_.mergeFrom(value);
       }
-      if (user_ != null) {
-        bitField0_ |= 0x00000002;
-        onChanged();
-      }
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**
@@ -1103,13 +1092,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.LazyStringArrayList roles_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    private com.google.protobuf.LazyStringList roles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureRolesIsMutable() {
-      if (!roles_.isModifiable()) {
+      if (!((bitField0_ & 0x00000008) != 0)) {
         roles_ = new com.google.protobuf.LazyStringArrayList(roles_);
-      }
-      bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000008;
+       }
     }
     /**
      * <code>repeated string roles = 11;</code>
@@ -1117,8 +1105,7 @@ private static final long serialVersionUID = 0L;
      */
     public com.google.protobuf.ProtocolStringList
         getRolesList() {
-      roles_.makeImmutable();
-      return roles_;
+      return roles_.getUnmodifiableView();
     }
     /**
      * <code>repeated string roles = 11;</code>
@@ -1155,7 +1142,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureRolesIsMutable();
       roles_.set(index, value);
-      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
@@ -1169,7 +1155,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureRolesIsMutable();
       roles_.add(value);
-      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
@@ -1183,7 +1168,6 @@ private static final long serialVersionUID = 0L;
       ensureRolesIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, roles_);
-      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
@@ -1192,9 +1176,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearRoles() {
-      roles_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00000008);;
+      roles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000008);
       onChanged();
       return this;
     }
@@ -1209,7 +1192,6 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       ensureRolesIsMutable();
       roles_.add(value);
-      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
@@ -1469,7 +1451,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setHasGoogle(boolean value) {
-
+      
       hasGoogle_ = value;
       bitField0_ |= 0x00000020;
       onChanged();
@@ -1501,7 +1483,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setHasWechatMiniProgram(boolean value) {
-
+      
       hasWechatMiniProgram_ = value;
       bitField0_ |= 0x00000040;
       onChanged();
@@ -1533,7 +1515,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setHasWechatOauth2(boolean value) {
-
+      
       hasWechatOauth2_ = value;
       bitField0_ |= 0x00000080;
       onChanged();

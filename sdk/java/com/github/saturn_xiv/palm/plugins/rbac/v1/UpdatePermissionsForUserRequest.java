@@ -27,6 +27,11 @@ private static final long serialVersionUID = 0L;
     return new UpdatePermissionsForUserRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.rbac.v1.Rbac.internal_static_palm_rbac_v1_UpdatePermissionsForUserRequest_descriptor;
@@ -268,13 +273,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.rbac.v1.UpdatePermissionsForUserRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.rbac.v1.UpdatePermissionsForUserRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -613,7 +616,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setUser(int value) {
-
+      
       user_ = value;
       bitField0_ |= 0x00000001;
       onChanged();

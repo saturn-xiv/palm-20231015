@@ -97,5 +97,5 @@ public interface SiteHomePageResponseOrBuilder extends
    */
   com.github.saturn_xiv.palm.plugins.lemon.v1.XCorporationHomePageOrBuilder getXCorporationOrBuilder();
 
-  com.github.saturn_xiv.palm.plugins.lemon.v1.SiteHomePageResponse.PayloadCase getPayloadCase();
+  public com.github.saturn_xiv.palm.plugins.lemon.v1.SiteHomePageResponse.PayloadCase getPayloadCase();
 }

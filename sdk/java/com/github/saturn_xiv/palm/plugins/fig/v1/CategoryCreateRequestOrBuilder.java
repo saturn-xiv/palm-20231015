@@ -41,5 +41,5 @@ public interface CategoryCreateRequestOrBuilder extends
    */
   int getParent();
 
-  com.github.saturn_xiv.palm.plugins.fig.v1.CategoryCreateRequest.ByCase getByCase();
+  public com.github.saturn_xiv.palm.plugins.fig.v1.CategoryCreateRequest.ByCase getByCase();
 }

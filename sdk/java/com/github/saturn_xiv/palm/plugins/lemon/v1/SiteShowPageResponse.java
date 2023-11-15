@@ -26,6 +26,11 @@ private static final long serialVersionUID = 0L;
     return new SiteShowPageResponse();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.lemon.v1.Lemon.internal_static_palm_lemon_v1_SiteShowPageResponse_descriptor;
@@ -91,6 +96,11 @@ private static final long serialVersionUID = 0L;
       return new Link();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.lemon.v1.Lemon.internal_static_palm_lemon_v1_SiteShowPageResponse_Link_descriptor;
@@ -300,13 +310,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.lemon.v1.SiteShowPageResponse.Link parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.lemon.v1.SiteShowPageResponse.Link parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -739,7 +747,6 @@ private static final long serialVersionUID = 0L;
 
   }
 
-  private int bitField0_;
   public static final int PAGE_FIELD_NUMBER = 1;
   private com.github.saturn_xiv.palm.plugins.lemon.v1.Page page_;
   /**
@@ -748,7 +755,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasPage() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return page_ != null;
   }
   /**
    * <code>.palm.lemon.v1.Page page = 1;</code>
@@ -821,7 +828,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (page_ != null) {
       output.writeMessage(1, getPage());
     }
     for (int i = 0; i < related_.size(); i++) {
@@ -836,7 +843,7 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (page_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getPage());
     }
@@ -934,13 +941,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.lemon.v1.SiteShowPageResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.lemon.v1.SiteShowPageResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1004,20 +1009,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.lemon.v1.SiteShowPageResponse.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getPageFieldBuilder();
-        getRelatedFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -1081,14 +1079,11 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.lemon.v1.SiteShowPageResponse result) {
       int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.page_ = pageBuilder_ == null
             ? page_
             : pageBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -1293,10 +1288,8 @@ private static final long serialVersionUID = 0L;
       } else {
         pageBuilder_.mergeFrom(value);
       }
-      if (page_ != null) {
-        bitField0_ |= 0x00000001;
-        onChanged();
-      }
+      bitField0_ |= 0x00000001;
+      onChanged();
       return this;
     }
     /**

@@ -16,8 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private UserRolesRequest() {
-    roles_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    roles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -27,6 +26,11 @@ private static final long serialVersionUID = 0L;
     return new UserRolesRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.rbac.v1.Rbac.internal_static_palm_rbac_v1_UserRolesRequest_descriptor;
@@ -53,8 +57,7 @@ private static final long serialVersionUID = 0L;
 
   public static final int ROLES_FIELD_NUMBER = 2;
   @SuppressWarnings("serial")
-  private com.google.protobuf.LazyStringArrayList roles_ =
-      com.google.protobuf.LazyStringArrayList.emptyList();
+  private com.google.protobuf.LazyStringList roles_;
   /**
    * <code>repeated string roles = 2;</code>
    * @return A list containing the roles.
@@ -214,13 +217,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.rbac.v1.UserRolesRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.rbac.v1.UserRolesRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -297,8 +298,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       bitField0_ = 0;
       user_ = 0;
-      roles_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      roles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -325,19 +326,24 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.github.saturn_xiv.palm.plugins.rbac.v1.UserRolesRequest buildPartial() {
       com.github.saturn_xiv.palm.plugins.rbac.v1.UserRolesRequest result = new com.github.saturn_xiv.palm.plugins.rbac.v1.UserRolesRequest(this);
+      buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
+    }
+
+    private void buildPartialRepeatedFields(com.github.saturn_xiv.palm.plugins.rbac.v1.UserRolesRequest result) {
+      if (((bitField0_ & 0x00000002) != 0)) {
+        roles_ = roles_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000002);
+      }
+      result.roles_ = roles_;
     }
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.rbac.v1.UserRolesRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.user_ = user_;
-      }
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        roles_.makeImmutable();
-        result.roles_ = roles_;
       }
     }
 
@@ -391,7 +397,7 @@ private static final long serialVersionUID = 0L;
       if (!other.roles_.isEmpty()) {
         if (roles_.isEmpty()) {
           roles_ = other.roles_;
-          bitField0_ |= 0x00000002;
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           ensureRolesIsMutable();
           roles_.addAll(other.roles_);
@@ -467,7 +473,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setUser(int value) {
-
+      
       user_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
@@ -484,13 +490,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.LazyStringArrayList roles_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    private com.google.protobuf.LazyStringList roles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureRolesIsMutable() {
-      if (!roles_.isModifiable()) {
+      if (!((bitField0_ & 0x00000002) != 0)) {
         roles_ = new com.google.protobuf.LazyStringArrayList(roles_);
-      }
-      bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000002;
+       }
     }
     /**
      * <code>repeated string roles = 2;</code>
@@ -498,8 +503,7 @@ private static final long serialVersionUID = 0L;
      */
     public com.google.protobuf.ProtocolStringList
         getRolesList() {
-      roles_.makeImmutable();
-      return roles_;
+      return roles_.getUnmodifiableView();
     }
     /**
      * <code>repeated string roles = 2;</code>
@@ -536,7 +540,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureRolesIsMutable();
       roles_.set(index, value);
-      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
@@ -550,7 +553,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureRolesIsMutable();
       roles_.add(value);
-      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
@@ -564,7 +566,6 @@ private static final long serialVersionUID = 0L;
       ensureRolesIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, roles_);
-      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
@@ -573,9 +574,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearRoles() {
-      roles_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00000002);;
+      roles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000002);
       onChanged();
       return this;
     }
@@ -590,7 +590,6 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       ensureRolesIsMutable();
       roles_.add(value);
-      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }

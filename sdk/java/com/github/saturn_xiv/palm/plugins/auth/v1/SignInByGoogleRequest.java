@@ -16,8 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private SignInByGoogleRequest() {
-    scopes_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    scopes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     code_ = "";
     state_ = "";
     redirectUri_ = "";
@@ -31,6 +30,11 @@ private static final long serialVersionUID = 0L;
     return new SignInByGoogleRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.auth.v1.Auth.internal_static_palm_auth_v1_SignInByGoogleRequest_descriptor;
@@ -44,11 +48,9 @@ private static final long serialVersionUID = 0L;
             com.github.saturn_xiv.palm.plugins.auth.v1.SignInByGoogleRequest.class, com.github.saturn_xiv.palm.plugins.auth.v1.SignInByGoogleRequest.Builder.class);
   }
 
-  private int bitField0_;
   public static final int SCOPES_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
-  private com.google.protobuf.LazyStringArrayList scopes_ =
-      com.google.protobuf.LazyStringArrayList.emptyList();
+  private com.google.protobuf.LazyStringList scopes_;
   /**
    * <code>repeated string scopes = 1;</code>
    * @return A list containing the scopes.
@@ -246,7 +248,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasTtl() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return ttl_ != null;
   }
   /**
    * <code>.google.protobuf.Duration ttl = 11;</code>
@@ -293,7 +295,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nonce_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 9, nonce_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (ttl_ != null) {
       output.writeMessage(11, getTtl());
     }
     getUnknownFields().writeTo(output);
@@ -325,7 +327,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nonce_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, nonce_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (ttl_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(11, getTtl());
     }
@@ -435,13 +437,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.SignInByGoogleRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.SignInByGoogleRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -505,26 +505,20 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.auth.v1.SignInByGoogleRequest.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getTtlFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      scopes_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      scopes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
       code_ = "";
       state_ = "";
       redirectUri_ = "";
@@ -560,17 +554,22 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.github.saturn_xiv.palm.plugins.auth.v1.SignInByGoogleRequest buildPartial() {
       com.github.saturn_xiv.palm.plugins.auth.v1.SignInByGoogleRequest result = new com.github.saturn_xiv.palm.plugins.auth.v1.SignInByGoogleRequest(this);
+      buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
+    private void buildPartialRepeatedFields(com.github.saturn_xiv.palm.plugins.auth.v1.SignInByGoogleRequest result) {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        scopes_ = scopes_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      }
+      result.scopes_ = scopes_;
+    }
+
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.auth.v1.SignInByGoogleRequest result) {
       int from_bitField0_ = bitField0_;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        scopes_.makeImmutable();
-        result.scopes_ = scopes_;
-      }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.code_ = code_;
       }
@@ -583,14 +582,11 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000010) != 0)) {
         result.nonce_ = nonce_;
       }
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000020) != 0)) {
         result.ttl_ = ttlBuilder_ == null
             ? ttl_
             : ttlBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -640,7 +636,7 @@ private static final long serialVersionUID = 0L;
       if (!other.scopes_.isEmpty()) {
         if (scopes_.isEmpty()) {
           scopes_ = other.scopes_;
-          bitField0_ |= 0x00000001;
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           ensureScopesIsMutable();
           scopes_.addAll(other.scopes_);
@@ -746,13 +742,12 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.google.protobuf.LazyStringArrayList scopes_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    private com.google.protobuf.LazyStringList scopes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureScopesIsMutable() {
-      if (!scopes_.isModifiable()) {
+      if (!((bitField0_ & 0x00000001) != 0)) {
         scopes_ = new com.google.protobuf.LazyStringArrayList(scopes_);
-      }
-      bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000001;
+       }
     }
     /**
      * <code>repeated string scopes = 1;</code>
@@ -760,8 +755,7 @@ private static final long serialVersionUID = 0L;
      */
     public com.google.protobuf.ProtocolStringList
         getScopesList() {
-      scopes_.makeImmutable();
-      return scopes_;
+      return scopes_.getUnmodifiableView();
     }
     /**
      * <code>repeated string scopes = 1;</code>
@@ -798,7 +792,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureScopesIsMutable();
       scopes_.set(index, value);
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -812,7 +805,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureScopesIsMutable();
       scopes_.add(value);
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -826,7 +818,6 @@ private static final long serialVersionUID = 0L;
       ensureScopesIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, scopes_);
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -835,9 +826,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearScopes() {
-      scopes_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00000001);;
+      scopes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }
@@ -852,7 +842,6 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       ensureScopesIsMutable();
       scopes_.add(value);
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -1211,10 +1200,8 @@ private static final long serialVersionUID = 0L;
       } else {
         ttlBuilder_.mergeFrom(value);
       }
-      if (ttl_ != null) {
-        bitField0_ |= 0x00000020;
-        onChanged();
-      }
+      bitField0_ |= 0x00000020;
+      onChanged();
       return this;
     }
     /**

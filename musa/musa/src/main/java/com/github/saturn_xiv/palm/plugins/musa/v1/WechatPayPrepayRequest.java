@@ -30,6 +30,11 @@ private static final long serialVersionUID = 0L;
     return new WechatPayPrepayRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayPrepayRequest_descriptor;
@@ -87,6 +92,11 @@ private static final long serialVersionUID = 0L;
       return new Amount();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayPrepayRequest_Amount_descriptor;
@@ -248,13 +258,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.Amount parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -491,7 +499,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setTotal(int value) {
-
+        
         total_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
@@ -766,7 +774,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasAmount() {
-    return ((bitField0_ & 0x00000004) != 0);
+    return amount_ != null;
   }
   /**
    * <code>.palm.musa.v1.WechatPayPrepayRequest.Amount amount = 12;</code>
@@ -885,7 +893,7 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000002) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 11, payerOpenId_);
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
+    if (amount_ != null) {
       output.writeMessage(12, getAmount());
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
@@ -912,7 +920,7 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, payerOpenId_);
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
+    if (amount_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(12, getAmount());
     }
@@ -1036,13 +1044,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1106,19 +1112,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayPrepayRequest.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getAmountFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -1183,7 +1183,6 @@ private static final long serialVersionUID = 0L;
         result.amount_ = amountBuilder_ == null
             ? amount_
             : amountBuilder_.build();
-        to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
         result.description_ = description_;
@@ -1637,10 +1636,8 @@ private static final long serialVersionUID = 0L;
       } else {
         amountBuilder_.mergeFrom(value);
       }
-      if (amount_ != null) {
-        bitField0_ |= 0x00000008;
-        onChanged();
-      }
+      bitField0_ |= 0x00000008;
+      onChanged();
       return this;
     }
     /**

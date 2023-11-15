@@ -4,115 +4,89 @@
 #include "mall.pb.h"
 
 #include <algorithm>
-#include "google/protobuf/io/coded_stream.h"
-#include "google/protobuf/extension_set.h"
-#include "google/protobuf/wire_format_lite.h"
-#include "google/protobuf/descriptor.h"
-#include "google/protobuf/generated_message_reflection.h"
-#include "google/protobuf/reflection_ops.h"
-#include "google/protobuf/wire_format.h"
-#include "google/protobuf/generated_message_tctable_impl.h"
-// @@protoc_insertion_point(includes)
 
-// Must be included last.
-#include "google/protobuf/port_def.inc"
+#include <google/protobuf/io/coded_stream.h>
+#include <google/protobuf/extension_set.h>
+#include <google/protobuf/wire_format_lite.h>
+#include <google/protobuf/descriptor.h>
+#include <google/protobuf/generated_message_reflection.h>
+#include <google/protobuf/reflection_ops.h>
+#include <google/protobuf/wire_format.h>
+// @@protoc_insertion_point(includes)
+#include <google/protobuf/port_def.inc>
+
 PROTOBUF_PRAGMA_INIT_SEG
-namespace _pb = ::google::protobuf;
-namespace _pbi = ::google::protobuf::internal;
-namespace _fl = ::google::protobuf::internal::field_layout;
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace palm {
 namespace mall {
 namespace v1 {
-      template <typename>
-PROTOBUF_CONSTEXPR Order::Order(::_pbi::ConstantInitialized) {}
+PROTOBUF_CONSTEXPR Order::Order(
+    ::_pbi::ConstantInitialized) {}
 struct OrderDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR OrderDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR OrderDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~OrderDefaultTypeInternal() {}
   union {
     Order _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 OrderDefaultTypeInternal _Order_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 OrderDefaultTypeInternal _Order_default_instance_;
 }  // namespace v1
 }  // namespace mall
 }  // namespace palm
 static ::_pb::Metadata file_level_metadata_mall_2eproto[1];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_mall_2eproto[1];
-static constexpr const ::_pb::ServiceDescriptor**
-    file_level_service_descriptors_mall_2eproto = nullptr;
-const ::uint32_t TableStruct_mall_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
-    protodesc_cold) = {
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::mall::v1::Order, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-};
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_mall_2eproto = nullptr;
 
-static const ::_pbi::MigrationSchema
-    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, -1, -1, sizeof(::palm::mall::v1::Order)},
+const uint32_t TableStruct_mall_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::mall::v1::Order, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+};
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  { 0, -1, -1, sizeof(::palm::mall::v1::Order)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-    &::palm::mall::v1::_Order_default_instance_._instance,
-};
-const char descriptor_table_protodef_mall_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\nmall.proto\022\014palm.mall.v1\"\331\001\n\005Order\"\317\001\n"
-    "\006Status\022\n\n\006Voided\020\000\022\013\n\007Pending\020\001\022\016\n\nProc"
-    "essing\020\002\022\n\n\006Shiped\020\003\022\014\n\010Complete\020\004\022\014\n\010Ca"
-    "nceled\020\005\022\n\n\006Denied\020\006\022\024\n\020CanceledReversal"
-    "\020\007\022\n\n\006Failed\020\010\022\014\n\010Refunded\020\t\022\014\n\010Reversed"
-    "\020\n\022\016\n\nChargeback\020\013\022\013\n\007Expired\020\014\022\r\n\tProce"
-    "ssed\020\r2\005\n\003Sku2\005\n\003SpuB.\n*com.github.satur"
-    "n_xiv.palm.plugins.mall.v1P\001b\006proto3"
-};
-static ::absl::once_flag descriptor_table_mall_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_mall_2eproto = {
-    false,
-    false,
-    316,
-    descriptor_table_protodef_mall_2eproto,
-    "mall.proto",
-    &descriptor_table_mall_2eproto_once,
-    nullptr,
-    0,
-    1,
-    schemas,
-    file_default_instances,
-    TableStruct_mall_2eproto::offsets,
-    file_level_metadata_mall_2eproto,
-    file_level_enum_descriptors_mall_2eproto,
-    file_level_service_descriptors_mall_2eproto,
+  &::palm::mall::v1::_Order_default_instance_._instance,
 };
 
-// This function exists to be marked as weak.
-// It can significantly speed up compilation by breaking up LLVM's SCC
-// in the .pb.cc translation units. Large translation units see a
-// reduction of more than 35% of walltime for optimized builds. Without
-// the weak attribute all the messages in the file, including all the
-// vtables and everything they use become part of the same SCC through
-// a cycle like:
-// GetMetadata -> descriptor table -> default instances ->
-//   vtables -> GetMetadata
-// By adding a weak function here we break the connection from the
-// individual vtables back into the descriptor table.
+const char descriptor_table_protodef_mall_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\nmall.proto\022\014palm.mall.v1\"\331\001\n\005Order\"\317\001\n"
+  "\006Status\022\n\n\006Voided\020\000\022\013\n\007Pending\020\001\022\016\n\nProc"
+  "essing\020\002\022\n\n\006Shiped\020\003\022\014\n\010Complete\020\004\022\014\n\010Ca"
+  "nceled\020\005\022\n\n\006Denied\020\006\022\024\n\020CanceledReversal"
+  "\020\007\022\n\n\006Failed\020\010\022\014\n\010Refunded\020\t\022\014\n\010Reversed"
+  "\020\n\022\016\n\nChargeback\020\013\022\013\n\007Expired\020\014\022\r\n\tProce"
+  "ssed\020\r2\005\n\003Sku2\005\n\003SpuB.\n*com.github.satur"
+  "n_xiv.palm.plugins.mall.v1P\001b\006proto3"
+  ;
+static ::_pbi::once_flag descriptor_table_mall_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_mall_2eproto = {
+    false, false, 316, descriptor_table_protodef_mall_2eproto,
+    "mall.proto",
+    &descriptor_table_mall_2eproto_once, nullptr, 0, 1,
+    schemas, file_default_instances, TableStruct_mall_2eproto::offsets,
+    file_level_metadata_mall_2eproto, file_level_enum_descriptors_mall_2eproto,
+    file_level_service_descriptors_mall_2eproto,
+};
 PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_mall_2eproto_getter() {
   return &descriptor_table_mall_2eproto;
 }
+
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
-static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_mall_2eproto(&descriptor_table_mall_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_mall_2eproto(&descriptor_table_mall_2eproto);
 namespace palm {
 namespace mall {
 namespace v1 {
-const ::google::protobuf::EnumDescriptor* Order_Status_descriptor() {
-  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_mall_2eproto);
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Order_Status_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_mall_2eproto);
   return file_level_enum_descriptors_mall_2eproto[0];
 }
 bool Order_Status_IsValid(int value) {
@@ -136,9 +110,8 @@ bool Order_Status_IsValid(int value) {
       return false;
   }
 }
-#if (__cplusplus < 201703) && \
-  (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 constexpr Order_Status Order::Voided;
 constexpr Order_Status Order::Pending;
 constexpr Order_Status Order::Processing;
@@ -156,36 +129,35 @@ constexpr Order_Status Order::Processed;
 constexpr Order_Status Order::Status_MIN;
 constexpr Order_Status Order::Status_MAX;
 constexpr int Order::Status_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
-#endif  // (__cplusplus < 201703) &&
-        // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 // ===================================================================
 
 class Order::_Internal {
  public:
 };
 
-Order::Order(::google::protobuf::Arena* arena)
-    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+Order::Order(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
   // @@protoc_insertion_point(arena_constructor:palm.mall.v1.Order)
 }
-Order::Order(const Order& from) : ::google::protobuf::internal::ZeroFieldsBase() {
-  Order* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-
+Order::Order(const Order& from)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  Order* const _this = this; (void)_this;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:palm.mall.v1.Order)
 }
 
 
 
 
-const ::google::protobuf::Message::ClassData Order::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Order::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
 };
-const ::google::protobuf::Message::ClassData*Order::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Order::GetClassData() const { return &_class_data_; }
 
 
 
@@ -193,18 +165,22 @@ const ::google::protobuf::Message::ClassData*Order::GetClassData() const { retur
 
 
 
-::google::protobuf::Metadata Order::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Order::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_mall_2eproto_getter, &descriptor_table_mall_2eproto_once,
       file_level_metadata_mall_2eproto[0]);
 }
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace mall
 }  // namespace palm
-namespace google {
-namespace protobuf {
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::palm::mall::v1::Order*
+Arena::CreateMaybeMessage< ::palm::mall::v1::Order >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::mall::v1::Order >(arena);
+}
+PROTOBUF_NAMESPACE_CLOSE
+
 // @@protoc_insertion_point(global_scope)
-#include "google/protobuf/port_undef.inc"
+#include <google/protobuf/port_undef.inc>

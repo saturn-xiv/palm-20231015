@@ -26,6 +26,11 @@ private static final long serialVersionUID = 0L;
     return new ExcelModel();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.lily.v1.Lily.internal_static_palm_lily_v1_ExcelModel_descriptor;
@@ -103,6 +108,11 @@ private static final long serialVersionUID = 0L;
       return new Sheet();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.lily.v1.Lily.internal_static_palm_lily_v1_ExcelModel_Sheet_descriptor;
@@ -167,6 +177,11 @@ private static final long serialVersionUID = 0L;
         return new Cell();
       }
 
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.github.saturn_xiv.palm.plugins.lily.v1.Lily.internal_static_palm_lily_v1_ExcelModel_Sheet_Cell_descriptor;
@@ -371,13 +386,11 @@ private static final long serialVersionUID = 0L;
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-
       public static com.github.saturn_xiv.palm.plugins.lily.v1.ExcelModel.Sheet.Cell parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-
       public static com.github.saturn_xiv.palm.plugins.lily.v1.ExcelModel.Sheet.Cell parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -628,7 +641,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setRow(int value) {
-
+          
           row_ = value;
           bitField0_ |= 0x00000001;
           onChanged();
@@ -660,7 +673,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setCol(int value) {
-
+          
           col_ = value;
           bitField0_ |= 0x00000002;
           onChanged();
@@ -1013,13 +1026,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.lily.v1.ExcelModel.Sheet parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.lily.v1.ExcelModel.Sheet parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1817,13 +1828,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.lily.v1.ExcelModel parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.lily.v1.ExcelModel parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)

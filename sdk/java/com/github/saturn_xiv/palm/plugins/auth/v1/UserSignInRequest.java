@@ -26,6 +26,11 @@ private static final long serialVersionUID = 0L;
     return new UserSignInRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.auth.v1.Auth.internal_static_palm_auth_v1_UserSignInRequest_descriptor;
@@ -39,9 +44,7 @@ private static final long serialVersionUID = 0L;
             com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInRequest.class, com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInRequest.Builder.class);
   }
 
-  private int bitField0_;
   private int userCase_ = 0;
-  @SuppressWarnings("serial")
   private java.lang.Object user_;
   public enum UserCase
       implements com.google.protobuf.Internal.EnumLite,
@@ -233,7 +236,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasTtl() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return ttl_ != null;
   }
   /**
    * <code>.google.protobuf.Duration ttl = 11;</code>
@@ -274,7 +277,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 9, password_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (ttl_ != null) {
       output.writeMessage(11, getTtl());
     }
     getUnknownFields().writeTo(output);
@@ -295,7 +298,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(password_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, password_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (ttl_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(11, getTtl());
     }
@@ -412,13 +415,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -482,19 +483,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInRequest.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getTtlFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -545,14 +540,11 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.password_ = password_;
       }
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000008) != 0)) {
         result.ttl_ = ttlBuilder_ == null
             ? ttl_
             : ttlBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     private void buildPartialOneofs(com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInRequest result) {
@@ -1035,10 +1027,8 @@ private static final long serialVersionUID = 0L;
       } else {
         ttlBuilder_.mergeFrom(value);
       }
-      if (ttl_ != null) {
-        bitField0_ |= 0x00000008;
-        onChanged();
-      }
+      bitField0_ |= 0x00000008;
+      onChanged();
       return this;
     }
     /**

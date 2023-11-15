@@ -27,6 +27,11 @@ private static final long serialVersionUID = 0L;
     return new S3GetFileRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.lily.v1.Lily.internal_static_palm_lily_v1_S3GetFileRequest_descriptor;
@@ -40,7 +45,6 @@ private static final long serialVersionUID = 0L;
             com.github.saturn_xiv.palm.plugins.lily.v1.S3GetFileRequest.class, com.github.saturn_xiv.palm.plugins.lily.v1.S3GetFileRequest.Builder.class);
   }
 
-  private int bitField0_;
   public static final int BUCKET_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object bucket_ = "";
@@ -127,7 +131,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasTtl() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return ttl_ != null;
   }
   /**
    * <code>.google.protobuf.Duration ttl = 9;</code>
@@ -165,7 +169,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (ttl_ != null) {
       output.writeMessage(9, getTtl());
     }
     getUnknownFields().writeTo(output);
@@ -183,7 +187,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (ttl_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(9, getTtl());
     }
@@ -279,13 +283,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.lily.v1.S3GetFileRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.lily.v1.S3GetFileRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -349,19 +351,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.lily.v1.S3GetFileRequest.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getTtlFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -413,14 +409,11 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.name_ = name_;
       }
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.ttl_ = ttlBuilder_ == null
             ? ttl_
             : ttlBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -750,10 +743,8 @@ private static final long serialVersionUID = 0L;
       } else {
         ttlBuilder_.mergeFrom(value);
       }
-      if (ttl_ != null) {
-        bitField0_ |= 0x00000004;
-        onChanged();
-      }
+      bitField0_ |= 0x00000004;
+      onChanged();
       return this;
     }
     /**

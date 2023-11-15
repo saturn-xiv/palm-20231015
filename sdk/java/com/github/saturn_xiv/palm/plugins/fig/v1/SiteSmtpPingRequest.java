@@ -27,6 +27,11 @@ private static final long serialVersionUID = 0L;
     return new SiteSmtpPingRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteSmtpPingRequest_descriptor;
@@ -40,7 +45,6 @@ private static final long serialVersionUID = 0L;
             com.github.saturn_xiv.palm.plugins.fig.v1.SiteSmtpPingRequest.class, com.github.saturn_xiv.palm.plugins.fig.v1.SiteSmtpPingRequest.Builder.class);
   }
 
-  private int bitField0_;
   public static final int TO_FIELD_NUMBER = 1;
   private com.github.saturn_xiv.palm.plugins.fig.v1.EmailTask.Address to_;
   /**
@@ -49,7 +53,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasTo() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return to_ != null;
   }
   /**
    * <code>.palm.fig.v1.EmailTask.Address to = 1;</code>
@@ -153,7 +157,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasProfile() {
-    return ((bitField0_ & 0x00000002) != 0);
+    return profile_ != null;
   }
   /**
    * <code>.palm.fig.v1.SmtpProfile profile = 9;</code>
@@ -185,7 +189,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (to_ != null) {
       output.writeMessage(1, getTo());
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(subject_)) {
@@ -194,7 +198,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(content_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, content_);
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (profile_ != null) {
       output.writeMessage(9, getProfile());
     }
     getUnknownFields().writeTo(output);
@@ -206,7 +210,7 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (to_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getTo());
     }
@@ -216,7 +220,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(content_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, content_);
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (profile_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(9, getProfile());
     }
@@ -321,13 +325,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteSmtpPingRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteSmtpPingRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -391,20 +393,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.fig.v1.SiteSmtpPingRequest.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getToFieldBuilder();
-        getProfileFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -455,12 +450,10 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.fig.v1.SiteSmtpPingRequest result) {
       int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.to_ = toBuilder_ == null
             ? to_
             : toBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.subject_ = subject_;
@@ -472,9 +465,7 @@ private static final long serialVersionUID = 0L;
         result.profile_ = profileBuilder_ == null
             ? profile_
             : profileBuilder_.build();
-        to_bitField0_ |= 0x00000002;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -670,10 +661,8 @@ private static final long serialVersionUID = 0L;
       } else {
         toBuilder_.mergeFrom(value);
       }
-      if (to_ != null) {
-        bitField0_ |= 0x00000001;
-        onChanged();
-      }
+      bitField0_ |= 0x00000001;
+      onChanged();
       return this;
     }
     /**
@@ -935,10 +924,8 @@ private static final long serialVersionUID = 0L;
       } else {
         profileBuilder_.mergeFrom(value);
       }
-      if (profile_ != null) {
-        bitField0_ |= 0x00000008;
-        onChanged();
-      }
+      bitField0_ |= 0x00000008;
+      onChanged();
       return this;
     }
     /**

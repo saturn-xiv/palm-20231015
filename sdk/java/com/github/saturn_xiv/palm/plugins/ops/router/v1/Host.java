@@ -30,6 +30,11 @@ private static final long serialVersionUID = 0L;
     return new Host();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_Host_descriptor;
@@ -97,6 +102,11 @@ private static final long serialVersionUID = 0L;
       return new Owner();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_Host_Owner_descriptor;
@@ -110,7 +120,6 @@ private static final long serialVersionUID = 0L;
               com.github.saturn_xiv.palm.plugins.ops.router.v1.Host.Owner.class, com.github.saturn_xiv.palm.plugins.ops.router.v1.Host.Owner.Builder.class);
     }
 
-    private int bitField0_;
     public static final int NAME_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
     private volatile java.lang.Object name_ = "";
@@ -158,7 +167,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasContact() {
-      return ((bitField0_ & 0x00000001) != 0);
+      return contact_ != null;
     }
     /**
      * <code>.palm.ops.router.v1.Contact contact = 2;</code>
@@ -193,7 +202,7 @@ private static final long serialVersionUID = 0L;
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (contact_ != null) {
         output.writeMessage(2, getContact());
       }
       getUnknownFields().writeTo(output);
@@ -208,7 +217,7 @@ private static final long serialVersionUID = 0L;
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (contact_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getContact());
       }
@@ -300,13 +309,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Host.Owner parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Host.Owner parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -370,19 +377,13 @@ private static final long serialVersionUID = 0L;
 
       // Construct using com.github.saturn_xiv.palm.plugins.ops.router.v1.Host.Owner.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getContactFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
@@ -430,14 +431,11 @@ private static final long serialVersionUID = 0L;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.name_ = name_;
         }
-        int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.contact_ = contactBuilder_ == null
               ? contact_
               : contactBuilder_.build();
-          to_bitField0_ |= 0x00000001;
         }
-        result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
@@ -685,10 +683,8 @@ private static final long serialVersionUID = 0L;
         } else {
           contactBuilder_.mergeFrom(value);
         }
-        if (contact_ != null) {
-          bitField0_ |= 0x00000002;
-          onChanged();
-        }
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -1037,7 +1033,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasOwner() {
-    return ((bitField0_ & 0x00000002) != 0);
+    return owner_ != null;
   }
   /**
    * <code>.palm.ops.router.v1.Host.Owner owner = 12;</code>
@@ -1090,7 +1086,7 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 11, location_);
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (owner_ != null) {
       output.writeMessage(12, getOwner());
     }
     getUnknownFields().writeTo(output);
@@ -1125,7 +1121,7 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, location_);
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (owner_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(12, getOwner());
     }
@@ -1247,13 +1243,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Host parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.ops.router.v1.Host parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1317,19 +1311,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.ops.router.v1.Host.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getOwnerFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -1407,7 +1395,6 @@ private static final long serialVersionUID = 0L;
         result.owner_ = ownerBuilder_ == null
             ? owner_
             : ownerBuilder_.build();
-        to_bitField0_ |= 0x00000002;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -1590,7 +1577,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setId(int value) {
-
+      
       id_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
@@ -1838,7 +1825,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setFixed(boolean value) {
-
+      
       fixed_ = value;
       bitField0_ |= 0x00000010;
       onChanged();
@@ -2072,10 +2059,8 @@ private static final long serialVersionUID = 0L;
       } else {
         ownerBuilder_.mergeFrom(value);
       }
-      if (owner_ != null) {
-        bitField0_ |= 0x00000080;
-        onChanged();
-      }
+      bitField0_ |= 0x00000080;
+      onChanged();
       return this;
     }
     /**

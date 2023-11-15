@@ -282,13 +282,11 @@ namespace Palm.Musa.V1 {
 
     /// <summary>Field number for the "out_trade_no" field.</summary>
     public const int OutTradeNoFieldNumber = 2;
-    private readonly static string OutTradeNoDefaultValue = "";
-
     private string outTradeNo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string OutTradeNo {
-      get { return outTradeNo_ ?? OutTradeNoDefaultValue; }
+      get { return outTradeNo_ ?? ""; }
       set {
         outTradeNo_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -308,13 +306,11 @@ namespace Palm.Musa.V1 {
 
     /// <summary>Field number for the "payer_open_id" field.</summary>
     public const int PayerOpenIdFieldNumber = 11;
-    private readonly static string PayerOpenIdDefaultValue = "";
-
     private string payerOpenId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string PayerOpenId {
-      get { return payerOpenId_ ?? PayerOpenIdDefaultValue; }
+      get { return payerOpenId_ ?? ""; }
       set {
         payerOpenId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -4673,13 +4669,11 @@ namespace Palm.Musa.V1 {
 
     /// <summary>Field number for the "out_batch_no" field.</summary>
     public const int OutBatchNoFieldNumber = 2;
-    private readonly static string OutBatchNoDefaultValue = "";
-
     private string outBatchNo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string OutBatchNo {
-      get { return outBatchNo_ ?? OutBatchNoDefaultValue; }
+      get { return outBatchNo_ ?? ""; }
       set {
         outBatchNo_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -5655,13 +5649,11 @@ namespace Palm.Musa.V1 {
 
         /// <summary>Field number for the "out_no" field.</summary>
         public const int OutNoFieldNumber = 3;
-        private readonly static string OutNoDefaultValue = "";
-
         private string outNo_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string OutNo {
-          get { return outNo_ ?? OutNoDefaultValue; }
+          get { return outNo_ ?? ""; }
           set {
             outNo_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
@@ -7951,13 +7943,11 @@ namespace Palm.Musa.V1 {
 
         /// <summary>Field number for the "close_reason" field.</summary>
         public const int CloseReasonFieldNumber = 21;
-        private readonly static string CloseReasonDefaultValue = "";
-
         private string closeReason_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string CloseReason {
-          get { return closeReason_ ?? CloseReasonDefaultValue; }
+          get { return closeReason_ ?? ""; }
           set {
             closeReason_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
@@ -8001,13 +7991,11 @@ namespace Palm.Musa.V1 {
 
         /// <summary>Field number for the "create_time" field.</summary>
         public const int CreateTimeFieldNumber = 24;
-        private readonly static string CreateTimeDefaultValue = "";
-
         private string createTime_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string CreateTime {
-          get { return createTime_ ?? CreateTimeDefaultValue; }
+          get { return createTime_ ?? ""; }
           set {
             createTime_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
@@ -8027,13 +8015,11 @@ namespace Palm.Musa.V1 {
 
         /// <summary>Field number for the "update_time" field.</summary>
         public const int UpdateTimeFieldNumber = 25;
-        private readonly static string UpdateTimeDefaultValue = "";
-
         private string updateTime_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string UpdateTime {
-          get { return updateTime_ ?? UpdateTimeDefaultValue; }
+          get { return updateTime_ ?? ""; }
           set {
             updateTime_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
@@ -8053,13 +8039,11 @@ namespace Palm.Musa.V1 {
 
         /// <summary>Field number for the "success_amount" field.</summary>
         public const int SuccessAmountFieldNumber = 26;
-        private readonly static long SuccessAmountDefaultValue = 0L;
-
         private long successAmount_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long SuccessAmount {
-          get { if ((_hasBits0 & 1) != 0) { return successAmount_; } else { return SuccessAmountDefaultValue; } }
+          get { if ((_hasBits0 & 1) != 0) { return successAmount_; } else { return 0L; } }
           set {
             _hasBits0 |= 1;
             successAmount_ = value;
@@ -8080,13 +8064,11 @@ namespace Palm.Musa.V1 {
 
         /// <summary>Field number for the "success_num" field.</summary>
         public const int SuccessNumFieldNumber = 27;
-        private readonly static int SuccessNumDefaultValue = 0;
-
         private int successNum_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int SuccessNum {
-          get { if ((_hasBits0 & 2) != 0) { return successNum_; } else { return SuccessNumDefaultValue; } }
+          get { if ((_hasBits0 & 2) != 0) { return successNum_; } else { return 0; } }
           set {
             _hasBits0 |= 2;
             successNum_ = value;
@@ -8107,13 +8089,11 @@ namespace Palm.Musa.V1 {
 
         /// <summary>Field number for the "fail_amount" field.</summary>
         public const int FailAmountFieldNumber = 28;
-        private readonly static long FailAmountDefaultValue = 0L;
-
         private long failAmount_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long FailAmount {
-          get { if ((_hasBits0 & 4) != 0) { return failAmount_; } else { return FailAmountDefaultValue; } }
+          get { if ((_hasBits0 & 4) != 0) { return failAmount_; } else { return 0L; } }
           set {
             _hasBits0 |= 4;
             failAmount_ = value;
@@ -8134,13 +8114,11 @@ namespace Palm.Musa.V1 {
 
         /// <summary>Field number for the "fail_num" field.</summary>
         public const int FailNumFieldNumber = 29;
-        private readonly static int FailNumDefaultValue = 0;
-
         private int failNum_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int FailNum {
-          get { if ((_hasBits0 & 8) != 0) { return failNum_; } else { return FailNumDefaultValue; } }
+          get { if ((_hasBits0 & 8) != 0) { return failNum_; } else { return 0; } }
           set {
             _hasBits0 |= 8;
             failNum_ = value;
@@ -9026,13 +9004,11 @@ namespace Palm.Musa.V1 {
 
     /// <summary>Field number for the "user_name" field.</summary>
     public const int UserNameFieldNumber = 4;
-    private readonly static string UserNameDefaultValue = "";
-
     private string userName_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string UserName {
-      get { return userName_ ?? UserNameDefaultValue; }
+      get { return userName_ ?? ""; }
       set {
         userName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -9136,13 +9112,11 @@ namespace Palm.Musa.V1 {
 
     /// <summary>Field number for the "fail_reason" field.</summary>
     public const int FailReasonFieldNumber = 18;
-    private readonly static string FailReasonDefaultValue = "";
-
     private string failReason_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string FailReason {
-      get { return failReason_ ?? FailReasonDefaultValue; }
+      get { return failReason_ ?? ""; }
       set {
         failReason_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }

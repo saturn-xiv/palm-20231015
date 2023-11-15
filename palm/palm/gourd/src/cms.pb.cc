@@ -4,314 +4,231 @@
 #include "cms.pb.h"
 
 #include <algorithm>
-#include "google/protobuf/io/coded_stream.h"
-#include "google/protobuf/extension_set.h"
-#include "google/protobuf/wire_format_lite.h"
-#include "google/protobuf/descriptor.h"
-#include "google/protobuf/generated_message_reflection.h"
-#include "google/protobuf/reflection_ops.h"
-#include "google/protobuf/wire_format.h"
-#include "google/protobuf/generated_message_tctable_impl.h"
-// @@protoc_insertion_point(includes)
 
-// Must be included last.
-#include "google/protobuf/port_def.inc"
+#include <google/protobuf/io/coded_stream.h>
+#include <google/protobuf/extension_set.h>
+#include <google/protobuf/wire_format_lite.h>
+#include <google/protobuf/descriptor.h>
+#include <google/protobuf/generated_message_reflection.h>
+#include <google/protobuf/reflection_ops.h>
+#include <google/protobuf/wire_format.h>
+// @@protoc_insertion_point(includes)
+#include <google/protobuf/port_def.inc>
+
 PROTOBUF_PRAGMA_INIT_SEG
-namespace _pb = ::google::protobuf;
-namespace _pbi = ::google::protobuf::internal;
-namespace _fl = ::google::protobuf::internal::field_layout;
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace palm {
 namespace cms {
 namespace v1 {
-        template <typename>
-PROTOBUF_CONSTEXPR WebSite::WebSite(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.taxonomies_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_CONSTEXPR WebSite::WebSite(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.taxonomies_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct WebSiteDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WebSiteDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR WebSiteDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~WebSiteDefaultTypeInternal() {}
   union {
     WebSite _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WebSiteDefaultTypeInternal _WebSite_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR NotificationIndexResponse_Item::NotificationIndexResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.lang_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.updated_at_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.level_)*/ 0,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WebSiteDefaultTypeInternal _WebSite_default_instance_;
+PROTOBUF_CONSTEXPR NotificationIndexResponse_Item::NotificationIndexResponse_Item(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.title_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.url_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.lang_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.updated_at_)*/nullptr
+  , /*decltype(_impl_.id_)*/0
+  , /*decltype(_impl_.level_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct NotificationIndexResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR NotificationIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR NotificationIndexResponse_ItemDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~NotificationIndexResponse_ItemDefaultTypeInternal() {}
   union {
     NotificationIndexResponse_Item _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationIndexResponse_ItemDefaultTypeInternal _NotificationIndexResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR NotificationIndexResponse::NotificationIndexResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_.pagination_)*/ nullptr,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationIndexResponse_ItemDefaultTypeInternal _NotificationIndexResponse_Item_default_instance_;
+PROTOBUF_CONSTEXPR NotificationIndexResponse::NotificationIndexResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.items_)*/{}
+  , /*decltype(_impl_.pagination_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct NotificationIndexResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR NotificationIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR NotificationIndexResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~NotificationIndexResponseDefaultTypeInternal() {}
   union {
     NotificationIndexResponse _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationIndexResponseDefaultTypeInternal _NotificationIndexResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR NotificationCreateRequest::NotificationCreateRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.lang_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.level_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationIndexResponseDefaultTypeInternal _NotificationIndexResponse_default_instance_;
+PROTOBUF_CONSTEXPR NotificationCreateRequest::NotificationCreateRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.title_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.url_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.lang_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.level_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct NotificationCreateRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR NotificationCreateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR NotificationCreateRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~NotificationCreateRequestDefaultTypeInternal() {}
   union {
     NotificationCreateRequest _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationCreateRequestDefaultTypeInternal _NotificationCreateRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR NotificationUpdateRequest::NotificationUpdateRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.level_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationCreateRequestDefaultTypeInternal _NotificationCreateRequest_default_instance_;
+PROTOBUF_CONSTEXPR NotificationUpdateRequest::NotificationUpdateRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.title_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.url_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.id_)*/0
+  , /*decltype(_impl_.level_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct NotificationUpdateRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR NotificationUpdateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR NotificationUpdateRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~NotificationUpdateRequestDefaultTypeInternal() {}
   union {
     NotificationUpdateRequest _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationUpdateRequestDefaultTypeInternal _NotificationUpdateRequest_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationUpdateRequestDefaultTypeInternal _NotificationUpdateRequest_default_instance_;
 }  // namespace v1
 }  // namespace cms
 }  // namespace palm
 static ::_pb::Metadata file_level_metadata_cms_2eproto[5];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_cms_2eproto[1];
-static constexpr const ::_pb::ServiceDescriptor**
-    file_level_service_descriptors_cms_2eproto = nullptr;
-const ::uint32_t TableStruct_cms_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
-    protodesc_cold) = {
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::WebSite, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::WebSite, _impl_.taxonomies_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_.id_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_.level_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_.title_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_.url_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_.lang_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_.updated_at_),
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,
-    0,
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse, _impl_.items_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse, _impl_.pagination_),
-    ~0u,
-    0,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationCreateRequest, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationCreateRequest, _impl_.level_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationCreateRequest, _impl_.title_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationCreateRequest, _impl_.url_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationCreateRequest, _impl_.lang_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationUpdateRequest, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationUpdateRequest, _impl_.id_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationUpdateRequest, _impl_.level_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationUpdateRequest, _impl_.title_),
-    PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationUpdateRequest, _impl_.url_),
-};
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_cms_2eproto = nullptr;
 
-static const ::_pbi::MigrationSchema
-    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, -1, -1, sizeof(::palm::cms::v1::WebSite)},
-        {9, 23, -1, sizeof(::palm::cms::v1::NotificationIndexResponse_Item)},
-        {29, 39, -1, sizeof(::palm::cms::v1::NotificationIndexResponse)},
-        {41, -1, -1, sizeof(::palm::cms::v1::NotificationCreateRequest)},
-        {53, -1, -1, sizeof(::palm::cms::v1::NotificationUpdateRequest)},
+const uint32_t TableStruct_cms_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::WebSite, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::WebSite, _impl_.taxonomies_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_.level_),
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_.title_),
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_.url_),
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_.lang_),
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse_Item, _impl_.updated_at_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse, _impl_.items_),
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationIndexResponse, _impl_.pagination_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationCreateRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationCreateRequest, _impl_.level_),
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationCreateRequest, _impl_.title_),
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationCreateRequest, _impl_.url_),
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationCreateRequest, _impl_.lang_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationUpdateRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationUpdateRequest, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationUpdateRequest, _impl_.level_),
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationUpdateRequest, _impl_.title_),
+  PROTOBUF_FIELD_OFFSET(::palm::cms::v1::NotificationUpdateRequest, _impl_.url_),
+};
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  { 0, -1, -1, sizeof(::palm::cms::v1::WebSite)},
+  { 7, -1, -1, sizeof(::palm::cms::v1::NotificationIndexResponse_Item)},
+  { 19, -1, -1, sizeof(::palm::cms::v1::NotificationIndexResponse)},
+  { 27, -1, -1, sizeof(::palm::cms::v1::NotificationCreateRequest)},
+  { 37, -1, -1, sizeof(::palm::cms::v1::NotificationUpdateRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-    &::palm::cms::v1::_WebSite_default_instance_._instance,
-    &::palm::cms::v1::_NotificationIndexResponse_Item_default_instance_._instance,
-    &::palm::cms::v1::_NotificationIndexResponse_default_instance_._instance,
-    &::palm::cms::v1::_NotificationCreateRequest_default_instance_._instance,
-    &::palm::cms::v1::_NotificationUpdateRequest_default_instance_._instance,
-};
-const char descriptor_table_protodef_cms_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\tcms.proto\022\013palm.cms.v1\032\033google/protobu"
-    "f/empty.proto\032\037google/protobuf/timestamp"
-    ".proto\032\tnut.proto\"\035\n\007WebSite\022\022\n\ntaxonomi"
-    "es\030\t \003(\t\"\322\002\n\031NotificationIndexResponse\022:"
-    "\n\005items\030\001 \003(\0132+.palm.cms.v1.Notification"
-    "IndexResponse.Item\022+\n\npagination\030\t \001(\0132\027"
-    ".palm.nut.v1.Pagination\032\313\001\n\004Item\022\n\n\002id\030\001"
-    " \001(\005\022@\n\005level\030\002 \001(\01621.palm.cms.v1.Notifi"
-    "cationIndexResponse.Item.Level\022\r\n\005title\030"
-    "\003 \001(\t\022\013\n\003url\030\004 \001(\t\022\014\n\004lang\030\010 \001(\t\022.\n\nupda"
-    "ted_at\030\t \001(\0132\032.google.protobuf.Timestamp"
-    "\"\033\n\005Level\022\010\n\004NOTE\020\000\022\010\n\004INFO\020\001\"\207\001\n\031Notifi"
-    "cationCreateRequest\022@\n\005level\030\001 \001(\01621.pal"
-    "m.cms.v1.NotificationIndexResponse.Item."
-    "Level\022\r\n\005title\030\002 \001(\t\022\013\n\003url\030\003 \001(\t\022\014\n\004lan"
-    "g\030\t \001(\t\"\205\001\n\031NotificationUpdateRequest\022\n\n"
-    "\002id\030\001 \001(\005\022@\n\005level\030\002 \001(\01621.palm.cms.v1.N"
-    "otificationIndexResponse.Item.Level\022\r\n\005t"
-    "itle\030\003 \001(\t\022\013\n\003url\030\004 \001(\t2\371\002\n\014Notification"
-    "\022J\n\006Create\022&.palm.cms.v1.NotificationCre"
-    "ateRequest\032\026.google.protobuf.Empty\"\000\022J\n\006"
-    "Update\022&.palm.cms.v1.NotificationUpdateR"
-    "equest\032\026.google.protobuf.Empty\"\000\022E\n\005Inde"
-    "x\022\022.palm.nut.v1.Pager\032&.palm.cms.v1.Noti"
-    "ficationIndexResponse\"\000\022M\n\004Show\022\026.palm.n"
-    "ut.v1.IdRequest\032+.palm.cms.v1.Notificati"
-    "onIndexResponse.Item\"\000\022;\n\007Destory\022\026.palm"
-    ".nut.v1.IdRequest\032\026.google.protobuf.Empt"
-    "y\"\0002\010\n\006FolderB-\n)com.github.saturn_xiv.p"
-    "alm.plugins.cms.v1P\001b\006proto3"
-};
-static const ::_pbi::DescriptorTable* const descriptor_table_cms_2eproto_deps[3] =
-    {
-        &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
-        &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
-        &::descriptor_table_nut_2eproto,
-};
-static ::absl::once_flag descriptor_table_cms_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_cms_2eproto = {
-    false,
-    false,
-    1188,
-    descriptor_table_protodef_cms_2eproto,
-    "cms.proto",
-    &descriptor_table_cms_2eproto_once,
-    descriptor_table_cms_2eproto_deps,
-    3,
-    5,
-    schemas,
-    file_default_instances,
-    TableStruct_cms_2eproto::offsets,
-    file_level_metadata_cms_2eproto,
-    file_level_enum_descriptors_cms_2eproto,
-    file_level_service_descriptors_cms_2eproto,
+  &::palm::cms::v1::_WebSite_default_instance_._instance,
+  &::palm::cms::v1::_NotificationIndexResponse_Item_default_instance_._instance,
+  &::palm::cms::v1::_NotificationIndexResponse_default_instance_._instance,
+  &::palm::cms::v1::_NotificationCreateRequest_default_instance_._instance,
+  &::palm::cms::v1::_NotificationUpdateRequest_default_instance_._instance,
 };
 
-// This function exists to be marked as weak.
-// It can significantly speed up compilation by breaking up LLVM's SCC
-// in the .pb.cc translation units. Large translation units see a
-// reduction of more than 35% of walltime for optimized builds. Without
-// the weak attribute all the messages in the file, including all the
-// vtables and everything they use become part of the same SCC through
-// a cycle like:
-// GetMetadata -> descriptor table -> default instances ->
-//   vtables -> GetMetadata
-// By adding a weak function here we break the connection from the
-// individual vtables back into the descriptor table.
+const char descriptor_table_protodef_cms_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\tcms.proto\022\013palm.cms.v1\032\033google/protobu"
+  "f/empty.proto\032\037google/protobuf/timestamp"
+  ".proto\032\tnut.proto\"\035\n\007WebSite\022\022\n\ntaxonomi"
+  "es\030\t \003(\t\"\322\002\n\031NotificationIndexResponse\022:"
+  "\n\005items\030\001 \003(\0132+.palm.cms.v1.Notification"
+  "IndexResponse.Item\022+\n\npagination\030\t \001(\0132\027"
+  ".palm.nut.v1.Pagination\032\313\001\n\004Item\022\n\n\002id\030\001"
+  " \001(\005\022@\n\005level\030\002 \001(\01621.palm.cms.v1.Notifi"
+  "cationIndexResponse.Item.Level\022\r\n\005title\030"
+  "\003 \001(\t\022\013\n\003url\030\004 \001(\t\022\014\n\004lang\030\010 \001(\t\022.\n\nupda"
+  "ted_at\030\t \001(\0132\032.google.protobuf.Timestamp"
+  "\"\033\n\005Level\022\010\n\004NOTE\020\000\022\010\n\004INFO\020\001\"\207\001\n\031Notifi"
+  "cationCreateRequest\022@\n\005level\030\001 \001(\01621.pal"
+  "m.cms.v1.NotificationIndexResponse.Item."
+  "Level\022\r\n\005title\030\002 \001(\t\022\013\n\003url\030\003 \001(\t\022\014\n\004lan"
+  "g\030\t \001(\t\"\205\001\n\031NotificationUpdateRequest\022\n\n"
+  "\002id\030\001 \001(\005\022@\n\005level\030\002 \001(\01621.palm.cms.v1.N"
+  "otificationIndexResponse.Item.Level\022\r\n\005t"
+  "itle\030\003 \001(\t\022\013\n\003url\030\004 \001(\t2\371\002\n\014Notification"
+  "\022J\n\006Create\022&.palm.cms.v1.NotificationCre"
+  "ateRequest\032\026.google.protobuf.Empty\"\000\022J\n\006"
+  "Update\022&.palm.cms.v1.NotificationUpdateR"
+  "equest\032\026.google.protobuf.Empty\"\000\022E\n\005Inde"
+  "x\022\022.palm.nut.v1.Pager\032&.palm.cms.v1.Noti"
+  "ficationIndexResponse\"\000\022M\n\004Show\022\026.palm.n"
+  "ut.v1.IdRequest\032+.palm.cms.v1.Notificati"
+  "onIndexResponse.Item\"\000\022;\n\007Destory\022\026.palm"
+  ".nut.v1.IdRequest\032\026.google.protobuf.Empt"
+  "y\"\0002\010\n\006FolderB-\n)com.github.saturn_xiv.p"
+  "alm.plugins.cms.v1P\001b\006proto3"
+  ;
+static const ::_pbi::DescriptorTable* const descriptor_table_cms_2eproto_deps[3] = {
+  &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
+  &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
+  &::descriptor_table_nut_2eproto,
+};
+static ::_pbi::once_flag descriptor_table_cms_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_cms_2eproto = {
+    false, false, 1188, descriptor_table_protodef_cms_2eproto,
+    "cms.proto",
+    &descriptor_table_cms_2eproto_once, descriptor_table_cms_2eproto_deps, 3, 5,
+    schemas, file_default_instances, TableStruct_cms_2eproto::offsets,
+    file_level_metadata_cms_2eproto, file_level_enum_descriptors_cms_2eproto,
+    file_level_service_descriptors_cms_2eproto,
+};
 PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_cms_2eproto_getter() {
   return &descriptor_table_cms_2eproto;
 }
+
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
-static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_cms_2eproto(&descriptor_table_cms_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_cms_2eproto(&descriptor_table_cms_2eproto);
 namespace palm {
 namespace cms {
 namespace v1 {
-const ::google::protobuf::EnumDescriptor* NotificationIndexResponse_Item_Level_descriptor() {
-  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_cms_2eproto);
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* NotificationIndexResponse_Item_Level_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_cms_2eproto);
   return file_level_enum_descriptors_cms_2eproto[0];
 }
 bool NotificationIndexResponse_Item_Level_IsValid(int value) {
@@ -323,168 +240,180 @@ bool NotificationIndexResponse_Item_Level_IsValid(int value) {
       return false;
   }
 }
-#if (__cplusplus < 201703) && \
-  (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 constexpr NotificationIndexResponse_Item_Level NotificationIndexResponse_Item::NOTE;
 constexpr NotificationIndexResponse_Item_Level NotificationIndexResponse_Item::INFO;
 constexpr NotificationIndexResponse_Item_Level NotificationIndexResponse_Item::Level_MIN;
 constexpr NotificationIndexResponse_Item_Level NotificationIndexResponse_Item::Level_MAX;
 constexpr int NotificationIndexResponse_Item::Level_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
-#endif  // (__cplusplus < 201703) &&
-        // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 // ===================================================================
 
 class WebSite::_Internal {
  public:
 };
 
-WebSite::WebSite(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+WebSite::WebSite(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.cms.v1.WebSite)
 }
-WebSite::WebSite(const WebSite& from) : ::google::protobuf::Message() {
-  WebSite* const _this = this;
-  (void)_this;
+WebSite::WebSite(const WebSite& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  WebSite* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.taxonomies_){from._impl_.taxonomies_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.taxonomies_){from._impl_.taxonomies_}
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:palm.cms.v1.WebSite)
 }
-inline void WebSite::SharedCtor(::_pb::Arena* arena) {
+
+inline void WebSite::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.taxonomies_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.taxonomies_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 WebSite::~WebSite() {
   // @@protoc_insertion_point(destructor:palm.cms.v1.WebSite)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void WebSite::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_taxonomies()->~RepeatedPtrField();
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.taxonomies_.~RepeatedPtrField();
 }
+
 void WebSite::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void WebSite::Clear() {
+void WebSite::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.cms.v1.WebSite)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_taxonomies()->Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _impl_.taxonomies_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* WebSite::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* WebSite::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated string taxonomies = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_taxonomies();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "palm.cms.v1.WebSite.taxonomies"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<74>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 38, 2> WebSite::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    9, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967039,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_WebSite_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // repeated string taxonomies = 9;
-    {::_pbi::TcParser::FastUR1,
-     {74, 63, 0, PROTOBUF_FIELD_OFFSET(WebSite, _impl_.taxonomies_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // repeated string taxonomies = 9;
-    {PROTOBUF_FIELD_OFFSET(WebSite, _impl_.taxonomies_), 0, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
-  }},
-  // no aux_entries
-  {{
-    "\23\12\0\0\0\0\0\0"
-    "palm.cms.v1.WebSite"
-    "taxonomies"
-  }},
-};
-
-::uint8_t* WebSite::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* WebSite::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.cms.v1.WebSite)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // repeated string taxonomies = 9;
-  for (int i = 0, n = this->_internal_taxonomies_size(); i < n; ++i) {
-    const auto& s = this->_internal_taxonomies().Get(i);
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.cms.v1.WebSite.taxonomies");
+  for (int i = 0, n = this->_internal_taxonomies_size(); i < n; i++) {
+    const auto& s = this->_internal_taxonomies(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.cms.v1.WebSite.taxonomies");
     target = stream->WriteString(9, s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.cms.v1.WebSite)
   return target;
 }
 
-::size_t WebSite::ByteSizeLong() const {
+size_t WebSite::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.cms.v1.WebSite)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated string taxonomies = 9;
-  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_taxonomies().size());
-  for (int i = 0, n = _internal_taxonomies().size(); i < n; ++i) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-        _internal_taxonomies().Get(i));
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.taxonomies_.size());
+  for (int i = 0, n = _impl_.taxonomies_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.taxonomies_.Get(i));
   }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData WebSite::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WebSite::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     WebSite::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*WebSite::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WebSite::GetClassData() const { return &_class_data_; }
 
 
-void WebSite::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void WebSite::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<WebSite*>(&to_msg);
   auto& from = static_cast<const WebSite&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.cms.v1.WebSite)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_taxonomies()->MergeFrom(from._internal_taxonomies());
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.taxonomies_.MergeFrom(from._impl_.taxonomies_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WebSite::CopyFrom(const WebSite& from) {
@@ -494,7 +423,7 @@ void WebSite::CopyFrom(const WebSite& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool WebSite::IsInitialized() const {
+bool WebSite::IsInitialized() const {
   return true;
 }
 
@@ -504,339 +433,359 @@ void WebSite::InternalSwap(WebSite* other) {
   _impl_.taxonomies_.InternalSwap(&other->_impl_.taxonomies_);
 }
 
-::google::protobuf::Metadata WebSite::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata WebSite::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_cms_2eproto_getter, &descriptor_table_cms_2eproto_once,
       file_level_metadata_cms_2eproto[0]);
 }
+
 // ===================================================================
 
 class NotificationIndexResponse_Item::_Internal {
  public:
-  using HasBits = decltype(std::declval<NotificationIndexResponse_Item>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_._has_bits_);
-  static const ::google::protobuf::Timestamp& updated_at(const NotificationIndexResponse_Item* msg);
-  static void set_has_updated_at(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
+  static const ::PROTOBUF_NAMESPACE_ID::Timestamp& updated_at(const NotificationIndexResponse_Item* msg);
 };
 
-const ::google::protobuf::Timestamp& NotificationIndexResponse_Item::_Internal::updated_at(const NotificationIndexResponse_Item* msg) {
+const ::PROTOBUF_NAMESPACE_ID::Timestamp&
+NotificationIndexResponse_Item::_Internal::updated_at(const NotificationIndexResponse_Item* msg) {
   return *msg->_impl_.updated_at_;
 }
 void NotificationIndexResponse_Item::clear_updated_at() {
-  if (_impl_.updated_at_ != nullptr) _impl_.updated_at_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000001u;
+  if (GetArenaForAllocation() == nullptr && _impl_.updated_at_ != nullptr) {
+    delete _impl_.updated_at_;
+  }
+  _impl_.updated_at_ = nullptr;
 }
-NotificationIndexResponse_Item::NotificationIndexResponse_Item(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+NotificationIndexResponse_Item::NotificationIndexResponse_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.cms.v1.NotificationIndexResponse.Item)
 }
-NotificationIndexResponse_Item::NotificationIndexResponse_Item(const NotificationIndexResponse_Item& from) : ::google::protobuf::Message() {
-  NotificationIndexResponse_Item* const _this = this;
-  (void)_this;
+NotificationIndexResponse_Item::NotificationIndexResponse_Item(const NotificationIndexResponse_Item& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  NotificationIndexResponse_Item* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.title_){},
-      decltype(_impl_.url_){},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){},
-      decltype(_impl_.level_){},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.title_){}
+    , decltype(_impl_.url_){}
+    , decltype(_impl_.lang_){}
+    , decltype(_impl_.updated_at_){nullptr}
+    , decltype(_impl_.id_){}
+    , decltype(_impl_.level_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.title_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.title_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
+    _this->_impl_.title_.Set(from._internal_title(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.url_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.url_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
+    _this->_impl_.url_.Set(from._internal_url(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.lang_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.lang_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), _this->GetArenaForAllocation());
+    _this->_impl_.lang_.Set(from._internal_lang(), 
+      _this->GetArenaForAllocation());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.updated_at_ = new ::google::protobuf::Timestamp(*from._impl_.updated_at_);
+  if (from._internal_has_updated_at()) {
+    _this->_impl_.updated_at_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.updated_at_);
   }
   ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.level_) -
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.level_) -
     reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.level_));
-
   // @@protoc_insertion_point(copy_constructor:palm.cms.v1.NotificationIndexResponse.Item)
 }
-inline void NotificationIndexResponse_Item::SharedCtor(::_pb::Arena* arena) {
+
+inline void NotificationIndexResponse_Item::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.title_){},
-      decltype(_impl_.url_){},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.level_){0},
+      decltype(_impl_.title_){}
+    , decltype(_impl_.url_){}
+    , decltype(_impl_.lang_){}
+    , decltype(_impl_.updated_at_){nullptr}
+    , decltype(_impl_.id_){0}
+    , decltype(_impl_.level_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.title_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.title_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.url_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.url_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.lang_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.lang_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 NotificationIndexResponse_Item::~NotificationIndexResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.cms.v1.NotificationIndexResponse.Item)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void NotificationIndexResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.title_.Destroy();
   _impl_.url_.Destroy();
   _impl_.lang_.Destroy();
   if (this != internal_default_instance()) delete _impl_.updated_at_;
 }
+
 void NotificationIndexResponse_Item::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void NotificationIndexResponse_Item::Clear() {
+void NotificationIndexResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.cms.v1.NotificationIndexResponse.Item)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.title_.ClearToEmpty();
   _impl_.url_.ClearToEmpty();
   _impl_.lang_.ClearToEmpty();
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.updated_at_ != nullptr);
-    _impl_.updated_at_->Clear();
+  if (GetArenaForAllocation() == nullptr && _impl_.updated_at_ != nullptr) {
+    delete _impl_.updated_at_;
   }
-  ::memset(&_impl_.id_, 0, static_cast<::size_t>(
+  _impl_.updated_at_ = nullptr;
+  ::memset(&_impl_.id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.level_) -
       reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.level_));
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* NotificationIndexResponse_Item::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* NotificationIndexResponse_Item::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_level(static_cast<::palm::cms::v1::NotificationIndexResponse_Item_Level>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // string title = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_title();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.cms.v1.NotificationIndexResponse.Item.title"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string url = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_url();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.cms.v1.NotificationIndexResponse.Item.url"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string lang = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+          auto str = _internal_mutable_lang();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.cms.v1.NotificationIndexResponse.Item.lang"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .google.protobuf.Timestamp updated_at = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          ptr = ctx->ParseMessage(_internal_mutable_updated_at(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 6, 1, 63, 2> NotificationIndexResponse_Item::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_._has_bits_),
-    0, // no _extensions_
-    9, 56,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294966896,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    6,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_NotificationIndexResponse_Item_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string lang = 8;
-    {::_pbi::TcParser::FastUS1,
-     {66, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.lang_)}},
-    // int32 id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(NotificationIndexResponse_Item, _impl_.id_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.id_)}},
-    // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(NotificationIndexResponse_Item, _impl_.level_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.level_)}},
-    // string title = 3;
-    {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.title_)}},
-    // string url = 4;
-    {::_pbi::TcParser::FastUS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.url_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // int32 id = 1;
-    {PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.id_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 2;
-    {PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.level_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
-    // string title = 3;
-    {PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.title_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string url = 4;
-    {PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.url_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string lang = 8;
-    {PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.lang_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .google.protobuf.Timestamp updated_at = 9;
-    {PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.updated_at_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
-  }}, {{
-    "\52\0\0\5\3\4\0\0"
-    "palm.cms.v1.NotificationIndexResponse.Item"
-    "title"
-    "url"
-    "lang"
-  }},
-};
-
-::uint8_t* NotificationIndexResponse_Item::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* NotificationIndexResponse_Item::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.cms.v1.NotificationIndexResponse.Item)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<1>(
-            stream, this->_internal_id(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
   // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 2;
   if (this->_internal_level() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
-        2, this->_internal_level(), target);
+      2, this->_internal_level(), target);
   }
 
   // string title = 3;
   if (!this->_internal_title().empty()) {
-    const std::string& _s = this->_internal_title();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.cms.v1.NotificationIndexResponse.Item.title");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_title().data(), static_cast<int>(this->_internal_title().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.cms.v1.NotificationIndexResponse.Item.title");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_title(), target);
   }
 
   // string url = 4;
   if (!this->_internal_url().empty()) {
-    const std::string& _s = this->_internal_url();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.cms.v1.NotificationIndexResponse.Item.url");
-    target = stream->WriteStringMaybeAliased(4, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_url().data(), static_cast<int>(this->_internal_url().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.cms.v1.NotificationIndexResponse.Item.url");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_url(), target);
   }
 
   // string lang = 8;
   if (!this->_internal_lang().empty()) {
-    const std::string& _s = this->_internal_lang();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.cms.v1.NotificationIndexResponse.Item.lang");
-    target = stream->WriteStringMaybeAliased(8, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_lang().data(), static_cast<int>(this->_internal_lang().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.cms.v1.NotificationIndexResponse.Item.lang");
+    target = stream->WriteStringMaybeAliased(
+        8, this->_internal_lang(), target);
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp updated_at = 9;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_updated_at()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(9, _Internal::updated_at(this),
         _Internal::updated_at(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.cms.v1.NotificationIndexResponse.Item)
   return target;
 }
 
-::size_t NotificationIndexResponse_Item::ByteSizeLong() const {
+size_t NotificationIndexResponse_Item::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.cms.v1.NotificationIndexResponse.Item)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string title = 3;
   if (!this->_internal_title().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_title());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_title());
   }
 
   // string url = 4;
   if (!this->_internal_url().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_url());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_url());
   }
 
   // string lang = 8;
   if (!this->_internal_lang().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_lang());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_lang());
   }
 
   // .google.protobuf.Timestamp updated_at = 9;
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
+  if (this->_internal_has_updated_at()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.updated_at_);
   }
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_id());
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id());
   }
 
   // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 2;
   if (this->_internal_level() != 0) {
     total_size += 1 +
-                  ::_pbi::WireFormatLite::EnumSize(this->_internal_level());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_level());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData NotificationIndexResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NotificationIndexResponse_Item::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     NotificationIndexResponse_Item::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*NotificationIndexResponse_Item::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NotificationIndexResponse_Item::GetClassData() const { return &_class_data_; }
 
 
-void NotificationIndexResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void NotificationIndexResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<NotificationIndexResponse_Item*>(&to_msg);
   auto& from = static_cast<const NotificationIndexResponse_Item&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.cms.v1.NotificationIndexResponse.Item)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_title().empty()) {
@@ -848,8 +797,8 @@ void NotificationIndexResponse_Item::MergeImpl(::google::protobuf::Message& to_m
   if (!from._internal_lang().empty()) {
     _this->_internal_set_lang(from._internal_lang());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_internal_mutable_updated_at()->::google::protobuf::Timestamp::MergeFrom(
+  if (from._internal_has_updated_at()) {
+    _this->_internal_mutable_updated_at()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
         from._internal_updated_at());
   }
   if (from._internal_id() != 0) {
@@ -858,7 +807,7 @@ void NotificationIndexResponse_Item::MergeImpl(::google::protobuf::Message& to_m
   if (from._internal_level() != 0) {
     _this->_internal_set_level(from._internal_level());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void NotificationIndexResponse_Item::CopyFrom(const NotificationIndexResponse_Item& from) {
@@ -868,7 +817,7 @@ void NotificationIndexResponse_Item::CopyFrom(const NotificationIndexResponse_It
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool NotificationIndexResponse_Item::IsInitialized() const {
+bool NotificationIndexResponse_Item::IsInitialized() const {
   return true;
 }
 
@@ -877,14 +826,19 @@ void NotificationIndexResponse_Item::InternalSwap(NotificationIndexResponse_Item
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, lhs_arena,
-                                       &other->_impl_.lang_, rhs_arena);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.title_, lhs_arena,
+      &other->_impl_.title_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.url_, lhs_arena,
+      &other->_impl_.url_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.lang_, lhs_arena,
+      &other->_impl_.lang_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.level_)
       + sizeof(NotificationIndexResponse_Item::_impl_.level_)
       - PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.updated_at_)>(
@@ -892,211 +846,219 @@ void NotificationIndexResponse_Item::InternalSwap(NotificationIndexResponse_Item
           reinterpret_cast<char*>(&other->_impl_.updated_at_));
 }
 
-::google::protobuf::Metadata NotificationIndexResponse_Item::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata NotificationIndexResponse_Item::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_cms_2eproto_getter, &descriptor_table_cms_2eproto_once,
       file_level_metadata_cms_2eproto[1]);
 }
+
 // ===================================================================
 
 class NotificationIndexResponse::_Internal {
  public:
-  using HasBits = decltype(std::declval<NotificationIndexResponse>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(NotificationIndexResponse, _impl_._has_bits_);
   static const ::palm::nut::v1::Pagination& pagination(const NotificationIndexResponse* msg);
-  static void set_has_pagination(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::palm::nut::v1::Pagination& NotificationIndexResponse::_Internal::pagination(const NotificationIndexResponse* msg) {
+const ::palm::nut::v1::Pagination&
+NotificationIndexResponse::_Internal::pagination(const NotificationIndexResponse* msg) {
   return *msg->_impl_.pagination_;
 }
 void NotificationIndexResponse::clear_pagination() {
-  if (_impl_.pagination_ != nullptr) _impl_.pagination_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000001u;
+  if (GetArenaForAllocation() == nullptr && _impl_.pagination_ != nullptr) {
+    delete _impl_.pagination_;
+  }
+  _impl_.pagination_ = nullptr;
 }
-NotificationIndexResponse::NotificationIndexResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+NotificationIndexResponse::NotificationIndexResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.cms.v1.NotificationIndexResponse)
 }
-NotificationIndexResponse::NotificationIndexResponse(const NotificationIndexResponse& from) : ::google::protobuf::Message() {
-  NotificationIndexResponse* const _this = this;
-  (void)_this;
+NotificationIndexResponse::NotificationIndexResponse(const NotificationIndexResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  NotificationIndexResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.items_){from._impl_.items_},
-      decltype(_impl_.pagination_){nullptr},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+      decltype(_impl_.items_){from._impl_.items_}
+    , decltype(_impl_.pagination_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_pagination()) {
     _this->_impl_.pagination_ = new ::palm::nut::v1::Pagination(*from._impl_.pagination_);
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.cms.v1.NotificationIndexResponse)
 }
-inline void NotificationIndexResponse::SharedCtor(::_pb::Arena* arena) {
+
+inline void NotificationIndexResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.items_){arena},
-      decltype(_impl_.pagination_){nullptr},
+      decltype(_impl_.items_){arena}
+    , decltype(_impl_.pagination_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 NotificationIndexResponse::~NotificationIndexResponse() {
   // @@protoc_insertion_point(destructor:palm.cms.v1.NotificationIndexResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void NotificationIndexResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.items_.~RepeatedPtrField();
   if (this != internal_default_instance()) delete _impl_.pagination_;
 }
+
 void NotificationIndexResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void NotificationIndexResponse::Clear() {
+void NotificationIndexResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.cms.v1.NotificationIndexResponse)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.pagination_ != nullptr);
-    _impl_.pagination_->Clear();
+  _impl_.items_.Clear();
+  if (GetArenaForAllocation() == nullptr && _impl_.pagination_ != nullptr) {
+    delete _impl_.pagination_;
   }
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _impl_.pagination_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* NotificationIndexResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* NotificationIndexResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .palm.cms.v1.NotificationIndexResponse.Item items = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_items(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.nut.v1.Pagination pagination = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          ptr = ctx->ParseMessage(_internal_mutable_pagination(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 2, 2, 0, 2> NotificationIndexResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(NotificationIndexResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    9, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967038,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_NotificationIndexResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // repeated .palm.cms.v1.NotificationIndexResponse.Item items = 1;
-    {::_pbi::TcParser::FastMtR1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationIndexResponse, _impl_.items_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // repeated .palm.cms.v1.NotificationIndexResponse.Item items = 1;
-    {PROTOBUF_FIELD_OFFSET(NotificationIndexResponse, _impl_.items_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.nut.v1.Pagination pagination = 9;
-    {PROTOBUF_FIELD_OFFSET(NotificationIndexResponse, _impl_.pagination_), _Internal::kHasBitsOffset + 0, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::cms::v1::NotificationIndexResponse_Item>()},
-    {::_pbi::TcParser::GetTable<::palm::nut::v1::Pagination>()},
-  }}, {{
-  }},
-};
-
-::uint8_t* NotificationIndexResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* NotificationIndexResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.cms.v1.NotificationIndexResponse)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // repeated .palm.cms.v1.NotificationIndexResponse.Item items = 1;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
-    const auto& repfield = this->_internal_items().Get(i);
-    target = ::google::protobuf::internal::WireFormatLite::
+    const auto& repfield = this->_internal_items(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
         InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .palm.nut.v1.Pagination pagination = 9;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_pagination()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(9, _Internal::pagination(this),
         _Internal::pagination(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.cms.v1.NotificationIndexResponse)
   return target;
 }
 
-::size_t NotificationIndexResponse::ByteSizeLong() const {
+size_t NotificationIndexResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.cms.v1.NotificationIndexResponse)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .palm.cms.v1.NotificationIndexResponse.Item items = 1;
   total_size += 1UL * this->_internal_items_size();
-  for (const auto& msg : this->_internal_items()) {
+  for (const auto& msg : this->_impl_.items_) {
     total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
+
   // .palm.nut.v1.Pagination pagination = 9;
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
+  if (this->_internal_has_pagination()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.pagination_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData NotificationIndexResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NotificationIndexResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     NotificationIndexResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*NotificationIndexResponse::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NotificationIndexResponse::GetClassData() const { return &_class_data_; }
 
 
-void NotificationIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void NotificationIndexResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<NotificationIndexResponse*>(&to_msg);
   auto& from = static_cast<const NotificationIndexResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.cms.v1.NotificationIndexResponse)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  if (from._internal_has_pagination()) {
     _this->_internal_mutable_pagination()->::palm::nut::v1::Pagination::MergeFrom(
         from._internal_pagination());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void NotificationIndexResponse::CopyFrom(const NotificationIndexResponse& from) {
@@ -1106,111 +1068,122 @@ void NotificationIndexResponse::CopyFrom(const NotificationIndexResponse& from) 
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool NotificationIndexResponse::IsInitialized() const {
+bool NotificationIndexResponse::IsInitialized() const {
   return true;
 }
 
 void NotificationIndexResponse::InternalSwap(NotificationIndexResponse* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
   swap(_impl_.pagination_, other->_impl_.pagination_);
 }
 
-::google::protobuf::Metadata NotificationIndexResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata NotificationIndexResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_cms_2eproto_getter, &descriptor_table_cms_2eproto_once,
       file_level_metadata_cms_2eproto[2]);
 }
+
 // ===================================================================
 
 class NotificationCreateRequest::_Internal {
  public:
 };
 
-NotificationCreateRequest::NotificationCreateRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+NotificationCreateRequest::NotificationCreateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.cms.v1.NotificationCreateRequest)
 }
-NotificationCreateRequest::NotificationCreateRequest(const NotificationCreateRequest& from) : ::google::protobuf::Message() {
-  NotificationCreateRequest* const _this = this;
-  (void)_this;
+NotificationCreateRequest::NotificationCreateRequest(const NotificationCreateRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  NotificationCreateRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.title_){},
-      decltype(_impl_.url_){},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.level_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.title_){}
+    , decltype(_impl_.url_){}
+    , decltype(_impl_.lang_){}
+    , decltype(_impl_.level_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.title_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.title_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
+    _this->_impl_.title_.Set(from._internal_title(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.url_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.url_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
+    _this->_impl_.url_.Set(from._internal_url(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.lang_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.lang_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), _this->GetArenaForAllocation());
+    _this->_impl_.lang_.Set(from._internal_lang(), 
+      _this->GetArenaForAllocation());
   }
   _this->_impl_.level_ = from._impl_.level_;
-
   // @@protoc_insertion_point(copy_constructor:palm.cms.v1.NotificationCreateRequest)
 }
-inline void NotificationCreateRequest::SharedCtor(::_pb::Arena* arena) {
+
+inline void NotificationCreateRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.title_){},
-      decltype(_impl_.url_){},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.level_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.title_){}
+    , decltype(_impl_.url_){}
+    , decltype(_impl_.lang_){}
+    , decltype(_impl_.level_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.title_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.title_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.url_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.url_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.lang_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.lang_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 NotificationCreateRequest::~NotificationCreateRequest() {
   // @@protoc_insertion_point(destructor:palm.cms.v1.NotificationCreateRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void NotificationCreateRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.title_.Destroy();
   _impl_.url_.Destroy();
   _impl_.lang_.Destroy();
 }
+
 void NotificationCreateRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void NotificationCreateRequest::Clear() {
+void NotificationCreateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.cms.v1.NotificationCreateRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -1218,162 +1191,179 @@ PROTOBUF_NOINLINE void NotificationCreateRequest::Clear() {
   _impl_.url_.ClearToEmpty();
   _impl_.lang_.ClearToEmpty();
   _impl_.level_ = 0;
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* NotificationCreateRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* NotificationCreateRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_level(static_cast<::palm::cms::v1::NotificationIndexResponse_Item_Level>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // string title = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_title();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.cms.v1.NotificationCreateRequest.title"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string url = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_url();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.cms.v1.NotificationCreateRequest.url"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string lang = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          auto str = _internal_mutable_lang();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.cms.v1.NotificationCreateRequest.lang"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 58, 2> NotificationCreateRequest::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    9, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967032,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_NotificationCreateRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(NotificationCreateRequest, _impl_.level_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationCreateRequest, _impl_.level_)}},
-    // string title = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationCreateRequest, _impl_.title_)}},
-    // string url = 3;
-    {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationCreateRequest, _impl_.url_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 1;
-    {PROTOBUF_FIELD_OFFSET(NotificationCreateRequest, _impl_.level_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
-    // string title = 2;
-    {PROTOBUF_FIELD_OFFSET(NotificationCreateRequest, _impl_.title_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string url = 3;
-    {PROTOBUF_FIELD_OFFSET(NotificationCreateRequest, _impl_.url_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string lang = 9;
-    {PROTOBUF_FIELD_OFFSET(NotificationCreateRequest, _impl_.lang_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\45\0\5\3\4\0\0\0"
-    "palm.cms.v1.NotificationCreateRequest"
-    "title"
-    "url"
-    "lang"
-  }},
-};
-
-::uint8_t* NotificationCreateRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* NotificationCreateRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.cms.v1.NotificationCreateRequest)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 1;
   if (this->_internal_level() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
-        1, this->_internal_level(), target);
+      1, this->_internal_level(), target);
   }
 
   // string title = 2;
   if (!this->_internal_title().empty()) {
-    const std::string& _s = this->_internal_title();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.cms.v1.NotificationCreateRequest.title");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_title().data(), static_cast<int>(this->_internal_title().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.cms.v1.NotificationCreateRequest.title");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_title(), target);
   }
 
   // string url = 3;
   if (!this->_internal_url().empty()) {
-    const std::string& _s = this->_internal_url();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.cms.v1.NotificationCreateRequest.url");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_url().data(), static_cast<int>(this->_internal_url().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.cms.v1.NotificationCreateRequest.url");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_url(), target);
   }
 
   // string lang = 9;
   if (!this->_internal_lang().empty()) {
-    const std::string& _s = this->_internal_lang();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.cms.v1.NotificationCreateRequest.lang");
-    target = stream->WriteStringMaybeAliased(9, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_lang().data(), static_cast<int>(this->_internal_lang().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.cms.v1.NotificationCreateRequest.lang");
+    target = stream->WriteStringMaybeAliased(
+        9, this->_internal_lang(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.cms.v1.NotificationCreateRequest)
   return target;
 }
 
-::size_t NotificationCreateRequest::ByteSizeLong() const {
+size_t NotificationCreateRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.cms.v1.NotificationCreateRequest)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string title = 2;
   if (!this->_internal_title().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_title());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_title());
   }
 
   // string url = 3;
   if (!this->_internal_url().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_url());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_url());
   }
 
   // string lang = 9;
   if (!this->_internal_lang().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_lang());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_lang());
   }
 
   // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 1;
   if (this->_internal_level() != 0) {
     total_size += 1 +
-                  ::_pbi::WireFormatLite::EnumSize(this->_internal_level());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_level());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData NotificationCreateRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NotificationCreateRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     NotificationCreateRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*NotificationCreateRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NotificationCreateRequest::GetClassData() const { return &_class_data_; }
 
 
-void NotificationCreateRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void NotificationCreateRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<NotificationCreateRequest*>(&to_msg);
   auto& from = static_cast<const NotificationCreateRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.cms.v1.NotificationCreateRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_title().empty()) {
@@ -1388,7 +1378,7 @@ void NotificationCreateRequest::MergeImpl(::google::protobuf::Message& to_msg, c
   if (from._internal_level() != 0) {
     _this->_internal_set_level(from._internal_level());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void NotificationCreateRequest::CopyFrom(const NotificationCreateRequest& from) {
@@ -1398,7 +1388,7 @@ void NotificationCreateRequest::CopyFrom(const NotificationCreateRequest& from) 
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool NotificationCreateRequest::IsInitialized() const {
+bool NotificationCreateRequest::IsInitialized() const {
   return true;
 }
 
@@ -1407,262 +1397,288 @@ void NotificationCreateRequest::InternalSwap(NotificationCreateRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, lhs_arena,
-                                       &other->_impl_.lang_, rhs_arena);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.title_, lhs_arena,
+      &other->_impl_.title_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.url_, lhs_arena,
+      &other->_impl_.url_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.lang_, lhs_arena,
+      &other->_impl_.lang_, rhs_arena
+  );
   swap(_impl_.level_, other->_impl_.level_);
 }
 
-::google::protobuf::Metadata NotificationCreateRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata NotificationCreateRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_cms_2eproto_getter, &descriptor_table_cms_2eproto_once,
       file_level_metadata_cms_2eproto[3]);
 }
+
 // ===================================================================
 
 class NotificationUpdateRequest::_Internal {
  public:
 };
 
-NotificationUpdateRequest::NotificationUpdateRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+NotificationUpdateRequest::NotificationUpdateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.cms.v1.NotificationUpdateRequest)
 }
-NotificationUpdateRequest::NotificationUpdateRequest(const NotificationUpdateRequest& from) : ::google::protobuf::Message() {
-  NotificationUpdateRequest* const _this = this;
-  (void)_this;
+NotificationUpdateRequest::NotificationUpdateRequest(const NotificationUpdateRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  NotificationUpdateRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.title_){},
-      decltype(_impl_.url_){},
-      decltype(_impl_.id_){},
-      decltype(_impl_.level_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.title_){}
+    , decltype(_impl_.url_){}
+    , decltype(_impl_.id_){}
+    , decltype(_impl_.level_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.title_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.title_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
+    _this->_impl_.title_.Set(from._internal_title(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.url_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.url_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
+    _this->_impl_.url_.Set(from._internal_url(), 
+      _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.level_) -
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.level_) -
     reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.level_));
-
   // @@protoc_insertion_point(copy_constructor:palm.cms.v1.NotificationUpdateRequest)
 }
-inline void NotificationUpdateRequest::SharedCtor(::_pb::Arena* arena) {
+
+inline void NotificationUpdateRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.title_){},
-      decltype(_impl_.url_){},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.level_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.title_){}
+    , decltype(_impl_.url_){}
+    , decltype(_impl_.id_){0}
+    , decltype(_impl_.level_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.title_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.title_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.url_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.url_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 NotificationUpdateRequest::~NotificationUpdateRequest() {
   // @@protoc_insertion_point(destructor:palm.cms.v1.NotificationUpdateRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void NotificationUpdateRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.title_.Destroy();
   _impl_.url_.Destroy();
 }
+
 void NotificationUpdateRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void NotificationUpdateRequest::Clear() {
+void NotificationUpdateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.cms.v1.NotificationUpdateRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.title_.ClearToEmpty();
   _impl_.url_.ClearToEmpty();
-  ::memset(&_impl_.id_, 0, static_cast<::size_t>(
+  ::memset(&_impl_.id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.level_) -
       reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.level_));
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* NotificationUpdateRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* NotificationUpdateRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_level(static_cast<::palm::cms::v1::NotificationIndexResponse_Item_Level>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // string title = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_title();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.cms.v1.NotificationUpdateRequest.title"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string url = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_url();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.cms.v1.NotificationUpdateRequest.url"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 54, 2> NotificationUpdateRequest::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_NotificationUpdateRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string url = 4;
-    {::_pbi::TcParser::FastUS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationUpdateRequest, _impl_.url_)}},
-    // int32 id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(NotificationUpdateRequest, _impl_.id_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationUpdateRequest, _impl_.id_)}},
-    // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(NotificationUpdateRequest, _impl_.level_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationUpdateRequest, _impl_.level_)}},
-    // string title = 3;
-    {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(NotificationUpdateRequest, _impl_.title_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // int32 id = 1;
-    {PROTOBUF_FIELD_OFFSET(NotificationUpdateRequest, _impl_.id_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 2;
-    {PROTOBUF_FIELD_OFFSET(NotificationUpdateRequest, _impl_.level_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
-    // string title = 3;
-    {PROTOBUF_FIELD_OFFSET(NotificationUpdateRequest, _impl_.title_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string url = 4;
-    {PROTOBUF_FIELD_OFFSET(NotificationUpdateRequest, _impl_.url_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\45\0\0\5\3\0\0\0"
-    "palm.cms.v1.NotificationUpdateRequest"
-    "title"
-    "url"
-  }},
-};
-
-::uint8_t* NotificationUpdateRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* NotificationUpdateRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.cms.v1.NotificationUpdateRequest)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<1>(
-            stream, this->_internal_id(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
   // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 2;
   if (this->_internal_level() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
-        2, this->_internal_level(), target);
+      2, this->_internal_level(), target);
   }
 
   // string title = 3;
   if (!this->_internal_title().empty()) {
-    const std::string& _s = this->_internal_title();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.cms.v1.NotificationUpdateRequest.title");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_title().data(), static_cast<int>(this->_internal_title().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.cms.v1.NotificationUpdateRequest.title");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_title(), target);
   }
 
   // string url = 4;
   if (!this->_internal_url().empty()) {
-    const std::string& _s = this->_internal_url();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.cms.v1.NotificationUpdateRequest.url");
-    target = stream->WriteStringMaybeAliased(4, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_url().data(), static_cast<int>(this->_internal_url().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.cms.v1.NotificationUpdateRequest.url");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_url(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.cms.v1.NotificationUpdateRequest)
   return target;
 }
 
-::size_t NotificationUpdateRequest::ByteSizeLong() const {
+size_t NotificationUpdateRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.cms.v1.NotificationUpdateRequest)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string title = 3;
   if (!this->_internal_title().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_title());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_title());
   }
 
   // string url = 4;
   if (!this->_internal_url().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_url());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_url());
   }
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_id());
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id());
   }
 
   // .palm.cms.v1.NotificationIndexResponse.Item.Level level = 2;
   if (this->_internal_level() != 0) {
     total_size += 1 +
-                  ::_pbi::WireFormatLite::EnumSize(this->_internal_level());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_level());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData NotificationUpdateRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NotificationUpdateRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     NotificationUpdateRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*NotificationUpdateRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NotificationUpdateRequest::GetClassData() const { return &_class_data_; }
 
 
-void NotificationUpdateRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void NotificationUpdateRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<NotificationUpdateRequest*>(&to_msg);
   auto& from = static_cast<const NotificationUpdateRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.cms.v1.NotificationUpdateRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_title().empty()) {
@@ -1677,7 +1693,7 @@ void NotificationUpdateRequest::MergeImpl(::google::protobuf::Message& to_msg, c
   if (from._internal_level() != 0) {
     _this->_internal_set_level(from._internal_level());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void NotificationUpdateRequest::CopyFrom(const NotificationUpdateRequest& from) {
@@ -1687,7 +1703,7 @@ void NotificationUpdateRequest::CopyFrom(const NotificationUpdateRequest& from) 
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool NotificationUpdateRequest::IsInitialized() const {
+bool NotificationUpdateRequest::IsInitialized() const {
   return true;
 }
 
@@ -1696,11 +1712,15 @@ void NotificationUpdateRequest::InternalSwap(NotificationUpdateRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.title_, lhs_arena,
+      &other->_impl_.title_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.url_, lhs_arena,
+      &other->_impl_.url_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(NotificationUpdateRequest, _impl_.level_)
       + sizeof(NotificationUpdateRequest::_impl_.level_)
       - PROTOBUF_FIELD_OFFSET(NotificationUpdateRequest, _impl_.id_)>(
@@ -1708,18 +1728,38 @@ void NotificationUpdateRequest::InternalSwap(NotificationUpdateRequest* other) {
           reinterpret_cast<char*>(&other->_impl_.id_));
 }
 
-::google::protobuf::Metadata NotificationUpdateRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata NotificationUpdateRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_cms_2eproto_getter, &descriptor_table_cms_2eproto_once,
       file_level_metadata_cms_2eproto[4]);
 }
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace cms
 }  // namespace palm
-namespace google {
-namespace protobuf {
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::palm::cms::v1::WebSite*
+Arena::CreateMaybeMessage< ::palm::cms::v1::WebSite >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::cms::v1::WebSite >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::cms::v1::NotificationIndexResponse_Item*
+Arena::CreateMaybeMessage< ::palm::cms::v1::NotificationIndexResponse_Item >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::cms::v1::NotificationIndexResponse_Item >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::cms::v1::NotificationIndexResponse*
+Arena::CreateMaybeMessage< ::palm::cms::v1::NotificationIndexResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::cms::v1::NotificationIndexResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::cms::v1::NotificationCreateRequest*
+Arena::CreateMaybeMessage< ::palm::cms::v1::NotificationCreateRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::cms::v1::NotificationCreateRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::cms::v1::NotificationUpdateRequest*
+Arena::CreateMaybeMessage< ::palm::cms::v1::NotificationUpdateRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::cms::v1::NotificationUpdateRequest >(arena);
+}
+PROTOBUF_NAMESPACE_CLOSE
+
 // @@protoc_insertion_point(global_scope)
-#include "google/protobuf/port_undef.inc"
+#include <google/protobuf/port_undef.inc>

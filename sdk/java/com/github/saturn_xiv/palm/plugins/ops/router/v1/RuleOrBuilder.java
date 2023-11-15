@@ -76,5 +76,5 @@ public interface RuleOrBuilder extends
    */
   com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.NatOrBuilder getNatOrBuilder();
 
-  com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.PayloadCase getPayloadCase();
+  public com.github.saturn_xiv.palm.plugins.ops.router.v1.Rule.PayloadCase getPayloadCase();
 }

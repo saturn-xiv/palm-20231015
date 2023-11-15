@@ -29,6 +29,11 @@ private static final long serialVersionUID = 0L;
     return new RouterStatusResponse();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_RouterStatusResponse_descriptor;
@@ -119,6 +124,11 @@ private static final long serialVersionUID = 0L;
       return new Ip();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_RouterStatusResponse_Ip_descriptor;
@@ -377,13 +387,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.ops.router.v1.RouterStatusResponse.Ip parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.ops.router.v1.RouterStatusResponse.Ip parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -902,7 +910,6 @@ private static final long serialVersionUID = 0L;
 
   }
 
-  private int bitField0_;
   public static final int INTERFACES_FIELD_NUMBER = 1;
   private static final class InterfacesDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
@@ -990,7 +997,7 @@ java.lang.String defaultValue) {
    */
   @java.lang.Override
   public boolean hasLan() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return lan_ != null;
   }
   /**
    * <code>.palm.ops.router.v1.Lan lan = 11;</code>
@@ -1016,7 +1023,7 @@ java.lang.String defaultValue) {
    */
   @java.lang.Override
   public boolean hasDmz() {
-    return ((bitField0_ & 0x00000002) != 0);
+    return dmz_ != null;
   }
   /**
    * <code>.palm.ops.router.v1.Dmz dmz = 12;</code>
@@ -1042,7 +1049,7 @@ java.lang.String defaultValue) {
    */
   @java.lang.Override
   public boolean hasDns() {
-    return ((bitField0_ & 0x00000004) != 0);
+    return dns_ != null;
   }
   /**
    * <code>.palm.ops.router.v1.Dns dns = 13;</code>
@@ -1109,7 +1116,7 @@ java.lang.String defaultValue) {
    */
   @java.lang.Override
   public boolean hasWanPool() {
-    return ((bitField0_ & 0x00000008) != 0);
+    return wanPool_ != null;
   }
   /**
    * <code>.palm.ops.router.v1.WanPool wan_pool = 15;</code>
@@ -1217,7 +1224,7 @@ java.lang.String defaultValue) {
    */
   @java.lang.Override
   public boolean hasIp() {
-    return ((bitField0_ & 0x00000010) != 0);
+    return ip_ != null;
   }
   /**
    * <code>.palm.ops.router.v1.RouterStatusResponse.Ip ip = 97;</code>
@@ -1282,7 +1289,7 @@ java.lang.String defaultValue) {
    */
   @java.lang.Override
   public boolean hasUptime() {
-    return ((bitField0_ & 0x00000020) != 0);
+    return uptime_ != null;
   }
   /**
    * <code>.google.protobuf.Duration uptime = 99;</code>
@@ -1320,19 +1327,19 @@ java.lang.String defaultValue) {
         internalGetInterfaces(),
         InterfacesDefaultEntryHolder.defaultEntry,
         1);
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (lan_ != null) {
       output.writeMessage(11, getLan());
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (dmz_ != null) {
       output.writeMessage(12, getDmz());
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
+    if (dns_ != null) {
       output.writeMessage(13, getDns());
     }
     for (int i = 0; i < wan_.size(); i++) {
       output.writeMessage(14, wan_.get(i));
     }
-    if (((bitField0_ & 0x00000008) != 0)) {
+    if (wanPool_ != null) {
       output.writeMessage(15, getWanPool());
     }
     for (int i = 0; i < rules_.size(); i++) {
@@ -1341,13 +1348,13 @@ java.lang.String defaultValue) {
     for (int i = 0; i < hosts_.size(); i++) {
       output.writeMessage(22, hosts_.get(i));
     }
-    if (((bitField0_ & 0x00000010) != 0)) {
+    if (ip_ != null) {
       output.writeMessage(97, getIp());
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(firewall_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 98, firewall_);
     }
-    if (((bitField0_ & 0x00000020) != 0)) {
+    if (uptime_ != null) {
       output.writeMessage(99, getUptime());
     }
     getUnknownFields().writeTo(output);
@@ -1369,15 +1376,15 @@ java.lang.String defaultValue) {
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, interfaces__);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (lan_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(11, getLan());
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (dmz_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(12, getDmz());
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
+    if (dns_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(13, getDns());
     }
@@ -1385,7 +1392,7 @@ java.lang.String defaultValue) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(14, wan_.get(i));
     }
-    if (((bitField0_ & 0x00000008) != 0)) {
+    if (wanPool_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(15, getWanPool());
     }
@@ -1397,14 +1404,14 @@ java.lang.String defaultValue) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(22, hosts_.get(i));
     }
-    if (((bitField0_ & 0x00000010) != 0)) {
+    if (ip_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(97, getIp());
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(firewall_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(98, firewall_);
     }
-    if (((bitField0_ & 0x00000020) != 0)) {
+    if (uptime_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(99, getUptime());
     }
@@ -1565,13 +1572,11 @@ java.lang.String defaultValue) {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.ops.router.v1.RouterStatusResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.ops.router.v1.RouterStatusResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1657,27 +1662,13 @@ java.lang.String defaultValue) {
 
     // Construct using com.github.saturn_xiv.palm.plugins.ops.router.v1.RouterStatusResponse.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getLanFieldBuilder();
-        getDmzFieldBuilder();
-        getDnsFieldBuilder();
-        getWanFieldBuilder();
-        getWanPoolFieldBuilder();
-        getRulesFieldBuilder();
-        getHostsFieldBuilder();
-        getIpFieldBuilder();
-        getUptimeFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -1804,36 +1795,30 @@ java.lang.String defaultValue) {
         result.interfaces_ = internalGetInterfaces();
         result.interfaces_.makeImmutable();
       }
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.lan_ = lanBuilder_ == null
             ? lan_
             : lanBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.dmz_ = dmzBuilder_ == null
             ? dmz_
             : dmzBuilder_.build();
-        to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
         result.dns_ = dnsBuilder_ == null
             ? dns_
             : dnsBuilder_.build();
-        to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
         result.wanPool_ = wanPoolBuilder_ == null
             ? wanPool_
             : wanPoolBuilder_.build();
-        to_bitField0_ |= 0x00000008;
       }
       if (((from_bitField0_ & 0x00000100) != 0)) {
         result.ip_ = ipBuilder_ == null
             ? ip_
             : ipBuilder_.build();
-        to_bitField0_ |= 0x00000010;
       }
       if (((from_bitField0_ & 0x00000200) != 0)) {
         result.firewall_ = firewall_;
@@ -1842,9 +1827,7 @@ java.lang.String defaultValue) {
         result.uptime_ = uptimeBuilder_ == null
             ? uptime_
             : uptimeBuilder_.build();
-        to_bitField0_ |= 0x00000020;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -2326,10 +2309,8 @@ java.lang.String defaultValue) {
       } else {
         lanBuilder_.mergeFrom(value);
       }
-      if (lan_ != null) {
-        bitField0_ |= 0x00000002;
-        onChanged();
-      }
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**
@@ -2447,10 +2428,8 @@ java.lang.String defaultValue) {
       } else {
         dmzBuilder_.mergeFrom(value);
       }
-      if (dmz_ != null) {
-        bitField0_ |= 0x00000004;
-        onChanged();
-      }
+      bitField0_ |= 0x00000004;
+      onChanged();
       return this;
     }
     /**
@@ -2568,10 +2547,8 @@ java.lang.String defaultValue) {
       } else {
         dnsBuilder_.mergeFrom(value);
       }
-      if (dns_ != null) {
-        bitField0_ |= 0x00000008;
-        onChanged();
-      }
+      bitField0_ |= 0x00000008;
+      onChanged();
       return this;
     }
     /**
@@ -2929,10 +2906,8 @@ java.lang.String defaultValue) {
       } else {
         wanPoolBuilder_.mergeFrom(value);
       }
-      if (wanPool_ != null) {
-        bitField0_ |= 0x00000020;
-        onChanged();
-      }
+      bitField0_ |= 0x00000020;
+      onChanged();
       return this;
     }
     /**
@@ -3530,10 +3505,8 @@ java.lang.String defaultValue) {
       } else {
         ipBuilder_.mergeFrom(value);
       }
-      if (ip_ != null) {
-        bitField0_ |= 0x00000100;
-        onChanged();
-      }
+      bitField0_ |= 0x00000100;
+      onChanged();
       return this;
     }
     /**
@@ -3723,10 +3696,8 @@ java.lang.String defaultValue) {
       } else {
         uptimeBuilder_.mergeFrom(value);
       }
-      if (uptime_ != null) {
-        bitField0_ |= 0x00000400;
-        onChanged();
-      }
+      bitField0_ |= 0x00000400;
+      onChanged();
       return this;
     }
     /**

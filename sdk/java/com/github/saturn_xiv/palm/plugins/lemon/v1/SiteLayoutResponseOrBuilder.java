@@ -97,5 +97,5 @@ public interface SiteLayoutResponseOrBuilder extends
    */
   com.github.saturn_xiv.palm.plugins.lemon.v1.XCorporationLayoutOrBuilder getXCorporationOrBuilder();
 
-  com.github.saturn_xiv.palm.plugins.lemon.v1.SiteLayoutResponse.LayoutCase getLayoutCase();
+  public com.github.saturn_xiv.palm.plugins.lemon.v1.SiteLayoutResponse.LayoutCase getLayoutCase();
 }

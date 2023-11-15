@@ -68,5 +68,5 @@ public interface UserSignInRequestOrBuilder extends
    */
   com.google.protobuf.DurationOrBuilder getTtlOrBuilder();
 
-  com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInRequest.UserCase getUserCase();
+  public com.github.saturn_xiv.palm.plugins.auth.v1.UserSignInRequest.UserCase getUserCase();
 }

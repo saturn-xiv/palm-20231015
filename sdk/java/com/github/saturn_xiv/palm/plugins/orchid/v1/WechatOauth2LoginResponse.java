@@ -24,8 +24,7 @@ private static final long serialVersionUID = 0L;
     city_ = "";
     country_ = "";
     headimgurl_ = "";
-    privilege_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    privilege_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -35,6 +34,11 @@ private static final long serialVersionUID = 0L;
     return new WechatOauth2LoginResponse();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.orchid.v1.Orchid.internal_static_palm_orchid_v1_WechatOauth2LoginResponse_descriptor;
@@ -458,8 +462,7 @@ private static final long serialVersionUID = 0L;
 
   public static final int PRIVILEGE_FIELD_NUMBER = 17;
   @SuppressWarnings("serial")
-  private com.google.protobuf.LazyStringArrayList privilege_ =
-      com.google.protobuf.LazyStringArrayList.emptyList();
+  private com.google.protobuf.LazyStringList privilege_;
   /**
    * <code>repeated string privilege = 17;</code>
    * @return A list containing the privilege.
@@ -693,13 +696,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.orchid.v1.WechatOauth2LoginResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.orchid.v1.WechatOauth2LoginResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -783,8 +784,8 @@ private static final long serialVersionUID = 0L;
       city_ = "";
       country_ = "";
       headimgurl_ = "";
-      privilege_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      privilege_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000100);
       return this;
     }
 
@@ -811,9 +812,18 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.github.saturn_xiv.palm.plugins.orchid.v1.WechatOauth2LoginResponse buildPartial() {
       com.github.saturn_xiv.palm.plugins.orchid.v1.WechatOauth2LoginResponse result = new com.github.saturn_xiv.palm.plugins.orchid.v1.WechatOauth2LoginResponse(this);
+      buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
+    }
+
+    private void buildPartialRepeatedFields(com.github.saturn_xiv.palm.plugins.orchid.v1.WechatOauth2LoginResponse result) {
+      if (((bitField0_ & 0x00000100) != 0)) {
+        privilege_ = privilege_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000100);
+      }
+      result.privilege_ = privilege_;
     }
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.orchid.v1.WechatOauth2LoginResponse result) {
@@ -843,10 +853,6 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000080) != 0)) {
         result.headimgurl_ = headimgurl_;
         to_bitField0_ |= 0x00000001;
-      }
-      if (((from_bitField0_ & 0x00000100) != 0)) {
-        privilege_.makeImmutable();
-        result.privilege_ = privilege_;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -936,7 +942,7 @@ private static final long serialVersionUID = 0L;
       if (!other.privilege_.isEmpty()) {
         if (privilege_.isEmpty()) {
           privilege_ = other.privilege_;
-          bitField0_ |= 0x00000100;
+          bitField0_ = (bitField0_ & ~0x00000100);
         } else {
           ensurePrivilegeIsMutable();
           privilege_.addAll(other.privilege_);
@@ -1596,13 +1602,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.LazyStringArrayList privilege_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    private com.google.protobuf.LazyStringList privilege_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensurePrivilegeIsMutable() {
-      if (!privilege_.isModifiable()) {
+      if (!((bitField0_ & 0x00000100) != 0)) {
         privilege_ = new com.google.protobuf.LazyStringArrayList(privilege_);
-      }
-      bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000100;
+       }
     }
     /**
      * <code>repeated string privilege = 17;</code>
@@ -1610,8 +1615,7 @@ private static final long serialVersionUID = 0L;
      */
     public com.google.protobuf.ProtocolStringList
         getPrivilegeList() {
-      privilege_.makeImmutable();
-      return privilege_;
+      return privilege_.getUnmodifiableView();
     }
     /**
      * <code>repeated string privilege = 17;</code>
@@ -1648,7 +1652,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensurePrivilegeIsMutable();
       privilege_.set(index, value);
-      bitField0_ |= 0x00000100;
       onChanged();
       return this;
     }
@@ -1662,7 +1665,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensurePrivilegeIsMutable();
       privilege_.add(value);
-      bitField0_ |= 0x00000100;
       onChanged();
       return this;
     }
@@ -1676,7 +1678,6 @@ private static final long serialVersionUID = 0L;
       ensurePrivilegeIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, privilege_);
-      bitField0_ |= 0x00000100;
       onChanged();
       return this;
     }
@@ -1685,9 +1686,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearPrivilege() {
-      privilege_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00000100);;
+      privilege_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000100);
       onChanged();
       return this;
     }
@@ -1702,7 +1702,6 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       ensurePrivilegeIsMutable();
       privilege_.add(value);
-      bitField0_ |= 0x00000100;
       onChanged();
       return this;
     }

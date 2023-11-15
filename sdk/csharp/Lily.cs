@@ -1546,13 +1546,11 @@ namespace Palm.Lily.V1 {
 
     /// <summary>Field number for the "owner" field.</summary>
     public const int OwnerFieldNumber = 8;
-    private readonly static string OwnerDefaultValue = "";
-
     private string owner_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Owner {
-      get { return owner_ ?? OwnerDefaultValue; }
+      get { return owner_ ?? ""; }
       set {
         owner_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -1714,7 +1712,7 @@ namespace Palm.Lily.V1 {
       if (other.Title.Length != 0) {
         Title = other.Title;
       }
-      files_.MergeFrom(other.files_);
+      files_.Add(other.files_);
       if (other.ttl_ != null) {
         if (ttl_ == null) {
           Ttl = new global::Google.Protobuf.WellKnownTypes.Duration();

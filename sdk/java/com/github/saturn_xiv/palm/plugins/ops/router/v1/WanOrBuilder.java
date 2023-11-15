@@ -85,5 +85,5 @@ public interface WanOrBuilder extends
    */
   boolean getEnable();
 
-  com.github.saturn_xiv.palm.plugins.ops.router.v1.Wan.IpCase getIpCase();
+  public com.github.saturn_xiv.palm.plugins.ops.router.v1.Wan.IpCase getIpCase();
 }

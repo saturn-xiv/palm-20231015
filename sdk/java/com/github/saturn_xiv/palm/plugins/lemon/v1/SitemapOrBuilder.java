@@ -49,5 +49,5 @@ public interface SitemapOrBuilder extends
    */
   com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.IndexOrBuilder getIndexOrBuilder();
 
-  com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.BodyCase getBodyCase();
+  public com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.BodyCase getBodyCase();
 }

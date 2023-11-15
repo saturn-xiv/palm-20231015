@@ -29,6 +29,11 @@ private static final long serialVersionUID = 0L;
     return new SignInByWechatOauth2Request();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.auth.v1.Auth.internal_static_palm_auth_v1_SignInByWechatOauth2Request_descriptor;
@@ -42,7 +47,6 @@ private static final long serialVersionUID = 0L;
             com.github.saturn_xiv.palm.plugins.auth.v1.SignInByWechatOauth2Request.class, com.github.saturn_xiv.palm.plugins.auth.v1.SignInByWechatOauth2Request.Builder.class);
   }
 
-  private int bitField0_;
   public static final int STATE_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object state_ = "";
@@ -186,7 +190,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasTtl() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return ttl_ != null;
   }
   /**
    * <code>.google.protobuf.Duration ttl = 11;</code>
@@ -230,7 +234,7 @@ private static final long serialVersionUID = 0L;
     if (language_ != com.github.saturn_xiv.palm.plugins.orchid.v1.WechatOauth2QrConnectRequest.Language.EN.getNumber()) {
       output.writeEnum(8, language_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (ttl_ != null) {
       output.writeMessage(11, getTtl());
     }
     getUnknownFields().writeTo(output);
@@ -255,7 +259,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(8, language_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (ttl_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(11, getTtl());
     }
@@ -358,13 +362,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.SignInByWechatOauth2Request parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.auth.v1.SignInByWechatOauth2Request parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -428,19 +430,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.auth.v1.SignInByWechatOauth2Request.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getTtlFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -500,14 +496,11 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000008) != 0)) {
         result.language_ = language_;
       }
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000010) != 0)) {
         result.ttl_ = ttlBuilder_ == null
             ? ttl_
             : ttlBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -980,10 +973,8 @@ private static final long serialVersionUID = 0L;
       } else {
         ttlBuilder_.mergeFrom(value);
       }
-      if (ttl_ != null) {
-        bitField0_ |= 0x00000010;
-        onChanged();
-      }
+      bitField0_ |= 0x00000010;
+      onChanged();
       return this;
     }
     /**

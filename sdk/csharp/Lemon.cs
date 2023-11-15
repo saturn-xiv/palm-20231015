@@ -994,7 +994,7 @@ namespace Palm.Lemon.V1 {
       if (other == null) {
         return;
       }
-      items_.MergeFrom(other.items_);
+      items_.Add(other.items_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1172,7 +1172,7 @@ namespace Palm.Lemon.V1 {
       if (other == null) {
         return;
       }
-      items_.MergeFrom(other.items_);
+      items_.Add(other.items_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

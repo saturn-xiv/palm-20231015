@@ -25,6 +25,11 @@ private static final long serialVersionUID = 0L;
     return new ReportHeartbeatRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.ops.metrics.v1.OpsMetrics.internal_static_palm_ops_metrics_v1_ReportHeartbeatRequest_descriptor;
@@ -38,7 +43,6 @@ private static final long serialVersionUID = 0L;
             com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportHeartbeatRequest.class, com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportHeartbeatRequest.Builder.class);
   }
 
-  private int bitField0_;
   public static final int CREATED_AT_FIELD_NUMBER = 11;
   private com.google.protobuf.Timestamp createdAt_;
   /**
@@ -47,7 +51,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasCreatedAt() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return createdAt_ != null;
   }
   /**
    * <code>.google.protobuf.Timestamp created_at = 11;</code>
@@ -79,7 +83,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (createdAt_ != null) {
       output.writeMessage(11, getCreatedAt());
     }
     getUnknownFields().writeTo(output);
@@ -91,7 +95,7 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (createdAt_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(11, getCreatedAt());
     }
@@ -179,13 +183,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportHeartbeatRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportHeartbeatRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -249,19 +251,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportHeartbeatRequest.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getCreatedAtFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -305,14 +301,11 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportHeartbeatRequest result) {
       int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.createdAt_ = createdAtBuilder_ == null
             ? createdAt_
             : createdAtBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -478,10 +471,8 @@ private static final long serialVersionUID = 0L;
       } else {
         createdAtBuilder_.mergeFrom(value);
       }
-      if (createdAt_ != null) {
-        bitField0_ |= 0x00000001;
-        onChanged();
-      }
+      bitField0_ |= 0x00000001;
+      onChanged();
       return this;
     }
     /**

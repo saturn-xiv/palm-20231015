@@ -28,6 +28,11 @@ private static final long serialVersionUID = 0L;
     return new WechatPayExecuteBatchTransferRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteBatchTransferRequest_descriptor;
@@ -111,6 +116,11 @@ private static final long serialVersionUID = 0L;
       return new Batch();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteBatchTransferRequest_Batch_descriptor;
@@ -383,13 +393,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferRequest.Batch parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferRequest.Batch parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -989,6 +997,11 @@ private static final long serialVersionUID = 0L;
       return new Detail();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteBatchTransferRequest_Detail_descriptor;
@@ -1270,13 +1283,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferRequest.Detail parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferRequest.Detail parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1687,7 +1698,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setAmount(long value) {
-
+        
         amount_ = value;
         bitField0_ |= 0x00000004;
         onChanged();
@@ -1839,7 +1850,6 @@ private static final long serialVersionUID = 0L;
 
   }
 
-  private int bitField0_;
   public static final int APP_ID_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object appId_ = "";
@@ -1887,7 +1897,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasBatch() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return batch_ != null;
   }
   /**
    * <code>.palm.musa.v1.WechatPayExecuteBatchTransferRequest.Batch batch = 2;</code>
@@ -2002,7 +2012,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(appId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, appId_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (batch_ != null) {
       output.writeMessage(2, getBatch());
     }
     for (int i = 0; i < details_.size(); i++) {
@@ -2023,7 +2033,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(appId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, appId_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (batch_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getBatch());
     }
@@ -2132,13 +2142,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2202,20 +2210,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferRequest.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getBatchFieldBuilder();
-        getDetailsFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -2284,17 +2285,14 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.appId_ = appId_;
       }
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.batch_ = batchBuilder_ == null
             ? batch_
             : batchBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
         result.sceneId_ = sceneId_;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -2591,10 +2589,8 @@ private static final long serialVersionUID = 0L;
       } else {
         batchBuilder_.mergeFrom(value);
       }
-      if (batch_ != null) {
-        bitField0_ |= 0x00000002;
-        onChanged();
-      }
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**

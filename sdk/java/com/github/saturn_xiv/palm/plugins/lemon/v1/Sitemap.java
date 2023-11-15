@@ -26,6 +26,11 @@ private static final long serialVersionUID = 0L;
     return new Sitemap();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.lemon.v1.Lemon.internal_static_palm_lemon_v1_Sitemap_descriptor;
@@ -111,6 +116,11 @@ private static final long serialVersionUID = 0L;
       return new Link();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.lemon.v1.Lemon.internal_static_palm_lemon_v1_Sitemap_Link_descriptor;
@@ -277,7 +287,6 @@ private static final long serialVersionUID = 0L;
       // @@protoc_insertion_point(enum_scope:palm.lemon.v1.Sitemap.Link.ChangeFreq)
     }
 
-    private int bitField0_;
     public static final int PATH_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
     private volatile java.lang.Object path_ = "";
@@ -354,7 +363,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasUpdatedAt() {
-      return ((bitField0_ & 0x00000001) != 0);
+      return updatedAt_ != null;
     }
     /**
      * <code>.google.protobuf.Timestamp updated_at = 9;</code>
@@ -395,7 +404,7 @@ private static final long serialVersionUID = 0L;
       if (java.lang.Float.floatToRawIntBits(priority_) != 0) {
         output.writeFloat(3, priority_);
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (updatedAt_ != null) {
         output.writeMessage(9, getUpdatedAt());
       }
       getUnknownFields().writeTo(output);
@@ -418,7 +427,7 @@ private static final long serialVersionUID = 0L;
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(3, priority_);
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (updatedAt_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, getUpdatedAt());
       }
@@ -519,13 +528,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.Link parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.Link parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -589,19 +596,13 @@ private static final long serialVersionUID = 0L;
 
       // Construct using com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.Link.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getUpdatedAtFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
@@ -657,14 +658,11 @@ private static final long serialVersionUID = 0L;
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.priority_ = priority_;
         }
-        int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.updatedAt_ = updatedAtBuilder_ == null
               ? updatedAt_
               : updatedAtBuilder_.build();
-          to_bitField0_ |= 0x00000001;
         }
-        result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
@@ -930,7 +928,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setPriority(float value) {
-
+        
         priority_ = value;
         bitField0_ |= 0x00000004;
         onChanged();
@@ -1013,10 +1011,8 @@ private static final long serialVersionUID = 0L;
         } else {
           updatedAtBuilder_.mergeFrom(value);
         }
-        if (updatedAt_ != null) {
-          bitField0_ |= 0x00000008;
-          onChanged();
-        }
+        bitField0_ |= 0x00000008;
+        onChanged();
         return this;
       }
       /**
@@ -1182,6 +1178,11 @@ private static final long serialVersionUID = 0L;
       return new UrlSet();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.lemon.v1.Lemon.internal_static_palm_lemon_v1_Sitemap_UrlSet_descriptor;
@@ -1347,13 +1348,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.UrlSet parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.UrlSet parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1955,8 +1954,7 @@ private static final long serialVersionUID = 0L;
       super(builder);
     }
     private Index() {
-      links_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      links_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
@@ -1966,6 +1964,11 @@ private static final long serialVersionUID = 0L;
       return new Index();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.lemon.v1.Lemon.internal_static_palm_lemon_v1_Sitemap_Index_descriptor;
@@ -1981,8 +1984,7 @@ private static final long serialVersionUID = 0L;
 
     public static final int LINKS_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private com.google.protobuf.LazyStringArrayList links_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    private com.google.protobuf.LazyStringList links_;
     /**
      * <code>repeated string links = 1;</code>
      * @return A list containing the links.
@@ -2131,13 +2133,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.Index parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.Index parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2213,8 +2213,8 @@ private static final long serialVersionUID = 0L;
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        links_ =
-            com.google.protobuf.LazyStringArrayList.emptyList();
+        links_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -2241,17 +2241,22 @@ private static final long serialVersionUID = 0L;
       @java.lang.Override
       public com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.Index buildPartial() {
         com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.Index result = new com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.Index(this);
+        buildPartialRepeatedFields(result);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
+      private void buildPartialRepeatedFields(com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.Index result) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          links_ = links_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.links_ = links_;
+      }
+
       private void buildPartial0(com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap.Index result) {
         int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          links_.makeImmutable();
-          result.links_ = links_;
-        }
       }
 
       @java.lang.Override
@@ -2301,7 +2306,7 @@ private static final long serialVersionUID = 0L;
         if (!other.links_.isEmpty()) {
           if (links_.isEmpty()) {
             links_ = other.links_;
-            bitField0_ |= 0x00000001;
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
             ensureLinksIsMutable();
             links_.addAll(other.links_);
@@ -2357,13 +2362,12 @@ private static final long serialVersionUID = 0L;
       }
       private int bitField0_;
 
-      private com.google.protobuf.LazyStringArrayList links_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      private com.google.protobuf.LazyStringList links_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureLinksIsMutable() {
-        if (!links_.isModifiable()) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           links_ = new com.google.protobuf.LazyStringArrayList(links_);
-        }
-        bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000001;
+         }
       }
       /**
        * <code>repeated string links = 1;</code>
@@ -2371,8 +2375,7 @@ private static final long serialVersionUID = 0L;
        */
       public com.google.protobuf.ProtocolStringList
           getLinksList() {
-        links_.makeImmutable();
-        return links_;
+        return links_.getUnmodifiableView();
       }
       /**
        * <code>repeated string links = 1;</code>
@@ -2409,7 +2412,6 @@ private static final long serialVersionUID = 0L;
         if (value == null) { throw new NullPointerException(); }
         ensureLinksIsMutable();
         links_.set(index, value);
-        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2423,7 +2425,6 @@ private static final long serialVersionUID = 0L;
         if (value == null) { throw new NullPointerException(); }
         ensureLinksIsMutable();
         links_.add(value);
-        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2437,7 +2438,6 @@ private static final long serialVersionUID = 0L;
         ensureLinksIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, links_);
-        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2446,9 +2446,8 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder clearLinks() {
-        links_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);;
+        links_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
@@ -2463,7 +2462,6 @@ private static final long serialVersionUID = 0L;
         checkByteStringIsUtf8(value);
         ensureLinksIsMutable();
         links_.add(value);
-        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -2532,7 +2530,6 @@ private static final long serialVersionUID = 0L;
   }
 
   private int bodyCase_ = 0;
-  @SuppressWarnings("serial")
   private java.lang.Object body_;
   public enum BodyCase
       implements com.google.protobuf.Internal.EnumLite,
@@ -2821,13 +2818,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.lemon.v1.Sitemap parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)

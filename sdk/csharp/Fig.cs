@@ -2569,13 +2569,11 @@ namespace Palm.Fig.V1 {
 
     /// <summary>Field number for the "sms_status_callback" field.</summary>
     public const int SmsStatusCallbackFieldNumber = 9;
-    private readonly static string SmsStatusCallbackDefaultValue = "";
-
     private string smsStatusCallback_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string SmsStatusCallback {
-      get { return smsStatusCallback_ ?? SmsStatusCallbackDefaultValue; }
+      get { return smsStatusCallback_ ?? ""; }
       set {
         smsStatusCallback_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -6420,13 +6418,11 @@ namespace Palm.Fig.V1 {
 
     /// <summary>Field number for the "site_verify_id" field.</summary>
     public const int SiteVerifyIdFieldNumber = 1;
-    private readonly static string SiteVerifyIdDefaultValue = "";
-
     private string siteVerifyId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string SiteVerifyId {
-      get { return siteVerifyId_ ?? SiteVerifyIdDefaultValue; }
+      get { return siteVerifyId_ ?? ""; }
       set {
         siteVerifyId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
@@ -13057,24 +13053,10 @@ namespace Palm.Fig.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Left {
-      get { return HasLeft ? (int) by_ : 0; }
+      get { return byCase_ == ByOneofCase.Left ? (int) by_ : 0; }
       set {
         by_ = value;
         byCase_ = ByOneofCase.Left;
-      }
-    }
-    /// <summary>Gets whether the "left" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasLeft {
-      get { return byCase_ == ByOneofCase.Left; }
-    }
-    /// <summary> Clears the value of the oneof if it's currently set to "left" </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearLeft() {
-      if (HasLeft) {
-        ClearBy();
       }
     }
 
@@ -13083,24 +13065,10 @@ namespace Palm.Fig.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Parent {
-      get { return HasParent ? (int) by_ : 0; }
+      get { return byCase_ == ByOneofCase.Parent ? (int) by_ : 0; }
       set {
         by_ = value;
         byCase_ = ByOneofCase.Parent;
-      }
-    }
-    /// <summary>Gets whether the "parent" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasParent {
-      get { return byCase_ == ByOneofCase.Parent; }
-    }
-    /// <summary> Clears the value of the oneof if it's currently set to "parent" </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearParent() {
-      if (HasParent) {
-        ClearBy();
       }
     }
 
@@ -13152,8 +13120,8 @@ namespace Palm.Fig.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (Code.Length != 0) hash ^= Code.GetHashCode();
-      if (HasLeft) hash ^= Left.GetHashCode();
-      if (HasParent) hash ^= Parent.GetHashCode();
+      if (byCase_ == ByOneofCase.Left) hash ^= Left.GetHashCode();
+      if (byCase_ == ByOneofCase.Parent) hash ^= Parent.GetHashCode();
       hash ^= (int) byCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -13177,11 +13145,11 @@ namespace Palm.Fig.V1 {
         output.WriteRawTag(10);
         output.WriteString(Code);
       }
-      if (HasLeft) {
+      if (byCase_ == ByOneofCase.Left) {
         output.WriteRawTag(16);
         output.WriteInt32(Left);
       }
-      if (HasParent) {
+      if (byCase_ == ByOneofCase.Parent) {
         output.WriteRawTag(24);
         output.WriteInt32(Parent);
       }
@@ -13199,11 +13167,11 @@ namespace Palm.Fig.V1 {
         output.WriteRawTag(10);
         output.WriteString(Code);
       }
-      if (HasLeft) {
+      if (byCase_ == ByOneofCase.Left) {
         output.WriteRawTag(16);
         output.WriteInt32(Left);
       }
-      if (HasParent) {
+      if (byCase_ == ByOneofCase.Parent) {
         output.WriteRawTag(24);
         output.WriteInt32(Parent);
       }
@@ -13220,10 +13188,10 @@ namespace Palm.Fig.V1 {
       if (Code.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Code);
       }
-      if (HasLeft) {
+      if (byCase_ == ByOneofCase.Left) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Left);
       }
-      if (HasParent) {
+      if (byCase_ == ByOneofCase.Parent) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Parent);
       }
       if (_unknownFields != null) {

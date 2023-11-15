@@ -1008,13 +1008,11 @@ namespace Palm.Rbac.V1 {
 
         /// <summary>Field number for the "id" field.</summary>
         public const int IdFieldNumber = 2;
-        private readonly static int IdDefaultValue = 0;
-
         private int id_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int Id {
-          get { if ((_hasBits0 & 1) != 0) { return id_; } else { return IdDefaultValue; } }
+          get { if ((_hasBits0 & 1) != 0) { return id_; } else { return 0; } }
           set {
             _hasBits0 |= 1;
             id_ = value;

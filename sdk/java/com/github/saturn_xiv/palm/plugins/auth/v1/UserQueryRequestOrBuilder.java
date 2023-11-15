@@ -53,5 +53,5 @@ public interface UserQueryRequestOrBuilder extends
   com.google.protobuf.ByteString
       getHomeBytes();
 
-  com.github.saturn_xiv.palm.plugins.auth.v1.UserQueryRequest.UserCase getUserCase();
+  public com.github.saturn_xiv.palm.plugins.auth.v1.UserQueryRequest.UserCase getUserCase();
 }

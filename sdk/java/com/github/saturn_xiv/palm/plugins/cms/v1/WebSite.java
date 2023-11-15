@@ -16,8 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private WebSite() {
-    taxonomies_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    taxonomies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -27,6 +26,11 @@ private static final long serialVersionUID = 0L;
     return new WebSite();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.cms.v1.Cms.internal_static_palm_cms_v1_WebSite_descriptor;
@@ -42,8 +46,7 @@ private static final long serialVersionUID = 0L;
 
   public static final int TAXONOMIES_FIELD_NUMBER = 9;
   @SuppressWarnings("serial")
-  private com.google.protobuf.LazyStringArrayList taxonomies_ =
-      com.google.protobuf.LazyStringArrayList.emptyList();
+  private com.google.protobuf.LazyStringList taxonomies_;
   /**
    * <code>repeated string taxonomies = 9;</code>
    * @return A list containing the taxonomies.
@@ -192,13 +195,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.cms.v1.WebSite parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.cms.v1.WebSite parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -274,8 +275,8 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      taxonomies_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      taxonomies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -302,17 +303,22 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.github.saturn_xiv.palm.plugins.cms.v1.WebSite buildPartial() {
       com.github.saturn_xiv.palm.plugins.cms.v1.WebSite result = new com.github.saturn_xiv.palm.plugins.cms.v1.WebSite(this);
+      buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
+    private void buildPartialRepeatedFields(com.github.saturn_xiv.palm.plugins.cms.v1.WebSite result) {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        taxonomies_ = taxonomies_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      }
+      result.taxonomies_ = taxonomies_;
+    }
+
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.cms.v1.WebSite result) {
       int from_bitField0_ = bitField0_;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        taxonomies_.makeImmutable();
-        result.taxonomies_ = taxonomies_;
-      }
     }
 
     @java.lang.Override
@@ -362,7 +368,7 @@ private static final long serialVersionUID = 0L;
       if (!other.taxonomies_.isEmpty()) {
         if (taxonomies_.isEmpty()) {
           taxonomies_ = other.taxonomies_;
-          bitField0_ |= 0x00000001;
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           ensureTaxonomiesIsMutable();
           taxonomies_.addAll(other.taxonomies_);
@@ -418,13 +424,12 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.google.protobuf.LazyStringArrayList taxonomies_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    private com.google.protobuf.LazyStringList taxonomies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureTaxonomiesIsMutable() {
-      if (!taxonomies_.isModifiable()) {
+      if (!((bitField0_ & 0x00000001) != 0)) {
         taxonomies_ = new com.google.protobuf.LazyStringArrayList(taxonomies_);
-      }
-      bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000001;
+       }
     }
     /**
      * <code>repeated string taxonomies = 9;</code>
@@ -432,8 +437,7 @@ private static final long serialVersionUID = 0L;
      */
     public com.google.protobuf.ProtocolStringList
         getTaxonomiesList() {
-      taxonomies_.makeImmutable();
-      return taxonomies_;
+      return taxonomies_.getUnmodifiableView();
     }
     /**
      * <code>repeated string taxonomies = 9;</code>
@@ -470,7 +474,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureTaxonomiesIsMutable();
       taxonomies_.set(index, value);
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -484,7 +487,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureTaxonomiesIsMutable();
       taxonomies_.add(value);
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -498,7 +500,6 @@ private static final long serialVersionUID = 0L;
       ensureTaxonomiesIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, taxonomies_);
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -507,9 +508,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearTaxonomies() {
-      taxonomies_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00000001);;
+      taxonomies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }
@@ -524,7 +524,6 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       ensureTaxonomiesIsMutable();
       taxonomies_.add(value);
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }

@@ -26,6 +26,11 @@ private static final long serialVersionUID = 0L;
     return new SiteStatusResponse();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteStatusResponse_descriptor;
@@ -91,6 +96,11 @@ private static final long serialVersionUID = 0L;
       return new Database();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteStatusResponse_Database_descriptor;
@@ -300,13 +310,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.Database parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.Database parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -818,6 +826,11 @@ private static final long serialVersionUID = 0L;
       return new PostgreSql();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteStatusResponse_PostgreSql_descriptor;
@@ -831,7 +844,6 @@ private static final long serialVersionUID = 0L;
               com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.PostgreSql.class, com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.PostgreSql.Builder.class);
     }
 
-    private int bitField0_;
     public static final int VERSION_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
     private volatile java.lang.Object version_ = "";
@@ -879,7 +891,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public boolean hasNow() {
-      return ((bitField0_ & 0x00000001) != 0);
+      return now_ != null;
     }
     /**
      * <code>.google.protobuf.Timestamp now = 2;</code>
@@ -955,7 +967,7 @@ private static final long serialVersionUID = 0L;
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(version_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, version_);
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (now_ != null) {
         output.writeMessage(2, getNow());
       }
       for (int i = 0; i < databases_.size(); i++) {
@@ -973,7 +985,7 @@ private static final long serialVersionUID = 0L;
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(version_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, version_);
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (now_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getNow());
       }
@@ -1075,13 +1087,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.PostgreSql parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.PostgreSql parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1145,20 +1155,13 @@ private static final long serialVersionUID = 0L;
 
       // Construct using com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.PostgreSql.newBuilder()
       private Builder() {
-        maybeForceBuilderInitialization();
+
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getNowFieldBuilder();
-          getDatabasesFieldBuilder();
-        }
+
       }
       @java.lang.Override
       public Builder clear() {
@@ -1226,14 +1229,11 @@ private static final long serialVersionUID = 0L;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.version_ = version_;
         }
-        int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.now_ = nowBuilder_ == null
               ? now_
               : nowBuilder_.build();
-          to_bitField0_ |= 0x00000001;
         }
-        result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
@@ -1520,10 +1520,8 @@ private static final long serialVersionUID = 0L;
         } else {
           nowBuilder_.mergeFrom(value);
         }
-        if (now_ != null) {
-          bitField0_ |= 0x00000002;
-          onChanged();
-        }
+        bitField0_ |= 0x00000002;
+        onChanged();
         return this;
       }
       /**
@@ -1923,6 +1921,11 @@ private static final long serialVersionUID = 0L;
       return new MySql();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteStatusResponse_MySql_descriptor;
@@ -2106,13 +2109,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.MySql parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.MySql parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2351,7 +2352,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setSize(long value) {
-
+        
         size_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
@@ -2567,6 +2568,11 @@ private static final long serialVersionUID = 0L;
       return new Redis();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteStatusResponse_Redis_descriptor;
@@ -2638,6 +2644,11 @@ private static final long serialVersionUID = 0L;
         return new Item();
       }
 
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteStatusResponse_Redis_Item_descriptor;
@@ -2870,13 +2881,11 @@ private static final long serialVersionUID = 0L;
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-
       public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.Redis.Item parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-
       public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.Redis.Item parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3273,7 +3282,7 @@ private static final long serialVersionUID = 0L;
          * @return This builder for chaining.
          */
         public Builder setTtl(long value) {
-
+          
           ttl_ = value;
           bitField0_ |= 0x00000004;
           onChanged();
@@ -3554,13 +3563,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.Redis parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.Redis parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4251,6 +4258,11 @@ private static final long serialVersionUID = 0L;
       return new RabbitMq();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteStatusResponse_RabbitMq_descriptor;
@@ -4433,13 +4445,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.RabbitMq parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.RabbitMq parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4750,7 +4760,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setHeartbeat(int value) {
-
+        
         heartbeat_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
@@ -4882,6 +4892,11 @@ private static final long serialVersionUID = 0L;
       return new OpenSearch();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteStatusResponse_OpenSearch_descriptor;
@@ -5091,13 +5106,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.OpenSearch parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.OpenSearch parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5582,6 +5595,11 @@ private static final long serialVersionUID = 0L;
       return new Health();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteStatusResponse_Health_descriptor;
@@ -5791,13 +5809,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.Health parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.Health parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -6386,6 +6402,11 @@ private static final long serialVersionUID = 0L;
       return new System();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteStatusResponse_System_descriptor;
@@ -6987,13 +7008,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.System parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.System parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -8114,7 +8133,6 @@ private static final long serialVersionUID = 0L;
 
   }
 
-  private int bitField0_;
   public static final int POSTGRESQL_FIELD_NUMBER = 1;
   private com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.PostgreSql postgresql_;
   /**
@@ -8123,7 +8141,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasPostgresql() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return postgresql_ != null;
   }
   /**
    * <code>.palm.fig.v1.SiteStatusResponse.PostgreSql postgresql = 1;</code>
@@ -8149,7 +8167,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasMysql() {
-    return ((bitField0_ & 0x00000002) != 0);
+    return mysql_ != null;
   }
   /**
    * <code>.palm.fig.v1.SiteStatusResponse.MySql mysql = 2;</code>
@@ -8175,7 +8193,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasRedis() {
-    return ((bitField0_ & 0x00000004) != 0);
+    return redis_ != null;
   }
   /**
    * <code>.palm.fig.v1.SiteStatusResponse.Redis redis = 3;</code>
@@ -8201,7 +8219,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasRabbitmq() {
-    return ((bitField0_ & 0x00000008) != 0);
+    return rabbitmq_ != null;
   }
   /**
    * <code>.palm.fig.v1.SiteStatusResponse.RabbitMq rabbitmq = 4;</code>
@@ -8227,7 +8245,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasOpensearch() {
-    return ((bitField0_ & 0x00000010) != 0);
+    return opensearch_ != null;
   }
   /**
    * <code>.palm.fig.v1.SiteStatusResponse.OpenSearch opensearch = 5;</code>
@@ -8253,7 +8271,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasSystem() {
-    return ((bitField0_ & 0x00000020) != 0);
+    return system_ != null;
   }
   /**
    * <code>.palm.fig.v1.SiteStatusResponse.System system = 11;</code>
@@ -8326,22 +8344,22 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (postgresql_ != null) {
       output.writeMessage(1, getPostgresql());
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (mysql_ != null) {
       output.writeMessage(2, getMysql());
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
+    if (redis_ != null) {
       output.writeMessage(3, getRedis());
     }
-    if (((bitField0_ & 0x00000008) != 0)) {
+    if (rabbitmq_ != null) {
       output.writeMessage(4, getRabbitmq());
     }
-    if (((bitField0_ & 0x00000010) != 0)) {
+    if (opensearch_ != null) {
       output.writeMessage(5, getOpensearch());
     }
-    if (((bitField0_ & 0x00000020) != 0)) {
+    if (system_ != null) {
       output.writeMessage(11, getSystem());
     }
     for (int i = 0; i < healthes_.size(); i++) {
@@ -8356,27 +8374,27 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (postgresql_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getPostgresql());
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (mysql_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getMysql());
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
+    if (redis_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, getRedis());
     }
-    if (((bitField0_ & 0x00000008) != 0)) {
+    if (rabbitmq_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, getRabbitmq());
     }
-    if (((bitField0_ & 0x00000010) != 0)) {
+    if (opensearch_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, getOpensearch());
     }
-    if (((bitField0_ & 0x00000020) != 0)) {
+    if (system_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(11, getSystem());
     }
@@ -8519,13 +8537,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -8589,25 +8605,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getPostgresqlFieldBuilder();
-        getMysqlFieldBuilder();
-        getRedisFieldBuilder();
-        getRabbitmqFieldBuilder();
-        getOpensearchFieldBuilder();
-        getSystemFieldBuilder();
-        getHealthesFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -8696,44 +8700,36 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.fig.v1.SiteStatusResponse result) {
       int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.postgresql_ = postgresqlBuilder_ == null
             ? postgresql_
             : postgresqlBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.mysql_ = mysqlBuilder_ == null
             ? mysql_
             : mysqlBuilder_.build();
-        to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.redis_ = redisBuilder_ == null
             ? redis_
             : redisBuilder_.build();
-        to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
         result.rabbitmq_ = rabbitmqBuilder_ == null
             ? rabbitmq_
             : rabbitmqBuilder_.build();
-        to_bitField0_ |= 0x00000008;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
         result.opensearch_ = opensearchBuilder_ == null
             ? opensearch_
             : opensearchBuilder_.build();
-        to_bitField0_ |= 0x00000010;
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
         result.system_ = systemBuilder_ == null
             ? system_
             : systemBuilder_.build();
-        to_bitField0_ |= 0x00000020;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -8988,10 +8984,8 @@ private static final long serialVersionUID = 0L;
       } else {
         postgresqlBuilder_.mergeFrom(value);
       }
-      if (postgresql_ != null) {
-        bitField0_ |= 0x00000001;
-        onChanged();
-      }
+      bitField0_ |= 0x00000001;
+      onChanged();
       return this;
     }
     /**
@@ -9109,10 +9103,8 @@ private static final long serialVersionUID = 0L;
       } else {
         mysqlBuilder_.mergeFrom(value);
       }
-      if (mysql_ != null) {
-        bitField0_ |= 0x00000002;
-        onChanged();
-      }
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**
@@ -9230,10 +9222,8 @@ private static final long serialVersionUID = 0L;
       } else {
         redisBuilder_.mergeFrom(value);
       }
-      if (redis_ != null) {
-        bitField0_ |= 0x00000004;
-        onChanged();
-      }
+      bitField0_ |= 0x00000004;
+      onChanged();
       return this;
     }
     /**
@@ -9351,10 +9341,8 @@ private static final long serialVersionUID = 0L;
       } else {
         rabbitmqBuilder_.mergeFrom(value);
       }
-      if (rabbitmq_ != null) {
-        bitField0_ |= 0x00000008;
-        onChanged();
-      }
+      bitField0_ |= 0x00000008;
+      onChanged();
       return this;
     }
     /**
@@ -9472,10 +9460,8 @@ private static final long serialVersionUID = 0L;
       } else {
         opensearchBuilder_.mergeFrom(value);
       }
-      if (opensearch_ != null) {
-        bitField0_ |= 0x00000010;
-        onChanged();
-      }
+      bitField0_ |= 0x00000010;
+      onChanged();
       return this;
     }
     /**
@@ -9593,10 +9579,8 @@ private static final long serialVersionUID = 0L;
       } else {
         systemBuilder_.mergeFrom(value);
       }
-      if (system_ != null) {
-        bitField0_ |= 0x00000020;
-        onChanged();
-      }
+      bitField0_ |= 0x00000020;
+      onChanged();
       return this;
     }
     /**

@@ -4,1625 +4,1229 @@
 #include "ops-router.pb.h"
 
 #include <algorithm>
-#include "google/protobuf/io/coded_stream.h"
-#include "google/protobuf/extension_set.h"
-#include "google/protobuf/wire_format_lite.h"
-#include "google/protobuf/descriptor.h"
-#include "google/protobuf/generated_message_reflection.h"
-#include "google/protobuf/reflection_ops.h"
-#include "google/protobuf/wire_format.h"
-#include "google/protobuf/generated_message_tctable_impl.h"
-// @@protoc_insertion_point(includes)
 
-// Must be included last.
-#include "google/protobuf/port_def.inc"
+#include <google/protobuf/io/coded_stream.h>
+#include <google/protobuf/extension_set.h>
+#include <google/protobuf/wire_format_lite.h>
+#include <google/protobuf/descriptor.h>
+#include <google/protobuf/generated_message_reflection.h>
+#include <google/protobuf/reflection_ops.h>
+#include <google/protobuf/wire_format.h>
+// @@protoc_insertion_point(includes)
+#include <google/protobuf/port_def.inc>
+
 PROTOBUF_PRAGMA_INIT_SEG
-namespace _pb = ::google::protobuf;
-namespace _pbi = ::google::protobuf::internal;
-namespace _fl = ::google::protobuf::internal::field_layout;
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
 namespace palm {
 namespace ops {
 namespace router {
 namespace v1 {
-        template <typename>
-PROTOBUF_CONSTEXPR Contact::Contact(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.phone_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.wechat_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.email_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.address_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-    } {}
+PROTOBUF_CONSTEXPR Contact::Contact(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.phone_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.wechat_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.email_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.address_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}} {}
 struct ContactDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ContactDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR ContactDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~ContactDefaultTypeInternal() {}
   union {
     Contact _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ContactDefaultTypeInternal _Contact_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterSetLanRequest::RouterSetLanRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.payload_)*/ nullptr,
-      /*decltype(_impl_.enable_)*/ false,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ContactDefaultTypeInternal _Contact_default_instance_;
+PROTOBUF_CONSTEXPR RouterSetLanRequest::RouterSetLanRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.payload_)*/nullptr
+  , /*decltype(_impl_.enable_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RouterSetLanRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterSetLanRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RouterSetLanRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RouterSetLanRequestDefaultTypeInternal() {}
   union {
     RouterSetLanRequest _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterSetLanRequestDefaultTypeInternal _RouterSetLanRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterSetDmzRequest::RouterSetDmzRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.payload_)*/ nullptr,
-      /*decltype(_impl_.enable_)*/ false,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterSetLanRequestDefaultTypeInternal _RouterSetLanRequest_default_instance_;
+PROTOBUF_CONSTEXPR RouterSetDmzRequest::RouterSetDmzRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.payload_)*/nullptr
+  , /*decltype(_impl_.enable_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RouterSetDmzRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterSetDmzRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RouterSetDmzRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RouterSetDmzRequestDefaultTypeInternal() {}
   union {
     RouterSetDmzRequest _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterSetDmzRequestDefaultTypeInternal _RouterSetDmzRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterSetWanRequest::RouterSetWanRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.payload_)*/ nullptr,
-      /*decltype(_impl_.enable_)*/ false,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterSetDmzRequestDefaultTypeInternal _RouterSetDmzRequest_default_instance_;
+PROTOBUF_CONSTEXPR RouterSetWanRequest::RouterSetWanRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.payload_)*/nullptr
+  , /*decltype(_impl_.enable_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RouterSetWanRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterSetWanRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RouterSetWanRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RouterSetWanRequestDefaultTypeInternal() {}
   union {
     RouterSetWanRequest _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterSetWanRequestDefaultTypeInternal _RouterSetWanRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WanPool_Item::WanPool_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.device_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.weight_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterSetWanRequestDefaultTypeInternal _RouterSetWanRequest_default_instance_;
+PROTOBUF_CONSTEXPR WanPool_Item::WanPool_Item(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.device_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.weight_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct WanPool_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WanPool_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR WanPool_ItemDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~WanPool_ItemDefaultTypeInternal() {}
   union {
     WanPool_Item _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WanPool_ItemDefaultTypeInternal _WanPool_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WanPool::WanPool(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WanPool_ItemDefaultTypeInternal _WanPool_Item_default_instance_;
+PROTOBUF_CONSTEXPR WanPool::WanPool(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.items_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct WanPoolDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WanPoolDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR WanPoolDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~WanPoolDefaultTypeInternal() {}
   union {
     WanPool _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WanPoolDefaultTypeInternal _WanPool_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterCreateUserRequest::RouterCreateUserRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.contact_)*/ nullptr,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WanPoolDefaultTypeInternal _WanPool_default_instance_;
+PROTOBUF_CONSTEXPR RouterCreateUserRequest::RouterCreateUserRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.contact_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RouterCreateUserRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterCreateUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RouterCreateUserRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RouterCreateUserRequestDefaultTypeInternal() {}
   union {
     RouterCreateUserRequest _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterCreateUserRequestDefaultTypeInternal _RouterCreateUserRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterIndexUserResponse_Item::RouterIndexUserResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.contact_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterCreateUserRequestDefaultTypeInternal _RouterCreateUserRequest_default_instance_;
+PROTOBUF_CONSTEXPR RouterIndexUserResponse_Item::RouterIndexUserResponse_Item(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.contact_)*/nullptr
+  , /*decltype(_impl_.id_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RouterIndexUserResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterIndexUserResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RouterIndexUserResponse_ItemDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RouterIndexUserResponse_ItemDefaultTypeInternal() {}
   union {
     RouterIndexUserResponse_Item _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexUserResponse_ItemDefaultTypeInternal _RouterIndexUserResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterIndexUserResponse::RouterIndexUserResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexUserResponse_ItemDefaultTypeInternal _RouterIndexUserResponse_Item_default_instance_;
+PROTOBUF_CONSTEXPR RouterIndexUserResponse::RouterIndexUserResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.items_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RouterIndexUserResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterIndexUserResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RouterIndexUserResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RouterIndexUserResponseDefaultTypeInternal() {}
   union {
     RouterIndexUserResponse _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexUserResponseDefaultTypeInternal _RouterIndexUserResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterUpdateHostRequest::RouterUpdateHostRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.group_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ip_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.zone_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.location_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.user_)*/ 0,
-      /*decltype(_impl_.fixed_)*/ false,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexUserResponseDefaultTypeInternal _RouterIndexUserResponse_default_instance_;
+PROTOBUF_CONSTEXPR RouterUpdateHostRequest::RouterUpdateHostRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.group_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.ip_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.zone_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.location_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.id_)*/0
+  , /*decltype(_impl_.user_)*/0
+  , /*decltype(_impl_.fixed_)*/false} {}
 struct RouterUpdateHostRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterUpdateHostRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RouterUpdateHostRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RouterUpdateHostRequestDefaultTypeInternal() {}
   union {
     RouterUpdateHostRequest _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterUpdateHostRequestDefaultTypeInternal _RouterUpdateHostRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterIndexRuleResponse_Item::RouterIndexRuleResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.group_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.payload_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterUpdateHostRequestDefaultTypeInternal _RouterUpdateHostRequest_default_instance_;
+PROTOBUF_CONSTEXPR RouterIndexRuleResponse_Item::RouterIndexRuleResponse_Item(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.group_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.id_)*/0
+  , /*decltype(_impl_.payload_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
 struct RouterIndexRuleResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterIndexRuleResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RouterIndexRuleResponse_ItemDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RouterIndexRuleResponse_ItemDefaultTypeInternal() {}
   union {
     RouterIndexRuleResponse_Item _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexRuleResponse_ItemDefaultTypeInternal _RouterIndexRuleResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterIndexRuleResponse::RouterIndexRuleResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexRuleResponse_ItemDefaultTypeInternal _RouterIndexRuleResponse_Item_default_instance_;
+PROTOBUF_CONSTEXPR RouterIndexRuleResponse::RouterIndexRuleResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.items_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RouterIndexRuleResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterIndexRuleResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RouterIndexRuleResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RouterIndexRuleResponseDefaultTypeInternal() {}
   union {
     RouterIndexRuleResponse _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexRuleResponseDefaultTypeInternal _RouterIndexRuleResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Host_Owner::Host_Owner(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.contact_)*/ nullptr,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexRuleResponseDefaultTypeInternal _RouterIndexRuleResponse_default_instance_;
+PROTOBUF_CONSTEXPR Host_Owner::Host_Owner(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.contact_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct Host_OwnerDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Host_OwnerDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR Host_OwnerDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~Host_OwnerDefaultTypeInternal() {}
   union {
     Host_Owner _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Host_OwnerDefaultTypeInternal _Host_Owner_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Host::Host(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.mac_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ip_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.group_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.location_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.owner_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.fixed_)*/ false,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Host_OwnerDefaultTypeInternal _Host_Owner_default_instance_;
+PROTOBUF_CONSTEXPR Host::Host(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.mac_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.ip_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.group_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.location_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.owner_)*/nullptr
+  , /*decltype(_impl_.id_)*/0
+  , /*decltype(_impl_.fixed_)*/false} {}
 struct HostDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR HostDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR HostDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~HostDefaultTypeInternal() {}
   union {
     Host _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HostDefaultTypeInternal _Host_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_InBound::Rule_InBound(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.device_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.source_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.tcp_)*/ false,
-      /*decltype(_impl_.port_)*/ 0u,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HostDefaultTypeInternal _Host_default_instance_;
+PROTOBUF_CONSTEXPR Rule_InBound::Rule_InBound(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.device_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.source_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.tcp_)*/false
+  , /*decltype(_impl_.port_)*/0u} {}
 struct Rule_InBoundDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_InBoundDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR Rule_InBoundDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~Rule_InBoundDefaultTypeInternal() {}
   union {
     Rule_InBound _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_InBoundDefaultTypeInternal _Rule_InBound_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_OutBound_Host::Rule_OutBound_Host(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.to_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.protocol_)*/ 0,
-      /*decltype(_impl_.port_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_InBoundDefaultTypeInternal _Rule_InBound_default_instance_;
+PROTOBUF_CONSTEXPR Rule_OutBound_Host::Rule_OutBound_Host(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.to_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.protocol_)*/0
+  , /*decltype(_impl_.port_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct Rule_OutBound_HostDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_OutBound_HostDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR Rule_OutBound_HostDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~Rule_OutBound_HostDefaultTypeInternal() {}
   union {
     Rule_OutBound_Host _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBound_HostDefaultTypeInternal _Rule_OutBound_Host_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_OutBound_Speed::Rule_OutBound_Speed(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.up_)*/ 0u,
-      /*decltype(_impl_.down_)*/ 0u,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBound_HostDefaultTypeInternal _Rule_OutBound_Host_default_instance_;
+PROTOBUF_CONSTEXPR Rule_OutBound_Speed::Rule_OutBound_Speed(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.up_)*/0u
+  , /*decltype(_impl_.down_)*/0u} {}
 struct Rule_OutBound_SpeedDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_OutBound_SpeedDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR Rule_OutBound_SpeedDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~Rule_OutBound_SpeedDefaultTypeInternal() {}
   union {
     Rule_OutBound_Speed _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBound_SpeedDefaultTypeInternal _Rule_OutBound_Speed_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_OutBound_Time::Rule_OutBound_Time(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.from_)*/ nullptr,
-      /*decltype(_impl_.to_)*/ nullptr,
-      /*decltype(_impl_.monday_)*/ false,
-      /*decltype(_impl_.tuesday_)*/ false,
-      /*decltype(_impl_.wednesday_)*/ false,
-      /*decltype(_impl_.thursday_)*/ false,
-      /*decltype(_impl_.friday_)*/ false,
-      /*decltype(_impl_.saturday_)*/ false,
-      /*decltype(_impl_.sunday_)*/ false,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBound_SpeedDefaultTypeInternal _Rule_OutBound_Speed_default_instance_;
+PROTOBUF_CONSTEXPR Rule_OutBound_Time::Rule_OutBound_Time(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.from_)*/nullptr
+  , /*decltype(_impl_.to_)*/nullptr
+  , /*decltype(_impl_.monday_)*/false
+  , /*decltype(_impl_.tuesday_)*/false
+  , /*decltype(_impl_.wednesday_)*/false
+  , /*decltype(_impl_.thursday_)*/false
+  , /*decltype(_impl_.friday_)*/false
+  , /*decltype(_impl_.saturday_)*/false
+  , /*decltype(_impl_.sunday_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct Rule_OutBound_TimeDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_OutBound_TimeDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR Rule_OutBound_TimeDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~Rule_OutBound_TimeDefaultTypeInternal() {}
   union {
     Rule_OutBound_Time _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBound_TimeDefaultTypeInternal _Rule_OutBound_Time_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_OutBound::Rule_OutBound(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.payload_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBound_TimeDefaultTypeInternal _Rule_OutBound_Time_default_instance_;
+PROTOBUF_CONSTEXPR Rule_OutBound::Rule_OutBound(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.payload_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
 struct Rule_OutBoundDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_OutBoundDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR Rule_OutBoundDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~Rule_OutBoundDefaultTypeInternal() {}
   union {
     Rule_OutBound _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBoundDefaultTypeInternal _Rule_OutBound_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_Nat_Source::Rule_Nat_Source(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.device_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.port_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBoundDefaultTypeInternal _Rule_OutBound_default_instance_;
+PROTOBUF_CONSTEXPR Rule_Nat_Source::Rule_Nat_Source(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.device_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.port_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct Rule_Nat_SourceDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_Nat_SourceDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR Rule_Nat_SourceDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~Rule_Nat_SourceDefaultTypeInternal() {}
   union {
     Rule_Nat_Source _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_Nat_SourceDefaultTypeInternal _Rule_Nat_Source_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_Nat_Destination::Rule_Nat_Destination(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.ip_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.port_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_Nat_SourceDefaultTypeInternal _Rule_Nat_Source_default_instance_;
+PROTOBUF_CONSTEXPR Rule_Nat_Destination::Rule_Nat_Destination(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.ip_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.port_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct Rule_Nat_DestinationDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_Nat_DestinationDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR Rule_Nat_DestinationDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~Rule_Nat_DestinationDefaultTypeInternal() {}
   union {
     Rule_Nat_Destination _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_Nat_DestinationDefaultTypeInternal _Rule_Nat_Destination_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_Nat::Rule_Nat(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.source_)*/ nullptr,
-      /*decltype(_impl_.destination_)*/ nullptr,
-      /*decltype(_impl_.tcp_)*/ false,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_Nat_DestinationDefaultTypeInternal _Rule_Nat_Destination_default_instance_;
+PROTOBUF_CONSTEXPR Rule_Nat::Rule_Nat(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.source_)*/nullptr
+  , /*decltype(_impl_.destination_)*/nullptr
+  , /*decltype(_impl_.tcp_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct Rule_NatDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_NatDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR Rule_NatDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~Rule_NatDefaultTypeInternal() {}
   union {
     Rule_Nat _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_NatDefaultTypeInternal _Rule_Nat_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule::Rule(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.group_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.payload_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_NatDefaultTypeInternal _Rule_Nat_default_instance_;
+PROTOBUF_CONSTEXPR Rule::Rule(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.group_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.payload_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
 struct RuleDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RuleDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RuleDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RuleDefaultTypeInternal() {}
   union {
     Rule _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RuleDefaultTypeInternal _Rule_default_instance_;
-      template <typename>
-PROTOBUF_CONSTEXPR RouterStatusResponse_InterfacesEntry_DoNotUse::RouterStatusResponse_InterfacesEntry_DoNotUse(::_pbi::ConstantInitialized) {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RuleDefaultTypeInternal _Rule_default_instance_;
+PROTOBUF_CONSTEXPR RouterStatusResponse_InterfacesEntry_DoNotUse::RouterStatusResponse_InterfacesEntry_DoNotUse(
+    ::_pbi::ConstantInitialized) {}
 struct RouterStatusResponse_InterfacesEntry_DoNotUseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterStatusResponse_InterfacesEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RouterStatusResponse_InterfacesEntry_DoNotUseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RouterStatusResponse_InterfacesEntry_DoNotUseDefaultTypeInternal() {}
   union {
     RouterStatusResponse_InterfacesEntry_DoNotUse _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterStatusResponse_InterfacesEntry_DoNotUseDefaultTypeInternal _RouterStatusResponse_InterfacesEntry_DoNotUse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterStatusResponse_Ip::RouterStatusResponse_Ip(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.address_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.route_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.rule_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterStatusResponse_InterfacesEntry_DoNotUseDefaultTypeInternal _RouterStatusResponse_InterfacesEntry_DoNotUse_default_instance_;
+PROTOBUF_CONSTEXPR RouterStatusResponse_Ip::RouterStatusResponse_Ip(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.address_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.route_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.rule_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RouterStatusResponse_IpDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterStatusResponse_IpDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RouterStatusResponse_IpDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RouterStatusResponse_IpDefaultTypeInternal() {}
   union {
     RouterStatusResponse_Ip _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterStatusResponse_IpDefaultTypeInternal _RouterStatusResponse_Ip_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterStatusResponse::RouterStatusResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /* decltype(_impl_.interfaces_) */ {},
-      /*decltype(_impl_.wan_)*/ {},
-      /*decltype(_impl_.rules_)*/ {},
-      /*decltype(_impl_.hosts_)*/ {},
-      /*decltype(_impl_.firewall_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.lan_)*/ nullptr,
-      /*decltype(_impl_.dmz_)*/ nullptr,
-      /*decltype(_impl_.dns_)*/ nullptr,
-      /*decltype(_impl_.wan_pool_)*/ nullptr,
-      /*decltype(_impl_.ip_)*/ nullptr,
-      /*decltype(_impl_.uptime_)*/ nullptr,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterStatusResponse_IpDefaultTypeInternal _RouterStatusResponse_Ip_default_instance_;
+PROTOBUF_CONSTEXPR RouterStatusResponse::RouterStatusResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.interfaces_)*/{::_pbi::ConstantInitialized()}
+  , /*decltype(_impl_.wan_)*/{}
+  , /*decltype(_impl_.rules_)*/{}
+  , /*decltype(_impl_.hosts_)*/{}
+  , /*decltype(_impl_.firewall_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.lan_)*/nullptr
+  , /*decltype(_impl_.dmz_)*/nullptr
+  , /*decltype(_impl_.dns_)*/nullptr
+  , /*decltype(_impl_.wan_pool_)*/nullptr
+  , /*decltype(_impl_.ip_)*/nullptr
+  , /*decltype(_impl_.uptime_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RouterStatusResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterStatusResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR RouterStatusResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~RouterStatusResponseDefaultTypeInternal() {}
   union {
     RouterStatusResponse _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterStatusResponseDefaultTypeInternal _RouterStatusResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Lan::Lan(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.device_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.mac_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.address_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.metric_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterStatusResponseDefaultTypeInternal _RouterStatusResponse_default_instance_;
+PROTOBUF_CONSTEXPR Lan::Lan(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.device_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.mac_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.address_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.metric_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct LanDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR LanDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR LanDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~LanDefaultTypeInternal() {}
   union {
     Lan _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LanDefaultTypeInternal _Lan_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Dmz::Dmz(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.device_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.mac_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.address_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.metric_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LanDefaultTypeInternal _Lan_default_instance_;
+PROTOBUF_CONSTEXPR Dmz::Dmz(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.device_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.mac_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.address_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.metric_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct DmzDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DmzDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR DmzDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~DmzDefaultTypeInternal() {}
   union {
     Dmz _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DmzDefaultTypeInternal _Dmz_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Wan::Wan(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.device_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.mac_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.metric_)*/ 0u,
-      /*decltype(_impl_.enable_)*/ false,
-      /*decltype(_impl_.ip_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DmzDefaultTypeInternal _Dmz_default_instance_;
+PROTOBUF_CONSTEXPR Wan::Wan(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.device_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.mac_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.metric_)*/0u
+  , /*decltype(_impl_.enable_)*/false
+  , /*decltype(_impl_.ip_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
 struct WanDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WanDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR WanDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~WanDefaultTypeInternal() {}
   union {
     Wan _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WanDefaultTypeInternal _Wan_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Dhcp::Dhcp(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.v6_)*/ false,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WanDefaultTypeInternal _Wan_default_instance_;
+PROTOBUF_CONSTEXPR Dhcp::Dhcp(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.v6_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct DhcpDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DhcpDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR DhcpDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~DhcpDefaultTypeInternal() {}
   union {
     Dhcp _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DhcpDefaultTypeInternal _Dhcp_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Static::Static(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.address_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.gateway_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.dns1_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.dns2_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DhcpDefaultTypeInternal _Dhcp_default_instance_;
+PROTOBUF_CONSTEXPR Static::Static(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.address_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.gateway_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.dns1_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.dns2_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}} {}
 struct StaticDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR StaticDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR StaticDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~StaticDefaultTypeInternal() {}
   union {
     Static _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StaticDefaultTypeInternal _Static_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Dns::Dns(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StaticDefaultTypeInternal _Static_default_instance_;
+PROTOBUF_CONSTEXPR Dns::Dns(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.items_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct DnsDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DnsDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR DnsDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~DnsDefaultTypeInternal() {}
   union {
     Dns _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DnsDefaultTypeInternal _Dns_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserProfile::UserProfile(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.nickname_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.password_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DnsDefaultTypeInternal _Dns_default_instance_;
+PROTOBUF_CONSTEXPR UserProfile::UserProfile(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.nickname_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct UserProfileDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR UserProfileDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~UserProfileDefaultTypeInternal() {}
   union {
     UserProfile _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserProfileDefaultTypeInternal _UserProfile_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserSignInRequest::UserSignInRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.user_)*/ nullptr,
-      /*decltype(_impl_.ttl_)*/ nullptr,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserProfileDefaultTypeInternal _UserProfile_default_instance_;
+PROTOBUF_CONSTEXPR UserSignInRequest::UserSignInRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.user_)*/nullptr
+  , /*decltype(_impl_.ttl_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct UserSignInRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSignInRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR UserSignInRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~UserSignInRequestDefaultTypeInternal() {}
   union {
     UserSignInRequest _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInRequestDefaultTypeInternal _UserSignInRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserSignInResponse::UserSignInResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.token_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInRequestDefaultTypeInternal _UserSignInRequest_default_instance_;
+PROTOBUF_CONSTEXPR UserSignInResponse::UserSignInResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.token_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct UserSignInResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSignInResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR UserSignInResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~UserSignInResponseDefaultTypeInternal() {}
   union {
     UserSignInResponse _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInResponseDefaultTypeInternal _UserSignInResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserUpdateRequest::UserUpdateRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.current_)*/ nullptr,
-      /*decltype(_impl_.new__)*/ nullptr,
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInResponseDefaultTypeInternal _UserSignInResponse_default_instance_;
+PROTOBUF_CONSTEXPR UserUpdateRequest::UserUpdateRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.current_)*/nullptr
+  , /*decltype(_impl_.new__)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct UserUpdateRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserUpdateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR UserUpdateRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~UserUpdateRequestDefaultTypeInternal() {}
   union {
     UserUpdateRequest _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserUpdateRequestDefaultTypeInternal _UserUpdateRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserLogsResponse::UserLogsResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserUpdateRequestDefaultTypeInternal _UserUpdateRequest_default_instance_;
+PROTOBUF_CONSTEXPR UserLogsResponse::UserLogsResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.items_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct UserLogsResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserLogsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR UserLogsResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
   ~UserLogsResponseDefaultTypeInternal() {}
   union {
     UserLogsResponse _instance;
   };
 };
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsResponseDefaultTypeInternal _UserLogsResponse_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsResponseDefaultTypeInternal _UserLogsResponse_default_instance_;
 }  // namespace v1
 }  // namespace router
 }  // namespace ops
 }  // namespace palm
 static ::_pb::Metadata file_level_metadata_ops_2drouter_2eproto[37];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_ops_2drouter_2eproto[1];
-static constexpr const ::_pb::ServiceDescriptor**
-    file_level_service_descriptors_ops_2drouter_2eproto = nullptr;
-const ::uint32_t TableStruct_ops_2drouter_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
-    protodesc_cold) = {
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_.phone_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_.wechat_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_.email_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_.address_),
-    0,
-    1,
-    2,
-    3,
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetLanRequest, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetLanRequest, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetLanRequest, _impl_.payload_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetLanRequest, _impl_.enable_),
-    0,
-    ~0u,
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetDmzRequest, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetDmzRequest, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetDmzRequest, _impl_.payload_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetDmzRequest, _impl_.enable_),
-    0,
-    ~0u,
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetWanRequest, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetWanRequest, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetWanRequest, _impl_.payload_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetWanRequest, _impl_.enable_),
-    0,
-    ~0u,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::WanPool_Item, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::WanPool_Item, _impl_.device_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::WanPool_Item, _impl_.weight_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::WanPool, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::WanPool, _impl_.items_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterCreateUserRequest, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterCreateUserRequest, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterCreateUserRequest, _impl_.name_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterCreateUserRequest, _impl_.contact_),
-    ~0u,
-    0,
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse_Item, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse_Item, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse_Item, _impl_.id_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse_Item, _impl_.name_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse_Item, _impl_.contact_),
-    ~0u,
-    ~0u,
-    0,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse, _impl_.items_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.id_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.user_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.group_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.ip_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.fixed_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.zone_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.location_),
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,
-    0,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _internal_metadata_),
-    ~0u,  // no _extensions_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _impl_._oneof_case_[0]),
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _impl_.id_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _impl_.name_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _impl_.group_),
-    ::_pbi::kInvalidFieldOffsetTag,
-    ::_pbi::kInvalidFieldOffsetTag,
-    ::_pbi::kInvalidFieldOffsetTag,
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _impl_.payload_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse, _impl_.items_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host_Owner, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host_Owner, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host_Owner, _impl_.name_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host_Owner, _impl_.contact_),
-    ~0u,
-    0,
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.id_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.name_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.mac_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.ip_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.fixed_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.group_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.location_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.owner_),
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,
-    0,
-    1,
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_InBound, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_InBound, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_InBound, _impl_.device_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_InBound, _impl_.tcp_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_InBound, _impl_.port_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_InBound, _impl_.source_),
-    ~0u,
-    ~0u,
-    ~0u,
-    0,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Host, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Host, _impl_.to_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Host, _impl_.protocol_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Host, _impl_.port_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Speed, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Speed, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Speed, _impl_.up_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Speed, _impl_.down_),
-    0,
-    1,
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.from_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.to_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.monday_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.tuesday_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.wednesday_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.thursday_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.friday_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.saturday_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.sunday_),
-    0,
-    1,
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound, _internal_metadata_),
-    ~0u,  // no _extensions_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound, _impl_._oneof_case_[0]),
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    ::_pbi::kInvalidFieldOffsetTag,
-    ::_pbi::kInvalidFieldOffsetTag,
-    ::_pbi::kInvalidFieldOffsetTag,
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound, _impl_.payload_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat_Source, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat_Source, _impl_.device_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat_Source, _impl_.port_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat_Destination, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat_Destination, _impl_.ip_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat_Destination, _impl_.port_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat, _impl_.source_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat, _impl_.tcp_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat, _impl_.destination_),
-    0,
-    ~0u,
-    1,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule, _internal_metadata_),
-    ~0u,  // no _extensions_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule, _impl_._oneof_case_[0]),
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule, _impl_.name_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule, _impl_.group_),
-    ::_pbi::kInvalidFieldOffsetTag,
-    ::_pbi::kInvalidFieldOffsetTag,
-    ::_pbi::kInvalidFieldOffsetTag,
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule, _impl_.payload_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse, _has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse, key_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse, value_),
-    0,
-    1,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_Ip, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_Ip, _impl_.address_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_Ip, _impl_.route_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_Ip, _impl_.rule_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.interfaces_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.lan_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.dmz_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.dns_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.wan_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.wan_pool_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.rules_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.hosts_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.ip_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.firewall_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.uptime_),
-    ~0u,
-    0,
-    1,
-    2,
-    ~0u,
-    3,
-    ~0u,
-    ~0u,
-    4,
-    ~0u,
-    5,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Lan, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Lan, _impl_.device_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Lan, _impl_.mac_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Lan, _impl_.metric_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Lan, _impl_.address_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dmz, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dmz, _impl_.device_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dmz, _impl_.mac_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dmz, _impl_.metric_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dmz, _impl_.address_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _internal_metadata_),
-    ~0u,  // no _extensions_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_._oneof_case_[0]),
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.device_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.metric_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.name_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.mac_),
-    ::_pbi::kInvalidFieldOffsetTag,
-    ::_pbi::kInvalidFieldOffsetTag,
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.enable_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.ip_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dhcp, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dhcp, _impl_.v6_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Static, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Static, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Static, _impl_.address_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Static, _impl_.gateway_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Static, _impl_.dns1_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Static, _impl_.dns2_),
-    ~0u,
-    ~0u,
-    ~0u,
-    0,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dns, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dns, _impl_.items_),
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserProfile, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserProfile, _impl_.nickname_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserProfile, _impl_.password_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserSignInRequest, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserSignInRequest, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserSignInRequest, _impl_.user_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserSignInRequest, _impl_.ttl_),
-    0,
-    1,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserSignInResponse, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserSignInResponse, _impl_.token_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserUpdateRequest, _impl_._has_bits_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserUpdateRequest, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserUpdateRequest, _impl_.current_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserUpdateRequest, _impl_.new__),
-    0,
-    1,
-    ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserLogsResponse, _internal_metadata_),
-    ~0u,  // no _extensions_
-    ~0u,  // no _oneof_case_
-    ~0u,  // no _weak_field_map_
-    ~0u,  // no _inlined_string_donated_
-    ~0u,  // no _split_
-    ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserLogsResponse, _impl_.items_),
-};
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_ops_2drouter_2eproto = nullptr;
 
-static const ::_pbi::MigrationSchema
-    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 12, -1, sizeof(::palm::ops::router::v1::Contact)},
-        {16, 26, -1, sizeof(::palm::ops::router::v1::RouterSetLanRequest)},
-        {28, 38, -1, sizeof(::palm::ops::router::v1::RouterSetDmzRequest)},
-        {40, 50, -1, sizeof(::palm::ops::router::v1::RouterSetWanRequest)},
-        {52, -1, -1, sizeof(::palm::ops::router::v1::WanPool_Item)},
-        {62, -1, -1, sizeof(::palm::ops::router::v1::WanPool)},
-        {71, 81, -1, sizeof(::palm::ops::router::v1::RouterCreateUserRequest)},
-        {83, 94, -1, sizeof(::palm::ops::router::v1::RouterIndexUserResponse_Item)},
-        {97, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexUserResponse)},
-        {106, 121, -1, sizeof(::palm::ops::router::v1::RouterUpdateHostRequest)},
-        {128, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexRuleResponse_Item)},
-        {143, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexRuleResponse)},
-        {152, 162, -1, sizeof(::palm::ops::router::v1::Host_Owner)},
-        {164, 180, -1, sizeof(::palm::ops::router::v1::Host)},
-        {188, 200, -1, sizeof(::palm::ops::router::v1::Rule_InBound)},
-        {204, -1, -1, sizeof(::palm::ops::router::v1::Rule_OutBound_Host)},
-        {215, 225, -1, sizeof(::palm::ops::router::v1::Rule_OutBound_Speed)},
-        {227, 244, -1, sizeof(::palm::ops::router::v1::Rule_OutBound_Time)},
-        {253, -1, -1, sizeof(::palm::ops::router::v1::Rule_OutBound)},
-        {265, -1, -1, sizeof(::palm::ops::router::v1::Rule_Nat_Source)},
-        {275, -1, -1, sizeof(::palm::ops::router::v1::Rule_Nat_Destination)},
-        {285, 296, -1, sizeof(::palm::ops::router::v1::Rule_Nat)},
-        {299, -1, -1, sizeof(::palm::ops::router::v1::Rule)},
-        {313, 323, -1, sizeof(::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse)},
-        {325, -1, -1, sizeof(::palm::ops::router::v1::RouterStatusResponse_Ip)},
-        {336, 355, -1, sizeof(::palm::ops::router::v1::RouterStatusResponse)},
-        {366, -1, -1, sizeof(::palm::ops::router::v1::Lan)},
-        {378, -1, -1, sizeof(::palm::ops::router::v1::Dmz)},
-        {390, -1, -1, sizeof(::palm::ops::router::v1::Wan)},
-        {406, -1, -1, sizeof(::palm::ops::router::v1::Dhcp)},
-        {415, 427, -1, sizeof(::palm::ops::router::v1::Static)},
-        {431, -1, -1, sizeof(::palm::ops::router::v1::Dns)},
-        {440, -1, -1, sizeof(::palm::ops::router::v1::UserProfile)},
-        {450, 460, -1, sizeof(::palm::ops::router::v1::UserSignInRequest)},
-        {462, -1, -1, sizeof(::palm::ops::router::v1::UserSignInResponse)},
-        {471, 481, -1, sizeof(::palm::ops::router::v1::UserUpdateRequest)},
-        {483, -1, -1, sizeof(::palm::ops::router::v1::UserLogsResponse)},
+const uint32_t TableStruct_ops_2drouter_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_.phone_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_.wechat_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_.email_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_.address_),
+  0,
+  1,
+  2,
+  3,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetLanRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetLanRequest, _impl_.payload_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetLanRequest, _impl_.enable_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetDmzRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetDmzRequest, _impl_.payload_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetDmzRequest, _impl_.enable_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetWanRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetWanRequest, _impl_.payload_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterSetWanRequest, _impl_.enable_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::WanPool_Item, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::WanPool_Item, _impl_.device_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::WanPool_Item, _impl_.weight_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::WanPool, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::WanPool, _impl_.items_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterCreateUserRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterCreateUserRequest, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterCreateUserRequest, _impl_.contact_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse_Item, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse_Item, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse_Item, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse_Item, _impl_.contact_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexUserResponse, _impl_.items_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.user_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.group_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.ip_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.fixed_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.zone_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterUpdateHostRequest, _impl_.location_),
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  0,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _internal_metadata_),
+  ~0u,  // no _extensions_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _impl_._oneof_case_[0]),
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _impl_.group_),
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _impl_.payload_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse, _impl_.items_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host_Owner, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host_Owner, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host_Owner, _impl_.contact_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.mac_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.ip_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.fixed_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.group_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.location_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Host, _impl_.owner_),
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  0,
+  ~0u,
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_InBound, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_InBound, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_InBound, _impl_.device_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_InBound, _impl_.tcp_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_InBound, _impl_.port_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_InBound, _impl_.source_),
+  ~0u,
+  ~0u,
+  ~0u,
+  0,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Host, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Host, _impl_.to_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Host, _impl_.protocol_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Host, _impl_.port_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Speed, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Speed, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Speed, _impl_.up_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Speed, _impl_.down_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.from_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.to_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.monday_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.tuesday_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.wednesday_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.thursday_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.friday_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.saturday_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound_Time, _impl_.sunday_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound, _internal_metadata_),
+  ~0u,  // no _extensions_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound, _impl_._oneof_case_[0]),
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound, _impl_.payload_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat_Source, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat_Source, _impl_.device_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat_Source, _impl_.port_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat_Destination, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat_Destination, _impl_.ip_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat_Destination, _impl_.port_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat, _impl_.source_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat, _impl_.tcp_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_Nat, _impl_.destination_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule, _internal_metadata_),
+  ~0u,  // no _extensions_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule, _impl_._oneof_case_[0]),
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule, _impl_.group_),
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule, _impl_.payload_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_Ip, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_Ip, _impl_.address_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_Ip, _impl_.route_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse_Ip, _impl_.rule_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.interfaces_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.lan_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.dmz_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.dns_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.wan_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.wan_pool_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.rules_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.hosts_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.ip_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.firewall_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterStatusResponse, _impl_.uptime_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Lan, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Lan, _impl_.device_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Lan, _impl_.mac_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Lan, _impl_.metric_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Lan, _impl_.address_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dmz, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dmz, _impl_.device_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dmz, _impl_.mac_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dmz, _impl_.metric_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dmz, _impl_.address_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _internal_metadata_),
+  ~0u,  // no _extensions_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_._oneof_case_[0]),
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.device_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.metric_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.mac_),
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.enable_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_.ip_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dhcp, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dhcp, _impl_.v6_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Static, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Static, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Static, _impl_.address_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Static, _impl_.gateway_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Static, _impl_.dns1_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Static, _impl_.dns2_),
+  ~0u,
+  ~0u,
+  ~0u,
+  0,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dns, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Dns, _impl_.items_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserProfile, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserProfile, _impl_.nickname_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserProfile, _impl_.password_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserSignInRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserSignInRequest, _impl_.user_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserSignInRequest, _impl_.ttl_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserSignInResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserSignInResponse, _impl_.token_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserUpdateRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserUpdateRequest, _impl_.current_),
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserUpdateRequest, _impl_.new__),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserLogsResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::UserLogsResponse, _impl_.items_),
+};
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  { 0, 10, -1, sizeof(::palm::ops::router::v1::Contact)},
+  { 14, -1, -1, sizeof(::palm::ops::router::v1::RouterSetLanRequest)},
+  { 22, -1, -1, sizeof(::palm::ops::router::v1::RouterSetDmzRequest)},
+  { 30, -1, -1, sizeof(::palm::ops::router::v1::RouterSetWanRequest)},
+  { 38, -1, -1, sizeof(::palm::ops::router::v1::WanPool_Item)},
+  { 46, -1, -1, sizeof(::palm::ops::router::v1::WanPool)},
+  { 53, -1, -1, sizeof(::palm::ops::router::v1::RouterCreateUserRequest)},
+  { 61, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexUserResponse_Item)},
+  { 70, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexUserResponse)},
+  { 77, 90, -1, sizeof(::palm::ops::router::v1::RouterUpdateHostRequest)},
+  { 97, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexRuleResponse_Item)},
+  { 110, -1, -1, sizeof(::palm::ops::router::v1::RouterIndexRuleResponse)},
+  { 117, -1, -1, sizeof(::palm::ops::router::v1::Host_Owner)},
+  { 125, 139, -1, sizeof(::palm::ops::router::v1::Host)},
+  { 147, 157, -1, sizeof(::palm::ops::router::v1::Rule_InBound)},
+  { 161, -1, -1, sizeof(::palm::ops::router::v1::Rule_OutBound_Host)},
+  { 170, 178, -1, sizeof(::palm::ops::router::v1::Rule_OutBound_Speed)},
+  { 180, -1, -1, sizeof(::palm::ops::router::v1::Rule_OutBound_Time)},
+  { 195, -1, -1, sizeof(::palm::ops::router::v1::Rule_OutBound)},
+  { 205, -1, -1, sizeof(::palm::ops::router::v1::Rule_Nat_Source)},
+  { 213, -1, -1, sizeof(::palm::ops::router::v1::Rule_Nat_Destination)},
+  { 221, -1, -1, sizeof(::palm::ops::router::v1::Rule_Nat)},
+  { 230, -1, -1, sizeof(::palm::ops::router::v1::Rule)},
+  { 242, 250, -1, sizeof(::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse)},
+  { 252, -1, -1, sizeof(::palm::ops::router::v1::RouterStatusResponse_Ip)},
+  { 261, -1, -1, sizeof(::palm::ops::router::v1::RouterStatusResponse)},
+  { 278, -1, -1, sizeof(::palm::ops::router::v1::Lan)},
+  { 288, -1, -1, sizeof(::palm::ops::router::v1::Dmz)},
+  { 298, -1, -1, sizeof(::palm::ops::router::v1::Wan)},
+  { 312, -1, -1, sizeof(::palm::ops::router::v1::Dhcp)},
+  { 319, 329, -1, sizeof(::palm::ops::router::v1::Static)},
+  { 333, -1, -1, sizeof(::palm::ops::router::v1::Dns)},
+  { 340, -1, -1, sizeof(::palm::ops::router::v1::UserProfile)},
+  { 348, -1, -1, sizeof(::palm::ops::router::v1::UserSignInRequest)},
+  { 356, -1, -1, sizeof(::palm::ops::router::v1::UserSignInResponse)},
+  { 363, -1, -1, sizeof(::palm::ops::router::v1::UserUpdateRequest)},
+  { 371, -1, -1, sizeof(::palm::ops::router::v1::UserLogsResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-    &::palm::ops::router::v1::_Contact_default_instance_._instance,
-    &::palm::ops::router::v1::_RouterSetLanRequest_default_instance_._instance,
-    &::palm::ops::router::v1::_RouterSetDmzRequest_default_instance_._instance,
-    &::palm::ops::router::v1::_RouterSetWanRequest_default_instance_._instance,
-    &::palm::ops::router::v1::_WanPool_Item_default_instance_._instance,
-    &::palm::ops::router::v1::_WanPool_default_instance_._instance,
-    &::palm::ops::router::v1::_RouterCreateUserRequest_default_instance_._instance,
-    &::palm::ops::router::v1::_RouterIndexUserResponse_Item_default_instance_._instance,
-    &::palm::ops::router::v1::_RouterIndexUserResponse_default_instance_._instance,
-    &::palm::ops::router::v1::_RouterUpdateHostRequest_default_instance_._instance,
-    &::palm::ops::router::v1::_RouterIndexRuleResponse_Item_default_instance_._instance,
-    &::palm::ops::router::v1::_RouterIndexRuleResponse_default_instance_._instance,
-    &::palm::ops::router::v1::_Host_Owner_default_instance_._instance,
-    &::palm::ops::router::v1::_Host_default_instance_._instance,
-    &::palm::ops::router::v1::_Rule_InBound_default_instance_._instance,
-    &::palm::ops::router::v1::_Rule_OutBound_Host_default_instance_._instance,
-    &::palm::ops::router::v1::_Rule_OutBound_Speed_default_instance_._instance,
-    &::palm::ops::router::v1::_Rule_OutBound_Time_default_instance_._instance,
-    &::palm::ops::router::v1::_Rule_OutBound_default_instance_._instance,
-    &::palm::ops::router::v1::_Rule_Nat_Source_default_instance_._instance,
-    &::palm::ops::router::v1::_Rule_Nat_Destination_default_instance_._instance,
-    &::palm::ops::router::v1::_Rule_Nat_default_instance_._instance,
-    &::palm::ops::router::v1::_Rule_default_instance_._instance,
-    &::palm::ops::router::v1::_RouterStatusResponse_InterfacesEntry_DoNotUse_default_instance_._instance,
-    &::palm::ops::router::v1::_RouterStatusResponse_Ip_default_instance_._instance,
-    &::palm::ops::router::v1::_RouterStatusResponse_default_instance_._instance,
-    &::palm::ops::router::v1::_Lan_default_instance_._instance,
-    &::palm::ops::router::v1::_Dmz_default_instance_._instance,
-    &::palm::ops::router::v1::_Wan_default_instance_._instance,
-    &::palm::ops::router::v1::_Dhcp_default_instance_._instance,
-    &::palm::ops::router::v1::_Static_default_instance_._instance,
-    &::palm::ops::router::v1::_Dns_default_instance_._instance,
-    &::palm::ops::router::v1::_UserProfile_default_instance_._instance,
-    &::palm::ops::router::v1::_UserSignInRequest_default_instance_._instance,
-    &::palm::ops::router::v1::_UserSignInResponse_default_instance_._instance,
-    &::palm::ops::router::v1::_UserUpdateRequest_default_instance_._instance,
-    &::palm::ops::router::v1::_UserLogsResponse_default_instance_._instance,
-};
-const char descriptor_table_protodef_ops_2drouter_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\020ops-router.proto\022\022palm.ops.router.v1\032\033"
-    "google/protobuf/empty.proto\032\037google/prot"
-    "obuf/timestamp.proto\032\036google/protobuf/du"
-    "ration.proto\"\207\001\n\007Contact\022\022\n\005phone\030\001 \001(\tH"
-    "\000\210\001\001\022\023\n\006wechat\030\002 \001(\tH\001\210\001\001\022\022\n\005email\030\003 \001(\t"
-    "H\002\210\001\001\022\024\n\007address\030c \001(\tH\003\210\001\001B\010\n\006_phoneB\t\n"
-    "\007_wechatB\010\n\006_emailB\n\n\010_address\"O\n\023Router"
-    "SetLanRequest\022(\n\007payload\030\001 \001(\0132\027.palm.op"
-    "s.router.v1.Lan\022\016\n\006enable\030\002 \001(\010\"O\n\023Route"
-    "rSetDmzRequest\022(\n\007payload\030\001 \001(\0132\027.palm.o"
-    "ps.router.v1.Dmz\022\016\n\006enable\030\002 \001(\010\"O\n\023Rout"
-    "erSetWanRequest\022(\n\007payload\030\001 \001(\0132\027.palm."
-    "ops.router.v1.Wan\022\016\n\006enable\030\002 \001(\010\"b\n\007Wan"
-    "Pool\022/\n\005items\030\001 \003(\0132 .palm.ops.router.v1"
-    ".WanPool.Item\032&\n\004Item\022\016\n\006device\030\001 \001(\t\022\016\n"
-    "\006weight\030\002 \001(\r\"U\n\027RouterCreateUserRequest"
-    "\022\014\n\004name\030\001 \001(\t\022,\n\007contact\030\002 \001(\0132\033.palm.o"
-    "ps.router.v1.Contact\"\252\001\n\027RouterIndexUser"
-    "Response\022\?\n\005items\030\001 \003(\01320.palm.ops.route"
-    "r.v1.RouterIndexUserResponse.Item\032N\n\004Ite"
-    "m\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022,\n\007contact\030\003"
-    " \001(\0132\033.palm.ops.router.v1.Contact\"\217\001\n\027Ro"
-    "uterUpdateHostRequest\022\n\n\002id\030\001 \001(\005\022\014\n\004use"
-    "r\030\002 \001(\005\022\r\n\005group\030\003 \001(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005fi"
-    "xed\030\005 \001(\010\022\014\n\004zone\030\010 \001(\t\022\025\n\010location\030\t \001("
-    "\tH\000\210\001\001B\013\n\t_location\"\246\002\n\027RouterIndexRuleR"
-    "esponse\022\?\n\005items\030\001 \003(\01320.palm.ops.router"
-    ".v1.RouterIndexRuleResponse.Item\032\311\001\n\004Ite"
-    "m\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005group\030\003 \001"
-    "(\t\022.\n\002in\030\013 \001(\0132 .palm.ops.router.v1.Rule"
-    ".InBoundH\000\0220\n\003out\030\014 \001(\0132!.palm.ops.route"
-    "r.v1.Rule.OutBoundH\000\022+\n\003nat\030\r \001(\0132\034.palm"
-    ".ops.router.v1.Rule.NatH\000B\t\n\007payload\"\357\001\n"
-    "\004Host\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003mac\030\003"
-    " \001(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005fixed\030\005 \001(\010\022\r\n\005group"
-    "\030\t \001(\t\022\025\n\010location\030\013 \001(\tH\000\210\001\001\022-\n\005owner\030\014"
-    " \001(\0132\036.palm.ops.router.v1.Host.Owner\032C\n\005"
-    "Owner\022\014\n\004name\030\001 \001(\t\022,\n\007contact\030\002 \001(\0132\033.p"
-    "alm.ops.router.v1.ContactB\013\n\t_location\"\276"
-    "\010\n\004Rule\022\014\n\004name\030\001 \001(\t\022\r\n\005group\030\002 \001(\t\022.\n\002"
-    "in\030\013 \001(\0132 .palm.ops.router.v1.Rule.InBou"
-    "ndH\000\0220\n\003out\030\014 \001(\0132!.palm.ops.router.v1.R"
-    "ule.OutBoundH\000\022+\n\003nat\030\r \001(\0132\034.palm.ops.r"
-    "outer.v1.Rule.NatH\000\032T\n\007InBound\022\016\n\006device"
-    "\030\001 \001(\t\022\013\n\003tcp\030\002 \001(\010\022\014\n\004port\030\003 \001(\r\022\023\n\006sou"
-    "rce\030\004 \001(\tH\000\210\001\001B\t\n\007_source\032\246\004\n\010OutBound\0226"
-    "\n\004host\030\001 \001(\0132&.palm.ops.router.v1.Rule.O"
-    "utBound.HostH\000\0228\n\005speed\030\002 \001(\0132\'.palm.ops"
-    ".router.v1.Rule.OutBound.SpeedH\000\0226\n\004time"
-    "\030\003 \001(\0132&.palm.ops.router.v1.Rule.OutBoun"
-    "d.TimeH\000\032U\n\004Host\022\n\n\002to\030\001 \001(\t\0223\n\010protocol"
-    "\030\002 \001(\0162!.palm.ops.router.v1.Rule.Protoco"
-    "l\022\014\n\004port\030\003 \001(\r\032;\n\005Speed\022\017\n\002up\030\001 \001(\rH\000\210\001"
-    "\001\022\021\n\004down\030\002 \001(\rH\001\210\001\001B\005\n\003_upB\007\n\005_down\032\320\001\n"
-    "\004Time\022(\n\004from\030\001 \001(\0132\032.google.protobuf.Ti"
-    "mestamp\022&\n\002to\030\002 \001(\0132\032.google.protobuf.Ti"
-    "mestamp\022\016\n\006monday\030\013 \001(\010\022\017\n\007tuesday\030\014 \001(\010"
-    "\022\021\n\twednesday\030\r \001(\010\022\020\n\010thursday\030\016 \001(\010\022\016\n"
-    "\006friday\030\017 \001(\010\022\020\n\010saturday\030\020 \001(\010\022\016\n\006sunda"
-    "y\030\021 \001(\010B\t\n\007payload\032\327\001\n\003Nat\0223\n\006source\030\001 \001"
-    "(\0132#.palm.ops.router.v1.Rule.Nat.Source\022"
-    "\013\n\003tcp\030\002 \001(\010\022=\n\013destination\030\003 \001(\0132(.palm"
-    ".ops.router.v1.Rule.Nat.Destination\032&\n\006S"
-    "ource\022\016\n\006device\030\001 \001(\t\022\014\n\004port\030\003 \001(\r\032\'\n\013D"
-    "estination\022\n\n\002ip\030\001 \001(\t\022\014\n\004port\030\003 \001(\r\"&\n\010"
-    "Protocol\022\010\n\004Icmp\020\000\022\007\n\003Tcp\020\001\022\007\n\003Udp\020\002B\t\n\007"
-    "payload\"\332\004\n\024RouterStatusResponse\022L\n\ninte"
-    "rfaces\030\001 \003(\01328.palm.ops.router.v1.Router"
-    "StatusResponse.InterfacesEntry\022$\n\003lan\030\013 "
-    "\001(\0132\027.palm.ops.router.v1.Lan\022$\n\003dmz\030\014 \001("
-    "\0132\027.palm.ops.router.v1.Dmz\022$\n\003dns\030\r \001(\0132"
-    "\027.palm.ops.router.v1.Dns\022$\n\003wan\030\016 \003(\0132\027."
-    "palm.ops.router.v1.Wan\022-\n\010wan_pool\030\017 \001(\013"
-    "2\033.palm.ops.router.v1.WanPool\022\'\n\005rules\030\025"
-    " \003(\0132\030.palm.ops.router.v1.Rule\022\'\n\005hosts\030"
-    "\026 \003(\0132\030.palm.ops.router.v1.Host\0227\n\002ip\030a "
-    "\001(\0132+.palm.ops.router.v1.RouterStatusRes"
-    "ponse.Ip\022\020\n\010firewall\030b \001(\t\022)\n\006uptime\030c \001"
-    "(\0132\031.google.protobuf.Duration\0321\n\017Interfa"
-    "cesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001"
-    "\0322\n\002Ip\022\017\n\007address\030\001 \001(\t\022\r\n\005route\030\002 \001(\t\022\014"
-    "\n\004rule\030\003 \001(\t\"C\n\003Lan\022\016\n\006device\030\001 \001(\t\022\013\n\003m"
-    "ac\030\002 \001(\t\022\016\n\006metric\030\003 \001(\r\022\017\n\007address\030\013 \001("
-    "\t\"C\n\003Dmz\022\016\n\006device\030\001 \001(\t\022\013\n\003mac\030\002 \001(\t\022\016\n"
-    "\006metric\030\003 \001(\r\022\017\n\007address\030\013 \001(\t\"\256\001\n\003Wan\022\016"
-    "\n\006device\030\001 \001(\t\022\016\n\006metric\030\002 \001(\r\022\014\n\004name\030\t"
-    " \001(\t\022\013\n\003mac\030\013 \001(\t\022(\n\004dhcp\030\025 \001(\0132\030.palm.o"
-    "ps.router.v1.DhcpH\000\022,\n\006static\030\026 \001(\0132\032.pa"
-    "lm.ops.router.v1.StaticH\000\022\016\n\006enable\030c \001("
-    "\010B\004\n\002ip\"\022\n\004Dhcp\022\n\n\002v6\030\001 \001(\010\"T\n\006Static\022\017\n"
-    "\007address\030\001 \001(\t\022\017\n\007gateway\030\003 \001(\t\022\014\n\004dns1\030"
-    "\004 \001(\t\022\021\n\004dns2\030\005 \001(\tH\000\210\001\001B\007\n\005_dns2\"\024\n\003Dns"
-    "\022\r\n\005items\030\001 \003(\t\"1\n\013UserProfile\022\020\n\010nickna"
-    "me\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"j\n\021UserSignIn"
-    "Request\022-\n\004user\030\001 \001(\0132\037.palm.ops.router."
-    "v1.UserProfile\022&\n\003ttl\030\t \001(\0132\031.google.pro"
-    "tobuf.Duration\"#\n\022UserSignInResponse\022\r\n\005"
-    "token\030\001 \001(\t\"s\n\021UserUpdateRequest\0220\n\007curr"
-    "ent\030\001 \001(\0132\037.palm.ops.router.v1.UserProfi"
-    "le\022,\n\003new\030\002 \001(\0132\037.palm.ops.router.v1.Use"
-    "rProfile\"!\n\020UserLogsResponse\022\r\n\005items\030\001 "
-    "\003(\t2\376\010\n\006Router\022:\n\006Reboot\022\026.google.protob"
-    "uf.Empty\032\026.google.protobuf.Empty\"\000\0229\n\005Ap"
-    "ply\022\026.google.protobuf.Empty\032\026.google.pro"
-    "tobuf.Empty\"\000\022L\n\006Status\022\026.google.protobu"
-    "f.Empty\032(.palm.ops.router.v1.RouterStatu"
-    "sResponse\"\000\022;\n\006SetDns\022\027.palm.ops.router."
-    "v1.Dns\032\026.google.protobuf.Empty\"\000\022K\n\006SetW"
-    "an\022\'.palm.ops.router.v1.RouterSetWanRequ"
-    "est\032\026.google.protobuf.Empty\"\000\022C\n\nSetWanP"
-    "ool\022\033.palm.ops.router.v1.WanPool\032\026.googl"
-    "e.protobuf.Empty\"\000\022K\n\006SetLan\022\'.palm.ops."
-    "router.v1.RouterSetLanRequest\032\026.google.p"
-    "rotobuf.Empty\"\000\022K\n\006SetDmz\022\'.palm.ops.rou"
-    "ter.v1.RouterSetDmzRequest\032\026.google.prot"
-    "obuf.Empty\"\000\022@\n\nCreateRule\022\030.palm.ops.ro"
-    "uter.v1.Rule\032\026.google.protobuf.Empty\"\000\022X"
-    "\n\nUpdateRule\0220.palm.ops.router.v1.Router"
-    "IndexRuleResponse.Item\032\026.google.protobuf"
-    ".Empty\"\000\022R\n\tIndexRule\022\026.google.protobuf."
-    "Empty\032+.palm.ops.router.v1.RouterIndexRu"
-    "leResponse\"\000\022S\n\nUpdateHost\022+.palm.ops.ro"
-    "uter.v1.RouterUpdateHostRequest\032\026.google"
-    ".protobuf.Empty\"\000\022R\n\tIndexUser\022\026.google."
-    "protobuf.Empty\032+.palm.ops.router.v1.Rout"
-    "erIndexUserResponse\"\000\022X\n\nUpdateUser\0220.pa"
-    "lm.ops.router.v1.RouterIndexUserResponse"
-    ".Item\032\026.google.protobuf.Empty\"\000\022S\n\nCreat"
-    "eUser\022+.palm.ops.router.v1.RouterCreateU"
-    "serRequest\032\026.google.protobuf.Empty\"\0002\201\003\n"
-    "\004User\022Y\n\006SignIn\022%.palm.ops.router.v1.Use"
-    "rSignInRequest\032&.palm.ops.router.v1.User"
-    "SignInResponse\"\000\022N\n\007Refresh\022\031.google.pro"
-    "tobuf.Duration\032&.palm.ops.router.v1.User"
-    "SignInResponse\"\000\022I\n\006Update\022%.palm.ops.ro"
-    "uter.v1.UserUpdateRequest\032\026.google.proto"
-    "buf.Empty\"\000\022;\n\007SignOut\022\026.google.protobuf"
-    ".Empty\032\026.google.protobuf.Empty\"\000\022F\n\004Logs"
-    "\022\026.google.protobuf.Empty\032$.palm.ops.rout"
-    "er.v1.UserLogsResponse\"\000B4\n0com.github.s"
-    "aturn_xiv.palm.plugins.ops.router.v1P\001b\006"
-    "proto3"
-};
-static const ::_pbi::DescriptorTable* const descriptor_table_ops_2drouter_2eproto_deps[3] =
-    {
-        &::descriptor_table_google_2fprotobuf_2fduration_2eproto,
-        &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
-        &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
-};
-static ::absl::once_flag descriptor_table_ops_2drouter_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_ops_2drouter_2eproto = {
-    false,
-    false,
-    5646,
-    descriptor_table_protodef_ops_2drouter_2eproto,
-    "ops-router.proto",
-    &descriptor_table_ops_2drouter_2eproto_once,
-    descriptor_table_ops_2drouter_2eproto_deps,
-    3,
-    37,
-    schemas,
-    file_default_instances,
-    TableStruct_ops_2drouter_2eproto::offsets,
-    file_level_metadata_ops_2drouter_2eproto,
-    file_level_enum_descriptors_ops_2drouter_2eproto,
-    file_level_service_descriptors_ops_2drouter_2eproto,
+  &::palm::ops::router::v1::_Contact_default_instance_._instance,
+  &::palm::ops::router::v1::_RouterSetLanRequest_default_instance_._instance,
+  &::palm::ops::router::v1::_RouterSetDmzRequest_default_instance_._instance,
+  &::palm::ops::router::v1::_RouterSetWanRequest_default_instance_._instance,
+  &::palm::ops::router::v1::_WanPool_Item_default_instance_._instance,
+  &::palm::ops::router::v1::_WanPool_default_instance_._instance,
+  &::palm::ops::router::v1::_RouterCreateUserRequest_default_instance_._instance,
+  &::palm::ops::router::v1::_RouterIndexUserResponse_Item_default_instance_._instance,
+  &::palm::ops::router::v1::_RouterIndexUserResponse_default_instance_._instance,
+  &::palm::ops::router::v1::_RouterUpdateHostRequest_default_instance_._instance,
+  &::palm::ops::router::v1::_RouterIndexRuleResponse_Item_default_instance_._instance,
+  &::palm::ops::router::v1::_RouterIndexRuleResponse_default_instance_._instance,
+  &::palm::ops::router::v1::_Host_Owner_default_instance_._instance,
+  &::palm::ops::router::v1::_Host_default_instance_._instance,
+  &::palm::ops::router::v1::_Rule_InBound_default_instance_._instance,
+  &::palm::ops::router::v1::_Rule_OutBound_Host_default_instance_._instance,
+  &::palm::ops::router::v1::_Rule_OutBound_Speed_default_instance_._instance,
+  &::palm::ops::router::v1::_Rule_OutBound_Time_default_instance_._instance,
+  &::palm::ops::router::v1::_Rule_OutBound_default_instance_._instance,
+  &::palm::ops::router::v1::_Rule_Nat_Source_default_instance_._instance,
+  &::palm::ops::router::v1::_Rule_Nat_Destination_default_instance_._instance,
+  &::palm::ops::router::v1::_Rule_Nat_default_instance_._instance,
+  &::palm::ops::router::v1::_Rule_default_instance_._instance,
+  &::palm::ops::router::v1::_RouterStatusResponse_InterfacesEntry_DoNotUse_default_instance_._instance,
+  &::palm::ops::router::v1::_RouterStatusResponse_Ip_default_instance_._instance,
+  &::palm::ops::router::v1::_RouterStatusResponse_default_instance_._instance,
+  &::palm::ops::router::v1::_Lan_default_instance_._instance,
+  &::palm::ops::router::v1::_Dmz_default_instance_._instance,
+  &::palm::ops::router::v1::_Wan_default_instance_._instance,
+  &::palm::ops::router::v1::_Dhcp_default_instance_._instance,
+  &::palm::ops::router::v1::_Static_default_instance_._instance,
+  &::palm::ops::router::v1::_Dns_default_instance_._instance,
+  &::palm::ops::router::v1::_UserProfile_default_instance_._instance,
+  &::palm::ops::router::v1::_UserSignInRequest_default_instance_._instance,
+  &::palm::ops::router::v1::_UserSignInResponse_default_instance_._instance,
+  &::palm::ops::router::v1::_UserUpdateRequest_default_instance_._instance,
+  &::palm::ops::router::v1::_UserLogsResponse_default_instance_._instance,
 };
 
-// This function exists to be marked as weak.
-// It can significantly speed up compilation by breaking up LLVM's SCC
-// in the .pb.cc translation units. Large translation units see a
-// reduction of more than 35% of walltime for optimized builds. Without
-// the weak attribute all the messages in the file, including all the
-// vtables and everything they use become part of the same SCC through
-// a cycle like:
-// GetMetadata -> descriptor table -> default instances ->
-//   vtables -> GetMetadata
-// By adding a weak function here we break the connection from the
-// individual vtables back into the descriptor table.
+const char descriptor_table_protodef_ops_2drouter_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\020ops-router.proto\022\022palm.ops.router.v1\032\033"
+  "google/protobuf/empty.proto\032\037google/prot"
+  "obuf/timestamp.proto\032\036google/protobuf/du"
+  "ration.proto\"\207\001\n\007Contact\022\022\n\005phone\030\001 \001(\tH"
+  "\000\210\001\001\022\023\n\006wechat\030\002 \001(\tH\001\210\001\001\022\022\n\005email\030\003 \001(\t"
+  "H\002\210\001\001\022\024\n\007address\030c \001(\tH\003\210\001\001B\010\n\006_phoneB\t\n"
+  "\007_wechatB\010\n\006_emailB\n\n\010_address\"O\n\023Router"
+  "SetLanRequest\022(\n\007payload\030\001 \001(\0132\027.palm.op"
+  "s.router.v1.Lan\022\016\n\006enable\030\002 \001(\010\"O\n\023Route"
+  "rSetDmzRequest\022(\n\007payload\030\001 \001(\0132\027.palm.o"
+  "ps.router.v1.Dmz\022\016\n\006enable\030\002 \001(\010\"O\n\023Rout"
+  "erSetWanRequest\022(\n\007payload\030\001 \001(\0132\027.palm."
+  "ops.router.v1.Wan\022\016\n\006enable\030\002 \001(\010\"b\n\007Wan"
+  "Pool\022/\n\005items\030\001 \003(\0132 .palm.ops.router.v1"
+  ".WanPool.Item\032&\n\004Item\022\016\n\006device\030\001 \001(\t\022\016\n"
+  "\006weight\030\002 \001(\r\"U\n\027RouterCreateUserRequest"
+  "\022\014\n\004name\030\001 \001(\t\022,\n\007contact\030\002 \001(\0132\033.palm.o"
+  "ps.router.v1.Contact\"\252\001\n\027RouterIndexUser"
+  "Response\022\?\n\005items\030\001 \003(\01320.palm.ops.route"
+  "r.v1.RouterIndexUserResponse.Item\032N\n\004Ite"
+  "m\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022,\n\007contact\030\003"
+  " \001(\0132\033.palm.ops.router.v1.Contact\"\217\001\n\027Ro"
+  "uterUpdateHostRequest\022\n\n\002id\030\001 \001(\005\022\014\n\004use"
+  "r\030\002 \001(\005\022\r\n\005group\030\003 \001(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005fi"
+  "xed\030\005 \001(\010\022\014\n\004zone\030\010 \001(\t\022\025\n\010location\030\t \001("
+  "\tH\000\210\001\001B\013\n\t_location\"\246\002\n\027RouterIndexRuleR"
+  "esponse\022\?\n\005items\030\001 \003(\01320.palm.ops.router"
+  ".v1.RouterIndexRuleResponse.Item\032\311\001\n\004Ite"
+  "m\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005group\030\003 \001"
+  "(\t\022.\n\002in\030\013 \001(\0132 .palm.ops.router.v1.Rule"
+  ".InBoundH\000\0220\n\003out\030\014 \001(\0132!.palm.ops.route"
+  "r.v1.Rule.OutBoundH\000\022+\n\003nat\030\r \001(\0132\034.palm"
+  ".ops.router.v1.Rule.NatH\000B\t\n\007payload\"\357\001\n"
+  "\004Host\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003mac\030\003"
+  " \001(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005fixed\030\005 \001(\010\022\r\n\005group"
+  "\030\t \001(\t\022\025\n\010location\030\013 \001(\tH\000\210\001\001\022-\n\005owner\030\014"
+  " \001(\0132\036.palm.ops.router.v1.Host.Owner\032C\n\005"
+  "Owner\022\014\n\004name\030\001 \001(\t\022,\n\007contact\030\002 \001(\0132\033.p"
+  "alm.ops.router.v1.ContactB\013\n\t_location\"\276"
+  "\010\n\004Rule\022\014\n\004name\030\001 \001(\t\022\r\n\005group\030\002 \001(\t\022.\n\002"
+  "in\030\013 \001(\0132 .palm.ops.router.v1.Rule.InBou"
+  "ndH\000\0220\n\003out\030\014 \001(\0132!.palm.ops.router.v1.R"
+  "ule.OutBoundH\000\022+\n\003nat\030\r \001(\0132\034.palm.ops.r"
+  "outer.v1.Rule.NatH\000\032T\n\007InBound\022\016\n\006device"
+  "\030\001 \001(\t\022\013\n\003tcp\030\002 \001(\010\022\014\n\004port\030\003 \001(\r\022\023\n\006sou"
+  "rce\030\004 \001(\tH\000\210\001\001B\t\n\007_source\032\246\004\n\010OutBound\0226"
+  "\n\004host\030\001 \001(\0132&.palm.ops.router.v1.Rule.O"
+  "utBound.HostH\000\0228\n\005speed\030\002 \001(\0132\'.palm.ops"
+  ".router.v1.Rule.OutBound.SpeedH\000\0226\n\004time"
+  "\030\003 \001(\0132&.palm.ops.router.v1.Rule.OutBoun"
+  "d.TimeH\000\032U\n\004Host\022\n\n\002to\030\001 \001(\t\0223\n\010protocol"
+  "\030\002 \001(\0162!.palm.ops.router.v1.Rule.Protoco"
+  "l\022\014\n\004port\030\003 \001(\r\032;\n\005Speed\022\017\n\002up\030\001 \001(\rH\000\210\001"
+  "\001\022\021\n\004down\030\002 \001(\rH\001\210\001\001B\005\n\003_upB\007\n\005_down\032\320\001\n"
+  "\004Time\022(\n\004from\030\001 \001(\0132\032.google.protobuf.Ti"
+  "mestamp\022&\n\002to\030\002 \001(\0132\032.google.protobuf.Ti"
+  "mestamp\022\016\n\006monday\030\013 \001(\010\022\017\n\007tuesday\030\014 \001(\010"
+  "\022\021\n\twednesday\030\r \001(\010\022\020\n\010thursday\030\016 \001(\010\022\016\n"
+  "\006friday\030\017 \001(\010\022\020\n\010saturday\030\020 \001(\010\022\016\n\006sunda"
+  "y\030\021 \001(\010B\t\n\007payload\032\327\001\n\003Nat\0223\n\006source\030\001 \001"
+  "(\0132#.palm.ops.router.v1.Rule.Nat.Source\022"
+  "\013\n\003tcp\030\002 \001(\010\022=\n\013destination\030\003 \001(\0132(.palm"
+  ".ops.router.v1.Rule.Nat.Destination\032&\n\006S"
+  "ource\022\016\n\006device\030\001 \001(\t\022\014\n\004port\030\003 \001(\r\032\'\n\013D"
+  "estination\022\n\n\002ip\030\001 \001(\t\022\014\n\004port\030\003 \001(\r\"&\n\010"
+  "Protocol\022\010\n\004Icmp\020\000\022\007\n\003Tcp\020\001\022\007\n\003Udp\020\002B\t\n\007"
+  "payload\"\332\004\n\024RouterStatusResponse\022L\n\ninte"
+  "rfaces\030\001 \003(\01328.palm.ops.router.v1.Router"
+  "StatusResponse.InterfacesEntry\022$\n\003lan\030\013 "
+  "\001(\0132\027.palm.ops.router.v1.Lan\022$\n\003dmz\030\014 \001("
+  "\0132\027.palm.ops.router.v1.Dmz\022$\n\003dns\030\r \001(\0132"
+  "\027.palm.ops.router.v1.Dns\022$\n\003wan\030\016 \003(\0132\027."
+  "palm.ops.router.v1.Wan\022-\n\010wan_pool\030\017 \001(\013"
+  "2\033.palm.ops.router.v1.WanPool\022\'\n\005rules\030\025"
+  " \003(\0132\030.palm.ops.router.v1.Rule\022\'\n\005hosts\030"
+  "\026 \003(\0132\030.palm.ops.router.v1.Host\0227\n\002ip\030a "
+  "\001(\0132+.palm.ops.router.v1.RouterStatusRes"
+  "ponse.Ip\022\020\n\010firewall\030b \001(\t\022)\n\006uptime\030c \001"
+  "(\0132\031.google.protobuf.Duration\0321\n\017Interfa"
+  "cesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001"
+  "\0322\n\002Ip\022\017\n\007address\030\001 \001(\t\022\r\n\005route\030\002 \001(\t\022\014"
+  "\n\004rule\030\003 \001(\t\"C\n\003Lan\022\016\n\006device\030\001 \001(\t\022\013\n\003m"
+  "ac\030\002 \001(\t\022\016\n\006metric\030\003 \001(\r\022\017\n\007address\030\013 \001("
+  "\t\"C\n\003Dmz\022\016\n\006device\030\001 \001(\t\022\013\n\003mac\030\002 \001(\t\022\016\n"
+  "\006metric\030\003 \001(\r\022\017\n\007address\030\013 \001(\t\"\256\001\n\003Wan\022\016"
+  "\n\006device\030\001 \001(\t\022\016\n\006metric\030\002 \001(\r\022\014\n\004name\030\t"
+  " \001(\t\022\013\n\003mac\030\013 \001(\t\022(\n\004dhcp\030\025 \001(\0132\030.palm.o"
+  "ps.router.v1.DhcpH\000\022,\n\006static\030\026 \001(\0132\032.pa"
+  "lm.ops.router.v1.StaticH\000\022\016\n\006enable\030c \001("
+  "\010B\004\n\002ip\"\022\n\004Dhcp\022\n\n\002v6\030\001 \001(\010\"T\n\006Static\022\017\n"
+  "\007address\030\001 \001(\t\022\017\n\007gateway\030\003 \001(\t\022\014\n\004dns1\030"
+  "\004 \001(\t\022\021\n\004dns2\030\005 \001(\tH\000\210\001\001B\007\n\005_dns2\"\024\n\003Dns"
+  "\022\r\n\005items\030\001 \003(\t\"1\n\013UserProfile\022\020\n\010nickna"
+  "me\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"j\n\021UserSignIn"
+  "Request\022-\n\004user\030\001 \001(\0132\037.palm.ops.router."
+  "v1.UserProfile\022&\n\003ttl\030\t \001(\0132\031.google.pro"
+  "tobuf.Duration\"#\n\022UserSignInResponse\022\r\n\005"
+  "token\030\001 \001(\t\"s\n\021UserUpdateRequest\0220\n\007curr"
+  "ent\030\001 \001(\0132\037.palm.ops.router.v1.UserProfi"
+  "le\022,\n\003new\030\002 \001(\0132\037.palm.ops.router.v1.Use"
+  "rProfile\"!\n\020UserLogsResponse\022\r\n\005items\030\001 "
+  "\003(\t2\376\010\n\006Router\022:\n\006Reboot\022\026.google.protob"
+  "uf.Empty\032\026.google.protobuf.Empty\"\000\0229\n\005Ap"
+  "ply\022\026.google.protobuf.Empty\032\026.google.pro"
+  "tobuf.Empty\"\000\022L\n\006Status\022\026.google.protobu"
+  "f.Empty\032(.palm.ops.router.v1.RouterStatu"
+  "sResponse\"\000\022;\n\006SetDns\022\027.palm.ops.router."
+  "v1.Dns\032\026.google.protobuf.Empty\"\000\022K\n\006SetW"
+  "an\022\'.palm.ops.router.v1.RouterSetWanRequ"
+  "est\032\026.google.protobuf.Empty\"\000\022C\n\nSetWanP"
+  "ool\022\033.palm.ops.router.v1.WanPool\032\026.googl"
+  "e.protobuf.Empty\"\000\022K\n\006SetLan\022\'.palm.ops."
+  "router.v1.RouterSetLanRequest\032\026.google.p"
+  "rotobuf.Empty\"\000\022K\n\006SetDmz\022\'.palm.ops.rou"
+  "ter.v1.RouterSetDmzRequest\032\026.google.prot"
+  "obuf.Empty\"\000\022@\n\nCreateRule\022\030.palm.ops.ro"
+  "uter.v1.Rule\032\026.google.protobuf.Empty\"\000\022X"
+  "\n\nUpdateRule\0220.palm.ops.router.v1.Router"
+  "IndexRuleResponse.Item\032\026.google.protobuf"
+  ".Empty\"\000\022R\n\tIndexRule\022\026.google.protobuf."
+  "Empty\032+.palm.ops.router.v1.RouterIndexRu"
+  "leResponse\"\000\022S\n\nUpdateHost\022+.palm.ops.ro"
+  "uter.v1.RouterUpdateHostRequest\032\026.google"
+  ".protobuf.Empty\"\000\022R\n\tIndexUser\022\026.google."
+  "protobuf.Empty\032+.palm.ops.router.v1.Rout"
+  "erIndexUserResponse\"\000\022X\n\nUpdateUser\0220.pa"
+  "lm.ops.router.v1.RouterIndexUserResponse"
+  ".Item\032\026.google.protobuf.Empty\"\000\022S\n\nCreat"
+  "eUser\022+.palm.ops.router.v1.RouterCreateU"
+  "serRequest\032\026.google.protobuf.Empty\"\0002\201\003\n"
+  "\004User\022Y\n\006SignIn\022%.palm.ops.router.v1.Use"
+  "rSignInRequest\032&.palm.ops.router.v1.User"
+  "SignInResponse\"\000\022N\n\007Refresh\022\031.google.pro"
+  "tobuf.Duration\032&.palm.ops.router.v1.User"
+  "SignInResponse\"\000\022I\n\006Update\022%.palm.ops.ro"
+  "uter.v1.UserUpdateRequest\032\026.google.proto"
+  "buf.Empty\"\000\022;\n\007SignOut\022\026.google.protobuf"
+  ".Empty\032\026.google.protobuf.Empty\"\000\022F\n\004Logs"
+  "\022\026.google.protobuf.Empty\032$.palm.ops.rout"
+  "er.v1.UserLogsResponse\"\000B4\n0com.github.s"
+  "aturn_xiv.palm.plugins.ops.router.v1P\001b\006"
+  "proto3"
+  ;
+static const ::_pbi::DescriptorTable* const descriptor_table_ops_2drouter_2eproto_deps[3] = {
+  &::descriptor_table_google_2fprotobuf_2fduration_2eproto,
+  &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
+  &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
+};
+static ::_pbi::once_flag descriptor_table_ops_2drouter_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_ops_2drouter_2eproto = {
+    false, false, 5646, descriptor_table_protodef_ops_2drouter_2eproto,
+    "ops-router.proto",
+    &descriptor_table_ops_2drouter_2eproto_once, descriptor_table_ops_2drouter_2eproto_deps, 3, 37,
+    schemas, file_default_instances, TableStruct_ops_2drouter_2eproto::offsets,
+    file_level_metadata_ops_2drouter_2eproto, file_level_enum_descriptors_ops_2drouter_2eproto,
+    file_level_service_descriptors_ops_2drouter_2eproto,
+};
 PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_ops_2drouter_2eproto_getter() {
   return &descriptor_table_ops_2drouter_2eproto;
 }
+
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
-static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_ops_2drouter_2eproto(&descriptor_table_ops_2drouter_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_ops_2drouter_2eproto(&descriptor_table_ops_2drouter_2eproto);
 namespace palm {
 namespace ops {
 namespace router {
 namespace v1 {
-const ::google::protobuf::EnumDescriptor* Rule_Protocol_descriptor() {
-  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_ops_2drouter_2eproto);
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Rule_Protocol_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_ops_2drouter_2eproto);
   return file_level_enum_descriptors_ops_2drouter_2eproto[0];
 }
 bool Rule_Protocol_IsValid(int value) {
@@ -1635,25 +1239,21 @@ bool Rule_Protocol_IsValid(int value) {
       return false;
   }
 }
-#if (__cplusplus < 201703) && \
-  (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 constexpr Rule_Protocol Rule::Icmp;
 constexpr Rule_Protocol Rule::Tcp;
 constexpr Rule_Protocol Rule::Udp;
 constexpr Rule_Protocol Rule::Protocol_MIN;
 constexpr Rule_Protocol Rule::Protocol_MAX;
 constexpr int Rule::Protocol_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 
-#endif  // (__cplusplus < 201703) &&
-        // (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 // ===================================================================
 
 class Contact::_Internal {
  public:
   using HasBits = decltype(std::declval<Contact>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(Contact, _impl_._has_bits_);
   static void set_has_phone(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -1668,101 +1268,113 @@ class Contact::_Internal {
   }
 };
 
-Contact::Contact(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Contact::Contact(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Contact)
 }
-Contact::Contact(const Contact& from) : ::google::protobuf::Message() {
-  Contact* const _this = this;
-  (void)_this;
+Contact::Contact(const Contact& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Contact* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.phone_){},
-      decltype(_impl_.wechat_){},
-      decltype(_impl_.email_){},
-      decltype(_impl_.address_){},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.phone_){}
+    , decltype(_impl_.wechat_){}
+    , decltype(_impl_.email_){}
+    , decltype(_impl_.address_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.phone_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.phone_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.phone_.Set(from._internal_phone(), _this->GetArenaForAllocation());
+    _impl_.phone_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_phone()) {
+    _this->_impl_.phone_.Set(from._internal_phone(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.wechat_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.wechat_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.wechat_.Set(from._internal_wechat(), _this->GetArenaForAllocation());
+    _impl_.wechat_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_wechat()) {
+    _this->_impl_.wechat_.Set(from._internal_wechat(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.email_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.email_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000004u) != 0) {
-    _this->_impl_.email_.Set(from._internal_email(), _this->GetArenaForAllocation());
+    _impl_.email_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_email()) {
+    _this->_impl_.email_.Set(from._internal_email(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.address_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000008u) != 0) {
-    _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_address()) {
+    _this->_impl_.address_.Set(from._internal_address(), 
+      _this->GetArenaForAllocation());
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Contact)
 }
-inline void Contact::SharedCtor(::_pb::Arena* arena) {
+
+inline void Contact::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.phone_){},
-      decltype(_impl_.wechat_){},
-      decltype(_impl_.email_){},
-      decltype(_impl_.address_){},
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.phone_){}
+    , decltype(_impl_.wechat_){}
+    , decltype(_impl_.email_){}
+    , decltype(_impl_.address_){}
   };
   _impl_.phone_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.phone_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.phone_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.wechat_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.wechat_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.wechat_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.email_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.email_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.email_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.address_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 Contact::~Contact() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Contact)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Contact::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.phone_.Destroy();
   _impl_.wechat_.Destroy();
   _impl_.email_.Destroy();
   _impl_.address_.Destroy();
 }
+
 void Contact::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Contact::Clear() {
+void Contact::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Contact)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -1782,124 +1394,139 @@ PROTOBUF_NOINLINE void Contact::Clear() {
     }
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Contact::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Contact::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional string phone = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_phone();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Contact.phone"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string wechat = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_wechat();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Contact.wechat"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string email = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_email();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Contact.email"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string address = 99;
+      case 99:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_address();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Contact.address"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 58, 7> Contact::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(Contact, _impl_._has_bits_),
-    0, // no _extensions_
-    99, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Contact_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // optional string phone = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(Contact, _impl_.phone_)}},
-    // optional string wechat = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 1, 0, PROTOBUF_FIELD_OFFSET(Contact, _impl_.wechat_)}},
-    // optional string email = 3;
-    {::_pbi::TcParser::FastUS1,
-     {26, 2, 0, PROTOBUF_FIELD_OFFSET(Contact, _impl_.email_)}},
-  }}, {{
-    99, 0, 1,
-    65534, 3,
-    65535, 65535
-  }}, {{
-    // optional string phone = 1;
-    {PROTOBUF_FIELD_OFFSET(Contact, _impl_.phone_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // optional string wechat = 2;
-    {PROTOBUF_FIELD_OFFSET(Contact, _impl_.wechat_), _Internal::kHasBitsOffset + 1, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // optional string email = 3;
-    {PROTOBUF_FIELD_OFFSET(Contact, _impl_.email_), _Internal::kHasBitsOffset + 2, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // optional string address = 99;
-    {PROTOBUF_FIELD_OFFSET(Contact, _impl_.address_), _Internal::kHasBitsOffset + 3, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\32\5\6\5\7\0\0\0"
-    "palm.ops.router.v1.Contact"
-    "phone"
-    "wechat"
-    "email"
-    "address"
-  }},
-};
-
-::uint8_t* Contact::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Contact::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Contact)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
   // optional string phone = 1;
-  if (cached_has_bits & 0x00000001u) {
-    const std::string& _s = this->_internal_phone();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Contact.phone");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+  if (_internal_has_phone()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_phone().data(), static_cast<int>(this->_internal_phone().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Contact.phone");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_phone(), target);
   }
 
   // optional string wechat = 2;
-  if (cached_has_bits & 0x00000002u) {
-    const std::string& _s = this->_internal_wechat();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Contact.wechat");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
+  if (_internal_has_wechat()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_wechat().data(), static_cast<int>(this->_internal_wechat().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Contact.wechat");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_wechat(), target);
   }
 
   // optional string email = 3;
-  if (cached_has_bits & 0x00000004u) {
-    const std::string& _s = this->_internal_email();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Contact.email");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
+  if (_internal_has_email()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_email().data(), static_cast<int>(this->_internal_email().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Contact.email");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_email(), target);
   }
 
   // optional string address = 99;
-  if (cached_has_bits & 0x00000008u) {
-    const std::string& _s = this->_internal_address();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Contact.address");
-    target = stream->WriteStringMaybeAliased(99, _s, target);
+  if (_internal_has_address()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_address().data(), static_cast<int>(this->_internal_address().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Contact.address");
+    target = stream->WriteStringMaybeAliased(
+        99, this->_internal_address(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Contact)
   return target;
 }
 
-::size_t Contact::ByteSizeLong() const {
+size_t Contact::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Contact)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -1907,45 +1534,49 @@ const ::_pbi::TcParseTable<2, 4, 0, 58, 7> Contact::_table_ = {
   if (cached_has_bits & 0x0000000fu) {
     // optional string phone = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                      this->_internal_phone());
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_phone());
     }
 
     // optional string wechat = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                      this->_internal_wechat());
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_wechat());
     }
 
     // optional string email = 3;
     if (cached_has_bits & 0x00000004u) {
-      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                      this->_internal_email());
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_email());
     }
 
     // optional string address = 99;
     if (cached_has_bits & 0x00000008u) {
-      total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                      this->_internal_address());
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_address());
     }
 
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Contact::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Contact::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Contact::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Contact::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Contact::GetClassData() const { return &_class_data_; }
 
 
-void Contact::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Contact::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Contact*>(&to_msg);
   auto& from = static_cast<const Contact&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Contact)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
@@ -1963,7 +1594,7 @@ void Contact::MergeImpl(::google::protobuf::Message& to_msg, const ::google::pro
       _this->_internal_set_address(from._internal_address());
     }
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Contact::CopyFrom(const Contact& from) {
@@ -1973,7 +1604,7 @@ void Contact::CopyFrom(const Contact& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Contact::IsInitialized() const {
+bool Contact::IsInitialized() const {
   return true;
 }
 
@@ -1983,152 +1614,160 @@ void Contact::InternalSwap(Contact* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.phone_, lhs_arena,
-                                       &other->_impl_.phone_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.wechat_, lhs_arena,
-                                       &other->_impl_.wechat_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, lhs_arena,
-                                       &other->_impl_.email_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
-                                       &other->_impl_.address_, rhs_arena);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.phone_, lhs_arena,
+      &other->_impl_.phone_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.wechat_, lhs_arena,
+      &other->_impl_.wechat_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.email_, lhs_arena,
+      &other->_impl_.email_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.address_, lhs_arena,
+      &other->_impl_.address_, rhs_arena
+  );
 }
 
-::google::protobuf::Metadata Contact::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Contact::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[0]);
 }
+
 // ===================================================================
 
 class RouterSetLanRequest::_Internal {
  public:
-  using HasBits = decltype(std::declval<RouterSetLanRequest>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(RouterSetLanRequest, _impl_._has_bits_);
   static const ::palm::ops::router::v1::Lan& payload(const RouterSetLanRequest* msg);
-  static void set_has_payload(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::palm::ops::router::v1::Lan& RouterSetLanRequest::_Internal::payload(const RouterSetLanRequest* msg) {
+const ::palm::ops::router::v1::Lan&
+RouterSetLanRequest::_Internal::payload(const RouterSetLanRequest* msg) {
   return *msg->_impl_.payload_;
 }
-RouterSetLanRequest::RouterSetLanRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+RouterSetLanRequest::RouterSetLanRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterSetLanRequest)
 }
-RouterSetLanRequest::RouterSetLanRequest(const RouterSetLanRequest& from) : ::google::protobuf::Message() {
-  RouterSetLanRequest* const _this = this;
-  (void)_this;
+RouterSetLanRequest::RouterSetLanRequest(const RouterSetLanRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RouterSetLanRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.payload_){nullptr},
-      decltype(_impl_.enable_){},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+      decltype(_impl_.payload_){nullptr}
+    , decltype(_impl_.enable_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_payload()) {
     _this->_impl_.payload_ = new ::palm::ops::router::v1::Lan(*from._impl_.payload_);
   }
   _this->_impl_.enable_ = from._impl_.enable_;
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterSetLanRequest)
 }
-inline void RouterSetLanRequest::SharedCtor(::_pb::Arena* arena) {
+
+inline void RouterSetLanRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.payload_){nullptr},
-      decltype(_impl_.enable_){false},
+      decltype(_impl_.payload_){nullptr}
+    , decltype(_impl_.enable_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 RouterSetLanRequest::~RouterSetLanRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterSetLanRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void RouterSetLanRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete _impl_.payload_;
 }
+
 void RouterSetLanRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void RouterSetLanRequest::Clear() {
+void RouterSetLanRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterSetLanRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.payload_ != nullptr);
-    _impl_.payload_->Clear();
+  if (GetArenaForAllocation() == nullptr && _impl_.payload_ != nullptr) {
+    delete _impl_.payload_;
   }
+  _impl_.payload_ = nullptr;
   _impl_.enable_ = false;
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RouterSetLanRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* RouterSetLanRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .palm.ops.router.v1.Lan payload = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_payload(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool enable = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.enable_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetLanRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(RouterSetLanRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_RouterSetLanRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // bool enable = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RouterSetLanRequest, _impl_.enable_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(RouterSetLanRequest, _impl_.enable_)}},
-    // .palm.ops.router.v1.Lan payload = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(RouterSetLanRequest, _impl_.payload_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .palm.ops.router.v1.Lan payload = 1;
-    {PROTOBUF_FIELD_OFFSET(RouterSetLanRequest, _impl_.payload_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // bool enable = 2;
-    {PROTOBUF_FIELD_OFFSET(RouterSetLanRequest, _impl_.enable_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Lan>()},
-  }}, {{
-  }},
-};
-
-::uint8_t* RouterSetLanRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* RouterSetLanRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.RouterSetLanRequest)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Lan payload = 1;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_payload()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(1, _Internal::payload(this),
         _Internal::payload(this).GetCachedSize(), target, stream);
   }
@@ -2136,66 +1775,63 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetLanRequest::_table_ = {
   // bool enable = 2;
   if (this->_internal_enable() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        2, this->_internal_enable(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_enable(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.RouterSetLanRequest)
   return target;
 }
 
-::size_t RouterSetLanRequest::ByteSizeLong() const {
+size_t RouterSetLanRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.RouterSetLanRequest)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .palm.ops.router.v1.Lan payload = 1;
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
+  if (this->_internal_has_payload()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.payload_);
   }
 
   // bool enable = 2;
   if (this->_internal_enable() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData RouterSetLanRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouterSetLanRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RouterSetLanRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*RouterSetLanRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouterSetLanRequest::GetClassData() const { return &_class_data_; }
 
 
-void RouterSetLanRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void RouterSetLanRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RouterSetLanRequest*>(&to_msg);
   auto& from = static_cast<const RouterSetLanRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.RouterSetLanRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_payload()) {
     _this->_internal_mutable_payload()->::palm::ops::router::v1::Lan::MergeFrom(
         from._internal_payload());
   }
   if (from._internal_enable() != 0) {
     _this->_internal_set_enable(from._internal_enable());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RouterSetLanRequest::CopyFrom(const RouterSetLanRequest& from) {
@@ -2205,15 +1841,14 @@ void RouterSetLanRequest::CopyFrom(const RouterSetLanRequest& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool RouterSetLanRequest::IsInitialized() const {
+bool RouterSetLanRequest::IsInitialized() const {
   return true;
 }
 
 void RouterSetLanRequest::InternalSwap(RouterSetLanRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(RouterSetLanRequest, _impl_.enable_)
       + sizeof(RouterSetLanRequest::_impl_.enable_)
       - PROTOBUF_FIELD_OFFSET(RouterSetLanRequest, _impl_.payload_)>(
@@ -2221,142 +1856,142 @@ void RouterSetLanRequest::InternalSwap(RouterSetLanRequest* other) {
           reinterpret_cast<char*>(&other->_impl_.payload_));
 }
 
-::google::protobuf::Metadata RouterSetLanRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouterSetLanRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[1]);
 }
+
 // ===================================================================
 
 class RouterSetDmzRequest::_Internal {
  public:
-  using HasBits = decltype(std::declval<RouterSetDmzRequest>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(RouterSetDmzRequest, _impl_._has_bits_);
   static const ::palm::ops::router::v1::Dmz& payload(const RouterSetDmzRequest* msg);
-  static void set_has_payload(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::palm::ops::router::v1::Dmz& RouterSetDmzRequest::_Internal::payload(const RouterSetDmzRequest* msg) {
+const ::palm::ops::router::v1::Dmz&
+RouterSetDmzRequest::_Internal::payload(const RouterSetDmzRequest* msg) {
   return *msg->_impl_.payload_;
 }
-RouterSetDmzRequest::RouterSetDmzRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+RouterSetDmzRequest::RouterSetDmzRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterSetDmzRequest)
 }
-RouterSetDmzRequest::RouterSetDmzRequest(const RouterSetDmzRequest& from) : ::google::protobuf::Message() {
-  RouterSetDmzRequest* const _this = this;
-  (void)_this;
+RouterSetDmzRequest::RouterSetDmzRequest(const RouterSetDmzRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RouterSetDmzRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.payload_){nullptr},
-      decltype(_impl_.enable_){},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+      decltype(_impl_.payload_){nullptr}
+    , decltype(_impl_.enable_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_payload()) {
     _this->_impl_.payload_ = new ::palm::ops::router::v1::Dmz(*from._impl_.payload_);
   }
   _this->_impl_.enable_ = from._impl_.enable_;
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterSetDmzRequest)
 }
-inline void RouterSetDmzRequest::SharedCtor(::_pb::Arena* arena) {
+
+inline void RouterSetDmzRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.payload_){nullptr},
-      decltype(_impl_.enable_){false},
+      decltype(_impl_.payload_){nullptr}
+    , decltype(_impl_.enable_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 RouterSetDmzRequest::~RouterSetDmzRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterSetDmzRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void RouterSetDmzRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete _impl_.payload_;
 }
+
 void RouterSetDmzRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void RouterSetDmzRequest::Clear() {
+void RouterSetDmzRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterSetDmzRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.payload_ != nullptr);
-    _impl_.payload_->Clear();
+  if (GetArenaForAllocation() == nullptr && _impl_.payload_ != nullptr) {
+    delete _impl_.payload_;
   }
+  _impl_.payload_ = nullptr;
   _impl_.enable_ = false;
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RouterSetDmzRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* RouterSetDmzRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .palm.ops.router.v1.Dmz payload = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_payload(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool enable = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.enable_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetDmzRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(RouterSetDmzRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_RouterSetDmzRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // bool enable = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RouterSetDmzRequest, _impl_.enable_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(RouterSetDmzRequest, _impl_.enable_)}},
-    // .palm.ops.router.v1.Dmz payload = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(RouterSetDmzRequest, _impl_.payload_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .palm.ops.router.v1.Dmz payload = 1;
-    {PROTOBUF_FIELD_OFFSET(RouterSetDmzRequest, _impl_.payload_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // bool enable = 2;
-    {PROTOBUF_FIELD_OFFSET(RouterSetDmzRequest, _impl_.enable_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Dmz>()},
-  }}, {{
-  }},
-};
-
-::uint8_t* RouterSetDmzRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* RouterSetDmzRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.RouterSetDmzRequest)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Dmz payload = 1;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_payload()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(1, _Internal::payload(this),
         _Internal::payload(this).GetCachedSize(), target, stream);
   }
@@ -2364,66 +1999,63 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetDmzRequest::_table_ = {
   // bool enable = 2;
   if (this->_internal_enable() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        2, this->_internal_enable(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_enable(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.RouterSetDmzRequest)
   return target;
 }
 
-::size_t RouterSetDmzRequest::ByteSizeLong() const {
+size_t RouterSetDmzRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.RouterSetDmzRequest)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .palm.ops.router.v1.Dmz payload = 1;
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
+  if (this->_internal_has_payload()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.payload_);
   }
 
   // bool enable = 2;
   if (this->_internal_enable() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData RouterSetDmzRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouterSetDmzRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RouterSetDmzRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*RouterSetDmzRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouterSetDmzRequest::GetClassData() const { return &_class_data_; }
 
 
-void RouterSetDmzRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void RouterSetDmzRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RouterSetDmzRequest*>(&to_msg);
   auto& from = static_cast<const RouterSetDmzRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.RouterSetDmzRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_payload()) {
     _this->_internal_mutable_payload()->::palm::ops::router::v1::Dmz::MergeFrom(
         from._internal_payload());
   }
   if (from._internal_enable() != 0) {
     _this->_internal_set_enable(from._internal_enable());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RouterSetDmzRequest::CopyFrom(const RouterSetDmzRequest& from) {
@@ -2433,15 +2065,14 @@ void RouterSetDmzRequest::CopyFrom(const RouterSetDmzRequest& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool RouterSetDmzRequest::IsInitialized() const {
+bool RouterSetDmzRequest::IsInitialized() const {
   return true;
 }
 
 void RouterSetDmzRequest::InternalSwap(RouterSetDmzRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(RouterSetDmzRequest, _impl_.enable_)
       + sizeof(RouterSetDmzRequest::_impl_.enable_)
       - PROTOBUF_FIELD_OFFSET(RouterSetDmzRequest, _impl_.payload_)>(
@@ -2449,142 +2080,142 @@ void RouterSetDmzRequest::InternalSwap(RouterSetDmzRequest* other) {
           reinterpret_cast<char*>(&other->_impl_.payload_));
 }
 
-::google::protobuf::Metadata RouterSetDmzRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouterSetDmzRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[2]);
 }
+
 // ===================================================================
 
 class RouterSetWanRequest::_Internal {
  public:
-  using HasBits = decltype(std::declval<RouterSetWanRequest>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(RouterSetWanRequest, _impl_._has_bits_);
   static const ::palm::ops::router::v1::Wan& payload(const RouterSetWanRequest* msg);
-  static void set_has_payload(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::palm::ops::router::v1::Wan& RouterSetWanRequest::_Internal::payload(const RouterSetWanRequest* msg) {
+const ::palm::ops::router::v1::Wan&
+RouterSetWanRequest::_Internal::payload(const RouterSetWanRequest* msg) {
   return *msg->_impl_.payload_;
 }
-RouterSetWanRequest::RouterSetWanRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+RouterSetWanRequest::RouterSetWanRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterSetWanRequest)
 }
-RouterSetWanRequest::RouterSetWanRequest(const RouterSetWanRequest& from) : ::google::protobuf::Message() {
-  RouterSetWanRequest* const _this = this;
-  (void)_this;
+RouterSetWanRequest::RouterSetWanRequest(const RouterSetWanRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RouterSetWanRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.payload_){nullptr},
-      decltype(_impl_.enable_){},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+      decltype(_impl_.payload_){nullptr}
+    , decltype(_impl_.enable_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_payload()) {
     _this->_impl_.payload_ = new ::palm::ops::router::v1::Wan(*from._impl_.payload_);
   }
   _this->_impl_.enable_ = from._impl_.enable_;
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterSetWanRequest)
 }
-inline void RouterSetWanRequest::SharedCtor(::_pb::Arena* arena) {
+
+inline void RouterSetWanRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.payload_){nullptr},
-      decltype(_impl_.enable_){false},
+      decltype(_impl_.payload_){nullptr}
+    , decltype(_impl_.enable_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 RouterSetWanRequest::~RouterSetWanRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterSetWanRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void RouterSetWanRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete _impl_.payload_;
 }
+
 void RouterSetWanRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void RouterSetWanRequest::Clear() {
+void RouterSetWanRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterSetWanRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.payload_ != nullptr);
-    _impl_.payload_->Clear();
+  if (GetArenaForAllocation() == nullptr && _impl_.payload_ != nullptr) {
+    delete _impl_.payload_;
   }
+  _impl_.payload_ = nullptr;
   _impl_.enable_ = false;
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RouterSetWanRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* RouterSetWanRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .palm.ops.router.v1.Wan payload = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_payload(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool enable = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.enable_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetWanRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(RouterSetWanRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_RouterSetWanRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // bool enable = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RouterSetWanRequest, _impl_.enable_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(RouterSetWanRequest, _impl_.enable_)}},
-    // .palm.ops.router.v1.Wan payload = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(RouterSetWanRequest, _impl_.payload_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .palm.ops.router.v1.Wan payload = 1;
-    {PROTOBUF_FIELD_OFFSET(RouterSetWanRequest, _impl_.payload_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // bool enable = 2;
-    {PROTOBUF_FIELD_OFFSET(RouterSetWanRequest, _impl_.enable_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Wan>()},
-  }}, {{
-  }},
-};
-
-::uint8_t* RouterSetWanRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* RouterSetWanRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.RouterSetWanRequest)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Wan payload = 1;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_payload()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(1, _Internal::payload(this),
         _Internal::payload(this).GetCachedSize(), target, stream);
   }
@@ -2592,66 +2223,63 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetWanRequest::_table_ = {
   // bool enable = 2;
   if (this->_internal_enable() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        2, this->_internal_enable(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_enable(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.RouterSetWanRequest)
   return target;
 }
 
-::size_t RouterSetWanRequest::ByteSizeLong() const {
+size_t RouterSetWanRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.RouterSetWanRequest)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // .palm.ops.router.v1.Wan payload = 1;
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
+  if (this->_internal_has_payload()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.payload_);
   }
 
   // bool enable = 2;
   if (this->_internal_enable() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData RouterSetWanRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouterSetWanRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RouterSetWanRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*RouterSetWanRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouterSetWanRequest::GetClassData() const { return &_class_data_; }
 
 
-void RouterSetWanRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void RouterSetWanRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RouterSetWanRequest*>(&to_msg);
   auto& from = static_cast<const RouterSetWanRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.RouterSetWanRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_payload()) {
     _this->_internal_mutable_payload()->::palm::ops::router::v1::Wan::MergeFrom(
         from._internal_payload());
   }
   if (from._internal_enable() != 0) {
     _this->_internal_set_enable(from._internal_enable());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RouterSetWanRequest::CopyFrom(const RouterSetWanRequest& from) {
@@ -2661,15 +2289,14 @@ void RouterSetWanRequest::CopyFrom(const RouterSetWanRequest& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool RouterSetWanRequest::IsInitialized() const {
+bool RouterSetWanRequest::IsInitialized() const {
   return true;
 }
 
 void RouterSetWanRequest::InternalSwap(RouterSetWanRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(RouterSetWanRequest, _impl_.enable_)
       + sizeof(RouterSetWanRequest::_impl_.enable_)
       - PROTOBUF_FIELD_OFFSET(RouterSetWanRequest, _impl_.payload_)>(
@@ -2677,192 +2304,202 @@ void RouterSetWanRequest::InternalSwap(RouterSetWanRequest* other) {
           reinterpret_cast<char*>(&other->_impl_.payload_));
 }
 
-::google::protobuf::Metadata RouterSetWanRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouterSetWanRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[3]);
 }
+
 // ===================================================================
 
 class WanPool_Item::_Internal {
  public:
 };
 
-WanPool_Item::WanPool_Item(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+WanPool_Item::WanPool_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.WanPool.Item)
 }
-WanPool_Item::WanPool_Item(const WanPool_Item& from) : ::google::protobuf::Message() {
-  WanPool_Item* const _this = this;
-  (void)_this;
+WanPool_Item::WanPool_Item(const WanPool_Item& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  WanPool_Item* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.weight_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.device_){}
+    , decltype(_impl_.weight_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.device_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_device().empty()) {
-    _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
+    _this->_impl_.device_.Set(from._internal_device(), 
+      _this->GetArenaForAllocation());
   }
   _this->_impl_.weight_ = from._impl_.weight_;
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.WanPool.Item)
 }
-inline void WanPool_Item::SharedCtor(::_pb::Arena* arena) {
+
+inline void WanPool_Item::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.weight_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.device_){}
+    , decltype(_impl_.weight_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.device_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 WanPool_Item::~WanPool_Item() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.WanPool.Item)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void WanPool_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.device_.Destroy();
 }
+
 void WanPool_Item::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void WanPool_Item::Clear() {
+void WanPool_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.WanPool.Item)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.device_.ClearToEmpty();
   _impl_.weight_ = 0u;
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* WanPool_Item::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* WanPool_Item::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string device = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_device();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.WanPool.Item.device"));
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 weight = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.weight_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 46, 2> WanPool_Item::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_WanPool_Item_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // uint32 weight = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(WanPool_Item, _impl_.weight_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(WanPool_Item, _impl_.weight_)}},
-    // string device = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(WanPool_Item, _impl_.device_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string device = 1;
-    {PROTOBUF_FIELD_OFFSET(WanPool_Item, _impl_.device_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // uint32 weight = 2;
-    {PROTOBUF_FIELD_OFFSET(WanPool_Item, _impl_.weight_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-  }},
-  // no aux_entries
-  {{
-    "\37\6\0\0\0\0\0\0"
-    "palm.ops.router.v1.WanPool.Item"
-    "device"
-  }},
-};
-
-::uint8_t* WanPool_Item::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* WanPool_Item::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.WanPool.Item)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string device = 1;
   if (!this->_internal_device().empty()) {
-    const std::string& _s = this->_internal_device();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.WanPool.Item.device");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_device().data(), static_cast<int>(this->_internal_device().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.WanPool.Item.device");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_device(), target);
   }
 
   // uint32 weight = 2;
   if (this->_internal_weight() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        2, this->_internal_weight(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_weight(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.WanPool.Item)
   return target;
 }
 
-::size_t WanPool_Item::ByteSizeLong() const {
+size_t WanPool_Item::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.WanPool.Item)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string device = 1;
   if (!this->_internal_device().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_device());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_device());
   }
 
   // uint32 weight = 2;
   if (this->_internal_weight() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_weight());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_weight());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData WanPool_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WanPool_Item::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     WanPool_Item::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*WanPool_Item::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WanPool_Item::GetClassData() const { return &_class_data_; }
 
 
-void WanPool_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void WanPool_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<WanPool_Item*>(&to_msg);
   auto& from = static_cast<const WanPool_Item&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.WanPool.Item)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_device().empty()) {
@@ -2871,7 +2508,7 @@ void WanPool_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google
   if (from._internal_weight() != 0) {
     _this->_internal_set_weight(from._internal_weight());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WanPool_Item::CopyFrom(const WanPool_Item& from) {
@@ -2881,7 +2518,7 @@ void WanPool_Item::CopyFrom(const WanPool_Item& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool WanPool_Item::IsInitialized() const {
+bool WanPool_Item::IsInitialized() const {
   return true;
 }
 
@@ -2890,164 +2527,179 @@ void WanPool_Item::InternalSwap(WanPool_Item* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
-                                       &other->_impl_.device_, rhs_arena);
-        swap(_impl_.weight_, other->_impl_.weight_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.device_, lhs_arena,
+      &other->_impl_.device_, rhs_arena
+  );
+  swap(_impl_.weight_, other->_impl_.weight_);
 }
 
-::google::protobuf::Metadata WanPool_Item::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata WanPool_Item::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[4]);
 }
+
 // ===================================================================
 
 class WanPool::_Internal {
  public:
 };
 
-WanPool::WanPool(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+WanPool::WanPool(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.WanPool)
 }
-WanPool::WanPool(const WanPool& from) : ::google::protobuf::Message() {
-  WanPool* const _this = this;
-  (void)_this;
+WanPool::WanPool(const WanPool& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  WanPool* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.items_){from._impl_.items_}
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.WanPool)
 }
-inline void WanPool::SharedCtor(::_pb::Arena* arena) {
+
+inline void WanPool::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.items_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 WanPool::~WanPool() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.WanPool)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void WanPool::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.items_.~RepeatedPtrField();
 }
+
 void WanPool::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void WanPool::Clear() {
+void WanPool::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.WanPool)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _impl_.items_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* WanPool::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* WanPool::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .palm.ops.router.v1.WanPool.Item items = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_items(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 1, 0, 2> WanPool::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_WanPool_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // repeated .palm.ops.router.v1.WanPool.Item items = 1;
-    {::_pbi::TcParser::FastMtR1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(WanPool, _impl_.items_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // repeated .palm.ops.router.v1.WanPool.Item items = 1;
-    {PROTOBUF_FIELD_OFFSET(WanPool, _impl_.items_), 0, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::WanPool_Item>()},
-  }}, {{
-  }},
-};
-
-::uint8_t* WanPool::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* WanPool::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.WanPool)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // repeated .palm.ops.router.v1.WanPool.Item items = 1;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
-    const auto& repfield = this->_internal_items().Get(i);
-    target = ::google::protobuf::internal::WireFormatLite::
+    const auto& repfield = this->_internal_items(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
         InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.WanPool)
   return target;
 }
 
-::size_t WanPool::ByteSizeLong() const {
+size_t WanPool::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.WanPool)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .palm.ops.router.v1.WanPool.Item items = 1;
   total_size += 1UL * this->_internal_items_size();
-  for (const auto& msg : this->_internal_items()) {
+  for (const auto& msg : this->_impl_.items_) {
     total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData WanPool::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WanPool::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     WanPool::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*WanPool::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WanPool::GetClassData() const { return &_class_data_; }
 
 
-void WanPool::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void WanPool::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<WanPool*>(&to_msg);
   auto& from = static_cast<const WanPool&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.WanPool)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void WanPool::CopyFrom(const WanPool& from) {
@@ -3057,7 +2709,7 @@ void WanPool::CopyFrom(const WanPool& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool WanPool::IsInitialized() const {
+bool WanPool::IsInitialized() const {
   return true;
 }
 
@@ -3067,225 +2719,226 @@ void WanPool::InternalSwap(WanPool* other) {
   _impl_.items_.InternalSwap(&other->_impl_.items_);
 }
 
-::google::protobuf::Metadata WanPool::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata WanPool::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[5]);
 }
+
 // ===================================================================
 
 class RouterCreateUserRequest::_Internal {
  public:
-  using HasBits = decltype(std::declval<RouterCreateUserRequest>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(RouterCreateUserRequest, _impl_._has_bits_);
   static const ::palm::ops::router::v1::Contact& contact(const RouterCreateUserRequest* msg);
-  static void set_has_contact(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::palm::ops::router::v1::Contact& RouterCreateUserRequest::_Internal::contact(const RouterCreateUserRequest* msg) {
+const ::palm::ops::router::v1::Contact&
+RouterCreateUserRequest::_Internal::contact(const RouterCreateUserRequest* msg) {
   return *msg->_impl_.contact_;
 }
-RouterCreateUserRequest::RouterCreateUserRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+RouterCreateUserRequest::RouterCreateUserRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterCreateUserRequest)
 }
-RouterCreateUserRequest::RouterCreateUserRequest(const RouterCreateUserRequest& from) : ::google::protobuf::Message() {
-  RouterCreateUserRequest* const _this = this;
-  (void)_this;
+RouterCreateUserRequest::RouterCreateUserRequest(const RouterCreateUserRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RouterCreateUserRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.contact_){nullptr},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.name_){}
+    , decltype(_impl_.contact_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_contact()) {
     _this->_impl_.contact_ = new ::palm::ops::router::v1::Contact(*from._impl_.contact_);
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterCreateUserRequest)
 }
-inline void RouterCreateUserRequest::SharedCtor(::_pb::Arena* arena) {
+
+inline void RouterCreateUserRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.contact_){nullptr},
+      decltype(_impl_.name_){}
+    , decltype(_impl_.contact_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 RouterCreateUserRequest::~RouterCreateUserRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterCreateUserRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void RouterCreateUserRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.name_.Destroy();
   if (this != internal_default_instance()) delete _impl_.contact_;
 }
+
 void RouterCreateUserRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void RouterCreateUserRequest::Clear() {
+void RouterCreateUserRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterCreateUserRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.name_.ClearToEmpty();
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.contact_ != nullptr);
-    _impl_.contact_->Clear();
+  if (GetArenaForAllocation() == nullptr && _impl_.contact_ != nullptr) {
+    delete _impl_.contact_;
   }
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _impl_.contact_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RouterCreateUserRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* RouterCreateUserRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string name = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.RouterCreateUserRequest.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Contact contact = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_contact(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 55, 2> RouterCreateUserRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(RouterCreateUserRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_RouterCreateUserRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // .palm.ops.router.v1.Contact contact = 2;
-    {::_pbi::TcParser::FastMtS1,
-     {18, 0, 0, PROTOBUF_FIELD_OFFSET(RouterCreateUserRequest, _impl_.contact_)}},
-    // string name = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(RouterCreateUserRequest, _impl_.name_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string name = 1;
-    {PROTOBUF_FIELD_OFFSET(RouterCreateUserRequest, _impl_.name_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .palm.ops.router.v1.Contact contact = 2;
-    {PROTOBUF_FIELD_OFFSET(RouterCreateUserRequest, _impl_.contact_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Contact>()},
-  }}, {{
-    "\52\4\0\0\0\0\0\0"
-    "palm.ops.router.v1.RouterCreateUserRequest"
-    "name"
-  }},
-};
-
-::uint8_t* RouterCreateUserRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* RouterCreateUserRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.RouterCreateUserRequest)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string name = 1;
   if (!this->_internal_name().empty()) {
-    const std::string& _s = this->_internal_name();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterCreateUserRequest.name");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.RouterCreateUserRequest.name");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Contact contact = 2;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_contact()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(2, _Internal::contact(this),
         _Internal::contact(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.RouterCreateUserRequest)
   return target;
 }
 
-::size_t RouterCreateUserRequest::ByteSizeLong() const {
+size_t RouterCreateUserRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.RouterCreateUserRequest)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string name = 1;
   if (!this->_internal_name().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_name());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   // .palm.ops.router.v1.Contact contact = 2;
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
+  if (this->_internal_has_contact()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.contact_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData RouterCreateUserRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouterCreateUserRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RouterCreateUserRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*RouterCreateUserRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouterCreateUserRequest::GetClassData() const { return &_class_data_; }
 
 
-void RouterCreateUserRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void RouterCreateUserRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RouterCreateUserRequest*>(&to_msg);
   auto& from = static_cast<const RouterCreateUserRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.RouterCreateUserRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_name().empty()) {
     _this->_internal_set_name(from._internal_name());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_contact()) {
     _this->_internal_mutable_contact()->::palm::ops::router::v1::Contact::MergeFrom(
         from._internal_contact());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RouterCreateUserRequest::CopyFrom(const RouterCreateUserRequest& from) {
@@ -3295,7 +2948,7 @@ void RouterCreateUserRequest::CopyFrom(const RouterCreateUserRequest& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool RouterCreateUserRequest::IsInitialized() const {
+bool RouterCreateUserRequest::IsInitialized() const {
   return true;
 }
 
@@ -3304,258 +2957,259 @@ void RouterCreateUserRequest::InternalSwap(RouterCreateUserRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
   swap(_impl_.contact_, other->_impl_.contact_);
 }
 
-::google::protobuf::Metadata RouterCreateUserRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouterCreateUserRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[6]);
 }
+
 // ===================================================================
 
 class RouterIndexUserResponse_Item::_Internal {
  public:
-  using HasBits = decltype(std::declval<RouterIndexUserResponse_Item>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse_Item, _impl_._has_bits_);
   static const ::palm::ops::router::v1::Contact& contact(const RouterIndexUserResponse_Item* msg);
-  static void set_has_contact(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::palm::ops::router::v1::Contact& RouterIndexUserResponse_Item::_Internal::contact(const RouterIndexUserResponse_Item* msg) {
+const ::palm::ops::router::v1::Contact&
+RouterIndexUserResponse_Item::_Internal::contact(const RouterIndexUserResponse_Item* msg) {
   return *msg->_impl_.contact_;
 }
-RouterIndexUserResponse_Item::RouterIndexUserResponse_Item(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+RouterIndexUserResponse_Item::RouterIndexUserResponse_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterIndexUserResponse.Item)
 }
-RouterIndexUserResponse_Item::RouterIndexUserResponse_Item(const RouterIndexUserResponse_Item& from) : ::google::protobuf::Message() {
-  RouterIndexUserResponse_Item* const _this = this;
-  (void)_this;
+RouterIndexUserResponse_Item::RouterIndexUserResponse_Item(const RouterIndexUserResponse_Item& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RouterIndexUserResponse_Item* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.contact_){nullptr},
-      decltype(_impl_.id_){},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.name_){}
+    , decltype(_impl_.contact_){nullptr}
+    , decltype(_impl_.id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_contact()) {
     _this->_impl_.contact_ = new ::palm::ops::router::v1::Contact(*from._impl_.contact_);
   }
   _this->_impl_.id_ = from._impl_.id_;
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterIndexUserResponse.Item)
 }
-inline void RouterIndexUserResponse_Item::SharedCtor(::_pb::Arena* arena) {
+
+inline void RouterIndexUserResponse_Item::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.contact_){nullptr},
-      decltype(_impl_.id_){0},
+      decltype(_impl_.name_){}
+    , decltype(_impl_.contact_){nullptr}
+    , decltype(_impl_.id_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 RouterIndexUserResponse_Item::~RouterIndexUserResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterIndexUserResponse.Item)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void RouterIndexUserResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.name_.Destroy();
   if (this != internal_default_instance()) delete _impl_.contact_;
 }
+
 void RouterIndexUserResponse_Item::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void RouterIndexUserResponse_Item::Clear() {
+void RouterIndexUserResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterIndexUserResponse.Item)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.name_.ClearToEmpty();
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.contact_ != nullptr);
-    _impl_.contact_->Clear();
+  if (GetArenaForAllocation() == nullptr && _impl_.contact_ != nullptr) {
+    delete _impl_.contact_;
   }
+  _impl_.contact_ = nullptr;
   _impl_.id_ = 0;
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RouterIndexUserResponse_Item::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* RouterIndexUserResponse_Item::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string name = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.RouterIndexUserResponse.Item.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Contact contact = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_contact(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 1, 60, 2> RouterIndexUserResponse_Item::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse_Item, _impl_._has_bits_),
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_RouterIndexUserResponse_Item_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // int32 id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RouterIndexUserResponse_Item, _impl_.id_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse_Item, _impl_.id_)}},
-    // string name = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse_Item, _impl_.name_)}},
-    // .palm.ops.router.v1.Contact contact = 3;
-    {::_pbi::TcParser::FastMtS1,
-     {26, 0, 0, PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse_Item, _impl_.contact_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // int32 id = 1;
-    {PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse_Item, _impl_.id_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // string name = 2;
-    {PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse_Item, _impl_.name_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .palm.ops.router.v1.Contact contact = 3;
-    {PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse_Item, _impl_.contact_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Contact>()},
-  }}, {{
-    "\57\0\4\0\0\0\0\0"
-    "palm.ops.router.v1.RouterIndexUserResponse.Item"
-    "name"
-  }},
-};
-
-::uint8_t* RouterIndexUserResponse_Item::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* RouterIndexUserResponse_Item::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.RouterIndexUserResponse.Item)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<1>(
-            stream, this->_internal_id(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
   // string name = 2;
   if (!this->_internal_name().empty()) {
-    const std::string& _s = this->_internal_name();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterIndexUserResponse.Item.name");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.RouterIndexUserResponse.Item.name");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_name(), target);
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Contact contact = 3;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_contact()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(3, _Internal::contact(this),
         _Internal::contact(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.RouterIndexUserResponse.Item)
   return target;
 }
 
-::size_t RouterIndexUserResponse_Item::ByteSizeLong() const {
+size_t RouterIndexUserResponse_Item::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.RouterIndexUserResponse.Item)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string name = 2;
   if (!this->_internal_name().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_name());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   // .palm.ops.router.v1.Contact contact = 3;
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
+  if (this->_internal_has_contact()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.contact_);
   }
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_id());
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData RouterIndexUserResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouterIndexUserResponse_Item::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RouterIndexUserResponse_Item::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*RouterIndexUserResponse_Item::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouterIndexUserResponse_Item::GetClassData() const { return &_class_data_; }
 
 
-void RouterIndexUserResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void RouterIndexUserResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RouterIndexUserResponse_Item*>(&to_msg);
   auto& from = static_cast<const RouterIndexUserResponse_Item&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.RouterIndexUserResponse.Item)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_name().empty()) {
     _this->_internal_set_name(from._internal_name());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_contact()) {
     _this->_internal_mutable_contact()->::palm::ops::router::v1::Contact::MergeFrom(
         from._internal_contact());
   }
   if (from._internal_id() != 0) {
     _this->_internal_set_id(from._internal_id());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RouterIndexUserResponse_Item::CopyFrom(const RouterIndexUserResponse_Item& from) {
@@ -3565,7 +3219,7 @@ void RouterIndexUserResponse_Item::CopyFrom(const RouterIndexUserResponse_Item& 
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool RouterIndexUserResponse_Item::IsInitialized() const {
+bool RouterIndexUserResponse_Item::IsInitialized() const {
   return true;
 }
 
@@ -3574,10 +3228,11 @@ void RouterIndexUserResponse_Item::InternalSwap(RouterIndexUserResponse_Item* ot
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse_Item, _impl_.id_)
       + sizeof(RouterIndexUserResponse_Item::_impl_.id_)
       - PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse_Item, _impl_.contact_)>(
@@ -3585,159 +3240,172 @@ void RouterIndexUserResponse_Item::InternalSwap(RouterIndexUserResponse_Item* ot
           reinterpret_cast<char*>(&other->_impl_.contact_));
 }
 
-::google::protobuf::Metadata RouterIndexUserResponse_Item::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouterIndexUserResponse_Item::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[7]);
 }
+
 // ===================================================================
 
 class RouterIndexUserResponse::_Internal {
  public:
 };
 
-RouterIndexUserResponse::RouterIndexUserResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+RouterIndexUserResponse::RouterIndexUserResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterIndexUserResponse)
 }
-RouterIndexUserResponse::RouterIndexUserResponse(const RouterIndexUserResponse& from) : ::google::protobuf::Message() {
-  RouterIndexUserResponse* const _this = this;
-  (void)_this;
+RouterIndexUserResponse::RouterIndexUserResponse(const RouterIndexUserResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RouterIndexUserResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.items_){from._impl_.items_}
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterIndexUserResponse)
 }
-inline void RouterIndexUserResponse::SharedCtor(::_pb::Arena* arena) {
+
+inline void RouterIndexUserResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.items_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 RouterIndexUserResponse::~RouterIndexUserResponse() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterIndexUserResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void RouterIndexUserResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.items_.~RepeatedPtrField();
 }
+
 void RouterIndexUserResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void RouterIndexUserResponse::Clear() {
+void RouterIndexUserResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterIndexUserResponse)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _impl_.items_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RouterIndexUserResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* RouterIndexUserResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .palm.ops.router.v1.RouterIndexUserResponse.Item items = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_items(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 1, 0, 2> RouterIndexUserResponse::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_RouterIndexUserResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // repeated .palm.ops.router.v1.RouterIndexUserResponse.Item items = 1;
-    {::_pbi::TcParser::FastMtR1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse, _impl_.items_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // repeated .palm.ops.router.v1.RouterIndexUserResponse.Item items = 1;
-    {PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse, _impl_.items_), 0, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::RouterIndexUserResponse_Item>()},
-  }}, {{
-  }},
-};
-
-::uint8_t* RouterIndexUserResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* RouterIndexUserResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.RouterIndexUserResponse)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // repeated .palm.ops.router.v1.RouterIndexUserResponse.Item items = 1;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
-    const auto& repfield = this->_internal_items().Get(i);
-    target = ::google::protobuf::internal::WireFormatLite::
+    const auto& repfield = this->_internal_items(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
         InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.RouterIndexUserResponse)
   return target;
 }
 
-::size_t RouterIndexUserResponse::ByteSizeLong() const {
+size_t RouterIndexUserResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.RouterIndexUserResponse)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .palm.ops.router.v1.RouterIndexUserResponse.Item items = 1;
   total_size += 1UL * this->_internal_items_size();
-  for (const auto& msg : this->_internal_items()) {
+  for (const auto& msg : this->_impl_.items_) {
     total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData RouterIndexUserResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouterIndexUserResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RouterIndexUserResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*RouterIndexUserResponse::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouterIndexUserResponse::GetClassData() const { return &_class_data_; }
 
 
-void RouterIndexUserResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void RouterIndexUserResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RouterIndexUserResponse*>(&to_msg);
   auto& from = static_cast<const RouterIndexUserResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.RouterIndexUserResponse)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RouterIndexUserResponse::CopyFrom(const RouterIndexUserResponse& from) {
@@ -3747,7 +3415,7 @@ void RouterIndexUserResponse::CopyFrom(const RouterIndexUserResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool RouterIndexUserResponse::IsInitialized() const {
+bool RouterIndexUserResponse::IsInitialized() const {
   return true;
 }
 
@@ -3757,127 +3425,138 @@ void RouterIndexUserResponse::InternalSwap(RouterIndexUserResponse* other) {
   _impl_.items_.InternalSwap(&other->_impl_.items_);
 }
 
-::google::protobuf::Metadata RouterIndexUserResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouterIndexUserResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[8]);
 }
+
 // ===================================================================
 
 class RouterUpdateHostRequest::_Internal {
  public:
   using HasBits = decltype(std::declval<RouterUpdateHostRequest>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_._has_bits_);
   static void set_has_location(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
 
-RouterUpdateHostRequest::RouterUpdateHostRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+RouterUpdateHostRequest::RouterUpdateHostRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterUpdateHostRequest)
 }
-RouterUpdateHostRequest::RouterUpdateHostRequest(const RouterUpdateHostRequest& from) : ::google::protobuf::Message() {
-  RouterUpdateHostRequest* const _this = this;
-  (void)_this;
+RouterUpdateHostRequest::RouterUpdateHostRequest(const RouterUpdateHostRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RouterUpdateHostRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.group_){},
-      decltype(_impl_.ip_){},
-      decltype(_impl_.zone_){},
-      decltype(_impl_.location_){},
-      decltype(_impl_.id_){},
-      decltype(_impl_.user_){},
-      decltype(_impl_.fixed_){},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.group_){}
+    , decltype(_impl_.ip_){}
+    , decltype(_impl_.zone_){}
+    , decltype(_impl_.location_){}
+    , decltype(_impl_.id_){}
+    , decltype(_impl_.user_){}
+    , decltype(_impl_.fixed_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.group_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.group_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_group().empty()) {
-    _this->_impl_.group_.Set(from._internal_group(), _this->GetArenaForAllocation());
+    _this->_impl_.group_.Set(from._internal_group(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.ip_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ip_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_ip().empty()) {
-    _this->_impl_.ip_.Set(from._internal_ip(), _this->GetArenaForAllocation());
+    _this->_impl_.ip_.Set(from._internal_ip(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.zone_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.zone_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.zone_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_zone().empty()) {
-    _this->_impl_.zone_.Set(from._internal_zone(), _this->GetArenaForAllocation());
+    _this->_impl_.zone_.Set(from._internal_zone(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.location_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.location_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.location_.Set(from._internal_location(), _this->GetArenaForAllocation());
+    _impl_.location_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_location()) {
+    _this->_impl_.location_.Set(from._internal_location(), 
+      _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.fixed_) -
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.fixed_) -
     reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.fixed_));
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterUpdateHostRequest)
 }
-inline void RouterUpdateHostRequest::SharedCtor(::_pb::Arena* arena) {
+
+inline void RouterUpdateHostRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.group_){},
-      decltype(_impl_.ip_){},
-      decltype(_impl_.zone_){},
-      decltype(_impl_.location_){},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.user_){0},
-      decltype(_impl_.fixed_){false},
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.group_){}
+    , decltype(_impl_.ip_){}
+    , decltype(_impl_.zone_){}
+    , decltype(_impl_.location_){}
+    , decltype(_impl_.id_){0}
+    , decltype(_impl_.user_){0}
+    , decltype(_impl_.fixed_){false}
   };
   _impl_.group_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.group_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.ip_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ip_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.zone_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.zone_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.zone_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.location_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.location_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.location_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 RouterUpdateHostRequest::~RouterUpdateHostRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterUpdateHostRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void RouterUpdateHostRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.group_.Destroy();
   _impl_.ip_.Destroy();
   _impl_.zone_.Destroy();
   _impl_.location_.Destroy();
 }
+
 void RouterUpdateHostRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void RouterUpdateHostRequest::Clear() {
+void RouterUpdateHostRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterUpdateHostRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -3888,227 +3567,248 @@ PROTOBUF_NOINLINE void RouterUpdateHostRequest::Clear() {
   if (cached_has_bits & 0x00000001u) {
     _impl_.location_.ClearNonDefaultToEmpty();
   }
-  ::memset(&_impl_.id_, 0, static_cast<::size_t>(
+  ::memset(&_impl_.id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.fixed_) -
       reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.fixed_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RouterUpdateHostRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* RouterUpdateHostRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 user = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.user_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string group = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_group();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.RouterUpdateHostRequest.group"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string ip = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_ip();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.RouterUpdateHostRequest.ip"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool fixed = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          _impl_.fixed_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string zone = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+          auto str = _internal_mutable_zone();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.RouterUpdateHostRequest.zone"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string location = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          auto str = _internal_mutable_location();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.RouterUpdateHostRequest.location"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 7, 0, 70, 2> RouterUpdateHostRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    9, 56,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294966880,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    7,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_RouterUpdateHostRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string zone = 8;
-    {::_pbi::TcParser::FastUS1,
-     {66, 63, 0, PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.zone_)}},
-    // int32 id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RouterUpdateHostRequest, _impl_.id_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.id_)}},
-    // int32 user = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RouterUpdateHostRequest, _impl_.user_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.user_)}},
-    // string group = 3;
-    {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.group_)}},
-    // string ip = 4;
-    {::_pbi::TcParser::FastUS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.ip_)}},
-    // bool fixed = 5;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(RouterUpdateHostRequest, _impl_.fixed_), 63>(),
-     {40, 63, 0, PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.fixed_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // int32 id = 1;
-    {PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.id_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // int32 user = 2;
-    {PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.user_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // string group = 3;
-    {PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.group_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string ip = 4;
-    {PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.ip_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // bool fixed = 5;
-    {PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.fixed_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // string zone = 8;
-    {PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.zone_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // optional string location = 9;
-    {PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.location_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\52\0\0\5\2\0\4\10"
-    "palm.ops.router.v1.RouterUpdateHostRequest"
-    "group"
-    "ip"
-    "zone"
-    "location"
-  }},
-};
-
-::uint8_t* RouterUpdateHostRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* RouterUpdateHostRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.RouterUpdateHostRequest)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<1>(
-            stream, this->_internal_id(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
   // int32 user = 2;
   if (this->_internal_user() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<2>(
-            stream, this->_internal_user(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_user(), target);
   }
 
   // string group = 3;
   if (!this->_internal_group().empty()) {
-    const std::string& _s = this->_internal_group();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterUpdateHostRequest.group");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_group().data(), static_cast<int>(this->_internal_group().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.RouterUpdateHostRequest.group");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_group(), target);
   }
 
   // string ip = 4;
   if (!this->_internal_ip().empty()) {
-    const std::string& _s = this->_internal_ip();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterUpdateHostRequest.ip");
-    target = stream->WriteStringMaybeAliased(4, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_ip().data(), static_cast<int>(this->_internal_ip().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.RouterUpdateHostRequest.ip");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_ip(), target);
   }
 
   // bool fixed = 5;
   if (this->_internal_fixed() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        5, this->_internal_fixed(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(5, this->_internal_fixed(), target);
   }
 
   // string zone = 8;
   if (!this->_internal_zone().empty()) {
-    const std::string& _s = this->_internal_zone();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterUpdateHostRequest.zone");
-    target = stream->WriteStringMaybeAliased(8, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_zone().data(), static_cast<int>(this->_internal_zone().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.RouterUpdateHostRequest.zone");
+    target = stream->WriteStringMaybeAliased(
+        8, this->_internal_zone(), target);
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
   // optional string location = 9;
-  if (cached_has_bits & 0x00000001u) {
-    const std::string& _s = this->_internal_location();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterUpdateHostRequest.location");
-    target = stream->WriteStringMaybeAliased(9, _s, target);
+  if (_internal_has_location()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_location().data(), static_cast<int>(this->_internal_location().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.RouterUpdateHostRequest.location");
+    target = stream->WriteStringMaybeAliased(
+        9, this->_internal_location(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.RouterUpdateHostRequest)
   return target;
 }
 
-::size_t RouterUpdateHostRequest::ByteSizeLong() const {
+size_t RouterUpdateHostRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.RouterUpdateHostRequest)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string group = 3;
   if (!this->_internal_group().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_group());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_group());
   }
 
   // string ip = 4;
   if (!this->_internal_ip().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_ip());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_ip());
   }
 
   // string zone = 8;
   if (!this->_internal_zone().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_zone());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_zone());
   }
 
   // optional string location = 9;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_location());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_location());
   }
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_id());
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id());
   }
 
   // int32 user = 2;
   if (this->_internal_user() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_user());
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_user());
   }
 
   // bool fixed = 5;
   if (this->_internal_fixed() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData RouterUpdateHostRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouterUpdateHostRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RouterUpdateHostRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*RouterUpdateHostRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouterUpdateHostRequest::GetClassData() const { return &_class_data_; }
 
 
-void RouterUpdateHostRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void RouterUpdateHostRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RouterUpdateHostRequest*>(&to_msg);
   auto& from = static_cast<const RouterUpdateHostRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.RouterUpdateHostRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_group().empty()) {
@@ -4120,7 +3820,7 @@ void RouterUpdateHostRequest::MergeImpl(::google::protobuf::Message& to_msg, con
   if (!from._internal_zone().empty()) {
     _this->_internal_set_zone(from._internal_zone());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_location()) {
     _this->_internal_set_location(from._internal_location());
   }
   if (from._internal_id() != 0) {
@@ -4132,7 +3832,7 @@ void RouterUpdateHostRequest::MergeImpl(::google::protobuf::Message& to_msg, con
   if (from._internal_fixed() != 0) {
     _this->_internal_set_fixed(from._internal_fixed());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RouterUpdateHostRequest::CopyFrom(const RouterUpdateHostRequest& from) {
@@ -4142,7 +3842,7 @@ void RouterUpdateHostRequest::CopyFrom(const RouterUpdateHostRequest& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool RouterUpdateHostRequest::IsInitialized() const {
+bool RouterUpdateHostRequest::IsInitialized() const {
   return true;
 }
 
@@ -4152,15 +3852,23 @@ void RouterUpdateHostRequest::InternalSwap(RouterUpdateHostRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, lhs_arena,
-                                       &other->_impl_.group_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, lhs_arena,
-                                       &other->_impl_.ip_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.zone_, lhs_arena,
-                                       &other->_impl_.zone_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.location_, lhs_arena,
-                                       &other->_impl_.location_, rhs_arena);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.group_, lhs_arena,
+      &other->_impl_.group_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.ip_, lhs_arena,
+      &other->_impl_.ip_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.zone_, lhs_arena,
+      &other->_impl_.zone_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.location_, lhs_arena,
+      &other->_impl_.location_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.fixed_)
       + sizeof(RouterUpdateHostRequest::_impl_.fixed_)
       - PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.id_)>(
@@ -4168,39 +3876,41 @@ void RouterUpdateHostRequest::InternalSwap(RouterUpdateHostRequest* other) {
           reinterpret_cast<char*>(&other->_impl_.id_));
 }
 
-::google::protobuf::Metadata RouterUpdateHostRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouterUpdateHostRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[9]);
 }
+
 // ===================================================================
 
 class RouterIndexRuleResponse_Item::_Internal {
  public:
-  static constexpr ::int32_t kOneofCaseOffset =
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::RouterIndexRuleResponse_Item, _impl_._oneof_case_);
   static const ::palm::ops::router::v1::Rule_InBound& in(const RouterIndexRuleResponse_Item* msg);
   static const ::palm::ops::router::v1::Rule_OutBound& out(const RouterIndexRuleResponse_Item* msg);
   static const ::palm::ops::router::v1::Rule_Nat& nat(const RouterIndexRuleResponse_Item* msg);
 };
 
-const ::palm::ops::router::v1::Rule_InBound& RouterIndexRuleResponse_Item::_Internal::in(const RouterIndexRuleResponse_Item* msg) {
+const ::palm::ops::router::v1::Rule_InBound&
+RouterIndexRuleResponse_Item::_Internal::in(const RouterIndexRuleResponse_Item* msg) {
   return *msg->_impl_.payload_.in_;
 }
-const ::palm::ops::router::v1::Rule_OutBound& RouterIndexRuleResponse_Item::_Internal::out(const RouterIndexRuleResponse_Item* msg) {
+const ::palm::ops::router::v1::Rule_OutBound&
+RouterIndexRuleResponse_Item::_Internal::out(const RouterIndexRuleResponse_Item* msg) {
   return *msg->_impl_.payload_.out_;
 }
-const ::palm::ops::router::v1::Rule_Nat& RouterIndexRuleResponse_Item::_Internal::nat(const RouterIndexRuleResponse_Item* msg) {
+const ::palm::ops::router::v1::Rule_Nat&
+RouterIndexRuleResponse_Item::_Internal::nat(const RouterIndexRuleResponse_Item* msg) {
   return *msg->_impl_.payload_.nat_;
 }
 void RouterIndexRuleResponse_Item::set_allocated_in(::palm::ops::router::v1::Rule_InBound* in) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_payload();
   if (in) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(in);
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(in);
     if (message_arena != submessage_arena) {
-      in = ::google::protobuf::internal::GetOwnedMessage(
+      in = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, in, submessage_arena);
     }
     set_has_in();
@@ -4209,13 +3919,13 @@ void RouterIndexRuleResponse_Item::set_allocated_in(::palm::ops::router::v1::Rul
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.RouterIndexRuleResponse.Item.in)
 }
 void RouterIndexRuleResponse_Item::set_allocated_out(::palm::ops::router::v1::Rule_OutBound* out) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_payload();
   if (out) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(out);
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(out);
     if (message_arena != submessage_arena) {
-      out = ::google::protobuf::internal::GetOwnedMessage(
+      out = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, out, submessage_arena);
     }
     set_has_out();
@@ -4224,13 +3934,13 @@ void RouterIndexRuleResponse_Item::set_allocated_out(::palm::ops::router::v1::Ru
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.RouterIndexRuleResponse.Item.out)
 }
 void RouterIndexRuleResponse_Item::set_allocated_nat(::palm::ops::router::v1::Rule_Nat* nat) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_payload();
   if (nat) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(nat);
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(nat);
     if (message_arena != submessage_arena) {
-      nat = ::google::protobuf::internal::GetOwnedMessage(
+      nat = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, nat, submessage_arena);
     }
     set_has_nat();
@@ -4238,37 +3948,39 @@ void RouterIndexRuleResponse_Item::set_allocated_nat(::palm::ops::router::v1::Ru
   }
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.RouterIndexRuleResponse.Item.nat)
 }
-RouterIndexRuleResponse_Item::RouterIndexRuleResponse_Item(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+RouterIndexRuleResponse_Item::RouterIndexRuleResponse_Item(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterIndexRuleResponse.Item)
 }
-RouterIndexRuleResponse_Item::RouterIndexRuleResponse_Item(const RouterIndexRuleResponse_Item& from) : ::google::protobuf::Message() {
-  RouterIndexRuleResponse_Item* const _this = this;
-  (void)_this;
+RouterIndexRuleResponse_Item::RouterIndexRuleResponse_Item(const RouterIndexRuleResponse_Item& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RouterIndexRuleResponse_Item* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.id_){},
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.name_){}
+    , decltype(_impl_.group_){}
+    , decltype(_impl_.id_){}
+    , decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.group_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.group_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_group().empty()) {
-    _this->_impl_.group_.Set(from._internal_group(), _this->GetArenaForAllocation());
+    _this->_impl_.group_.Set(from._internal_group(), 
+      _this->GetArenaForAllocation());
   }
   _this->_impl_.id_ = from._impl_.id_;
   clear_has_payload();
@@ -4292,42 +4004,50 @@ RouterIndexRuleResponse_Item::RouterIndexRuleResponse_Item(const RouterIndexRule
       break;
     }
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterIndexRuleResponse.Item)
 }
-inline void RouterIndexRuleResponse_Item::SharedCtor(::_pb::Arena* arena) {
+
+inline void RouterIndexRuleResponse_Item::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
+      decltype(_impl_.name_){}
+    , decltype(_impl_.group_){}
+    , decltype(_impl_.id_){0}
+    , decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
   };
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.group_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.group_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   clear_has_payload();
 }
+
 RouterIndexRuleResponse_Item::~RouterIndexRuleResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterIndexRuleResponse.Item)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void RouterIndexRuleResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.name_.Destroy();
   _impl_.group_.Destroy();
   if (has_payload()) {
     clear_payload();
   }
 }
+
 void RouterIndexRuleResponse_Item::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
@@ -4361,9 +4081,9 @@ void RouterIndexRuleResponse_Item::clear_payload() {
 }
 
 
-PROTOBUF_NOINLINE void RouterIndexRuleResponse_Item::Clear() {
+void RouterIndexRuleResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterIndexRuleResponse.Item)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -4371,180 +4091,197 @@ PROTOBUF_NOINLINE void RouterIndexRuleResponse_Item::Clear() {
   _impl_.group_.ClearToEmpty();
   _impl_.id_ = 0;
   clear_payload();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RouterIndexRuleResponse_Item::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* RouterIndexRuleResponse_Item::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string name = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.RouterIndexRuleResponse.Item.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string group = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_group();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.RouterIndexRuleResponse.Item.group"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Rule.InBound in = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+          ptr = ctx->ParseMessage(_internal_mutable_in(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Rule.OutBound out = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+          ptr = ctx->ParseMessage(_internal_mutable_out(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Rule.Nat nat = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 106)) {
+          ptr = ctx->ParseMessage(_internal_mutable_nat(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 6, 3, 65, 2> RouterIndexRuleResponse_Item::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    13, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294960120,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    6,  // num_field_entries
-    3,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_RouterIndexRuleResponse_Item_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // int32 id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RouterIndexRuleResponse_Item, _impl_.id_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(RouterIndexRuleResponse_Item, _impl_.id_)}},
-    // string name = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(RouterIndexRuleResponse_Item, _impl_.name_)}},
-    // string group = 3;
-    {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(RouterIndexRuleResponse_Item, _impl_.group_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // int32 id = 1;
-    {PROTOBUF_FIELD_OFFSET(RouterIndexRuleResponse_Item, _impl_.id_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // string name = 2;
-    {PROTOBUF_FIELD_OFFSET(RouterIndexRuleResponse_Item, _impl_.name_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string group = 3;
-    {PROTOBUF_FIELD_OFFSET(RouterIndexRuleResponse_Item, _impl_.group_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .palm.ops.router.v1.Rule.InBound in = 11;
-    {PROTOBUF_FIELD_OFFSET(RouterIndexRuleResponse_Item, _impl_.payload_.in_), _Internal::kOneofCaseOffset + 0, 0,
-    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.Rule.OutBound out = 12;
-    {PROTOBUF_FIELD_OFFSET(RouterIndexRuleResponse_Item, _impl_.payload_.out_), _Internal::kOneofCaseOffset + 0, 1,
-    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.Rule.Nat nat = 13;
-    {PROTOBUF_FIELD_OFFSET(RouterIndexRuleResponse_Item, _impl_.payload_.nat_), _Internal::kOneofCaseOffset + 0, 2,
-    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Rule_InBound>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Rule_OutBound>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Rule_Nat>()},
-  }}, {{
-    "\57\0\4\5\0\0\0\0"
-    "palm.ops.router.v1.RouterIndexRuleResponse.Item"
-    "name"
-    "group"
-  }},
-};
-
-::uint8_t* RouterIndexRuleResponse_Item::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* RouterIndexRuleResponse_Item::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.RouterIndexRuleResponse.Item)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<1>(
-            stream, this->_internal_id(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
   // string name = 2;
   if (!this->_internal_name().empty()) {
-    const std::string& _s = this->_internal_name();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterIndexRuleResponse.Item.name");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.RouterIndexRuleResponse.Item.name");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_name(), target);
   }
 
   // string group = 3;
   if (!this->_internal_group().empty()) {
-    const std::string& _s = this->_internal_group();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterIndexRuleResponse.Item.group");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_group().data(), static_cast<int>(this->_internal_group().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.RouterIndexRuleResponse.Item.group");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_group(), target);
   }
 
-  switch (payload_case()) {
-    case kIn: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(11, _Internal::in(this),
-          _Internal::in(this).GetCachedSize(), target, stream);
-      break;
-    }
-    case kOut: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(12, _Internal::out(this),
-          _Internal::out(this).GetCachedSize(), target, stream);
-      break;
-    }
-    case kNat: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(13, _Internal::nat(this),
-          _Internal::nat(this).GetCachedSize(), target, stream);
-      break;
-    }
-    default:
-      break;
+  // .palm.ops.router.v1.Rule.InBound in = 11;
+  if (_internal_has_in()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(11, _Internal::in(this),
+        _Internal::in(this).GetCachedSize(), target, stream);
   }
+
+  // .palm.ops.router.v1.Rule.OutBound out = 12;
+  if (_internal_has_out()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(12, _Internal::out(this),
+        _Internal::out(this).GetCachedSize(), target, stream);
+  }
+
+  // .palm.ops.router.v1.Rule.Nat nat = 13;
+  if (_internal_has_nat()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(13, _Internal::nat(this),
+        _Internal::nat(this).GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.RouterIndexRuleResponse.Item)
   return target;
 }
 
-::size_t RouterIndexRuleResponse_Item::ByteSizeLong() const {
+size_t RouterIndexRuleResponse_Item::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.RouterIndexRuleResponse.Item)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string name = 2;
   if (!this->_internal_name().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_name());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   // string group = 3;
   if (!this->_internal_group().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_group());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_group());
   }
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_id());
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id());
   }
 
   switch (payload_case()) {
     // .palm.ops.router.v1.Rule.InBound in = 11;
     case kIn: {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.payload_.in_);
       break;
     }
     // .palm.ops.router.v1.Rule.OutBound out = 12;
     case kOut: {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.payload_.out_);
       break;
     }
     // .palm.ops.router.v1.Rule.Nat nat = 13;
     case kNat: {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.payload_.nat_);
       break;
     }
@@ -4555,19 +4292,19 @@ const ::_pbi::TcParseTable<2, 6, 3, 65, 2> RouterIndexRuleResponse_Item::_table_
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData RouterIndexRuleResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouterIndexRuleResponse_Item::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RouterIndexRuleResponse_Item::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*RouterIndexRuleResponse_Item::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouterIndexRuleResponse_Item::GetClassData() const { return &_class_data_; }
 
 
-void RouterIndexRuleResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void RouterIndexRuleResponse_Item::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RouterIndexRuleResponse_Item*>(&to_msg);
   auto& from = static_cast<const RouterIndexRuleResponse_Item&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.RouterIndexRuleResponse.Item)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_name().empty()) {
@@ -4599,7 +4336,7 @@ void RouterIndexRuleResponse_Item::MergeImpl(::google::protobuf::Message& to_msg
       break;
     }
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RouterIndexRuleResponse_Item::CopyFrom(const RouterIndexRuleResponse_Item& from) {
@@ -4609,7 +4346,7 @@ void RouterIndexRuleResponse_Item::CopyFrom(const RouterIndexRuleResponse_Item& 
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool RouterIndexRuleResponse_Item::IsInitialized() const {
+bool RouterIndexRuleResponse_Item::IsInitialized() const {
   return true;
 }
 
@@ -4618,168 +4355,185 @@ void RouterIndexRuleResponse_Item::InternalSwap(RouterIndexRuleResponse_Item* ot
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, lhs_arena,
-                                       &other->_impl_.group_, rhs_arena);
-        swap(_impl_.id_, other->_impl_.id_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.group_, lhs_arena,
+      &other->_impl_.group_, rhs_arena
+  );
+  swap(_impl_.id_, other->_impl_.id_);
   swap(_impl_.payload_, other->_impl_.payload_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 
-::google::protobuf::Metadata RouterIndexRuleResponse_Item::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouterIndexRuleResponse_Item::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[10]);
 }
+
 // ===================================================================
 
 class RouterIndexRuleResponse::_Internal {
  public:
 };
 
-RouterIndexRuleResponse::RouterIndexRuleResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+RouterIndexRuleResponse::RouterIndexRuleResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterIndexRuleResponse)
 }
-RouterIndexRuleResponse::RouterIndexRuleResponse(const RouterIndexRuleResponse& from) : ::google::protobuf::Message() {
-  RouterIndexRuleResponse* const _this = this;
-  (void)_this;
+RouterIndexRuleResponse::RouterIndexRuleResponse(const RouterIndexRuleResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RouterIndexRuleResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.items_){from._impl_.items_}
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterIndexRuleResponse)
 }
-inline void RouterIndexRuleResponse::SharedCtor(::_pb::Arena* arena) {
+
+inline void RouterIndexRuleResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.items_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 RouterIndexRuleResponse::~RouterIndexRuleResponse() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterIndexRuleResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void RouterIndexRuleResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.items_.~RepeatedPtrField();
 }
+
 void RouterIndexRuleResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void RouterIndexRuleResponse::Clear() {
+void RouterIndexRuleResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterIndexRuleResponse)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _impl_.items_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RouterIndexRuleResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* RouterIndexRuleResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .palm.ops.router.v1.RouterIndexRuleResponse.Item items = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_items(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 1, 0, 2> RouterIndexRuleResponse::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_RouterIndexRuleResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // repeated .palm.ops.router.v1.RouterIndexRuleResponse.Item items = 1;
-    {::_pbi::TcParser::FastMtR1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(RouterIndexRuleResponse, _impl_.items_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // repeated .palm.ops.router.v1.RouterIndexRuleResponse.Item items = 1;
-    {PROTOBUF_FIELD_OFFSET(RouterIndexRuleResponse, _impl_.items_), 0, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::RouterIndexRuleResponse_Item>()},
-  }}, {{
-  }},
-};
-
-::uint8_t* RouterIndexRuleResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* RouterIndexRuleResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.RouterIndexRuleResponse)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // repeated .palm.ops.router.v1.RouterIndexRuleResponse.Item items = 1;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
-    const auto& repfield = this->_internal_items().Get(i);
-    target = ::google::protobuf::internal::WireFormatLite::
+    const auto& repfield = this->_internal_items(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
         InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.RouterIndexRuleResponse)
   return target;
 }
 
-::size_t RouterIndexRuleResponse::ByteSizeLong() const {
+size_t RouterIndexRuleResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.RouterIndexRuleResponse)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .palm.ops.router.v1.RouterIndexRuleResponse.Item items = 1;
   total_size += 1UL * this->_internal_items_size();
-  for (const auto& msg : this->_internal_items()) {
+  for (const auto& msg : this->_impl_.items_) {
     total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData RouterIndexRuleResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouterIndexRuleResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RouterIndexRuleResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*RouterIndexRuleResponse::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouterIndexRuleResponse::GetClassData() const { return &_class_data_; }
 
 
-void RouterIndexRuleResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void RouterIndexRuleResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RouterIndexRuleResponse*>(&to_msg);
   auto& from = static_cast<const RouterIndexRuleResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.RouterIndexRuleResponse)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RouterIndexRuleResponse::CopyFrom(const RouterIndexRuleResponse& from) {
@@ -4789,7 +4543,7 @@ void RouterIndexRuleResponse::CopyFrom(const RouterIndexRuleResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool RouterIndexRuleResponse::IsInitialized() const {
+bool RouterIndexRuleResponse::IsInitialized() const {
   return true;
 }
 
@@ -4799,225 +4553,226 @@ void RouterIndexRuleResponse::InternalSwap(RouterIndexRuleResponse* other) {
   _impl_.items_.InternalSwap(&other->_impl_.items_);
 }
 
-::google::protobuf::Metadata RouterIndexRuleResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouterIndexRuleResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[11]);
 }
+
 // ===================================================================
 
 class Host_Owner::_Internal {
  public:
-  using HasBits = decltype(std::declval<Host_Owner>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(Host_Owner, _impl_._has_bits_);
   static const ::palm::ops::router::v1::Contact& contact(const Host_Owner* msg);
-  static void set_has_contact(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::palm::ops::router::v1::Contact& Host_Owner::_Internal::contact(const Host_Owner* msg) {
+const ::palm::ops::router::v1::Contact&
+Host_Owner::_Internal::contact(const Host_Owner* msg) {
   return *msg->_impl_.contact_;
 }
-Host_Owner::Host_Owner(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Host_Owner::Host_Owner(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Host.Owner)
 }
-Host_Owner::Host_Owner(const Host_Owner& from) : ::google::protobuf::Message() {
-  Host_Owner* const _this = this;
-  (void)_this;
+Host_Owner::Host_Owner(const Host_Owner& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Host_Owner* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.contact_){nullptr},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.name_){}
+    , decltype(_impl_.contact_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_contact()) {
     _this->_impl_.contact_ = new ::palm::ops::router::v1::Contact(*from._impl_.contact_);
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Host.Owner)
 }
-inline void Host_Owner::SharedCtor(::_pb::Arena* arena) {
+
+inline void Host_Owner::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.contact_){nullptr},
+      decltype(_impl_.name_){}
+    , decltype(_impl_.contact_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 Host_Owner::~Host_Owner() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Host.Owner)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Host_Owner::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.name_.Destroy();
   if (this != internal_default_instance()) delete _impl_.contact_;
 }
+
 void Host_Owner::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Host_Owner::Clear() {
+void Host_Owner::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Host.Owner)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.name_.ClearToEmpty();
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    ABSL_DCHECK(_impl_.contact_ != nullptr);
-    _impl_.contact_->Clear();
+  if (GetArenaForAllocation() == nullptr && _impl_.contact_ != nullptr) {
+    delete _impl_.contact_;
   }
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _impl_.contact_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Host_Owner::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Host_Owner::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string name = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Host.Owner.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Contact contact = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_contact(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 1, 42, 2> Host_Owner::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(Host_Owner, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_Host_Owner_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // .palm.ops.router.v1.Contact contact = 2;
-    {::_pbi::TcParser::FastMtS1,
-     {18, 0, 0, PROTOBUF_FIELD_OFFSET(Host_Owner, _impl_.contact_)}},
-    // string name = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Host_Owner, _impl_.name_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string name = 1;
-    {PROTOBUF_FIELD_OFFSET(Host_Owner, _impl_.name_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .palm.ops.router.v1.Contact contact = 2;
-    {PROTOBUF_FIELD_OFFSET(Host_Owner, _impl_.contact_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Contact>()},
-  }}, {{
-    "\35\4\0\0\0\0\0\0"
-    "palm.ops.router.v1.Host.Owner"
-    "name"
-  }},
-};
-
-::uint8_t* Host_Owner::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Host_Owner::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Host.Owner)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string name = 1;
   if (!this->_internal_name().empty()) {
-    const std::string& _s = this->_internal_name();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Host.Owner.name");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Host.Owner.name");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Contact contact = 2;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_contact()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(2, _Internal::contact(this),
         _Internal::contact(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Host.Owner)
   return target;
 }
 
-::size_t Host_Owner::ByteSizeLong() const {
+size_t Host_Owner::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Host.Owner)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string name = 1;
   if (!this->_internal_name().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_name());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   // .palm.ops.router.v1.Contact contact = 2;
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
+  if (this->_internal_has_contact()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *_impl_.contact_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Host_Owner::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Host_Owner::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Host_Owner::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Host_Owner::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Host_Owner::GetClassData() const { return &_class_data_; }
 
 
-void Host_Owner::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Host_Owner::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Host_Owner*>(&to_msg);
   auto& from = static_cast<const Host_Owner&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Host.Owner)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_name().empty()) {
     _this->_internal_set_name(from._internal_name());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_contact()) {
     _this->_internal_mutable_contact()->::palm::ops::router::v1::Contact::MergeFrom(
         from._internal_contact());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Host_Owner::CopyFrom(const Host_Owner& from) {
@@ -5027,7 +4782,7 @@ void Host_Owner::CopyFrom(const Host_Owner& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Host_Owner::IsInitialized() const {
+bool Host_Owner::IsInitialized() const {
   return true;
 }
 
@@ -5036,144 +4791,154 @@ void Host_Owner::InternalSwap(Host_Owner* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
   swap(_impl_.contact_, other->_impl_.contact_);
 }
 
-::google::protobuf::Metadata Host_Owner::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Host_Owner::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[12]);
 }
+
 // ===================================================================
 
 class Host::_Internal {
  public:
   using HasBits = decltype(std::declval<Host>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(Host, _impl_._has_bits_);
   static void set_has_location(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
   static const ::palm::ops::router::v1::Host_Owner& owner(const Host* msg);
-  static void set_has_owner(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
 };
 
-const ::palm::ops::router::v1::Host_Owner& Host::_Internal::owner(const Host* msg) {
+const ::palm::ops::router::v1::Host_Owner&
+Host::_Internal::owner(const Host* msg) {
   return *msg->_impl_.owner_;
 }
-Host::Host(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Host::Host(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Host)
 }
-Host::Host(const Host& from) : ::google::protobuf::Message() {
-  Host* const _this = this;
-  (void)_this;
+Host::Host(const Host& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Host* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.ip_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.location_){},
-      decltype(_impl_.owner_){nullptr},
-      decltype(_impl_.id_){},
-      decltype(_impl_.fixed_){},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.mac_){}
+    , decltype(_impl_.ip_){}
+    , decltype(_impl_.group_){}
+    , decltype(_impl_.location_){}
+    , decltype(_impl_.owner_){nullptr}
+    , decltype(_impl_.id_){}
+    , decltype(_impl_.fixed_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.mac_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_mac().empty()) {
-    _this->_impl_.mac_.Set(from._internal_mac(), _this->GetArenaForAllocation());
+    _this->_impl_.mac_.Set(from._internal_mac(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.ip_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ip_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_ip().empty()) {
-    _this->_impl_.ip_.Set(from._internal_ip(), _this->GetArenaForAllocation());
+    _this->_impl_.ip_.Set(from._internal_ip(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.group_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.group_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_group().empty()) {
-    _this->_impl_.group_.Set(from._internal_group(), _this->GetArenaForAllocation());
+    _this->_impl_.group_.Set(from._internal_group(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.location_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.location_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.location_.Set(from._internal_location(), _this->GetArenaForAllocation());
+    _impl_.location_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_location()) {
+    _this->_impl_.location_.Set(from._internal_location(), 
+      _this->GetArenaForAllocation());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+  if (from._internal_has_owner()) {
     _this->_impl_.owner_ = new ::palm::ops::router::v1::Host_Owner(*from._impl_.owner_);
   }
   ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.fixed_) -
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.fixed_) -
     reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.fixed_));
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Host)
 }
-inline void Host::SharedCtor(::_pb::Arena* arena) {
+
+inline void Host::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.ip_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.location_){},
-      decltype(_impl_.owner_){nullptr},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.fixed_){false},
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.mac_){}
+    , decltype(_impl_.ip_){}
+    , decltype(_impl_.group_){}
+    , decltype(_impl_.location_){}
+    , decltype(_impl_.owner_){nullptr}
+    , decltype(_impl_.id_){0}
+    , decltype(_impl_.fixed_){false}
   };
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.mac_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.ip_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ip_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.group_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.group_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.location_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.location_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.location_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 Host::~Host() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Host)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Host::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.name_.Destroy();
   _impl_.mac_.Destroy();
   _impl_.ip_.Destroy();
@@ -5181,13 +4946,14 @@ inline void Host::SharedDtor() {
   _impl_.location_.Destroy();
   if (this != internal_default_instance()) delete _impl_.owner_;
 }
+
 void Host::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Host::Clear() {
+void Host::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Host)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -5196,269 +4962,285 @@ PROTOBUF_NOINLINE void Host::Clear() {
   _impl_.ip_.ClearToEmpty();
   _impl_.group_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _impl_.location_.ClearNonDefaultToEmpty();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      ABSL_DCHECK(_impl_.owner_ != nullptr);
-      _impl_.owner_->Clear();
-    }
+  if (cached_has_bits & 0x00000001u) {
+    _impl_.location_.ClearNonDefaultToEmpty();
   }
-  ::memset(&_impl_.id_, 0, static_cast<::size_t>(
+  if (GetArenaForAllocation() == nullptr && _impl_.owner_ != nullptr) {
+    delete _impl_.owner_;
+  }
+  _impl_.owner_ = nullptr;
+  ::memset(&_impl_.id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.fixed_) -
       reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.fixed_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Host::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Host::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string name = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Host.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string mac = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_mac();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Host.mac"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string ip = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_ip();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Host.ip"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool fixed = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          _impl_.fixed_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string group = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          auto str = _internal_mutable_group();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Host.group"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string location = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+          auto str = _internal_mutable_location();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Host.location"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Host.Owner owner = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+          ptr = ctx->ParseMessage(_internal_mutable_owner(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 8, 1, 62, 2> Host::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(Host, _impl_._has_bits_),
-    0, // no _extensions_
-    12, 120,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294963936,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    8,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_Host_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // int32 id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Host, _impl_.id_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(Host, _impl_.id_)}},
-    // string name = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Host, _impl_.name_)}},
-    // string mac = 3;
-    {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(Host, _impl_.mac_)}},
-    // string ip = 4;
-    {::_pbi::TcParser::FastUS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(Host, _impl_.ip_)}},
-    // bool fixed = 5;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Host, _impl_.fixed_), 63>(),
-     {40, 63, 0, PROTOBUF_FIELD_OFFSET(Host, _impl_.fixed_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-    // string group = 9;
-    {::_pbi::TcParser::FastUS1,
-     {74, 63, 0, PROTOBUF_FIELD_OFFSET(Host, _impl_.group_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    // optional string location = 11;
-    {::_pbi::TcParser::FastUS1,
-     {90, 0, 0, PROTOBUF_FIELD_OFFSET(Host, _impl_.location_)}},
-    // .palm.ops.router.v1.Host.Owner owner = 12;
-    {::_pbi::TcParser::FastMtS1,
-     {98, 1, 0, PROTOBUF_FIELD_OFFSET(Host, _impl_.owner_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // int32 id = 1;
-    {PROTOBUF_FIELD_OFFSET(Host, _impl_.id_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // string name = 2;
-    {PROTOBUF_FIELD_OFFSET(Host, _impl_.name_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string mac = 3;
-    {PROTOBUF_FIELD_OFFSET(Host, _impl_.mac_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string ip = 4;
-    {PROTOBUF_FIELD_OFFSET(Host, _impl_.ip_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // bool fixed = 5;
-    {PROTOBUF_FIELD_OFFSET(Host, _impl_.fixed_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // string group = 9;
-    {PROTOBUF_FIELD_OFFSET(Host, _impl_.group_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // optional string location = 11;
-    {PROTOBUF_FIELD_OFFSET(Host, _impl_.location_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .palm.ops.router.v1.Host.Owner owner = 12;
-    {PROTOBUF_FIELD_OFFSET(Host, _impl_.owner_), _Internal::kHasBitsOffset + 1, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Host_Owner>()},
-  }}, {{
-    "\27\0\4\3\2\0\5\10\0\0\0\0\0\0\0\0"
-    "palm.ops.router.v1.Host"
-    "name"
-    "mac"
-    "ip"
-    "group"
-    "location"
-  }},
-};
-
-::uint8_t* Host::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Host::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Host)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<1>(
-            stream, this->_internal_id(), target);
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
   // string name = 2;
   if (!this->_internal_name().empty()) {
-    const std::string& _s = this->_internal_name();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Host.name");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Host.name");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_name(), target);
   }
 
   // string mac = 3;
   if (!this->_internal_mac().empty()) {
-    const std::string& _s = this->_internal_mac();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Host.mac");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_mac().data(), static_cast<int>(this->_internal_mac().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Host.mac");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_mac(), target);
   }
 
   // string ip = 4;
   if (!this->_internal_ip().empty()) {
-    const std::string& _s = this->_internal_ip();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Host.ip");
-    target = stream->WriteStringMaybeAliased(4, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_ip().data(), static_cast<int>(this->_internal_ip().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Host.ip");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_ip(), target);
   }
 
   // bool fixed = 5;
   if (this->_internal_fixed() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        5, this->_internal_fixed(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(5, this->_internal_fixed(), target);
   }
 
   // string group = 9;
   if (!this->_internal_group().empty()) {
-    const std::string& _s = this->_internal_group();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Host.group");
-    target = stream->WriteStringMaybeAliased(9, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_group().data(), static_cast<int>(this->_internal_group().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Host.group");
+    target = stream->WriteStringMaybeAliased(
+        9, this->_internal_group(), target);
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
   // optional string location = 11;
-  if (cached_has_bits & 0x00000001u) {
-    const std::string& _s = this->_internal_location();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Host.location");
-    target = stream->WriteStringMaybeAliased(11, _s, target);
+  if (_internal_has_location()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_location().data(), static_cast<int>(this->_internal_location().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Host.location");
+    target = stream->WriteStringMaybeAliased(
+        11, this->_internal_location(), target);
   }
 
   // .palm.ops.router.v1.Host.Owner owner = 12;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_owner()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(12, _Internal::owner(this),
         _Internal::owner(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Host)
   return target;
 }
 
-::size_t Host::ByteSizeLong() const {
+size_t Host::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Host)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string name = 2;
   if (!this->_internal_name().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_name());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   // string mac = 3;
   if (!this->_internal_mac().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_mac());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_mac());
   }
 
   // string ip = 4;
   if (!this->_internal_ip().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_ip());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_ip());
   }
 
   // string group = 9;
   if (!this->_internal_group().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_group());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_group());
   }
 
+  // optional string location = 11;
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // optional string location = 11;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                      this->_internal_location());
-    }
-
-    // .palm.ops.router.v1.Host.Owner owner = 12;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.owner_);
-    }
-
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_location());
   }
+
+  // .palm.ops.router.v1.Host.Owner owner = 12;
+  if (this->_internal_has_owner()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.owner_);
+  }
+
   // int32 id = 1;
   if (this->_internal_id() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_id());
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_id());
   }
 
   // bool fixed = 5;
   if (this->_internal_fixed() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Host::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Host::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Host::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Host::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Host::GetClassData() const { return &_class_data_; }
 
 
-void Host::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Host::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Host*>(&to_msg);
   auto& from = static_cast<const Host&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Host)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_name().empty()) {
@@ -5473,15 +5255,12 @@ void Host::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protob
   if (!from._internal_group().empty()) {
     _this->_internal_set_group(from._internal_group());
   }
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _this->_internal_set_location(from._internal_location());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _this->_internal_mutable_owner()->::palm::ops::router::v1::Host_Owner::MergeFrom(
-          from._internal_owner());
-    }
+  if (from._internal_has_location()) {
+    _this->_internal_set_location(from._internal_location());
+  }
+  if (from._internal_has_owner()) {
+    _this->_internal_mutable_owner()->::palm::ops::router::v1::Host_Owner::MergeFrom(
+        from._internal_owner());
   }
   if (from._internal_id() != 0) {
     _this->_internal_set_id(from._internal_id());
@@ -5489,7 +5268,7 @@ void Host::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protob
   if (from._internal_fixed() != 0) {
     _this->_internal_set_fixed(from._internal_fixed());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Host::CopyFrom(const Host& from) {
@@ -5499,7 +5278,7 @@ void Host::CopyFrom(const Host& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Host::IsInitialized() const {
+bool Host::IsInitialized() const {
   return true;
 }
 
@@ -5509,17 +5288,27 @@ void Host::InternalSwap(Host* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, lhs_arena,
-                                       &other->_impl_.mac_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, lhs_arena,
-                                       &other->_impl_.ip_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, lhs_arena,
-                                       &other->_impl_.group_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.location_, lhs_arena,
-                                       &other->_impl_.location_, rhs_arena);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.mac_, lhs_arena,
+      &other->_impl_.mac_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.ip_, lhs_arena,
+      &other->_impl_.ip_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.group_, lhs_arena,
+      &other->_impl_.group_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.location_, lhs_arena,
+      &other->_impl_.location_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Host, _impl_.fixed_)
       + sizeof(Host::_impl_.fixed_)
       - PROTOBUF_FIELD_OFFSET(Host, _impl_.owner_)>(
@@ -5527,97 +5316,106 @@ void Host::InternalSwap(Host* other) {
           reinterpret_cast<char*>(&other->_impl_.owner_));
 }
 
-::google::protobuf::Metadata Host::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Host::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[13]);
 }
+
 // ===================================================================
 
 class Rule_InBound::_Internal {
  public:
   using HasBits = decltype(std::declval<Rule_InBound>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_._has_bits_);
   static void set_has_source(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
 
-Rule_InBound::Rule_InBound(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Rule_InBound::Rule_InBound(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.InBound)
 }
-Rule_InBound::Rule_InBound(const Rule_InBound& from) : ::google::protobuf::Message() {
-  Rule_InBound* const _this = this;
-  (void)_this;
+Rule_InBound::Rule_InBound(const Rule_InBound& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Rule_InBound* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.device_){},
-      decltype(_impl_.source_){},
-      decltype(_impl_.tcp_){},
-      decltype(_impl_.port_){},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.device_){}
+    , decltype(_impl_.source_){}
+    , decltype(_impl_.tcp_){}
+    , decltype(_impl_.port_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.device_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_device().empty()) {
-    _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
+    _this->_impl_.device_.Set(from._internal_device(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.source_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.source_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.source_.Set(from._internal_source(), _this->GetArenaForAllocation());
+    _impl_.source_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_source()) {
+    _this->_impl_.source_.Set(from._internal_source(), 
+      _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.tcp_, &from._impl_.tcp_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.port_) -
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.port_) -
     reinterpret_cast<char*>(&_impl_.tcp_)) + sizeof(_impl_.port_));
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.InBound)
 }
-inline void Rule_InBound::SharedCtor(::_pb::Arena* arena) {
+
+inline void Rule_InBound::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.device_){},
-      decltype(_impl_.source_){},
-      decltype(_impl_.tcp_){false},
-      decltype(_impl_.port_){0u},
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.device_){}
+    , decltype(_impl_.source_){}
+    , decltype(_impl_.tcp_){false}
+    , decltype(_impl_.port_){0u}
   };
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.device_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.source_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.source_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.source_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 Rule_InBound::~Rule_InBound() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.InBound)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Rule_InBound::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.device_.Destroy();
   _impl_.source_.Destroy();
 }
+
 void Rule_InBound::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Rule_InBound::Clear() {
+void Rule_InBound::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.InBound)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -5626,173 +5424,181 @@ PROTOBUF_NOINLINE void Rule_InBound::Clear() {
   if (cached_has_bits & 0x00000001u) {
     _impl_.source_.ClearNonDefaultToEmpty();
   }
-  ::memset(&_impl_.tcp_, 0, static_cast<::size_t>(
+  ::memset(&_impl_.tcp_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.port_) -
       reinterpret_cast<char*>(&_impl_.tcp_)) + sizeof(_impl_.port_));
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Rule_InBound::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Rule_InBound::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string device = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_device();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Rule.InBound.device"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool tcp = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.tcp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 port = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string source = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_source();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Rule.InBound.source"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 52, 2> Rule_InBound::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_._has_bits_),
-    0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Rule_InBound_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // optional string source = 4;
-    {::_pbi::TcParser::FastUS1,
-     {34, 0, 0, PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_.source_)}},
-    // string device = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_.device_)}},
-    // bool tcp = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Rule_InBound, _impl_.tcp_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_.tcp_)}},
-    // uint32 port = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Rule_InBound, _impl_.port_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_.port_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string device = 1;
-    {PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_.device_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // bool tcp = 2;
-    {PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_.tcp_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // uint32 port = 3;
-    {PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_.port_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-    // optional string source = 4;
-    {PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_.source_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\37\6\0\0\6\0\0\0"
-    "palm.ops.router.v1.Rule.InBound"
-    "device"
-    "source"
-  }},
-};
-
-::uint8_t* Rule_InBound::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Rule_InBound::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Rule.InBound)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string device = 1;
   if (!this->_internal_device().empty()) {
-    const std::string& _s = this->_internal_device();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Rule.InBound.device");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_device().data(), static_cast<int>(this->_internal_device().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Rule.InBound.device");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_device(), target);
   }
 
   // bool tcp = 2;
   if (this->_internal_tcp() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        2, this->_internal_tcp(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_tcp(), target);
   }
 
   // uint32 port = 3;
   if (this->_internal_port() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        3, this->_internal_port(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_port(), target);
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
   // optional string source = 4;
-  if (cached_has_bits & 0x00000001u) {
-    const std::string& _s = this->_internal_source();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Rule.InBound.source");
-    target = stream->WriteStringMaybeAliased(4, _s, target);
+  if (_internal_has_source()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_source().data(), static_cast<int>(this->_internal_source().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Rule.InBound.source");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_source(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Rule.InBound)
   return target;
 }
 
-::size_t Rule_InBound::ByteSizeLong() const {
+size_t Rule_InBound::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Rule.InBound)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string device = 1;
   if (!this->_internal_device().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_device());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_device());
   }
 
   // optional string source = 4;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_source());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_source());
   }
 
   // bool tcp = 2;
   if (this->_internal_tcp() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   // uint32 port = 3;
   if (this->_internal_port() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_port());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_port());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Rule_InBound::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Rule_InBound::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Rule_InBound::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Rule_InBound::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Rule_InBound::GetClassData() const { return &_class_data_; }
 
 
-void Rule_InBound::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Rule_InBound::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Rule_InBound*>(&to_msg);
   auto& from = static_cast<const Rule_InBound&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Rule.InBound)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_device().empty()) {
     _this->_internal_set_device(from._internal_device());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_source()) {
     _this->_internal_set_source(from._internal_source());
   }
   if (from._internal_tcp() != 0) {
@@ -5801,7 +5607,7 @@ void Rule_InBound::MergeImpl(::google::protobuf::Message& to_msg, const ::google
   if (from._internal_port() != 0) {
     _this->_internal_set_port(from._internal_port());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Rule_InBound::CopyFrom(const Rule_InBound& from) {
@@ -5811,7 +5617,7 @@ void Rule_InBound::CopyFrom(const Rule_InBound& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Rule_InBound::IsInitialized() const {
+bool Rule_InBound::IsInitialized() const {
   return true;
 }
 
@@ -5821,11 +5627,15 @@ void Rule_InBound::InternalSwap(Rule_InBound* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
-                                       &other->_impl_.device_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.source_, lhs_arena,
-                                       &other->_impl_.source_, rhs_arena);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.device_, lhs_arena,
+      &other->_impl_.device_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.source_, lhs_arena,
+      &other->_impl_.source_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_.port_)
       + sizeof(Rule_InBound::_impl_.port_)
       - PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_.tcp_)>(
@@ -5833,218 +5643,230 @@ void Rule_InBound::InternalSwap(Rule_InBound* other) {
           reinterpret_cast<char*>(&other->_impl_.tcp_));
 }
 
-::google::protobuf::Metadata Rule_InBound::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Rule_InBound::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[14]);
 }
+
 // ===================================================================
 
 class Rule_OutBound_Host::_Internal {
  public:
 };
 
-Rule_OutBound_Host::Rule_OutBound_Host(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Rule_OutBound_Host::Rule_OutBound_Host(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.OutBound.Host)
 }
-Rule_OutBound_Host::Rule_OutBound_Host(const Rule_OutBound_Host& from) : ::google::protobuf::Message() {
-  Rule_OutBound_Host* const _this = this;
-  (void)_this;
+Rule_OutBound_Host::Rule_OutBound_Host(const Rule_OutBound_Host& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Rule_OutBound_Host* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.to_){},
-      decltype(_impl_.protocol_){},
-      decltype(_impl_.port_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.to_){}
+    , decltype(_impl_.protocol_){}
+    , decltype(_impl_.port_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.to_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.to_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.to_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_to().empty()) {
-    _this->_impl_.to_.Set(from._internal_to(), _this->GetArenaForAllocation());
+    _this->_impl_.to_.Set(from._internal_to(), 
+      _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.protocol_, &from._impl_.protocol_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.port_) -
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.port_) -
     reinterpret_cast<char*>(&_impl_.protocol_)) + sizeof(_impl_.port_));
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.OutBound.Host)
 }
-inline void Rule_OutBound_Host::SharedCtor(::_pb::Arena* arena) {
+
+inline void Rule_OutBound_Host::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.to_){},
-      decltype(_impl_.protocol_){0},
-      decltype(_impl_.port_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.to_){}
+    , decltype(_impl_.protocol_){0}
+    , decltype(_impl_.port_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.to_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.to_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.to_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 Rule_OutBound_Host::~Rule_OutBound_Host() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.OutBound.Host)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Rule_OutBound_Host::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.to_.Destroy();
 }
+
 void Rule_OutBound_Host::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Rule_OutBound_Host::Clear() {
+void Rule_OutBound_Host::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.OutBound.Host)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.to_.ClearToEmpty();
-  ::memset(&_impl_.protocol_, 0, static_cast<::size_t>(
+  ::memset(&_impl_.protocol_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.port_) -
       reinterpret_cast<char*>(&_impl_.protocol_)) + sizeof(_impl_.port_));
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Rule_OutBound_Host::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Rule_OutBound_Host::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string to = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_to();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Rule.OutBound.Host.to"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Rule.Protocol protocol = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_protocol(static_cast<::palm::ops::router::v1::Rule_Protocol>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 port = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 0, 48, 2> Rule_OutBound_Host::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Rule_OutBound_Host_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // string to = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Host, _impl_.to_)}},
-    // .palm.ops.router.v1.Rule.Protocol protocol = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Rule_OutBound_Host, _impl_.protocol_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Host, _impl_.protocol_)}},
-    // uint32 port = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Rule_OutBound_Host, _impl_.port_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Host, _impl_.port_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string to = 1;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Host, _impl_.to_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .palm.ops.router.v1.Rule.Protocol protocol = 2;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Host, _impl_.protocol_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
-    // uint32 port = 3;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Host, _impl_.port_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-  }},
-  // no aux_entries
-  {{
-    "\45\2\0\0\0\0\0\0"
-    "palm.ops.router.v1.Rule.OutBound.Host"
-    "to"
-  }},
-};
-
-::uint8_t* Rule_OutBound_Host::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Rule_OutBound_Host::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Rule.OutBound.Host)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string to = 1;
   if (!this->_internal_to().empty()) {
-    const std::string& _s = this->_internal_to();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Rule.OutBound.Host.to");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_to().data(), static_cast<int>(this->_internal_to().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Rule.OutBound.Host.to");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_to(), target);
   }
 
   // .palm.ops.router.v1.Rule.Protocol protocol = 2;
   if (this->_internal_protocol() != 0) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
-        2, this->_internal_protocol(), target);
+      2, this->_internal_protocol(), target);
   }
 
   // uint32 port = 3;
   if (this->_internal_port() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        3, this->_internal_port(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_port(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Rule.OutBound.Host)
   return target;
 }
 
-::size_t Rule_OutBound_Host::ByteSizeLong() const {
+size_t Rule_OutBound_Host::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Rule.OutBound.Host)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string to = 1;
   if (!this->_internal_to().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_to());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_to());
   }
 
   // .palm.ops.router.v1.Rule.Protocol protocol = 2;
   if (this->_internal_protocol() != 0) {
     total_size += 1 +
-                  ::_pbi::WireFormatLite::EnumSize(this->_internal_protocol());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_protocol());
   }
 
   // uint32 port = 3;
   if (this->_internal_port() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_port());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_port());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Rule_OutBound_Host::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Rule_OutBound_Host::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Rule_OutBound_Host::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Rule_OutBound_Host::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Rule_OutBound_Host::GetClassData() const { return &_class_data_; }
 
 
-void Rule_OutBound_Host::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Rule_OutBound_Host::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Rule_OutBound_Host*>(&to_msg);
   auto& from = static_cast<const Rule_OutBound_Host&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Rule.OutBound.Host)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_to().empty()) {
@@ -6056,7 +5878,7 @@ void Rule_OutBound_Host::MergeImpl(::google::protobuf::Message& to_msg, const ::
   if (from._internal_port() != 0) {
     _this->_internal_set_port(from._internal_port());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Rule_OutBound_Host::CopyFrom(const Rule_OutBound_Host& from) {
@@ -6066,7 +5888,7 @@ void Rule_OutBound_Host::CopyFrom(const Rule_OutBound_Host& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Rule_OutBound_Host::IsInitialized() const {
+bool Rule_OutBound_Host::IsInitialized() const {
   return true;
 }
 
@@ -6075,9 +5897,11 @@ void Rule_OutBound_Host::InternalSwap(Rule_OutBound_Host* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.to_, lhs_arena,
-                                       &other->_impl_.to_, rhs_arena);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.to_, lhs_arena,
+      &other->_impl_.to_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Rule_OutBound_Host, _impl_.port_)
       + sizeof(Rule_OutBound_Host::_impl_.port_)
       - PROTOBUF_FIELD_OFFSET(Rule_OutBound_Host, _impl_.protocol_)>(
@@ -6085,18 +5909,17 @@ void Rule_OutBound_Host::InternalSwap(Rule_OutBound_Host* other) {
           reinterpret_cast<char*>(&other->_impl_.protocol_));
 }
 
-::google::protobuf::Metadata Rule_OutBound_Host::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Rule_OutBound_Host::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[15]);
 }
+
 // ===================================================================
 
 class Rule_OutBound_Speed::_Internal {
  public:
   using HasBits = decltype(std::declval<Rule_OutBound_Speed>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(Rule_OutBound_Speed, _impl_._has_bits_);
   static void set_has_up(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
@@ -6105,133 +5928,153 @@ class Rule_OutBound_Speed::_Internal {
   }
 };
 
-Rule_OutBound_Speed::Rule_OutBound_Speed(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Rule_OutBound_Speed::Rule_OutBound_Speed(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.OutBound.Speed)
 }
 Rule_OutBound_Speed::Rule_OutBound_Speed(const Rule_OutBound_Speed& from)
-    : ::google::protobuf::Message(), _impl_(from._impl_) {
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Rule_OutBound_Speed* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.up_){}
+    , decltype(_impl_.down_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&_impl_.up_, &from._impl_.up_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.down_) -
+    reinterpret_cast<char*>(&_impl_.up_)) + sizeof(_impl_.down_));
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.OutBound.Speed)
 }
-inline void Rule_OutBound_Speed::SharedCtor(::_pb::Arena* arena) {
+
+inline void Rule_OutBound_Speed::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.up_){0u},
-      decltype(_impl_.down_){0u},
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.up_){0u}
+    , decltype(_impl_.down_){0u}
   };
 }
+
 Rule_OutBound_Speed::~Rule_OutBound_Speed() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.OutBound.Speed)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Rule_OutBound_Speed::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
+
 void Rule_OutBound_Speed::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Rule_OutBound_Speed::Clear() {
+void Rule_OutBound_Speed::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.OutBound.Speed)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
-    ::memset(&_impl_.up_, 0, static_cast<::size_t>(
+    ::memset(&_impl_.up_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&_impl_.down_) -
         reinterpret_cast<char*>(&_impl_.up_)) + sizeof(_impl_.down_));
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Rule_OutBound_Speed::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Rule_OutBound_Speed::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional uint32 up = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _Internal::set_has_up(&has_bits);
+          _impl_.up_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional uint32 down = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _Internal::set_has_down(&has_bits);
+          _impl_.down_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 0, 2> Rule_OutBound_Speed::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(Rule_OutBound_Speed, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Rule_OutBound_Speed_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // optional uint32 down = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Rule_OutBound_Speed, _impl_.down_), 1>(),
-     {16, 1, 0, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Speed, _impl_.down_)}},
-    // optional uint32 up = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Rule_OutBound_Speed, _impl_.up_), 0>(),
-     {8, 0, 0, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Speed, _impl_.up_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // optional uint32 up = 1;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Speed, _impl_.up_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
-    // optional uint32 down = 2;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Speed, _impl_.down_), _Internal::kHasBitsOffset + 1, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
-  }},
-  // no aux_entries
-  {{
-  }},
-};
-
-::uint8_t* Rule_OutBound_Speed::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Rule_OutBound_Speed::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Rule.OutBound.Speed)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
   // optional uint32 up = 1;
-  if (cached_has_bits & 0x00000001u) {
+  if (_internal_has_up()) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        1, this->_internal_up(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_up(), target);
   }
 
   // optional uint32 down = 2;
-  if (cached_has_bits & 0x00000002u) {
+  if (_internal_has_down()) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        2, this->_internal_down(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_down(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Rule.OutBound.Speed)
   return target;
 }
 
-::size_t Rule_OutBound_Speed::ByteSizeLong() const {
+size_t Rule_OutBound_Speed::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Rule.OutBound.Speed)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -6239,33 +6082,31 @@ const ::_pbi::TcParseTable<1, 2, 0, 0, 2> Rule_OutBound_Speed::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // optional uint32 up = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-          this->_internal_up());
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_up());
     }
 
     // optional uint32 down = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-          this->_internal_down());
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_down());
     }
 
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Rule_OutBound_Speed::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Rule_OutBound_Speed::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Rule_OutBound_Speed::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Rule_OutBound_Speed::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Rule_OutBound_Speed::GetClassData() const { return &_class_data_; }
 
 
-void Rule_OutBound_Speed::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Rule_OutBound_Speed::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Rule_OutBound_Speed*>(&to_msg);
   auto& from = static_cast<const Rule_OutBound_Speed&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Rule.OutBound.Speed)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = from._impl_._has_bits_[0];
@@ -6278,7 +6119,7 @@ void Rule_OutBound_Speed::MergeImpl(::google::protobuf::Message& to_msg, const :
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Rule_OutBound_Speed::CopyFrom(const Rule_OutBound_Speed& from) {
@@ -6288,7 +6129,7 @@ void Rule_OutBound_Speed::CopyFrom(const Rule_OutBound_Speed& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Rule_OutBound_Speed::IsInitialized() const {
+bool Rule_OutBound_Speed::IsInitialized() const {
   return true;
 }
 
@@ -6296,7 +6137,7 @@ void Rule_OutBound_Speed::InternalSwap(Rule_OutBound_Speed* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Rule_OutBound_Speed, _impl_.down_)
       + sizeof(Rule_OutBound_Speed::_impl_.down_)
       - PROTOBUF_FIELD_OFFSET(Rule_OutBound_Speed, _impl_.up_)>(
@@ -6304,232 +6145,248 @@ void Rule_OutBound_Speed::InternalSwap(Rule_OutBound_Speed* other) {
           reinterpret_cast<char*>(&other->_impl_.up_));
 }
 
-::google::protobuf::Metadata Rule_OutBound_Speed::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Rule_OutBound_Speed::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[16]);
 }
+
 // ===================================================================
 
 class Rule_OutBound_Time::_Internal {
  public:
-  using HasBits = decltype(std::declval<Rule_OutBound_Time>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_._has_bits_);
-  static const ::google::protobuf::Timestamp& from(const Rule_OutBound_Time* msg);
-  static void set_has_from(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-  static const ::google::protobuf::Timestamp& to(const Rule_OutBound_Time* msg);
-  static void set_has_to(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
+  static const ::PROTOBUF_NAMESPACE_ID::Timestamp& from(const Rule_OutBound_Time* msg);
+  static const ::PROTOBUF_NAMESPACE_ID::Timestamp& to(const Rule_OutBound_Time* msg);
 };
 
-const ::google::protobuf::Timestamp& Rule_OutBound_Time::_Internal::from(const Rule_OutBound_Time* msg) {
+const ::PROTOBUF_NAMESPACE_ID::Timestamp&
+Rule_OutBound_Time::_Internal::from(const Rule_OutBound_Time* msg) {
   return *msg->_impl_.from_;
 }
-const ::google::protobuf::Timestamp& Rule_OutBound_Time::_Internal::to(const Rule_OutBound_Time* msg) {
+const ::PROTOBUF_NAMESPACE_ID::Timestamp&
+Rule_OutBound_Time::_Internal::to(const Rule_OutBound_Time* msg) {
   return *msg->_impl_.to_;
 }
 void Rule_OutBound_Time::clear_from() {
-  if (_impl_.from_ != nullptr) _impl_.from_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000001u;
+  if (GetArenaForAllocation() == nullptr && _impl_.from_ != nullptr) {
+    delete _impl_.from_;
+  }
+  _impl_.from_ = nullptr;
 }
 void Rule_OutBound_Time::clear_to() {
-  if (_impl_.to_ != nullptr) _impl_.to_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  if (GetArenaForAllocation() == nullptr && _impl_.to_ != nullptr) {
+    delete _impl_.to_;
+  }
+  _impl_.to_ = nullptr;
 }
-Rule_OutBound_Time::Rule_OutBound_Time(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Rule_OutBound_Time::Rule_OutBound_Time(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.OutBound.Time)
 }
-Rule_OutBound_Time::Rule_OutBound_Time(const Rule_OutBound_Time& from) : ::google::protobuf::Message() {
-  Rule_OutBound_Time* const _this = this;
-  (void)_this;
+Rule_OutBound_Time::Rule_OutBound_Time(const Rule_OutBound_Time& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Rule_OutBound_Time* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.from_){nullptr},
-      decltype(_impl_.to_){nullptr},
-      decltype(_impl_.monday_){},
-      decltype(_impl_.tuesday_){},
-      decltype(_impl_.wednesday_){},
-      decltype(_impl_.thursday_){},
-      decltype(_impl_.friday_){},
-      decltype(_impl_.saturday_){},
-      decltype(_impl_.sunday_){},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.from_ = new ::google::protobuf::Timestamp(*from._impl_.from_);
+      decltype(_impl_.from_){nullptr}
+    , decltype(_impl_.to_){nullptr}
+    , decltype(_impl_.monday_){}
+    , decltype(_impl_.tuesday_){}
+    , decltype(_impl_.wednesday_){}
+    , decltype(_impl_.thursday_){}
+    , decltype(_impl_.friday_){}
+    , decltype(_impl_.saturday_){}
+    , decltype(_impl_.sunday_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_from()) {
+    _this->_impl_.from_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.from_);
   }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.to_ = new ::google::protobuf::Timestamp(*from._impl_.to_);
+  if (from._internal_has_to()) {
+    _this->_impl_.to_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.to_);
   }
   ::memcpy(&_impl_.monday_, &from._impl_.monday_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.sunday_) -
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.sunday_) -
     reinterpret_cast<char*>(&_impl_.monday_)) + sizeof(_impl_.sunday_));
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.OutBound.Time)
 }
-inline void Rule_OutBound_Time::SharedCtor(::_pb::Arena* arena) {
+
+inline void Rule_OutBound_Time::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.from_){nullptr},
-      decltype(_impl_.to_){nullptr},
-      decltype(_impl_.monday_){false},
-      decltype(_impl_.tuesday_){false},
-      decltype(_impl_.wednesday_){false},
-      decltype(_impl_.thursday_){false},
-      decltype(_impl_.friday_){false},
-      decltype(_impl_.saturday_){false},
-      decltype(_impl_.sunday_){false},
+      decltype(_impl_.from_){nullptr}
+    , decltype(_impl_.to_){nullptr}
+    , decltype(_impl_.monday_){false}
+    , decltype(_impl_.tuesday_){false}
+    , decltype(_impl_.wednesday_){false}
+    , decltype(_impl_.thursday_){false}
+    , decltype(_impl_.friday_){false}
+    , decltype(_impl_.saturday_){false}
+    , decltype(_impl_.sunday_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 Rule_OutBound_Time::~Rule_OutBound_Time() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.OutBound.Time)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Rule_OutBound_Time::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete _impl_.from_;
   if (this != internal_default_instance()) delete _impl_.to_;
 }
+
 void Rule_OutBound_Time::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Rule_OutBound_Time::Clear() {
+void Rule_OutBound_Time::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.OutBound.Time)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      ABSL_DCHECK(_impl_.from_ != nullptr);
-      _impl_.from_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      ABSL_DCHECK(_impl_.to_ != nullptr);
-      _impl_.to_->Clear();
-    }
+  if (GetArenaForAllocation() == nullptr && _impl_.from_ != nullptr) {
+    delete _impl_.from_;
   }
-  ::memset(&_impl_.monday_, 0, static_cast<::size_t>(
+  _impl_.from_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.to_ != nullptr) {
+    delete _impl_.to_;
+  }
+  _impl_.to_ = nullptr;
+  ::memset(&_impl_.monday_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.sunday_) -
       reinterpret_cast<char*>(&_impl_.monday_)) + sizeof(_impl_.sunday_));
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Rule_OutBound_Time::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Rule_OutBound_Time::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .google.protobuf.Timestamp from = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_from(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .google.protobuf.Timestamp to = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_to(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool monday = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 88)) {
+          _impl_.monday_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool tuesday = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 96)) {
+          _impl_.tuesday_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool wednesday = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 104)) {
+          _impl_.wednesday_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool thursday = 14;
+      case 14:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 112)) {
+          _impl_.thursday_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool friday = 15;
+      case 15:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 120)) {
+          _impl_.friday_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool saturday = 16;
+      case 16:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 128)) {
+          _impl_.saturday_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool sunday = 17;
+      case 17:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 136)) {
+          _impl_.sunday_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 9, 2, 0, 2> Rule_OutBound_Time::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_._has_bits_),
-    0, // no _extensions_
-    17, 56,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294837244,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    9,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_Rule_OutBound_Time_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // bool saturday = 16;
-    {::_pbi::TcParser::FastV8S2,
-     {384, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.saturday_)}},
-    // .google.protobuf.Timestamp from = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.from_)}},
-    // .google.protobuf.Timestamp to = 2;
-    {::_pbi::TcParser::FastMtS1,
-     {18, 1, 1, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.to_)}},
-    // bool monday = 11;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Rule_OutBound_Time, _impl_.monday_), 63>(),
-     {88, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.monday_)}},
-    // bool tuesday = 12;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Rule_OutBound_Time, _impl_.tuesday_), 63>(),
-     {96, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.tuesday_)}},
-    // bool wednesday = 13;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Rule_OutBound_Time, _impl_.wednesday_), 63>(),
-     {104, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.wednesday_)}},
-    // bool thursday = 14;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Rule_OutBound_Time, _impl_.thursday_), 63>(),
-     {112, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.thursday_)}},
-    // bool friday = 15;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Rule_OutBound_Time, _impl_.friday_), 63>(),
-     {120, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.friday_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .google.protobuf.Timestamp from = 1;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.from_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .google.protobuf.Timestamp to = 2;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.to_), _Internal::kHasBitsOffset + 1, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // bool monday = 11;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.monday_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // bool tuesday = 12;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.tuesday_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // bool wednesday = 13;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.wednesday_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // bool thursday = 14;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.thursday_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // bool friday = 15;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.friday_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // bool saturday = 16;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.saturday_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // bool sunday = 17;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.sunday_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
-    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
-  }}, {{
-  }},
-};
-
-::uint8_t* Rule_OutBound_Time::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Rule_OutBound_Time::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Rule.OutBound.Time)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp from = 1;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_from()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(1, _Internal::from(this),
         _Internal::from(this).GetCachedSize(), target, stream);
   }
 
   // .google.protobuf.Timestamp to = 2;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_to()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(2, _Internal::to(this),
         _Internal::to(this).GetCachedSize(), target, stream);
   }
@@ -6537,149 +6394,135 @@ const ::_pbi::TcParseTable<3, 9, 2, 0, 2> Rule_OutBound_Time::_table_ = {
   // bool monday = 11;
   if (this->_internal_monday() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        11, this->_internal_monday(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(11, this->_internal_monday(), target);
   }
 
   // bool tuesday = 12;
   if (this->_internal_tuesday() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        12, this->_internal_tuesday(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(12, this->_internal_tuesday(), target);
   }
 
   // bool wednesday = 13;
   if (this->_internal_wednesday() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        13, this->_internal_wednesday(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(13, this->_internal_wednesday(), target);
   }
 
   // bool thursday = 14;
   if (this->_internal_thursday() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        14, this->_internal_thursday(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(14, this->_internal_thursday(), target);
   }
 
   // bool friday = 15;
   if (this->_internal_friday() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        15, this->_internal_friday(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(15, this->_internal_friday(), target);
   }
 
   // bool saturday = 16;
   if (this->_internal_saturday() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        16, this->_internal_saturday(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(16, this->_internal_saturday(), target);
   }
 
   // bool sunday = 17;
   if (this->_internal_sunday() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        17, this->_internal_sunday(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(17, this->_internal_sunday(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Rule.OutBound.Time)
   return target;
 }
 
-::size_t Rule_OutBound_Time::ByteSizeLong() const {
+size_t Rule_OutBound_Time::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Rule.OutBound.Time)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // .google.protobuf.Timestamp from = 1;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.from_);
-    }
-
-    // .google.protobuf.Timestamp to = 2;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.to_);
-    }
-
+  // .google.protobuf.Timestamp from = 1;
+  if (this->_internal_has_from()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.from_);
   }
+
+  // .google.protobuf.Timestamp to = 2;
+  if (this->_internal_has_to()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.to_);
+  }
+
   // bool monday = 11;
   if (this->_internal_monday() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   // bool tuesday = 12;
   if (this->_internal_tuesday() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   // bool wednesday = 13;
   if (this->_internal_wednesday() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   // bool thursday = 14;
   if (this->_internal_thursday() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   // bool friday = 15;
   if (this->_internal_friday() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   // bool saturday = 16;
   if (this->_internal_saturday() != 0) {
-    total_size += 3;
+    total_size += 2 + 1;
   }
 
   // bool sunday = 17;
   if (this->_internal_sunday() != 0) {
-    total_size += 3;
+    total_size += 2 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Rule_OutBound_Time::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Rule_OutBound_Time::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Rule_OutBound_Time::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Rule_OutBound_Time::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Rule_OutBound_Time::GetClassData() const { return &_class_data_; }
 
 
-void Rule_OutBound_Time::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Rule_OutBound_Time::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Rule_OutBound_Time*>(&to_msg);
   auto& from = static_cast<const Rule_OutBound_Time&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Rule.OutBound.Time)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _this->_internal_mutable_from()->::google::protobuf::Timestamp::MergeFrom(
-          from._internal_from());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _this->_internal_mutable_to()->::google::protobuf::Timestamp::MergeFrom(
-          from._internal_to());
-    }
+  if (from._internal_has_from()) {
+    _this->_internal_mutable_from()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
+        from._internal_from());
+  }
+  if (from._internal_has_to()) {
+    _this->_internal_mutable_to()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
+        from._internal_to());
   }
   if (from._internal_monday() != 0) {
     _this->_internal_set_monday(from._internal_monday());
@@ -6702,7 +6545,7 @@ void Rule_OutBound_Time::MergeImpl(::google::protobuf::Message& to_msg, const ::
   if (from._internal_sunday() != 0) {
     _this->_internal_set_sunday(from._internal_sunday());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Rule_OutBound_Time::CopyFrom(const Rule_OutBound_Time& from) {
@@ -6712,15 +6555,14 @@ void Rule_OutBound_Time::CopyFrom(const Rule_OutBound_Time& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Rule_OutBound_Time::IsInitialized() const {
+bool Rule_OutBound_Time::IsInitialized() const {
   return true;
 }
 
 void Rule_OutBound_Time::InternalSwap(Rule_OutBound_Time* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.sunday_)
       + sizeof(Rule_OutBound_Time::_impl_.sunday_)
       - PROTOBUF_FIELD_OFFSET(Rule_OutBound_Time, _impl_.from_)>(
@@ -6728,39 +6570,41 @@ void Rule_OutBound_Time::InternalSwap(Rule_OutBound_Time* other) {
           reinterpret_cast<char*>(&other->_impl_.from_));
 }
 
-::google::protobuf::Metadata Rule_OutBound_Time::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Rule_OutBound_Time::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[17]);
 }
+
 // ===================================================================
 
 class Rule_OutBound::_Internal {
  public:
-  static constexpr ::int32_t kOneofCaseOffset =
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule_OutBound, _impl_._oneof_case_);
   static const ::palm::ops::router::v1::Rule_OutBound_Host& host(const Rule_OutBound* msg);
   static const ::palm::ops::router::v1::Rule_OutBound_Speed& speed(const Rule_OutBound* msg);
   static const ::palm::ops::router::v1::Rule_OutBound_Time& time(const Rule_OutBound* msg);
 };
 
-const ::palm::ops::router::v1::Rule_OutBound_Host& Rule_OutBound::_Internal::host(const Rule_OutBound* msg) {
+const ::palm::ops::router::v1::Rule_OutBound_Host&
+Rule_OutBound::_Internal::host(const Rule_OutBound* msg) {
   return *msg->_impl_.payload_.host_;
 }
-const ::palm::ops::router::v1::Rule_OutBound_Speed& Rule_OutBound::_Internal::speed(const Rule_OutBound* msg) {
+const ::palm::ops::router::v1::Rule_OutBound_Speed&
+Rule_OutBound::_Internal::speed(const Rule_OutBound* msg) {
   return *msg->_impl_.payload_.speed_;
 }
-const ::palm::ops::router::v1::Rule_OutBound_Time& Rule_OutBound::_Internal::time(const Rule_OutBound* msg) {
+const ::palm::ops::router::v1::Rule_OutBound_Time&
+Rule_OutBound::_Internal::time(const Rule_OutBound* msg) {
   return *msg->_impl_.payload_.time_;
 }
 void Rule_OutBound::set_allocated_host(::palm::ops::router::v1::Rule_OutBound_Host* host) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_payload();
   if (host) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(host);
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(host);
     if (message_arena != submessage_arena) {
-      host = ::google::protobuf::internal::GetOwnedMessage(
+      host = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, host, submessage_arena);
     }
     set_has_host();
@@ -6769,13 +6613,13 @@ void Rule_OutBound::set_allocated_host(::palm::ops::router::v1::Rule_OutBound_Ho
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Rule.OutBound.host)
 }
 void Rule_OutBound::set_allocated_speed(::palm::ops::router::v1::Rule_OutBound_Speed* speed) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_payload();
   if (speed) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(speed);
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(speed);
     if (message_arena != submessage_arena) {
-      speed = ::google::protobuf::internal::GetOwnedMessage(
+      speed = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, speed, submessage_arena);
     }
     set_has_speed();
@@ -6784,13 +6628,13 @@ void Rule_OutBound::set_allocated_speed(::palm::ops::router::v1::Rule_OutBound_S
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Rule.OutBound.speed)
 }
 void Rule_OutBound::set_allocated_time(::palm::ops::router::v1::Rule_OutBound_Time* time) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_payload();
   if (time) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(time);
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(time);
     if (message_arena != submessage_arena) {
-      time = ::google::protobuf::internal::GetOwnedMessage(
+      time = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, time, submessage_arena);
     }
     set_has_time();
@@ -6798,21 +6642,21 @@ void Rule_OutBound::set_allocated_time(::palm::ops::router::v1::Rule_OutBound_Ti
   }
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Rule.OutBound.time)
 }
-Rule_OutBound::Rule_OutBound(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Rule_OutBound::Rule_OutBound(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.OutBound)
 }
-Rule_OutBound::Rule_OutBound(const Rule_OutBound& from) : ::google::protobuf::Message() {
-  Rule_OutBound* const _this = this;
-  (void)_this;
+Rule_OutBound::Rule_OutBound(const Rule_OutBound& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Rule_OutBound* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   clear_has_payload();
   switch (from.payload_case()) {
     case kHost: {
@@ -6834,29 +6678,37 @@ Rule_OutBound::Rule_OutBound(const Rule_OutBound& from) : ::google::protobuf::Me
       break;
     }
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.OutBound)
 }
-inline void Rule_OutBound::SharedCtor(::_pb::Arena* arena) {
+
+inline void Rule_OutBound::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
+      decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
   };
   clear_has_payload();
 }
+
 Rule_OutBound::~Rule_OutBound() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.OutBound)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Rule_OutBound::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (has_payload()) {
     clear_payload();
   }
 }
+
 void Rule_OutBound::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
@@ -6890,102 +6742,109 @@ void Rule_OutBound::clear_payload() {
 }
 
 
-PROTOBUF_NOINLINE void Rule_OutBound::Clear() {
+void Rule_OutBound::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.OutBound)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   clear_payload();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Rule_OutBound::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Rule_OutBound::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .palm.ops.router.v1.Rule.OutBound.Host host = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_host(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Rule.OutBound.Speed speed = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_speed(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Rule.OutBound.Time time = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_time(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 3, 3, 0, 2> Rule_OutBound::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    3, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    3,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_Rule_OutBound_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .palm.ops.router.v1.Rule.OutBound.Host host = 1;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound, _impl_.payload_.host_), _Internal::kOneofCaseOffset + 0, 0,
-    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.Rule.OutBound.Speed speed = 2;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound, _impl_.payload_.speed_), _Internal::kOneofCaseOffset + 0, 1,
-    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.Rule.OutBound.Time time = 3;
-    {PROTOBUF_FIELD_OFFSET(Rule_OutBound, _impl_.payload_.time_), _Internal::kOneofCaseOffset + 0, 2,
-    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Rule_OutBound_Host>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Rule_OutBound_Speed>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Rule_OutBound_Time>()},
-  }}, {{
-  }},
-};
-
-::uint8_t* Rule_OutBound::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Rule_OutBound::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Rule.OutBound)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
-  switch (payload_case()) {
-    case kHost: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(1, _Internal::host(this),
-          _Internal::host(this).GetCachedSize(), target, stream);
-      break;
-    }
-    case kSpeed: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(2, _Internal::speed(this),
-          _Internal::speed(this).GetCachedSize(), target, stream);
-      break;
-    }
-    case kTime: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(3, _Internal::time(this),
-          _Internal::time(this).GetCachedSize(), target, stream);
-      break;
-    }
-    default:
-      break;
+  // .palm.ops.router.v1.Rule.OutBound.Host host = 1;
+  if (_internal_has_host()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::host(this),
+        _Internal::host(this).GetCachedSize(), target, stream);
   }
+
+  // .palm.ops.router.v1.Rule.OutBound.Speed speed = 2;
+  if (_internal_has_speed()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::speed(this),
+        _Internal::speed(this).GetCachedSize(), target, stream);
+  }
+
+  // .palm.ops.router.v1.Rule.OutBound.Time time = 3;
+  if (_internal_has_time()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::time(this),
+        _Internal::time(this).GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Rule.OutBound)
   return target;
 }
 
-::size_t Rule_OutBound::ByteSizeLong() const {
+size_t Rule_OutBound::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Rule.OutBound)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -6993,21 +6852,21 @@ const ::_pbi::TcParseTable<0, 3, 3, 0, 2> Rule_OutBound::_table_ = {
     // .palm.ops.router.v1.Rule.OutBound.Host host = 1;
     case kHost: {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.payload_.host_);
       break;
     }
     // .palm.ops.router.v1.Rule.OutBound.Speed speed = 2;
     case kSpeed: {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.payload_.speed_);
       break;
     }
     // .palm.ops.router.v1.Rule.OutBound.Time time = 3;
     case kTime: {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.payload_.time_);
       break;
     }
@@ -7018,19 +6877,19 @@ const ::_pbi::TcParseTable<0, 3, 3, 0, 2> Rule_OutBound::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Rule_OutBound::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Rule_OutBound::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Rule_OutBound::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Rule_OutBound::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Rule_OutBound::GetClassData() const { return &_class_data_; }
 
 
-void Rule_OutBound::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Rule_OutBound::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Rule_OutBound*>(&to_msg);
   auto& from = static_cast<const Rule_OutBound&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Rule.OutBound)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   switch (from.payload_case()) {
@@ -7053,7 +6912,7 @@ void Rule_OutBound::MergeImpl(::google::protobuf::Message& to_msg, const ::googl
       break;
     }
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Rule_OutBound::CopyFrom(const Rule_OutBound& from) {
@@ -7063,7 +6922,7 @@ void Rule_OutBound::CopyFrom(const Rule_OutBound& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Rule_OutBound::IsInitialized() const {
+bool Rule_OutBound::IsInitialized() const {
   return true;
 }
 
@@ -7074,194 +6933,202 @@ void Rule_OutBound::InternalSwap(Rule_OutBound* other) {
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 
-::google::protobuf::Metadata Rule_OutBound::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Rule_OutBound::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[18]);
 }
+
 // ===================================================================
 
 class Rule_Nat_Source::_Internal {
  public:
 };
 
-Rule_Nat_Source::Rule_Nat_Source(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Rule_Nat_Source::Rule_Nat_Source(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.Nat.Source)
 }
-Rule_Nat_Source::Rule_Nat_Source(const Rule_Nat_Source& from) : ::google::protobuf::Message() {
-  Rule_Nat_Source* const _this = this;
-  (void)_this;
+Rule_Nat_Source::Rule_Nat_Source(const Rule_Nat_Source& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Rule_Nat_Source* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.port_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.device_){}
+    , decltype(_impl_.port_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.device_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_device().empty()) {
-    _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
+    _this->_impl_.device_.Set(from._internal_device(), 
+      _this->GetArenaForAllocation());
   }
   _this->_impl_.port_ = from._impl_.port_;
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.Nat.Source)
 }
-inline void Rule_Nat_Source::SharedCtor(::_pb::Arena* arena) {
+
+inline void Rule_Nat_Source::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.port_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.device_){}
+    , decltype(_impl_.port_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.device_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 Rule_Nat_Source::~Rule_Nat_Source() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.Nat.Source)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Rule_Nat_Source::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.device_.Destroy();
 }
+
 void Rule_Nat_Source::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Rule_Nat_Source::Clear() {
+void Rule_Nat_Source::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.Nat.Source)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.device_.ClearToEmpty();
   _impl_.port_ = 0u;
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Rule_Nat_Source::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Rule_Nat_Source::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string device = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_device();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Rule.Nat.Source.device"));
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 port = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 2, 0, 49, 2> Rule_Nat_Source::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967290,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Rule_Nat_Source_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // string device = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_Nat_Source, _impl_.device_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    // uint32 port = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Rule_Nat_Source, _impl_.port_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_Nat_Source, _impl_.port_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string device = 1;
-    {PROTOBUF_FIELD_OFFSET(Rule_Nat_Source, _impl_.device_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // uint32 port = 3;
-    {PROTOBUF_FIELD_OFFSET(Rule_Nat_Source, _impl_.port_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-  }},
-  // no aux_entries
-  {{
-    "\42\6\0\0\0\0\0\0"
-    "palm.ops.router.v1.Rule.Nat.Source"
-    "device"
-  }},
-};
-
-::uint8_t* Rule_Nat_Source::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Rule_Nat_Source::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Rule.Nat.Source)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string device = 1;
   if (!this->_internal_device().empty()) {
-    const std::string& _s = this->_internal_device();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Rule.Nat.Source.device");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_device().data(), static_cast<int>(this->_internal_device().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Rule.Nat.Source.device");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_device(), target);
   }
 
   // uint32 port = 3;
   if (this->_internal_port() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        3, this->_internal_port(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_port(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Rule.Nat.Source)
   return target;
 }
 
-::size_t Rule_Nat_Source::ByteSizeLong() const {
+size_t Rule_Nat_Source::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Rule.Nat.Source)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string device = 1;
   if (!this->_internal_device().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_device());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_device());
   }
 
   // uint32 port = 3;
   if (this->_internal_port() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_port());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_port());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Rule_Nat_Source::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Rule_Nat_Source::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Rule_Nat_Source::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Rule_Nat_Source::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Rule_Nat_Source::GetClassData() const { return &_class_data_; }
 
 
-void Rule_Nat_Source::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Rule_Nat_Source::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Rule_Nat_Source*>(&to_msg);
   auto& from = static_cast<const Rule_Nat_Source&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Rule.Nat.Source)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_device().empty()) {
@@ -7270,7 +7137,7 @@ void Rule_Nat_Source::MergeImpl(::google::protobuf::Message& to_msg, const ::goo
   if (from._internal_port() != 0) {
     _this->_internal_set_port(from._internal_port());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Rule_Nat_Source::CopyFrom(const Rule_Nat_Source& from) {
@@ -7280,7 +7147,7 @@ void Rule_Nat_Source::CopyFrom(const Rule_Nat_Source& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Rule_Nat_Source::IsInitialized() const {
+bool Rule_Nat_Source::IsInitialized() const {
   return true;
 }
 
@@ -7289,199 +7156,209 @@ void Rule_Nat_Source::InternalSwap(Rule_Nat_Source* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
-                                       &other->_impl_.device_, rhs_arena);
-        swap(_impl_.port_, other->_impl_.port_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.device_, lhs_arena,
+      &other->_impl_.device_, rhs_arena
+  );
+  swap(_impl_.port_, other->_impl_.port_);
 }
 
-::google::protobuf::Metadata Rule_Nat_Source::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Rule_Nat_Source::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[19]);
 }
+
 // ===================================================================
 
 class Rule_Nat_Destination::_Internal {
  public:
 };
 
-Rule_Nat_Destination::Rule_Nat_Destination(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Rule_Nat_Destination::Rule_Nat_Destination(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.Nat.Destination)
 }
-Rule_Nat_Destination::Rule_Nat_Destination(const Rule_Nat_Destination& from) : ::google::protobuf::Message() {
-  Rule_Nat_Destination* const _this = this;
-  (void)_this;
+Rule_Nat_Destination::Rule_Nat_Destination(const Rule_Nat_Destination& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Rule_Nat_Destination* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.ip_){},
-      decltype(_impl_.port_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.ip_){}
+    , decltype(_impl_.port_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.ip_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ip_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_ip().empty()) {
-    _this->_impl_.ip_.Set(from._internal_ip(), _this->GetArenaForAllocation());
+    _this->_impl_.ip_.Set(from._internal_ip(), 
+      _this->GetArenaForAllocation());
   }
   _this->_impl_.port_ = from._impl_.port_;
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.Nat.Destination)
 }
-inline void Rule_Nat_Destination::SharedCtor(::_pb::Arena* arena) {
+
+inline void Rule_Nat_Destination::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.ip_){},
-      decltype(_impl_.port_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.ip_){}
+    , decltype(_impl_.port_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.ip_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.ip_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 Rule_Nat_Destination::~Rule_Nat_Destination() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.Nat.Destination)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Rule_Nat_Destination::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.ip_.Destroy();
 }
+
 void Rule_Nat_Destination::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Rule_Nat_Destination::Clear() {
+void Rule_Nat_Destination::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.Nat.Destination)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.ip_.ClearToEmpty();
   _impl_.port_ = 0u;
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Rule_Nat_Destination::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Rule_Nat_Destination::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string ip = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_ip();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Rule.Nat.Destination.ip"));
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 port = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 2, 0, 50, 2> Rule_Nat_Destination::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967290,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Rule_Nat_Destination_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // string ip = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_Nat_Destination, _impl_.ip_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    // uint32 port = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Rule_Nat_Destination, _impl_.port_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_Nat_Destination, _impl_.port_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string ip = 1;
-    {PROTOBUF_FIELD_OFFSET(Rule_Nat_Destination, _impl_.ip_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // uint32 port = 3;
-    {PROTOBUF_FIELD_OFFSET(Rule_Nat_Destination, _impl_.port_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-  }},
-  // no aux_entries
-  {{
-    "\47\2\0\0\0\0\0\0"
-    "palm.ops.router.v1.Rule.Nat.Destination"
-    "ip"
-  }},
-};
-
-::uint8_t* Rule_Nat_Destination::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Rule_Nat_Destination::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Rule.Nat.Destination)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string ip = 1;
   if (!this->_internal_ip().empty()) {
-    const std::string& _s = this->_internal_ip();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Rule.Nat.Destination.ip");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_ip().data(), static_cast<int>(this->_internal_ip().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Rule.Nat.Destination.ip");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_ip(), target);
   }
 
   // uint32 port = 3;
   if (this->_internal_port() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        3, this->_internal_port(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_port(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Rule.Nat.Destination)
   return target;
 }
 
-::size_t Rule_Nat_Destination::ByteSizeLong() const {
+size_t Rule_Nat_Destination::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Rule.Nat.Destination)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string ip = 1;
   if (!this->_internal_ip().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_ip());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_ip());
   }
 
   // uint32 port = 3;
   if (this->_internal_port() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_port());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_port());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Rule_Nat_Destination::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Rule_Nat_Destination::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Rule_Nat_Destination::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Rule_Nat_Destination::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Rule_Nat_Destination::GetClassData() const { return &_class_data_; }
 
 
-void Rule_Nat_Destination::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Rule_Nat_Destination::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Rule_Nat_Destination*>(&to_msg);
   auto& from = static_cast<const Rule_Nat_Destination&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Rule.Nat.Destination)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_ip().empty()) {
@@ -7490,7 +7367,7 @@ void Rule_Nat_Destination::MergeImpl(::google::protobuf::Message& to_msg, const 
   if (from._internal_port() != 0) {
     _this->_internal_set_port(from._internal_port());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Rule_Nat_Destination::CopyFrom(const Rule_Nat_Destination& from) {
@@ -7500,7 +7377,7 @@ void Rule_Nat_Destination::CopyFrom(const Rule_Nat_Destination& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Rule_Nat_Destination::IsInitialized() const {
+bool Rule_Nat_Destination::IsInitialized() const {
   return true;
 }
 
@@ -7509,174 +7386,172 @@ void Rule_Nat_Destination::InternalSwap(Rule_Nat_Destination* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, lhs_arena,
-                                       &other->_impl_.ip_, rhs_arena);
-        swap(_impl_.port_, other->_impl_.port_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.ip_, lhs_arena,
+      &other->_impl_.ip_, rhs_arena
+  );
+  swap(_impl_.port_, other->_impl_.port_);
 }
 
-::google::protobuf::Metadata Rule_Nat_Destination::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Rule_Nat_Destination::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[20]);
 }
+
 // ===================================================================
 
 class Rule_Nat::_Internal {
  public:
-  using HasBits = decltype(std::declval<Rule_Nat>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(Rule_Nat, _impl_._has_bits_);
   static const ::palm::ops::router::v1::Rule_Nat_Source& source(const Rule_Nat* msg);
-  static void set_has_source(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::palm::ops::router::v1::Rule_Nat_Destination& destination(const Rule_Nat* msg);
-  static void set_has_destination(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
 };
 
-const ::palm::ops::router::v1::Rule_Nat_Source& Rule_Nat::_Internal::source(const Rule_Nat* msg) {
+const ::palm::ops::router::v1::Rule_Nat_Source&
+Rule_Nat::_Internal::source(const Rule_Nat* msg) {
   return *msg->_impl_.source_;
 }
-const ::palm::ops::router::v1::Rule_Nat_Destination& Rule_Nat::_Internal::destination(const Rule_Nat* msg) {
+const ::palm::ops::router::v1::Rule_Nat_Destination&
+Rule_Nat::_Internal::destination(const Rule_Nat* msg) {
   return *msg->_impl_.destination_;
 }
-Rule_Nat::Rule_Nat(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Rule_Nat::Rule_Nat(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.Nat)
 }
-Rule_Nat::Rule_Nat(const Rule_Nat& from) : ::google::protobuf::Message() {
-  Rule_Nat* const _this = this;
-  (void)_this;
+Rule_Nat::Rule_Nat(const Rule_Nat& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Rule_Nat* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.source_){nullptr},
-      decltype(_impl_.destination_){nullptr},
-      decltype(_impl_.tcp_){},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+      decltype(_impl_.source_){nullptr}
+    , decltype(_impl_.destination_){nullptr}
+    , decltype(_impl_.tcp_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_source()) {
     _this->_impl_.source_ = new ::palm::ops::router::v1::Rule_Nat_Source(*from._impl_.source_);
   }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+  if (from._internal_has_destination()) {
     _this->_impl_.destination_ = new ::palm::ops::router::v1::Rule_Nat_Destination(*from._impl_.destination_);
   }
   _this->_impl_.tcp_ = from._impl_.tcp_;
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.Nat)
 }
-inline void Rule_Nat::SharedCtor(::_pb::Arena* arena) {
+
+inline void Rule_Nat::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.source_){nullptr},
-      decltype(_impl_.destination_){nullptr},
-      decltype(_impl_.tcp_){false},
+      decltype(_impl_.source_){nullptr}
+    , decltype(_impl_.destination_){nullptr}
+    , decltype(_impl_.tcp_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 Rule_Nat::~Rule_Nat() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.Nat)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Rule_Nat::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete _impl_.source_;
   if (this != internal_default_instance()) delete _impl_.destination_;
 }
+
 void Rule_Nat::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Rule_Nat::Clear() {
+void Rule_Nat::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.Nat)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      ABSL_DCHECK(_impl_.source_ != nullptr);
-      _impl_.source_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      ABSL_DCHECK(_impl_.destination_ != nullptr);
-      _impl_.destination_->Clear();
-    }
+  if (GetArenaForAllocation() == nullptr && _impl_.source_ != nullptr) {
+    delete _impl_.source_;
   }
+  _impl_.source_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.destination_ != nullptr) {
+    delete _impl_.destination_;
+  }
+  _impl_.destination_ = nullptr;
   _impl_.tcp_ = false;
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Rule_Nat::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Rule_Nat::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .palm.ops.router.v1.Rule.Nat.Source source = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_source(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool tcp = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.tcp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Rule.Nat.Destination destination = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_destination(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 2, 0, 2> Rule_Nat::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(Rule_Nat, _impl_._has_bits_),
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_Rule_Nat_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // .palm.ops.router.v1.Rule.Nat.Source source = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(Rule_Nat, _impl_.source_)}},
-    // bool tcp = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Rule_Nat, _impl_.tcp_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(Rule_Nat, _impl_.tcp_)}},
-    // .palm.ops.router.v1.Rule.Nat.Destination destination = 3;
-    {::_pbi::TcParser::FastMtS1,
-     {26, 1, 1, PROTOBUF_FIELD_OFFSET(Rule_Nat, _impl_.destination_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .palm.ops.router.v1.Rule.Nat.Source source = 1;
-    {PROTOBUF_FIELD_OFFSET(Rule_Nat, _impl_.source_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // bool tcp = 2;
-    {PROTOBUF_FIELD_OFFSET(Rule_Nat, _impl_.tcp_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-    // .palm.ops.router.v1.Rule.Nat.Destination destination = 3;
-    {PROTOBUF_FIELD_OFFSET(Rule_Nat, _impl_.destination_), _Internal::kHasBitsOffset + 1, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Rule_Nat_Source>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Rule_Nat_Destination>()},
-  }}, {{
-  }},
-};
-
-::uint8_t* Rule_Nat::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Rule_Nat::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Rule.Nat)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Rule.Nat.Source source = 1;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_source()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(1, _Internal::source(this),
         _Internal::source(this).GetCachedSize(), target, stream);
   }
@@ -7684,89 +7559,81 @@ const ::_pbi::TcParseTable<2, 3, 2, 0, 2> Rule_Nat::_table_ = {
   // bool tcp = 2;
   if (this->_internal_tcp() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        2, this->_internal_tcp(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_tcp(), target);
   }
 
   // .palm.ops.router.v1.Rule.Nat.Destination destination = 3;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_destination()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(3, _Internal::destination(this),
         _Internal::destination(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Rule.Nat)
   return target;
 }
 
-::size_t Rule_Nat::ByteSizeLong() const {
+size_t Rule_Nat::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Rule.Nat)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // .palm.ops.router.v1.Rule.Nat.Source source = 1;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.source_);
-    }
-
-    // .palm.ops.router.v1.Rule.Nat.Destination destination = 3;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.destination_);
-    }
-
+  // .palm.ops.router.v1.Rule.Nat.Source source = 1;
+  if (this->_internal_has_source()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.source_);
   }
+
+  // .palm.ops.router.v1.Rule.Nat.Destination destination = 3;
+  if (this->_internal_has_destination()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.destination_);
+  }
+
   // bool tcp = 2;
   if (this->_internal_tcp() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Rule_Nat::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Rule_Nat::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Rule_Nat::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Rule_Nat::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Rule_Nat::GetClassData() const { return &_class_data_; }
 
 
-void Rule_Nat::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Rule_Nat::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Rule_Nat*>(&to_msg);
   auto& from = static_cast<const Rule_Nat&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Rule.Nat)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _this->_internal_mutable_source()->::palm::ops::router::v1::Rule_Nat_Source::MergeFrom(
-          from._internal_source());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _this->_internal_mutable_destination()->::palm::ops::router::v1::Rule_Nat_Destination::MergeFrom(
-          from._internal_destination());
-    }
+  if (from._internal_has_source()) {
+    _this->_internal_mutable_source()->::palm::ops::router::v1::Rule_Nat_Source::MergeFrom(
+        from._internal_source());
+  }
+  if (from._internal_has_destination()) {
+    _this->_internal_mutable_destination()->::palm::ops::router::v1::Rule_Nat_Destination::MergeFrom(
+        from._internal_destination());
   }
   if (from._internal_tcp() != 0) {
     _this->_internal_set_tcp(from._internal_tcp());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Rule_Nat::CopyFrom(const Rule_Nat& from) {
@@ -7776,15 +7643,14 @@ void Rule_Nat::CopyFrom(const Rule_Nat& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Rule_Nat::IsInitialized() const {
+bool Rule_Nat::IsInitialized() const {
   return true;
 }
 
 void Rule_Nat::InternalSwap(Rule_Nat* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Rule_Nat, _impl_.tcp_)
       + sizeof(Rule_Nat::_impl_.tcp_)
       - PROTOBUF_FIELD_OFFSET(Rule_Nat, _impl_.source_)>(
@@ -7792,39 +7658,41 @@ void Rule_Nat::InternalSwap(Rule_Nat* other) {
           reinterpret_cast<char*>(&other->_impl_.source_));
 }
 
-::google::protobuf::Metadata Rule_Nat::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Rule_Nat::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[21]);
 }
+
 // ===================================================================
 
 class Rule::_Internal {
  public:
-  static constexpr ::int32_t kOneofCaseOffset =
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Rule, _impl_._oneof_case_);
   static const ::palm::ops::router::v1::Rule_InBound& in(const Rule* msg);
   static const ::palm::ops::router::v1::Rule_OutBound& out(const Rule* msg);
   static const ::palm::ops::router::v1::Rule_Nat& nat(const Rule* msg);
 };
 
-const ::palm::ops::router::v1::Rule_InBound& Rule::_Internal::in(const Rule* msg) {
+const ::palm::ops::router::v1::Rule_InBound&
+Rule::_Internal::in(const Rule* msg) {
   return *msg->_impl_.payload_.in_;
 }
-const ::palm::ops::router::v1::Rule_OutBound& Rule::_Internal::out(const Rule* msg) {
+const ::palm::ops::router::v1::Rule_OutBound&
+Rule::_Internal::out(const Rule* msg) {
   return *msg->_impl_.payload_.out_;
 }
-const ::palm::ops::router::v1::Rule_Nat& Rule::_Internal::nat(const Rule* msg) {
+const ::palm::ops::router::v1::Rule_Nat&
+Rule::_Internal::nat(const Rule* msg) {
   return *msg->_impl_.payload_.nat_;
 }
 void Rule::set_allocated_in(::palm::ops::router::v1::Rule_InBound* in) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_payload();
   if (in) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(in);
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(in);
     if (message_arena != submessage_arena) {
-      in = ::google::protobuf::internal::GetOwnedMessage(
+      in = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, in, submessage_arena);
     }
     set_has_in();
@@ -7833,13 +7701,13 @@ void Rule::set_allocated_in(::palm::ops::router::v1::Rule_InBound* in) {
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Rule.in)
 }
 void Rule::set_allocated_out(::palm::ops::router::v1::Rule_OutBound* out) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_payload();
   if (out) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(out);
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(out);
     if (message_arena != submessage_arena) {
-      out = ::google::protobuf::internal::GetOwnedMessage(
+      out = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, out, submessage_arena);
     }
     set_has_out();
@@ -7848,13 +7716,13 @@ void Rule::set_allocated_out(::palm::ops::router::v1::Rule_OutBound* out) {
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Rule.out)
 }
 void Rule::set_allocated_nat(::palm::ops::router::v1::Rule_Nat* nat) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_payload();
   if (nat) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(nat);
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(nat);
     if (message_arena != submessage_arena) {
-      nat = ::google::protobuf::internal::GetOwnedMessage(
+      nat = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, nat, submessage_arena);
     }
     set_has_nat();
@@ -7862,36 +7730,38 @@ void Rule::set_allocated_nat(::palm::ops::router::v1::Rule_Nat* nat) {
   }
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Rule.nat)
 }
-Rule::Rule(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Rule::Rule(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule)
 }
-Rule::Rule(const Rule& from) : ::google::protobuf::Message() {
-  Rule* const _this = this;
-  (void)_this;
+Rule::Rule(const Rule& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Rule* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.name_){}
+    , decltype(_impl_.group_){}
+    , decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.group_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.group_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_group().empty()) {
-    _this->_impl_.group_.Set(from._internal_group(), _this->GetArenaForAllocation());
+    _this->_impl_.group_.Set(from._internal_group(), 
+      _this->GetArenaForAllocation());
   }
   clear_has_payload();
   switch (from.payload_case()) {
@@ -7914,41 +7784,49 @@ Rule::Rule(const Rule& from) : ::google::protobuf::Message() {
       break;
     }
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule)
 }
-inline void Rule::SharedCtor(::_pb::Arena* arena) {
+
+inline void Rule::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
+      decltype(_impl_.name_){}
+    , decltype(_impl_.group_){}
+    , decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
   };
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.group_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.group_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   clear_has_payload();
 }
+
 Rule::~Rule() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Rule::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.name_.Destroy();
   _impl_.group_.Destroy();
   if (has_payload()) {
     clear_payload();
   }
 }
+
 void Rule::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
@@ -7982,169 +7860,187 @@ void Rule::clear_payload() {
 }
 
 
-PROTOBUF_NOINLINE void Rule::Clear() {
+void Rule::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.name_.ClearToEmpty();
   _impl_.group_.ClearToEmpty();
   clear_payload();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Rule::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Rule::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string name = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Rule.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string group = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_group();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Rule.group"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Rule.InBound in = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+          ptr = ctx->ParseMessage(_internal_mutable_in(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Rule.OutBound out = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+          ptr = ctx->ParseMessage(_internal_mutable_out(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Rule.Nat nat = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 106)) {
+          ptr = ctx->ParseMessage(_internal_mutable_nat(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 5, 3, 41, 2> Rule::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    13, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294960124,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
-    3,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_Rule_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string group = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Rule, _impl_.group_)}},
-    // string name = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Rule, _impl_.name_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string name = 1;
-    {PROTOBUF_FIELD_OFFSET(Rule, _impl_.name_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string group = 2;
-    {PROTOBUF_FIELD_OFFSET(Rule, _impl_.group_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .palm.ops.router.v1.Rule.InBound in = 11;
-    {PROTOBUF_FIELD_OFFSET(Rule, _impl_.payload_.in_), _Internal::kOneofCaseOffset + 0, 0,
-    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.Rule.OutBound out = 12;
-    {PROTOBUF_FIELD_OFFSET(Rule, _impl_.payload_.out_), _Internal::kOneofCaseOffset + 0, 1,
-    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.Rule.Nat nat = 13;
-    {PROTOBUF_FIELD_OFFSET(Rule, _impl_.payload_.nat_), _Internal::kOneofCaseOffset + 0, 2,
-    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Rule_InBound>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Rule_OutBound>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Rule_Nat>()},
-  }}, {{
-    "\27\4\5\0\0\0\0\0"
-    "palm.ops.router.v1.Rule"
-    "name"
-    "group"
-  }},
-};
-
-::uint8_t* Rule::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Rule::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Rule)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string name = 1;
   if (!this->_internal_name().empty()) {
-    const std::string& _s = this->_internal_name();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Rule.name");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Rule.name");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
   // string group = 2;
   if (!this->_internal_group().empty()) {
-    const std::string& _s = this->_internal_group();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Rule.group");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_group().data(), static_cast<int>(this->_internal_group().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Rule.group");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_group(), target);
   }
 
-  switch (payload_case()) {
-    case kIn: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(11, _Internal::in(this),
-          _Internal::in(this).GetCachedSize(), target, stream);
-      break;
-    }
-    case kOut: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(12, _Internal::out(this),
-          _Internal::out(this).GetCachedSize(), target, stream);
-      break;
-    }
-    case kNat: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(13, _Internal::nat(this),
-          _Internal::nat(this).GetCachedSize(), target, stream);
-      break;
-    }
-    default:
-      break;
+  // .palm.ops.router.v1.Rule.InBound in = 11;
+  if (_internal_has_in()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(11, _Internal::in(this),
+        _Internal::in(this).GetCachedSize(), target, stream);
   }
+
+  // .palm.ops.router.v1.Rule.OutBound out = 12;
+  if (_internal_has_out()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(12, _Internal::out(this),
+        _Internal::out(this).GetCachedSize(), target, stream);
+  }
+
+  // .palm.ops.router.v1.Rule.Nat nat = 13;
+  if (_internal_has_nat()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(13, _Internal::nat(this),
+        _Internal::nat(this).GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Rule)
   return target;
 }
 
-::size_t Rule::ByteSizeLong() const {
+size_t Rule::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Rule)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string name = 1;
   if (!this->_internal_name().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_name());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   // string group = 2;
   if (!this->_internal_group().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_group());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_group());
   }
 
   switch (payload_case()) {
     // .palm.ops.router.v1.Rule.InBound in = 11;
     case kIn: {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.payload_.in_);
       break;
     }
     // .palm.ops.router.v1.Rule.OutBound out = 12;
     case kOut: {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.payload_.out_);
       break;
     }
     // .palm.ops.router.v1.Rule.Nat nat = 13;
     case kNat: {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.payload_.nat_);
       break;
     }
@@ -8155,19 +8051,19 @@ const ::_pbi::TcParseTable<1, 5, 3, 41, 2> Rule::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Rule::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Rule::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Rule::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Rule::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Rule::GetClassData() const { return &_class_data_; }
 
 
-void Rule::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Rule::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Rule*>(&to_msg);
   auto& from = static_cast<const Rule&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Rule)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_name().empty()) {
@@ -8196,7 +8092,7 @@ void Rule::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protob
       break;
     }
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Rule::CopyFrom(const Rule& from) {
@@ -8206,7 +8102,7 @@ void Rule::CopyFrom(const Rule& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Rule::IsInitialized() const {
+bool Rule::IsInitialized() const {
   return true;
 }
 
@@ -8215,263 +8111,291 @@ void Rule::InternalSwap(Rule* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, lhs_arena,
-                                       &other->_impl_.group_, rhs_arena);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.group_, lhs_arena,
+      &other->_impl_.group_, rhs_arena
+  );
   swap(_impl_.payload_, other->_impl_.payload_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 
-::google::protobuf::Metadata Rule::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Rule::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[22]);
 }
+
 // ===================================================================
 
 RouterStatusResponse_InterfacesEntry_DoNotUse::RouterStatusResponse_InterfacesEntry_DoNotUse() {}
-RouterStatusResponse_InterfacesEntry_DoNotUse::RouterStatusResponse_InterfacesEntry_DoNotUse(::google::protobuf::Arena* arena)
+RouterStatusResponse_InterfacesEntry_DoNotUse::RouterStatusResponse_InterfacesEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
     : SuperType(arena) {}
 void RouterStatusResponse_InterfacesEntry_DoNotUse::MergeFrom(const RouterStatusResponse_InterfacesEntry_DoNotUse& other) {
   MergeFromInternal(other);
 }
-::google::protobuf::Metadata RouterStatusResponse_InterfacesEntry_DoNotUse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouterStatusResponse_InterfacesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[23]);
 }
+
 // ===================================================================
 
 class RouterStatusResponse_Ip::_Internal {
  public:
 };
 
-RouterStatusResponse_Ip::RouterStatusResponse_Ip(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+RouterStatusResponse_Ip::RouterStatusResponse_Ip(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterStatusResponse.Ip)
 }
-RouterStatusResponse_Ip::RouterStatusResponse_Ip(const RouterStatusResponse_Ip& from) : ::google::protobuf::Message() {
-  RouterStatusResponse_Ip* const _this = this;
-  (void)_this;
+RouterStatusResponse_Ip::RouterStatusResponse_Ip(const RouterStatusResponse_Ip& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RouterStatusResponse_Ip* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.address_){},
-      decltype(_impl_.route_){},
-      decltype(_impl_.rule_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.address_){}
+    , decltype(_impl_.route_){}
+    , decltype(_impl_.rule_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.address_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_address().empty()) {
-    _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
+    _this->_impl_.address_.Set(from._internal_address(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.route_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.route_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.route_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_route().empty()) {
-    _this->_impl_.route_.Set(from._internal_route(), _this->GetArenaForAllocation());
+    _this->_impl_.route_.Set(from._internal_route(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.rule_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.rule_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.rule_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_rule().empty()) {
-    _this->_impl_.rule_.Set(from._internal_rule(), _this->GetArenaForAllocation());
+    _this->_impl_.rule_.Set(from._internal_rule(), 
+      _this->GetArenaForAllocation());
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterStatusResponse.Ip)
 }
-inline void RouterStatusResponse_Ip::SharedCtor(::_pb::Arena* arena) {
+
+inline void RouterStatusResponse_Ip::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.address_){},
-      decltype(_impl_.route_){},
-      decltype(_impl_.rule_){},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.address_){}
+    , decltype(_impl_.route_){}
+    , decltype(_impl_.rule_){}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.address_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.route_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.route_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.route_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.rule_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.rule_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.rule_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 RouterStatusResponse_Ip::~RouterStatusResponse_Ip() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterStatusResponse.Ip)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void RouterStatusResponse_Ip::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.address_.Destroy();
   _impl_.route_.Destroy();
   _impl_.rule_.Destroy();
 }
+
 void RouterStatusResponse_Ip::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void RouterStatusResponse_Ip::Clear() {
+void RouterStatusResponse_Ip::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterStatusResponse.Ip)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.address_.ClearToEmpty();
   _impl_.route_.ClearToEmpty();
   _impl_.rule_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RouterStatusResponse_Ip::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* RouterStatusResponse_Ip::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string address = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_address();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.RouterStatusResponse.Ip.address"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string route = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_route();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.RouterStatusResponse.Ip.route"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string rule = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_rule();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.RouterStatusResponse.Ip.rule"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 0, 67, 2> RouterStatusResponse_Ip::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_RouterStatusResponse_Ip_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // string address = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(RouterStatusResponse_Ip, _impl_.address_)}},
-    // string route = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(RouterStatusResponse_Ip, _impl_.route_)}},
-    // string rule = 3;
-    {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(RouterStatusResponse_Ip, _impl_.rule_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string address = 1;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse_Ip, _impl_.address_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string route = 2;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse_Ip, _impl_.route_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string rule = 3;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse_Ip, _impl_.rule_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\52\7\5\4\0\0\0\0"
-    "palm.ops.router.v1.RouterStatusResponse.Ip"
-    "address"
-    "route"
-    "rule"
-  }},
-};
-
-::uint8_t* RouterStatusResponse_Ip::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* RouterStatusResponse_Ip::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.RouterStatusResponse.Ip)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string address = 1;
   if (!this->_internal_address().empty()) {
-    const std::string& _s = this->_internal_address();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterStatusResponse.Ip.address");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_address().data(), static_cast<int>(this->_internal_address().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.RouterStatusResponse.Ip.address");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_address(), target);
   }
 
   // string route = 2;
   if (!this->_internal_route().empty()) {
-    const std::string& _s = this->_internal_route();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterStatusResponse.Ip.route");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_route().data(), static_cast<int>(this->_internal_route().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.RouterStatusResponse.Ip.route");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_route(), target);
   }
 
   // string rule = 3;
   if (!this->_internal_rule().empty()) {
-    const std::string& _s = this->_internal_rule();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterStatusResponse.Ip.rule");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_rule().data(), static_cast<int>(this->_internal_rule().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.RouterStatusResponse.Ip.rule");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_rule(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.RouterStatusResponse.Ip)
   return target;
 }
 
-::size_t RouterStatusResponse_Ip::ByteSizeLong() const {
+size_t RouterStatusResponse_Ip::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.RouterStatusResponse.Ip)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string address = 1;
   if (!this->_internal_address().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_address());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_address());
   }
 
   // string route = 2;
   if (!this->_internal_route().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_route());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_route());
   }
 
   // string rule = 3;
   if (!this->_internal_rule().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_rule());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_rule());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData RouterStatusResponse_Ip::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouterStatusResponse_Ip::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RouterStatusResponse_Ip::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*RouterStatusResponse_Ip::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouterStatusResponse_Ip::GetClassData() const { return &_class_data_; }
 
 
-void RouterStatusResponse_Ip::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void RouterStatusResponse_Ip::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RouterStatusResponse_Ip*>(&to_msg);
   auto& from = static_cast<const RouterStatusResponse_Ip&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.RouterStatusResponse.Ip)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_address().empty()) {
@@ -8483,7 +8407,7 @@ void RouterStatusResponse_Ip::MergeImpl(::google::protobuf::Message& to_msg, con
   if (!from._internal_rule().empty()) {
     _this->_internal_set_rule(from._internal_rule());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RouterStatusResponse_Ip::CopyFrom(const RouterStatusResponse_Ip& from) {
@@ -8493,7 +8417,7 @@ void RouterStatusResponse_Ip::CopyFrom(const RouterStatusResponse_Ip& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool RouterStatusResponse_Ip::IsInitialized() const {
+bool RouterStatusResponse_Ip::IsInitialized() const {
   return true;
 }
 
@@ -8502,157 +8426,162 @@ void RouterStatusResponse_Ip::InternalSwap(RouterStatusResponse_Ip* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
-                                       &other->_impl_.address_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.route_, lhs_arena,
-                                       &other->_impl_.route_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.rule_, lhs_arena,
-                                       &other->_impl_.rule_, rhs_arena);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.address_, lhs_arena,
+      &other->_impl_.address_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.route_, lhs_arena,
+      &other->_impl_.route_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.rule_, lhs_arena,
+      &other->_impl_.rule_, rhs_arena
+  );
 }
 
-::google::protobuf::Metadata RouterStatusResponse_Ip::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouterStatusResponse_Ip::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[24]);
 }
+
 // ===================================================================
 
 class RouterStatusResponse::_Internal {
  public:
-  using HasBits = decltype(std::declval<RouterStatusResponse>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_._has_bits_);
   static const ::palm::ops::router::v1::Lan& lan(const RouterStatusResponse* msg);
-  static void set_has_lan(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::palm::ops::router::v1::Dmz& dmz(const RouterStatusResponse* msg);
-  static void set_has_dmz(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
   static const ::palm::ops::router::v1::Dns& dns(const RouterStatusResponse* msg);
-  static void set_has_dns(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
-  }
   static const ::palm::ops::router::v1::WanPool& wan_pool(const RouterStatusResponse* msg);
-  static void set_has_wan_pool(HasBits* has_bits) {
-    (*has_bits)[0] |= 8u;
-  }
   static const ::palm::ops::router::v1::RouterStatusResponse_Ip& ip(const RouterStatusResponse* msg);
-  static void set_has_ip(HasBits* has_bits) {
-    (*has_bits)[0] |= 16u;
-  }
-  static const ::google::protobuf::Duration& uptime(const RouterStatusResponse* msg);
-  static void set_has_uptime(HasBits* has_bits) {
-    (*has_bits)[0] |= 32u;
-  }
+  static const ::PROTOBUF_NAMESPACE_ID::Duration& uptime(const RouterStatusResponse* msg);
 };
 
-const ::palm::ops::router::v1::Lan& RouterStatusResponse::_Internal::lan(const RouterStatusResponse* msg) {
+const ::palm::ops::router::v1::Lan&
+RouterStatusResponse::_Internal::lan(const RouterStatusResponse* msg) {
   return *msg->_impl_.lan_;
 }
-const ::palm::ops::router::v1::Dmz& RouterStatusResponse::_Internal::dmz(const RouterStatusResponse* msg) {
+const ::palm::ops::router::v1::Dmz&
+RouterStatusResponse::_Internal::dmz(const RouterStatusResponse* msg) {
   return *msg->_impl_.dmz_;
 }
-const ::palm::ops::router::v1::Dns& RouterStatusResponse::_Internal::dns(const RouterStatusResponse* msg) {
+const ::palm::ops::router::v1::Dns&
+RouterStatusResponse::_Internal::dns(const RouterStatusResponse* msg) {
   return *msg->_impl_.dns_;
 }
-const ::palm::ops::router::v1::WanPool& RouterStatusResponse::_Internal::wan_pool(const RouterStatusResponse* msg) {
+const ::palm::ops::router::v1::WanPool&
+RouterStatusResponse::_Internal::wan_pool(const RouterStatusResponse* msg) {
   return *msg->_impl_.wan_pool_;
 }
-const ::palm::ops::router::v1::RouterStatusResponse_Ip& RouterStatusResponse::_Internal::ip(const RouterStatusResponse* msg) {
+const ::palm::ops::router::v1::RouterStatusResponse_Ip&
+RouterStatusResponse::_Internal::ip(const RouterStatusResponse* msg) {
   return *msg->_impl_.ip_;
 }
-const ::google::protobuf::Duration& RouterStatusResponse::_Internal::uptime(const RouterStatusResponse* msg) {
+const ::PROTOBUF_NAMESPACE_ID::Duration&
+RouterStatusResponse::_Internal::uptime(const RouterStatusResponse* msg) {
   return *msg->_impl_.uptime_;
 }
 void RouterStatusResponse::clear_uptime() {
-  if (_impl_.uptime_ != nullptr) _impl_.uptime_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000020u;
+  if (GetArenaForAllocation() == nullptr && _impl_.uptime_ != nullptr) {
+    delete _impl_.uptime_;
+  }
+  _impl_.uptime_ = nullptr;
 }
-RouterStatusResponse::RouterStatusResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+RouterStatusResponse::RouterStatusResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  if (arena != nullptr && !is_message_owned) {
+    arena->OwnCustomDestructor(this, &RouterStatusResponse::ArenaDtor);
+  }
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterStatusResponse)
 }
-RouterStatusResponse::RouterStatusResponse(const RouterStatusResponse& from) : ::google::protobuf::Message() {
-  RouterStatusResponse* const _this = this;
-  (void)_this;
+RouterStatusResponse::RouterStatusResponse(const RouterStatusResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RouterStatusResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /* decltype(_impl_.interfaces_) */ {},
-      decltype(_impl_.wan_){from._impl_.wan_},
-      decltype(_impl_.rules_){from._impl_.rules_},
-      decltype(_impl_.hosts_){from._impl_.hosts_},
-      decltype(_impl_.firewall_){},
-      decltype(_impl_.lan_){nullptr},
-      decltype(_impl_.dmz_){nullptr},
-      decltype(_impl_.dns_){nullptr},
-      decltype(_impl_.wan_pool_){nullptr},
-      decltype(_impl_.ip_){nullptr},
-      decltype(_impl_.uptime_){nullptr},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      /*decltype(_impl_.interfaces_)*/{}
+    , decltype(_impl_.wan_){from._impl_.wan_}
+    , decltype(_impl_.rules_){from._impl_.rules_}
+    , decltype(_impl_.hosts_){from._impl_.hosts_}
+    , decltype(_impl_.firewall_){}
+    , decltype(_impl_.lan_){nullptr}
+    , decltype(_impl_.dmz_){nullptr}
+    , decltype(_impl_.dns_){nullptr}
+    , decltype(_impl_.wan_pool_){nullptr}
+    , decltype(_impl_.ip_){nullptr}
+    , decltype(_impl_.uptime_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _this->_impl_.interfaces_.MergeFrom(from._impl_.interfaces_);
   _impl_.firewall_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.firewall_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.firewall_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_firewall().empty()) {
-    _this->_impl_.firewall_.Set(from._internal_firewall(), _this->GetArenaForAllocation());
+    _this->_impl_.firewall_.Set(from._internal_firewall(), 
+      _this->GetArenaForAllocation());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_lan()) {
     _this->_impl_.lan_ = new ::palm::ops::router::v1::Lan(*from._impl_.lan_);
   }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+  if (from._internal_has_dmz()) {
     _this->_impl_.dmz_ = new ::palm::ops::router::v1::Dmz(*from._impl_.dmz_);
   }
-  if ((from._impl_._has_bits_[0] & 0x00000004u) != 0) {
+  if (from._internal_has_dns()) {
     _this->_impl_.dns_ = new ::palm::ops::router::v1::Dns(*from._impl_.dns_);
   }
-  if ((from._impl_._has_bits_[0] & 0x00000008u) != 0) {
+  if (from._internal_has_wan_pool()) {
     _this->_impl_.wan_pool_ = new ::palm::ops::router::v1::WanPool(*from._impl_.wan_pool_);
   }
-  if ((from._impl_._has_bits_[0] & 0x00000010u) != 0) {
+  if (from._internal_has_ip()) {
     _this->_impl_.ip_ = new ::palm::ops::router::v1::RouterStatusResponse_Ip(*from._impl_.ip_);
   }
-  if ((from._impl_._has_bits_[0] & 0x00000020u) != 0) {
-    _this->_impl_.uptime_ = new ::google::protobuf::Duration(*from._impl_.uptime_);
+  if (from._internal_has_uptime()) {
+    _this->_impl_.uptime_ = new ::PROTOBUF_NAMESPACE_ID::Duration(*from._impl_.uptime_);
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterStatusResponse)
 }
-inline void RouterStatusResponse::SharedCtor(::_pb::Arena* arena) {
+
+inline void RouterStatusResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /* decltype(_impl_.interfaces_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
-      decltype(_impl_.wan_){arena},
-      decltype(_impl_.rules_){arena},
-      decltype(_impl_.hosts_){arena},
-      decltype(_impl_.firewall_){},
-      decltype(_impl_.lan_){nullptr},
-      decltype(_impl_.dmz_){nullptr},
-      decltype(_impl_.dns_){nullptr},
-      decltype(_impl_.wan_pool_){nullptr},
-      decltype(_impl_.ip_){nullptr},
-      decltype(_impl_.uptime_){nullptr},
+      /*decltype(_impl_.interfaces_)*/{::_pbi::ArenaInitialized(), arena}
+    , decltype(_impl_.wan_){arena}
+    , decltype(_impl_.rules_){arena}
+    , decltype(_impl_.hosts_){arena}
+    , decltype(_impl_.firewall_){}
+    , decltype(_impl_.lan_){nullptr}
+    , decltype(_impl_.dmz_){nullptr}
+    , decltype(_impl_.dns_){nullptr}
+    , decltype(_impl_.wan_pool_){nullptr}
+    , decltype(_impl_.ip_){nullptr}
+    , decltype(_impl_.uptime_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.firewall_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.firewall_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.firewall_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 RouterStatusResponse::~RouterStatusResponse() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterStatusResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    ArenaDtor(this);
+    return;
+  }
   SharedDtor();
 }
+
 inline void RouterStatusResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.interfaces_.Destruct();
   _impl_.interfaces_.~MapField();
   _impl_.wan_.~RepeatedPtrField();
   _impl_.rules_.~RepeatedPtrField();
@@ -8665,223 +8594,245 @@ inline void RouterStatusResponse::SharedDtor() {
   if (this != internal_default_instance()) delete _impl_.ip_;
   if (this != internal_default_instance()) delete _impl_.uptime_;
 }
+
+void RouterStatusResponse::ArenaDtor(void* object) {
+  RouterStatusResponse* _this = reinterpret_cast< RouterStatusResponse* >(object);
+  _this->_impl_.interfaces_.Destruct();
+}
 void RouterStatusResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void RouterStatusResponse::Clear() {
+void RouterStatusResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterStatusResponse)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.interfaces_.Clear();
-  _internal_mutable_wan()->Clear();
-  _internal_mutable_rules()->Clear();
-  _internal_mutable_hosts()->Clear();
+  _impl_.wan_.Clear();
+  _impl_.rules_.Clear();
+  _impl_.hosts_.Clear();
   _impl_.firewall_.ClearToEmpty();
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000003fu) {
-    if (cached_has_bits & 0x00000001u) {
-      ABSL_DCHECK(_impl_.lan_ != nullptr);
-      _impl_.lan_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      ABSL_DCHECK(_impl_.dmz_ != nullptr);
-      _impl_.dmz_->Clear();
-    }
-    if (cached_has_bits & 0x00000004u) {
-      ABSL_DCHECK(_impl_.dns_ != nullptr);
-      _impl_.dns_->Clear();
-    }
-    if (cached_has_bits & 0x00000008u) {
-      ABSL_DCHECK(_impl_.wan_pool_ != nullptr);
-      _impl_.wan_pool_->Clear();
-    }
-    if (cached_has_bits & 0x00000010u) {
-      ABSL_DCHECK(_impl_.ip_ != nullptr);
-      _impl_.ip_->Clear();
-    }
-    if (cached_has_bits & 0x00000020u) {
-      ABSL_DCHECK(_impl_.uptime_ != nullptr);
-      _impl_.uptime_->Clear();
-    }
+  if (GetArenaForAllocation() == nullptr && _impl_.lan_ != nullptr) {
+    delete _impl_.lan_;
   }
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _impl_.lan_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.dmz_ != nullptr) {
+    delete _impl_.dmz_;
+  }
+  _impl_.dmz_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.dns_ != nullptr) {
+    delete _impl_.dns_;
+  }
+  _impl_.dns_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.wan_pool_ != nullptr) {
+    delete _impl_.wan_pool_;
+  }
+  _impl_.wan_pool_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.ip_ != nullptr) {
+    delete _impl_.ip_;
+  }
+  _impl_.ip_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.uptime_ != nullptr) {
+    delete _impl_.uptime_;
+  }
+  _impl_.uptime_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* RouterStatusResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* RouterStatusResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // map<string, string> interfaces = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&_impl_.interfaces_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Lan lan = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+          ptr = ctx->ParseMessage(_internal_mutable_lan(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Dmz dmz = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+          ptr = ctx->ParseMessage(_internal_mutable_dmz(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Dns dns = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 106)) {
+          ptr = ctx->ParseMessage(_internal_mutable_dns(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .palm.ops.router.v1.Wan wan = 14;
+      case 14:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 114)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_wan(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<114>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.WanPool wan_pool = 15;
+      case 15:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 122)) {
+          ptr = ctx->ParseMessage(_internal_mutable_wan_pool(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .palm.ops.router.v1.Rule rules = 21;
+      case 21:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 170)) {
+          ptr -= 2;
+          do {
+            ptr += 2;
+            ptr = ctx->ParseMessage(_internal_add_rules(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<170>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .palm.ops.router.v1.Host hosts = 22;
+      case 22:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 178)) {
+          ptr -= 2;
+          do {
+            ptr += 2;
+            ptr = ctx->ParseMessage(_internal_add_hosts(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<178>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.RouterStatusResponse.Ip ip = 97;
+      case 97:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_ip(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string firewall = 98;
+      case 98:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_firewall();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.RouterStatusResponse.firewall"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .google.protobuf.Duration uptime = 99;
+      case 99:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_uptime(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 11, 10, 74, 7> RouterStatusResponse::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_._has_bits_),
-    0, // no _extensions_
-    99, 120,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4291789822,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    11,  // num_field_entries
-    10,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_RouterStatusResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // .palm.ops.router.v1.RouterStatusResponse.Ip ip = 97;
-    {::_pbi::TcParser::FastMtS2,
-     {1674, 4, 8, PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.ip_)}},
-    // string firewall = 98;
-    {::_pbi::TcParser::FastUS2,
-     {1682, 63, 0, PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.firewall_)}},
-    // .google.protobuf.Duration uptime = 99;
-    {::_pbi::TcParser::FastMtS2,
-     {1690, 5, 9, PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.uptime_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    // repeated .palm.ops.router.v1.Rule rules = 21;
-    {::_pbi::TcParser::FastMtR2,
-     {426, 63, 6, PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.rules_)}},
-    // repeated .palm.ops.router.v1.Host hosts = 22;
-    {::_pbi::TcParser::FastMtR2,
-     {434, 63, 7, PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.hosts_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-    // .palm.ops.router.v1.Lan lan = 11;
-    {::_pbi::TcParser::FastMtS1,
-     {90, 0, 1, PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.lan_)}},
-    // .palm.ops.router.v1.Dmz dmz = 12;
-    {::_pbi::TcParser::FastMtS1,
-     {98, 1, 2, PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.dmz_)}},
-    // .palm.ops.router.v1.Dns dns = 13;
-    {::_pbi::TcParser::FastMtS1,
-     {106, 2, 3, PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.dns_)}},
-    // repeated .palm.ops.router.v1.Wan wan = 14;
-    {::_pbi::TcParser::FastMtR1,
-     {114, 63, 4, PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.wan_)}},
-    // .palm.ops.router.v1.WanPool wan_pool = 15;
-    {::_pbi::TcParser::FastMtS1,
-     {122, 3, 5, PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.wan_pool_)}},
-  }}, {{
-    97, 0, 1,
-    65528, 8,
-    65535, 65535
-  }}, {{
-    // map<string, string> interfaces = 1;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.interfaces_), -1, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
-    // .palm.ops.router.v1.Lan lan = 11;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.lan_), _Internal::kHasBitsOffset + 0, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.Dmz dmz = 12;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.dmz_), _Internal::kHasBitsOffset + 1, 2,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.Dns dns = 13;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.dns_), _Internal::kHasBitsOffset + 2, 3,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // repeated .palm.ops.router.v1.Wan wan = 14;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.wan_), -1, 4,
-    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.WanPool wan_pool = 15;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.wan_pool_), _Internal::kHasBitsOffset + 3, 5,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // repeated .palm.ops.router.v1.Rule rules = 21;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.rules_), -1, 6,
-    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-    // repeated .palm.ops.router.v1.Host hosts = 22;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.hosts_), -1, 7,
-    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.RouterStatusResponse.Ip ip = 97;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.ip_), _Internal::kHasBitsOffset + 4, 8,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // string firewall = 98;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.firewall_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .google.protobuf.Duration uptime = 99;
-    {PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.uptime_), _Internal::kHasBitsOffset + 5, 9,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetMapAuxInfo<decltype(RouterStatusResponse()._impl_.interfaces_)>(1, 0, 0)},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Lan>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Dmz>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Dns>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Wan>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::WanPool>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Rule>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Host>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::RouterStatusResponse_Ip>()},
-    {::_pbi::TcParser::GetTable<::google::protobuf::Duration>()},
-  }}, {{
-    "\47\12\0\0\0\0\0\0\0\0\10\0\0\0\0\0"
-    "palm.ops.router.v1.RouterStatusResponse"
-    "interfaces"
-    "firewall"
-  }},
-};
-
-::uint8_t* RouterStatusResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* RouterStatusResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.RouterStatusResponse)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // map<string, string> interfaces = 1;
-  if (!_internal_interfaces().empty()) {
-    using MapType = ::google::protobuf::Map<std::string, std::string>;
+  if (!this->_internal_interfaces().empty()) {
+    using MapType = ::_pb::Map<std::string, std::string>;
     using WireHelper = RouterStatusResponse_InterfacesEntry_DoNotUse::Funcs;
-    const auto& field = _internal_interfaces();
+    const auto& map_field = this->_internal_interfaces();
+    auto check_utf8 = [](const MapType::value_type& entry) {
+      (void)entry;
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        entry.first.data(), static_cast<int>(entry.first.length()),
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+        "palm.ops.router.v1.RouterStatusResponse.InterfacesEntry.key");
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        entry.second.data(), static_cast<int>(entry.second.length()),
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+        "palm.ops.router.v1.RouterStatusResponse.InterfacesEntry.value");
+    };
 
-    if (stream->IsSerializationDeterministic() && field.size() > 1) {
-      for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
-        target = WireHelper::InternalSerialize(
-            1, entry.first, entry.second, target, stream);
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            entry.first.data(), static_cast<int>(entry.first.length()),
- ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterStatusResponse.interfaces");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            entry.second.data(), static_cast<int>(entry.second.length()),
- ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterStatusResponse.interfaces");
+    if (stream->IsSerializationDeterministic() && map_field.size() > 1) {
+      for (const auto& entry : ::_pbi::MapSorterPtr<MapType>(map_field)) {
+        target = WireHelper::InternalSerialize(1, entry.first, entry.second, target, stream);
+        check_utf8(entry);
       }
     } else {
-      for (const auto& entry : field) {
-        target = WireHelper::InternalSerialize(
-            1, entry.first, entry.second, target, stream);
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            entry.first.data(), static_cast<int>(entry.first.length()),
- ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterStatusResponse.interfaces");
-        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            entry.second.data(), static_cast<int>(entry.second.length()),
- ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterStatusResponse.interfaces");
+      for (const auto& entry : map_field) {
+        target = WireHelper::InternalSerialize(1, entry.first, entry.second, target, stream);
+        check_utf8(entry);
       }
     }
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Lan lan = 11;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_lan()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(11, _Internal::lan(this),
         _Internal::lan(this).GetCachedSize(), target, stream);
   }
 
   // .palm.ops.router.v1.Dmz dmz = 12;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_dmz()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(12, _Internal::dmz(this),
         _Internal::dmz(this).GetCachedSize(), target, stream);
   }
 
   // .palm.ops.router.v1.Dns dns = 13;
-  if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_dns()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(13, _Internal::dns(this),
         _Internal::dns(this).GetCachedSize(), target, stream);
   }
@@ -8889,14 +8840,14 @@ const ::_pbi::TcParseTable<4, 11, 10, 74, 7> RouterStatusResponse::_table_ = {
   // repeated .palm.ops.router.v1.Wan wan = 14;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_wan_size()); i < n; i++) {
-    const auto& repfield = this->_internal_wan().Get(i);
-    target = ::google::protobuf::internal::WireFormatLite::
+    const auto& repfield = this->_internal_wan(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
         InternalWriteMessage(14, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   // .palm.ops.router.v1.WanPool wan_pool = 15;
-  if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_wan_pool()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(15, _Internal::wan_pool(this),
         _Internal::wan_pool(this).GetCachedSize(), target, stream);
   }
@@ -8904,185 +8855,188 @@ const ::_pbi::TcParseTable<4, 11, 10, 74, 7> RouterStatusResponse::_table_ = {
   // repeated .palm.ops.router.v1.Rule rules = 21;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_rules_size()); i < n; i++) {
-    const auto& repfield = this->_internal_rules().Get(i);
-    target = ::google::protobuf::internal::WireFormatLite::
+    const auto& repfield = this->_internal_rules(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
         InternalWriteMessage(21, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   // repeated .palm.ops.router.v1.Host hosts = 22;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_hosts_size()); i < n; i++) {
-    const auto& repfield = this->_internal_hosts().Get(i);
-    target = ::google::protobuf::internal::WireFormatLite::
+    const auto& repfield = this->_internal_hosts(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
         InternalWriteMessage(22, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   // .palm.ops.router.v1.RouterStatusResponse.Ip ip = 97;
-  if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_ip()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(97, _Internal::ip(this),
         _Internal::ip(this).GetCachedSize(), target, stream);
   }
 
   // string firewall = 98;
   if (!this->_internal_firewall().empty()) {
-    const std::string& _s = this->_internal_firewall();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.RouterStatusResponse.firewall");
-    target = stream->WriteStringMaybeAliased(98, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_firewall().data(), static_cast<int>(this->_internal_firewall().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.RouterStatusResponse.firewall");
+    target = stream->WriteStringMaybeAliased(
+        98, this->_internal_firewall(), target);
   }
 
   // .google.protobuf.Duration uptime = 99;
-  if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_uptime()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(99, _Internal::uptime(this),
         _Internal::uptime(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.RouterStatusResponse)
   return target;
 }
 
-::size_t RouterStatusResponse::ByteSizeLong() const {
+size_t RouterStatusResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.RouterStatusResponse)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // map<string, string> interfaces = 1;
-  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_interfaces_size());
-  for (const auto& entry : _internal_interfaces()) {
-    total_size += RouterStatusResponse_InterfacesEntry_DoNotUse::Funcs::ByteSizeLong(entry.first, entry.second);
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_interfaces_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+      it = this->_internal_interfaces().begin();
+      it != this->_internal_interfaces().end(); ++it) {
+    total_size += RouterStatusResponse_InterfacesEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
+
   // repeated .palm.ops.router.v1.Wan wan = 14;
   total_size += 1UL * this->_internal_wan_size();
-  for (const auto& msg : this->_internal_wan()) {
+  for (const auto& msg : this->_impl_.wan_) {
     total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
+
   // repeated .palm.ops.router.v1.Rule rules = 21;
   total_size += 2UL * this->_internal_rules_size();
-  for (const auto& msg : this->_internal_rules()) {
+  for (const auto& msg : this->_impl_.rules_) {
     total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
+
   // repeated .palm.ops.router.v1.Host hosts = 22;
   total_size += 2UL * this->_internal_hosts_size();
-  for (const auto& msg : this->_internal_hosts()) {
+  for (const auto& msg : this->_impl_.hosts_) {
     total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
+
   // string firewall = 98;
   if (!this->_internal_firewall().empty()) {
-    total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_firewall());
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_firewall());
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000003fu) {
-    // .palm.ops.router.v1.Lan lan = 11;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.lan_);
-    }
-
-    // .palm.ops.router.v1.Dmz dmz = 12;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.dmz_);
-    }
-
-    // .palm.ops.router.v1.Dns dns = 13;
-    if (cached_has_bits & 0x00000004u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.dns_);
-    }
-
-    // .palm.ops.router.v1.WanPool wan_pool = 15;
-    if (cached_has_bits & 0x00000008u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.wan_pool_);
-    }
-
-    // .palm.ops.router.v1.RouterStatusResponse.Ip ip = 97;
-    if (cached_has_bits & 0x00000010u) {
-      total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.ip_);
-    }
-
-    // .google.protobuf.Duration uptime = 99;
-    if (cached_has_bits & 0x00000020u) {
-      total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.uptime_);
-    }
-
+  // .palm.ops.router.v1.Lan lan = 11;
+  if (this->_internal_has_lan()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.lan_);
   }
+
+  // .palm.ops.router.v1.Dmz dmz = 12;
+  if (this->_internal_has_dmz()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.dmz_);
+  }
+
+  // .palm.ops.router.v1.Dns dns = 13;
+  if (this->_internal_has_dns()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.dns_);
+  }
+
+  // .palm.ops.router.v1.WanPool wan_pool = 15;
+  if (this->_internal_has_wan_pool()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.wan_pool_);
+  }
+
+  // .palm.ops.router.v1.RouterStatusResponse.Ip ip = 97;
+  if (this->_internal_has_ip()) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.ip_);
+  }
+
+  // .google.protobuf.Duration uptime = 99;
+  if (this->_internal_has_uptime()) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.uptime_);
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData RouterStatusResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RouterStatusResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     RouterStatusResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*RouterStatusResponse::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RouterStatusResponse::GetClassData() const { return &_class_data_; }
 
 
-void RouterStatusResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void RouterStatusResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<RouterStatusResponse*>(&to_msg);
   auto& from = static_cast<const RouterStatusResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.RouterStatusResponse)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   _this->_impl_.interfaces_.MergeFrom(from._impl_.interfaces_);
-  _this->_internal_mutable_wan()->MergeFrom(from._internal_wan());
-  _this->_internal_mutable_rules()->MergeFrom(from._internal_rules());
-  _this->_internal_mutable_hosts()->MergeFrom(from._internal_hosts());
+  _this->_impl_.wan_.MergeFrom(from._impl_.wan_);
+  _this->_impl_.rules_.MergeFrom(from._impl_.rules_);
+  _this->_impl_.hosts_.MergeFrom(from._impl_.hosts_);
   if (!from._internal_firewall().empty()) {
     _this->_internal_set_firewall(from._internal_firewall());
   }
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000003fu) {
-    if (cached_has_bits & 0x00000001u) {
-      _this->_internal_mutable_lan()->::palm::ops::router::v1::Lan::MergeFrom(
-          from._internal_lan());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _this->_internal_mutable_dmz()->::palm::ops::router::v1::Dmz::MergeFrom(
-          from._internal_dmz());
-    }
-    if (cached_has_bits & 0x00000004u) {
-      _this->_internal_mutable_dns()->::palm::ops::router::v1::Dns::MergeFrom(
-          from._internal_dns());
-    }
-    if (cached_has_bits & 0x00000008u) {
-      _this->_internal_mutable_wan_pool()->::palm::ops::router::v1::WanPool::MergeFrom(
-          from._internal_wan_pool());
-    }
-    if (cached_has_bits & 0x00000010u) {
-      _this->_internal_mutable_ip()->::palm::ops::router::v1::RouterStatusResponse_Ip::MergeFrom(
-          from._internal_ip());
-    }
-    if (cached_has_bits & 0x00000020u) {
-      _this->_internal_mutable_uptime()->::google::protobuf::Duration::MergeFrom(
-          from._internal_uptime());
-    }
+  if (from._internal_has_lan()) {
+    _this->_internal_mutable_lan()->::palm::ops::router::v1::Lan::MergeFrom(
+        from._internal_lan());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_dmz()) {
+    _this->_internal_mutable_dmz()->::palm::ops::router::v1::Dmz::MergeFrom(
+        from._internal_dmz());
+  }
+  if (from._internal_has_dns()) {
+    _this->_internal_mutable_dns()->::palm::ops::router::v1::Dns::MergeFrom(
+        from._internal_dns());
+  }
+  if (from._internal_has_wan_pool()) {
+    _this->_internal_mutable_wan_pool()->::palm::ops::router::v1::WanPool::MergeFrom(
+        from._internal_wan_pool());
+  }
+  if (from._internal_has_ip()) {
+    _this->_internal_mutable_ip()->::palm::ops::router::v1::RouterStatusResponse_Ip::MergeFrom(
+        from._internal_ip());
+  }
+  if (from._internal_has_uptime()) {
+    _this->_internal_mutable_uptime()->::PROTOBUF_NAMESPACE_ID::Duration::MergeFrom(
+        from._internal_uptime());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void RouterStatusResponse::CopyFrom(const RouterStatusResponse& from) {
@@ -9092,7 +9046,7 @@ void RouterStatusResponse::CopyFrom(const RouterStatusResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool RouterStatusResponse::IsInitialized() const {
+bool RouterStatusResponse::IsInitialized() const {
   return true;
 }
 
@@ -9101,14 +9055,15 @@ void RouterStatusResponse::InternalSwap(RouterStatusResponse* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.interfaces_.InternalSwap(&other->_impl_.interfaces_);
   _impl_.wan_.InternalSwap(&other->_impl_.wan_);
   _impl_.rules_.InternalSwap(&other->_impl_.rules_);
   _impl_.hosts_.InternalSwap(&other->_impl_.hosts_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.firewall_, lhs_arena,
-                                       &other->_impl_.firewall_, rhs_arena);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.firewall_, lhs_arena,
+      &other->_impl_.firewall_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.uptime_)
       + sizeof(RouterStatusResponse::_impl_.uptime_)
       - PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.lan_)>(
@@ -9116,99 +9071,111 @@ void RouterStatusResponse::InternalSwap(RouterStatusResponse* other) {
           reinterpret_cast<char*>(&other->_impl_.lan_));
 }
 
-::google::protobuf::Metadata RouterStatusResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata RouterStatusResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[25]);
 }
+
 // ===================================================================
 
 class Lan::_Internal {
  public:
 };
 
-Lan::Lan(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Lan::Lan(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Lan)
 }
-Lan::Lan(const Lan& from) : ::google::protobuf::Message() {
-  Lan* const _this = this;
-  (void)_this;
+Lan::Lan(const Lan& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Lan* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.address_){},
-      decltype(_impl_.metric_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.device_){}
+    , decltype(_impl_.mac_){}
+    , decltype(_impl_.address_){}
+    , decltype(_impl_.metric_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.device_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_device().empty()) {
-    _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
+    _this->_impl_.device_.Set(from._internal_device(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.mac_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_mac().empty()) {
-    _this->_impl_.mac_.Set(from._internal_mac(), _this->GetArenaForAllocation());
+    _this->_impl_.mac_.Set(from._internal_mac(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.address_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_address().empty()) {
-    _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
+    _this->_impl_.address_.Set(from._internal_address(), 
+      _this->GetArenaForAllocation());
   }
   _this->_impl_.metric_ = from._impl_.metric_;
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Lan)
 }
-inline void Lan::SharedCtor(::_pb::Arena* arena) {
+
+inline void Lan::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.address_){},
-      decltype(_impl_.metric_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.device_){}
+    , decltype(_impl_.mac_){}
+    , decltype(_impl_.address_){}
+    , decltype(_impl_.metric_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.device_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.mac_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.address_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 Lan::~Lan() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Lan)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Lan::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.device_.Destroy();
   _impl_.mac_.Destroy();
   _impl_.address_.Destroy();
 }
+
 void Lan::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Lan::Clear() {
+void Lan::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Lan)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -9216,162 +9183,176 @@ PROTOBUF_NOINLINE void Lan::Clear() {
   _impl_.mac_.ClearToEmpty();
   _impl_.address_.ClearToEmpty();
   _impl_.metric_ = 0u;
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Lan::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Lan::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string device = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_device();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Lan.device"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string mac = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_mac();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Lan.mac"));
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 metric = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.metric_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string address = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+          auto str = _internal_mutable_address();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Lan.address"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 47, 2> Lan::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    11, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294966264,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Lan_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // string device = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Lan, _impl_.device_)}},
-    // string mac = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Lan, _impl_.mac_)}},
-    // uint32 metric = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Lan, _impl_.metric_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(Lan, _impl_.metric_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string device = 1;
-    {PROTOBUF_FIELD_OFFSET(Lan, _impl_.device_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string mac = 2;
-    {PROTOBUF_FIELD_OFFSET(Lan, _impl_.mac_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // uint32 metric = 3;
-    {PROTOBUF_FIELD_OFFSET(Lan, _impl_.metric_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-    // string address = 11;
-    {PROTOBUF_FIELD_OFFSET(Lan, _impl_.address_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\26\6\3\0\7\0\0\0"
-    "palm.ops.router.v1.Lan"
-    "device"
-    "mac"
-    "address"
-  }},
-};
-
-::uint8_t* Lan::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Lan::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Lan)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string device = 1;
   if (!this->_internal_device().empty()) {
-    const std::string& _s = this->_internal_device();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Lan.device");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_device().data(), static_cast<int>(this->_internal_device().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Lan.device");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_device(), target);
   }
 
   // string mac = 2;
   if (!this->_internal_mac().empty()) {
-    const std::string& _s = this->_internal_mac();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Lan.mac");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_mac().data(), static_cast<int>(this->_internal_mac().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Lan.mac");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_mac(), target);
   }
 
   // uint32 metric = 3;
   if (this->_internal_metric() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        3, this->_internal_metric(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_metric(), target);
   }
 
   // string address = 11;
   if (!this->_internal_address().empty()) {
-    const std::string& _s = this->_internal_address();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Lan.address");
-    target = stream->WriteStringMaybeAliased(11, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_address().data(), static_cast<int>(this->_internal_address().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Lan.address");
+    target = stream->WriteStringMaybeAliased(
+        11, this->_internal_address(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Lan)
   return target;
 }
 
-::size_t Lan::ByteSizeLong() const {
+size_t Lan::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Lan)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string device = 1;
   if (!this->_internal_device().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_device());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_device());
   }
 
   // string mac = 2;
   if (!this->_internal_mac().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_mac());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_mac());
   }
 
   // string address = 11;
   if (!this->_internal_address().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_address());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_address());
   }
 
   // uint32 metric = 3;
   if (this->_internal_metric() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_metric());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_metric());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Lan::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Lan::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Lan::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Lan::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Lan::GetClassData() const { return &_class_data_; }
 
 
-void Lan::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Lan::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Lan*>(&to_msg);
   auto& from = static_cast<const Lan&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Lan)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_device().empty()) {
@@ -9386,7 +9367,7 @@ void Lan::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobu
   if (from._internal_metric() != 0) {
     _this->_internal_set_metric(from._internal_metric());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Lan::CopyFrom(const Lan& from) {
@@ -9396,7 +9377,7 @@ void Lan::CopyFrom(const Lan& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Lan::IsInitialized() const {
+bool Lan::IsInitialized() const {
   return true;
 }
 
@@ -9405,108 +9386,126 @@ void Lan::InternalSwap(Lan* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
-                                       &other->_impl_.device_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, lhs_arena,
-                                       &other->_impl_.mac_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
-                                       &other->_impl_.address_, rhs_arena);
-        swap(_impl_.metric_, other->_impl_.metric_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.device_, lhs_arena,
+      &other->_impl_.device_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.mac_, lhs_arena,
+      &other->_impl_.mac_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.address_, lhs_arena,
+      &other->_impl_.address_, rhs_arena
+  );
+  swap(_impl_.metric_, other->_impl_.metric_);
 }
 
-::google::protobuf::Metadata Lan::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Lan::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[26]);
 }
+
 // ===================================================================
 
 class Dmz::_Internal {
  public:
 };
 
-Dmz::Dmz(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Dmz::Dmz(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Dmz)
 }
-Dmz::Dmz(const Dmz& from) : ::google::protobuf::Message() {
-  Dmz* const _this = this;
-  (void)_this;
+Dmz::Dmz(const Dmz& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Dmz* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.address_){},
-      decltype(_impl_.metric_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.device_){}
+    , decltype(_impl_.mac_){}
+    , decltype(_impl_.address_){}
+    , decltype(_impl_.metric_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.device_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_device().empty()) {
-    _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
+    _this->_impl_.device_.Set(from._internal_device(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.mac_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_mac().empty()) {
-    _this->_impl_.mac_.Set(from._internal_mac(), _this->GetArenaForAllocation());
+    _this->_impl_.mac_.Set(from._internal_mac(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.address_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_address().empty()) {
-    _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
+    _this->_impl_.address_.Set(from._internal_address(), 
+      _this->GetArenaForAllocation());
   }
   _this->_impl_.metric_ = from._impl_.metric_;
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Dmz)
 }
-inline void Dmz::SharedCtor(::_pb::Arena* arena) {
+
+inline void Dmz::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.address_){},
-      decltype(_impl_.metric_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.device_){}
+    , decltype(_impl_.mac_){}
+    , decltype(_impl_.address_){}
+    , decltype(_impl_.metric_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.device_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.mac_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.address_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 Dmz::~Dmz() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Dmz)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Dmz::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.device_.Destroy();
   _impl_.mac_.Destroy();
   _impl_.address_.Destroy();
 }
+
 void Dmz::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Dmz::Clear() {
+void Dmz::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Dmz)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -9514,162 +9513,176 @@ PROTOBUF_NOINLINE void Dmz::Clear() {
   _impl_.mac_.ClearToEmpty();
   _impl_.address_.ClearToEmpty();
   _impl_.metric_ = 0u;
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Dmz::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Dmz::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string device = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_device();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Dmz.device"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string mac = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_mac();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Dmz.mac"));
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 metric = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.metric_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string address = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+          auto str = _internal_mutable_address();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Dmz.address"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 47, 2> Dmz::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    11, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294966264,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Dmz_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // string device = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Dmz, _impl_.device_)}},
-    // string mac = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Dmz, _impl_.mac_)}},
-    // uint32 metric = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Dmz, _impl_.metric_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(Dmz, _impl_.metric_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string device = 1;
-    {PROTOBUF_FIELD_OFFSET(Dmz, _impl_.device_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string mac = 2;
-    {PROTOBUF_FIELD_OFFSET(Dmz, _impl_.mac_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // uint32 metric = 3;
-    {PROTOBUF_FIELD_OFFSET(Dmz, _impl_.metric_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-    // string address = 11;
-    {PROTOBUF_FIELD_OFFSET(Dmz, _impl_.address_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\26\6\3\0\7\0\0\0"
-    "palm.ops.router.v1.Dmz"
-    "device"
-    "mac"
-    "address"
-  }},
-};
-
-::uint8_t* Dmz::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Dmz::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Dmz)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string device = 1;
   if (!this->_internal_device().empty()) {
-    const std::string& _s = this->_internal_device();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Dmz.device");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_device().data(), static_cast<int>(this->_internal_device().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Dmz.device");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_device(), target);
   }
 
   // string mac = 2;
   if (!this->_internal_mac().empty()) {
-    const std::string& _s = this->_internal_mac();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Dmz.mac");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_mac().data(), static_cast<int>(this->_internal_mac().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Dmz.mac");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_mac(), target);
   }
 
   // uint32 metric = 3;
   if (this->_internal_metric() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        3, this->_internal_metric(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_metric(), target);
   }
 
   // string address = 11;
   if (!this->_internal_address().empty()) {
-    const std::string& _s = this->_internal_address();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Dmz.address");
-    target = stream->WriteStringMaybeAliased(11, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_address().data(), static_cast<int>(this->_internal_address().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Dmz.address");
+    target = stream->WriteStringMaybeAliased(
+        11, this->_internal_address(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Dmz)
   return target;
 }
 
-::size_t Dmz::ByteSizeLong() const {
+size_t Dmz::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Dmz)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string device = 1;
   if (!this->_internal_device().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_device());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_device());
   }
 
   // string mac = 2;
   if (!this->_internal_mac().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_mac());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_mac());
   }
 
   // string address = 11;
   if (!this->_internal_address().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_address());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_address());
   }
 
   // uint32 metric = 3;
   if (this->_internal_metric() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_metric());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_metric());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Dmz::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Dmz::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Dmz::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Dmz::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Dmz::GetClassData() const { return &_class_data_; }
 
 
-void Dmz::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Dmz::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Dmz*>(&to_msg);
   auto& from = static_cast<const Dmz&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Dmz)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_device().empty()) {
@@ -9684,7 +9697,7 @@ void Dmz::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobu
   if (from._internal_metric() != 0) {
     _this->_internal_set_metric(from._internal_metric());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Dmz::CopyFrom(const Dmz& from) {
@@ -9694,7 +9707,7 @@ void Dmz::CopyFrom(const Dmz& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Dmz::IsInitialized() const {
+bool Dmz::IsInitialized() const {
   return true;
 }
 
@@ -9703,44 +9716,51 @@ void Dmz::InternalSwap(Dmz* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
-                                       &other->_impl_.device_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, lhs_arena,
-                                       &other->_impl_.mac_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
-                                       &other->_impl_.address_, rhs_arena);
-        swap(_impl_.metric_, other->_impl_.metric_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.device_, lhs_arena,
+      &other->_impl_.device_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.mac_, lhs_arena,
+      &other->_impl_.mac_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.address_, lhs_arena,
+      &other->_impl_.address_, rhs_arena
+  );
+  swap(_impl_.metric_, other->_impl_.metric_);
 }
 
-::google::protobuf::Metadata Dmz::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Dmz::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[27]);
 }
+
 // ===================================================================
 
 class Wan::_Internal {
  public:
-  static constexpr ::int32_t kOneofCaseOffset =
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Wan, _impl_._oneof_case_);
   static const ::palm::ops::router::v1::Dhcp& dhcp(const Wan* msg);
   static const ::palm::ops::router::v1::Static& static_(const Wan* msg);
 };
 
-const ::palm::ops::router::v1::Dhcp& Wan::_Internal::dhcp(const Wan* msg) {
+const ::palm::ops::router::v1::Dhcp&
+Wan::_Internal::dhcp(const Wan* msg) {
   return *msg->_impl_.ip_.dhcp_;
 }
-const ::palm::ops::router::v1::Static& Wan::_Internal::static_(const Wan* msg) {
+const ::palm::ops::router::v1::Static&
+Wan::_Internal::static_(const Wan* msg) {
   return *msg->_impl_.ip_.static__;
 }
 void Wan::set_allocated_dhcp(::palm::ops::router::v1::Dhcp* dhcp) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_ip();
   if (dhcp) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(dhcp);
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(dhcp);
     if (message_arena != submessage_arena) {
-      dhcp = ::google::protobuf::internal::GetOwnedMessage(
+      dhcp = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, dhcp, submessage_arena);
     }
     set_has_dhcp();
@@ -9749,13 +9769,13 @@ void Wan::set_allocated_dhcp(::palm::ops::router::v1::Dhcp* dhcp) {
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Wan.dhcp)
 }
 void Wan::set_allocated_static_(::palm::ops::router::v1::Static* static_) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   clear_ip();
   if (static_) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(static_);
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(static_);
     if (message_arena != submessage_arena) {
-      static_ = ::google::protobuf::internal::GetOwnedMessage(
+      static_ = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, static_, submessage_arena);
     }
     set_has_static_();
@@ -9763,49 +9783,52 @@ void Wan::set_allocated_static_(::palm::ops::router::v1::Static* static_) {
   }
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Wan.static)
 }
-Wan::Wan(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Wan::Wan(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Wan)
 }
-Wan::Wan(const Wan& from) : ::google::protobuf::Message() {
-  Wan* const _this = this;
-  (void)_this;
+Wan::Wan(const Wan& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Wan* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.name_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.metric_){},
-      decltype(_impl_.enable_){},
-      decltype(_impl_.ip_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.device_){}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.mac_){}
+    , decltype(_impl_.metric_){}
+    , decltype(_impl_.enable_){}
+    , decltype(_impl_.ip_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.device_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_device().empty()) {
-    _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
+    _this->_impl_.device_.Set(from._internal_device(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.mac_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_mac().empty()) {
-    _this->_impl_.mac_.Set(from._internal_mac(), _this->GetArenaForAllocation());
+    _this->_impl_.mac_.Set(from._internal_mac(), 
+      _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.metric_, &from._impl_.metric_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.enable_) -
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.enable_) -
     reinterpret_cast<char*>(&_impl_.metric_)) + sizeof(_impl_.enable_));
   clear_has_ip();
   switch (from.ip_case()) {
@@ -9823,42 +9846,49 @@ Wan::Wan(const Wan& from) : ::google::protobuf::Message() {
       break;
     }
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Wan)
 }
-inline void Wan::SharedCtor(::_pb::Arena* arena) {
+
+inline void Wan::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.name_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.metric_){0u},
-      decltype(_impl_.enable_){false},
-      decltype(_impl_.ip_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
+      decltype(_impl_.device_){}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.mac_){}
+    , decltype(_impl_.metric_){0u}
+    , decltype(_impl_.enable_){false}
+    , decltype(_impl_.ip_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
   };
   _impl_.device_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.device_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.name_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.mac_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.mac_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   clear_has_ip();
 }
+
 Wan::~Wan() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Wan)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Wan::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.device_.Destroy();
   _impl_.name_.Destroy();
   _impl_.mac_.Destroy();
@@ -9866,6 +9896,7 @@ inline void Wan::SharedDtor() {
     clear_ip();
   }
 }
+
 void Wan::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
@@ -9893,211 +9924,234 @@ void Wan::clear_ip() {
 }
 
 
-PROTOBUF_NOINLINE void Wan::Clear() {
+void Wan::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Wan)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.device_.ClearToEmpty();
   _impl_.name_.ClearToEmpty();
   _impl_.mac_.ClearToEmpty();
-  ::memset(&_impl_.metric_, 0, static_cast<::size_t>(
+  ::memset(&_impl_.metric_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.enable_) -
       reinterpret_cast<char*>(&_impl_.metric_)) + sizeof(_impl_.enable_));
   clear_ip();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Wan::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Wan::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string device = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_device();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Wan.device"));
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 metric = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.metric_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string name = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Wan.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string mac = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+          auto str = _internal_mutable_mac();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Wan.mac"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Dhcp dhcp = 21;
+      case 21:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 170)) {
+          ptr = ctx->ParseMessage(_internal_mutable_dhcp(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.Static static = 22;
+      case 22:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 178)) {
+          ptr = ctx->ParseMessage(_internal_mutable_static_(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool enable = 99;
+      case 99:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.enable_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 7, 2, 44, 7> Wan::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    99, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4291820284,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    7,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_Wan_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // string device = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Wan, _impl_.device_)}},
-    // uint32 metric = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(Wan, _impl_.metric_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(Wan, _impl_.metric_)}},
-    // string mac = 11;
-    {::_pbi::TcParser::FastUS1,
-     {90, 63, 0, PROTOBUF_FIELD_OFFSET(Wan, _impl_.mac_)}},
-  }}, {{
-    99, 0, 1,
-    65534, 6,
-    65535, 65535
-  }}, {{
-    // string device = 1;
-    {PROTOBUF_FIELD_OFFSET(Wan, _impl_.device_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // uint32 metric = 2;
-    {PROTOBUF_FIELD_OFFSET(Wan, _impl_.metric_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
-    // string name = 9;
-    {PROTOBUF_FIELD_OFFSET(Wan, _impl_.name_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string mac = 11;
-    {PROTOBUF_FIELD_OFFSET(Wan, _impl_.mac_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .palm.ops.router.v1.Dhcp dhcp = 21;
-    {PROTOBUF_FIELD_OFFSET(Wan, _impl_.ip_.dhcp_), _Internal::kOneofCaseOffset + 0, 0,
-    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.Static static = 22;
-    {PROTOBUF_FIELD_OFFSET(Wan, _impl_.ip_.static__), _Internal::kOneofCaseOffset + 0, 1,
-    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
-    // bool enable = 99;
-    {PROTOBUF_FIELD_OFFSET(Wan, _impl_.enable_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Dhcp>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Static>()},
-  }}, {{
-    "\26\6\0\4\3\0\0\0"
-    "palm.ops.router.v1.Wan"
-    "device"
-    "name"
-    "mac"
-  }},
-};
-
-::uint8_t* Wan::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Wan::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Wan)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string device = 1;
   if (!this->_internal_device().empty()) {
-    const std::string& _s = this->_internal_device();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Wan.device");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_device().data(), static_cast<int>(this->_internal_device().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Wan.device");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_device(), target);
   }
 
   // uint32 metric = 2;
   if (this->_internal_metric() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
-        2, this->_internal_metric(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_metric(), target);
   }
 
   // string name = 9;
   if (!this->_internal_name().empty()) {
-    const std::string& _s = this->_internal_name();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Wan.name");
-    target = stream->WriteStringMaybeAliased(9, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Wan.name");
+    target = stream->WriteStringMaybeAliased(
+        9, this->_internal_name(), target);
   }
 
   // string mac = 11;
   if (!this->_internal_mac().empty()) {
-    const std::string& _s = this->_internal_mac();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Wan.mac");
-    target = stream->WriteStringMaybeAliased(11, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_mac().data(), static_cast<int>(this->_internal_mac().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Wan.mac");
+    target = stream->WriteStringMaybeAliased(
+        11, this->_internal_mac(), target);
   }
 
-  switch (ip_case()) {
-    case kDhcp: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(21, _Internal::dhcp(this),
-          _Internal::dhcp(this).GetCachedSize(), target, stream);
-      break;
-    }
-    case kStatic: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(22, _Internal::static_(this),
-          _Internal::static_(this).GetCachedSize(), target, stream);
-      break;
-    }
-    default:
-      break;
+  // .palm.ops.router.v1.Dhcp dhcp = 21;
+  if (_internal_has_dhcp()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(21, _Internal::dhcp(this),
+        _Internal::dhcp(this).GetCachedSize(), target, stream);
   }
+
+  // .palm.ops.router.v1.Static static = 22;
+  if (_internal_has_static_()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(22, _Internal::static_(this),
+        _Internal::static_(this).GetCachedSize(), target, stream);
+  }
+
   // bool enable = 99;
   if (this->_internal_enable() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        99, this->_internal_enable(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(99, this->_internal_enable(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Wan)
   return target;
 }
 
-::size_t Wan::ByteSizeLong() const {
+size_t Wan::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Wan)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string device = 1;
   if (!this->_internal_device().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_device());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_device());
   }
 
   // string name = 9;
   if (!this->_internal_name().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_name());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
   // string mac = 11;
   if (!this->_internal_mac().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_mac());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_mac());
   }
 
   // uint32 metric = 2;
   if (this->_internal_metric() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
-        this->_internal_metric());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_metric());
   }
 
   // bool enable = 99;
   if (this->_internal_enable() != 0) {
-    total_size += 3;
+    total_size += 2 + 1;
   }
 
   switch (ip_case()) {
     // .palm.ops.router.v1.Dhcp dhcp = 21;
     case kDhcp: {
       total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.ip_.dhcp_);
       break;
     }
     // .palm.ops.router.v1.Static static = 22;
     case kStatic: {
       total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.ip_.static__);
       break;
     }
@@ -10108,19 +10162,19 @@ const ::_pbi::TcParseTable<2, 7, 2, 44, 7> Wan::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Wan::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Wan::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Wan::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Wan::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Wan::GetClassData() const { return &_class_data_; }
 
 
-void Wan::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Wan::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Wan*>(&to_msg);
   auto& from = static_cast<const Wan&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Wan)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_device().empty()) {
@@ -10153,7 +10207,7 @@ void Wan::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobu
       break;
     }
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Wan::CopyFrom(const Wan& from) {
@@ -10163,7 +10217,7 @@ void Wan::CopyFrom(const Wan& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Wan::IsInitialized() const {
+bool Wan::IsInitialized() const {
   return true;
 }
 
@@ -10172,13 +10226,19 @@ void Wan::InternalSwap(Wan* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
-                                       &other->_impl_.device_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, lhs_arena,
-                                       &other->_impl_.mac_, rhs_arena);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.device_, lhs_arena,
+      &other->_impl_.device_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.mac_, lhs_arena,
+      &other->_impl_.mac_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Wan, _impl_.enable_)
       + sizeof(Wan::_impl_.enable_)
       - PROTOBUF_FIELD_OFFSET(Wan, _impl_.metric_)>(
@@ -10188,152 +10248,165 @@ void Wan::InternalSwap(Wan* other) {
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
 
-::google::protobuf::Metadata Wan::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Wan::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[28]);
 }
+
 // ===================================================================
 
 class Dhcp::_Internal {
  public:
 };
 
-Dhcp::Dhcp(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Dhcp::Dhcp(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Dhcp)
 }
 Dhcp::Dhcp(const Dhcp& from)
-    : ::google::protobuf::Message(), _impl_(from._impl_) {
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Dhcp* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.v6_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.v6_ = from._impl_.v6_;
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Dhcp)
 }
-inline void Dhcp::SharedCtor(::_pb::Arena* arena) {
+
+inline void Dhcp::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.v6_){false},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.v6_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 Dhcp::~Dhcp() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Dhcp)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Dhcp::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
+
 void Dhcp::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Dhcp::Clear() {
+void Dhcp::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Dhcp)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.v6_ = false;
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Dhcp::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Dhcp::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool v6 = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.v6_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 0, 2> Dhcp::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Dhcp_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // bool v6 = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Dhcp, _impl_.v6_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(Dhcp, _impl_.v6_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // bool v6 = 1;
-    {PROTOBUF_FIELD_OFFSET(Dhcp, _impl_.v6_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
-  }},
-  // no aux_entries
-  {{
-  }},
-};
-
-::uint8_t* Dhcp::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Dhcp::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Dhcp)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // bool v6 = 1;
   if (this->_internal_v6() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        1, this->_internal_v6(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_v6(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Dhcp)
   return target;
 }
 
-::size_t Dhcp::ByteSizeLong() const {
+size_t Dhcp::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Dhcp)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // bool v6 = 1;
   if (this->_internal_v6() != 0) {
-    total_size += 2;
+    total_size += 1 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Dhcp::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Dhcp::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Dhcp::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Dhcp::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Dhcp::GetClassData() const { return &_class_data_; }
 
 
-void Dhcp::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Dhcp::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Dhcp*>(&to_msg);
   auto& from = static_cast<const Dhcp&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Dhcp)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from._internal_v6() != 0) {
     _this->_internal_set_v6(from._internal_v6());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Dhcp::CopyFrom(const Dhcp& from) {
@@ -10343,128 +10416,139 @@ void Dhcp::CopyFrom(const Dhcp& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Dhcp::IsInitialized() const {
+bool Dhcp::IsInitialized() const {
   return true;
 }
 
 void Dhcp::InternalSwap(Dhcp* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-        swap(_impl_.v6_, other->_impl_.v6_);
+  swap(_impl_.v6_, other->_impl_.v6_);
 }
 
-::google::protobuf::Metadata Dhcp::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Dhcp::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[29]);
 }
+
 // ===================================================================
 
 class Static::_Internal {
  public:
   using HasBits = decltype(std::declval<Static>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(Static, _impl_._has_bits_);
   static void set_has_dns2(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
 
-Static::Static(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Static::Static(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Static)
 }
-Static::Static(const Static& from) : ::google::protobuf::Message() {
-  Static* const _this = this;
-  (void)_this;
+Static::Static(const Static& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Static* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.address_){},
-      decltype(_impl_.gateway_){},
-      decltype(_impl_.dns1_){},
-      decltype(_impl_.dns2_){},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.address_){}
+    , decltype(_impl_.gateway_){}
+    , decltype(_impl_.dns1_){}
+    , decltype(_impl_.dns2_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.address_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_address().empty()) {
-    _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
+    _this->_impl_.address_.Set(from._internal_address(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.gateway_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.gateway_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.gateway_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_gateway().empty()) {
-    _this->_impl_.gateway_.Set(from._internal_gateway(), _this->GetArenaForAllocation());
+    _this->_impl_.gateway_.Set(from._internal_gateway(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.dns1_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.dns1_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.dns1_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_dns1().empty()) {
-    _this->_impl_.dns1_.Set(from._internal_dns1(), _this->GetArenaForAllocation());
+    _this->_impl_.dns1_.Set(from._internal_dns1(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.dns2_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.dns2_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.dns2_.Set(from._internal_dns2(), _this->GetArenaForAllocation());
+    _impl_.dns2_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_dns2()) {
+    _this->_impl_.dns2_.Set(from._internal_dns2(), 
+      _this->GetArenaForAllocation());
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Static)
 }
-inline void Static::SharedCtor(::_pb::Arena* arena) {
+
+inline void Static::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.address_){},
-      decltype(_impl_.gateway_){},
-      decltype(_impl_.dns1_){},
-      decltype(_impl_.dns2_){},
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.address_){}
+    , decltype(_impl_.gateway_){}
+    , decltype(_impl_.dns1_){}
+    , decltype(_impl_.dns2_){}
   };
   _impl_.address_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.gateway_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.gateway_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.gateway_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.dns1_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.dns1_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.dns1_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.dns2_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.dns2_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.dns2_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 Static::~Static() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Static)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Static::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.address_.Destroy();
   _impl_.gateway_.Destroy();
   _impl_.dns1_.Destroy();
   _impl_.dns2_.Destroy();
 }
+
 void Static::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Static::Clear() {
+void Static::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Static)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
@@ -10476,172 +10560,187 @@ PROTOBUF_NOINLINE void Static::Clear() {
     _impl_.dns2_.ClearNonDefaultToEmpty();
   }
   _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Static::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Static::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string address = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_address();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Static.address"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string gateway = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_gateway();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Static.gateway"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string dns1 = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_dns1();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Static.dns1"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string dns2 = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_dns2();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Static.dns2"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 4, 0, 56, 2> Static::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(Static, _impl_._has_bits_),
-    0, // no _extensions_
-    5, 56,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967266,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Static_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // string address = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Static, _impl_.address_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    // string gateway = 3;
-    {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(Static, _impl_.gateway_)}},
-    // string dns1 = 4;
-    {::_pbi::TcParser::FastUS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(Static, _impl_.dns1_)}},
-    // optional string dns2 = 5;
-    {::_pbi::TcParser::FastUS1,
-     {42, 0, 0, PROTOBUF_FIELD_OFFSET(Static, _impl_.dns2_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string address = 1;
-    {PROTOBUF_FIELD_OFFSET(Static, _impl_.address_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string gateway = 3;
-    {PROTOBUF_FIELD_OFFSET(Static, _impl_.gateway_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string dns1 = 4;
-    {PROTOBUF_FIELD_OFFSET(Static, _impl_.dns1_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // optional string dns2 = 5;
-    {PROTOBUF_FIELD_OFFSET(Static, _impl_.dns2_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\31\7\7\4\4\0\0\0"
-    "palm.ops.router.v1.Static"
-    "address"
-    "gateway"
-    "dns1"
-    "dns2"
-  }},
-};
-
-::uint8_t* Static::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Static::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Static)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string address = 1;
   if (!this->_internal_address().empty()) {
-    const std::string& _s = this->_internal_address();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Static.address");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_address().data(), static_cast<int>(this->_internal_address().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Static.address");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_address(), target);
   }
 
   // string gateway = 3;
   if (!this->_internal_gateway().empty()) {
-    const std::string& _s = this->_internal_gateway();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Static.gateway");
-    target = stream->WriteStringMaybeAliased(3, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_gateway().data(), static_cast<int>(this->_internal_gateway().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Static.gateway");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_gateway(), target);
   }
 
   // string dns1 = 4;
   if (!this->_internal_dns1().empty()) {
-    const std::string& _s = this->_internal_dns1();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Static.dns1");
-    target = stream->WriteStringMaybeAliased(4, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_dns1().data(), static_cast<int>(this->_internal_dns1().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Static.dns1");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_dns1(), target);
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
   // optional string dns2 = 5;
-  if (cached_has_bits & 0x00000001u) {
-    const std::string& _s = this->_internal_dns2();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Static.dns2");
-    target = stream->WriteStringMaybeAliased(5, _s, target);
+  if (_internal_has_dns2()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_dns2().data(), static_cast<int>(this->_internal_dns2().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Static.dns2");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_dns2(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Static)
   return target;
 }
 
-::size_t Static::ByteSizeLong() const {
+size_t Static::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Static)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string address = 1;
   if (!this->_internal_address().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_address());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_address());
   }
 
   // string gateway = 3;
   if (!this->_internal_gateway().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_gateway());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_gateway());
   }
 
   // string dns1 = 4;
   if (!this->_internal_dns1().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_dns1());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_dns1());
   }
 
   // optional string dns2 = 5;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_dns2());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_dns2());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Static::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Static::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Static::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Static::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Static::GetClassData() const { return &_class_data_; }
 
 
-void Static::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Static::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Static*>(&to_msg);
   auto& from = static_cast<const Static&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Static)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_address().empty()) {
@@ -10653,10 +10752,10 @@ void Static::MergeImpl(::google::protobuf::Message& to_msg, const ::google::prot
   if (!from._internal_dns1().empty()) {
     _this->_internal_set_dns1(from._internal_dns1());
   }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+  if (from._internal_has_dns2()) {
     _this->_internal_set_dns2(from._internal_dns2());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Static::CopyFrom(const Static& from) {
@@ -10666,7 +10765,7 @@ void Static::CopyFrom(const Static& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Static::IsInitialized() const {
+bool Static::IsInitialized() const {
   return true;
 }
 
@@ -10676,172 +10775,195 @@ void Static::InternalSwap(Static* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
-                                       &other->_impl_.address_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.gateway_, lhs_arena,
-                                       &other->_impl_.gateway_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.dns1_, lhs_arena,
-                                       &other->_impl_.dns1_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.dns2_, lhs_arena,
-                                       &other->_impl_.dns2_, rhs_arena);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.address_, lhs_arena,
+      &other->_impl_.address_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.gateway_, lhs_arena,
+      &other->_impl_.gateway_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.dns1_, lhs_arena,
+      &other->_impl_.dns1_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.dns2_, lhs_arena,
+      &other->_impl_.dns2_, rhs_arena
+  );
 }
 
-::google::protobuf::Metadata Static::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Static::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[30]);
 }
+
 // ===================================================================
 
 class Dns::_Internal {
  public:
 };
 
-Dns::Dns(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+Dns::Dns(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Dns)
 }
-Dns::Dns(const Dns& from) : ::google::protobuf::Message() {
-  Dns* const _this = this;
-  (void)_this;
+Dns::Dns(const Dns& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Dns* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.items_){from._impl_.items_}
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Dns)
 }
-inline void Dns::SharedCtor(::_pb::Arena* arena) {
+
+inline void Dns::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.items_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 Dns::~Dns() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Dns)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void Dns::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_items()->~RepeatedPtrField();
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.items_.~RepeatedPtrField();
 }
+
 void Dns::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void Dns::Clear() {
+void Dns::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Dns)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _impl_.items_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Dns::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* Dns::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated string items = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_items();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.Dns.items"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 36, 2> Dns::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_Dns_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // repeated string items = 1;
-    {::_pbi::TcParser::FastUR1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Dns, _impl_.items_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // repeated string items = 1;
-    {PROTOBUF_FIELD_OFFSET(Dns, _impl_.items_), 0, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
-  }},
-  // no aux_entries
-  {{
-    "\26\5\0\0\0\0\0\0"
-    "palm.ops.router.v1.Dns"
-    "items"
-  }},
-};
-
-::uint8_t* Dns::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* Dns::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.Dns)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // repeated string items = 1;
-  for (int i = 0, n = this->_internal_items_size(); i < n; ++i) {
-    const auto& s = this->_internal_items().Get(i);
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Dns.items");
+  for (int i = 0, n = this->_internal_items_size(); i < n; i++) {
+    const auto& s = this->_internal_items(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.Dns.items");
     target = stream->WriteString(1, s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.Dns)
   return target;
 }
 
-::size_t Dns::ByteSizeLong() const {
+size_t Dns::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.Dns)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated string items = 1;
-  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_items().size());
-  for (int i = 0, n = _internal_items().size(); i < n; ++i) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-        _internal_items().Get(i));
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.items_.size());
+  for (int i = 0, n = _impl_.items_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.items_.Get(i));
   }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData Dns::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Dns::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     Dns::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*Dns::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Dns::GetClassData() const { return &_class_data_; }
 
 
-void Dns::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void Dns::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<Dns*>(&to_msg);
   auto& from = static_cast<const Dns&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.Dns)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Dns::CopyFrom(const Dns& from) {
@@ -10851,7 +10973,7 @@ void Dns::CopyFrom(const Dns& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool Dns::IsInitialized() const {
+bool Dns::IsInitialized() const {
   return true;
 }
 
@@ -10861,205 +10983,222 @@ void Dns::InternalSwap(Dns* other) {
   _impl_.items_.InternalSwap(&other->_impl_.items_);
 }
 
-::google::protobuf::Metadata Dns::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Dns::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[31]);
 }
+
 // ===================================================================
 
 class UserProfile::_Internal {
  public:
 };
 
-UserProfile::UserProfile(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+UserProfile::UserProfile(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.UserProfile)
 }
-UserProfile::UserProfile(const UserProfile& from) : ::google::protobuf::Message() {
-  UserProfile* const _this = this;
-  (void)_this;
+UserProfile::UserProfile(const UserProfile& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserProfile* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.password_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.nickname_){}
+    , decltype(_impl_.password_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.nickname_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.nickname_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_nickname().empty()) {
-    _this->_impl_.nickname_.Set(from._internal_nickname(), _this->GetArenaForAllocation());
+    _this->_impl_.nickname_.Set(from._internal_nickname(), 
+      _this->GetArenaForAllocation());
   }
   _impl_.password_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.password_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), _this->GetArenaForAllocation());
+    _this->_impl_.password_.Set(from._internal_password(), 
+      _this->GetArenaForAllocation());
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.UserProfile)
 }
-inline void UserProfile::SharedCtor(::_pb::Arena* arena) {
+
+inline void UserProfile::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.password_){},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.nickname_){}
+    , decltype(_impl_.password_){}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.nickname_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.nickname_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.password_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.password_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 UserProfile::~UserProfile() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.UserProfile)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void UserProfile::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.nickname_.Destroy();
   _impl_.password_.Destroy();
 }
+
 void UserProfile::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void UserProfile::Clear() {
+void UserProfile::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.UserProfile)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.nickname_.ClearToEmpty();
   _impl_.password_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserProfile::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* UserProfile::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string nickname = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_nickname();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.UserProfile.nickname"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string password = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_password();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.UserProfile.password"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 55, 2> UserProfile::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_UserProfile_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string password = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(UserProfile, _impl_.password_)}},
-    // string nickname = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(UserProfile, _impl_.nickname_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string nickname = 1;
-    {PROTOBUF_FIELD_OFFSET(UserProfile, _impl_.nickname_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string password = 2;
-    {PROTOBUF_FIELD_OFFSET(UserProfile, _impl_.password_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\36\10\10\0\0\0\0\0"
-    "palm.ops.router.v1.UserProfile"
-    "nickname"
-    "password"
-  }},
-};
-
-::uint8_t* UserProfile::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* UserProfile::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.UserProfile)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string nickname = 1;
   if (!this->_internal_nickname().empty()) {
-    const std::string& _s = this->_internal_nickname();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.UserProfile.nickname");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_nickname().data(), static_cast<int>(this->_internal_nickname().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.UserProfile.nickname");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_nickname(), target);
   }
 
   // string password = 2;
   if (!this->_internal_password().empty()) {
-    const std::string& _s = this->_internal_password();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.UserProfile.password");
-    target = stream->WriteStringMaybeAliased(2, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_password().data(), static_cast<int>(this->_internal_password().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.UserProfile.password");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_password(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.UserProfile)
   return target;
 }
 
-::size_t UserProfile::ByteSizeLong() const {
+size_t UserProfile::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.UserProfile)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string nickname = 1;
   if (!this->_internal_nickname().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_nickname());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_nickname());
   }
 
   // string password = 2;
   if (!this->_internal_password().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_password());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_password());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData UserProfile::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserProfile::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     UserProfile::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*UserProfile::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserProfile::GetClassData() const { return &_class_data_; }
 
 
-void UserProfile::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void UserProfile::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<UserProfile*>(&to_msg);
   auto& from = static_cast<const UserProfile&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.UserProfile)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_nickname().empty()) {
@@ -11068,7 +11207,7 @@ void UserProfile::MergeImpl(::google::protobuf::Message& to_msg, const ::google:
   if (!from._internal_password().empty()) {
     _this->_internal_set_password(from._internal_password());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserProfile::CopyFrom(const UserProfile& from) {
@@ -11078,7 +11217,7 @@ void UserProfile::CopyFrom(const UserProfile& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool UserProfile::IsInitialized() const {
+bool UserProfile::IsInitialized() const {
   return true;
 }
 
@@ -11087,240 +11226,237 @@ void UserProfile::InternalSwap(UserProfile* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, lhs_arena,
-                                       &other->_impl_.nickname_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, lhs_arena,
-                                       &other->_impl_.password_, rhs_arena);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.nickname_, lhs_arena,
+      &other->_impl_.nickname_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.password_, lhs_arena,
+      &other->_impl_.password_, rhs_arena
+  );
 }
 
-::google::protobuf::Metadata UserProfile::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata UserProfile::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[32]);
 }
+
 // ===================================================================
 
 class UserSignInRequest::_Internal {
  public:
-  using HasBits = decltype(std::declval<UserSignInRequest>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(UserSignInRequest, _impl_._has_bits_);
   static const ::palm::ops::router::v1::UserProfile& user(const UserSignInRequest* msg);
-  static void set_has_user(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-  static const ::google::protobuf::Duration& ttl(const UserSignInRequest* msg);
-  static void set_has_ttl(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
+  static const ::PROTOBUF_NAMESPACE_ID::Duration& ttl(const UserSignInRequest* msg);
 };
 
-const ::palm::ops::router::v1::UserProfile& UserSignInRequest::_Internal::user(const UserSignInRequest* msg) {
+const ::palm::ops::router::v1::UserProfile&
+UserSignInRequest::_Internal::user(const UserSignInRequest* msg) {
   return *msg->_impl_.user_;
 }
-const ::google::protobuf::Duration& UserSignInRequest::_Internal::ttl(const UserSignInRequest* msg) {
+const ::PROTOBUF_NAMESPACE_ID::Duration&
+UserSignInRequest::_Internal::ttl(const UserSignInRequest* msg) {
   return *msg->_impl_.ttl_;
 }
 void UserSignInRequest::clear_ttl() {
-  if (_impl_.ttl_ != nullptr) _impl_.ttl_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  if (GetArenaForAllocation() == nullptr && _impl_.ttl_ != nullptr) {
+    delete _impl_.ttl_;
+  }
+  _impl_.ttl_ = nullptr;
 }
-UserSignInRequest::UserSignInRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+UserSignInRequest::UserSignInRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.UserSignInRequest)
 }
-UserSignInRequest::UserSignInRequest(const UserSignInRequest& from) : ::google::protobuf::Message() {
-  UserSignInRequest* const _this = this;
-  (void)_this;
+UserSignInRequest::UserSignInRequest(const UserSignInRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserSignInRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.user_){nullptr},
-      decltype(_impl_.ttl_){nullptr},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+      decltype(_impl_.user_){nullptr}
+    , decltype(_impl_.ttl_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_user()) {
     _this->_impl_.user_ = new ::palm::ops::router::v1::UserProfile(*from._impl_.user_);
   }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.ttl_ = new ::google::protobuf::Duration(*from._impl_.ttl_);
+  if (from._internal_has_ttl()) {
+    _this->_impl_.ttl_ = new ::PROTOBUF_NAMESPACE_ID::Duration(*from._impl_.ttl_);
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.UserSignInRequest)
 }
-inline void UserSignInRequest::SharedCtor(::_pb::Arena* arena) {
+
+inline void UserSignInRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.user_){nullptr},
-      decltype(_impl_.ttl_){nullptr},
+      decltype(_impl_.user_){nullptr}
+    , decltype(_impl_.ttl_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 UserSignInRequest::~UserSignInRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.UserSignInRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void UserSignInRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete _impl_.user_;
   if (this != internal_default_instance()) delete _impl_.ttl_;
 }
+
 void UserSignInRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void UserSignInRequest::Clear() {
+void UserSignInRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.UserSignInRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      ABSL_DCHECK(_impl_.user_ != nullptr);
-      _impl_.user_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      ABSL_DCHECK(_impl_.ttl_ != nullptr);
-      _impl_.ttl_->Clear();
-    }
+  if (GetArenaForAllocation() == nullptr && _impl_.user_ != nullptr) {
+    delete _impl_.user_;
   }
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _impl_.user_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.ttl_ != nullptr) {
+    delete _impl_.ttl_;
+  }
+  _impl_.ttl_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserSignInRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* UserSignInRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .palm.ops.router.v1.UserProfile user = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_user(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .google.protobuf.Duration ttl = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          ptr = ctx->ParseMessage(_internal_mutable_ttl(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 2, 2, 0, 2> UserSignInRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(UserSignInRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    9, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967038,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_UserSignInRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // .palm.ops.router.v1.UserProfile user = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(UserSignInRequest, _impl_.user_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .palm.ops.router.v1.UserProfile user = 1;
-    {PROTOBUF_FIELD_OFFSET(UserSignInRequest, _impl_.user_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .google.protobuf.Duration ttl = 9;
-    {PROTOBUF_FIELD_OFFSET(UserSignInRequest, _impl_.ttl_), _Internal::kHasBitsOffset + 1, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::UserProfile>()},
-    {::_pbi::TcParser::GetTable<::google::protobuf::Duration>()},
-  }}, {{
-  }},
-};
-
-::uint8_t* UserSignInRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* UserSignInRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.UserSignInRequest)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.UserProfile user = 1;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_user()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(1, _Internal::user(this),
         _Internal::user(this).GetCachedSize(), target, stream);
   }
 
   // .google.protobuf.Duration ttl = 9;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_ttl()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(9, _Internal::ttl(this),
         _Internal::ttl(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.UserSignInRequest)
   return target;
 }
 
-::size_t UserSignInRequest::ByteSizeLong() const {
+size_t UserSignInRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.UserSignInRequest)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // .palm.ops.router.v1.UserProfile user = 1;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.user_);
-    }
-
-    // .google.protobuf.Duration ttl = 9;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.ttl_);
-    }
-
+  // .palm.ops.router.v1.UserProfile user = 1;
+  if (this->_internal_has_user()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.user_);
   }
+
+  // .google.protobuf.Duration ttl = 9;
+  if (this->_internal_has_ttl()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.ttl_);
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData UserSignInRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserSignInRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     UserSignInRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*UserSignInRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserSignInRequest::GetClassData() const { return &_class_data_; }
 
 
-void UserSignInRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void UserSignInRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<UserSignInRequest*>(&to_msg);
   auto& from = static_cast<const UserSignInRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.UserSignInRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _this->_internal_mutable_user()->::palm::ops::router::v1::UserProfile::MergeFrom(
-          from._internal_user());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _this->_internal_mutable_ttl()->::google::protobuf::Duration::MergeFrom(
-          from._internal_ttl());
-    }
+  if (from._internal_has_user()) {
+    _this->_internal_mutable_user()->::palm::ops::router::v1::UserProfile::MergeFrom(
+        from._internal_user());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_ttl()) {
+    _this->_internal_mutable_ttl()->::PROTOBUF_NAMESPACE_ID::Duration::MergeFrom(
+        from._internal_ttl());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserSignInRequest::CopyFrom(const UserSignInRequest& from) {
@@ -11330,15 +11466,14 @@ void UserSignInRequest::CopyFrom(const UserSignInRequest& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool UserSignInRequest::IsInitialized() const {
+bool UserSignInRequest::IsInitialized() const {
   return true;
 }
 
 void UserSignInRequest::InternalSwap(UserSignInRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(UserSignInRequest, _impl_.ttl_)
       + sizeof(UserSignInRequest::_impl_.ttl_)
       - PROTOBUF_FIELD_OFFSET(UserSignInRequest, _impl_.user_)>(
@@ -11346,175 +11481,185 @@ void UserSignInRequest::InternalSwap(UserSignInRequest* other) {
           reinterpret_cast<char*>(&other->_impl_.user_));
 }
 
-::google::protobuf::Metadata UserSignInRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata UserSignInRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[33]);
 }
+
 // ===================================================================
 
 class UserSignInResponse::_Internal {
  public:
 };
 
-UserSignInResponse::UserSignInResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+UserSignInResponse::UserSignInResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.UserSignInResponse)
 }
-UserSignInResponse::UserSignInResponse(const UserSignInResponse& from) : ::google::protobuf::Message() {
-  UserSignInResponse* const _this = this;
-  (void)_this;
+UserSignInResponse::UserSignInResponse(const UserSignInResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserSignInResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.token_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.token_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.token_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.token_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_token().empty()) {
-    _this->_impl_.token_.Set(from._internal_token(), _this->GetArenaForAllocation());
+    _this->_impl_.token_.Set(from._internal_token(), 
+      _this->GetArenaForAllocation());
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.UserSignInResponse)
 }
-inline void UserSignInResponse::SharedCtor(::_pb::Arena* arena) {
+
+inline void UserSignInResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.token_){},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.token_){}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.token_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.token_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
+
 UserSignInResponse::~UserSignInResponse() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.UserSignInResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void UserSignInResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.token_.Destroy();
 }
+
 void UserSignInResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void UserSignInResponse::Clear() {
+void UserSignInResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.UserSignInResponse)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.token_.ClearToEmpty();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserSignInResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* UserSignInResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string token = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_token();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.UserSignInResponse.token"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 51, 2> UserSignInResponse::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_UserSignInResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // string token = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(UserSignInResponse, _impl_.token_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // string token = 1;
-    {PROTOBUF_FIELD_OFFSET(UserSignInResponse, _impl_.token_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }},
-  // no aux_entries
-  {{
-    "\45\5\0\0\0\0\0\0"
-    "palm.ops.router.v1.UserSignInResponse"
-    "token"
-  }},
-};
-
-::uint8_t* UserSignInResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* UserSignInResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.UserSignInResponse)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // string token = 1;
   if (!this->_internal_token().empty()) {
-    const std::string& _s = this->_internal_token();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.UserSignInResponse.token");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.UserSignInResponse.token");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_token(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.UserSignInResponse)
   return target;
 }
 
-::size_t UserSignInResponse::ByteSizeLong() const {
+size_t UserSignInResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.UserSignInResponse)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string token = 1;
   if (!this->_internal_token().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_token());
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_token());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData UserSignInResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserSignInResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     UserSignInResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*UserSignInResponse::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserSignInResponse::GetClassData() const { return &_class_data_; }
 
 
-void UserSignInResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void UserSignInResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<UserSignInResponse*>(&to_msg);
   auto& from = static_cast<const UserSignInResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.UserSignInResponse)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_token().empty()) {
     _this->_internal_set_token(from._internal_token());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserSignInResponse::CopyFrom(const UserSignInResponse& from) {
@@ -11524,7 +11669,7 @@ void UserSignInResponse::CopyFrom(const UserSignInResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool UserSignInResponse::IsInitialized() const {
+bool UserSignInResponse::IsInitialized() const {
   return true;
 }
 
@@ -11533,237 +11678,227 @@ void UserSignInResponse::InternalSwap(UserSignInResponse* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, lhs_arena,
-                                       &other->_impl_.token_, rhs_arena);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.token_, lhs_arena,
+      &other->_impl_.token_, rhs_arena
+  );
 }
 
-::google::protobuf::Metadata UserSignInResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata UserSignInResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[34]);
 }
+
 // ===================================================================
 
 class UserUpdateRequest::_Internal {
  public:
-  using HasBits = decltype(std::declval<UserUpdateRequest>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-    8 * PROTOBUF_FIELD_OFFSET(UserUpdateRequest, _impl_._has_bits_);
   static const ::palm::ops::router::v1::UserProfile& current(const UserUpdateRequest* msg);
-  static void set_has_current(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::palm::ops::router::v1::UserProfile& new_(const UserUpdateRequest* msg);
-  static void set_has_new_(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
 };
 
-const ::palm::ops::router::v1::UserProfile& UserUpdateRequest::_Internal::current(const UserUpdateRequest* msg) {
+const ::palm::ops::router::v1::UserProfile&
+UserUpdateRequest::_Internal::current(const UserUpdateRequest* msg) {
   return *msg->_impl_.current_;
 }
-const ::palm::ops::router::v1::UserProfile& UserUpdateRequest::_Internal::new_(const UserUpdateRequest* msg) {
+const ::palm::ops::router::v1::UserProfile&
+UserUpdateRequest::_Internal::new_(const UserUpdateRequest* msg) {
   return *msg->_impl_.new__;
 }
-UserUpdateRequest::UserUpdateRequest(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+UserUpdateRequest::UserUpdateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.UserUpdateRequest)
 }
-UserUpdateRequest::UserUpdateRequest(const UserUpdateRequest& from) : ::google::protobuf::Message() {
-  UserUpdateRequest* const _this = this;
-  (void)_this;
+UserUpdateRequest::UserUpdateRequest(const UserUpdateRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserUpdateRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.current_){nullptr},
-      decltype(_impl_.new__){nullptr},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+      decltype(_impl_.current_){nullptr}
+    , decltype(_impl_.new__){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_current()) {
     _this->_impl_.current_ = new ::palm::ops::router::v1::UserProfile(*from._impl_.current_);
   }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+  if (from._internal_has_new_()) {
     _this->_impl_.new__ = new ::palm::ops::router::v1::UserProfile(*from._impl_.new__);
   }
-
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.UserUpdateRequest)
 }
-inline void UserUpdateRequest::SharedCtor(::_pb::Arena* arena) {
+
+inline void UserUpdateRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.current_){nullptr},
-      decltype(_impl_.new__){nullptr},
+      decltype(_impl_.current_){nullptr}
+    , decltype(_impl_.new__){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 UserUpdateRequest::~UserUpdateRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.UserUpdateRequest)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void UserUpdateRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete _impl_.current_;
   if (this != internal_default_instance()) delete _impl_.new__;
 }
+
 void UserUpdateRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void UserUpdateRequest::Clear() {
+void UserUpdateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.UserUpdateRequest)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      ABSL_DCHECK(_impl_.current_ != nullptr);
-      _impl_.current_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      ABSL_DCHECK(_impl_.new__ != nullptr);
-      _impl_.new__->Clear();
-    }
+  if (GetArenaForAllocation() == nullptr && _impl_.current_ != nullptr) {
+    delete _impl_.current_;
   }
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _impl_.current_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.new__ != nullptr) {
+    delete _impl_.new__;
+  }
+  _impl_.new__ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserUpdateRequest::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* UserUpdateRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .palm.ops.router.v1.UserProfile current = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_current(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .palm.ops.router.v1.UserProfile new = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_new_(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 2, 0, 2> UserUpdateRequest::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(UserUpdateRequest, _impl_._has_bits_),
-    0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    &_UserUpdateRequest_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // .palm.ops.router.v1.UserProfile new = 2;
-    {::_pbi::TcParser::FastMtS1,
-     {18, 1, 1, PROTOBUF_FIELD_OFFSET(UserUpdateRequest, _impl_.new__)}},
-    // .palm.ops.router.v1.UserProfile current = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(UserUpdateRequest, _impl_.current_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .palm.ops.router.v1.UserProfile current = 1;
-    {PROTOBUF_FIELD_OFFSET(UserUpdateRequest, _impl_.current_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.UserProfile new = 2;
-    {PROTOBUF_FIELD_OFFSET(UserUpdateRequest, _impl_.new__), _Internal::kHasBitsOffset + 1, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::UserProfile>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::UserProfile>()},
-  }}, {{
-  }},
-};
-
-::uint8_t* UserUpdateRequest::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* UserUpdateRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.UserUpdateRequest)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.UserProfile current = 1;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_current()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(1, _Internal::current(this),
         _Internal::current(this).GetCachedSize(), target, stream);
   }
 
   // .palm.ops.router.v1.UserProfile new = 2;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
+  if (this->_internal_has_new_()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(2, _Internal::new_(this),
         _Internal::new_(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.UserUpdateRequest)
   return target;
 }
 
-::size_t UserUpdateRequest::ByteSizeLong() const {
+size_t UserUpdateRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.UserUpdateRequest)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // .palm.ops.router.v1.UserProfile current = 1;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.current_);
-    }
-
-    // .palm.ops.router.v1.UserProfile new = 2;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.new__);
-    }
-
+  // .palm.ops.router.v1.UserProfile current = 1;
+  if (this->_internal_has_current()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.current_);
   }
+
+  // .palm.ops.router.v1.UserProfile new = 2;
+  if (this->_internal_has_new_()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.new__);
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData UserUpdateRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserUpdateRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     UserUpdateRequest::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*UserUpdateRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserUpdateRequest::GetClassData() const { return &_class_data_; }
 
 
-void UserUpdateRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void UserUpdateRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<UserUpdateRequest*>(&to_msg);
   auto& from = static_cast<const UserUpdateRequest&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.UserUpdateRequest)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _this->_internal_mutable_current()->::palm::ops::router::v1::UserProfile::MergeFrom(
-          from._internal_current());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _this->_internal_mutable_new_()->::palm::ops::router::v1::UserProfile::MergeFrom(
-          from._internal_new_());
-    }
+  if (from._internal_has_current()) {
+    _this->_internal_mutable_current()->::palm::ops::router::v1::UserProfile::MergeFrom(
+        from._internal_current());
   }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_new_()) {
+    _this->_internal_mutable_new_()->::palm::ops::router::v1::UserProfile::MergeFrom(
+        from._internal_new_());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserUpdateRequest::CopyFrom(const UserUpdateRequest& from) {
@@ -11773,15 +11908,14 @@ void UserUpdateRequest::CopyFrom(const UserUpdateRequest& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool UserUpdateRequest::IsInitialized() const {
+bool UserUpdateRequest::IsInitialized() const {
   return true;
 }
 
 void UserUpdateRequest::InternalSwap(UserUpdateRequest* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::google::protobuf::internal::memswap<
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(UserUpdateRequest, _impl_.new__)
       + sizeof(UserUpdateRequest::_impl_.new__)
       - PROTOBUF_FIELD_OFFSET(UserUpdateRequest, _impl_.current_)>(
@@ -11789,162 +11923,177 @@ void UserUpdateRequest::InternalSwap(UserUpdateRequest* other) {
           reinterpret_cast<char*>(&other->_impl_.current_));
 }
 
-::google::protobuf::Metadata UserUpdateRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata UserUpdateRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[35]);
 }
+
 // ===================================================================
 
 class UserLogsResponse::_Internal {
  public:
 };
 
-UserLogsResponse::UserLogsResponse(::google::protobuf::Arena* arena)
-    : ::google::protobuf::Message(arena) {
-  SharedCtor(arena);
+UserLogsResponse::UserLogsResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.UserLogsResponse)
 }
-UserLogsResponse::UserLogsResponse(const UserLogsResponse& from) : ::google::protobuf::Message() {
-  UserLogsResponse* const _this = this;
-  (void)_this;
+UserLogsResponse::UserLogsResponse(const UserLogsResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserLogsResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
+      decltype(_impl_.items_){from._impl_.items_}
+    , /*decltype(_impl_._cached_size_)*/{}};
 
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.UserLogsResponse)
 }
-inline void UserLogsResponse::SharedCtor(::_pb::Arena* arena) {
+
+inline void UserLogsResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
+  (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.items_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
 }
+
 UserLogsResponse::~UserLogsResponse() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.UserLogsResponse)
-  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
 }
+
 inline void UserLogsResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_items()->~RepeatedPtrField();
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.items_.~RepeatedPtrField();
 }
+
 void UserLogsResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-PROTOBUF_NOINLINE void UserLogsResponse::Clear() {
+void UserLogsResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.UserLogsResponse)
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+  _impl_.items_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* UserLogsResponse::_InternalParse(
-    const char* ptr, ::_pbi::ParseContext* ctx) {
-  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+const char* UserLogsResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated string items = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_items();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "palm.ops.router.v1.UserLogsResponse.items"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 49, 2> UserLogsResponse::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_UserLogsResponse_default_instance_._instance,
-    ::_pbi::TcParser::GenericFallback,  // fallback
-  }, {{
-    // repeated string items = 1;
-    {::_pbi::TcParser::FastUR1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(UserLogsResponse, _impl_.items_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // repeated string items = 1;
-    {PROTOBUF_FIELD_OFFSET(UserLogsResponse, _impl_.items_), 0, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
-  }},
-  // no aux_entries
-  {{
-    "\43\5\0\0\0\0\0\0"
-    "palm.ops.router.v1.UserLogsResponse"
-    "items"
-  }},
-};
-
-::uint8_t* UserLogsResponse::_InternalSerialize(
-    ::uint8_t* target,
-    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+uint8_t* UserLogsResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:palm.ops.router.v1.UserLogsResponse)
-  ::uint32_t cached_has_bits = 0;
-  (void)cached_has_bits;
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
   // repeated string items = 1;
-  for (int i = 0, n = this->_internal_items_size(); i < n; ++i) {
-    const auto& s = this->_internal_items().Get(i);
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.UserLogsResponse.items");
+  for (int i = 0, n = this->_internal_items_size(); i < n; i++) {
+    const auto& s = this->_internal_items(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.ops.router.v1.UserLogsResponse.items");
     target = stream->WriteString(1, s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target =
-        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:palm.ops.router.v1.UserLogsResponse)
   return target;
 }
 
-::size_t UserLogsResponse::ByteSizeLong() const {
+size_t UserLogsResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:palm.ops.router.v1.UserLogsResponse)
-  ::size_t total_size = 0;
+  size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated string items = 1;
-  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_items().size());
-  for (int i = 0, n = _internal_items().size(); i < n; ++i) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-        _internal_items().Get(i));
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.items_.size());
+  for (int i = 0, n = _impl_.items_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.items_.Get(i));
   }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData UserLogsResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserLogsResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
     UserLogsResponse::MergeImpl
 };
-const ::google::protobuf::Message::ClassData*UserLogsResponse::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserLogsResponse::GetClassData() const { return &_class_data_; }
 
 
-void UserLogsResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+void UserLogsResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
   auto* const _this = static_cast<UserLogsResponse*>(&to_msg);
   auto& from = static_cast<const UserLogsResponse&>(from_msg);
   // @@protoc_insertion_point(class_specific_merge_from_start:palm.ops.router.v1.UserLogsResponse)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UserLogsResponse::CopyFrom(const UserLogsResponse& from) {
@@ -11954,7 +12103,7 @@ void UserLogsResponse::CopyFrom(const UserLogsResponse& from) {
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool UserLogsResponse::IsInitialized() const {
+bool UserLogsResponse::IsInitialized() const {
   return true;
 }
 
@@ -11964,19 +12113,167 @@ void UserLogsResponse::InternalSwap(UserLogsResponse* other) {
   _impl_.items_.InternalSwap(&other->_impl_.items_);
 }
 
-::google::protobuf::Metadata UserLogsResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata UserLogsResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
       file_level_metadata_ops_2drouter_2eproto[36]);
 }
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace router
 }  // namespace ops
 }  // namespace palm
-namespace google {
-namespace protobuf {
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Contact*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Contact >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Contact >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::RouterSetLanRequest*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::RouterSetLanRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::RouterSetLanRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::RouterSetDmzRequest*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::RouterSetDmzRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::RouterSetDmzRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::RouterSetWanRequest*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::RouterSetWanRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::RouterSetWanRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::WanPool_Item*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::WanPool_Item >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::WanPool_Item >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::WanPool*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::WanPool >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::WanPool >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::RouterCreateUserRequest*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::RouterCreateUserRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::RouterCreateUserRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::RouterIndexUserResponse_Item*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::RouterIndexUserResponse_Item >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::RouterIndexUserResponse_Item >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::RouterIndexUserResponse*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::RouterIndexUserResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::RouterIndexUserResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::RouterUpdateHostRequest*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::RouterUpdateHostRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::RouterUpdateHostRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::RouterIndexRuleResponse_Item*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::RouterIndexRuleResponse_Item >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::RouterIndexRuleResponse_Item >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::RouterIndexRuleResponse*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::RouterIndexRuleResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::RouterIndexRuleResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Host_Owner*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Host_Owner >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Host_Owner >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Host*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Host >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Host >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Rule_InBound*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Rule_InBound >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Rule_InBound >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Rule_OutBound_Host*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Rule_OutBound_Host >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Rule_OutBound_Host >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Rule_OutBound_Speed*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Rule_OutBound_Speed >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Rule_OutBound_Speed >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Rule_OutBound_Time*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Rule_OutBound_Time >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Rule_OutBound_Time >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Rule_OutBound*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Rule_OutBound >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Rule_OutBound >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Rule_Nat_Source*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Rule_Nat_Source >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Rule_Nat_Source >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Rule_Nat_Destination*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Rule_Nat_Destination >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Rule_Nat_Destination >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Rule_Nat*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Rule_Nat >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Rule_Nat >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Rule*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Rule >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Rule >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::RouterStatusResponse_InterfacesEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::RouterStatusResponse_Ip*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::RouterStatusResponse_Ip >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::RouterStatusResponse_Ip >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::RouterStatusResponse*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::RouterStatusResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::RouterStatusResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Lan*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Lan >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Lan >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Dmz*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Dmz >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Dmz >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Wan*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Wan >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Wan >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Dhcp*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Dhcp >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Dhcp >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Static*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Static >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Static >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::Dns*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::Dns >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::Dns >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::UserProfile*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::UserProfile >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::UserProfile >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::UserSignInRequest*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::UserSignInRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::UserSignInRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::UserSignInResponse*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::UserSignInResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::UserSignInResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::UserUpdateRequest*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::UserUpdateRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::UserUpdateRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::palm::ops::router::v1::UserLogsResponse*
+Arena::CreateMaybeMessage< ::palm::ops::router::v1::UserLogsResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::palm::ops::router::v1::UserLogsResponse >(arena);
+}
+PROTOBUF_NAMESPACE_CLOSE
+
 // @@protoc_insertion_point(global_scope)
-#include "google/protobuf/port_undef.inc"
+#include <google/protobuf/port_undef.inc>

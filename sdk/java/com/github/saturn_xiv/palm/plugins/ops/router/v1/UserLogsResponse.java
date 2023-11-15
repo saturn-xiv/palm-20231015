@@ -16,8 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private UserLogsResponse() {
-    items_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    items_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -27,6 +26,11 @@ private static final long serialVersionUID = 0L;
     return new UserLogsResponse();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.ops.router.v1.OpsRouter.internal_static_palm_ops_router_v1_UserLogsResponse_descriptor;
@@ -42,8 +46,7 @@ private static final long serialVersionUID = 0L;
 
   public static final int ITEMS_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
-  private com.google.protobuf.LazyStringArrayList items_ =
-      com.google.protobuf.LazyStringArrayList.emptyList();
+  private com.google.protobuf.LazyStringList items_;
   /**
    * <code>repeated string items = 1;</code>
    * @return A list containing the items.
@@ -192,13 +195,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.ops.router.v1.UserLogsResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.ops.router.v1.UserLogsResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -274,8 +275,8 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      items_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      items_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -302,17 +303,22 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.github.saturn_xiv.palm.plugins.ops.router.v1.UserLogsResponse buildPartial() {
       com.github.saturn_xiv.palm.plugins.ops.router.v1.UserLogsResponse result = new com.github.saturn_xiv.palm.plugins.ops.router.v1.UserLogsResponse(this);
+      buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
+    private void buildPartialRepeatedFields(com.github.saturn_xiv.palm.plugins.ops.router.v1.UserLogsResponse result) {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        items_ = items_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      }
+      result.items_ = items_;
+    }
+
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.ops.router.v1.UserLogsResponse result) {
       int from_bitField0_ = bitField0_;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        items_.makeImmutable();
-        result.items_ = items_;
-      }
     }
 
     @java.lang.Override
@@ -362,7 +368,7 @@ private static final long serialVersionUID = 0L;
       if (!other.items_.isEmpty()) {
         if (items_.isEmpty()) {
           items_ = other.items_;
-          bitField0_ |= 0x00000001;
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           ensureItemsIsMutable();
           items_.addAll(other.items_);
@@ -418,13 +424,12 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.google.protobuf.LazyStringArrayList items_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    private com.google.protobuf.LazyStringList items_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureItemsIsMutable() {
-      if (!items_.isModifiable()) {
+      if (!((bitField0_ & 0x00000001) != 0)) {
         items_ = new com.google.protobuf.LazyStringArrayList(items_);
-      }
-      bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000001;
+       }
     }
     /**
      * <code>repeated string items = 1;</code>
@@ -432,8 +437,7 @@ private static final long serialVersionUID = 0L;
      */
     public com.google.protobuf.ProtocolStringList
         getItemsList() {
-      items_.makeImmutable();
-      return items_;
+      return items_.getUnmodifiableView();
     }
     /**
      * <code>repeated string items = 1;</code>
@@ -470,7 +474,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureItemsIsMutable();
       items_.set(index, value);
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -484,7 +487,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureItemsIsMutable();
       items_.add(value);
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -498,7 +500,6 @@ private static final long serialVersionUID = 0L;
       ensureItemsIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, items_);
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -507,9 +508,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearItems() {
-      items_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00000001);;
+      items_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }
@@ -524,7 +524,6 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       ensureItemsIsMutable();
       items_.add(value);
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }

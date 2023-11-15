@@ -17,8 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private SmsTask() {
     from_ = "";
-    to_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    to_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     body_ = "";
   }
 
@@ -29,6 +28,11 @@ private static final long serialVersionUID = 0L;
     return new SmsTask();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SmsTask_descriptor;
@@ -83,8 +87,7 @@ private static final long serialVersionUID = 0L;
 
   public static final int TO_FIELD_NUMBER = 2;
   @SuppressWarnings("serial")
-  private com.google.protobuf.LazyStringArrayList to_ =
-      com.google.protobuf.LazyStringArrayList.emptyList();
+  private com.google.protobuf.LazyStringList to_;
   /**
    * <code>repeated string to = 2;</code>
    * @return A list containing the to.
@@ -292,13 +295,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.fig.v1.SmsTask parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.fig.v1.SmsTask parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -375,8 +376,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       bitField0_ = 0;
       from_ = "";
-      to_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      to_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000002);
       body_ = "";
       return this;
     }
@@ -404,19 +405,24 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.github.saturn_xiv.palm.plugins.fig.v1.SmsTask buildPartial() {
       com.github.saturn_xiv.palm.plugins.fig.v1.SmsTask result = new com.github.saturn_xiv.palm.plugins.fig.v1.SmsTask(this);
+      buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
+    }
+
+    private void buildPartialRepeatedFields(com.github.saturn_xiv.palm.plugins.fig.v1.SmsTask result) {
+      if (((bitField0_ & 0x00000002) != 0)) {
+        to_ = to_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000002);
+      }
+      result.to_ = to_;
     }
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.fig.v1.SmsTask result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.from_ = from_;
-      }
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        to_.makeImmutable();
-        result.to_ = to_;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.body_ = body_;
@@ -475,7 +481,7 @@ private static final long serialVersionUID = 0L;
       if (!other.to_.isEmpty()) {
         if (to_.isEmpty()) {
           to_ = other.to_;
-          bitField0_ |= 0x00000002;
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           ensureToIsMutable();
           to_.addAll(other.to_);
@@ -618,13 +624,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.LazyStringArrayList to_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    private com.google.protobuf.LazyStringList to_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureToIsMutable() {
-      if (!to_.isModifiable()) {
+      if (!((bitField0_ & 0x00000002) != 0)) {
         to_ = new com.google.protobuf.LazyStringArrayList(to_);
-      }
-      bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000002;
+       }
     }
     /**
      * <code>repeated string to = 2;</code>
@@ -632,8 +637,7 @@ private static final long serialVersionUID = 0L;
      */
     public com.google.protobuf.ProtocolStringList
         getToList() {
-      to_.makeImmutable();
-      return to_;
+      return to_.getUnmodifiableView();
     }
     /**
      * <code>repeated string to = 2;</code>
@@ -670,7 +674,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureToIsMutable();
       to_.set(index, value);
-      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
@@ -684,7 +687,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureToIsMutable();
       to_.add(value);
-      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
@@ -698,7 +700,6 @@ private static final long serialVersionUID = 0L;
       ensureToIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, to_);
-      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
@@ -707,9 +708,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearTo() {
-      to_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00000002);;
+      to_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000002);
       onChanged();
       return this;
     }
@@ -724,7 +724,6 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       ensureToIsMutable();
       to_.add(value);
-      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }

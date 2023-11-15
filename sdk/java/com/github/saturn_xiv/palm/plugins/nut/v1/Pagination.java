@@ -25,6 +25,11 @@ private static final long serialVersionUID = 0L;
     return new Pagination();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.nut.v1.Nut.internal_static_palm_nut_v1_Pagination_descriptor;
@@ -251,13 +256,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.nut.v1.Pagination parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.nut.v1.Pagination parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -530,7 +533,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setPage(long value) {
-
+      
       page_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
@@ -562,7 +565,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setSize(long value) {
-
+      
       size_ = value;
       bitField0_ |= 0x00000002;
       onChanged();
@@ -594,7 +597,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setTotal(long value) {
-
+      
       total_ = value;
       bitField0_ |= 0x00000004;
       onChanged();
@@ -626,7 +629,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setHasNext(boolean value) {
-
+      
       hasNext_ = value;
       bitField0_ |= 0x00000008;
       onChanged();
@@ -658,7 +661,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setHasPrevious(boolean value) {
-
+      
       hasPrevious_ = value;
       bitField0_ |= 0x00000010;
       onChanged();

@@ -1733,13 +1733,11 @@ namespace Palm.Orchid.V1 {
 
     /// <summary>Field number for the "headimgurl" field.</summary>
     public const int HeadimgurlFieldNumber = 16;
-    private readonly static string HeadimgurlDefaultValue = "";
-
     private string headimgurl_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Headimgurl {
-      get { return headimgurl_ ?? HeadimgurlDefaultValue; }
+      get { return headimgurl_ ?? ""; }
       set {
         headimgurl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }

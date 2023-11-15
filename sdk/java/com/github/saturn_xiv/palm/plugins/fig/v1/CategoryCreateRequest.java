@@ -26,6 +26,11 @@ private static final long serialVersionUID = 0L;
     return new CategoryCreateRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_CategoryCreateRequest_descriptor;
@@ -40,7 +45,6 @@ private static final long serialVersionUID = 0L;
   }
 
   private int byCase_ = 0;
-  @SuppressWarnings("serial")
   private java.lang.Object by_;
   public enum ByCase
       implements com.google.protobuf.Internal.EnumLite,
@@ -313,13 +317,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.fig.v1.CategoryCreateRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.fig.v1.CategoryCreateRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -672,7 +674,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setLeft(int value) {
-
+      
       byCase_ = 2;
       by_ = value;
       onChanged();
@@ -714,7 +716,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setParent(int value) {
-
+      
       byCase_ = 3;
       by_ = value;
       onChanged();

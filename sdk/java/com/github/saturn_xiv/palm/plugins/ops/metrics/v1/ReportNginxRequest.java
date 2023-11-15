@@ -25,6 +25,11 @@ private static final long serialVersionUID = 0L;
     return new ReportNginxRequest();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.ops.metrics.v1.OpsMetrics.internal_static_palm_ops_metrics_v1_ReportNginxRequest_descriptor;
@@ -145,6 +150,11 @@ private static final long serialVersionUID = 0L;
       return new Access();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.ops.metrics.v1.OpsMetrics.internal_static_palm_ops_metrics_v1_ReportNginxRequest_Access_descriptor;
@@ -559,13 +569,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportNginxRequest.Access parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportNginxRequest.Access parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1101,7 +1109,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setVersion(float value) {
-
+        
         version_ = value;
         bitField0_ |= 0x00000008;
         onChanged();
@@ -1133,7 +1141,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setStatus(int value) {
-
+        
         status_ = value;
         bitField0_ |= 0x00000010;
         onChanged();
@@ -1165,7 +1173,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setBodyBytesSent(long value) {
-
+        
         bodyBytesSent_ = value;
         bitField0_ |= 0x00000020;
         onChanged();
@@ -1197,7 +1205,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setRequestTime(float value) {
-
+        
         requestTime_ = value;
         bitField0_ |= 0x00000040;
         onChanged();
@@ -1356,9 +1364,7 @@ private static final long serialVersionUID = 0L;
 
   }
 
-  private int bitField0_;
   private int payloadCase_ = 0;
-  @SuppressWarnings("serial")
   private java.lang.Object payload_;
   public enum PayloadCase
       implements com.google.protobuf.Internal.EnumLite,
@@ -1490,7 +1496,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasCreatedAt() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return createdAt_ != null;
   }
   /**
    * <code>.google.protobuf.Timestamp created_at = 9;</code>
@@ -1528,7 +1534,7 @@ private static final long serialVersionUID = 0L;
     if (payloadCase_ == 2) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, payload_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (createdAt_ != null) {
       output.writeMessage(9, getCreatedAt());
     }
     getUnknownFields().writeTo(output);
@@ -1547,7 +1553,7 @@ private static final long serialVersionUID = 0L;
     if (payloadCase_ == 2) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, payload_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (createdAt_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(9, getCreatedAt());
     }
@@ -1660,13 +1666,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportNginxRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportNginxRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1730,19 +1734,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportNginxRequest.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getCreatedAtFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -1792,14 +1790,11 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportNginxRequest result) {
       int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.createdAt_ = createdAtBuilder_ == null
             ? createdAt_
             : createdAtBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
-      result.bitField0_ |= to_bitField0_;
     }
 
     private void buildPartialOneofs(com.github.saturn_xiv.palm.plugins.ops.metrics.v1.ReportNginxRequest result) {
@@ -2252,10 +2247,8 @@ private static final long serialVersionUID = 0L;
       } else {
         createdAtBuilder_.mergeFrom(value);
       }
-      if (createdAt_ != null) {
-        bitField0_ |= 0x00000004;
-        onChanged();
-      }
+      bitField0_ |= 0x00000004;
+      onChanged();
       return this;
     }
     /**

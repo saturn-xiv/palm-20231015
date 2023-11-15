@@ -18,13 +18,11 @@ private static final long serialVersionUID = 0L;
   private SiteLayoutResponse() {
     title_ = "";
     subhead_ = "";
-    keywords_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    keywords_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     description_ = "";
     copyright_ = "";
     logo_ = "";
-    languages_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    languages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -34,6 +32,11 @@ private static final long serialVersionUID = 0L;
     return new SiteLayoutResponse();
   }
 
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteLayoutResponse_descriptor;
@@ -99,6 +102,11 @@ private static final long serialVersionUID = 0L;
       return new Author();
     }
 
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.fig.v1.Fig.internal_static_palm_fig_v1_SiteLayoutResponse_Author_descriptor;
@@ -308,13 +316,11 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteLayoutResponse.Author parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-
     public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteLayoutResponse.Author parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -747,7 +753,6 @@ private static final long serialVersionUID = 0L;
 
   }
 
-  private int bitField0_;
   public static final int TITLE_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object title_ = "";
@@ -828,8 +833,7 @@ private static final long serialVersionUID = 0L;
 
   public static final int KEYWORDS_FIELD_NUMBER = 3;
   @SuppressWarnings("serial")
-  private com.google.protobuf.LazyStringArrayList keywords_ =
-      com.google.protobuf.LazyStringArrayList.emptyList();
+  private com.google.protobuf.LazyStringList keywords_;
   /**
    * <code>repeated string keywords = 3;</code>
    * @return A list containing the keywords.
@@ -910,7 +914,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasAuthor() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return author_ != null;
   }
   /**
    * <code>.palm.fig.v1.SiteLayoutResponse.Author author = 5;</code>
@@ -1008,8 +1012,7 @@ private static final long serialVersionUID = 0L;
 
   public static final int LANGUAGES_FIELD_NUMBER = 9;
   @SuppressWarnings("serial")
-  private com.google.protobuf.LazyStringArrayList languages_ =
-      com.google.protobuf.LazyStringArrayList.emptyList();
+  private com.google.protobuf.LazyStringList languages_;
   /**
    * <code>repeated string languages = 9;</code>
    * @return A list containing the languages.
@@ -1069,7 +1072,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, description_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (author_ != null) {
       output.writeMessage(5, getAuthor());
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(copyright_)) {
@@ -1107,7 +1110,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, description_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (author_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, getAuthor());
     }
@@ -1241,13 +1244,11 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteLayoutResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static com.github.saturn_xiv.palm.plugins.fig.v1.SiteLayoutResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1311,19 +1312,13 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.fig.v1.SiteLayoutResponse.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getAuthorFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
@@ -1331,8 +1326,8 @@ private static final long serialVersionUID = 0L;
       bitField0_ = 0;
       title_ = "";
       subhead_ = "";
-      keywords_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      keywords_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000004);
       description_ = "";
       author_ = null;
       if (authorBuilder_ != null) {
@@ -1341,8 +1336,8 @@ private static final long serialVersionUID = 0L;
       }
       copyright_ = "";
       logo_ = "";
-      languages_ =
-          com.google.protobuf.LazyStringArrayList.emptyList();
+      languages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000080);
       return this;
     }
 
@@ -1369,9 +1364,23 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.github.saturn_xiv.palm.plugins.fig.v1.SiteLayoutResponse buildPartial() {
       com.github.saturn_xiv.palm.plugins.fig.v1.SiteLayoutResponse result = new com.github.saturn_xiv.palm.plugins.fig.v1.SiteLayoutResponse(this);
+      buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
+    }
+
+    private void buildPartialRepeatedFields(com.github.saturn_xiv.palm.plugins.fig.v1.SiteLayoutResponse result) {
+      if (((bitField0_ & 0x00000004) != 0)) {
+        keywords_ = keywords_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000004);
+      }
+      result.keywords_ = keywords_;
+      if (((bitField0_ & 0x00000080) != 0)) {
+        languages_ = languages_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000080);
+      }
+      result.languages_ = languages_;
     }
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.fig.v1.SiteLayoutResponse result) {
@@ -1382,19 +1391,13 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.subhead_ = subhead_;
       }
-      if (((from_bitField0_ & 0x00000004) != 0)) {
-        keywords_.makeImmutable();
-        result.keywords_ = keywords_;
-      }
       if (((from_bitField0_ & 0x00000008) != 0)) {
         result.description_ = description_;
       }
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000010) != 0)) {
         result.author_ = authorBuilder_ == null
             ? author_
             : authorBuilder_.build();
-        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000020) != 0)) {
         result.copyright_ = copyright_;
@@ -1402,11 +1405,6 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000040) != 0)) {
         result.logo_ = logo_;
       }
-      if (((from_bitField0_ & 0x00000080) != 0)) {
-        languages_.makeImmutable();
-        result.languages_ = languages_;
-      }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -1466,7 +1464,7 @@ private static final long serialVersionUID = 0L;
       if (!other.keywords_.isEmpty()) {
         if (keywords_.isEmpty()) {
           keywords_ = other.keywords_;
-          bitField0_ |= 0x00000004;
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           ensureKeywordsIsMutable();
           keywords_.addAll(other.keywords_);
@@ -1494,7 +1492,7 @@ private static final long serialVersionUID = 0L;
       if (!other.languages_.isEmpty()) {
         if (languages_.isEmpty()) {
           languages_ = other.languages_;
-          bitField0_ |= 0x00000080;
+          bitField0_ = (bitField0_ & ~0x00000080);
         } else {
           ensureLanguagesIsMutable();
           languages_.addAll(other.languages_);
@@ -1732,13 +1730,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.LazyStringArrayList keywords_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    private com.google.protobuf.LazyStringList keywords_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureKeywordsIsMutable() {
-      if (!keywords_.isModifiable()) {
+      if (!((bitField0_ & 0x00000004) != 0)) {
         keywords_ = new com.google.protobuf.LazyStringArrayList(keywords_);
-      }
-      bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000004;
+       }
     }
     /**
      * <code>repeated string keywords = 3;</code>
@@ -1746,8 +1743,7 @@ private static final long serialVersionUID = 0L;
      */
     public com.google.protobuf.ProtocolStringList
         getKeywordsList() {
-      keywords_.makeImmutable();
-      return keywords_;
+      return keywords_.getUnmodifiableView();
     }
     /**
      * <code>repeated string keywords = 3;</code>
@@ -1784,7 +1780,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureKeywordsIsMutable();
       keywords_.set(index, value);
-      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
@@ -1798,7 +1793,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureKeywordsIsMutable();
       keywords_.add(value);
-      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
@@ -1812,7 +1806,6 @@ private static final long serialVersionUID = 0L;
       ensureKeywordsIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, keywords_);
-      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
@@ -1821,9 +1814,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearKeywords() {
-      keywords_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00000004);;
+      keywords_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000004);
       onChanged();
       return this;
     }
@@ -1838,7 +1830,6 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       ensureKeywordsIsMutable();
       keywords_.add(value);
-      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
@@ -1981,10 +1972,8 @@ private static final long serialVersionUID = 0L;
       } else {
         authorBuilder_.mergeFrom(value);
       }
-      if (author_ != null) {
-        bitField0_ |= 0x00000010;
-        onChanged();
-      }
+      bitField0_ |= 0x00000010;
+      onChanged();
       return this;
     }
     /**
@@ -2180,13 +2169,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.LazyStringArrayList languages_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
+    private com.google.protobuf.LazyStringList languages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureLanguagesIsMutable() {
-      if (!languages_.isModifiable()) {
+      if (!((bitField0_ & 0x00000080) != 0)) {
         languages_ = new com.google.protobuf.LazyStringArrayList(languages_);
-      }
-      bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000080;
+       }
     }
     /**
      * <code>repeated string languages = 9;</code>
@@ -2194,8 +2182,7 @@ private static final long serialVersionUID = 0L;
      */
     public com.google.protobuf.ProtocolStringList
         getLanguagesList() {
-      languages_.makeImmutable();
-      return languages_;
+      return languages_.getUnmodifiableView();
     }
     /**
      * <code>repeated string languages = 9;</code>
@@ -2232,7 +2219,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureLanguagesIsMutable();
       languages_.set(index, value);
-      bitField0_ |= 0x00000080;
       onChanged();
       return this;
     }
@@ -2246,7 +2232,6 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       ensureLanguagesIsMutable();
       languages_.add(value);
-      bitField0_ |= 0x00000080;
       onChanged();
       return this;
     }
@@ -2260,7 +2245,6 @@ private static final long serialVersionUID = 0L;
       ensureLanguagesIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, languages_);
-      bitField0_ |= 0x00000080;
       onChanged();
       return this;
     }
@@ -2269,9 +2253,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearLanguages() {
-      languages_ =
-        com.google.protobuf.LazyStringArrayList.emptyList();
-      bitField0_ = (bitField0_ & ~0x00000080);;
+      languages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000080);
       onChanged();
       return this;
     }
@@ -2286,7 +2269,6 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       ensureLanguagesIsMutable();
       languages_.add(value);
-      bitField0_ |= 0x00000080;
       onChanged();
       return this;
     }
