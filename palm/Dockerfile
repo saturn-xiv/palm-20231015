@@ -22,7 +22,7 @@ RUN apt -y install build-essential cmake mold pkg-config g++-${GCC_VERSION} \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf \
     crossbuild-essential-riscv64 g++-${GCC_VERSION}-riscv64-linux-gnu \
     clang-${CLANG_VERSION} clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} clang-tidy-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
-    lsb-release tar curl zip unzip wget git \
+    lsb-release tar curl zip unzip wget git doxygen \
     python3 golang
 RUN apt -y clean
 
