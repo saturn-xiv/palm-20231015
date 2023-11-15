@@ -40,18 +40,32 @@ FetchContent_Declare(argparse
   GIT_TAG         "v3.0"
 )
 
-FetchContent_Declare(inja 
-  GIT_REPOSITORY  "https://github.com/pantor/inja.git"
-  GIT_TAG         "v3.4.0"
+FetchContent_Declare(mailio
+  GIT_REPOSITORY    "https://github.com/karastojko/mailio.git"
+  GIT_TAG           "9e67f32"
 )
 
-FetchContent_MakeAvailable(tomlplusplus inja spdlog argparse)
+FetchContent_Declare(casbin
+  GIT_REPOSITORY    "https://github.com/casbin/casbin-cpp.git"
+  GIT_TAG           "4deab3b"
+)
+
+FetchContent_Declare(libpqxx
+  GIT_REPOSITORY    "https://github.com/jtv/libpqxx.git"
+  GIT_TAG           "7586846"
+)
+
+FetchContent_MakeAvailable(tomlplusplus spdlog argparse mailio casbin libpqxx)
 # ---------------------------------------------------------
 
 file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
 add_executable(carnation ${SOURCE_LIST})
 set_target_properties(carnation PROPERTIES LINK_FLAGS_RELEASE -s)
+
+target_link_libraries(carnation PUBLIC
+  casbin mailio pqxx
+)
 
 target_include_directories(carnation PUBLIC
   ${PROJECT_SOURCE_DIR}/include
@@ -60,7 +74,7 @@ target_include_directories(carnation PUBLIC
   ${tomlplusplus_SOURCE_DIR}/include
   ${spdlog_SOURCE_DIR}/include
   ${argparse_SOURCE_DIR}/include
-  ${inja_SOURCE_DIR}/single_include
-  ${inja_SOURCE_DIR}/third_party/include
+  ${mailio_SOURCE_DIR}/include
+  ${casbin_SOURCE_DIR}/include
 )
 

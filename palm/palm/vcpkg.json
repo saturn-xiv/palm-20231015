@@ -58,10 +58,6 @@
     { "name": "redis-plus-plus", "features": ["cxx17"] },
     { "name": "leveldb", "features": ["crc32c"] },
 
-    "fruit",
-    "gflags",
-    "glog",
-    "gtest",
     "flatbuffers",
     "protobuf",
     { "name": "abseil", "features": ["cxx17"] },

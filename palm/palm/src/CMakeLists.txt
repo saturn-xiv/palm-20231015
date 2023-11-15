@@ -42,16 +42,7 @@ find_library(INIH_LIBRARY inih)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(tomlplusplus REQUIRED IMPORTED_TARGET tomlplusplus)
 
-# FetchContent_Declare(mailio
-#   GIT_REPOSITORY    "https://github.com/karastojko/mailio.git"
-#   GIT_TAG           "0.23.0"
-# )
 
-# FetchContent_Declare(casbin
-#   GIT_REPOSITORY    "https://github.com/casbin/casbin-cpp.git"
-#   GIT_TAG           "4deab3b"
-# )
-# FetchContent_MakeAvailable(mailio)
 
 target_include_directories(palm PUBLIC
   ${PROJECT_SOURCE_DIR}/include
@@ -59,13 +50,9 @@ target_include_directories(palm PUBLIC
   ${CPPCODEC_INCLUDE_DIRS}
   ${CPP_HTTPLIB_INCLUDE_DIRS}
   ${LUA_INCLUDE_DIR}
-  
-  ${mailio_SOURCE_DIR}/include
-  ${casbin_SOURCE_DIR}/include
 )
 
 target_link_libraries(palm PUBLIC gourd
-  # mailio casbin
   
   OpenSSL::SSL OpenSSL::Crypto
   Poco::Util
