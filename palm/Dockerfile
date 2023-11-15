@@ -16,7 +16,7 @@ RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 
 RUN apt update
 RUN apt -y upgrade
-RUN apt -y install build-essential cmake mold pkg-config g++-12 \
+RUN apt -y install build-essential cmake mold pkg-config g++-${GCC_VERSION} \
     build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
     crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf \
