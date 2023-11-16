@@ -1,11 +1,10 @@
 #include "palm/cache.hpp"
-#include "palm/version.hpp"
 
 palm::redis::Config::Config(const toml::table& node) {
   this->_host = node["host"].value_or("127.0.0.1");
   this->_port = node["port"].value_or(6379);
   this->_db = node["db"].value_or(0);
-  this->_namespace = node["namespace"].value_or(palm::PROJECT_NAME);
+  this->_namespace = node["namespace"].value<std::string>().value();
   this->_pool_size = node["pool-size"].value_or(1 << 5);
 }
 
