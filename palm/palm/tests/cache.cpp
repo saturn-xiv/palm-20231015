@@ -2,10 +2,13 @@
 
 #include "palm/cache.hpp"
 
+#include <iostream>
+
 TEST_CASE("Redis", "[set-get]") {
   auto config = toml::parse_file("config.toml");
   auto node = config["redis"].as_table();
-  palm::redis::Config cfg(*node);
+  const palm::redis::Config cfg(*node);
+  std::cout << "connect " << cfg << std::endl;
 
   const std::string key = "hello";
   const std::string val = "Hi, Palm!";
