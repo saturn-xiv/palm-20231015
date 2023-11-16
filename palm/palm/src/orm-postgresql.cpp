@@ -9,7 +9,7 @@ palm::postgresql::Config::Config(const toml::table& node) {
   this->_pool_size = node["pool-size"].value_or(1 << 5);
 }
 
-pqxx::connection palm::postgresql::Config::open() const {
+pqxx::connection* palm::postgresql::Config::open() {
   std::stringstream ss;
   ss << "host=" << this->_host << " port=" << this->_port
      << " dbname=" << this->_dbname << " user=" << this->_user;
@@ -18,6 +18,6 @@ pqxx::connection palm::postgresql::Config::open() const {
   }
   ss << " sslmode=disable";
   const std::string url = ss.str();
-  pqxx::connection con{url};
-  return std::move(con);
+
+  return this->_pool.construct(url);
 }

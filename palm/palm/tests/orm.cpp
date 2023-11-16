@@ -8,12 +8,12 @@
 TEST_CASE("PostgreSQL", "[postgresql]") {
   auto config = toml::parse_file("config.toml");
   auto node = config["postgresql"].as_table();
-  const palm::postgresql::Config cfg(*node);
+  palm::postgresql::Config cfg(*node);
   std::cout << "connect " << cfg << std::endl;
 
-  auto db = cfg.open();
   {
-    pqxx::work tx{db};
+    auto db = cfg.open();
+    pqxx::work tx{*db};
 
     {
       pqxx::row r = tx.exec1("SELECT VERSION()");
@@ -28,6 +28,13 @@ TEST_CASE("PostgreSQL", "[postgresql]") {
       std::cout << ts << "\t" << tp << std::endl;
     }
     tx.commit();
+  }
+
+  for (int i = 1; i < 64; i++) {
+    auto db = cfg.open();
+    if (db == nullptr) {
+      break;
+    }
   }
 }
 
