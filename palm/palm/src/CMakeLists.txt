@@ -30,6 +30,7 @@ find_package(Flatbuffers CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(argparse CONFIG REQUIRED)
 find_package(magic_enum CONFIG REQUIRED)
+find_package(mailio CONFIG REQUIRED)
 find_package(Lua REQUIRED)
 
 find_path(CPPCODEC_INCLUDE_DIRS "cppcodec/base32_crockford.hpp")
@@ -41,8 +42,6 @@ find_library(INIH_LIBRARY inih)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(tomlplusplus REQUIRED IMPORTED_TARGET tomlplusplus)
-
-
 
 target_include_directories(palm PUBLIC
   ${PROJECT_SOURCE_DIR}/include
@@ -57,7 +56,7 @@ target_link_libraries(palm PUBLIC gourd
   OpenSSL::SSL OpenSSL::Crypto
   Poco::Util
 
-  spdlog::spdlog argparse::argparse magic_enum::magic_enum
+  spdlog::spdlog argparse::argparse magic_enum::magic_enum mailio
 
   libevent::core libevent::extra libevent::pthreads
   Libssh2::libssh2_static LibLZMA::LibLZMA # unofficial::git2::git2

@@ -67,6 +67,7 @@
     "spdlog",
     "catch2",
     "argparse",
-    "magic-enum"
+    "magic-enum",
+    "mailio"
   ]
 }
