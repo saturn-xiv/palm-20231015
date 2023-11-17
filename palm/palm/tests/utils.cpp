@@ -10,4 +10,5 @@ TEST_CASE("Get package name", "[name]") {
             << typeid(palm::postgresql::Pool).name() << std::endl;
   std::cout << "boost type of postgresql::Pool: "
             << boost::core::type_name<palm::postgresql::Pool>() << std::endl;
+  std::cout << "libstdc++ version: " << _GLIBCXX_RELEASE << std::endl;
 }

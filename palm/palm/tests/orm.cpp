@@ -39,7 +39,11 @@ TEST_CASE("PostgreSQL", "[postgresql]") {
         const auto ts = r[0].as<std::string>();
         //   const auto tp = r[0].as<std::chrono::system_clock::time_point>();
         const auto tp = palm::to_time_point(ts);
-        std::cout << ts << "\t" << tp << std::endl;
+        std::cout << ts
+#if _GLIBCXX_RELEASE > 12
+                  << "\t" << tp
+#endif
+                  << std::endl;
       }
       tx.commit();
     }
