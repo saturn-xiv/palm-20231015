@@ -11,29 +11,37 @@ TEST_CASE("PostgreSQL", "[postgresql]") {
   palm::postgresql::Config cfg(*node);
   std::cout << "connect " << cfg << std::endl;
 
+  auto pool = cfg.open();
+  const auto max_size = pool->idle_size();
+
   {
-    auto db = cfg.open();
-    pqxx::work tx{*db};
+    palm::postgresql::PooledConnection con(pool);
 
+    REQUIRE(pool->idle_size() == max_size - 1);
     {
-      pqxx::row r = tx.exec1("SELECT VERSION()");
-      std::cout << r[0].as<std::string>() << std::endl;
+      const auto size = pool->idle_size();
+      REQUIRE(size > 0);
+      palm::postgresql::PooledConnection con(pool);
+      REQUIRE(size < max_size);
+      pqxx::work tx{*con.db};
+      auto row = tx.exec1("SELECT 1");
+      tx.commit();
     }
     {
-      pqxx::row r = tx.exec1("SELECT CURRENT_TIMESTAMP");
+      pqxx::work tx{*con.db};
+      {
+        pqxx::row r = tx.exec1("SELECT VERSION()");
+        std::cout << r[0].as<std::string>() << std::endl;
+      }
+      {
+        pqxx::row r = tx.exec1("SELECT CURRENT_TIMESTAMP");
 
-      const auto ts = r[0].as<std::string>();
-      //   const auto tp = r[0].as<std::chrono::system_clock::time_point>();
-      const auto tp = palm::to_time_point(ts);
-      std::cout << ts << "\t" << tp << std::endl;
-    }
-    tx.commit();
-  }
-
-  for (int i = 1; i < 64; i++) {
-    auto db = cfg.open();
-    if (db == nullptr) {
-      break;
+        const auto ts = r[0].as<std::string>();
+        //   const auto tp = r[0].as<std::chrono::system_clock::time_point>();
+        const auto tp = palm::to_time_point(ts);
+        std::cout << ts << "\t" << tp << std::endl;
+      }
+      tx.commit();
     }
   }
 }

@@ -9,7 +9,7 @@ palm::postgresql::Config::Config(const toml::table& node) {
   this->_pool_size = node["pool-size"].value_or(1 << 5);
 }
 
-pqxx::connection* palm::postgresql::Config::open() {
+std::shared_ptr<palm::postgresql::Pool> palm::postgresql::Config::open() {
   std::stringstream ss;
   ss << "host=" << this->_host << " port=" << this->_port
      << " dbname=" << this->_dbname << " user=" << this->_user;
@@ -18,6 +18,13 @@ pqxx::connection* palm::postgresql::Config::open() {
   }
   ss << " sslmode=disable";
   const std::string url = ss.str();
+  auto pool = std::make_shared<palm::postgresql::Pool>(url, this->_pool_size);
+  return pool;
+}
 
-  return this->_pool.construct(url);
+palm::postgresql::Pool::Pool(const std::string& url, size_t pool_size) {
+  for (int i = 0; i < pool_size; i++) {
+    auto it = std::make_unique<pqxx::connection>(url);
+    this->_queue.push(std::move(it));
+  }
 }
