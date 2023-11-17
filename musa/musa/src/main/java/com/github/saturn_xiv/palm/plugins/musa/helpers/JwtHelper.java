@@ -8,6 +8,7 @@ import org.apache.thrift.transport.TTransportException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -16,9 +17,9 @@ import java.time.Duration;
 @Component("palm.musa.helper.jwt")
 public class JwtHelper {
 
-    public <T> T verify(@NotNull final String token, final String subject, Class<T> clazz) throws TException {
-        var payload = jwt.verify(loquat.appId, token, ISSUER, subject, AUDIENCE);
-        return gson.fromJson(payload, clazz);
+    public <T> Pair<T, String> verify(@NotNull final String token, Class<T> clazz) throws TException {
+        var response = jwt.verify(loquat.appId, token, ISSUER, AUDIENCE);
+        return Pair.of(gson.fromJson(response.payload, clazz), response.subject);
     }
 
     public <T> String sign(final String subject, final Duration ttl, T object) throws TException {
