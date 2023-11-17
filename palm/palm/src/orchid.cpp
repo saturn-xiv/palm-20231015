@@ -69,3 +69,33 @@ void palm::orchid::Application::start_rpc_server(uint16_t port,
 
   server->Wait();
 }
+
+grpc::Status palm::orchid::WechatMiniProgramServiceImpl::Login(
+    grpc::ServerContext* context,
+    const palm::orchid::v1::WechatMiniProgramLoginRequest* request,
+    palm::orchid::v1::WechatMiniProgramLoginResponse* reply) {
+  // TODO
+  return grpc::Status::OK;
+}
+grpc::Status palm::orchid::WechatMiniProgramServiceImpl::PhoneNumber(
+    grpc::ServerContext* context,
+    const palm::orchid::v1::WechatMiniProgramPhoneNumberRequest* request,
+    palm::orchid::v1::WechatMiniProgramPhoneNumberResponse* reply) {
+  // TODO
+  return grpc::Status::OK;
+}
+
+grpc::Status palm::orchid::WechatOauth2ServiceImpl::QrConnect(
+    grpc::ServerContext* context,
+    const palm::orchid::v1::WechatOauth2QrConnectRequest* request,
+    palm::orchid::v1::WechatOauth2QrConnectResponse* reply) {
+  // TODO
+  return grpc::Status::OK;
+}
+grpc::Status palm::orchid::WechatOauth2ServiceImpl::Login(
+    grpc::ServerContext* context,
+    const palm::orchid::v1::WechatOauth2LoginRequest* request,
+    palm::orchid::v1::WechatOauth2LoginResponse* reply) {
+  // TODO
+  return grpc::Status::OK;
+}

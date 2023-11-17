@@ -4,8 +4,9 @@ include(FetchContent)
 
 project(
     loquat
-    VERSION 2023.11.14
+    VERSION 2023.11.17
     DESCRIPTION "A cryptographic rpc service(by google tink)."
+    HOMEPAGE_URL "https://github.com/saturn-xiv/palm"
     LANGUAGES C CXX)
 # --------------------------------------------------------
 

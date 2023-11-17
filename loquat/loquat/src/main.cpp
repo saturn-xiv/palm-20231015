@@ -10,7 +10,7 @@
 #include <argparse/argparse.hpp>
 
 namespace loquat {
-static void set_thrift_logger(const char* s) { spdlog::debug("{}", s); }
+static void set_thrift_logger(const char* s) { spdlog::debug("thrift: {}", s); }
 }  // namespace loquat
 
 int main(int argc, char** argv) {

@@ -18,7 +18,7 @@ then
 fi
 
 CC=gcc-$GCC_VERSION CXX=g++-$GCC_VERSION cmake -DCMAKE_BUILD_TYPE=Release $THRIFT_FLAGS $TINK_FLAGS -B $BUILD_DIR -S $SOURCE_DIR
-make -C $BUILD_DIR
+make -j $(nproc --ignore=2) -C $BUILD_DIR
 
 echo 'done.'
 

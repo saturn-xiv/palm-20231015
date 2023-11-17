@@ -1,9 +1,14 @@
 #include "loquat/env.hpp"
 #include "loquat/version.hpp"
 
+// TODO
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#include <tink/aead/aes_gcm_key_manager.h>
+#pragma GCC diagnostic pop
+
 #include <tink/aead.h>
 #include <tink/aead/aead_config.h>
-#include <tink/aead/aes_gcm_key_manager.h>
 #include <tink/binary_keyset_reader.h>
 #include <tink/binary_keyset_writer.h>
 #include <tink/cleartext_keyset_handle.h>

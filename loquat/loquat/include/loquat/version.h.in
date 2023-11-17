@@ -3,13 +3,14 @@
 // clang-format off
 namespace loquat {
 
-inline static const std::string VERSION = "v@loquat_VERSION_MAJOR@.@loquat_VERSION_MINOR@.@loquat_VERSION_PATCH@";
-
-inline static const std::string GIT_VERSION = "@GIT_REV@";
-inline static const std::string BUILD_TIME = "@BUILD_TIME@";
+inline static const std::string VERSION = "v@CMAKE_PROJECT_VERSION_MAJOR@.@CMAKE_PROJECT_VERSION_MINOR@.@CMAKE_PROJECT_VERSION_PATCH@";
 
 inline static const std::string PROJECT_NAME = "@CMAKE_PROJECT_NAME@";
 inline static const std::string PROJECT_DESCRIPTION = "@CMAKE_PROJECT_DESCRIPTION@";
+inline static const std::string PROJECT_HOMEPAGE_URL = "@CMAKE_PROJECT_HOMEPAGE_URL@";
+
+inline static const std::string GIT_VERSION = "@GIT_REV@";
+inline static const std::string BUILD_TIME = "@BUILD_TIME@";
 
 }
 // clang-format on
