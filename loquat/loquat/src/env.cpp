@@ -24,23 +24,6 @@
 #include <tink/tink_config.h>
 #include <tink/util/status.h>
 
-loquat::Config::Config(const std::filesystem::path& file) {
-  spdlog::info("load config from {}", file.string());
-  std::ifstream in(file);
-  const auto root = toml::parse(in);
-  this->_port = root["port"].value_or(8080);
-  this->_jwt_secret_key = root["jwt-secret-key"].value<std::string>();
-  {
-    const auto items = root["clients"].as_array();
-    for (const auto& el : *items) {
-      const auto it = el.as_string();
-      const std::string id = it->get();
-      this->_clients.push_back(id);
-    }
-    spdlog::debug("available clients: {}", absl::StrJoin(this->_clients, ", "));
-  }
-}
-
 std::string loquat::Jwt::sign(const std::string& issuer,
                               const std::string& subject,
                               const std::string& audience,

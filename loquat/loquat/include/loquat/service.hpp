@@ -17,8 +17,8 @@ namespace loquat {
 
 namespace application {
 
-struct Ssl {
-  Ssl(const std::string& cert_file, const std::string& key_file,
+struct Tls {
+  Tls(const std::string& cert_file, const std::string& key_file,
       const std::string& ca_file)
       : cert_file(cert_file), key_file(key_file), ca_file(ca_file) {}
   std::string cert_file;
@@ -26,7 +26,7 @@ struct Ssl {
   std::string ca_file;
 };
 
-void launch(const uint16_t port, std::optional<Ssl> ssl);
+void launch(const uint16_t port, const Tls& tls);
 }  // namespace application
 
 class AesHandler final : public v1::AesIf {

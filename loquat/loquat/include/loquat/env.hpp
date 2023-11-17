@@ -44,22 +44,6 @@
 
 namespace loquat {
 
-class Config final {
- public:
-  Config(const std::filesystem::path& file);
-  inline uint32_t port() const { return this->_port; }
-  inline std::vector<std::string> clients() const {
-    const std::vector<std::string> items(this->_clients.begin(),
-                                         this->_clients.end());
-    return items;
-  }
-
- private:
-  uint16_t _port;
-  std::optional<std::string> _jwt_secret_key;
-  std::vector<std::string> _clients;
-};
-
 class Keyset {
  public:
   Keyset(const std::string& name) : _name(name) {}

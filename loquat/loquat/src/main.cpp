@@ -92,18 +92,14 @@ int main(int argc, char** argv) {
 
   if (program.is_subcommand_used(rpc_command)) {
     const int port = rpc_command.get<int>("--port");
+
     const std::string cert_file = rpc_command.get<std::string>("--cert-file");
     const std::string key_file = rpc_command.get<std::string>("--key-file");
     const std::string ca_file = rpc_command.get<std::string>("--ca-file");
-    const auto tls = std::make_optional<loquat::application::Ssl>(
-        cert_file, key_file, ca_file);
+    const loquat::application::Tls tls(cert_file, key_file, ca_file);
 
     apache::thrift::GlobalOutput.setOutputFunction(loquat::set_thrift_logger);
-
-    loquat::application::launch(
-        static_cast<uint16_t>(port),
-        rpc_command.get<bool>("--tls") ? tls : std::nullopt);
-
+    loquat::application::launch(static_cast<uint16_t>(port), tls);
   } else if (program.is_subcommand_used(generate_token_command)) {
     const int years = generate_token_command.get<int>("--years");
     const std::string app_id =

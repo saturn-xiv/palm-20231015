@@ -18,7 +18,7 @@
 #include <thrift/transport/TTransportUtils.h>
 
 void loquat::application::launch(const uint16_t port,
-                                 std::optional<loquat::application::Ssl> ssl) {
+                                 const loquat::application::Tls& tls) {
   std::shared_ptr<AesHandler> aesHandler = std::make_shared<AesHandler>();
   std::shared_ptr<v1::AesProcessor> aesProcessor =
       std::make_shared<v1::AesProcessor>(aesHandler);
@@ -80,38 +80,28 @@ void loquat::application::launch(const uint16_t port,
           std::make_shared<apache::thrift::protocol::TBinaryProtocolFactoryT<
               apache::thrift::transport::TFramedTransport>>();
 
-  std::shared_ptr<apache::thrift::server::TNonblockingServer> server;
+  std::shared_ptr<apache::thrift::transport::TSSLSocketFactory>
+      sslSocketFactory =
+          std::make_shared<apache::thrift::transport::TSSLSocketFactory>();
+  {
+    spdlog::info("listening on tcps://0.0.0.0:{}", port);
+    spdlog::debug("load cert from {}, key from {}, ca from {}", tls.cert_file,
+                  tls.key_file, tls.ca_file);
+    sslSocketFactory->loadCertificate(tls.cert_file.c_str());
+    sslSocketFactory->loadPrivateKey(tls.key_file.c_str());
+    sslSocketFactory->loadTrustedCertificates(tls.ca_file.c_str());
 
-  if (ssl) {
-    std::shared_ptr<apache::thrift::transport::TSSLSocketFactory>
-        sslSocketFactory =
-            std::make_shared<apache::thrift::transport::TSSLSocketFactory>();
-    {
-      spdlog::info("listening on tcps://0.0.0.0:{}", port);
-      spdlog::debug("load cert from {}, key from {}, ca from {}",
-                    ssl->cert_file, ssl->key_file, ssl->ca_file);
-      sslSocketFactory->loadCertificate(ssl->cert_file.c_str());
-      sslSocketFactory->loadPrivateKey(ssl->key_file.c_str());
-      sslSocketFactory->loadTrustedCertificates(ssl->ca_file.c_str());
-
-      sslSocketFactory->ciphers("ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
-    }
-
-    std::shared_ptr<apache::thrift::transport::TNonblockingSSLServerSocket>
-        serverSocket = std::make_shared<
-            apache::thrift::transport::TNonblockingSSLServerSocket>(
-            port, sslSocketFactory);
-
-    server = std::make_shared<apache::thrift::server::TNonblockingServer>(
-        multiplexedProcessor, protocolFactory, serverSocket, threadManager);
-  } else {
-    spdlog::info("listening on tcp://0.0.0.0:{}", port);
-    std::shared_ptr<apache::thrift::transport::TNonblockingServerSocket>
-        serverSocket = std::make_shared<
-            apache::thrift::transport::TNonblockingServerSocket>(port);
-    server = std::make_shared<apache::thrift::server::TNonblockingServer>(
-        multiplexedProcessor, protocolFactory, serverSocket, threadManager);
+    sslSocketFactory->ciphers("ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
   }
+
+  std::shared_ptr<apache::thrift::transport::TNonblockingSSLServerSocket>
+      serverSocket = std::make_shared<
+          apache::thrift::transport::TNonblockingSSLServerSocket>(
+          port, sslSocketFactory);
+
+  std::shared_ptr<apache::thrift::server::TNonblockingServer> server =
+      std::make_shared<apache::thrift::server::TNonblockingServer>(
+          multiplexedProcessor, protocolFactory, serverSocket, threadManager);
 
   server->setNumIOThreads(threads_count * 2 + 1);
   server->serve();
