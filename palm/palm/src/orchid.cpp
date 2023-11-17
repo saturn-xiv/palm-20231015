@@ -3,7 +3,7 @@
 #include "palm/version.hpp"
 
 #include <absl/strings/str_format.h>
-#include <grpcpp/ext/proto_server_reflection_plugin.h>
+// #include <grpcpp/ext/proto_server_reflection_plugin.h>
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/health_check_service_interface.h>
 #include <argparse/argparse.hpp>
@@ -57,7 +57,8 @@ void palm::orchid::Application::start_rpc_server(uint16_t port,
   palm::orchid::WechatOauth2ServiceImpl wechat_oauth2_service;
 
   grpc::EnableDefaultHealthCheckService(true);
-  grpc::reflection::InitProtoReflectionServerBuilderPlugin();
+  //   { "name": "grpc", "features": ["codegen"] },
+  //   grpc::reflection::InitProtoReflectionServerBuilderPlugin();
   grpc::ServerBuilder builder;
   builder.AddListeningPort(addr, grpc::InsecureServerCredentials());
   builder.RegisterService(&wechat_mini_program_service);
