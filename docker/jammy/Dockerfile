@@ -32,7 +32,7 @@ RUN apt -y install zsh git locales locales-all \
     crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
     crossbuild-essential-riscv64 g++-${GCC_VERSION}-riscv64-linux-gnu libstdc++-${GCC_VERSION}-dev:riscv64 \
-    clang-${CLANG_VERSION} clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
+    clang-${CLANG_VERSION} clangd-${CLANG_VERSION} clang-tools-${CLANG_VERSION} clang-format-${CLANG_VERSION} clang-tidy-${CLANG_VERSION} lldb-${CLANG_VERSION} lld-${CLANG_VERSION} \
     cmake pkg-config libtool automake autoconf autoconf-archive binutils cpio mold \
     debhelper bison flex ninja-build \
     python3-full python3-dev
@@ -40,6 +40,7 @@ RUN apt -y install zsh git locales locales-all \
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
+    && update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_VERSION} 100 \
@@ -67,6 +68,13 @@ RUN cp $HOME/.oh-my-zsh/templates/zshrc.zsh-template $HOME/.zshrc
 RUN echo 'export LANG=en_US.UTF-8' >> $HOME/.zshrc
 RUN echo 'export LC_ALL=en_US.UTF-8' >> $HOME/.zshrc
 RUN echo 'export PATH=$HOME/.local/bin:$PATH' >> $HOME/.zshrc
+
+RUN sh -c ". $HOME/.profile \
+    && python3 -m venv $HOME/local/python3 \
+    && . $HOME/local/python3/bin/activate \
+    && pip install --upgrade pip \
+    && pip install cmake"
+RUN echo 'source $HOME/local/python3/bin/activate' >> $HOME/.zshrc
 
 RUN git config --global core.quotepath false \
     && git config --global http.version HTTP/1.1 \
