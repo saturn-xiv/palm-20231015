@@ -4,10 +4,10 @@ include(FetchContent)
 
 set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Vcpkg toolchain file")
 
-project(
-    palm
+project(palm
     VERSION 2023.11.14
     DESCRIPTION "A total free education & translation & ops solution."
+    HOMEPAGE_URL "https://github.com/saturn-xiv/palm"
     LANGUAGES C CXX)
 # --------------------------------------------------------
 # FIXME https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100900

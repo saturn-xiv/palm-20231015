@@ -1,4 +1,6 @@
 #include "palm/utils.hpp"
+#include "palm/env.hpp"
+#include "palm/version.hpp"
 
 #include <boost/algorithm/string/join.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
@@ -6,6 +8,12 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
+
+#include <event2/event.h>
+#include <google/protobuf/message.h>
+#include <grpcpp/grpcpp.h>
+#include <openssl/opensslv.h>
+#include <thrift/version.h>
 
 std::string palm::uuid() {
   boost::uuids::uuid uuid = boost::uuids::random_generator()();
@@ -29,4 +37,18 @@ std::chrono::system_clock::time_point palm::to_time_point(
   std::chrono::system_clock::time_point tp{
       std::chrono::duration_cast<std::chrono::system_clock::duration>(d)};
   return tp;
+}
+
+void palm::init(bool debug) {
+  spdlog::set_level(debug ? spdlog::level::debug : spdlog::level::info);
+
+  spdlog::debug("run on debug mode {} ({})", palm::GIT_VERSION,
+                palm::BUILD_TIME);
+
+  spdlog::debug("OpenSSL v{}", OPENSSL_VERSION_STR);
+  spdlog::debug("libevent v{}", event_get_version());
+  spdlog::debug(
+      "Protocol Buffers v{}",
+      google::protobuf::internal::VersionString(GOOGLE_PROTOBUF_VERSION));
+  spdlog::debug("Thrift v{}", THRIFT_VERSION);
 }

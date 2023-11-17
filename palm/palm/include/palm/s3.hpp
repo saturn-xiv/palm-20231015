@@ -6,36 +6,15 @@
 
 namespace palm {
 namespace minio {
-class Config {
- public:
-  Config(const std::string& endpoint, const std::string& access_key,
-         const std::string& secret_key, const std::string& namespace_)
-      : _endpoint(endpoint),
-        _access_key(access_key),
-        _secret_key(secret_key),
-        _namespace(namespace_) {}
-  Config(const toml::table& node);
-
-  friend std::ostream& operator<<(std::ostream& os, const Config& it) {
-    os << it._endpoint << "/" << it._namespace;
-    return os;
-  }
-  friend class Client;
-
- private:
-  std::string _endpoint;
-  std::string _access_key;
-  std::string _secret_key;
-  std::string _namespace;
-};
 
 class Client {
  public:
-  Client(const Config& config)
-      : _namespace(config._namespace),
-        _endpoint(config._endpoint),
-        _base_url(config._endpoint),
-        _credential_provider(config._access_key, config._secret_key) {}
+  Client(const std::string& endpoint, const std::string& access_key,
+         const std::string& secret_key, const std::string& namespace_)
+      : _namespace(namespace_),
+        _endpoint(endpoint),
+        _base_url(endpoint),
+        _credential_provider(access_key, secret_key) {}
 
   std::vector<std::string> list_buckets();
   bool is_bucket_exists(const std::string& bucket);
@@ -70,6 +49,34 @@ class Client {
   std::string _endpoint;
   ::minio::creds::StaticProvider _credential_provider;
   ::minio::s3::BaseUrl _base_url;
+};
+
+class Config {
+ public:
+  Config(const std::string& endpoint, const std::string& access_key,
+         const std::string& secret_key, const std::string& namespace_)
+      : _endpoint(endpoint),
+        _access_key(access_key),
+        _secret_key(secret_key),
+        _namespace(namespace_) {}
+  Config(const toml::table& node);
+  inline std::shared_ptr<Client> open() const {
+    auto it = std::make_shared<Client>(this->_endpoint, this->_access_key,
+                                       this->_secret_key, this->_namespace);
+    return it;
+  }
+
+  friend std::ostream& operator<<(std::ostream& os, const Config& it) {
+    os << it._endpoint << "/" << it._namespace;
+    return os;
+  }
+  friend class Client;
+
+ private:
+  std::string _endpoint;
+  std::string _access_key;
+  std::string _secret_key;
+  std::string _namespace;
 };
 }  // namespace minio
 }  // namespace palm

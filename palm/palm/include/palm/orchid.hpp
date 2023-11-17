@@ -1,5 +1,8 @@
 #pragma once
 
+#include "orchid.grpc.pb.h"
+#include "palm/env.hpp"
+
 namespace palm {
 namespace orchid {
 class Application {
@@ -7,6 +10,50 @@ class Application {
   Application(int argc, char** argv);
 
  private:
+  void start_rpc_server(uint16_t port,
+                        std::optional<palm::Tls> tls = std::nullopt);
 };
+class WechatMiniProgramServiceImpl final
+    : public palm::orchid::v1::WechatMiniProgram::Service {
+ public:
+  WechatMiniProgramServiceImpl()
+      : palm::orchid::v1::WechatMiniProgram::Service() {}
+
+  grpc::Status Login(
+      grpc::ServerContext* context,
+      const palm::orchid::v1::WechatMiniProgramLoginRequest* request,
+      palm::orchid::v1::WechatMiniProgramLoginResponse* reply) override {
+    // TODO
+    return grpc::Status::OK;
+  }
+  grpc::Status PhoneNumber(
+      grpc::ServerContext* context,
+      const palm::orchid::v1::WechatMiniProgramPhoneNumberRequest* request,
+      palm::orchid::v1::WechatMiniProgramPhoneNumberResponse* reply) override {
+    // TODO
+    return grpc::Status::OK;
+  }
+};
+class WechatOauth2ServiceImpl final
+    : public palm::orchid::v1::WechatOauth2::Service {
+ public:
+  WechatOauth2ServiceImpl() : palm::orchid::v1::WechatOauth2::Service() {}
+
+  grpc::Status QrConnect(
+      grpc::ServerContext* context,
+      const palm::orchid::v1::WechatOauth2QrConnectRequest* request,
+      palm::orchid::v1::WechatOauth2QrConnectResponse* reply) override {
+    // TODO
+    return grpc::Status::OK;
+  }
+  grpc::Status Login(
+      grpc::ServerContext* context,
+      const palm::orchid::v1::WechatOauth2LoginRequest* request,
+      palm::orchid::v1::WechatOauth2LoginResponse* reply) override {
+    // TODO
+    return grpc::Status::OK;
+  }
+};
+
 }  // namespace orchid
 }  // namespace palm

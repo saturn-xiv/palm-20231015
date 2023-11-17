@@ -9,14 +9,15 @@ FetchContent_Declare(thrift
 FetchContent_MakeAvailable(thrift)
 
 file(GLOB HEADER_LIST CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
-file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+file(GLOB THRIFT_SOURCE_LIST CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+file(GLOB GRPC_SOURCE_LIST CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc")
 
-add_library(gourd STATIC ${SOURCE_LIST})
+add_library(gourd STATIC ${THRIFT_SOURCE_LIST} ${GRPC_SOURCE_LIST})
 target_link_directories(gourd PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 target_link_libraries(gourd PUBLIC dl m
   re2::re2
-  gRPC::grpc gRPC::grpc++ gRPC::grpc++_alts # gRPC::grpc++_reflection
+  gRPC::grpc gRPC::grpc++ gRPC::grpc++_alts gRPC::grpc++_reflection
   libevent::core libevent::extra libevent::pthreads
   thrift thriftnb thriftz
 )
