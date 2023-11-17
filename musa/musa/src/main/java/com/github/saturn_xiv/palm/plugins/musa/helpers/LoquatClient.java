@@ -7,7 +7,7 @@ import com.github.saturn_xiv.palm.plugins.loquat.v1.Jwt;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TMultiplexedProtocol;
 import org.apache.thrift.protocol.TProtocol;
-import org.apache.thrift.transport.TSocket;
+import org.apache.thrift.transport.TSSLTransportFactory;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 import org.apache.thrift.transport.layered.TFramedTransport;
@@ -34,8 +34,9 @@ public class LoquatClient {
     }
 
     private TProtocol open(String service) throws TTransportException {
-        TSocket socket = new TSocket(host, port);
-        TTransport transport = new TFramedTransport(socket);
+        TSSLTransportFactory.TSSLTransportParameters parameters = new TSSLTransportFactory.TSSLTransportParameters();
+        parameters.setTrustStore(trustStorePath, certPassword);
+        TTransport transport = new TFramedTransport(TSSLTransportFactory.getClientSocket(host, port, 0, parameters));
         TProtocol protocol = new TBinaryProtocol(transport);
         transport.open();
         return new TMultiplexedProtocol(protocol, service);
@@ -48,12 +49,10 @@ public class LoquatClient {
     String host;
     @Value("${app.loquat.port}")
     int port;
-    @Value("${app.loquat.ca-file}")
-    String caFile;
-    @Value("${app.loquat.key-file}")
-    String keyFile;
-    @Value("${app.loquat.cert-file}")
-    String certFile;
+    @Value("${app.loquat.trust-store-path}")
+    String trustStorePath;
+    @Value("${app.loquat.cert-password}")
+    String certPassword;
 
     private final static String JWT = "N6loquat10JwtHandlerE";
     private final static String AES = "N6loquat10AesHandlerE";
