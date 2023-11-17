@@ -42,12 +42,18 @@ public class LoquatClient {
     }
 
 
+    @Value("${app.loquat.app-id}")
+    String appId;
     @Value("${app.loquat.host}")
     String host;
     @Value("${app.loquat.port}")
     int port;
-    @Value("${app.loquat.token}")
-    String token;
+    @Value("${app.loquat.ca-file}")
+    String caFile;
+    @Value("${app.loquat.key-file}")
+    String keyFile;
+    @Value("${app.loquat.cert-file}")
+    String certFile;
 
     private final static String JWT = "N6loquat10JwtHandlerE";
     private final static String AES = "N6loquat10AesHandlerE";
