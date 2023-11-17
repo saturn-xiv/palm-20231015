@@ -9,7 +9,6 @@ RUN apt install -y lsb-release apt-utils \
 # https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
 RUN add-apt-repository -y ppa:deadsnakes/ppa
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
-ENV AMD64_GCC_VERSION 11
 ENV GCC_VERSION 8
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
@@ -29,7 +28,6 @@ RUN apt update && apt -y upgrade
 
 RUN apt -y install zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
-    g++-${AMD64_GCC_VERSION} libstdc++-${AMD64_GCC_VERSION}-dev \
     build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
     crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
@@ -43,8 +41,8 @@ RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CL
     && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100 \
-    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${AMD64_GCC_VERSION} 100 \
-    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${AMD64_GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-gcc aarch64-linux-gnu-gcc /usr/bin/aarch64-linux-gnu-gcc-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-g++ aarch64-linux-gnu-g++ /usr/bin/aarch64-linux-gnu-g++-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/arm-linux-gnueabihf-gcc arm-linux-gnueabihf-gcc /usr/bin/arm-linux-gnueabihf-gcc-${GCC_VERSION} 100 \

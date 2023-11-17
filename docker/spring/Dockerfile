@@ -209,12 +209,12 @@ RUN curl -fsSL -o $HOME/downloads/dbmate https://github.com/amacneil/dbmate/rele
     && sudo chmod +x /usr/bin/dbmate
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.59.2"
+ENV GRPC_VERSION "v1.51.1"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
-# ENV PROTOBUF_VERSION "v3.21.8"
-# RUN cd $HOME/downloads/grpc/third_party/protobuf \
-#     && git checkout ${PROTOBUF_VERSION} \
-#     && git submodule update --init --recursive
+ENV PROTOBUF_VERSION "v3.21.12"
+RUN cd $HOME/downloads/grpc/third_party/protobuf \
+    && git checkout ${PROTOBUF_VERSION} \
+    && git submodule update --init --recursive
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/grpc \
     && cd $HOME/build/grpc \

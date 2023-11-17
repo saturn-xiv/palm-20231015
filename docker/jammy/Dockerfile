@@ -7,7 +7,6 @@ RUN apt update
 RUN apt install -y lsb-release apt-utils \
     debian-keyring debian-archive-keyring apt-transport-https software-properties-common curl wget gnupg
 # https://launchpad.net/~ubuntu-toolchain-r/+archive/ubuntu/test
-ENV AMD64_GCC_VERSION 13
 ENV GCC_VERSION 12
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ $(lsb_release -cs) main restricted universe multiverse" > /etc/apt/sources.list
@@ -30,7 +29,6 @@ RUN apt -y upgrade
 RUN apt -y install zsh git locales locales-all \
     vim tzdata zip unzip tree tmux \
     build-essential g++-${GCC_VERSION} libstdc++-${GCC_VERSION}-dev \
-    g++-${AMD64_GCC_VERSION} libstdc++-${AMD64_GCC_VERSION}-dev \
     crossbuild-essential-arm64 g++-${GCC_VERSION}-aarch64-linux-gnu libstdc++-${GCC_VERSION}-dev:arm64 \
     crossbuild-essential-armhf g++-${GCC_VERSION}-arm-linux-gnueabihf libstdc++-${GCC_VERSION}-dev:armhf \
     crossbuild-essential-riscv64 g++-${GCC_VERSION}-riscv64-linux-gnu libstdc++-${GCC_VERSION}-dev:riscv64 \
@@ -44,8 +42,8 @@ RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CL
     && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lldb lldb /usr/bin/lldb-${CLANG_VERSION} 100 \
     && update-alternatives --install /usr/bin/lld lld /usr/bin/lld-${CLANG_VERSION} 100 \
-    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${AMD64_GCC_VERSION} 100 \
-    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${AMD64_GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_VERSION} 100 \
+    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-gcc aarch64-linux-gnu-gcc /usr/bin/aarch64-linux-gnu-gcc-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/aarch64-linux-gnu-g++ aarch64-linux-gnu-g++ /usr/bin/aarch64-linux-gnu-g++-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/arm-linux-gnueabihf-gcc arm-linux-gnueabihf-gcc /usr/bin/arm-linux-gnueabihf-gcc-${GCC_VERSION} 100 \
@@ -129,8 +127,12 @@ RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
     && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.59.2"
+ENV GRPC_VERSION "v1.51.1"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
+ENV PROTOBUF_VERSION "v3.21.12"
+RUN cd $HOME/downloads/grpc/third_party/protobuf \
+    && git checkout ${PROTOBUF_VERSION} \
+    && git submodule update --init --recursive
 RUN apt install -y libssl-dev
 RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/grpc \
