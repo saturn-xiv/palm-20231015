@@ -73,7 +73,7 @@ RUN sh -c ". $HOME/.profile \
     && python3 -m venv $HOME/local/python3 \
     && . $HOME/local/python3/bin/activate \
     && pip install --upgrade pip \
-    && pip install cmake"
+    && pip install cmake ninja"
 RUN echo 'source $HOME/local/python3/bin/activate' >> $HOME/.zshrc
 
 RUN git config --global core.quotepath false \
