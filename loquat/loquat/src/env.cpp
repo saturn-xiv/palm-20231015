@@ -41,19 +41,20 @@ loquat::Config::Config(const std::filesystem::path& file) {
   }
 }
 
-std::string loquat::Jwt::sign(const std::string& subject,
-                              const std::optional<std::string> audience,
-                              const std::chrono::seconds& ttl) {
+std::string loquat::Jwt::sign(const std::string& issuer,
+                              const std::string& subject,
+                              const std::string& audience,
+                              const std::chrono::seconds& ttl,
+                              const std::string& payload) {
   auto now = absl::Now();
   auto raw_rb = crypto::tink::RawJwtBuilder()
-                    .SetIssuer(loquat::PROJECT_NAME)
+                    .SetIssuer(issuer)
                     .SetSubject(subject)
                     .SetNotBefore(now - absl::Seconds(1))
                     .SetIssuedAt(now)
-                    .SetExpiration(now + absl::Seconds(ttl.count()));
-  if (audience) {
-    raw_rb = raw_rb.AddAudience(audience.value());
-  }
+                    .AddAudience(audience)
+                    .SetExpiration(now + absl::Seconds(ttl.count()))
+                    .AddStringClaim(PAYLOAD_CLAIM_KEY, payload);
   auto raw_r = raw_rb.Build();
   this->check(raw_r);
   auto raw = std::move(raw_r.value());
@@ -64,29 +65,33 @@ std::string loquat::Jwt::sign(const std::string& subject,
   return token;
 }
 
-std::string loquat::Jwt::verify(const std::string& token,
-                                const std::optional<std::string> audience) {
-  spdlog::debug("{}", token);
-  auto validator_b =
-      crypto::tink::JwtValidatorBuilder().IgnoreTypeHeader().IgnoreIssuer();
-  if (audience) {
-    spdlog::debug("test with audience({})", audience.value());
-    validator_b = validator_b.ExpectAudience(audience.value());
-  }
+std::pair<std::string, std::string> loquat::Jwt::verify(
+    const std::string& token, const std::string& issuer,
+    const std::string& audience) {
+  spdlog::debug("verify {} with ({}, {})", token, issuer, audience);
+  auto validator_b = crypto::tink::JwtValidatorBuilder()
+                         .IgnoreTypeHeader()
+                         .ExpectIssuer(issuer)
+                         .ExpectAudience(audience);
+
   auto validator_r = validator_b.Build();
   this->check(validator_r);
   auto validator = std::move(validator_r.value());
 
   auto jwt = this->load();
-  auto payload_r = jwt->VerifyMacAndDecode(token, validator);
-  this->check(payload_r);
-  auto payload = std::move(payload_r.value());
+  auto body_r = jwt->VerifyMacAndDecode(token, validator);
+  this->check(body_r);
+  auto body = std::move(body_r.value());
 
-  auto subject_r = payload.GetSubject();
+  auto subject_r = body.GetSubject();
   this->check(subject_r);
-  auto subject = std::move(subject_r.value());
-  spdlog::debug("get subject({})", subject);
-  return subject;
+
+  auto payload_r = body.GetStringClaim(PAYLOAD_CLAIM_KEY);
+  this->check(payload_r);
+
+  auto it = std::make_pair<std::string, std::string>(
+      std::move(subject_r.value()), std::move(payload_r.value()));
+  return it;
 }
 
 std::unique_ptr<crypto::tink::JwtMac> loquat::Jwt::load() {
@@ -186,10 +191,4 @@ std::unique_ptr<crypto::tink::KeysetHandle> loquat::Keyset::load(
     std::filesystem::permissions(file, std::filesystem::perms::owner_read);
     return keyset_handler;
   }
-}
-
-std::string loquat::auth(const std::string& token) {
-  loquat::Jwt jwt(loquat::PROJECT_NAME);
-  const auto subject = jwt.verify(token);
-  return subject;
 }

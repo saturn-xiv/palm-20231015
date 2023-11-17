@@ -12,17 +12,17 @@ public class Jwt {
 
   public interface Iface {
 
-    public java.lang.String sign(java.lang.String id, java.lang.String issuer, java.lang.String subject, java.lang.String audience, long ttl, java.lang.String payload) throws org.apache.thrift.TException;
+    public java.lang.String sign(java.lang.String app_id, java.lang.String issuer, java.lang.String subject, java.lang.String audience, long ttl, java.lang.String payload) throws org.apache.thrift.TException;
 
-    public java.lang.String verify(java.lang.String id, java.lang.String token, java.lang.String issuer, java.lang.String subject, java.lang.String audience) throws org.apache.thrift.TException;
+    public JwtVerfifyResponse verify(java.lang.String app_id, java.lang.String token, java.lang.String issuer, java.lang.String audience) throws org.apache.thrift.TException;
 
   }
 
   public interface AsyncIface {
 
-    public void sign(java.lang.String id, java.lang.String issuer, java.lang.String subject, java.lang.String audience, long ttl, java.lang.String payload, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException;
+    public void sign(java.lang.String app_id, java.lang.String issuer, java.lang.String subject, java.lang.String audience, long ttl, java.lang.String payload, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException;
 
-    public void verify(java.lang.String id, java.lang.String token, java.lang.String issuer, java.lang.String subject, java.lang.String audience, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException;
+    public void verify(java.lang.String app_id, java.lang.String token, java.lang.String issuer, java.lang.String audience, org.apache.thrift.async.AsyncMethodCallback<JwtVerfifyResponse> resultHandler) throws org.apache.thrift.TException;
 
   }
 
@@ -49,16 +49,16 @@ public class Jwt {
     }
 
     @Override
-    public java.lang.String sign(java.lang.String id, java.lang.String issuer, java.lang.String subject, java.lang.String audience, long ttl, java.lang.String payload) throws org.apache.thrift.TException
+    public java.lang.String sign(java.lang.String app_id, java.lang.String issuer, java.lang.String subject, java.lang.String audience, long ttl, java.lang.String payload) throws org.apache.thrift.TException
     {
-      send_sign(id, issuer, subject, audience, ttl, payload);
+      send_sign(app_id, issuer, subject, audience, ttl, payload);
       return recv_sign();
     }
 
-    public void send_sign(java.lang.String id, java.lang.String issuer, java.lang.String subject, java.lang.String audience, long ttl, java.lang.String payload) throws org.apache.thrift.TException
+    public void send_sign(java.lang.String app_id, java.lang.String issuer, java.lang.String subject, java.lang.String audience, long ttl, java.lang.String payload) throws org.apache.thrift.TException
     {
       sign_args args = new sign_args();
-      args.setId(id);
+      args.setApp_id(app_id);
       args.setIssuer(issuer);
       args.setSubject(subject);
       args.setAudience(audience);
@@ -78,24 +78,23 @@ public class Jwt {
     }
 
     @Override
-    public java.lang.String verify(java.lang.String id, java.lang.String token, java.lang.String issuer, java.lang.String subject, java.lang.String audience) throws org.apache.thrift.TException
+    public JwtVerfifyResponse verify(java.lang.String app_id, java.lang.String token, java.lang.String issuer, java.lang.String audience) throws org.apache.thrift.TException
     {
-      send_verify(id, token, issuer, subject, audience);
+      send_verify(app_id, token, issuer, audience);
       return recv_verify();
     }
 
-    public void send_verify(java.lang.String id, java.lang.String token, java.lang.String issuer, java.lang.String subject, java.lang.String audience) throws org.apache.thrift.TException
+    public void send_verify(java.lang.String app_id, java.lang.String token, java.lang.String issuer, java.lang.String audience) throws org.apache.thrift.TException
     {
       verify_args args = new verify_args();
-      args.setId(id);
+      args.setApp_id(app_id);
       args.setToken(token);
       args.setIssuer(issuer);
-      args.setSubject(subject);
       args.setAudience(audience);
       sendBase("verify", args);
     }
 
-    public java.lang.String recv_verify() throws org.apache.thrift.TException
+    public JwtVerfifyResponse recv_verify() throws org.apache.thrift.TException
     {
       verify_result result = new verify_result();
       receiveBase(result, "verify");
@@ -125,23 +124,23 @@ public class Jwt {
     }
 
     @Override
-    public void sign(java.lang.String id, java.lang.String issuer, java.lang.String subject, java.lang.String audience, long ttl, java.lang.String payload, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException {
+    public void sign(java.lang.String app_id, java.lang.String issuer, java.lang.String subject, java.lang.String audience, long ttl, java.lang.String payload, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      sign_call method_call = new sign_call(id, issuer, subject, audience, ttl, payload, resultHandler, this, ___protocolFactory, ___transport);
+      sign_call method_call = new sign_call(app_id, issuer, subject, audience, ttl, payload, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
     public static class sign_call extends org.apache.thrift.async.TAsyncMethodCall<java.lang.String> {
-      private java.lang.String id;
+      private java.lang.String app_id;
       private java.lang.String issuer;
       private java.lang.String subject;
       private java.lang.String audience;
       private long ttl;
       private java.lang.String payload;
-      public sign_call(java.lang.String id, java.lang.String issuer, java.lang.String subject, java.lang.String audience, long ttl, java.lang.String payload, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public sign_call(java.lang.String app_id, java.lang.String issuer, java.lang.String subject, java.lang.String audience, long ttl, java.lang.String payload, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.id = id;
+        this.app_id = app_id;
         this.issuer = issuer;
         this.subject = subject;
         this.audience = audience;
@@ -153,7 +152,7 @@ public class Jwt {
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("sign", org.apache.thrift.protocol.TMessageType.CALL, 0));
         sign_args args = new sign_args();
-        args.setId(id);
+        args.setApp_id(app_id);
         args.setIssuer(issuer);
         args.setSubject(subject);
         args.setAudience(audience);
@@ -175,25 +174,23 @@ public class Jwt {
     }
 
     @Override
-    public void verify(java.lang.String id, java.lang.String token, java.lang.String issuer, java.lang.String subject, java.lang.String audience, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException {
+    public void verify(java.lang.String app_id, java.lang.String token, java.lang.String issuer, java.lang.String audience, org.apache.thrift.async.AsyncMethodCallback<JwtVerfifyResponse> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      verify_call method_call = new verify_call(id, token, issuer, subject, audience, resultHandler, this, ___protocolFactory, ___transport);
+      verify_call method_call = new verify_call(app_id, token, issuer, audience, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class verify_call extends org.apache.thrift.async.TAsyncMethodCall<java.lang.String> {
-      private java.lang.String id;
+    public static class verify_call extends org.apache.thrift.async.TAsyncMethodCall<JwtVerfifyResponse> {
+      private java.lang.String app_id;
       private java.lang.String token;
       private java.lang.String issuer;
-      private java.lang.String subject;
       private java.lang.String audience;
-      public verify_call(java.lang.String id, java.lang.String token, java.lang.String issuer, java.lang.String subject, java.lang.String audience, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public verify_call(java.lang.String app_id, java.lang.String token, java.lang.String issuer, java.lang.String audience, org.apache.thrift.async.AsyncMethodCallback<JwtVerfifyResponse> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.id = id;
+        this.app_id = app_id;
         this.token = token;
         this.issuer = issuer;
-        this.subject = subject;
         this.audience = audience;
       }
 
@@ -201,17 +198,16 @@ public class Jwt {
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("verify", org.apache.thrift.protocol.TMessageType.CALL, 0));
         verify_args args = new verify_args();
-        args.setId(id);
+        args.setApp_id(app_id);
         args.setToken(token);
         args.setIssuer(issuer);
-        args.setSubject(subject);
         args.setAudience(audience);
         args.write(prot);
         prot.writeMessageEnd();
       }
 
       @Override
-      public java.lang.String getResult() throws org.apache.thrift.TException {
+      public JwtVerfifyResponse getResult() throws org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new java.lang.IllegalStateException("Method call not finished!");
         }
@@ -262,7 +258,7 @@ public class Jwt {
       @Override
       public sign_result getResult(I iface, sign_args args) throws org.apache.thrift.TException {
         sign_result result = new sign_result();
-        result.success = iface.sign(args.id, args.issuer, args.subject, args.audience, args.ttl, args.payload);
+        result.success = iface.sign(args.app_id, args.issuer, args.subject, args.audience, args.ttl, args.payload);
         return result;
       }
     }
@@ -290,7 +286,7 @@ public class Jwt {
       @Override
       public verify_result getResult(I iface, verify_args args) throws org.apache.thrift.TException {
         verify_result result = new verify_result();
-        result.success = iface.verify(args.id, args.token, args.issuer, args.subject, args.audience);
+        result.success = iface.verify(args.app_id, args.token, args.issuer, args.audience);
         return result;
       }
     }
@@ -376,11 +372,11 @@ public class Jwt {
 
       @Override
       public void start(I iface, sign_args args, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException {
-        iface.sign(args.id, args.issuer, args.subject, args.audience, args.ttl, args.payload,resultHandler);
+        iface.sign(args.app_id, args.issuer, args.subject, args.audience, args.ttl, args.payload,resultHandler);
       }
     }
 
-    public static class verify<I extends AsyncIface> extends org.apache.thrift.AsyncProcessFunction<I, verify_args, java.lang.String> {
+    public static class verify<I extends AsyncIface> extends org.apache.thrift.AsyncProcessFunction<I, verify_args, JwtVerfifyResponse> {
       public verify() {
         super("verify");
       }
@@ -391,11 +387,11 @@ public class Jwt {
       }
 
       @Override
-      public org.apache.thrift.async.AsyncMethodCallback<java.lang.String> getResultHandler(final org.apache.thrift.server.AbstractNonblockingServer.AsyncFrameBuffer fb, final int seqid) {
+      public org.apache.thrift.async.AsyncMethodCallback<JwtVerfifyResponse> getResultHandler(final org.apache.thrift.server.AbstractNonblockingServer.AsyncFrameBuffer fb, final int seqid) {
         final org.apache.thrift.AsyncProcessFunction fcall = this;
-        return new org.apache.thrift.async.AsyncMethodCallback<java.lang.String>() { 
+        return new org.apache.thrift.async.AsyncMethodCallback<JwtVerfifyResponse>() { 
           @Override
-          public void onComplete(java.lang.String o) {
+          public void onComplete(JwtVerfifyResponse o) {
             verify_result result = new verify_result();
             result.success = o;
             try {
@@ -442,8 +438,8 @@ public class Jwt {
       }
 
       @Override
-      public void start(I iface, verify_args args, org.apache.thrift.async.AsyncMethodCallback<java.lang.String> resultHandler) throws org.apache.thrift.TException {
-        iface.verify(args.id, args.token, args.issuer, args.subject, args.audience,resultHandler);
+      public void start(I iface, verify_args args, org.apache.thrift.async.AsyncMethodCallback<JwtVerfifyResponse> resultHandler) throws org.apache.thrift.TException {
+        iface.verify(args.app_id, args.token, args.issuer, args.audience,resultHandler);
       }
     }
 
@@ -453,7 +449,7 @@ public class Jwt {
   public static class sign_args implements org.apache.thrift.TBase<sign_args, sign_args._Fields>, java.io.Serializable, Cloneable, Comparable<sign_args>   {
     private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("sign_args");
 
-    private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.STRING, (short)1);
+    private static final org.apache.thrift.protocol.TField APP_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("app_id", org.apache.thrift.protocol.TType.STRING, (short)1);
     private static final org.apache.thrift.protocol.TField ISSUER_FIELD_DESC = new org.apache.thrift.protocol.TField("issuer", org.apache.thrift.protocol.TType.STRING, (short)2);
     private static final org.apache.thrift.protocol.TField SUBJECT_FIELD_DESC = new org.apache.thrift.protocol.TField("subject", org.apache.thrift.protocol.TType.STRING, (short)3);
     private static final org.apache.thrift.protocol.TField AUDIENCE_FIELD_DESC = new org.apache.thrift.protocol.TField("audience", org.apache.thrift.protocol.TType.STRING, (short)4);
@@ -463,7 +459,7 @@ public class Jwt {
     private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new sign_argsStandardSchemeFactory();
     private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new sign_argsTupleSchemeFactory();
 
-    public @org.apache.thrift.annotation.Nullable java.lang.String id; // required
+    public @org.apache.thrift.annotation.Nullable java.lang.String app_id; // required
     public @org.apache.thrift.annotation.Nullable java.lang.String issuer; // required
     public @org.apache.thrift.annotation.Nullable java.lang.String subject; // required
     public @org.apache.thrift.annotation.Nullable java.lang.String audience; // required
@@ -472,7 +468,7 @@ public class Jwt {
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      ID((short)1, "id"),
+      APP_ID((short)1, "app_id"),
       ISSUER((short)2, "issuer"),
       SUBJECT((short)3, "subject"),
       AUDIENCE((short)4, "audience"),
@@ -493,8 +489,8 @@ public class Jwt {
       @org.apache.thrift.annotation.Nullable
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // ID
-            return ID;
+          case 1: // APP_ID
+            return APP_ID;
           case 2: // ISSUER
             return ISSUER;
           case 3: // SUBJECT
@@ -553,7 +549,7 @@ public class Jwt {
     public static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+      tmpMap.put(_Fields.APP_ID, new org.apache.thrift.meta_data.FieldMetaData("app_id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
       tmpMap.put(_Fields.ISSUER, new org.apache.thrift.meta_data.FieldMetaData("issuer", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
@@ -573,7 +569,7 @@ public class Jwt {
     }
 
     public sign_args(
-      java.lang.String id,
+      java.lang.String app_id,
       java.lang.String issuer,
       java.lang.String subject,
       java.lang.String audience,
@@ -581,7 +577,7 @@ public class Jwt {
       java.lang.String payload)
     {
       this();
-      this.id = id;
+      this.app_id = app_id;
       this.issuer = issuer;
       this.subject = subject;
       this.audience = audience;
@@ -595,8 +591,8 @@ public class Jwt {
      */
     public sign_args(sign_args other) {
       __isset_bitfield = other.__isset_bitfield;
-      if (other.isSetId()) {
-        this.id = other.id;
+      if (other.isSetApp_id()) {
+        this.app_id = other.app_id;
       }
       if (other.isSetIssuer()) {
         this.issuer = other.issuer;
@@ -620,7 +616,7 @@ public class Jwt {
 
     @Override
     public void clear() {
-      this.id = null;
+      this.app_id = null;
       this.issuer = null;
       this.subject = null;
       this.audience = null;
@@ -630,27 +626,27 @@ public class Jwt {
     }
 
     @org.apache.thrift.annotation.Nullable
-    public java.lang.String getId() {
-      return this.id;
+    public java.lang.String getApp_id() {
+      return this.app_id;
     }
 
-    public sign_args setId(@org.apache.thrift.annotation.Nullable java.lang.String id) {
-      this.id = id;
+    public sign_args setApp_id(@org.apache.thrift.annotation.Nullable java.lang.String app_id) {
+      this.app_id = app_id;
       return this;
     }
 
-    public void unsetId() {
-      this.id = null;
+    public void unsetApp_id() {
+      this.app_id = null;
     }
 
-    /** Returns true if field id is set (has been assigned a value) and false otherwise */
-    public boolean isSetId() {
-      return this.id != null;
+    /** Returns true if field app_id is set (has been assigned a value) and false otherwise */
+    public boolean isSetApp_id() {
+      return this.app_id != null;
     }
 
-    public void setIdIsSet(boolean value) {
+    public void setApp_idIsSet(boolean value) {
       if (!value) {
-        this.id = null;
+        this.app_id = null;
       }
     }
 
@@ -780,11 +776,11 @@ public class Jwt {
     @Override
     public void setFieldValue(_Fields field, @org.apache.thrift.annotation.Nullable java.lang.Object value) {
       switch (field) {
-      case ID:
+      case APP_ID:
         if (value == null) {
-          unsetId();
+          unsetApp_id();
         } else {
-          setId((java.lang.String)value);
+          setApp_id((java.lang.String)value);
         }
         break;
 
@@ -835,8 +831,8 @@ public class Jwt {
     @Override
     public java.lang.Object getFieldValue(_Fields field) {
       switch (field) {
-      case ID:
-        return getId();
+      case APP_ID:
+        return getApp_id();
 
       case ISSUER:
         return getIssuer();
@@ -865,8 +861,8 @@ public class Jwt {
       }
 
       switch (field) {
-      case ID:
-        return isSetId();
+      case APP_ID:
+        return isSetApp_id();
       case ISSUER:
         return isSetIssuer();
       case SUBJECT:
@@ -894,12 +890,12 @@ public class Jwt {
       if (this == that)
         return true;
 
-      boolean this_present_id = true && this.isSetId();
-      boolean that_present_id = true && that.isSetId();
-      if (this_present_id || that_present_id) {
-        if (!(this_present_id && that_present_id))
+      boolean this_present_app_id = true && this.isSetApp_id();
+      boolean that_present_app_id = true && that.isSetApp_id();
+      if (this_present_app_id || that_present_app_id) {
+        if (!(this_present_app_id && that_present_app_id))
           return false;
-        if (!this.id.equals(that.id))
+        if (!this.app_id.equals(that.app_id))
           return false;
       }
 
@@ -955,9 +951,9 @@ public class Jwt {
     public int hashCode() {
       int hashCode = 1;
 
-      hashCode = hashCode * 8191 + ((isSetId()) ? 131071 : 524287);
-      if (isSetId())
-        hashCode = hashCode * 8191 + id.hashCode();
+      hashCode = hashCode * 8191 + ((isSetApp_id()) ? 131071 : 524287);
+      if (isSetApp_id())
+        hashCode = hashCode * 8191 + app_id.hashCode();
 
       hashCode = hashCode * 8191 + ((isSetIssuer()) ? 131071 : 524287);
       if (isSetIssuer())
@@ -988,12 +984,12 @@ public class Jwt {
 
       int lastComparison = 0;
 
-      lastComparison = java.lang.Boolean.compare(isSetId(), other.isSetId());
+      lastComparison = java.lang.Boolean.compare(isSetApp_id(), other.isSetApp_id());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetId()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.id, other.id);
+      if (isSetApp_id()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.app_id, other.app_id);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -1072,11 +1068,11 @@ public class Jwt {
       java.lang.StringBuilder sb = new java.lang.StringBuilder("sign_args(");
       boolean first = true;
 
-      sb.append("id:");
-      if (this.id == null) {
+      sb.append("app_id:");
+      if (this.app_id == null) {
         sb.append("null");
       } else {
-        sb.append(this.id);
+        sb.append(this.app_id);
       }
       first = false;
       if (!first) sb.append(", ");
@@ -1162,10 +1158,10 @@ public class Jwt {
             break;
           }
           switch (schemeField.id) {
-            case 1: // ID
+            case 1: // APP_ID
               if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-                struct.id = iprot.readString();
-                struct.setIdIsSet(true);
+                struct.app_id = iprot.readString();
+                struct.setApp_idIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -1226,9 +1222,9 @@ public class Jwt {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.id != null) {
-          oprot.writeFieldBegin(ID_FIELD_DESC);
-          oprot.writeString(struct.id);
+        if (struct.app_id != null) {
+          oprot.writeFieldBegin(APP_ID_FIELD_DESC);
+          oprot.writeString(struct.app_id);
           oprot.writeFieldEnd();
         }
         if (struct.issuer != null) {
@@ -1273,7 +1269,7 @@ public class Jwt {
       public void write(org.apache.thrift.protocol.TProtocol prot, sign_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TTupleProtocol oprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
         java.util.BitSet optionals = new java.util.BitSet();
-        if (struct.isSetId()) {
+        if (struct.isSetApp_id()) {
           optionals.set(0);
         }
         if (struct.isSetIssuer()) {
@@ -1292,8 +1288,8 @@ public class Jwt {
           optionals.set(5);
         }
         oprot.writeBitSet(optionals, 6);
-        if (struct.isSetId()) {
-          oprot.writeString(struct.id);
+        if (struct.isSetApp_id()) {
+          oprot.writeString(struct.app_id);
         }
         if (struct.isSetIssuer()) {
           oprot.writeString(struct.issuer);
@@ -1317,8 +1313,8 @@ public class Jwt {
         org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
         java.util.BitSet incoming = iprot.readBitSet(6);
         if (incoming.get(0)) {
-          struct.id = iprot.readString();
-          struct.setIdIsSet(true);
+          struct.app_id = iprot.readString();
+          struct.setApp_idIsSet(true);
         }
         if (incoming.get(1)) {
           struct.issuer = iprot.readString();
@@ -1730,28 +1726,25 @@ public class Jwt {
   public static class verify_args implements org.apache.thrift.TBase<verify_args, verify_args._Fields>, java.io.Serializable, Cloneable, Comparable<verify_args>   {
     private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("verify_args");
 
-    private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.STRING, (short)1);
+    private static final org.apache.thrift.protocol.TField APP_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("app_id", org.apache.thrift.protocol.TType.STRING, (short)1);
     private static final org.apache.thrift.protocol.TField TOKEN_FIELD_DESC = new org.apache.thrift.protocol.TField("token", org.apache.thrift.protocol.TType.STRING, (short)2);
     private static final org.apache.thrift.protocol.TField ISSUER_FIELD_DESC = new org.apache.thrift.protocol.TField("issuer", org.apache.thrift.protocol.TType.STRING, (short)3);
-    private static final org.apache.thrift.protocol.TField SUBJECT_FIELD_DESC = new org.apache.thrift.protocol.TField("subject", org.apache.thrift.protocol.TType.STRING, (short)4);
-    private static final org.apache.thrift.protocol.TField AUDIENCE_FIELD_DESC = new org.apache.thrift.protocol.TField("audience", org.apache.thrift.protocol.TType.STRING, (short)5);
+    private static final org.apache.thrift.protocol.TField AUDIENCE_FIELD_DESC = new org.apache.thrift.protocol.TField("audience", org.apache.thrift.protocol.TType.STRING, (short)4);
 
     private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new verify_argsStandardSchemeFactory();
     private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new verify_argsTupleSchemeFactory();
 
-    public @org.apache.thrift.annotation.Nullable java.lang.String id; // required
+    public @org.apache.thrift.annotation.Nullable java.lang.String app_id; // required
     public @org.apache.thrift.annotation.Nullable java.lang.String token; // required
     public @org.apache.thrift.annotation.Nullable java.lang.String issuer; // required
-    public @org.apache.thrift.annotation.Nullable java.lang.String subject; // required
     public @org.apache.thrift.annotation.Nullable java.lang.String audience; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      ID((short)1, "id"),
+      APP_ID((short)1, "app_id"),
       TOKEN((short)2, "token"),
       ISSUER((short)3, "issuer"),
-      SUBJECT((short)4, "subject"),
-      AUDIENCE((short)5, "audience");
+      AUDIENCE((short)4, "audience");
 
       private static final java.util.Map<java.lang.String, _Fields> byName = new java.util.HashMap<java.lang.String, _Fields>();
 
@@ -1767,15 +1760,13 @@ public class Jwt {
       @org.apache.thrift.annotation.Nullable
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // ID
-            return ID;
+          case 1: // APP_ID
+            return APP_ID;
           case 2: // TOKEN
             return TOKEN;
           case 3: // ISSUER
             return ISSUER;
-          case 4: // SUBJECT
-            return SUBJECT;
-          case 5: // AUDIENCE
+          case 4: // AUDIENCE
             return AUDIENCE;
           default:
             return null;
@@ -1823,13 +1814,11 @@ public class Jwt {
     public static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+      tmpMap.put(_Fields.APP_ID, new org.apache.thrift.meta_data.FieldMetaData("app_id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
       tmpMap.put(_Fields.TOKEN, new org.apache.thrift.meta_data.FieldMetaData("token", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
       tmpMap.put(_Fields.ISSUER, new org.apache.thrift.meta_data.FieldMetaData("issuer", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-      tmpMap.put(_Fields.SUBJECT, new org.apache.thrift.meta_data.FieldMetaData("subject", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
       tmpMap.put(_Fields.AUDIENCE, new org.apache.thrift.meta_data.FieldMetaData("audience", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
@@ -1841,17 +1830,15 @@ public class Jwt {
     }
 
     public verify_args(
-      java.lang.String id,
+      java.lang.String app_id,
       java.lang.String token,
       java.lang.String issuer,
-      java.lang.String subject,
       java.lang.String audience)
     {
       this();
-      this.id = id;
+      this.app_id = app_id;
       this.token = token;
       this.issuer = issuer;
-      this.subject = subject;
       this.audience = audience;
     }
 
@@ -1859,17 +1846,14 @@ public class Jwt {
      * Performs a deep copy on <i>other</i>.
      */
     public verify_args(verify_args other) {
-      if (other.isSetId()) {
-        this.id = other.id;
+      if (other.isSetApp_id()) {
+        this.app_id = other.app_id;
       }
       if (other.isSetToken()) {
         this.token = other.token;
       }
       if (other.isSetIssuer()) {
         this.issuer = other.issuer;
-      }
-      if (other.isSetSubject()) {
-        this.subject = other.subject;
       }
       if (other.isSetAudience()) {
         this.audience = other.audience;
@@ -1883,35 +1867,34 @@ public class Jwt {
 
     @Override
     public void clear() {
-      this.id = null;
+      this.app_id = null;
       this.token = null;
       this.issuer = null;
-      this.subject = null;
       this.audience = null;
     }
 
     @org.apache.thrift.annotation.Nullable
-    public java.lang.String getId() {
-      return this.id;
+    public java.lang.String getApp_id() {
+      return this.app_id;
     }
 
-    public verify_args setId(@org.apache.thrift.annotation.Nullable java.lang.String id) {
-      this.id = id;
+    public verify_args setApp_id(@org.apache.thrift.annotation.Nullable java.lang.String app_id) {
+      this.app_id = app_id;
       return this;
     }
 
-    public void unsetId() {
-      this.id = null;
+    public void unsetApp_id() {
+      this.app_id = null;
     }
 
-    /** Returns true if field id is set (has been assigned a value) and false otherwise */
-    public boolean isSetId() {
-      return this.id != null;
+    /** Returns true if field app_id is set (has been assigned a value) and false otherwise */
+    public boolean isSetApp_id() {
+      return this.app_id != null;
     }
 
-    public void setIdIsSet(boolean value) {
+    public void setApp_idIsSet(boolean value) {
       if (!value) {
-        this.id = null;
+        this.app_id = null;
       }
     }
 
@@ -1966,31 +1949,6 @@ public class Jwt {
     }
 
     @org.apache.thrift.annotation.Nullable
-    public java.lang.String getSubject() {
-      return this.subject;
-    }
-
-    public verify_args setSubject(@org.apache.thrift.annotation.Nullable java.lang.String subject) {
-      this.subject = subject;
-      return this;
-    }
-
-    public void unsetSubject() {
-      this.subject = null;
-    }
-
-    /** Returns true if field subject is set (has been assigned a value) and false otherwise */
-    public boolean isSetSubject() {
-      return this.subject != null;
-    }
-
-    public void setSubjectIsSet(boolean value) {
-      if (!value) {
-        this.subject = null;
-      }
-    }
-
-    @org.apache.thrift.annotation.Nullable
     public java.lang.String getAudience() {
       return this.audience;
     }
@@ -2018,11 +1976,11 @@ public class Jwt {
     @Override
     public void setFieldValue(_Fields field, @org.apache.thrift.annotation.Nullable java.lang.Object value) {
       switch (field) {
-      case ID:
+      case APP_ID:
         if (value == null) {
-          unsetId();
+          unsetApp_id();
         } else {
-          setId((java.lang.String)value);
+          setApp_id((java.lang.String)value);
         }
         break;
 
@@ -2042,14 +2000,6 @@ public class Jwt {
         }
         break;
 
-      case SUBJECT:
-        if (value == null) {
-          unsetSubject();
-        } else {
-          setSubject((java.lang.String)value);
-        }
-        break;
-
       case AUDIENCE:
         if (value == null) {
           unsetAudience();
@@ -2065,17 +2015,14 @@ public class Jwt {
     @Override
     public java.lang.Object getFieldValue(_Fields field) {
       switch (field) {
-      case ID:
-        return getId();
+      case APP_ID:
+        return getApp_id();
 
       case TOKEN:
         return getToken();
 
       case ISSUER:
         return getIssuer();
-
-      case SUBJECT:
-        return getSubject();
 
       case AUDIENCE:
         return getAudience();
@@ -2092,14 +2039,12 @@ public class Jwt {
       }
 
       switch (field) {
-      case ID:
-        return isSetId();
+      case APP_ID:
+        return isSetApp_id();
       case TOKEN:
         return isSetToken();
       case ISSUER:
         return isSetIssuer();
-      case SUBJECT:
-        return isSetSubject();
       case AUDIENCE:
         return isSetAudience();
       }
@@ -2119,12 +2064,12 @@ public class Jwt {
       if (this == that)
         return true;
 
-      boolean this_present_id = true && this.isSetId();
-      boolean that_present_id = true && that.isSetId();
-      if (this_present_id || that_present_id) {
-        if (!(this_present_id && that_present_id))
+      boolean this_present_app_id = true && this.isSetApp_id();
+      boolean that_present_app_id = true && that.isSetApp_id();
+      if (this_present_app_id || that_present_app_id) {
+        if (!(this_present_app_id && that_present_app_id))
           return false;
-        if (!this.id.equals(that.id))
+        if (!this.app_id.equals(that.app_id))
           return false;
       }
 
@@ -2146,15 +2091,6 @@ public class Jwt {
           return false;
       }
 
-      boolean this_present_subject = true && this.isSetSubject();
-      boolean that_present_subject = true && that.isSetSubject();
-      if (this_present_subject || that_present_subject) {
-        if (!(this_present_subject && that_present_subject))
-          return false;
-        if (!this.subject.equals(that.subject))
-          return false;
-      }
-
       boolean this_present_audience = true && this.isSetAudience();
       boolean that_present_audience = true && that.isSetAudience();
       if (this_present_audience || that_present_audience) {
@@ -2171,9 +2107,9 @@ public class Jwt {
     public int hashCode() {
       int hashCode = 1;
 
-      hashCode = hashCode * 8191 + ((isSetId()) ? 131071 : 524287);
-      if (isSetId())
-        hashCode = hashCode * 8191 + id.hashCode();
+      hashCode = hashCode * 8191 + ((isSetApp_id()) ? 131071 : 524287);
+      if (isSetApp_id())
+        hashCode = hashCode * 8191 + app_id.hashCode();
 
       hashCode = hashCode * 8191 + ((isSetToken()) ? 131071 : 524287);
       if (isSetToken())
@@ -2182,10 +2118,6 @@ public class Jwt {
       hashCode = hashCode * 8191 + ((isSetIssuer()) ? 131071 : 524287);
       if (isSetIssuer())
         hashCode = hashCode * 8191 + issuer.hashCode();
-
-      hashCode = hashCode * 8191 + ((isSetSubject()) ? 131071 : 524287);
-      if (isSetSubject())
-        hashCode = hashCode * 8191 + subject.hashCode();
 
       hashCode = hashCode * 8191 + ((isSetAudience()) ? 131071 : 524287);
       if (isSetAudience())
@@ -2202,12 +2134,12 @@ public class Jwt {
 
       int lastComparison = 0;
 
-      lastComparison = java.lang.Boolean.compare(isSetId(), other.isSetId());
+      lastComparison = java.lang.Boolean.compare(isSetApp_id(), other.isSetApp_id());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetId()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.id, other.id);
+      if (isSetApp_id()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.app_id, other.app_id);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -2228,16 +2160,6 @@ public class Jwt {
       }
       if (isSetIssuer()) {
         lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.issuer, other.issuer);
-        if (lastComparison != 0) {
-          return lastComparison;
-        }
-      }
-      lastComparison = java.lang.Boolean.compare(isSetSubject(), other.isSetSubject());
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-      if (isSetSubject()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.subject, other.subject);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -2276,11 +2198,11 @@ public class Jwt {
       java.lang.StringBuilder sb = new java.lang.StringBuilder("verify_args(");
       boolean first = true;
 
-      sb.append("id:");
-      if (this.id == null) {
+      sb.append("app_id:");
+      if (this.app_id == null) {
         sb.append("null");
       } else {
-        sb.append(this.id);
+        sb.append(this.app_id);
       }
       first = false;
       if (!first) sb.append(", ");
@@ -2297,14 +2219,6 @@ public class Jwt {
         sb.append("null");
       } else {
         sb.append(this.issuer);
-      }
-      first = false;
-      if (!first) sb.append(", ");
-      sb.append("subject:");
-      if (this.subject == null) {
-        sb.append("null");
-      } else {
-        sb.append(this.subject);
       }
       first = false;
       if (!first) sb.append(", ");
@@ -2360,10 +2274,10 @@ public class Jwt {
             break;
           }
           switch (schemeField.id) {
-            case 1: // ID
+            case 1: // APP_ID
               if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-                struct.id = iprot.readString();
-                struct.setIdIsSet(true);
+                struct.app_id = iprot.readString();
+                struct.setApp_idIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -2384,15 +2298,7 @@ public class Jwt {
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
               break;
-            case 4: // SUBJECT
-              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-                struct.subject = iprot.readString();
-                struct.setSubjectIsSet(true);
-              } else { 
-                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-              }
-              break;
-            case 5: // AUDIENCE
+            case 4: // AUDIENCE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
                 struct.audience = iprot.readString();
                 struct.setAudienceIsSet(true);
@@ -2416,9 +2322,9 @@ public class Jwt {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.id != null) {
-          oprot.writeFieldBegin(ID_FIELD_DESC);
-          oprot.writeString(struct.id);
+        if (struct.app_id != null) {
+          oprot.writeFieldBegin(APP_ID_FIELD_DESC);
+          oprot.writeString(struct.app_id);
           oprot.writeFieldEnd();
         }
         if (struct.token != null) {
@@ -2429,11 +2335,6 @@ public class Jwt {
         if (struct.issuer != null) {
           oprot.writeFieldBegin(ISSUER_FIELD_DESC);
           oprot.writeString(struct.issuer);
-          oprot.writeFieldEnd();
-        }
-        if (struct.subject != null) {
-          oprot.writeFieldBegin(SUBJECT_FIELD_DESC);
-          oprot.writeString(struct.subject);
           oprot.writeFieldEnd();
         }
         if (struct.audience != null) {
@@ -2460,7 +2361,7 @@ public class Jwt {
       public void write(org.apache.thrift.protocol.TProtocol prot, verify_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TTupleProtocol oprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
         java.util.BitSet optionals = new java.util.BitSet();
-        if (struct.isSetId()) {
+        if (struct.isSetApp_id()) {
           optionals.set(0);
         }
         if (struct.isSetToken()) {
@@ -2469,24 +2370,18 @@ public class Jwt {
         if (struct.isSetIssuer()) {
           optionals.set(2);
         }
-        if (struct.isSetSubject()) {
+        if (struct.isSetAudience()) {
           optionals.set(3);
         }
-        if (struct.isSetAudience()) {
-          optionals.set(4);
-        }
-        oprot.writeBitSet(optionals, 5);
-        if (struct.isSetId()) {
-          oprot.writeString(struct.id);
+        oprot.writeBitSet(optionals, 4);
+        if (struct.isSetApp_id()) {
+          oprot.writeString(struct.app_id);
         }
         if (struct.isSetToken()) {
           oprot.writeString(struct.token);
         }
         if (struct.isSetIssuer()) {
           oprot.writeString(struct.issuer);
-        }
-        if (struct.isSetSubject()) {
-          oprot.writeString(struct.subject);
         }
         if (struct.isSetAudience()) {
           oprot.writeString(struct.audience);
@@ -2496,10 +2391,10 @@ public class Jwt {
       @Override
       public void read(org.apache.thrift.protocol.TProtocol prot, verify_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
-        java.util.BitSet incoming = iprot.readBitSet(5);
+        java.util.BitSet incoming = iprot.readBitSet(4);
         if (incoming.get(0)) {
-          struct.id = iprot.readString();
-          struct.setIdIsSet(true);
+          struct.app_id = iprot.readString();
+          struct.setApp_idIsSet(true);
         }
         if (incoming.get(1)) {
           struct.token = iprot.readString();
@@ -2510,10 +2405,6 @@ public class Jwt {
           struct.setIssuerIsSet(true);
         }
         if (incoming.get(3)) {
-          struct.subject = iprot.readString();
-          struct.setSubjectIsSet(true);
-        }
-        if (incoming.get(4)) {
           struct.audience = iprot.readString();
           struct.setAudienceIsSet(true);
         }
@@ -2529,12 +2420,12 @@ public class Jwt {
   public static class verify_result implements org.apache.thrift.TBase<verify_result, verify_result._Fields>, java.io.Serializable, Cloneable, Comparable<verify_result>   {
     private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("verify_result");
 
-    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRING, (short)0);
+    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRUCT, (short)0);
 
     private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new verify_resultStandardSchemeFactory();
     private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new verify_resultTupleSchemeFactory();
 
-    public @org.apache.thrift.annotation.Nullable java.lang.String success; // required
+    public @org.apache.thrift.annotation.Nullable JwtVerfifyResponse success; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -2603,7 +2494,7 @@ public class Jwt {
     static {
       java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, JwtVerfifyResponse.class)));
       metaDataMap = java.util.Collections.unmodifiableMap(tmpMap);
       org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(verify_result.class, metaDataMap);
     }
@@ -2612,7 +2503,7 @@ public class Jwt {
     }
 
     public verify_result(
-      java.lang.String success)
+      JwtVerfifyResponse success)
     {
       this();
       this.success = success;
@@ -2623,7 +2514,7 @@ public class Jwt {
      */
     public verify_result(verify_result other) {
       if (other.isSetSuccess()) {
-        this.success = other.success;
+        this.success = new JwtVerfifyResponse(other.success);
       }
     }
 
@@ -2638,11 +2529,11 @@ public class Jwt {
     }
 
     @org.apache.thrift.annotation.Nullable
-    public java.lang.String getSuccess() {
+    public JwtVerfifyResponse getSuccess() {
       return this.success;
     }
 
-    public verify_result setSuccess(@org.apache.thrift.annotation.Nullable java.lang.String success) {
+    public verify_result setSuccess(@org.apache.thrift.annotation.Nullable JwtVerfifyResponse success) {
       this.success = success;
       return this;
     }
@@ -2669,7 +2560,7 @@ public class Jwt {
         if (value == null) {
           unsetSuccess();
         } else {
-          setSuccess((java.lang.String)value);
+          setSuccess((JwtVerfifyResponse)value);
         }
         break;
 
@@ -2792,6 +2683,9 @@ public class Jwt {
     public void validate() throws org.apache.thrift.TException {
       // check for required fields
       // check for sub-struct validity
+      if (success != null) {
+        success.validate();
+      }
     }
 
     private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
@@ -2831,8 +2725,9 @@ public class Jwt {
           }
           switch (schemeField.id) {
             case 0: // SUCCESS
-              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-                struct.success = iprot.readString();
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+                struct.success = new JwtVerfifyResponse();
+                struct.success.read(iprot);
                 struct.setSuccessIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
@@ -2856,7 +2751,7 @@ public class Jwt {
         oprot.writeStructBegin(STRUCT_DESC);
         if (struct.success != null) {
           oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
-          oprot.writeString(struct.success);
+          struct.success.write(oprot);
           oprot.writeFieldEnd();
         }
         oprot.writeFieldStop();
@@ -2883,7 +2778,7 @@ public class Jwt {
         }
         oprot.writeBitSet(optionals, 1);
         if (struct.isSetSuccess()) {
-          oprot.writeString(struct.success);
+          struct.success.write(oprot);
         }
       }
 
@@ -2892,7 +2787,8 @@ public class Jwt {
         org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
         java.util.BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.success = iprot.readString();
+          struct.success = new JwtVerfifyResponse();
+          struct.success.read(iprot);
           struct.setSuccessIsSet(true);
         }
       }

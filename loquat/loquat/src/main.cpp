@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
       loquat::GIT_VERSION + "(" + loquat::BUILD_TIME + ")";
   argparse::ArgumentParser program(loquat::PROJECT_NAME, version);
   program.add_description(loquat::PROJECT_DESCRIPTION);
-  program.add_epilog("https://github.com/saturn-xiv/palm");
+  program.add_epilog(loquat::PROJECT_HOMEPAGE_URL);
   program.add_argument("-d", "--debug")
       .default_value(false)
       .help("run on debug mode")
@@ -27,13 +27,15 @@ int main(int argc, char** argv) {
   argparse::ArgumentParser generate_token_command("generate-token");
   {
     generate_token_command.add_argument("-y", "--years")
-        .default_value(10)
+        .default_value(20)
         .scan<'i', int>();
-    generate_token_command.add_argument("-s", "--subject").required();
-    generate_token_command.add_argument("-a", "--audience");
-    generate_token_command.add_argument("-k", "--key-id")
+    generate_token_command.add_argument("-A", "--app-id")
         .default_value(loquat::PROJECT_NAME)
         .required();
+    generate_token_command.add_argument("-i", "--issuer").required();
+    generate_token_command.add_argument("-s", "--subject").required();
+    generate_token_command.add_argument("-a", "--audience").required();
+    generate_token_command.add_argument("-p", "--payload").required();
   }
 
   argparse::ArgumentParser rpc_command("rpc");
@@ -41,10 +43,6 @@ int main(int argc, char** argv) {
     rpc_command.add_argument("-p", "--port")
         .default_value(8080)
         .scan<'i', int>();
-    rpc_command.add_argument("-s", "--ssl")
-        .default_value(false)
-        .help("enable mutual tls mode")
-        .implicit_value(true);
     rpc_command.add_argument("--cert-file")
         .default_value(loquat::PROJECT_NAME + ".crt")
         .required();
@@ -108,21 +106,23 @@ int main(int argc, char** argv) {
 
   } else if (program.is_subcommand_used(generate_token_command)) {
     const int years = generate_token_command.get<int>("--years");
-    const std::string key_id =
-        generate_token_command.get<std::string>("--key-id");
+    const std::string app_id =
+        generate_token_command.get<std::string>("--app-id");
+    const std::string issuer =
+        generate_token_command.get<std::string>("--issuer");
     const std::string subject =
         generate_token_command.get<std::string>("--subject");
-    const std::optional<std::string> audience =
-        generate_token_command.present<std::string>("--audience");
-    spdlog::warn("generate token to (kid: {}, aud: {}, sub: {}) for {}-years",
-                 key_id, audience.value_or(""), subject, years);
+    const std::string audience =
+        generate_token_command.get<std::string>("--audience");
+    const std::string payload =
+        generate_token_command.get<std::string>("--payload");
+    spdlog::warn("generate token to (iss: {}, sub: {}, aud: {}) for {}-years",
+                 issuer, subject, audience, years);
 
     const auto ttl = std::chrono::duration_cast<std::chrono::seconds>(
         std::chrono::years(years));
-    loquat::Jwt jwt(key_id);
-    const auto token = audience.has_value()
-                           ? jwt.sign(subject, audience.value(), ttl)
-                           : jwt.sign(subject, ttl);
+    loquat::Jwt jwt(app_id);
+    const auto token = jwt.sign(issuer, subject, audience, ttl, payload);
     std::cout << token << std::endl;
   }
 

@@ -22,8 +22,8 @@ namespace loquat { namespace v1 {
 class AesIf {
  public:
   virtual ~AesIf() {}
-  virtual void encrypt(std::string& _return, const std::string& id, const std::string& plain) = 0;
-  virtual void decrypt(std::string& _return, const std::string& id, const std::string& code) = 0;
+  virtual void encrypt(std::string& _return, const std::string& app_id, const std::string& plain) = 0;
+  virtual void decrypt(std::string& _return, const std::string& app_id, const std::string& code) = 0;
 };
 
 class AesIfFactory {
@@ -53,17 +53,17 @@ class AesIfSingletonFactory : virtual public AesIfFactory {
 class AesNull : virtual public AesIf {
  public:
   virtual ~AesNull() {}
-  void encrypt(std::string& /* _return */, const std::string& /* id */, const std::string& /* plain */) override {
+  void encrypt(std::string& /* _return */, const std::string& /* app_id */, const std::string& /* plain */) override {
     return;
   }
-  void decrypt(std::string& /* _return */, const std::string& /* id */, const std::string& /* code */) override {
+  void decrypt(std::string& /* _return */, const std::string& /* app_id */, const std::string& /* code */) override {
     return;
   }
 };
 
 typedef struct _Aes_encrypt_args__isset {
-  _Aes_encrypt_args__isset() : id(false), plain(false) {}
-  bool id :1;
+  _Aes_encrypt_args__isset() : app_id(false), plain(false) {}
+  bool app_id :1;
   bool plain :1;
 } _Aes_encrypt_args__isset;
 
@@ -73,23 +73,23 @@ class Aes_encrypt_args {
   Aes_encrypt_args(const Aes_encrypt_args&);
   Aes_encrypt_args& operator=(const Aes_encrypt_args&);
   Aes_encrypt_args() noexcept
-                   : id(),
+                   : app_id(),
                      plain() {
   }
 
   virtual ~Aes_encrypt_args() noexcept;
-  std::string id;
+  std::string app_id;
   std::string plain;
 
   _Aes_encrypt_args__isset __isset;
 
-  void __set_id(const std::string& val);
+  void __set_app_id(const std::string& val);
 
   void __set_plain(const std::string& val);
 
   bool operator == (const Aes_encrypt_args & rhs) const
   {
-    if (!(id == rhs.id))
+    if (!(app_id == rhs.app_id))
       return false;
     if (!(plain == rhs.plain))
       return false;
@@ -112,7 +112,7 @@ class Aes_encrypt_pargs {
 
 
   virtual ~Aes_encrypt_pargs() noexcept;
-  const std::string* id;
+  const std::string* app_id;
   const std::string* plain;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -176,8 +176,8 @@ class Aes_encrypt_presult {
 };
 
 typedef struct _Aes_decrypt_args__isset {
-  _Aes_decrypt_args__isset() : id(false), code(false) {}
-  bool id :1;
+  _Aes_decrypt_args__isset() : app_id(false), code(false) {}
+  bool app_id :1;
   bool code :1;
 } _Aes_decrypt_args__isset;
 
@@ -187,23 +187,23 @@ class Aes_decrypt_args {
   Aes_decrypt_args(const Aes_decrypt_args&);
   Aes_decrypt_args& operator=(const Aes_decrypt_args&);
   Aes_decrypt_args() noexcept
-                   : id(),
+                   : app_id(),
                      code() {
   }
 
   virtual ~Aes_decrypt_args() noexcept;
-  std::string id;
+  std::string app_id;
   std::string code;
 
   _Aes_decrypt_args__isset __isset;
 
-  void __set_id(const std::string& val);
+  void __set_app_id(const std::string& val);
 
   void __set_code(const std::string& val);
 
   bool operator == (const Aes_decrypt_args & rhs) const
   {
-    if (!(id == rhs.id))
+    if (!(app_id == rhs.app_id))
       return false;
     if (!(code == rhs.code))
       return false;
@@ -226,7 +226,7 @@ class Aes_decrypt_pargs {
 
 
   virtual ~Aes_decrypt_pargs() noexcept;
-  const std::string* id;
+  const std::string* app_id;
   const std::string* code;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -314,11 +314,11 @@ class AesClient : virtual public AesIf {
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void encrypt(std::string& _return, const std::string& id, const std::string& plain) override;
-  void send_encrypt(const std::string& id, const std::string& plain);
+  void encrypt(std::string& _return, const std::string& app_id, const std::string& plain) override;
+  void send_encrypt(const std::string& app_id, const std::string& plain);
   void recv_encrypt(std::string& _return);
-  void decrypt(std::string& _return, const std::string& id, const std::string& code) override;
-  void send_decrypt(const std::string& id, const std::string& code);
+  void decrypt(std::string& _return, const std::string& app_id, const std::string& code) override;
+  void send_decrypt(const std::string& app_id, const std::string& code);
   void recv_decrypt(std::string& _return);
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
@@ -370,23 +370,23 @@ class AesMultiface : virtual public AesIf {
     ifaces_.push_back(iface);
   }
  public:
-  void encrypt(std::string& _return, const std::string& id, const std::string& plain) override {
+  void encrypt(std::string& _return, const std::string& app_id, const std::string& plain) override {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->encrypt(_return, id, plain);
+      ifaces_[i]->encrypt(_return, app_id, plain);
     }
-    ifaces_[i]->encrypt(_return, id, plain);
+    ifaces_[i]->encrypt(_return, app_id, plain);
     return;
   }
 
-  void decrypt(std::string& _return, const std::string& id, const std::string& code) override {
+  void decrypt(std::string& _return, const std::string& app_id, const std::string& code) override {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->decrypt(_return, id, code);
+      ifaces_[i]->decrypt(_return, app_id, code);
     }
-    ifaces_[i]->decrypt(_return, id, code);
+    ifaces_[i]->decrypt(_return, app_id, code);
     return;
   }
 
@@ -422,11 +422,11 @@ class AesConcurrentClient : virtual public AesIf {
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void encrypt(std::string& _return, const std::string& id, const std::string& plain) override;
-  int32_t send_encrypt(const std::string& id, const std::string& plain);
+  void encrypt(std::string& _return, const std::string& app_id, const std::string& plain) override;
+  int32_t send_encrypt(const std::string& app_id, const std::string& plain);
   void recv_encrypt(std::string& _return, const int32_t seqid);
-  void decrypt(std::string& _return, const std::string& id, const std::string& code) override;
-  int32_t send_decrypt(const std::string& id, const std::string& code);
+  void decrypt(std::string& _return, const std::string& app_id, const std::string& code) override;
+  int32_t send_decrypt(const std::string& app_id, const std::string& code);
   void recv_decrypt(std::string& _return, const int32_t seqid);
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;

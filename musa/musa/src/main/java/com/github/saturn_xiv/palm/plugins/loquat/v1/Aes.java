@@ -12,17 +12,17 @@ public class Aes {
 
   public interface Iface {
 
-    public java.nio.ByteBuffer encrypt(java.lang.String id, java.nio.ByteBuffer plain) throws org.apache.thrift.TException;
+    public java.nio.ByteBuffer encrypt(java.lang.String app_id, java.nio.ByteBuffer plain) throws org.apache.thrift.TException;
 
-    public java.nio.ByteBuffer decrypt(java.lang.String id, java.nio.ByteBuffer code) throws org.apache.thrift.TException;
+    public java.nio.ByteBuffer decrypt(java.lang.String app_id, java.nio.ByteBuffer code) throws org.apache.thrift.TException;
 
   }
 
   public interface AsyncIface {
 
-    public void encrypt(java.lang.String id, java.nio.ByteBuffer plain, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler) throws org.apache.thrift.TException;
+    public void encrypt(java.lang.String app_id, java.nio.ByteBuffer plain, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler) throws org.apache.thrift.TException;
 
-    public void decrypt(java.lang.String id, java.nio.ByteBuffer code, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler) throws org.apache.thrift.TException;
+    public void decrypt(java.lang.String app_id, java.nio.ByteBuffer code, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler) throws org.apache.thrift.TException;
 
   }
 
@@ -49,16 +49,16 @@ public class Aes {
     }
 
     @Override
-    public java.nio.ByteBuffer encrypt(java.lang.String id, java.nio.ByteBuffer plain) throws org.apache.thrift.TException
+    public java.nio.ByteBuffer encrypt(java.lang.String app_id, java.nio.ByteBuffer plain) throws org.apache.thrift.TException
     {
-      send_encrypt(id, plain);
+      send_encrypt(app_id, plain);
       return recv_encrypt();
     }
 
-    public void send_encrypt(java.lang.String id, java.nio.ByteBuffer plain) throws org.apache.thrift.TException
+    public void send_encrypt(java.lang.String app_id, java.nio.ByteBuffer plain) throws org.apache.thrift.TException
     {
       encrypt_args args = new encrypt_args();
-      args.setId(id);
+      args.setApp_id(app_id);
       args.setPlain(plain);
       sendBase("encrypt", args);
     }
@@ -74,16 +74,16 @@ public class Aes {
     }
 
     @Override
-    public java.nio.ByteBuffer decrypt(java.lang.String id, java.nio.ByteBuffer code) throws org.apache.thrift.TException
+    public java.nio.ByteBuffer decrypt(java.lang.String app_id, java.nio.ByteBuffer code) throws org.apache.thrift.TException
     {
-      send_decrypt(id, code);
+      send_decrypt(app_id, code);
       return recv_decrypt();
     }
 
-    public void send_decrypt(java.lang.String id, java.nio.ByteBuffer code) throws org.apache.thrift.TException
+    public void send_decrypt(java.lang.String app_id, java.nio.ByteBuffer code) throws org.apache.thrift.TException
     {
       decrypt_args args = new decrypt_args();
-      args.setId(id);
+      args.setApp_id(app_id);
       args.setCode(code);
       sendBase("decrypt", args);
     }
@@ -118,19 +118,19 @@ public class Aes {
     }
 
     @Override
-    public void encrypt(java.lang.String id, java.nio.ByteBuffer plain, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler) throws org.apache.thrift.TException {
+    public void encrypt(java.lang.String app_id, java.nio.ByteBuffer plain, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      encrypt_call method_call = new encrypt_call(id, plain, resultHandler, this, ___protocolFactory, ___transport);
+      encrypt_call method_call = new encrypt_call(app_id, plain, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
     public static class encrypt_call extends org.apache.thrift.async.TAsyncMethodCall<java.nio.ByteBuffer> {
-      private java.lang.String id;
+      private java.lang.String app_id;
       private java.nio.ByteBuffer plain;
-      public encrypt_call(java.lang.String id, java.nio.ByteBuffer plain, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public encrypt_call(java.lang.String app_id, java.nio.ByteBuffer plain, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.id = id;
+        this.app_id = app_id;
         this.plain = plain;
       }
 
@@ -138,7 +138,7 @@ public class Aes {
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("encrypt", org.apache.thrift.protocol.TMessageType.CALL, 0));
         encrypt_args args = new encrypt_args();
-        args.setId(id);
+        args.setApp_id(app_id);
         args.setPlain(plain);
         args.write(prot);
         prot.writeMessageEnd();
@@ -156,19 +156,19 @@ public class Aes {
     }
 
     @Override
-    public void decrypt(java.lang.String id, java.nio.ByteBuffer code, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler) throws org.apache.thrift.TException {
+    public void decrypt(java.lang.String app_id, java.nio.ByteBuffer code, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      decrypt_call method_call = new decrypt_call(id, code, resultHandler, this, ___protocolFactory, ___transport);
+      decrypt_call method_call = new decrypt_call(app_id, code, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
     public static class decrypt_call extends org.apache.thrift.async.TAsyncMethodCall<java.nio.ByteBuffer> {
-      private java.lang.String id;
+      private java.lang.String app_id;
       private java.nio.ByteBuffer code;
-      public decrypt_call(java.lang.String id, java.nio.ByteBuffer code, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public decrypt_call(java.lang.String app_id, java.nio.ByteBuffer code, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.id = id;
+        this.app_id = app_id;
         this.code = code;
       }
 
@@ -176,7 +176,7 @@ public class Aes {
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("decrypt", org.apache.thrift.protocol.TMessageType.CALL, 0));
         decrypt_args args = new decrypt_args();
-        args.setId(id);
+        args.setApp_id(app_id);
         args.setCode(code);
         args.write(prot);
         prot.writeMessageEnd();
@@ -234,7 +234,7 @@ public class Aes {
       @Override
       public encrypt_result getResult(I iface, encrypt_args args) throws org.apache.thrift.TException {
         encrypt_result result = new encrypt_result();
-        result.success = iface.encrypt(args.id, args.plain);
+        result.success = iface.encrypt(args.app_id, args.plain);
         return result;
       }
     }
@@ -262,7 +262,7 @@ public class Aes {
       @Override
       public decrypt_result getResult(I iface, decrypt_args args) throws org.apache.thrift.TException {
         decrypt_result result = new decrypt_result();
-        result.success = iface.decrypt(args.id, args.code);
+        result.success = iface.decrypt(args.app_id, args.code);
         return result;
       }
     }
@@ -348,7 +348,7 @@ public class Aes {
 
       @Override
       public void start(I iface, encrypt_args args, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler) throws org.apache.thrift.TException {
-        iface.encrypt(args.id, args.plain,resultHandler);
+        iface.encrypt(args.app_id, args.plain,resultHandler);
       }
     }
 
@@ -415,7 +415,7 @@ public class Aes {
 
       @Override
       public void start(I iface, decrypt_args args, org.apache.thrift.async.AsyncMethodCallback<java.nio.ByteBuffer> resultHandler) throws org.apache.thrift.TException {
-        iface.decrypt(args.id, args.code,resultHandler);
+        iface.decrypt(args.app_id, args.code,resultHandler);
       }
     }
 
@@ -425,18 +425,18 @@ public class Aes {
   public static class encrypt_args implements org.apache.thrift.TBase<encrypt_args, encrypt_args._Fields>, java.io.Serializable, Cloneable, Comparable<encrypt_args>   {
     private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("encrypt_args");
 
-    private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.STRING, (short)1);
+    private static final org.apache.thrift.protocol.TField APP_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("app_id", org.apache.thrift.protocol.TType.STRING, (short)1);
     private static final org.apache.thrift.protocol.TField PLAIN_FIELD_DESC = new org.apache.thrift.protocol.TField("plain", org.apache.thrift.protocol.TType.STRING, (short)2);
 
     private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new encrypt_argsStandardSchemeFactory();
     private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new encrypt_argsTupleSchemeFactory();
 
-    public @org.apache.thrift.annotation.Nullable java.lang.String id; // required
+    public @org.apache.thrift.annotation.Nullable java.lang.String app_id; // required
     public @org.apache.thrift.annotation.Nullable java.nio.ByteBuffer plain; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      ID((short)1, "id"),
+      APP_ID((short)1, "app_id"),
       PLAIN((short)2, "plain");
 
       private static final java.util.Map<java.lang.String, _Fields> byName = new java.util.HashMap<java.lang.String, _Fields>();
@@ -453,8 +453,8 @@ public class Aes {
       @org.apache.thrift.annotation.Nullable
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // ID
-            return ID;
+          case 1: // APP_ID
+            return APP_ID;
           case 2: // PLAIN
             return PLAIN;
           default:
@@ -503,7 +503,7 @@ public class Aes {
     public static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+      tmpMap.put(_Fields.APP_ID, new org.apache.thrift.meta_data.FieldMetaData("app_id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
       tmpMap.put(_Fields.PLAIN, new org.apache.thrift.meta_data.FieldMetaData("plain", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING          , true)));
@@ -515,11 +515,11 @@ public class Aes {
     }
 
     public encrypt_args(
-      java.lang.String id,
+      java.lang.String app_id,
       java.nio.ByteBuffer plain)
     {
       this();
-      this.id = id;
+      this.app_id = app_id;
       this.plain = org.apache.thrift.TBaseHelper.copyBinary(plain);
     }
 
@@ -527,8 +527,8 @@ public class Aes {
      * Performs a deep copy on <i>other</i>.
      */
     public encrypt_args(encrypt_args other) {
-      if (other.isSetId()) {
-        this.id = other.id;
+      if (other.isSetApp_id()) {
+        this.app_id = other.app_id;
       }
       if (other.isSetPlain()) {
         this.plain = org.apache.thrift.TBaseHelper.copyBinary(other.plain);
@@ -542,32 +542,32 @@ public class Aes {
 
     @Override
     public void clear() {
-      this.id = null;
+      this.app_id = null;
       this.plain = null;
     }
 
     @org.apache.thrift.annotation.Nullable
-    public java.lang.String getId() {
-      return this.id;
+    public java.lang.String getApp_id() {
+      return this.app_id;
     }
 
-    public encrypt_args setId(@org.apache.thrift.annotation.Nullable java.lang.String id) {
-      this.id = id;
+    public encrypt_args setApp_id(@org.apache.thrift.annotation.Nullable java.lang.String app_id) {
+      this.app_id = app_id;
       return this;
     }
 
-    public void unsetId() {
-      this.id = null;
+    public void unsetApp_id() {
+      this.app_id = null;
     }
 
-    /** Returns true if field id is set (has been assigned a value) and false otherwise */
-    public boolean isSetId() {
-      return this.id != null;
+    /** Returns true if field app_id is set (has been assigned a value) and false otherwise */
+    public boolean isSetApp_id() {
+      return this.app_id != null;
     }
 
-    public void setIdIsSet(boolean value) {
+    public void setApp_idIsSet(boolean value) {
       if (!value) {
-        this.id = null;
+        this.app_id = null;
       }
     }
 
@@ -608,11 +608,11 @@ public class Aes {
     @Override
     public void setFieldValue(_Fields field, @org.apache.thrift.annotation.Nullable java.lang.Object value) {
       switch (field) {
-      case ID:
+      case APP_ID:
         if (value == null) {
-          unsetId();
+          unsetApp_id();
         } else {
-          setId((java.lang.String)value);
+          setApp_id((java.lang.String)value);
         }
         break;
 
@@ -635,8 +635,8 @@ public class Aes {
     @Override
     public java.lang.Object getFieldValue(_Fields field) {
       switch (field) {
-      case ID:
-        return getId();
+      case APP_ID:
+        return getApp_id();
 
       case PLAIN:
         return getPlain();
@@ -653,8 +653,8 @@ public class Aes {
       }
 
       switch (field) {
-      case ID:
-        return isSetId();
+      case APP_ID:
+        return isSetApp_id();
       case PLAIN:
         return isSetPlain();
       }
@@ -674,12 +674,12 @@ public class Aes {
       if (this == that)
         return true;
 
-      boolean this_present_id = true && this.isSetId();
-      boolean that_present_id = true && that.isSetId();
-      if (this_present_id || that_present_id) {
-        if (!(this_present_id && that_present_id))
+      boolean this_present_app_id = true && this.isSetApp_id();
+      boolean that_present_app_id = true && that.isSetApp_id();
+      if (this_present_app_id || that_present_app_id) {
+        if (!(this_present_app_id && that_present_app_id))
           return false;
-        if (!this.id.equals(that.id))
+        if (!this.app_id.equals(that.app_id))
           return false;
       }
 
@@ -699,9 +699,9 @@ public class Aes {
     public int hashCode() {
       int hashCode = 1;
 
-      hashCode = hashCode * 8191 + ((isSetId()) ? 131071 : 524287);
-      if (isSetId())
-        hashCode = hashCode * 8191 + id.hashCode();
+      hashCode = hashCode * 8191 + ((isSetApp_id()) ? 131071 : 524287);
+      if (isSetApp_id())
+        hashCode = hashCode * 8191 + app_id.hashCode();
 
       hashCode = hashCode * 8191 + ((isSetPlain()) ? 131071 : 524287);
       if (isSetPlain())
@@ -718,12 +718,12 @@ public class Aes {
 
       int lastComparison = 0;
 
-      lastComparison = java.lang.Boolean.compare(isSetId(), other.isSetId());
+      lastComparison = java.lang.Boolean.compare(isSetApp_id(), other.isSetApp_id());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetId()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.id, other.id);
+      if (isSetApp_id()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.app_id, other.app_id);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -762,11 +762,11 @@ public class Aes {
       java.lang.StringBuilder sb = new java.lang.StringBuilder("encrypt_args(");
       boolean first = true;
 
-      sb.append("id:");
-      if (this.id == null) {
+      sb.append("app_id:");
+      if (this.app_id == null) {
         sb.append("null");
       } else {
-        sb.append(this.id);
+        sb.append(this.app_id);
       }
       first = false;
       if (!first) sb.append(", ");
@@ -822,10 +822,10 @@ public class Aes {
             break;
           }
           switch (schemeField.id) {
-            case 1: // ID
+            case 1: // APP_ID
               if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-                struct.id = iprot.readString();
-                struct.setIdIsSet(true);
+                struct.app_id = iprot.readString();
+                struct.setApp_idIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -854,9 +854,9 @@ public class Aes {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.id != null) {
-          oprot.writeFieldBegin(ID_FIELD_DESC);
-          oprot.writeString(struct.id);
+        if (struct.app_id != null) {
+          oprot.writeFieldBegin(APP_ID_FIELD_DESC);
+          oprot.writeString(struct.app_id);
           oprot.writeFieldEnd();
         }
         if (struct.plain != null) {
@@ -883,15 +883,15 @@ public class Aes {
       public void write(org.apache.thrift.protocol.TProtocol prot, encrypt_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TTupleProtocol oprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
         java.util.BitSet optionals = new java.util.BitSet();
-        if (struct.isSetId()) {
+        if (struct.isSetApp_id()) {
           optionals.set(0);
         }
         if (struct.isSetPlain()) {
           optionals.set(1);
         }
         oprot.writeBitSet(optionals, 2);
-        if (struct.isSetId()) {
-          oprot.writeString(struct.id);
+        if (struct.isSetApp_id()) {
+          oprot.writeString(struct.app_id);
         }
         if (struct.isSetPlain()) {
           oprot.writeBinary(struct.plain);
@@ -903,8 +903,8 @@ public class Aes {
         org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
         java.util.BitSet incoming = iprot.readBitSet(2);
         if (incoming.get(0)) {
-          struct.id = iprot.readString();
-          struct.setIdIsSet(true);
+          struct.app_id = iprot.readString();
+          struct.setApp_idIsSet(true);
         }
         if (incoming.get(1)) {
           struct.plain = iprot.readBinary();
@@ -1313,18 +1313,18 @@ public class Aes {
   public static class decrypt_args implements org.apache.thrift.TBase<decrypt_args, decrypt_args._Fields>, java.io.Serializable, Cloneable, Comparable<decrypt_args>   {
     private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("decrypt_args");
 
-    private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.STRING, (short)1);
+    private static final org.apache.thrift.protocol.TField APP_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("app_id", org.apache.thrift.protocol.TType.STRING, (short)1);
     private static final org.apache.thrift.protocol.TField CODE_FIELD_DESC = new org.apache.thrift.protocol.TField("code", org.apache.thrift.protocol.TType.STRING, (short)2);
 
     private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new decrypt_argsStandardSchemeFactory();
     private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new decrypt_argsTupleSchemeFactory();
 
-    public @org.apache.thrift.annotation.Nullable java.lang.String id; // required
+    public @org.apache.thrift.annotation.Nullable java.lang.String app_id; // required
     public @org.apache.thrift.annotation.Nullable java.nio.ByteBuffer code; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      ID((short)1, "id"),
+      APP_ID((short)1, "app_id"),
       CODE((short)2, "code");
 
       private static final java.util.Map<java.lang.String, _Fields> byName = new java.util.HashMap<java.lang.String, _Fields>();
@@ -1341,8 +1341,8 @@ public class Aes {
       @org.apache.thrift.annotation.Nullable
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // ID
-            return ID;
+          case 1: // APP_ID
+            return APP_ID;
           case 2: // CODE
             return CODE;
           default:
@@ -1391,7 +1391,7 @@ public class Aes {
     public static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+      tmpMap.put(_Fields.APP_ID, new org.apache.thrift.meta_data.FieldMetaData("app_id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
       tmpMap.put(_Fields.CODE, new org.apache.thrift.meta_data.FieldMetaData("code", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING          , true)));
@@ -1403,11 +1403,11 @@ public class Aes {
     }
 
     public decrypt_args(
-      java.lang.String id,
+      java.lang.String app_id,
       java.nio.ByteBuffer code)
     {
       this();
-      this.id = id;
+      this.app_id = app_id;
       this.code = org.apache.thrift.TBaseHelper.copyBinary(code);
     }
 
@@ -1415,8 +1415,8 @@ public class Aes {
      * Performs a deep copy on <i>other</i>.
      */
     public decrypt_args(decrypt_args other) {
-      if (other.isSetId()) {
-        this.id = other.id;
+      if (other.isSetApp_id()) {
+        this.app_id = other.app_id;
       }
       if (other.isSetCode()) {
         this.code = org.apache.thrift.TBaseHelper.copyBinary(other.code);
@@ -1430,32 +1430,32 @@ public class Aes {
 
     @Override
     public void clear() {
-      this.id = null;
+      this.app_id = null;
       this.code = null;
     }
 
     @org.apache.thrift.annotation.Nullable
-    public java.lang.String getId() {
-      return this.id;
+    public java.lang.String getApp_id() {
+      return this.app_id;
     }
 
-    public decrypt_args setId(@org.apache.thrift.annotation.Nullable java.lang.String id) {
-      this.id = id;
+    public decrypt_args setApp_id(@org.apache.thrift.annotation.Nullable java.lang.String app_id) {
+      this.app_id = app_id;
       return this;
     }
 
-    public void unsetId() {
-      this.id = null;
+    public void unsetApp_id() {
+      this.app_id = null;
     }
 
-    /** Returns true if field id is set (has been assigned a value) and false otherwise */
-    public boolean isSetId() {
-      return this.id != null;
+    /** Returns true if field app_id is set (has been assigned a value) and false otherwise */
+    public boolean isSetApp_id() {
+      return this.app_id != null;
     }
 
-    public void setIdIsSet(boolean value) {
+    public void setApp_idIsSet(boolean value) {
       if (!value) {
-        this.id = null;
+        this.app_id = null;
       }
     }
 
@@ -1496,11 +1496,11 @@ public class Aes {
     @Override
     public void setFieldValue(_Fields field, @org.apache.thrift.annotation.Nullable java.lang.Object value) {
       switch (field) {
-      case ID:
+      case APP_ID:
         if (value == null) {
-          unsetId();
+          unsetApp_id();
         } else {
-          setId((java.lang.String)value);
+          setApp_id((java.lang.String)value);
         }
         break;
 
@@ -1523,8 +1523,8 @@ public class Aes {
     @Override
     public java.lang.Object getFieldValue(_Fields field) {
       switch (field) {
-      case ID:
-        return getId();
+      case APP_ID:
+        return getApp_id();
 
       case CODE:
         return getCode();
@@ -1541,8 +1541,8 @@ public class Aes {
       }
 
       switch (field) {
-      case ID:
-        return isSetId();
+      case APP_ID:
+        return isSetApp_id();
       case CODE:
         return isSetCode();
       }
@@ -1562,12 +1562,12 @@ public class Aes {
       if (this == that)
         return true;
 
-      boolean this_present_id = true && this.isSetId();
-      boolean that_present_id = true && that.isSetId();
-      if (this_present_id || that_present_id) {
-        if (!(this_present_id && that_present_id))
+      boolean this_present_app_id = true && this.isSetApp_id();
+      boolean that_present_app_id = true && that.isSetApp_id();
+      if (this_present_app_id || that_present_app_id) {
+        if (!(this_present_app_id && that_present_app_id))
           return false;
-        if (!this.id.equals(that.id))
+        if (!this.app_id.equals(that.app_id))
           return false;
       }
 
@@ -1587,9 +1587,9 @@ public class Aes {
     public int hashCode() {
       int hashCode = 1;
 
-      hashCode = hashCode * 8191 + ((isSetId()) ? 131071 : 524287);
-      if (isSetId())
-        hashCode = hashCode * 8191 + id.hashCode();
+      hashCode = hashCode * 8191 + ((isSetApp_id()) ? 131071 : 524287);
+      if (isSetApp_id())
+        hashCode = hashCode * 8191 + app_id.hashCode();
 
       hashCode = hashCode * 8191 + ((isSetCode()) ? 131071 : 524287);
       if (isSetCode())
@@ -1606,12 +1606,12 @@ public class Aes {
 
       int lastComparison = 0;
 
-      lastComparison = java.lang.Boolean.compare(isSetId(), other.isSetId());
+      lastComparison = java.lang.Boolean.compare(isSetApp_id(), other.isSetApp_id());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetId()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.id, other.id);
+      if (isSetApp_id()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.app_id, other.app_id);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -1650,11 +1650,11 @@ public class Aes {
       java.lang.StringBuilder sb = new java.lang.StringBuilder("decrypt_args(");
       boolean first = true;
 
-      sb.append("id:");
-      if (this.id == null) {
+      sb.append("app_id:");
+      if (this.app_id == null) {
         sb.append("null");
       } else {
-        sb.append(this.id);
+        sb.append(this.app_id);
       }
       first = false;
       if (!first) sb.append(", ");
@@ -1710,10 +1710,10 @@ public class Aes {
             break;
           }
           switch (schemeField.id) {
-            case 1: // ID
+            case 1: // APP_ID
               if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-                struct.id = iprot.readString();
-                struct.setIdIsSet(true);
+                struct.app_id = iprot.readString();
+                struct.setApp_idIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -1742,9 +1742,9 @@ public class Aes {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.id != null) {
-          oprot.writeFieldBegin(ID_FIELD_DESC);
-          oprot.writeString(struct.id);
+        if (struct.app_id != null) {
+          oprot.writeFieldBegin(APP_ID_FIELD_DESC);
+          oprot.writeString(struct.app_id);
           oprot.writeFieldEnd();
         }
         if (struct.code != null) {
@@ -1771,15 +1771,15 @@ public class Aes {
       public void write(org.apache.thrift.protocol.TProtocol prot, decrypt_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TTupleProtocol oprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
         java.util.BitSet optionals = new java.util.BitSet();
-        if (struct.isSetId()) {
+        if (struct.isSetApp_id()) {
           optionals.set(0);
         }
         if (struct.isSetCode()) {
           optionals.set(1);
         }
         oprot.writeBitSet(optionals, 2);
-        if (struct.isSetId()) {
-          oprot.writeString(struct.id);
+        if (struct.isSetApp_id()) {
+          oprot.writeString(struct.app_id);
         }
         if (struct.isSetCode()) {
           oprot.writeBinary(struct.code);
@@ -1791,8 +1791,8 @@ public class Aes {
         org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
         java.util.BitSet incoming = iprot.readBitSet(2);
         if (incoming.get(0)) {
-          struct.id = iprot.readString();
-          struct.setIdIsSet(true);
+          struct.app_id = iprot.readString();
+          struct.setApp_idIsSet(true);
         }
         if (incoming.get(1)) {
           struct.code = iprot.readBinary();

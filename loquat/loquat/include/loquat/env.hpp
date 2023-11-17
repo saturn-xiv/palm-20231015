@@ -96,31 +96,17 @@ class Keyset {
 class Jwt final : public Keyset {
  public:
   Jwt(const std::string& name) : Keyset(name + ".jwt") {}
-  inline std::string sign(const std::string& subject,
-                          const std::chrono::seconds& ttl) {
-    return this->sign(subject, std::nullopt, ttl);
-  }
-  inline std::string sign(const std::string& subject,
-                          const std::string& audience,
-                          const std::chrono::seconds& ttl) {
-    return this->sign(subject, std::optional<std::string>{audience}, ttl);
-  }
-  inline std::string verify(const std::string& token) {
-    return this->verify(token, std::nullopt);
-  }
-  inline std::string verify(const std::string& token,
-                            const std::string& audience) {
-    return this->verify(token, std::optional<std::string>{audience});
-  }
+
+  std::pair<std::string, std::string> verify(const std::string& token,
+                                             const std::string& issuer,
+                                             const std::string& audience);
+  std::string sign(const std::string& issuer, const std::string& subject,
+                   const std::string& audience, const std::chrono::seconds& ttl,
+                   const std::string& payload);
 
  private:
-  std::string verify(const std::string& token,
-                     const std::optional<std::string> audience);
-  std::string sign(const std::string& subject,
-                   const std::optional<std::string> audience,
-                   const std::chrono::seconds& ttl);
-
   std::unique_ptr<crypto::tink::JwtMac> load();
+  inline static const std::string PAYLOAD_CLAIM_KEY = "pld";
 };
 
 class HMac final : public Keyset {
@@ -143,5 +129,4 @@ class Aes final : public Keyset {
   std::unique_ptr<crypto::tink::Aead> load();
 };
 
-std::string auth(const std::string& token);
 }  // namespace loquat
