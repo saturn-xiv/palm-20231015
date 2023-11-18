@@ -9,7 +9,8 @@ void palm::lemon::controllers::setup(httplib::Server& svr) {
   });
   {
     std::map<std::string, std::string> resources = {{"/3rd", "./node_modules"},
-                                                    {"/assets", "./static"}};
+                                                    {"/assets", "./static"},
+                                                    {"/themes", "./themes"}};
     for (auto const& [k, v] : resources) {
       spdlog::debug("mount {} => {}", v, k);
       auto status = svr.set_mount_point(k, v);

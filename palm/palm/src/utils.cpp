@@ -18,6 +18,8 @@
 #include <openssl/opensslv.h>
 #include <thrift/version.h>
 
+bool palm::is_stopped() { return std::filesystem::exists(".stop"); }
+
 std::string palm::uuid() {
   boost::uuids::uuid uuid = boost::uuids::random_generator()();
   std::string it = boost::lexical_cast<std::string>(uuid);
