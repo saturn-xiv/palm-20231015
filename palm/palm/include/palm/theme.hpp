@@ -12,6 +12,8 @@ inline static const std::string APPLICATION_JSON_UTF8 =
     "application/json; charset=utf-8";
 inline static const std::string APPLICATION_XML_UTF8 =
     "application/xml; charset=utf-8";
+
+inline static const std::string TEXT_PLAIN_UTF8 = "text/plain; charset=utf-8";
 }  // namespace content_types
 namespace themes {
 

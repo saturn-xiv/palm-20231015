@@ -29,10 +29,13 @@ struct Icon {
 };
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(Icon, url, title, image)
 struct Desktop {
+  std::string siteTitle;
+  std::string favicon;
+  std::string backgroundImage;
   std::vector<Icon> icons;
-  std::string background;
 };
-NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(Desktop, background, icons)
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(Desktop, backgroundImage, siteTitle, favicon,
+                                   icons)
 }  // namespace models
 }  // namespace lemon
 }  // namespace palm

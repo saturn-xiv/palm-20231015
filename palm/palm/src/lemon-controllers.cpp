@@ -8,8 +8,11 @@ void palm::lemon::controllers::setup(httplib::Server& svr,
                                      inja::Environment& theme) {
   svr.Get("/api/desktop", [&](const auto& req, auto& res) {
     palm::lemon::models::Desktop it{
-        .background = "/themes/universal/images/screenshot.png"};
-    for (int i = 1; i < 10; i++) {
+        .siteTitle = "Hello, Lemon!",
+        .favicon = "/assets/images/favicon.ico",
+        .backgroundImage = "/assets/images/background/windows.png",
+    };
+    for (int i = 1; i < 20; i++) {
       palm::lemon::models::Icon icon{
           .url = absl::StrFormat("/articles/%d", i),
           .title = absl::StrFormat("Article %d", i),
@@ -33,7 +36,7 @@ void palm::lemon::controllers::setup(httplib::Server& svr,
   });
   {
     std::map<std::string, std::string> resources = {{"/3rd", "./node_modules"},
-                                                    {"/assets", "./static"},
+                                                    {"/assets", "./assets"},
                                                     {"/themes", "./themes"}};
     for (auto const& [k, v] : resources) {
       spdlog::debug("mount {} => {}", v, k);
@@ -50,8 +53,8 @@ void palm::lemon::controllers::setup(httplib::Server& svr,
       params << (it == req.params.begin() ? "?" : "&");
       params << it->first << "=" << it->second;
     }
-    spdlog::info("{} {} [{}] {}{} {}", req.version, req.matches.str(),
-                 req.method, req.path, params.str(), res.status);
+    spdlog::info("{} {} {}{} {}", req.version, req.method, req.path,
+                 params.str(), res.status);
   });
 
   svr.set_error_handler([&](const auto& req, auto& res) {
@@ -72,9 +75,11 @@ void palm::lemon::controllers::setup(httplib::Server& svr,
 
         {
           res.status = 500;
-          palm::lemon::models::ErrorPage it{.status = res.status};
-          const auto buf = theme.render_file("/error.html", it);
-          res.set_content(buf, palm::content_types::TEXT_HTML_UTF8);
+          res.set_content("Internal Server Error",
+                          palm::content_types::TEXT_PLAIN_UTF8);
+          // palm::lemon::models::ErrorPage it{.status = res.status};
+          // const auto buf = theme.render_file("/error.html", it);
+          // res.set_content(buf, palm::content_types::TEXT_HTML_UTF8);
         }
       });
 }
