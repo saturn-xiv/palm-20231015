@@ -41,6 +41,7 @@
     "pugixml",
     "tomlplusplus",
     "yaml-cpp",
+    "msgpack-c",
     { "name": "lua", "features": ["cpp"] },
 
     { "name": "nlohmann-json", "features": ["diagnostics"] },

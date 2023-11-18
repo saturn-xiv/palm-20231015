@@ -19,6 +19,7 @@ find_package(SailC++ CONFIG REQUIRED)
 find_package(pugixml CONFIG REQUIRED)
 find_package(yaml-cpp CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
+find_package(msgpack-c CONFIG REQUIRED)
 find_package(mstch CONFIG REQUIRED)
 find_package(inja CONFIG REQUIRED)
 find_package(PostgreSQL REQUIRED)
@@ -67,7 +68,7 @@ target_link_libraries(palm PUBLIC gourd
   aws-cpp-sdk-s3 aws-cpp-sdk-sqs 
   ${MINIO_LIBRARY} CURL::libcurl ${CURLPP_LIBRARY} ${INIH_LIBRARY}
   cpr::cpr SAIL::sail-c++
-  pugixml::static PkgConfig::tomlplusplus yaml-cpp::yaml-cpp nlohmann_json::nlohmann_json
+  pugixml::static PkgConfig::tomlplusplus yaml-cpp::yaml-cpp nlohmann_json::nlohmann_json msgpack-c
   mstch::mstch pantor::inja
   PostgreSQL::PostgreSQL libpqxx::pqxx unofficial::libmariadb unofficial::sqlite3::sqlite3 
   redis++::redis++_static 
