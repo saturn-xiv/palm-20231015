@@ -9,6 +9,7 @@
 #include <argparse/argparse.hpp>
 
 static const std::string PROJECT_NAME = "orchid";
+
 palm::orchid::Application::Application(int argc, char** argv) {
   const std::string version = palm::GIT_VERSION + "(" + palm::BUILD_TIME + ")";
   argparse::ArgumentParser program(PROJECT_NAME, version);
@@ -20,10 +21,6 @@ palm::orchid::Application::Application(int argc, char** argv) {
       .implicit_value(true);
 
   program.add_argument("-p", "--port").default_value(8080).scan<'i', int>();
-  program.add_argument("-s", "--tls")
-      .default_value(false)
-      .help("enable mutual tls mode")
-      .implicit_value(true);
   program.add_argument("--cert-file")
       .default_value(PROJECT_NAME + ".crt")
       .required();
@@ -45,12 +42,12 @@ palm::orchid::Application::Application(int argc, char** argv) {
   const std::string cert_file = program.get<std::string>("--cert-file");
   const std::string key_file = program.get<std::string>("--key-file");
   const std::string ca_file = program.get<std::string>("--ca-file");
-  const auto tls = std::make_optional<palm::Tls>(cert_file, key_file, ca_file);
-  this->start_rpc_server(port, program.get<bool>("--tls") ? tls : std::nullopt);
+  const palm::Tls tls(cert_file, key_file, ca_file);
+  this->launch(port, tls);
 }
 
-void palm::orchid::Application::start_rpc_server(uint16_t port,
-                                                 std::optional<palm::Tls> tls) {
+void palm::orchid::Application::launch(uint16_t port,
+                                       const palm::Tls& tls) const {
   const std::string addr = absl::StrFormat("0.0.0.0:%d", port);
 
   palm::orchid::WechatMiniProgramServiceImpl wechat_mini_program_service;
@@ -64,8 +61,10 @@ void palm::orchid::Application::start_rpc_server(uint16_t port,
   builder.RegisterService(&wechat_mini_program_service);
   builder.RegisterService(&wechat_oauth2_service);
 
+  // TODO add tls
+
   std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
-  spdlog::info("listening on tcp://0.0.0.0:{}", port);
+  spdlog::info("listening on tcps://0.0.0.0:{}", port);
 
   server->Wait();
 }

@@ -1,9 +1,8 @@
 #pragma once
 
-#include <chrono>
+#include "palm/env.hpp"
+
 #include <filesystem>
-#include <string>
-#include <vector>
 
 #include <boost/core/type_name.hpp>
 
@@ -27,5 +26,6 @@ inline std::filesystem::path timestamp(const std::string& prefix) {
 }
 
 void init(bool debug);
+bool is_stopped();
 
 }  // namespace palm

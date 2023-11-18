@@ -11,8 +11,7 @@ class Application {
   Application(int argc, char** argv);
 
  private:
-  void start_rpc_server(uint16_t port,
-                        std::optional<palm::Tls> tls = std::nullopt);
+  void launch(uint16_t port, const palm::Tls& tls) const;
 };
 class WechatMiniProgramServiceImpl final
     : public palm::orchid::v1::WechatMiniProgram::Service {
