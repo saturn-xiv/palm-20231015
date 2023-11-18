@@ -1,11 +1,18 @@
 #include "palm/lemon/controllers.hpp"
+#include "palm/lemon/models.hpp"
 #include "palm/utils.hpp"
 
-void palm::lemon::controllers::setup(httplib::Server& svr) {
+void palm::lemon::controllers::setup(httplib::Server& svr,
+                                     inja::Environment& theme) {
   svr.Get("/stop", [&](const auto& req, auto& res) {
     if (palm::is_stopped()) {
       svr.stop();
     }
+  });
+  svr.Get("/", [&](const auto& req, auto& res) {
+    palm::lemon::models::HomePage it{};
+    const auto buf = theme.render_file("/home.html", it);
+    res.set_content(buf, palm::content_types::TEXT_HTML_UTF8);
   });
   {
     std::map<std::string, std::string> resources = {{"/3rd", "./node_modules"},
@@ -21,14 +28,18 @@ void palm::lemon::controllers::setup(httplib::Server& svr) {
   }
 
   svr.set_logger([](const auto& req, const auto& res) {
-    // TODO
-    spdlog::info("{} {} {} {}", req.version, req.method, req.path, res.status);
+    std::stringstream params;
+    for (auto it = req.params.begin(); it != req.params.end(); it++) {
+      params << (it == req.params.begin() ? "?" : "&");
+      params << it->first << "=" << it->second;
+    }
+    spdlog::info("{} {} [{}] {}{} {}", req.version, req.matches.str(),
+                 req.method, req.path, params.str(), res.status);
   });
 
-  svr.set_error_handler([](const auto& req, auto& res) {
-    auto fmt = "<p>Error Status: <span style='color:red;'>%d</span></p>";
-    char buf[BUFSIZ];
-    snprintf(buf, sizeof(buf), fmt, res.status);
-    res.set_content(buf, "text/html");
+  svr.set_error_handler([&](const auto& req, auto& res) {
+    palm::lemon::models::ErrorPage it{.status = res.status};
+    const auto buf = theme.render_file("/error.html", it);
+    res.set_content(buf, palm::content_types::TEXT_HTML_UTF8);
   });
 }

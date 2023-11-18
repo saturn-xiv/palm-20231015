@@ -21,6 +21,7 @@ palm::lemon::Application::Application(int argc, char** argv) {
   program.add_argument("-c", "--config")
       .default_value("config.toml")
       .required();
+  program.add_argument("-t", "--theme").default_value("universal").required();
 
   try {
     program.parse_args(argc, argv);
@@ -32,14 +33,16 @@ palm::lemon::Application::Application(int argc, char** argv) {
   palm::init(program.get<bool>("--debug"));
   const int port = program.get<int>("--port");
   const std::string config = program.get<std::string>("--config");
-  this->launch(port, config);
+  const std::string theme = program.get<std::string>("--theme");
+  this->launch(port, config, theme);
 }
 
-void palm::lemon::Application::launch(uint16_t port,
-                                      const std::string& config) const {
+void palm::lemon::Application::launch(uint16_t port, const std::string& config,
+                                      const std::string& theme_name) const {
+  auto theme_env = palm::themes::load(theme_name);
   const std::string ip = "0.0.0.0";
   httplib::Server svr;
-  { palm::lemon::controllers::setup(svr); }
+  { palm::lemon::controllers::setup(svr, theme_env); }
 
   spdlog::info("listening on tcp://{}:{}", ip, port);
   svr.listen(ip, port);

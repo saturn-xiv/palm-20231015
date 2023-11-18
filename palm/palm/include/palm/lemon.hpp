@@ -20,7 +20,8 @@ class Application {
   Application(int argc, char** argv);
 
  private:
-  void launch(uint16_t port, const std::string& config) const;
+  void launch(uint16_t port, const std::string& config,
+              const std::string& theme) const;
 };
 }  // namespace lemon
 }  // namespace palm

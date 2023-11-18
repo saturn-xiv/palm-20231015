@@ -1,9 +1,14 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "palm/theme.hpp"
+#include "palm/lemon/models.hpp"
 
 #include <iostream>
 
-TEST_CASE("Get package name", "[name]") {
-  std::cout << "std type of postgresql pool: " << std::endl;
+TEST_CASE("Universal theme", "[universal]") {
+  auto env = palm::themes::load("universal");
+  {
+    palm::lemon::models::ErrorPage it{.status = 123};
+    const auto htm = env.render_file("/error.html", it);
+    std::cout << htm << std::endl;
+  }
 }
