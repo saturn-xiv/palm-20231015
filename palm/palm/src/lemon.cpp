@@ -3,6 +3,8 @@
 #include "palm/utils.hpp"
 #include "palm/version.hpp"
 
+#include <csignal>
+
 #include <argparse/argparse.hpp>
 
 static const std::string PROJECT_NAME = "lemon";
@@ -42,6 +44,13 @@ void palm::lemon::Application::launch(uint16_t port, const std::string& config,
   auto theme_env = palm::themes::load(theme_name);
   const std::string ip = "0.0.0.0";
   httplib::Server svr;
+  // FIXME
+  // auto signal_handler = [](int sg, httplib::Server& sv) {
+  //   if (sg == SIGINT) {
+  //     sv.stop();
+  //   }
+  // };
+  // std::signal(SIGINT, signal_handler);
   { palm::lemon::controllers::setup(svr, theme_env); }
 
   spdlog::info("listening on tcp://{}:{}", ip, port);
