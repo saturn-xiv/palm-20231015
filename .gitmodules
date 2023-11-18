@@ -1,3 +1,21 @@
 [submodule "palm/palm/vcpkg"]
 	path = palm/palm/vcpkg
 	url = https://github.com/microsoft/vcpkg.git
+[submodule "palm/palm/themes/clean-white"]
+	path = palm/palm/themes/clean-white
+	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite.git
+[submodule "palm/palm/themes/universal"]
+	path = palm/palm/themes/universal
+	url = https://github.com/devcows/hugo-universal-theme.git
+[submodule "palm/palm/themes/docsy"]
+	path = palm/palm/themes/docsy
+	url = https://github.com/google/docsy.git
+[submodule "palm/palm/themes/hinode"]
+	path = palm/palm/themes/hinode
+	url = https://github.com/markdumay/hugo-theme-hinode-child.git
+[submodule "palm/palm/themes/x-corporation"]
+	path = palm/palm/themes/x-corporation
+	url = https://github.com/tranduyhung/grav-theme-x-corporation.git
+[submodule "palm/palm/themes/gantry5"]
+	path = palm/palm/themes/gantry5
+	url = https://github.com/gantry/gantry5.git
