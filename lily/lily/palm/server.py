@@ -3,6 +3,7 @@ import logging
 
 from time import sleep
 from concurrent import futures
+from pathlib import Path
 
 import grpc
 from grpc_health.v1 import health_pb2, health, health_pb2_grpc
@@ -18,6 +19,19 @@ class Rpc:
         self.cache = cache
         self.queue = queue
 
+        ca_file = config['ca-file']
+        cert_file = config['cert-file']
+        key_file = config['key-file']
+        logging.debug("load ca(%s), cert(%s), key(%s)",
+                      ca_file, cert_file, key_file)
+        self.credentials = grpc.ssl_server_credentials(
+            (
+                (Path(key_file).read_bytes(), Path(cert_file).read_bytes()),
+            ),
+            Path(ca_file).read_bytes(),
+            require_client_auth=True
+        )
+
     def start(self):
         server = grpc.server(futures.ThreadPoolExecutor(
             max_workers=self.max_workers))
@@ -26,10 +40,11 @@ class Rpc:
             tex.Service(self.s3, self.cache, self.queue), server)
         lily_pb2_grpc.add_S3Servicer_to_server(s3.Service(self.s3), server)
         Rpc._rpc_setup_health_thread(server)
-        server.add_insecure_port(self.addr)
+
+        server.add_secure_port(self.addr, self.credentials)
         server.start()
         logging.info(
-            "Lily gRPC server started, listening on %s with %d threads", self.addr, self.max_workers)
+            "Lily gRPC server started, listening on tcps:://%s with %d threads", self.addr, self.max_workers)
         try:
             server.wait_for_termination()
         except KeyboardInterrupt:

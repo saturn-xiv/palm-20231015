@@ -1,5 +1,6 @@
 /python/
 /config.toml
+/tmp/
 
 *.tar
 *.md5

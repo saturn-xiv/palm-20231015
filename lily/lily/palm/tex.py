@@ -35,9 +35,14 @@ class Service(lily_pb2_grpc.TexServicer):
         return response
 
     def ToWord(self, request, context):
-        logging.info("convert tex to word %s" % request.content_type)
         response = lily_pb2.S3File()
+        response.content_type = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        response.name = MinioClient.random_filename('.docx')
+        response.bucket = self.s3.current_bucket(request.published)
         # TODO
+        # task = msgpack.packb(
+        #     [request.SerializeToString(), response.SerializeToString()], use_bin_type=True)
+        # self.queue.produce(TEX2WORD_QUEUE, response.name, task)
         return response
 
 

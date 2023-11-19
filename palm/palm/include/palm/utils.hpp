@@ -11,6 +11,7 @@
 
 #include <grpcpp/security/credentials.h>
 #include <grpcpp/security/server_credentials.h>
+#include <magic_enum.hpp>
 
 namespace palm {
 std::string uuid();
@@ -70,4 +71,12 @@ struct RpcClientConfig {
   palm::Tls tls;
 };
 
+inline void check(const grpc::Status& status, const std::string& action) {
+  if (!status.ok()) {
+    spdlog::error("{}: {} {}", action,
+                  magic_enum::enum_name(status.error_code()),
+                  status.error_message());
+    throw std::runtime_error(status.error_message());
+  }
+}
 }  // namespace palm

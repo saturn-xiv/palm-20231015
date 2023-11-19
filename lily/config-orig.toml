@@ -1,6 +1,9 @@
 [rpc]
-port = 9999
+port = 8080
 max-workers = 8
+ca-file = "tmp/lily/ca.crt"
+cert-file = "tmp/lily/lily.crt"
+key-file = "tmp/lily/lily.key"
 
 [redis]
 host = "127.0.0.1"

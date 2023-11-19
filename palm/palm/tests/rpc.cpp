@@ -22,7 +22,21 @@ TEST_CASE("md2htm", "[morus]") {
   }
 }
 
-TEST_CASE("tex2pdf, tex2word", "[lily]") {}
+TEST_CASE("tex2pdf, tex2word", "[lily]") {
+  auto config = toml::parse_file("config.toml");
+  auto node = config["lily"].as_table();
+  const palm::RpcClientConfig cfg(*node);
+  const auto options = cfg.tls.grpc_client_ssl_credentials_options();
+  const auto credentials = grpc::SslCredentials(options);
+  auto channel = grpc::CreateChannel(cfg.target(), credentials);
+
+  SECTION("lily service") {
+    const palm::lily::v1::TexToRequest req;
+    palm::lily::TexClient cli(channel);
+    const auto res = cli.to_word(req);
+    std::cout << res.content_type() << std::endl;
+  }
+}
 
 TEST_CASE("tink encrypt", "[loquat]") {
   auto config = toml::parse_file("config.toml");
