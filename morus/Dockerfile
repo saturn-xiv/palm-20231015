@@ -5,7 +5,7 @@ RUN apk update
 RUN apk upgrade
 RUN apk add nodejs npm
 
-COPY morus/config.json morus/dist /opt/morus/
+COPY morus/node_modules/grpc-health-check/proto morus/config.json morus/dist /opt/morus/
 
 RUN echo "$(date -u +%4Y%m%d%H%M%S)" | tee /VERSION
 
