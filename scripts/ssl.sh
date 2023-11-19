@@ -33,6 +33,7 @@ function generate_certs() {
     local node_key="$2.key"
     local node_csr="$2.csr"
     local node_crt="$2.crt"
+    local node_p12="$2.p12"
     
     if [ -f $node_key ]
     then
@@ -66,6 +67,13 @@ function generate_certs() {
     echo "verify..."
     openssl verify -CAfile ca.crt $node_crt
     
+    echo "generate pkcs12"
+    if [ -f $node_p12 ]
+    then
+        echo "$node_p12 already exists"
+    else
+        openssl pkcs12 -export -in $node_crt -inkey $node_key -certfile ca.crt -out $node_p12
+    fi
     
 }
 
@@ -78,5 +86,6 @@ fi
 
 generate_certs $1 $2
 
-echo 'done.'
+
+echo "Well done, please don't forget to check your hosts file then!."
 exit 0
