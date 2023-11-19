@@ -1,6 +1,6 @@
 #pragma once
 
-#include "carnation/rbac.hpp"
+#include "carnation/casbin.hpp"
 #include "palm/utils.hpp"
 
 namespace carnation {
@@ -17,6 +17,7 @@ class Application {
   Application(int argc, char** argv);
 
  private:
+  void launch(uint16_t port, const palm::Tls& tls) const;
 };
 
 }  // namespace carnation
