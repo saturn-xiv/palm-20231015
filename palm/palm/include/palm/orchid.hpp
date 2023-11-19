@@ -3,6 +3,7 @@
 #include "orchid.grpc.pb.h"
 #include "palm/env.hpp"
 #include "palm/loquat.hpp"
+#include "palm/utils.hpp"
 
 namespace palm {
 namespace orchid {

@@ -5,9 +5,22 @@
 #include "palm/loquat.hpp"
 #include "palm/morus.hpp"
 
-#include <iostream>
+// GRPC_DNS_RESOLVER=native ./tests/rpc-test \[morus\]
+TEST_CASE("md2htm", "[morus]") {
+  auto config = toml::parse_file("config.toml");
+  auto node = config["morus"].as_table();
+  const palm::RpcClientConfig cfg(*node);
+  const auto options = cfg.tls.grpc_client_ssl_credentials_options();
+  const auto credentials = grpc::SslCredentials(options);
+  auto channel = grpc::CreateChannel(cfg.target(), credentials);
 
-TEST_CASE("md2htm", "[morus]") {}
+  SECTION("markdown service") {
+    const std::string md = "- [Google](https://www.google.com)";
+    palm::morus::MarkdownClient cli(channel);
+    const auto htm = cli.markdown_to_html(md);
+    std::cout << htm << std::endl;
+  }
+}
 
 TEST_CASE("tex2pdf, tex2word", "[lily]") {}
 

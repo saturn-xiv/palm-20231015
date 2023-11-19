@@ -6,6 +6,7 @@
 // #include <grpcpp/ext/proto_server_reflection_plugin.h>
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/health_check_service_interface.h>
+#include <grpcpp/security/server_credentials.h>
 #include <argparse/argparse.hpp>
 
 static const std::string PROJECT_NAME = "orchid";
@@ -42,7 +43,7 @@ palm::orchid::Application::Application(int argc, char** argv) {
   const std::string cert_file = program.get<std::string>("--cert-file");
   const std::string key_file = program.get<std::string>("--key-file");
   const std::string ca_file = program.get<std::string>("--ca-file");
-  const palm::Tls tls(cert_file, key_file, ca_file);
+  const palm::Tls tls(key_file, cert_file, ca_file);
   this->launch(port, tls);
 }
 
@@ -57,11 +58,11 @@ void palm::orchid::Application::launch(uint16_t port,
   //   { "name": "grpc", "features": ["codegen"] },
   //   grpc::reflection::InitProtoReflectionServerBuilderPlugin();
   grpc::ServerBuilder builder;
-  builder.AddListeningPort(addr, grpc::InsecureServerCredentials());
+  const auto credentials_options = tls.grpc_server_ssl_credentials_options();
+  auto credentials = grpc::SslServerCredentials(credentials_options);
+  builder.AddListeningPort(addr, credentials);
   builder.RegisterService(&wechat_mini_program_service);
   builder.RegisterService(&wechat_oauth2_service);
-
-  // TODO add tls
 
   std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
   spdlog::info("listening on tcps://0.0.0.0:{}", port);

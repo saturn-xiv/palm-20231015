@@ -3,7 +3,6 @@
 #include "palm/crypto.hpp"
 #include "palm/utils.hpp"
 
-#include <iostream>
 #include <thread>
 
 TEST_CASE("Random values", "[rand]") {

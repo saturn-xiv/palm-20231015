@@ -1,5 +1,4 @@
 #include "palm/utils.hpp"
-#include "palm/env.hpp"
 #include "palm/version.hpp"
 
 #include <boost/algorithm/string/join.hpp>
@@ -81,4 +80,37 @@ std::string palm::timestamp() {
                        new boost::posix_time::time_facet("%Y%m%d%H%M%S%f")));
   ss << boost::posix_time::microsec_clock::local_time();
   return ss.str();
+}
+
+palm::Tls::Tls(const toml::table& node) {
+  this->_cert_file = node["cert-file"].value<std::string>().value();
+  this->_key_file = node["key-file"].value<std::string>().value();
+  this->_ca_file = node["ca-file"].value<std::string>().value();
+}
+
+palm::RpcClientConfig::RpcClientConfig(const toml::table& node) : tls(node) {
+  this->host = node["host"].value<std::string>().value_or("127.0.0.1");
+  this->port = node["port"].value<uint16_t>().value_or(8080);
+}
+grpc::SslCredentialsOptions palm::Tls::grpc_client_ssl_credentials_options()
+    const {
+  spdlog::debug("load ca({}) cert({}) key({})", this->_ca_file,
+                this->_cert_file, this->_key_file);
+  grpc::SslCredentialsOptions it;
+  it.pem_cert_chain = palm::read(this->_cert_file);
+  it.pem_private_key = palm::read(this->_key_file);
+  it.pem_root_certs = palm::read(this->_ca_file);
+  return std::move(it);
+}
+grpc::SslServerCredentialsOptions
+palm::Tls::grpc_server_ssl_credentials_options() const {
+  spdlog::debug("load ca({}) cert({}) key({})", this->_ca_file,
+                this->_cert_file, this->_key_file);
+  palm::read(this->_key_file);
+  grpc::SslServerCredentialsOptions::PemKeyCertPair pair = {
+      palm::read(this->_key_file), palm::read(this->_cert_file)};
+  grpc::SslServerCredentialsOptions it;
+  it.pem_root_certs = palm::read(this->_ca_file);
+  it.pem_key_cert_pairs.push_back(pair);
+  return std::move(it);
 }
