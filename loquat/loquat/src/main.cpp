@@ -1,6 +1,8 @@
 #include "loquat/service.hpp"
 #include "loquat/version.hpp"
 
+#include <csignal>
+
 #include <event2/event.h>
 #include <openssl/opensslv.h>
 #include <thrift/version.h>
@@ -100,6 +102,8 @@ int main(int argc, char** argv) {
 
     apache::thrift::GlobalOutput.setOutputFunction(loquat::set_thrift_logger);
 
+    // https://github.com/apache/thrift/blob/master/lib/cpp/README.md#sigpipe-signal
+    std::signal(SIGPIPE, SIG_IGN);
     try {
       loquat::application::launch(static_cast<uint16_t>(port), tls);
     } catch (std::exception& e) {

@@ -1,5 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 
+#include "palm/crypto.hpp"
 #include "palm/lily.hpp"
 #include "palm/loquat.hpp"
 #include "palm/morus.hpp"
@@ -22,13 +23,16 @@ TEST_CASE("tink encrypt", "[loquat]") {
 
   const std::string app_id = "testing";
   SECTION("aes") {
-    {
+    for (int i = 0; i < 10; i++) {
       const std::string plain = "hello, palm!";
       auto cli = cfg.aes();
       std::string code;
       cli->encrypt(code, app_id, plain);
       REQUIRE(code != plain);
-      std::cout << plain << " <=> " << code << std::endl;
+      {
+        std::vector<uint8_t> it(code.begin(), code.end());
+        std::cout << plain << " <=> " << palm::base64::to(it) << std::endl;
+      }
       {
         std::string tmp;
         cli->decrypt(tmp, app_id, code);
