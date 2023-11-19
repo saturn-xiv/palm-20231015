@@ -7,7 +7,6 @@ require 'google/protobuf/empty_pb'
 require 'google/protobuf/timestamp_pb'
 require 'google/protobuf/duration_pb'
 require 'nut_pb'
-require 'rbac_pb'
 require 'orchid_pb'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
@@ -21,6 +20,18 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :host, :string, 2
       proto3_optional :user, :string, 3
       optional :id, :string, 9
+    end
+    add_message "palm.auth.v1.Permission" do
+      optional :object, :message, 1, "palm.auth.v1.Permission.Resource"
+      optional :action, :string, 2
+      oneof :subject do
+        optional :user, :int32, 11
+        optional :role, :int32, 12
+      end
+    end
+    add_message "palm.auth.v1.Permission.Resource" do
+      optional :type, :string, 1
+      proto3_optional :id, :int32, 2
     end
     add_message "palm.auth.v1.UserSignInRequest" do
       optional :password, :string, 9
@@ -42,7 +53,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :user, :message, 2, "palm.auth.v1.UserIndexResponse.Item"
       optional :provider_type, :string, 9
       repeated :roles, :string, 11
-      repeated :permissions, :message, 12, "palm.rbac.v1.PermissionsResponse.Item"
+      repeated :permissions, :message, 12, "palm.auth.v1.Permission"
       optional :has_google, :bool, 21
       optional :has_wechat_mini_program, :bool, 22
       optional :has_wechat_oauth2, :bool, 23
@@ -95,7 +106,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :ip, :string, 3
       optional :level, :enum, 4, "palm.auth.v1.UserLogsResponse.Item.Level"
       optional :message, :string, 5
-      optional :resource, :message, 6, "palm.rbac.v1.ResourcesResponse.Item"
+      optional :resource, :message, 6, "palm.auth.v1.Permission.Resource"
       optional :created_at, :message, 11, "google.protobuf.Timestamp"
     end
     add_enum "palm.auth.v1.UserLogsResponse.Item.Level" do
@@ -277,6 +288,8 @@ module Palm
     module V1
       UserDetail = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("palm.auth.v1.UserDetail").msgclass
       Oauth2State = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("palm.auth.v1.Oauth2State").msgclass
+      Permission = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("palm.auth.v1.Permission").msgclass
+      Permission::Resource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("palm.auth.v1.Permission.Resource").msgclass
       UserSignInRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("palm.auth.v1.UserSignInRequest").msgclass
       UserQueryRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("palm.auth.v1.UserQueryRequest").msgclass
       UserSignInResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("palm.auth.v1.UserSignInResponse").msgclass

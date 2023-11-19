@@ -35,7 +35,6 @@
 #include <google/protobuf/timestamp.pb.h>
 #include <google/protobuf/duration.pb.h>
 #include "nut.pb.h"
-#include "rbac.pb.h"
 #include "orchid.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -99,6 +98,12 @@ extern LocaleUpdateRequestDefaultTypeInternal _LocaleUpdateRequest_default_insta
 class Oauth2State;
 struct Oauth2StateDefaultTypeInternal;
 extern Oauth2StateDefaultTypeInternal _Oauth2State_default_instance_;
+class Permission;
+struct PermissionDefaultTypeInternal;
+extern PermissionDefaultTypeInternal _Permission_default_instance_;
+class Permission_Resource;
+struct Permission_ResourceDefaultTypeInternal;
+extern Permission_ResourceDefaultTypeInternal _Permission_Resource_default_instance_;
 class SignInByGoogleRequest;
 struct SignInByGoogleRequestDefaultTypeInternal;
 extern SignInByGoogleRequestDefaultTypeInternal _SignInByGoogleRequest_default_instance_;
@@ -202,6 +207,8 @@ template<> ::palm::auth::v1::LocaleIndexResponse_Item* Arena::CreateMaybeMessage
 template<> ::palm::auth::v1::LocaleListResponse* Arena::CreateMaybeMessage<::palm::auth::v1::LocaleListResponse>(Arena*);
 template<> ::palm::auth::v1::LocaleUpdateRequest* Arena::CreateMaybeMessage<::palm::auth::v1::LocaleUpdateRequest>(Arena*);
 template<> ::palm::auth::v1::Oauth2State* Arena::CreateMaybeMessage<::palm::auth::v1::Oauth2State>(Arena*);
+template<> ::palm::auth::v1::Permission* Arena::CreateMaybeMessage<::palm::auth::v1::Permission>(Arena*);
+template<> ::palm::auth::v1::Permission_Resource* Arena::CreateMaybeMessage<::palm::auth::v1::Permission_Resource>(Arena*);
 template<> ::palm::auth::v1::SignInByGoogleRequest* Arena::CreateMaybeMessage<::palm::auth::v1::SignInByGoogleRequest>(Arena*);
 template<> ::palm::auth::v1::SignInByWechatOauth2Request* Arena::CreateMaybeMessage<::palm::auth::v1::SignInByWechatOauth2Request>(Arena*);
 template<> ::palm::auth::v1::UserChangePasswordRequest* Arena::CreateMaybeMessage<::palm::auth::v1::UserChangePasswordRequest>(Arena*);
@@ -640,6 +647,399 @@ class Oauth2State final :
 };
 // -------------------------------------------------------------------
 
+class Permission_Resource final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.auth.v1.Permission.Resource) */ {
+ public:
+  inline Permission_Resource() : Permission_Resource(nullptr) {}
+  ~Permission_Resource() override;
+  explicit PROTOBUF_CONSTEXPR Permission_Resource(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Permission_Resource(const Permission_Resource& from);
+  Permission_Resource(Permission_Resource&& from) noexcept
+    : Permission_Resource() {
+    *this = ::std::move(from);
+  }
+
+  inline Permission_Resource& operator=(const Permission_Resource& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Permission_Resource& operator=(Permission_Resource&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Permission_Resource& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Permission_Resource* internal_default_instance() {
+    return reinterpret_cast<const Permission_Resource*>(
+               &_Permission_Resource_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(Permission_Resource& a, Permission_Resource& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Permission_Resource* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Permission_Resource* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Permission_Resource* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Permission_Resource>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Permission_Resource& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const Permission_Resource& from) {
+    Permission_Resource::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Permission_Resource* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "palm.auth.v1.Permission.Resource";
+  }
+  protected:
+  explicit Permission_Resource(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTypeFieldNumber = 1,
+    kIdFieldNumber = 2,
+  };
+  // string type = 1;
+  void clear_type();
+  const std::string& type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_type();
+  PROTOBUF_NODISCARD std::string* release_type();
+  void set_allocated_type(std::string* type);
+  private:
+  const std::string& _internal_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_type(const std::string& value);
+  std::string* _internal_mutable_type();
+  public:
+
+  // optional int32 id = 2;
+  bool has_id() const;
+  private:
+  bool _internal_has_id() const;
+  public:
+  void clear_id();
+  int32_t id() const;
+  void set_id(int32_t value);
+  private:
+  int32_t _internal_id() const;
+  void _internal_set_id(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:palm.auth.v1.Permission.Resource)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr type_;
+    int32_t id_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_auth_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Permission final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.auth.v1.Permission) */ {
+ public:
+  inline Permission() : Permission(nullptr) {}
+  ~Permission() override;
+  explicit PROTOBUF_CONSTEXPR Permission(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Permission(const Permission& from);
+  Permission(Permission&& from) noexcept
+    : Permission() {
+    *this = ::std::move(from);
+  }
+
+  inline Permission& operator=(const Permission& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Permission& operator=(Permission&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Permission& default_instance() {
+    return *internal_default_instance();
+  }
+  enum SubjectCase {
+    kUser = 11,
+    kRole = 12,
+    SUBJECT_NOT_SET = 0,
+  };
+
+  static inline const Permission* internal_default_instance() {
+    return reinterpret_cast<const Permission*>(
+               &_Permission_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(Permission& a, Permission& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Permission* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Permission* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Permission* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Permission>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Permission& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const Permission& from) {
+    Permission::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Permission* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "palm.auth.v1.Permission";
+  }
+  protected:
+  explicit Permission(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef Permission_Resource Resource;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kActionFieldNumber = 2,
+    kObjectFieldNumber = 1,
+    kUserFieldNumber = 11,
+    kRoleFieldNumber = 12,
+  };
+  // string action = 2;
+  void clear_action();
+  const std::string& action() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_action(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_action();
+  PROTOBUF_NODISCARD std::string* release_action();
+  void set_allocated_action(std::string* action);
+  private:
+  const std::string& _internal_action() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_action(const std::string& value);
+  std::string* _internal_mutable_action();
+  public:
+
+  // .palm.auth.v1.Permission.Resource object = 1;
+  bool has_object() const;
+  private:
+  bool _internal_has_object() const;
+  public:
+  void clear_object();
+  const ::palm::auth::v1::Permission_Resource& object() const;
+  PROTOBUF_NODISCARD ::palm::auth::v1::Permission_Resource* release_object();
+  ::palm::auth::v1::Permission_Resource* mutable_object();
+  void set_allocated_object(::palm::auth::v1::Permission_Resource* object);
+  private:
+  const ::palm::auth::v1::Permission_Resource& _internal_object() const;
+  ::palm::auth::v1::Permission_Resource* _internal_mutable_object();
+  public:
+  void unsafe_arena_set_allocated_object(
+      ::palm::auth::v1::Permission_Resource* object);
+  ::palm::auth::v1::Permission_Resource* unsafe_arena_release_object();
+
+  // int32 user = 11;
+  bool has_user() const;
+  private:
+  bool _internal_has_user() const;
+  public:
+  void clear_user();
+  int32_t user() const;
+  void set_user(int32_t value);
+  private:
+  int32_t _internal_user() const;
+  void _internal_set_user(int32_t value);
+  public:
+
+  // int32 role = 12;
+  bool has_role() const;
+  private:
+  bool _internal_has_role() const;
+  public:
+  void clear_role();
+  int32_t role() const;
+  void set_role(int32_t value);
+  private:
+  int32_t _internal_role() const;
+  void _internal_set_role(int32_t value);
+  public:
+
+  void clear_subject();
+  SubjectCase subject_case() const;
+  // @@protoc_insertion_point(class_scope:palm.auth.v1.Permission)
+ private:
+  class _Internal;
+  void set_has_user();
+  void set_has_role();
+
+  inline bool has_subject() const;
+  inline void clear_has_subject();
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr action_;
+    ::palm::auth::v1::Permission_Resource* object_;
+    union SubjectUnion {
+      constexpr SubjectUnion() : _constinit_{} {}
+        ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+      int32_t user_;
+      int32_t role_;
+    } subject_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    uint32_t _oneof_case_[1];
+
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_auth_2eproto;
+};
+// -------------------------------------------------------------------
+
 class UserSignInRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:palm.auth.v1.UserSignInRequest) */ {
  public:
@@ -694,7 +1094,7 @@ class UserSignInRequest final :
                &_UserSignInRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(UserSignInRequest& a, UserSignInRequest& b) {
     a.Swap(&b);
@@ -926,7 +1326,7 @@ class UserQueryRequest final :
                &_UserQueryRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(UserQueryRequest& a, UserQueryRequest& b) {
     a.Swap(&b);
@@ -1132,7 +1532,7 @@ class UserSignInResponse final :
                &_UserSignInResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   friend void swap(UserSignInResponse& a, UserSignInResponse& b) {
     a.Swap(&b);
@@ -1238,22 +1638,22 @@ class UserSignInResponse final :
   std::string* _internal_add_roles();
   public:
 
-  // repeated .palm.rbac.v1.PermissionsResponse.Item permissions = 12;
+  // repeated .palm.auth.v1.Permission permissions = 12;
   int permissions_size() const;
   private:
   int _internal_permissions_size() const;
   public:
   void clear_permissions();
-  ::palm::rbac::v1::PermissionsResponse_Item* mutable_permissions(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::rbac::v1::PermissionsResponse_Item >*
+  ::palm::auth::v1::Permission* mutable_permissions(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::auth::v1::Permission >*
       mutable_permissions();
   private:
-  const ::palm::rbac::v1::PermissionsResponse_Item& _internal_permissions(int index) const;
-  ::palm::rbac::v1::PermissionsResponse_Item* _internal_add_permissions();
+  const ::palm::auth::v1::Permission& _internal_permissions(int index) const;
+  ::palm::auth::v1::Permission* _internal_add_permissions();
   public:
-  const ::palm::rbac::v1::PermissionsResponse_Item& permissions(int index) const;
-  ::palm::rbac::v1::PermissionsResponse_Item* add_permissions();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::rbac::v1::PermissionsResponse_Item >&
+  const ::palm::auth::v1::Permission& permissions(int index) const;
+  ::palm::auth::v1::Permission* add_permissions();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::auth::v1::Permission >&
       permissions() const;
 
   // string token = 1;
@@ -1338,7 +1738,7 @@ class UserSignInResponse final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> roles_;
-    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::rbac::v1::PermissionsResponse_Item > permissions_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::auth::v1::Permission > permissions_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr provider_type_;
     ::palm::auth::v1::UserIndexResponse_Item* user_;
@@ -1400,7 +1800,7 @@ class UserSignUpRequest final :
                &_UserSignUpRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(UserSignUpRequest& a, UserSignUpRequest& b) {
     a.Swap(&b);
@@ -1649,7 +2049,7 @@ class UserTokenRequest final :
                &_UserTokenRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   friend void swap(UserTokenRequest& a, UserTokenRequest& b) {
     a.Swap(&b);
@@ -1802,7 +2202,7 @@ class UserResetPasswordRequest final :
                &_UserResetPasswordRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    9;
 
   friend void swap(UserResetPasswordRequest& a, UserResetPasswordRequest& b) {
     a.Swap(&b);
@@ -1971,7 +2371,7 @@ class UserSetPasswordRequest final :
                &_UserSetPasswordRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   friend void swap(UserSetPasswordRequest& a, UserSetPasswordRequest& b) {
     a.Swap(&b);
@@ -2135,7 +2535,7 @@ class UserSetProfileRequest final :
                &_UserSetProfileRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    11;
 
   friend void swap(UserSetProfileRequest& a, UserSetProfileRequest& b) {
     a.Swap(&b);
@@ -2368,7 +2768,7 @@ class UserGetProfileResponse final :
                &_UserGetProfileResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    12;
 
   friend void swap(UserGetProfileResponse& a, UserGetProfileResponse& b) {
     a.Swap(&b);
@@ -2633,7 +3033,7 @@ class UserLogsResponse_Item final :
                &_UserLogsResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    13;
 
   friend void swap(UserLogsResponse_Item& a, UserLogsResponse_Item& b) {
     a.Swap(&b);
@@ -2778,23 +3178,23 @@ class UserLogsResponse_Item final :
   std::string* _internal_mutable_message();
   public:
 
-  // .palm.rbac.v1.ResourcesResponse.Item resource = 6;
+  // .palm.auth.v1.Permission.Resource resource = 6;
   bool has_resource() const;
   private:
   bool _internal_has_resource() const;
   public:
   void clear_resource();
-  const ::palm::rbac::v1::ResourcesResponse_Item& resource() const;
-  PROTOBUF_NODISCARD ::palm::rbac::v1::ResourcesResponse_Item* release_resource();
-  ::palm::rbac::v1::ResourcesResponse_Item* mutable_resource();
-  void set_allocated_resource(::palm::rbac::v1::ResourcesResponse_Item* resource);
+  const ::palm::auth::v1::Permission_Resource& resource() const;
+  PROTOBUF_NODISCARD ::palm::auth::v1::Permission_Resource* release_resource();
+  ::palm::auth::v1::Permission_Resource* mutable_resource();
+  void set_allocated_resource(::palm::auth::v1::Permission_Resource* resource);
   private:
-  const ::palm::rbac::v1::ResourcesResponse_Item& _internal_resource() const;
-  ::palm::rbac::v1::ResourcesResponse_Item* _internal_mutable_resource();
+  const ::palm::auth::v1::Permission_Resource& _internal_resource() const;
+  ::palm::auth::v1::Permission_Resource* _internal_mutable_resource();
   public:
   void unsafe_arena_set_allocated_resource(
-      ::palm::rbac::v1::ResourcesResponse_Item* resource);
-  ::palm::rbac::v1::ResourcesResponse_Item* unsafe_arena_release_resource();
+      ::palm::auth::v1::Permission_Resource* resource);
+  ::palm::auth::v1::Permission_Resource* unsafe_arena_release_resource();
 
   // .google.protobuf.Timestamp created_at = 11;
   bool has_created_at() const;
@@ -2851,7 +3251,7 @@ class UserLogsResponse_Item final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr ip_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
-    ::palm::rbac::v1::ResourcesResponse_Item* resource_;
+    ::palm::auth::v1::Permission_Resource* resource_;
     ::PROTOBUF_NAMESPACE_ID::Timestamp* created_at_;
     int32_t id_;
     int32_t user_id_;
@@ -2911,7 +3311,7 @@ class UserLogsResponse final :
                &_UserLogsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    14;
 
   friend void swap(UserLogsResponse& a, UserLogsResponse& b) {
     a.Swap(&b);
@@ -3090,7 +3490,7 @@ class UserChangePasswordRequest final :
                &_UserChangePasswordRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    15;
 
   friend void swap(UserChangePasswordRequest& a, UserChangePasswordRequest& b) {
     a.Swap(&b);
@@ -3259,7 +3659,7 @@ class UserIndexResponse_Item final :
                &_UserIndexResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    16;
 
   friend void swap(UserIndexResponse_Item& a, UserIndexResponse_Item& b) {
     a.Swap(&b);
@@ -3675,7 +4075,7 @@ class UserIndexResponse final :
                &_UserIndexResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    17;
 
   friend void swap(UserIndexResponse& a, UserIndexResponse& b) {
     a.Swap(&b);
@@ -3854,7 +4254,7 @@ class SignInByGoogleRequest final :
                &_SignInByGoogleRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    18;
 
   friend void swap(SignInByGoogleRequest& a, SignInByGoogleRequest& b) {
     a.Swap(&b);
@@ -4101,7 +4501,7 @@ class GoogleSignInUrlRequest final :
                &_GoogleSignInUrlRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    19;
 
   friend void swap(GoogleSignInUrlRequest& a, GoogleSignInUrlRequest& b) {
     a.Swap(&b);
@@ -4274,7 +4674,7 @@ class GoogleSignInUrlResponse final :
                &_GoogleSignInUrlResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    20;
 
   friend void swap(GoogleSignInUrlResponse& a, GoogleSignInUrlResponse& b) {
     a.Swap(&b);
@@ -4443,7 +4843,7 @@ class WechatUserBindByIdRequest final :
                &_WechatUserBindByIdRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    21;
 
   friend void swap(WechatUserBindByIdRequest& a, WechatUserBindByIdRequest& b) {
     a.Swap(&b);
@@ -4602,7 +5002,7 @@ class WechatUserBindByAccountRequest final :
                &_WechatUserBindByAccountRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    22;
 
   friend void swap(WechatUserBindByAccountRequest& a, WechatUserBindByAccountRequest& b) {
     a.Swap(&b);
@@ -4771,7 +5171,7 @@ class WechatUserQueryByOpenIdRequest final :
                &_WechatUserQueryByOpenIdRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    23;
 
   friend void swap(WechatUserQueryByOpenIdRequest& a, WechatUserQueryByOpenIdRequest& b) {
     a.Swap(&b);
@@ -4940,7 +5340,7 @@ class WechatUserQueryByUnionIdRequest final :
                &_WechatUserQueryByUnionIdRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    24;
 
   friend void swap(WechatUserQueryByUnionIdRequest& a, WechatUserQueryByUnionIdRequest& b) {
     a.Swap(&b);
@@ -5093,7 +5493,7 @@ class WechatAllMiniProgramUserResponse_Item final :
                &_WechatAllMiniProgramUserResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    25;
 
   friend void swap(WechatAllMiniProgramUserResponse_Item& a, WechatAllMiniProgramUserResponse_Item& b) {
     a.Swap(&b);
@@ -5341,7 +5741,7 @@ class WechatAllMiniProgramUserResponse final :
                &_WechatAllMiniProgramUserResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    26;
 
   friend void swap(WechatAllMiniProgramUserResponse& a, WechatAllMiniProgramUserResponse& b) {
     a.Swap(&b);
@@ -5500,7 +5900,7 @@ class WechatAllOauth2UserResponse_Item final :
                &_WechatAllOauth2UserResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    27;
 
   friend void swap(WechatAllOauth2UserResponse_Item& a, WechatAllOauth2UserResponse_Item& b) {
     a.Swap(&b);
@@ -5845,7 +6245,7 @@ class WechatAllOauth2UserResponse final :
                &_WechatAllOauth2UserResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    28;
 
   friend void swap(WechatAllOauth2UserResponse& a, WechatAllOauth2UserResponse& b) {
     a.Swap(&b);
@@ -6004,7 +6404,7 @@ class SignInByWechatOauth2Request final :
                &_SignInByWechatOauth2Request_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    29;
 
   friend void swap(SignInByWechatOauth2Request& a, SignInByWechatOauth2Request& b) {
     a.Swap(&b);
@@ -6220,7 +6620,7 @@ class WechatOauth2SignInStateResponse final :
                &_WechatOauth2SignInStateResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    30;
 
   friend void swap(WechatOauth2SignInStateResponse& a, WechatOauth2SignInStateResponse& b) {
     a.Swap(&b);
@@ -6373,7 +6773,7 @@ class WechatOauth2SignInUrlRequest final :
                &_WechatOauth2SignInUrlRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    31;
 
   friend void swap(WechatOauth2SignInUrlRequest& a, WechatOauth2SignInUrlRequest& b) {
     a.Swap(&b);
@@ -6553,7 +6953,7 @@ class WechatMiniProgramUser final :
                &_WechatMiniProgramUser_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    30;
+    32;
 
   friend void swap(WechatMiniProgramUser& a, WechatMiniProgramUser& b) {
     a.Swap(&b);
@@ -6779,7 +7179,7 @@ class AttachmentShowRequest final :
                &_AttachmentShowRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    31;
+    33;
 
   friend void swap(AttachmentShowRequest& a, AttachmentShowRequest& b) {
     a.Swap(&b);
@@ -6947,7 +7347,7 @@ class AttachmentShowResponse final :
                &_AttachmentShowResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    34;
 
   friend void swap(AttachmentShowResponse& a, AttachmentShowResponse& b) {
     a.Swap(&b);
@@ -7120,7 +7520,7 @@ class AttachmentIndexResponse_Item final :
                &_AttachmentIndexResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    35;
 
   friend void swap(AttachmentIndexResponse_Item& a, AttachmentIndexResponse_Item& b) {
     a.Swap(&b);
@@ -7374,7 +7774,7 @@ class AttachmentIndexResponse final :
                &_AttachmentIndexResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    36;
 
   friend void swap(AttachmentIndexResponse& a, AttachmentIndexResponse& b) {
     a.Swap(&b);
@@ -7553,7 +7953,7 @@ class LocaleByLangRequest final :
                &_LocaleByLangRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    37;
 
   friend void swap(LocaleByLangRequest& a, LocaleByLangRequest& b) {
     a.Swap(&b);
@@ -7706,7 +8106,7 @@ class LocaleListResponse final :
                &_LocaleListResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    36;
+    38;
 
   friend void swap(LocaleListResponse& a, LocaleListResponse& b) {
     a.Swap(&b);
@@ -7863,7 +8263,7 @@ class LocaleIndexResponse_Item final :
                &_LocaleIndexResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    39;
 
   friend void swap(LocaleIndexResponse_Item& a, LocaleIndexResponse_Item& b) {
     a.Swap(&b);
@@ -8079,7 +8479,7 @@ class LocaleIndexResponse final :
                &_LocaleIndexResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    38;
+    40;
 
   friend void swap(LocaleIndexResponse& a, LocaleIndexResponse& b) {
     a.Swap(&b);
@@ -8258,7 +8658,7 @@ class LocaleByCodeRequest final :
                &_LocaleByCodeRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    39;
+    41;
 
   friend void swap(LocaleByCodeRequest& a, LocaleByCodeRequest& b) {
     a.Swap(&b);
@@ -8411,7 +8811,7 @@ class LocaleByLangAndCodeRequest final :
                &_LocaleByLangAndCodeRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    40;
+    42;
 
   friend void swap(LocaleByLangAndCodeRequest& a, LocaleByLangAndCodeRequest& b) {
     a.Swap(&b);
@@ -8580,7 +8980,7 @@ class LocaleCreateRequest final :
                &_LocaleCreateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    41;
+    43;
 
   friend void swap(LocaleCreateRequest& a, LocaleCreateRequest& b) {
     a.Swap(&b);
@@ -8765,7 +9165,7 @@ class LocaleUpdateRequest final :
                &_LocaleUpdateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    42;
+    44;
 
   friend void swap(LocaleUpdateRequest& a, LocaleUpdateRequest& b) {
     a.Swap(&b);
@@ -9212,6 +9612,317 @@ inline void Oauth2State::set_allocated_id(std::string* id) {
   // @@protoc_insertion_point(field_set_allocated:palm.auth.v1.Oauth2State.id)
 }
 
+// -------------------------------------------------------------------
+
+// Permission_Resource
+
+// string type = 1;
+inline void Permission_Resource::clear_type() {
+  _impl_.type_.ClearToEmpty();
+}
+inline const std::string& Permission_Resource::type() const {
+  // @@protoc_insertion_point(field_get:palm.auth.v1.Permission.Resource.type)
+  return _internal_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Permission_Resource::set_type(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.type_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.auth.v1.Permission.Resource.type)
+}
+inline std::string* Permission_Resource::mutable_type() {
+  std::string* _s = _internal_mutable_type();
+  // @@protoc_insertion_point(field_mutable:palm.auth.v1.Permission.Resource.type)
+  return _s;
+}
+inline const std::string& Permission_Resource::_internal_type() const {
+  return _impl_.type_.Get();
+}
+inline void Permission_Resource::_internal_set_type(const std::string& value) {
+  
+  _impl_.type_.Set(value, GetArenaForAllocation());
+}
+inline std::string* Permission_Resource::_internal_mutable_type() {
+  
+  return _impl_.type_.Mutable(GetArenaForAllocation());
+}
+inline std::string* Permission_Resource::release_type() {
+  // @@protoc_insertion_point(field_release:palm.auth.v1.Permission.Resource.type)
+  return _impl_.type_.Release();
+}
+inline void Permission_Resource::set_allocated_type(std::string* type) {
+  if (type != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.type_.SetAllocated(type, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.type_.IsDefault()) {
+    _impl_.type_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.auth.v1.Permission.Resource.type)
+}
+
+// optional int32 id = 2;
+inline bool Permission_Resource::_internal_has_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool Permission_Resource::has_id() const {
+  return _internal_has_id();
+}
+inline void Permission_Resource::clear_id() {
+  _impl_.id_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline int32_t Permission_Resource::_internal_id() const {
+  return _impl_.id_;
+}
+inline int32_t Permission_Resource::id() const {
+  // @@protoc_insertion_point(field_get:palm.auth.v1.Permission.Resource.id)
+  return _internal_id();
+}
+inline void Permission_Resource::_internal_set_id(int32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.id_ = value;
+}
+inline void Permission_Resource::set_id(int32_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:palm.auth.v1.Permission.Resource.id)
+}
+
+// -------------------------------------------------------------------
+
+// Permission
+
+// .palm.auth.v1.Permission.Resource object = 1;
+inline bool Permission::_internal_has_object() const {
+  return this != internal_default_instance() && _impl_.object_ != nullptr;
+}
+inline bool Permission::has_object() const {
+  return _internal_has_object();
+}
+inline void Permission::clear_object() {
+  if (GetArenaForAllocation() == nullptr && _impl_.object_ != nullptr) {
+    delete _impl_.object_;
+  }
+  _impl_.object_ = nullptr;
+}
+inline const ::palm::auth::v1::Permission_Resource& Permission::_internal_object() const {
+  const ::palm::auth::v1::Permission_Resource* p = _impl_.object_;
+  return p != nullptr ? *p : reinterpret_cast<const ::palm::auth::v1::Permission_Resource&>(
+      ::palm::auth::v1::_Permission_Resource_default_instance_);
+}
+inline const ::palm::auth::v1::Permission_Resource& Permission::object() const {
+  // @@protoc_insertion_point(field_get:palm.auth.v1.Permission.object)
+  return _internal_object();
+}
+inline void Permission::unsafe_arena_set_allocated_object(
+    ::palm::auth::v1::Permission_Resource* object) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.object_);
+  }
+  _impl_.object_ = object;
+  if (object) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.auth.v1.Permission.object)
+}
+inline ::palm::auth::v1::Permission_Resource* Permission::release_object() {
+  
+  ::palm::auth::v1::Permission_Resource* temp = _impl_.object_;
+  _impl_.object_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::palm::auth::v1::Permission_Resource* Permission::unsafe_arena_release_object() {
+  // @@protoc_insertion_point(field_release:palm.auth.v1.Permission.object)
+  
+  ::palm::auth::v1::Permission_Resource* temp = _impl_.object_;
+  _impl_.object_ = nullptr;
+  return temp;
+}
+inline ::palm::auth::v1::Permission_Resource* Permission::_internal_mutable_object() {
+  
+  if (_impl_.object_ == nullptr) {
+    auto* p = CreateMaybeMessage<::palm::auth::v1::Permission_Resource>(GetArenaForAllocation());
+    _impl_.object_ = p;
+  }
+  return _impl_.object_;
+}
+inline ::palm::auth::v1::Permission_Resource* Permission::mutable_object() {
+  ::palm::auth::v1::Permission_Resource* _msg = _internal_mutable_object();
+  // @@protoc_insertion_point(field_mutable:palm.auth.v1.Permission.object)
+  return _msg;
+}
+inline void Permission::set_allocated_object(::palm::auth::v1::Permission_Resource* object) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.object_;
+  }
+  if (object) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(object);
+    if (message_arena != submessage_arena) {
+      object = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, object, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.object_ = object;
+  // @@protoc_insertion_point(field_set_allocated:palm.auth.v1.Permission.object)
+}
+
+// string action = 2;
+inline void Permission::clear_action() {
+  _impl_.action_.ClearToEmpty();
+}
+inline const std::string& Permission::action() const {
+  // @@protoc_insertion_point(field_get:palm.auth.v1.Permission.action)
+  return _internal_action();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Permission::set_action(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.action_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.auth.v1.Permission.action)
+}
+inline std::string* Permission::mutable_action() {
+  std::string* _s = _internal_mutable_action();
+  // @@protoc_insertion_point(field_mutable:palm.auth.v1.Permission.action)
+  return _s;
+}
+inline const std::string& Permission::_internal_action() const {
+  return _impl_.action_.Get();
+}
+inline void Permission::_internal_set_action(const std::string& value) {
+  
+  _impl_.action_.Set(value, GetArenaForAllocation());
+}
+inline std::string* Permission::_internal_mutable_action() {
+  
+  return _impl_.action_.Mutable(GetArenaForAllocation());
+}
+inline std::string* Permission::release_action() {
+  // @@protoc_insertion_point(field_release:palm.auth.v1.Permission.action)
+  return _impl_.action_.Release();
+}
+inline void Permission::set_allocated_action(std::string* action) {
+  if (action != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.action_.SetAllocated(action, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.action_.IsDefault()) {
+    _impl_.action_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.auth.v1.Permission.action)
+}
+
+// int32 user = 11;
+inline bool Permission::_internal_has_user() const {
+  return subject_case() == kUser;
+}
+inline bool Permission::has_user() const {
+  return _internal_has_user();
+}
+inline void Permission::set_has_user() {
+  _impl_._oneof_case_[0] = kUser;
+}
+inline void Permission::clear_user() {
+  if (_internal_has_user()) {
+    _impl_.subject_.user_ = 0;
+    clear_has_subject();
+  }
+}
+inline int32_t Permission::_internal_user() const {
+  if (_internal_has_user()) {
+    return _impl_.subject_.user_;
+  }
+  return 0;
+}
+inline void Permission::_internal_set_user(int32_t value) {
+  if (!_internal_has_user()) {
+    clear_subject();
+    set_has_user();
+  }
+  _impl_.subject_.user_ = value;
+}
+inline int32_t Permission::user() const {
+  // @@protoc_insertion_point(field_get:palm.auth.v1.Permission.user)
+  return _internal_user();
+}
+inline void Permission::set_user(int32_t value) {
+  _internal_set_user(value);
+  // @@protoc_insertion_point(field_set:palm.auth.v1.Permission.user)
+}
+
+// int32 role = 12;
+inline bool Permission::_internal_has_role() const {
+  return subject_case() == kRole;
+}
+inline bool Permission::has_role() const {
+  return _internal_has_role();
+}
+inline void Permission::set_has_role() {
+  _impl_._oneof_case_[0] = kRole;
+}
+inline void Permission::clear_role() {
+  if (_internal_has_role()) {
+    _impl_.subject_.role_ = 0;
+    clear_has_subject();
+  }
+}
+inline int32_t Permission::_internal_role() const {
+  if (_internal_has_role()) {
+    return _impl_.subject_.role_;
+  }
+  return 0;
+}
+inline void Permission::_internal_set_role(int32_t value) {
+  if (!_internal_has_role()) {
+    clear_subject();
+    set_has_role();
+  }
+  _impl_.subject_.role_ = value;
+}
+inline int32_t Permission::role() const {
+  // @@protoc_insertion_point(field_get:palm.auth.v1.Permission.role)
+  return _internal_role();
+}
+inline void Permission::set_role(int32_t value) {
+  _internal_set_role(value);
+  // @@protoc_insertion_point(field_set:palm.auth.v1.Permission.role)
+}
+
+inline bool Permission::has_subject() const {
+  return subject_case() != SUBJECT_NOT_SET;
+}
+inline void Permission::clear_has_subject() {
+  _impl_._oneof_case_[0] = SUBJECT_NOT_SET;
+}
+inline Permission::SubjectCase Permission::subject_case() const {
+  return Permission::SubjectCase(_impl_._oneof_case_[0]);
+}
 // -------------------------------------------------------------------
 
 // UserSignInRequest
@@ -10000,38 +10711,41 @@ UserSignInResponse::mutable_roles() {
   return &_impl_.roles_;
 }
 
-// repeated .palm.rbac.v1.PermissionsResponse.Item permissions = 12;
+// repeated .palm.auth.v1.Permission permissions = 12;
 inline int UserSignInResponse::_internal_permissions_size() const {
   return _impl_.permissions_.size();
 }
 inline int UserSignInResponse::permissions_size() const {
   return _internal_permissions_size();
 }
-inline ::palm::rbac::v1::PermissionsResponse_Item* UserSignInResponse::mutable_permissions(int index) {
+inline void UserSignInResponse::clear_permissions() {
+  _impl_.permissions_.Clear();
+}
+inline ::palm::auth::v1::Permission* UserSignInResponse::mutable_permissions(int index) {
   // @@protoc_insertion_point(field_mutable:palm.auth.v1.UserSignInResponse.permissions)
   return _impl_.permissions_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::rbac::v1::PermissionsResponse_Item >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::auth::v1::Permission >*
 UserSignInResponse::mutable_permissions() {
   // @@protoc_insertion_point(field_mutable_list:palm.auth.v1.UserSignInResponse.permissions)
   return &_impl_.permissions_;
 }
-inline const ::palm::rbac::v1::PermissionsResponse_Item& UserSignInResponse::_internal_permissions(int index) const {
+inline const ::palm::auth::v1::Permission& UserSignInResponse::_internal_permissions(int index) const {
   return _impl_.permissions_.Get(index);
 }
-inline const ::palm::rbac::v1::PermissionsResponse_Item& UserSignInResponse::permissions(int index) const {
+inline const ::palm::auth::v1::Permission& UserSignInResponse::permissions(int index) const {
   // @@protoc_insertion_point(field_get:palm.auth.v1.UserSignInResponse.permissions)
   return _internal_permissions(index);
 }
-inline ::palm::rbac::v1::PermissionsResponse_Item* UserSignInResponse::_internal_add_permissions() {
+inline ::palm::auth::v1::Permission* UserSignInResponse::_internal_add_permissions() {
   return _impl_.permissions_.Add();
 }
-inline ::palm::rbac::v1::PermissionsResponse_Item* UserSignInResponse::add_permissions() {
-  ::palm::rbac::v1::PermissionsResponse_Item* _add = _internal_add_permissions();
+inline ::palm::auth::v1::Permission* UserSignInResponse::add_permissions() {
+  ::palm::auth::v1::Permission* _add = _internal_add_permissions();
   // @@protoc_insertion_point(field_add:palm.auth.v1.UserSignInResponse.permissions)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::rbac::v1::PermissionsResponse_Item >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::palm::auth::v1::Permission >&
 UserSignInResponse::permissions() const {
   // @@protoc_insertion_point(field_list:palm.auth.v1.UserSignInResponse.permissions)
   return _impl_.permissions_;
@@ -11555,24 +12269,30 @@ inline void UserLogsResponse_Item::set_allocated_message(std::string* message) {
   // @@protoc_insertion_point(field_set_allocated:palm.auth.v1.UserLogsResponse.Item.message)
 }
 
-// .palm.rbac.v1.ResourcesResponse.Item resource = 6;
+// .palm.auth.v1.Permission.Resource resource = 6;
 inline bool UserLogsResponse_Item::_internal_has_resource() const {
   return this != internal_default_instance() && _impl_.resource_ != nullptr;
 }
 inline bool UserLogsResponse_Item::has_resource() const {
   return _internal_has_resource();
 }
-inline const ::palm::rbac::v1::ResourcesResponse_Item& UserLogsResponse_Item::_internal_resource() const {
-  const ::palm::rbac::v1::ResourcesResponse_Item* p = _impl_.resource_;
-  return p != nullptr ? *p : reinterpret_cast<const ::palm::rbac::v1::ResourcesResponse_Item&>(
-      ::palm::rbac::v1::_ResourcesResponse_Item_default_instance_);
+inline void UserLogsResponse_Item::clear_resource() {
+  if (GetArenaForAllocation() == nullptr && _impl_.resource_ != nullptr) {
+    delete _impl_.resource_;
+  }
+  _impl_.resource_ = nullptr;
 }
-inline const ::palm::rbac::v1::ResourcesResponse_Item& UserLogsResponse_Item::resource() const {
+inline const ::palm::auth::v1::Permission_Resource& UserLogsResponse_Item::_internal_resource() const {
+  const ::palm::auth::v1::Permission_Resource* p = _impl_.resource_;
+  return p != nullptr ? *p : reinterpret_cast<const ::palm::auth::v1::Permission_Resource&>(
+      ::palm::auth::v1::_Permission_Resource_default_instance_);
+}
+inline const ::palm::auth::v1::Permission_Resource& UserLogsResponse_Item::resource() const {
   // @@protoc_insertion_point(field_get:palm.auth.v1.UserLogsResponse.Item.resource)
   return _internal_resource();
 }
 inline void UserLogsResponse_Item::unsafe_arena_set_allocated_resource(
-    ::palm::rbac::v1::ResourcesResponse_Item* resource) {
+    ::palm::auth::v1::Permission_Resource* resource) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.resource_);
   }
@@ -11584,9 +12304,9 @@ inline void UserLogsResponse_Item::unsafe_arena_set_allocated_resource(
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.auth.v1.UserLogsResponse.Item.resource)
 }
-inline ::palm::rbac::v1::ResourcesResponse_Item* UserLogsResponse_Item::release_resource() {
+inline ::palm::auth::v1::Permission_Resource* UserLogsResponse_Item::release_resource() {
   
-  ::palm::rbac::v1::ResourcesResponse_Item* temp = _impl_.resource_;
+  ::palm::auth::v1::Permission_Resource* temp = _impl_.resource_;
   _impl_.resource_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -11599,35 +12319,34 @@ inline ::palm::rbac::v1::ResourcesResponse_Item* UserLogsResponse_Item::release_
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::palm::rbac::v1::ResourcesResponse_Item* UserLogsResponse_Item::unsafe_arena_release_resource() {
+inline ::palm::auth::v1::Permission_Resource* UserLogsResponse_Item::unsafe_arena_release_resource() {
   // @@protoc_insertion_point(field_release:palm.auth.v1.UserLogsResponse.Item.resource)
   
-  ::palm::rbac::v1::ResourcesResponse_Item* temp = _impl_.resource_;
+  ::palm::auth::v1::Permission_Resource* temp = _impl_.resource_;
   _impl_.resource_ = nullptr;
   return temp;
 }
-inline ::palm::rbac::v1::ResourcesResponse_Item* UserLogsResponse_Item::_internal_mutable_resource() {
+inline ::palm::auth::v1::Permission_Resource* UserLogsResponse_Item::_internal_mutable_resource() {
   
   if (_impl_.resource_ == nullptr) {
-    auto* p = CreateMaybeMessage<::palm::rbac::v1::ResourcesResponse_Item>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::palm::auth::v1::Permission_Resource>(GetArenaForAllocation());
     _impl_.resource_ = p;
   }
   return _impl_.resource_;
 }
-inline ::palm::rbac::v1::ResourcesResponse_Item* UserLogsResponse_Item::mutable_resource() {
-  ::palm::rbac::v1::ResourcesResponse_Item* _msg = _internal_mutable_resource();
+inline ::palm::auth::v1::Permission_Resource* UserLogsResponse_Item::mutable_resource() {
+  ::palm::auth::v1::Permission_Resource* _msg = _internal_mutable_resource();
   // @@protoc_insertion_point(field_mutable:palm.auth.v1.UserLogsResponse.Item.resource)
   return _msg;
 }
-inline void UserLogsResponse_Item::set_allocated_resource(::palm::rbac::v1::ResourcesResponse_Item* resource) {
+inline void UserLogsResponse_Item::set_allocated_resource(::palm::auth::v1::Permission_Resource* resource) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.resource_);
+    delete _impl_.resource_;
   }
   if (resource) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(resource));
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(resource);
     if (message_arena != submessage_arena) {
       resource = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, resource, submessage_arena);
@@ -17363,6 +18082,10 @@ inline void LocaleUpdateRequest::set_allocated_message(std::string* message) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

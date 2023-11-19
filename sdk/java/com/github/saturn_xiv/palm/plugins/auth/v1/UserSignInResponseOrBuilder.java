@@ -72,27 +72,27 @@ public interface UserSignInResponseOrBuilder extends
       getRolesBytes(int index);
 
   /**
-   * <code>repeated .palm.rbac.v1.PermissionsResponse.Item permissions = 12;</code>
+   * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
    */
-  java.util.List<com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionsResponse.Item> 
+  java.util.List<com.github.saturn_xiv.palm.plugins.auth.v1.Permission> 
       getPermissionsList();
   /**
-   * <code>repeated .palm.rbac.v1.PermissionsResponse.Item permissions = 12;</code>
+   * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
    */
-  com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionsResponse.Item getPermissions(int index);
+  com.github.saturn_xiv.palm.plugins.auth.v1.Permission getPermissions(int index);
   /**
-   * <code>repeated .palm.rbac.v1.PermissionsResponse.Item permissions = 12;</code>
+   * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
    */
   int getPermissionsCount();
   /**
-   * <code>repeated .palm.rbac.v1.PermissionsResponse.Item permissions = 12;</code>
+   * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
    */
-  java.util.List<? extends com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionsResponse.ItemOrBuilder> 
+  java.util.List<? extends com.github.saturn_xiv.palm.plugins.auth.v1.PermissionOrBuilder> 
       getPermissionsOrBuilderList();
   /**
-   * <code>repeated .palm.rbac.v1.PermissionsResponse.Item permissions = 12;</code>
+   * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
    */
-  com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionsResponse.ItemOrBuilder getPermissionsOrBuilder(
+  com.github.saturn_xiv.palm.plugins.auth.v1.PermissionOrBuilder getPermissionsOrBuilder(
       int index);
 
   /**

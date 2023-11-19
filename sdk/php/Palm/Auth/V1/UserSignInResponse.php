@@ -30,7 +30,7 @@ class UserSignInResponse extends \Google\Protobuf\Internal\Message
      */
     private $roles;
     /**
-     * Generated from protobuf field <code>repeated .palm.rbac.v1.PermissionsResponse.Item permissions = 12;</code>
+     * Generated from protobuf field <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
      */
     private $permissions;
     /**
@@ -56,7 +56,7 @@ class UserSignInResponse extends \Google\Protobuf\Internal\Message
      *     @type \Palm\Auth\V1\UserIndexResponse\Item $user
      *     @type string $provider_type
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $roles
-     *     @type array<\Palm\Rbac\V1\PermissionsResponse\Item>|\Google\Protobuf\Internal\RepeatedField $permissions
+     *     @type array<\Palm\Auth\V1\Permission>|\Google\Protobuf\Internal\RepeatedField $permissions
      *     @type bool $has_google
      *     @type bool $has_wechat_mini_program
      *     @type bool $has_wechat_oauth2
@@ -166,7 +166,7 @@ class UserSignInResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .palm.rbac.v1.PermissionsResponse.Item permissions = 12;</code>
+     * Generated from protobuf field <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
      * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getPermissions()
@@ -175,13 +175,13 @@ class UserSignInResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>repeated .palm.rbac.v1.PermissionsResponse.Item permissions = 12;</code>
-     * @param array<\Palm\Rbac\V1\PermissionsResponse\Item>|\Google\Protobuf\Internal\RepeatedField $var
+     * Generated from protobuf field <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * @param array<\Palm\Auth\V1\Permission>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setPermissions($var)
     {
-        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Palm\Rbac\V1\PermissionsResponse\Item::class);
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Palm\Auth\V1\Permission::class);
         $this->permissions = $arr;
 
         return $this;

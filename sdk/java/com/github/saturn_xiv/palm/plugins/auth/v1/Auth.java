@@ -25,6 +25,16 @@ public final class Auth {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_palm_auth_v1_Oauth2State_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_palm_auth_v1_Permission_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_palm_auth_v1_Permission_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_palm_auth_v1_Permission_Resource_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_palm_auth_v1_Permission_Resource_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_palm_auth_v1_UserSignInRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -241,245 +251,248 @@ public final class Auth {
       "\n\nauth.proto\022\014palm.auth.v1\032\033google/proto" +
       "buf/empty.proto\032\037google/protobuf/timesta" +
       "mp.proto\032\036google/protobuf/duration.proto" +
-      "\032\tnut.proto\032\nrbac.proto\032\014orchid.proto\"1\n" +
-      "\nUserDetail\022\020\n\010nickname\030\001 \001(\t\022\021\n\treal_na" +
-      "me\030\002 \001(\t\"Q\n\013Oauth2State\022\014\n\004goto\030\001 \001(\t\022\014\n" +
-      "\004host\030\002 \001(\t\022\021\n\004user\030\003 \001(\tH\000\210\001\001\022\n\n\002id\030\t \001" +
-      "(\tB\007\n\005_user\"z\n\021UserSignInRequest\022\022\n\010nick" +
-      "name\030\001 \001(\tH\000\022\017\n\005email\030\002 \001(\tH\000\022\020\n\010passwor" +
-      "d\030\t \001(\t\022&\n\003ttl\030\013 \001(\0132\031.google.protobuf.D" +
-      "urationB\006\n\004user\"M\n\020UserQueryRequest\022\022\n\010n" +
-      "ickname\030\001 \001(\tH\000\022\017\n\005email\030\002 \001(\tH\000\022\014\n\004home" +
-      "\030\t \001(\tB\006\n\004user\"\212\002\n\022UserSignInResponse\022\r\n" +
-      "\005token\030\001 \001(\t\0222\n\004user\030\002 \001(\0132$.palm.auth.v" +
-      "1.UserIndexResponse.Item\022\025\n\rprovider_typ" +
-      "e\030\t \001(\t\022\r\n\005roles\030\013 \003(\t\022;\n\013permissions\030\014 " +
-      "\003(\0132&.palm.rbac.v1.PermissionsResponse.I" +
-      "tem\022\022\n\nhas_google\030\025 \001(\010\022\037\n\027has_wechat_mi" +
-      "ni_program\030\026 \001(\010\022\031\n\021has_wechat_oauth2\030\027 " +
-      "\001(\010\"\207\001\n\021UserSignUpRequest\022\021\n\treal_name\030\001" +
-      " \001(\t\022\020\n\010nickname\030\002 \001(\t\022\r\n\005email\030\003 \001(\t\022\020\n" +
-      "\010password\030\004 \001(\t\022\014\n\004lang\030\013 \001(\t\022\020\n\010timezon" +
-      "e\030\014 \001(\t\022\014\n\004home\030\025 \001(\t\"#\n\020UserTokenReques" +
-      "t\022\017\n\007payload\030\001 \001(\t\";\n\030UserResetPasswordR" +
-      "equest\022\r\n\005token\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"" +
-      "8\n\026UserSetPasswordRequest\022\014\n\004user\030\001 \001(\005\022" +
-      "\020\n\010password\030\002 \001(\t\"y\n\025UserSetProfileReque" +
-      "st\022\021\n\treal_name\030\001 \001(\t\022\016\n\006avatar\030\002 \001(\t\022\020\n" +
-      "\010timezone\030\010 \001(\t\022\014\n\004lang\030\t \001(\t\022\016\n\006wechat\030" +
-      "\013 \001(\t\022\r\n\005phone\030\014 \001(\t\"\233\001\n\026UserGetProfileR" +
-      "esponse\022\021\n\treal_name\030\001 \001(\t\022\016\n\006avatar\030\002 \001" +
-      "(\t\022\020\n\010nickname\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\022\020\n\010t" +
-      "imezone\030\010 \001(\t\022\014\n\004lang\030\t \001(\t\022\016\n\006wechat\030\013 " +
-      "\001(\t\022\r\n\005phone\030\014 \001(\t\"\231\003\n\020UserLogsResponse\022" +
-      "+\n\npagination\030\001 \001(\0132\027.palm.nut.v1.Pagina" +
-      "tion\0222\n\005items\030\013 \003(\0132#.palm.auth.v1.UserL" +
-      "ogsResponse.Item\032\243\002\n\004Item\022\n\n\002id\030\001 \001(\005\022\017\n" +
-      "\007user_id\030\002 \001(\005\022\n\n\002ip\030\003 \001(\t\0228\n\005level\030\004 \001(" +
-      "\0162).palm.auth.v1.UserLogsResponse.Item.L" +
-      "evel\022\017\n\007message\030\005 \001(\t\0226\n\010resource\030\006 \001(\0132" +
-      "$.palm.rbac.v1.ResourcesResponse.Item\022.\n" +
-      "\ncreated_at\030\013 \001(\0132\032.google.protobuf.Time" +
-      "stamp\"?\n\005Level\022\t\n\005DEBUG\020\000\022\010\n\004INFO\020\001\022\013\n\007W" +
-      "ARNING\020\002\022\t\n\005ERROR\020\003\022\t\n\005PANIC\020\004\"K\n\031UserCh" +
-      "angePasswordRequest\022\030\n\020current_password\030" +
-      "\001 \001(\t\022\024\n\014new_password\030\002 \001(\t\"\217\006\n\021UserInde" +
-      "xResponse\022+\n\npagination\030\001 \001(\0132\027.palm.nut" +
-      ".v1.Pagination\0223\n\005items\030\013 \003(\0132$.palm.aut" +
-      "h.v1.UserIndexResponse.Item\032\227\005\n\004Item\022\n\n\002" +
-      "id\030\001 \001(\005\022\r\n\005email\030\002 \001(\t\022\020\n\010nickname\030\003 \001(" +
-      "\t\022\021\n\treal_name\030\004 \001(\t\022.\n\nupdated_at\030\t \001(\013" +
-      "2\032.google.protobuf.Timestamp\0228\n\017last_sig" +
-      "n_in_at\030\013 \001(\0132\032.google.protobuf.Timestam" +
-      "pH\000\210\001\001\022\034\n\017last_sign_in_ip\030\014 \001(\tH\001\210\001\001\022;\n\022" +
-      "current_sign_in_at\030\r \001(\0132\032.google.protob" +
-      "uf.TimestampH\002\210\001\001\022\037\n\022current_sign_in_ip\030" +
-      "\016 \001(\tH\003\210\001\001\022\025\n\rsign_in_count\030\023 \001(\005\022\014\n\004lan" +
-      "g\030\025 \001(\t\022\020\n\010timezone\030\026 \001(\t\022\016\n\006avatar\030\027 \001(" +
-      "\t\0225\n\014confirmed_at\030\033 \001(\0132\032.google.protobu" +
-      "f.TimestampH\004\210\001\001\0222\n\tlocked_at\030\034 \001(\0132\032.go" +
-      "ogle.protobuf.TimestampH\005\210\001\001\0223\n\ndeleted_" +
-      "at\030\035 \001(\0132\032.google.protobuf.TimestampH\006\210\001" +
-      "\001B\022\n\020_last_sign_in_atB\022\n\020_last_sign_in_i" +
-      "pB\025\n\023_current_sign_in_atB\025\n\023_current_sig" +
-      "n_in_ipB\017\n\r_confirmed_atB\014\n\n_locked_atB\r" +
-      "\n\013_deleted_at\"\221\001\n\025SignInByGoogleRequest\022" +
-      "\016\n\006scopes\030\001 \003(\t\022\014\n\004code\030\002 \001(\t\022\r\n\005state\030\003" +
-      " \001(\t\022\024\n\014redirect_uri\030\004 \001(\t\022\r\n\005nonce\030\t \001(" +
-      "\t\022&\n\003ttl\030\013 \001(\0132\031.google.protobuf.Duratio" +
-      "n\"X\n\026GoogleSignInUrlRequest\022\024\n\014redirect_" +
-      "uri\030\001 \001(\t\022(\n\005state\030\002 \001(\0132\031.palm.auth.v1." +
-      "Oauth2State\"5\n\027GoogleSignInUrlResponse\022\013" +
-      "\n\003url\030\001 \001(\t\022\r\n\005nonce\030\002 \001(\t\"D\n\031WechatUser" +
-      "BindByIdRequest\022\017\n\007user_id\030\001 \001(\005\022\026\n\016wech" +
-      "at_user_id\030\002 \001(\005\"D\n\036WechatUserBindByAcco" +
-      "untRequest\022\020\n\010nickname\030\001 \001(\t\022\020\n\010password" +
-      "\030\002 \001(\t\"A\n\036WechatUserQueryByOpenIdRequest" +
-      "\022\016\n\006app_id\030\001 \001(\t\022\017\n\007open_id\030\002 \001(\t\"3\n\037Wec" +
-      "hatUserQueryByUnionIdRequest\022\020\n\010union_id" +
-      "\030\001 \001(\t\"\213\002\n WechatAllMiniProgramUserRespo" +
-      "nse\022B\n\005items\030\001 \003(\01323.palm.auth.v1.Wechat" +
-      "AllMiniProgramUserResponse.Item\032\242\001\n\004Item" +
-      "\022\n\n\002id\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\005\022\020\n\010union_i" +
-      "d\030\003 \001(\t\022\016\n\006app_id\030\004 \001(\t\022\017\n\007open_id\030\005 \001(\t" +
-      "\022\025\n\010nickname\030\013 \001(\tH\000\210\001\001\022\027\n\navatar_url\030\014 " +
-      "\001(\tH\001\210\001\001B\013\n\t_nicknameB\r\n\013_avatar_url\"\322\002\n" +
-      "\033WechatAllOauth2UserResponse\022=\n\005items\030\001 " +
-      "\003(\0132..palm.auth.v1.WechatAllOauth2UserRe" +
-      "sponse.Item\032\363\001\n\004Item\022\n\n\002id\030\001 \001(\005\022\017\n\007user" +
-      "_id\030\002 \001(\005\022\020\n\010union_id\030\003 \001(\t\022\016\n\006app_id\030\004 " +
-      "\001(\t\022\017\n\007open_id\030\005 \001(\t\022\020\n\010nickname\030\013 \001(\t\022\013" +
-      "\n\003sex\030\014 \001(\005\022\014\n\004city\030\r \001(\t\022\020\n\010province\030\016 " +
-      "\001(\t\022\017\n\007country\030\017 \001(\t\022\031\n\014head_img_url\030\020 \001" +
-      "(\tH\000\210\001\001\022\021\n\tprivilege\030\021 \003(\t\022\014\n\004lang\030\022 \001(\t" +
-      "B\017\n\r_head_img_url\"\273\001\n\033SignInByWechatOaut" +
-      "h2Request\022\r\n\005state\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\022\016" +
-      "\n\006app_id\030\003 \001(\t\022G\n\010language\030\010 \001(\01625.palm." +
-      "orchid.v1.WechatOauth2QrConnectRequest.L" +
-      "anguage\022&\n\003ttl\030\013 \001(\0132\031.google.protobuf.D" +
-      "uration\"0\n\037WechatOauth2SignInStateRespon" +
-      "se\022\r\n\005state\030\001 \001(\t\"\215\001\n\034WechatOauth2SignIn" +
-      "UrlRequest\022\016\n\006app_id\030\001 \001(\t\022\024\n\014redirect_u" +
-      "ri\030\002 \001(\t\022G\n\010language\030\003 \001(\01625.palm.orchid" +
-      ".v1.WechatOauth2QrConnectRequest.Languag" +
-      "e\"\226\001\n\025WechatMiniProgramUser\022\016\n\006app_id\030\013 " +
-      "\001(\t\022\017\n\007open_id\030\014 \001(\t\022\020\n\010union_id\030\r \001(\t\022\025" +
-      "\n\010nickname\030\025 \001(\tH\000\210\001\001\022\027\n\navatar_url\030\026 \001(" +
-      "\tH\001\210\001\001B\013\n\t_nicknameB\r\n\013_avatar_url\"K\n\025At" +
-      "tachmentShowRequest\022\n\n\002id\030\001 \001(\005\022&\n\003ttl\030\002" +
-      " \001(\0132\031.google.protobuf.Duration\"_\n\026Attac" +
-      "hmentShowResponse\0228\n\004item\030\001 \001(\0132*.palm.a" +
-      "uth.v1.AttachmentIndexResponse.Item\022\013\n\003u" +
-      "rl\030\002 \001(\t\"\311\002\n\027AttachmentIndexResponse\022+\n\n" +
-      "pagination\030\001 \001(\0132\027.palm.nut.v1.Paginatio" +
-      "n\0229\n\005items\030\013 \003(\0132*.palm.auth.v1.Attachme" +
-      "ntIndexResponse.Item\032\305\001\n\004Item\022\n\n\002id\030\001 \001(" +
-      "\005\022\016\n\006bucket\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\r\n\005title" +
-      "\030\004 \001(\t\022\014\n\004size\030\005 \001(\003\022\024\n\014content_type\030\006 \001" +
-      "(\t\0220\n\006status\030\007 \001(\0162 .palm.nut.v1.MediaCo" +
-      "ntent.Status\022.\n\nupdated_at\030\013 \001(\0132\032.googl" +
-      "e.protobuf.Timestamp\"#\n\023LocaleByLangRequ" +
-      "est\022\014\n\004lang\030\001 \001(\t\"K\n\022LocaleListResponse\022" +
-      "5\n\005items\030\001 \003(\0132&.palm.auth.v1.LocaleInde" +
-      "xResponse.Item\"\352\001\n\023LocaleIndexResponse\0225" +
-      "\n\005items\030\001 \003(\0132&.palm.auth.v1.LocaleIndex" +
-      "Response.Item\022+\n\npagination\030\t \001(\0132\027.palm" +
-      ".nut.v1.Pagination\032o\n\004Item\022\n\n\002id\030\001 \001(\005\022\014" +
-      "\n\004lang\030\002 \001(\t\022\014\n\004code\030\003 \001(\t\022\017\n\007message\030\004 " +
-      "\001(\t\022.\n\nupdated_at\030\t \001(\0132\032.google.protobu" +
-      "f.Timestamp\"#\n\023LocaleByCodeRequest\022\014\n\004co" +
-      "de\030\001 \001(\t\"8\n\032LocaleByLangAndCodeRequest\022\014" +
-      "\n\004lang\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\"B\n\023LocaleCrea" +
-      "teRequest\022\014\n\004lang\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\022\017\n" +
-      "\007message\030\003 \001(\t\"2\n\023LocaleUpdateRequest\022\n\n" +
-      "\002id\030\001 \001(\005\022\017\n\007message\030\002 \001(\t2\215\014\n\004User\022M\n\006S" +
-      "ignIn\022\037.palm.auth.v1.UserSignInRequest\032 " +
-      ".palm.auth.v1.UserSignInResponse\"\000\022C\n\006Si" +
-      "gnUp\022\037.palm.auth.v1.UserSignUpRequest\032\026." +
-      "google.protobuf.Empty\"\000\022J\n\016ConfirmByEmai" +
-      "l\022\036.palm.auth.v1.UserQueryRequest\032\026.goog" +
-      "le.protobuf.Empty\"\000\022J\n\016ConfirmByToken\022\036." +
-      "palm.auth.v1.UserTokenRequest\032\026.google.p" +
-      "rotobuf.Empty\"\000\022I\n\rUnlockByEmail\022\036.palm." +
-      "auth.v1.UserQueryRequest\032\026.google.protob" +
-      "uf.Empty\"\000\022I\n\rUnlockByToken\022\036.palm.auth." +
-      "v1.UserTokenRequest\032\026.google.protobuf.Em" +
-      "pty\"\000\022J\n\016ForgotPassword\022\036.palm.auth.v1.U" +
-      "serQueryRequest\032\026.google.protobuf.Empty\"" +
-      "\000\022Q\n\rResetPassword\022&.palm.auth.v1.UserRe" +
-      "setPasswordRequest\032\026.google.protobuf.Emp" +
-      "ty\"\000\022H\n\007Refresh\022\031.google.protobuf.Durati" +
-      "on\032 .palm.auth.v1.UserSignInResponse\"\000\022<" +
-      "\n\004Logs\022\022.palm.nut.v1.Pager\032\036.palm.auth.v" +
-      "1.UserLogsResponse\"\000\022K\n\nSetProfile\022#.pal" +
-      "m.auth.v1.UserSetProfileRequest\032\026.google" +
-      ".protobuf.Empty\"\000\022S\n\016ChangePassword\022\'.pa" +
-      "lm.auth.v1.UserChangePasswordRequest\032\026.g" +
-      "oogle.protobuf.Empty\"\000\022;\n\007SignOut\022\026.goog" +
-      "le.protobuf.Empty\032\026.google.protobuf.Empt" +
-      "y\"\000\022>\n\005Index\022\022.palm.nut.v1.Pager\032\037.palm." +
-      "auth.v1.UserIndexResponse\"\000\022F\n\004Show\022\026.pa" +
-      "lm.nut.v1.IdRequest\032$.palm.auth.v1.UserI" +
-      "ndexResponse.Item\"\000\022;\n\007Disable\022\026.palm.nu" +
-      "t.v1.IdRequest\032\026.google.protobuf.Empty\"\000" +
-      "\022:\n\006Enable\022\026.palm.nut.v1.IdRequest\032\026.goo" +
-      "gle.protobuf.Empty\"\000\0228\n\004Lock\022\026.palm.nut." +
-      "v1.IdRequest\032\026.google.protobuf.Empty\"\000\022:" +
-      "\n\006Unlock\022\026.palm.nut.v1.IdRequest\032\026.googl" +
-      "e.protobuf.Empty\"\000\022;\n\007Confirm\022\026.palm.nut" +
-      ".v1.IdRequest\032\026.google.protobuf.Empty\"\000\022" +
-      ":\n\006Delete\022\026.palm.nut.v1.IdRequest\032\026.goog" +
-      "le.protobuf.Empty\"\000\022M\n\013SetPassword\022$.pal" +
-      "m.auth.v1.UserSetPasswordRequest\032\026.googl" +
-      "e.protobuf.Empty\"\0002\267\001\n\006Google\022Z\n\tSignInU" +
-      "rl\022$.palm.auth.v1.GoogleSignInUrlRequest" +
-      "\032%.palm.auth.v1.GoogleSignInUrlResponse\"" +
-      "\000\022Q\n\006SignIn\022#.palm.auth.v1.SignInByGoogl" +
-      "eRequest\032 .palm.auth.v1.UserSignInRespon" +
-      "se\"\0002\325\014\n\006Wechat\022\\\n\021Oauth2SignInState\022\026.g" +
-      "oogle.protobuf.Empty\032-.palm.auth.v1.Wech" +
-      "atOauth2SignInStateResponse\"\000\022n\n\017Oauth2S" +
-      "ignInUrl\022*.palm.auth.v1.WechatOauth2Sign" +
-      "InUrlRequest\032-.palm.orchid.v1.WechatOaut" +
-      "h2QrConnectResponse\"\000\022_\n\016SignInByOauth2\022" +
-      ").palm.auth.v1.SignInByWechatOauth2Reque" +
-      "st\032 .palm.auth.v1.UserSignInResponse\"\000\022T" +
-      "\n\rAllOauth2User\022\026.google.protobuf.Empty\032" +
-      ").palm.auth.v1.WechatAllOauth2UserRespon" +
-      "se\"\000\022E\n\021DestroyOauth2User\022\026.palm.nut.v1." +
-      "IdRequest\032\026.google.protobuf.Empty\"\000\022W\n\022B" +
-      "indOauth2UserById\022\'.palm.auth.v1.WechatU" +
-      "serBindByIdRequest\032\026.google.protobuf.Emp" +
-      "ty\"\000\022a\n\027BindOauth2UserByAccount\022,.palm.a" +
-      "uth.v1.WechatUserBindByAccountRequest\032\026." +
-      "google.protobuf.Empty\"\000\022]\n\021GetOauth2User" +
-      "ById\022\026.palm.nut.v1.IdRequest\032..palm.auth" +
-      ".v1.WechatAllOauth2UserResponse.Item\"\000\022w" +
-      "\n\025GetOauth2UserByOpenId\022,.palm.auth.v1.W" +
-      "echatUserQueryByOpenIdRequest\032..palm.aut" +
-      "h.v1.WechatAllOauth2UserResponse.Item\"\000\022" +
-      "t\n\026GetOauth2UserByUnionId\022-.palm.auth.v1" +
-      ".WechatUserQueryByUnionIdRequest\032).palm." +
-      "auth.v1.WechatAllOauth2UserResponse\"\000\022^\n" +
-      "\022AllMiniProgramUser\022\026.google.protobuf.Em" +
-      "pty\032..palm.auth.v1.WechatAllMiniProgramU" +
-      "serResponse\"\000\022J\n\026DestroyMiniProgramUser\022" +
-      "\026.palm.nut.v1.IdRequest\032\026.google.protobu" +
-      "f.Empty\"\000\022\\\n\027BindMiniProgramUserById\022\'.p" +
-      "alm.auth.v1.WechatUserBindByIdRequest\032\026." +
-      "google.protobuf.Empty\"\000\022g\n\026GetMiniProgra" +
-      "mUserById\022\026.palm.nut.v1.IdRequest\0323.palm" +
-      ".auth.v1.WechatAllMiniProgramUserRespons" +
-      "e.Item\"\000\022\201\001\n\032GetMiniProgramUserByOpenId\022" +
-      ",.palm.auth.v1.WechatUserQueryByOpenIdRe" +
-      "quest\0323.palm.auth.v1.WechatAllMiniProgra" +
-      "mUserResponse.Item\"\000\022~\n\033GetMiniProgramUs" +
+      "\032\tnut.proto\032\014orchid.proto\"1\n\nUserDetail\022" +
+      "\020\n\010nickname\030\001 \001(\t\022\021\n\treal_name\030\002 \001(\t\"Q\n\013" +
+      "Oauth2State\022\014\n\004goto\030\001 \001(\t\022\014\n\004host\030\002 \001(\t\022" +
+      "\021\n\004user\030\003 \001(\tH\000\210\001\001\022\n\n\002id\030\t \001(\tB\007\n\005_user\"" +
+      "\254\001\n\nPermission\0221\n\006object\030\001 \001(\0132!.palm.au" +
+      "th.v1.Permission.Resource\022\016\n\006action\030\002 \001(" +
+      "\t\022\016\n\004user\030\013 \001(\005H\000\022\016\n\004role\030\014 \001(\005H\000\0320\n\010Res" +
+      "ource\022\014\n\004type\030\001 \001(\t\022\017\n\002id\030\002 \001(\005H\000\210\001\001B\005\n\003" +
+      "_idB\t\n\007subject\"z\n\021UserSignInRequest\022\022\n\010n" +
+      "ickname\030\001 \001(\tH\000\022\017\n\005email\030\002 \001(\tH\000\022\020\n\010pass" +
+      "word\030\t \001(\t\022&\n\003ttl\030\013 \001(\0132\031.google.protobu" +
+      "f.DurationB\006\n\004user\"M\n\020UserQueryRequest\022\022" +
+      "\n\010nickname\030\001 \001(\tH\000\022\017\n\005email\030\002 \001(\tH\000\022\014\n\004h" +
+      "ome\030\t \001(\tB\006\n\004user\"\374\001\n\022UserSignInResponse" +
+      "\022\r\n\005token\030\001 \001(\t\0222\n\004user\030\002 \001(\0132$.palm.aut" +
+      "h.v1.UserIndexResponse.Item\022\025\n\rprovider_" +
+      "type\030\t \001(\t\022\r\n\005roles\030\013 \003(\t\022-\n\013permissions" +
+      "\030\014 \003(\0132\030.palm.auth.v1.Permission\022\022\n\nhas_" +
+      "google\030\025 \001(\010\022\037\n\027has_wechat_mini_program\030" +
+      "\026 \001(\010\022\031\n\021has_wechat_oauth2\030\027 \001(\010\"\207\001\n\021Use" +
+      "rSignUpRequest\022\021\n\treal_name\030\001 \001(\t\022\020\n\010nic" +
+      "kname\030\002 \001(\t\022\r\n\005email\030\003 \001(\t\022\020\n\010password\030\004" +
+      " \001(\t\022\014\n\004lang\030\013 \001(\t\022\020\n\010timezone\030\014 \001(\t\022\014\n\004" +
+      "home\030\025 \001(\t\"#\n\020UserTokenRequest\022\017\n\007payloa" +
+      "d\030\001 \001(\t\";\n\030UserResetPasswordRequest\022\r\n\005t" +
+      "oken\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"8\n\026UserSetP" +
+      "asswordRequest\022\014\n\004user\030\001 \001(\005\022\020\n\010password" +
+      "\030\002 \001(\t\"y\n\025UserSetProfileRequest\022\021\n\treal_" +
+      "name\030\001 \001(\t\022\016\n\006avatar\030\002 \001(\t\022\020\n\010timezone\030\010" +
+      " \001(\t\022\014\n\004lang\030\t \001(\t\022\016\n\006wechat\030\013 \001(\t\022\r\n\005ph" +
+      "one\030\014 \001(\t\"\233\001\n\026UserGetProfileResponse\022\021\n\t" +
+      "real_name\030\001 \001(\t\022\016\n\006avatar\030\002 \001(\t\022\020\n\010nickn" +
+      "ame\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\022\020\n\010timezone\030\010 \001" +
+      "(\t\022\014\n\004lang\030\t \001(\t\022\016\n\006wechat\030\013 \001(\t\022\r\n\005phon" +
+      "e\030\014 \001(\t\"\226\003\n\020UserLogsResponse\022+\n\npaginati" +
+      "on\030\001 \001(\0132\027.palm.nut.v1.Pagination\0222\n\005ite" +
+      "ms\030\013 \003(\0132#.palm.auth.v1.UserLogsResponse" +
+      ".Item\032\240\002\n\004Item\022\n\n\002id\030\001 \001(\005\022\017\n\007user_id\030\002 " +
+      "\001(\005\022\n\n\002ip\030\003 \001(\t\0228\n\005level\030\004 \001(\0162).palm.au" +
+      "th.v1.UserLogsResponse.Item.Level\022\017\n\007mes" +
+      "sage\030\005 \001(\t\0223\n\010resource\030\006 \001(\0132!.palm.auth" +
+      ".v1.Permission.Resource\022.\n\ncreated_at\030\013 " +
+      "\001(\0132\032.google.protobuf.Timestamp\"?\n\005Level" +
+      "\022\t\n\005DEBUG\020\000\022\010\n\004INFO\020\001\022\013\n\007WARNING\020\002\022\t\n\005ER" +
+      "ROR\020\003\022\t\n\005PANIC\020\004\"K\n\031UserChangePasswordRe" +
+      "quest\022\030\n\020current_password\030\001 \001(\t\022\024\n\014new_p" +
+      "assword\030\002 \001(\t\"\217\006\n\021UserIndexResponse\022+\n\np" +
+      "agination\030\001 \001(\0132\027.palm.nut.v1.Pagination" +
+      "\0223\n\005items\030\013 \003(\0132$.palm.auth.v1.UserIndex" +
+      "Response.Item\032\227\005\n\004Item\022\n\n\002id\030\001 \001(\005\022\r\n\005em" +
+      "ail\030\002 \001(\t\022\020\n\010nickname\030\003 \001(\t\022\021\n\treal_name" +
+      "\030\004 \001(\t\022.\n\nupdated_at\030\t \001(\0132\032.google.prot" +
+      "obuf.Timestamp\0228\n\017last_sign_in_at\030\013 \001(\0132" +
+      "\032.google.protobuf.TimestampH\000\210\001\001\022\034\n\017last" +
+      "_sign_in_ip\030\014 \001(\tH\001\210\001\001\022;\n\022current_sign_i" +
+      "n_at\030\r \001(\0132\032.google.protobuf.TimestampH\002" +
+      "\210\001\001\022\037\n\022current_sign_in_ip\030\016 \001(\tH\003\210\001\001\022\025\n\r" +
+      "sign_in_count\030\023 \001(\005\022\014\n\004lang\030\025 \001(\t\022\020\n\010tim" +
+      "ezone\030\026 \001(\t\022\016\n\006avatar\030\027 \001(\t\0225\n\014confirmed" +
+      "_at\030\033 \001(\0132\032.google.protobuf.TimestampH\004\210" +
+      "\001\001\0222\n\tlocked_at\030\034 \001(\0132\032.google.protobuf." +
+      "TimestampH\005\210\001\001\0223\n\ndeleted_at\030\035 \001(\0132\032.goo" +
+      "gle.protobuf.TimestampH\006\210\001\001B\022\n\020_last_sig" +
+      "n_in_atB\022\n\020_last_sign_in_ipB\025\n\023_current_" +
+      "sign_in_atB\025\n\023_current_sign_in_ipB\017\n\r_co" +
+      "nfirmed_atB\014\n\n_locked_atB\r\n\013_deleted_at\"" +
+      "\221\001\n\025SignInByGoogleRequest\022\016\n\006scopes\030\001 \003(" +
+      "\t\022\014\n\004code\030\002 \001(\t\022\r\n\005state\030\003 \001(\t\022\024\n\014redire" +
+      "ct_uri\030\004 \001(\t\022\r\n\005nonce\030\t \001(\t\022&\n\003ttl\030\013 \001(\013" +
+      "2\031.google.protobuf.Duration\"X\n\026GoogleSig" +
+      "nInUrlRequest\022\024\n\014redirect_uri\030\001 \001(\t\022(\n\005s" +
+      "tate\030\002 \001(\0132\031.palm.auth.v1.Oauth2State\"5\n" +
+      "\027GoogleSignInUrlResponse\022\013\n\003url\030\001 \001(\t\022\r\n" +
+      "\005nonce\030\002 \001(\t\"D\n\031WechatUserBindByIdReques" +
+      "t\022\017\n\007user_id\030\001 \001(\005\022\026\n\016wechat_user_id\030\002 \001" +
+      "(\005\"D\n\036WechatUserBindByAccountRequest\022\020\n\010" +
+      "nickname\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"A\n\036Wech" +
+      "atUserQueryByOpenIdRequest\022\016\n\006app_id\030\001 \001" +
+      "(\t\022\017\n\007open_id\030\002 \001(\t\"3\n\037WechatUserQueryBy" +
+      "UnionIdRequest\022\020\n\010union_id\030\001 \001(\t\"\213\002\n Wec" +
+      "hatAllMiniProgramUserResponse\022B\n\005items\030\001" +
+      " \003(\01323.palm.auth.v1.WechatAllMiniProgram" +
+      "UserResponse.Item\032\242\001\n\004Item\022\n\n\002id\030\001 \001(\005\022\017" +
+      "\n\007user_id\030\002 \001(\005\022\020\n\010union_id\030\003 \001(\t\022\016\n\006app" +
+      "_id\030\004 \001(\t\022\017\n\007open_id\030\005 \001(\t\022\025\n\010nickname\030\013" +
+      " \001(\tH\000\210\001\001\022\027\n\navatar_url\030\014 \001(\tH\001\210\001\001B\013\n\t_n" +
+      "icknameB\r\n\013_avatar_url\"\322\002\n\033WechatAllOaut" +
+      "h2UserResponse\022=\n\005items\030\001 \003(\0132..palm.aut" +
+      "h.v1.WechatAllOauth2UserResponse.Item\032\363\001" +
+      "\n\004Item\022\n\n\002id\030\001 \001(\005\022\017\n\007user_id\030\002 \001(\005\022\020\n\010u" +
+      "nion_id\030\003 \001(\t\022\016\n\006app_id\030\004 \001(\t\022\017\n\007open_id" +
+      "\030\005 \001(\t\022\020\n\010nickname\030\013 \001(\t\022\013\n\003sex\030\014 \001(\005\022\014\n" +
+      "\004city\030\r \001(\t\022\020\n\010province\030\016 \001(\t\022\017\n\007country" +
+      "\030\017 \001(\t\022\031\n\014head_img_url\030\020 \001(\tH\000\210\001\001\022\021\n\tpri" +
+      "vilege\030\021 \003(\t\022\014\n\004lang\030\022 \001(\tB\017\n\r_head_img_" +
+      "url\"\273\001\n\033SignInByWechatOauth2Request\022\r\n\005s" +
+      "tate\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\022\016\n\006app_id\030\003 \001(\t" +
+      "\022G\n\010language\030\010 \001(\01625.palm.orchid.v1.Wech" +
+      "atOauth2QrConnectRequest.Language\022&\n\003ttl" +
+      "\030\013 \001(\0132\031.google.protobuf.Duration\"0\n\037Wec" +
+      "hatOauth2SignInStateResponse\022\r\n\005state\030\001 " +
+      "\001(\t\"\215\001\n\034WechatOauth2SignInUrlRequest\022\016\n\006" +
+      "app_id\030\001 \001(\t\022\024\n\014redirect_uri\030\002 \001(\t\022G\n\010la" +
+      "nguage\030\003 \001(\01625.palm.orchid.v1.WechatOaut" +
+      "h2QrConnectRequest.Language\"\226\001\n\025WechatMi" +
+      "niProgramUser\022\016\n\006app_id\030\013 \001(\t\022\017\n\007open_id" +
+      "\030\014 \001(\t\022\020\n\010union_id\030\r \001(\t\022\025\n\010nickname\030\025 \001" +
+      "(\tH\000\210\001\001\022\027\n\navatar_url\030\026 \001(\tH\001\210\001\001B\013\n\t_nic" +
+      "knameB\r\n\013_avatar_url\"K\n\025AttachmentShowRe" +
+      "quest\022\n\n\002id\030\001 \001(\005\022&\n\003ttl\030\002 \001(\0132\031.google." +
+      "protobuf.Duration\"_\n\026AttachmentShowRespo" +
+      "nse\0228\n\004item\030\001 \001(\0132*.palm.auth.v1.Attachm" +
+      "entIndexResponse.Item\022\013\n\003url\030\002 \001(\t\"\311\002\n\027A" +
+      "ttachmentIndexResponse\022+\n\npagination\030\001 \001" +
+      "(\0132\027.palm.nut.v1.Pagination\0229\n\005items\030\013 \003" +
+      "(\0132*.palm.auth.v1.AttachmentIndexRespons" +
+      "e.Item\032\305\001\n\004Item\022\n\n\002id\030\001 \001(\005\022\016\n\006bucket\030\002 " +
+      "\001(\t\022\014\n\004name\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\022\014\n\004size" +
+      "\030\005 \001(\003\022\024\n\014content_type\030\006 \001(\t\0220\n\006status\030\007" +
+      " \001(\0162 .palm.nut.v1.MediaContent.Status\022." +
+      "\n\nupdated_at\030\013 \001(\0132\032.google.protobuf.Tim" +
+      "estamp\"#\n\023LocaleByLangRequest\022\014\n\004lang\030\001 " +
+      "\001(\t\"K\n\022LocaleListResponse\0225\n\005items\030\001 \003(\013" +
+      "2&.palm.auth.v1.LocaleIndexResponse.Item" +
+      "\"\352\001\n\023LocaleIndexResponse\0225\n\005items\030\001 \003(\0132" +
+      "&.palm.auth.v1.LocaleIndexResponse.Item\022" +
+      "+\n\npagination\030\t \001(\0132\027.palm.nut.v1.Pagina" +
+      "tion\032o\n\004Item\022\n\n\002id\030\001 \001(\005\022\014\n\004lang\030\002 \001(\t\022\014" +
+      "\n\004code\030\003 \001(\t\022\017\n\007message\030\004 \001(\t\022.\n\nupdated" +
+      "_at\030\t \001(\0132\032.google.protobuf.Timestamp\"#\n" +
+      "\023LocaleByCodeRequest\022\014\n\004code\030\001 \001(\t\"8\n\032Lo" +
+      "caleByLangAndCodeRequest\022\014\n\004lang\030\001 \001(\t\022\014" +
+      "\n\004code\030\002 \001(\t\"B\n\023LocaleCreateRequest\022\014\n\004l" +
+      "ang\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\022\017\n\007message\030\003 \001(\t" +
+      "\"2\n\023LocaleUpdateRequest\022\n\n\002id\030\001 \001(\005\022\017\n\007m" +
+      "essage\030\002 \001(\t2\215\014\n\004User\022M\n\006SignIn\022\037.palm.a" +
+      "uth.v1.UserSignInRequest\032 .palm.auth.v1." +
+      "UserSignInResponse\"\000\022C\n\006SignUp\022\037.palm.au" +
+      "th.v1.UserSignUpRequest\032\026.google.protobu" +
+      "f.Empty\"\000\022J\n\016ConfirmByEmail\022\036.palm.auth." +
+      "v1.UserQueryRequest\032\026.google.protobuf.Em" +
+      "pty\"\000\022J\n\016ConfirmByToken\022\036.palm.auth.v1.U" +
+      "serTokenRequest\032\026.google.protobuf.Empty\"" +
+      "\000\022I\n\rUnlockByEmail\022\036.palm.auth.v1.UserQu" +
+      "eryRequest\032\026.google.protobuf.Empty\"\000\022I\n\r" +
+      "UnlockByToken\022\036.palm.auth.v1.UserTokenRe" +
+      "quest\032\026.google.protobuf.Empty\"\000\022J\n\016Forgo" +
+      "tPassword\022\036.palm.auth.v1.UserQueryReques" +
+      "t\032\026.google.protobuf.Empty\"\000\022Q\n\rResetPass" +
+      "word\022&.palm.auth.v1.UserResetPasswordReq" +
+      "uest\032\026.google.protobuf.Empty\"\000\022H\n\007Refres" +
+      "h\022\031.google.protobuf.Duration\032 .palm.auth" +
+      ".v1.UserSignInResponse\"\000\022<\n\004Logs\022\022.palm." +
+      "nut.v1.Pager\032\036.palm.auth.v1.UserLogsResp" +
+      "onse\"\000\022K\n\nSetProfile\022#.palm.auth.v1.User" +
+      "SetProfileRequest\032\026.google.protobuf.Empt" +
+      "y\"\000\022S\n\016ChangePassword\022\'.palm.auth.v1.Use" +
+      "rChangePasswordRequest\032\026.google.protobuf" +
+      ".Empty\"\000\022;\n\007SignOut\022\026.google.protobuf.Em" +
+      "pty\032\026.google.protobuf.Empty\"\000\022>\n\005Index\022\022" +
+      ".palm.nut.v1.Pager\032\037.palm.auth.v1.UserIn" +
+      "dexResponse\"\000\022F\n\004Show\022\026.palm.nut.v1.IdRe" +
+      "quest\032$.palm.auth.v1.UserIndexResponse.I" +
+      "tem\"\000\022;\n\007Disable\022\026.palm.nut.v1.IdRequest" +
+      "\032\026.google.protobuf.Empty\"\000\022:\n\006Enable\022\026.p" +
+      "alm.nut.v1.IdRequest\032\026.google.protobuf.E" +
+      "mpty\"\000\0228\n\004Lock\022\026.palm.nut.v1.IdRequest\032\026" +
+      ".google.protobuf.Empty\"\000\022:\n\006Unlock\022\026.pal" +
+      "m.nut.v1.IdRequest\032\026.google.protobuf.Emp" +
+      "ty\"\000\022;\n\007Confirm\022\026.palm.nut.v1.IdRequest\032" +
+      "\026.google.protobuf.Empty\"\000\022:\n\006Delete\022\026.pa" +
+      "lm.nut.v1.IdRequest\032\026.google.protobuf.Em" +
+      "pty\"\000\022M\n\013SetPassword\022$.palm.auth.v1.User" +
+      "SetPasswordRequest\032\026.google.protobuf.Emp" +
+      "ty\"\0002\267\001\n\006Google\022Z\n\tSignInUrl\022$.palm.auth" +
+      ".v1.GoogleSignInUrlRequest\032%.palm.auth.v" +
+      "1.GoogleSignInUrlResponse\"\000\022Q\n\006SignIn\022#." +
+      "palm.auth.v1.SignInByGoogleRequest\032 .pal" +
+      "m.auth.v1.UserSignInResponse\"\0002\325\014\n\006Wecha" +
+      "t\022\\\n\021Oauth2SignInState\022\026.google.protobuf" +
+      ".Empty\032-.palm.auth.v1.WechatOauth2SignIn" +
+      "StateResponse\"\000\022n\n\017Oauth2SignInUrl\022*.pal" +
+      "m.auth.v1.WechatOauth2SignInUrlRequest\032-" +
+      ".palm.orchid.v1.WechatOauth2QrConnectRes" +
+      "ponse\"\000\022_\n\016SignInByOauth2\022).palm.auth.v1" +
+      ".SignInByWechatOauth2Request\032 .palm.auth" +
+      ".v1.UserSignInResponse\"\000\022T\n\rAllOauth2Use" +
+      "r\022\026.google.protobuf.Empty\032).palm.auth.v1" +
+      ".WechatAllOauth2UserResponse\"\000\022E\n\021Destro" +
+      "yOauth2User\022\026.palm.nut.v1.IdRequest\032\026.go" +
+      "ogle.protobuf.Empty\"\000\022W\n\022BindOauth2UserB" +
+      "yId\022\'.palm.auth.v1.WechatUserBindByIdReq" +
+      "uest\032\026.google.protobuf.Empty\"\000\022a\n\027BindOa" +
+      "uth2UserByAccount\022,.palm.auth.v1.WechatU" +
+      "serBindByAccountRequest\032\026.google.protobu" +
+      "f.Empty\"\000\022]\n\021GetOauth2UserById\022\026.palm.nu" +
+      "t.v1.IdRequest\032..palm.auth.v1.WechatAllO" +
+      "auth2UserResponse.Item\"\000\022w\n\025GetOauth2Use" +
+      "rByOpenId\022,.palm.auth.v1.WechatUserQuery" +
+      "ByOpenIdRequest\032..palm.auth.v1.WechatAll" +
+      "Oauth2UserResponse.Item\"\000\022t\n\026GetOauth2Us" +
       "erByUnionId\022-.palm.auth.v1.WechatUserQue" +
-      "ryByUnionIdRequest\032..palm.auth.v1.Wechat" +
-      "AllMiniProgramUserResponse\"\0002\344\001\n\nAttachm" +
-      "ent\022D\n\005Index\022\022.palm.nut.v1.Pager\032%.palm." +
-      "auth.v1.AttachmentIndexResponse\"\000\022;\n\007Des" +
-      "troy\022\026.palm.nut.v1.IdRequest\032\026.google.pr" +
-      "otobuf.Empty\"\000\022S\n\004Show\022#.palm.auth.v1.At" +
-      "tachmentShowRequest\032$.palm.auth.v1.Attac" +
-      "hmentShowResponse\"\0002\346\004\n\006Locale\022E\n\006Create" +
-      "\022!.palm.auth.v1.LocaleCreateRequest\032\026.go" +
-      "ogle.protobuf.Empty\"\000\022E\n\006Update\022!.palm.a" +
-      "uth.v1.LocaleUpdateRequest\032\026.google.prot" +
-      "obuf.Empty\"\000\022c\n\rByLangAndCode\022(.palm.aut" +
-      "h.v1.LocaleByLangAndCodeRequest\032&.palm.a" +
-      "uth.v1.LocaleIndexResponse.Item\"\000\022H\n\004ByI" +
-      "d\022\026.palm.nut.v1.IdRequest\032&.palm.auth.v1" +
-      ".LocaleIndexResponse.Item\"\000\022O\n\006ByLang\022!." +
-      "palm.auth.v1.LocaleByLangRequest\032 .palm." +
-      "auth.v1.LocaleListResponse\"\000\022O\n\006ByCode\022!" +
-      ".palm.auth.v1.LocaleByCodeRequest\032 .palm" +
-      ".auth.v1.LocaleListResponse\"\000\022@\n\005Index\022\022" +
-      ".palm.nut.v1.Pager\032!.palm.auth.v1.Locale" +
-      "IndexResponse\"\000\022;\n\007Destroy\022\026.palm.nut.v1" +
-      ".IdRequest\032\026.google.protobuf.Empty\"\000B.\n*" +
-      "com.github.saturn_xiv.palm.plugins.auth." +
-      "v1P\001b\006proto3"
+      "ryByUnionIdRequest\032).palm.auth.v1.Wechat" +
+      "AllOauth2UserResponse\"\000\022^\n\022AllMiniProgra" +
+      "mUser\022\026.google.protobuf.Empty\032..palm.aut" +
+      "h.v1.WechatAllMiniProgramUserResponse\"\000\022" +
+      "J\n\026DestroyMiniProgramUser\022\026.palm.nut.v1." +
+      "IdRequest\032\026.google.protobuf.Empty\"\000\022\\\n\027B" +
+      "indMiniProgramUserById\022\'.palm.auth.v1.We" +
+      "chatUserBindByIdRequest\032\026.google.protobu" +
+      "f.Empty\"\000\022g\n\026GetMiniProgramUserById\022\026.pa" +
+      "lm.nut.v1.IdRequest\0323.palm.auth.v1.Wecha" +
+      "tAllMiniProgramUserResponse.Item\"\000\022\201\001\n\032G" +
+      "etMiniProgramUserByOpenId\022,.palm.auth.v1" +
+      ".WechatUserQueryByOpenIdRequest\0323.palm.a" +
+      "uth.v1.WechatAllMiniProgramUserResponse." +
+      "Item\"\000\022~\n\033GetMiniProgramUserByUnionId\022-." +
+      "palm.auth.v1.WechatUserQueryByUnionIdReq" +
+      "uest\032..palm.auth.v1.WechatAllMiniProgram" +
+      "UserResponse\"\0002\344\001\n\nAttachment\022D\n\005Index\022\022" +
+      ".palm.nut.v1.Pager\032%.palm.auth.v1.Attach" +
+      "mentIndexResponse\"\000\022;\n\007Destroy\022\026.palm.nu" +
+      "t.v1.IdRequest\032\026.google.protobuf.Empty\"\000" +
+      "\022S\n\004Show\022#.palm.auth.v1.AttachmentShowRe" +
+      "quest\032$.palm.auth.v1.AttachmentShowRespo" +
+      "nse\"\0002\346\004\n\006Locale\022E\n\006Create\022!.palm.auth.v" +
+      "1.LocaleCreateRequest\032\026.google.protobuf." +
+      "Empty\"\000\022E\n\006Update\022!.palm.auth.v1.LocaleU" +
+      "pdateRequest\032\026.google.protobuf.Empty\"\000\022c" +
+      "\n\rByLangAndCode\022(.palm.auth.v1.LocaleByL" +
+      "angAndCodeRequest\032&.palm.auth.v1.LocaleI" +
+      "ndexResponse.Item\"\000\022H\n\004ById\022\026.palm.nut.v" +
+      "1.IdRequest\032&.palm.auth.v1.LocaleIndexRe" +
+      "sponse.Item\"\000\022O\n\006ByLang\022!.palm.auth.v1.L" +
+      "ocaleByLangRequest\032 .palm.auth.v1.Locale" +
+      "ListResponse\"\000\022O\n\006ByCode\022!.palm.auth.v1." +
+      "LocaleByCodeRequest\032 .palm.auth.v1.Local" +
+      "eListResponse\"\000\022@\n\005Index\022\022.palm.nut.v1.P" +
+      "ager\032!.palm.auth.v1.LocaleIndexResponse\"" +
+      "\000\022;\n\007Destroy\022\026.palm.nut.v1.IdRequest\032\026.g" +
+      "oogle.protobuf.Empty\"\000B.\n*com.github.sat" +
+      "urn_xiv.palm.plugins.auth.v1P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -488,7 +501,6 @@ public final class Auth {
           com.google.protobuf.TimestampProto.getDescriptor(),
           com.google.protobuf.DurationProto.getDescriptor(),
           com.github.saturn_xiv.palm.plugins.nut.v1.Nut.getDescriptor(),
-          com.github.saturn_xiv.palm.plugins.rbac.v1.Rbac.getDescriptor(),
           com.github.saturn_xiv.palm.plugins.orchid.v1.Orchid.getDescriptor(),
         });
     internal_static_palm_auth_v1_UserDetail_descriptor =
@@ -503,62 +515,74 @@ public final class Auth {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_Oauth2State_descriptor,
         new java.lang.String[] { "Goto", "Host", "User", "Id", "User", });
-    internal_static_palm_auth_v1_UserSignInRequest_descriptor =
+    internal_static_palm_auth_v1_Permission_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_palm_auth_v1_Permission_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_palm_auth_v1_Permission_descriptor,
+        new java.lang.String[] { "Object", "Action", "User", "Role", "Subject", });
+    internal_static_palm_auth_v1_Permission_Resource_descriptor =
+      internal_static_palm_auth_v1_Permission_descriptor.getNestedTypes().get(0);
+    internal_static_palm_auth_v1_Permission_Resource_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_palm_auth_v1_Permission_Resource_descriptor,
+        new java.lang.String[] { "Type", "Id", "Id", });
+    internal_static_palm_auth_v1_UserSignInRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_palm_auth_v1_UserSignInRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_UserSignInRequest_descriptor,
         new java.lang.String[] { "Nickname", "Email", "Password", "Ttl", "User", });
     internal_static_palm_auth_v1_UserQueryRequest_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_palm_auth_v1_UserQueryRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_UserQueryRequest_descriptor,
         new java.lang.String[] { "Nickname", "Email", "Home", "User", });
     internal_static_palm_auth_v1_UserSignInResponse_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_palm_auth_v1_UserSignInResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_UserSignInResponse_descriptor,
         new java.lang.String[] { "Token", "User", "ProviderType", "Roles", "Permissions", "HasGoogle", "HasWechatMiniProgram", "HasWechatOauth2", });
     internal_static_palm_auth_v1_UserSignUpRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_palm_auth_v1_UserSignUpRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_UserSignUpRequest_descriptor,
         new java.lang.String[] { "RealName", "Nickname", "Email", "Password", "Lang", "Timezone", "Home", });
     internal_static_palm_auth_v1_UserTokenRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_palm_auth_v1_UserTokenRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_UserTokenRequest_descriptor,
         new java.lang.String[] { "Payload", });
     internal_static_palm_auth_v1_UserResetPasswordRequest_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_palm_auth_v1_UserResetPasswordRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_UserResetPasswordRequest_descriptor,
         new java.lang.String[] { "Token", "Password", });
     internal_static_palm_auth_v1_UserSetPasswordRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_palm_auth_v1_UserSetPasswordRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_UserSetPasswordRequest_descriptor,
         new java.lang.String[] { "User", "Password", });
     internal_static_palm_auth_v1_UserSetProfileRequest_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_palm_auth_v1_UserSetProfileRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_UserSetProfileRequest_descriptor,
         new java.lang.String[] { "RealName", "Avatar", "Timezone", "Lang", "Wechat", "Phone", });
     internal_static_palm_auth_v1_UserGetProfileResponse_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_palm_auth_v1_UserGetProfileResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_UserGetProfileResponse_descriptor,
         new java.lang.String[] { "RealName", "Avatar", "Nickname", "Email", "Timezone", "Lang", "Wechat", "Phone", });
     internal_static_palm_auth_v1_UserLogsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_palm_auth_v1_UserLogsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_UserLogsResponse_descriptor,
@@ -570,13 +594,13 @@ public final class Auth {
         internal_static_palm_auth_v1_UserLogsResponse_Item_descriptor,
         new java.lang.String[] { "Id", "UserId", "Ip", "Level", "Message", "Resource", "CreatedAt", });
     internal_static_palm_auth_v1_UserChangePasswordRequest_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_palm_auth_v1_UserChangePasswordRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_UserChangePasswordRequest_descriptor,
         new java.lang.String[] { "CurrentPassword", "NewPassword", });
     internal_static_palm_auth_v1_UserIndexResponse_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_palm_auth_v1_UserIndexResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_UserIndexResponse_descriptor,
@@ -588,49 +612,49 @@ public final class Auth {
         internal_static_palm_auth_v1_UserIndexResponse_Item_descriptor,
         new java.lang.String[] { "Id", "Email", "Nickname", "RealName", "UpdatedAt", "LastSignInAt", "LastSignInIp", "CurrentSignInAt", "CurrentSignInIp", "SignInCount", "Lang", "Timezone", "Avatar", "ConfirmedAt", "LockedAt", "DeletedAt", "LastSignInAt", "LastSignInIp", "CurrentSignInAt", "CurrentSignInIp", "ConfirmedAt", "LockedAt", "DeletedAt", });
     internal_static_palm_auth_v1_SignInByGoogleRequest_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_palm_auth_v1_SignInByGoogleRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_SignInByGoogleRequest_descriptor,
         new java.lang.String[] { "Scopes", "Code", "State", "RedirectUri", "Nonce", "Ttl", });
     internal_static_palm_auth_v1_GoogleSignInUrlRequest_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_palm_auth_v1_GoogleSignInUrlRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_GoogleSignInUrlRequest_descriptor,
         new java.lang.String[] { "RedirectUri", "State", });
     internal_static_palm_auth_v1_GoogleSignInUrlResponse_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_palm_auth_v1_GoogleSignInUrlResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_GoogleSignInUrlResponse_descriptor,
         new java.lang.String[] { "Url", "Nonce", });
     internal_static_palm_auth_v1_WechatUserBindByIdRequest_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_palm_auth_v1_WechatUserBindByIdRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_WechatUserBindByIdRequest_descriptor,
         new java.lang.String[] { "UserId", "WechatUserId", });
     internal_static_palm_auth_v1_WechatUserBindByAccountRequest_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_palm_auth_v1_WechatUserBindByAccountRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_WechatUserBindByAccountRequest_descriptor,
         new java.lang.String[] { "Nickname", "Password", });
     internal_static_palm_auth_v1_WechatUserQueryByOpenIdRequest_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_palm_auth_v1_WechatUserQueryByOpenIdRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_WechatUserQueryByOpenIdRequest_descriptor,
         new java.lang.String[] { "AppId", "OpenId", });
     internal_static_palm_auth_v1_WechatUserQueryByUnionIdRequest_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_palm_auth_v1_WechatUserQueryByUnionIdRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_WechatUserQueryByUnionIdRequest_descriptor,
         new java.lang.String[] { "UnionId", });
     internal_static_palm_auth_v1_WechatAllMiniProgramUserResponse_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_palm_auth_v1_WechatAllMiniProgramUserResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_WechatAllMiniProgramUserResponse_descriptor,
@@ -642,7 +666,7 @@ public final class Auth {
         internal_static_palm_auth_v1_WechatAllMiniProgramUserResponse_Item_descriptor,
         new java.lang.String[] { "Id", "UserId", "UnionId", "AppId", "OpenId", "Nickname", "AvatarUrl", "Nickname", "AvatarUrl", });
     internal_static_palm_auth_v1_WechatAllOauth2UserResponse_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_palm_auth_v1_WechatAllOauth2UserResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_WechatAllOauth2UserResponse_descriptor,
@@ -654,43 +678,43 @@ public final class Auth {
         internal_static_palm_auth_v1_WechatAllOauth2UserResponse_Item_descriptor,
         new java.lang.String[] { "Id", "UserId", "UnionId", "AppId", "OpenId", "Nickname", "Sex", "City", "Province", "Country", "HeadImgUrl", "Privilege", "Lang", "HeadImgUrl", });
     internal_static_palm_auth_v1_SignInByWechatOauth2Request_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_palm_auth_v1_SignInByWechatOauth2Request_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_SignInByWechatOauth2Request_descriptor,
         new java.lang.String[] { "State", "Code", "AppId", "Language", "Ttl", });
     internal_static_palm_auth_v1_WechatOauth2SignInStateResponse_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_palm_auth_v1_WechatOauth2SignInStateResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_WechatOauth2SignInStateResponse_descriptor,
         new java.lang.String[] { "State", });
     internal_static_palm_auth_v1_WechatOauth2SignInUrlRequest_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_palm_auth_v1_WechatOauth2SignInUrlRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_WechatOauth2SignInUrlRequest_descriptor,
         new java.lang.String[] { "AppId", "RedirectUri", "Language", });
     internal_static_palm_auth_v1_WechatMiniProgramUser_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_palm_auth_v1_WechatMiniProgramUser_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_WechatMiniProgramUser_descriptor,
         new java.lang.String[] { "AppId", "OpenId", "UnionId", "Nickname", "AvatarUrl", "Nickname", "AvatarUrl", });
     internal_static_palm_auth_v1_AttachmentShowRequest_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_palm_auth_v1_AttachmentShowRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_AttachmentShowRequest_descriptor,
         new java.lang.String[] { "Id", "Ttl", });
     internal_static_palm_auth_v1_AttachmentShowResponse_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_palm_auth_v1_AttachmentShowResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_AttachmentShowResponse_descriptor,
         new java.lang.String[] { "Item", "Url", });
     internal_static_palm_auth_v1_AttachmentIndexResponse_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_palm_auth_v1_AttachmentIndexResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_AttachmentIndexResponse_descriptor,
@@ -702,19 +726,19 @@ public final class Auth {
         internal_static_palm_auth_v1_AttachmentIndexResponse_Item_descriptor,
         new java.lang.String[] { "Id", "Bucket", "Name", "Title", "Size", "ContentType", "Status", "UpdatedAt", });
     internal_static_palm_auth_v1_LocaleByLangRequest_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_palm_auth_v1_LocaleByLangRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_LocaleByLangRequest_descriptor,
         new java.lang.String[] { "Lang", });
     internal_static_palm_auth_v1_LocaleListResponse_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_palm_auth_v1_LocaleListResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_LocaleListResponse_descriptor,
         new java.lang.String[] { "Items", });
     internal_static_palm_auth_v1_LocaleIndexResponse_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_palm_auth_v1_LocaleIndexResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_LocaleIndexResponse_descriptor,
@@ -726,25 +750,25 @@ public final class Auth {
         internal_static_palm_auth_v1_LocaleIndexResponse_Item_descriptor,
         new java.lang.String[] { "Id", "Lang", "Code", "Message", "UpdatedAt", });
     internal_static_palm_auth_v1_LocaleByCodeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_palm_auth_v1_LocaleByCodeRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_LocaleByCodeRequest_descriptor,
         new java.lang.String[] { "Code", });
     internal_static_palm_auth_v1_LocaleByLangAndCodeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(35);
     internal_static_palm_auth_v1_LocaleByLangAndCodeRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_LocaleByLangAndCodeRequest_descriptor,
         new java.lang.String[] { "Lang", "Code", });
     internal_static_palm_auth_v1_LocaleCreateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_palm_auth_v1_LocaleCreateRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_LocaleCreateRequest_descriptor,
         new java.lang.String[] { "Lang", "Code", "Message", });
     internal_static_palm_auth_v1_LocaleUpdateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(37);
     internal_static_palm_auth_v1_LocaleUpdateRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_auth_v1_LocaleUpdateRequest_descriptor,
@@ -753,7 +777,6 @@ public final class Auth {
     com.google.protobuf.TimestampProto.getDescriptor();
     com.google.protobuf.DurationProto.getDescriptor();
     com.github.saturn_xiv.palm.plugins.nut.v1.Nut.getDescriptor();
-    com.github.saturn_xiv.palm.plugins.rbac.v1.Rbac.getDescriptor();
     com.github.saturn_xiv.palm.plugins.orchid.v1.Orchid.getDescriptor();
   }
 
