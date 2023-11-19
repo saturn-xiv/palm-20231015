@@ -35,6 +35,4 @@ TEST_CASE("Minio", "[minio]") {
     cli->remove_object(bucket, object);
     cli->remove_bucket(bucket);
   }
-
-  REQUIRE((1 + 1) == 2);
 }

@@ -99,7 +99,16 @@ int main(int argc, char** argv) {
     const loquat::application::Tls tls(cert_file, key_file, ca_file);
 
     apache::thrift::GlobalOutput.setOutputFunction(loquat::set_thrift_logger);
-    loquat::application::launch(static_cast<uint16_t>(port), tls);
+
+    try {
+      loquat::application::launch(static_cast<uint16_t>(port), tls);
+    } catch (std::exception& e) {
+      spdlog::error("{}", e.what());
+
+    } catch (...) {
+      spdlog::error("unknown exception");
+    }
+
   } else if (program.is_subcommand_used(generate_token_command)) {
     const int years = generate_token_command.get<int>("--years");
     const std::string app_id =

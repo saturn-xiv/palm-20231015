@@ -87,11 +87,12 @@ void loquat::application::launch(const uint16_t port,
     spdlog::info("listening on tcps://0.0.0.0:{}", port);
     spdlog::debug("load cert from {}, key from {}, ca from {}", tls.cert_file,
                   tls.key_file, tls.ca_file);
+    sslSocketFactory->ciphers("ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
     sslSocketFactory->loadCertificate(tls.cert_file.c_str());
     sslSocketFactory->loadPrivateKey(tls.key_file.c_str());
     sslSocketFactory->loadTrustedCertificates(tls.ca_file.c_str());
-
-    sslSocketFactory->ciphers("ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
+    sslSocketFactory->authenticate(true);
+    sslSocketFactory->server(true);
   }
 
   std::shared_ptr<apache::thrift::transport::TNonblockingSSLServerSocket>

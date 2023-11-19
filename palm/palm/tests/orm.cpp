@@ -18,7 +18,7 @@ TEST_CASE("PostgreSQL", "[postgresql]") {
     palm::postgresql::PooledConnection con(pool);
 
     REQUIRE(pool->idle_size() == max_size - 1);
-    {
+    SECTION("ping") {
       const auto size = pool->idle_size();
       REQUIRE(size > 0);
       palm::postgresql::PooledConnection con(pool);
@@ -27,7 +27,7 @@ TEST_CASE("PostgreSQL", "[postgresql]") {
       auto row = tx.exec1("SELECT 1");
       tx.commit();
     }
-    {
+    SECTION("detect info") {
       pqxx::work tx{*con.db};
       {
         pqxx::row r = tx.exec1("SELECT VERSION()");

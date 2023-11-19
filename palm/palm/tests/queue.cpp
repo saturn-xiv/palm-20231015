@@ -31,7 +31,7 @@ TEST_CASE("RabbitMQ", "[rabbitmq]") {
 
   const std::string queue = "q.echo";
   const std::string exchange = "ex.test";
-  {
+  SECTION("setuo queue & exchange") {
     std::cout << "declare queue " << queue << std::endl;
     cli.declare_queue(queue, true);
     std::cout << "declare exchange " << exchange << std::endl;
@@ -41,7 +41,7 @@ TEST_CASE("RabbitMQ", "[rabbitmq]") {
               << ") with routing-key(" << queue << ")" << std::endl;
     cli.bind_queue(queue, exchange, queue);
   }
-  {
+  SECTION("publish message") {
     using namespace std::chrono_literals;
     for (int i = 0; i < 10; i++) {
       std::stringstream ss;
@@ -51,7 +51,7 @@ TEST_CASE("RabbitMQ", "[rabbitmq]") {
     }
   }
 
-  {
+  SECTION("consume message") {
     EchoAmqpHandler handler(10);
     cli.consume("testing", queue, handler);
   }
