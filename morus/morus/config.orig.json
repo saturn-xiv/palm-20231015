@@ -1,0 +1,6 @@
+{
+  "port": 9999,
+  "ca-file": "ca.crt",
+  "key-file": "morus.key",
+  "cert-file": "morus.crt"
+}
