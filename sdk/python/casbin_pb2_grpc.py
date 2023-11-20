@@ -200,6 +200,11 @@ class CasbinStub(object):
                 request_serializer=casbin__pb2.PolicyRequest.SerializeToString,
                 response_deserializer=casbin__pb2.BoolReply.FromString,
                 )
+        self.GetDomains = channel.unary_unary(
+                '/palm.casbin.v1.Casbin/GetDomains',
+                request_serializer=casbin__pb2.UserRoleRequest.SerializeToString,
+                response_deserializer=casbin__pb2.ArrayReply.FromString,
+                )
         self.GetRolesForUser = channel.unary_unary(
                 '/palm.casbin.v1.Casbin/GetRolesForUser',
                 request_serializer=casbin__pb2.UserRoleRequest.SerializeToString,
@@ -508,6 +513,12 @@ class CasbinServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetDomains(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetRolesForUser(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -791,6 +802,11 @@ def add_CasbinServicer_to_server(servicer, server):
                     servicer.HasNamedGroupingPolicy,
                     request_deserializer=casbin__pb2.PolicyRequest.FromString,
                     response_serializer=casbin__pb2.BoolReply.SerializeToString,
+            ),
+            'GetDomains': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDomains,
+                    request_deserializer=casbin__pb2.UserRoleRequest.FromString,
+                    response_serializer=casbin__pb2.ArrayReply.SerializeToString,
             ),
             'GetRolesForUser': grpc.unary_unary_rpc_method_handler(
                     servicer.GetRolesForUser,
@@ -1509,6 +1525,23 @@ class Casbin(object):
         return grpc.experimental.unary_unary(request, target, '/palm.casbin.v1.Casbin/HasNamedGroupingPolicy',
             casbin__pb2.PolicyRequest.SerializeToString,
             casbin__pb2.BoolReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetDomains(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/palm.casbin.v1.Casbin/GetDomains',
+            casbin__pb2.UserRoleRequest.SerializeToString,
+            casbin__pb2.ArrayReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

@@ -1630,6 +1630,49 @@ export class CasbinClient {
     this.methodDescriptorHasNamedGroupingPolicy);
   }
 
+  methodDescriptorGetDomains = new grpcWeb.MethodDescriptor(
+    '/palm.casbin.v1.Casbin/GetDomains',
+    grpcWeb.MethodType.UNARY,
+    casbin_pb.UserRoleRequest,
+    casbin_pb.ArrayReply,
+    (request: casbin_pb.UserRoleRequest) => {
+      return request.serializeBinary();
+    },
+    casbin_pb.ArrayReply.deserializeBinary
+  );
+
+  getDomains(
+    request: casbin_pb.UserRoleRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<casbin_pb.ArrayReply>;
+
+  getDomains(
+    request: casbin_pb.UserRoleRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: casbin_pb.ArrayReply) => void): grpcWeb.ClientReadableStream<casbin_pb.ArrayReply>;
+
+  getDomains(
+    request: casbin_pb.UserRoleRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: casbin_pb.ArrayReply) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.casbin.v1.Casbin/GetDomains',
+        request,
+        metadata || {},
+        this.methodDescriptorGetDomains,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.casbin.v1.Casbin/GetDomains',
+    request,
+    metadata || {},
+    this.methodDescriptorGetDomains);
+  }
+
   methodDescriptorGetRolesForUser = new grpcWeb.MethodDescriptor(
     '/palm.casbin.v1.Casbin/GetRolesForUser',
     grpcWeb.MethodType.UNARY,

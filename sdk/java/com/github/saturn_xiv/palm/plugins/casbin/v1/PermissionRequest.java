@@ -18,6 +18,7 @@ private static final long serialVersionUID = 0L;
   private PermissionRequest() {
     user_ = "";
     permissions_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    domain_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -131,6 +132,42 @@ private static final long serialVersionUID = 0L;
     return permissions_.getByteString(index);
   }
 
+  public static final int DOMAIN_FIELD_NUMBER = 4;
+  @SuppressWarnings("serial")
+  private com.google.protobuf.LazyStringList domain_;
+  /**
+   * <code>repeated string domain = 4;</code>
+   * @return A list containing the domain.
+   */
+  public com.google.protobuf.ProtocolStringList
+      getDomainList() {
+    return domain_;
+  }
+  /**
+   * <code>repeated string domain = 4;</code>
+   * @return The count of domain.
+   */
+  public int getDomainCount() {
+    return domain_.size();
+  }
+  /**
+   * <code>repeated string domain = 4;</code>
+   * @param index The index of the element to return.
+   * @return The domain at the given index.
+   */
+  public java.lang.String getDomain(int index) {
+    return domain_.get(index);
+  }
+  /**
+   * <code>repeated string domain = 4;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the domain at the given index.
+   */
+  public com.google.protobuf.ByteString
+      getDomainBytes(int index) {
+    return domain_.getByteString(index);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -153,6 +190,9 @@ private static final long serialVersionUID = 0L;
     }
     for (int i = 0; i < permissions_.size(); i++) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, permissions_.getRaw(i));
+    }
+    for (int i = 0; i < domain_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, domain_.getRaw(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -178,6 +218,14 @@ private static final long serialVersionUID = 0L;
       size += dataSize;
       size += 1 * getPermissionsList().size();
     }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < domain_.size(); i++) {
+        dataSize += computeStringSizeNoTag(domain_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getDomainList().size();
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -199,6 +247,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getUser())) return false;
     if (!getPermissionsList()
         .equals(other.getPermissionsList())) return false;
+    if (!getDomainList()
+        .equals(other.getDomainList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -217,6 +267,10 @@ private static final long serialVersionUID = 0L;
     if (getPermissionsCount() > 0) {
       hash = (37 * hash) + PERMISSIONS_FIELD_NUMBER;
       hash = (53 * hash) + getPermissionsList().hashCode();
+    }
+    if (getDomainCount() > 0) {
+      hash = (37 * hash) + DOMAIN_FIELD_NUMBER;
+      hash = (53 * hash) + getDomainList().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -351,6 +405,8 @@ private static final long serialVersionUID = 0L;
       user_ = "";
       permissions_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       bitField0_ = (bitField0_ & ~0x00000004);
+      domain_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000008);
       return this;
     }
 
@@ -389,6 +445,11 @@ private static final long serialVersionUID = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
       }
       result.permissions_ = permissions_;
+      if (((bitField0_ & 0x00000008) != 0)) {
+        domain_ = domain_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000008);
+      }
+      result.domain_ = domain_;
     }
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.casbin.v1.PermissionRequest result) {
@@ -463,6 +524,16 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       }
+      if (!other.domain_.isEmpty()) {
+        if (domain_.isEmpty()) {
+          domain_ = other.domain_;
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          ensureDomainIsMutable();
+          domain_.addAll(other.domain_);
+        }
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -505,6 +576,12 @@ private static final long serialVersionUID = 0L;
               permissions_.add(s);
               break;
             } // case 26
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+              ensureDomainIsMutable();
+              domain_.add(s);
+              break;
+            } // case 34
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -726,6 +803,110 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       ensurePermissionsIsMutable();
       permissions_.add(value);
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.LazyStringList domain_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    private void ensureDomainIsMutable() {
+      if (!((bitField0_ & 0x00000008) != 0)) {
+        domain_ = new com.google.protobuf.LazyStringArrayList(domain_);
+        bitField0_ |= 0x00000008;
+       }
+    }
+    /**
+     * <code>repeated string domain = 4;</code>
+     * @return A list containing the domain.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getDomainList() {
+      return domain_.getUnmodifiableView();
+    }
+    /**
+     * <code>repeated string domain = 4;</code>
+     * @return The count of domain.
+     */
+    public int getDomainCount() {
+      return domain_.size();
+    }
+    /**
+     * <code>repeated string domain = 4;</code>
+     * @param index The index of the element to return.
+     * @return The domain at the given index.
+     */
+    public java.lang.String getDomain(int index) {
+      return domain_.get(index);
+    }
+    /**
+     * <code>repeated string domain = 4;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the domain at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getDomainBytes(int index) {
+      return domain_.getByteString(index);
+    }
+    /**
+     * <code>repeated string domain = 4;</code>
+     * @param index The index to set the value at.
+     * @param value The domain to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDomain(
+        int index, java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      ensureDomainIsMutable();
+      domain_.set(index, value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string domain = 4;</code>
+     * @param value The domain to add.
+     * @return This builder for chaining.
+     */
+    public Builder addDomain(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      ensureDomainIsMutable();
+      domain_.add(value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string domain = 4;</code>
+     * @param values The domain to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllDomain(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureDomainIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, domain_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string domain = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDomain() {
+      domain_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000008);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string domain = 4;</code>
+     * @param value The bytes of the domain to add.
+     * @return This builder for chaining.
+     */
+    public Builder addDomainBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      ensureDomainIsMutable();
+      domain_.add(value);
       onChanged();
       return this;
     }

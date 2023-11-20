@@ -8,6 +8,7 @@ find_package(redis++ CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(argparse CONFIG REQUIRED)
 find_package(magic_enum CONFIG REQUIRED)
+find_package(rabbitmq-c CONFIG REQUIRED)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(tomlplusplus REQUIRED IMPORTED_TARGET tomlplusplus)
@@ -29,6 +30,7 @@ add_executable(carnation
   ${PROJECT_SOURCE_DIR}/src/utils.cpp
   "${PROJECT_SOURCE_DIR}/src/orm-postgresql.cpp"
   "${PROJECT_SOURCE_DIR}/src/cache-redis.cpp"
+  "${PROJECT_SOURCE_DIR}/src/queue-rabbitmq.cpp"
 )
 set_target_properties(carnation PROPERTIES LINK_FLAGS_RELEASE -s)
 
@@ -38,6 +40,7 @@ target_link_libraries(carnation PUBLIC gourd casbin
   PkgConfig::tomlplusplus 
   PostgreSQL::PostgreSQL libpqxx::pqxx
   redis++::redis++_static
+  rabbitmq::rabbitmq-static
 )
 
 target_include_directories(carnation PUBLIC

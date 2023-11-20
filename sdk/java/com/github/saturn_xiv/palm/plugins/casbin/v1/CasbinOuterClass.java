@@ -119,127 +119,130 @@ public final class CasbinOuterClass {
       "\001(\005\022\r\n\005pType\030\002 \001(\t\"\033\n\nArrayReply\022\r\n\005arra" +
       "y\030\001 \003(\t\"h\n\025FilteredPolicyRequest\022\027\n\017enfo" +
       "rcerHandler\030\001 \001(\005\022\r\n\005pType\030\002 \001(\t\022\022\n\nfiel" +
-      "dIndex\030\003 \001(\005\022\023\n\013fieldValues\030\004 \003(\t\"F\n\017Use" +
+      "dIndex\030\003 \001(\005\022\023\n\013fieldValues\030\004 \003(\t\"V\n\017Use" +
       "rRoleRequest\022\027\n\017enforcerHandler\030\001 \001(\005\022\014\n" +
-      "\004user\030\002 \001(\t\022\014\n\004role\030\003 \001(\t\"O\n\021PermissionR" +
-      "equest\022\027\n\017enforcerHandler\030\001 \001(\005\022\014\n\004user\030" +
-      "\002 \001(\t\022\023\n\013permissions\030\003 \003(\t\"K\n\014Array2DRep" +
-      "ly\022*\n\002d2\030\001 \003(\0132\036.palm.casbin.v1.Array2DR" +
-      "eply.d\032\017\n\001d\022\n\n\002d1\030\001 \003(\t2\224#\n\006Casbin\022U\n\013Ne" +
-      "wEnforcer\022\".palm.casbin.v1.NewEnforcerRe" +
-      "quest\032 .palm.casbin.v1.NewEnforcerReply\"" +
-      "\000\022R\n\nNewAdapter\022!.palm.casbin.v1.NewAdap" +
-      "terRequest\032\037.palm.casbin.v1.NewAdapterRe" +
-      "ply\"\000\022F\n\007Enforce\022\036.palm.casbin.v1.Enforc" +
-      "eRequest\032\031.palm.casbin.v1.BoolReply\"\000\022H\n" +
-      "\nLoadPolicy\022\034.palm.casbin.v1.EmptyReques" +
-      "t\032\032.palm.casbin.v1.EmptyReply\"\000\022H\n\nSaveP" +
-      "olicy\022\034.palm.casbin.v1.EmptyRequest\032\032.pa" +
-      "lm.casbin.v1.EmptyReply\"\000\022G\n\tAddPolicy\022\035" +
-      ".palm.casbin.v1.PolicyRequest\032\031.palm.cas" +
-      "bin.v1.BoolReply\"\000\022L\n\016AddNamedPolicy\022\035.p" +
-      "alm.casbin.v1.PolicyRequest\032\031.palm.casbi" +
-      "n.v1.BoolReply\"\000\022J\n\014RemovePolicy\022\035.palm." +
-      "casbin.v1.PolicyRequest\032\031.palm.casbin.v1" +
-      ".BoolReply\"\000\022O\n\021RemoveNamedPolicy\022\035.palm" +
-      ".casbin.v1.PolicyRequest\032\031.palm.casbin.v" +
-      "1.BoolReply\"\000\022Z\n\024RemoveFilteredPolicy\022%." +
-      "palm.casbin.v1.FilteredPolicyRequest\032\031.p" +
-      "alm.casbin.v1.BoolReply\"\000\022_\n\031RemoveFilte" +
-      "redNamedPolicy\022%.palm.casbin.v1.Filtered" +
-      "PolicyRequest\032\031.palm.casbin.v1.BoolReply" +
-      "\"\000\022I\n\tGetPolicy\022\034.palm.casbin.v1.EmptyRe" +
-      "quest\032\034.palm.casbin.v1.Array2DReply\"\000\022O\n" +
-      "\016GetNamedPolicy\022\035.palm.casbin.v1.PolicyR" +
-      "equest\032\034.palm.casbin.v1.Array2DReply\"\000\022Z" +
-      "\n\021GetFilteredPolicy\022%.palm.casbin.v1.Fil" +
-      "teredPolicyRequest\032\034.palm.casbin.v1.Arra" +
-      "y2DReply\"\000\022_\n\026GetFilteredNamedPolicy\022%.p" +
-      "alm.casbin.v1.FilteredPolicyRequest\032\034.pa" +
-      "lm.casbin.v1.Array2DReply\"\000\022O\n\021AddGroupi" +
-      "ngPolicy\022\035.palm.casbin.v1.PolicyRequest\032" +
-      "\031.palm.casbin.v1.BoolReply\"\000\022T\n\026AddNamed" +
-      "GroupingPolicy\022\035.palm.casbin.v1.PolicyRe" +
-      "quest\032\031.palm.casbin.v1.BoolReply\"\000\022R\n\024Re" +
-      "moveGroupingPolicy\022\035.palm.casbin.v1.Poli" +
-      "cyRequest\032\031.palm.casbin.v1.BoolReply\"\000\022W" +
-      "\n\031RemoveNamedGroupingPolicy\022\035.palm.casbi" +
-      "n.v1.PolicyRequest\032\031.palm.casbin.v1.Bool" +
-      "Reply\"\000\022b\n\034RemoveFilteredGroupingPolicy\022" +
-      "%.palm.casbin.v1.FilteredPolicyRequest\032\031" +
-      ".palm.casbin.v1.BoolReply\"\000\022g\n!RemoveFil" +
-      "teredNamedGroupingPolicy\022%.palm.casbin.v" +
-      "1.FilteredPolicyRequest\032\031.palm.casbin.v1" +
-      ".BoolReply\"\000\022Q\n\021GetGroupingPolicy\022\034.palm" +
-      ".casbin.v1.EmptyRequest\032\034.palm.casbin.v1" +
-      ".Array2DReply\"\000\022W\n\026GetNamedGroupingPolic" +
-      "y\022\035.palm.casbin.v1.PolicyRequest\032\034.palm." +
-      "casbin.v1.Array2DReply\"\000\022b\n\031GetFilteredG" +
-      "roupingPolicy\022%.palm.casbin.v1.FilteredP" +
-      "olicyRequest\032\034.palm.casbin.v1.Array2DRep" +
-      "ly\"\000\022g\n\036GetFilteredNamedGroupingPolicy\022%" +
-      ".palm.casbin.v1.FilteredPolicyRequest\032\034." +
-      "palm.casbin.v1.Array2DReply\"\000\022L\n\016GetAllS" +
-      "ubjects\022\034.palm.casbin.v1.EmptyRequest\032\032." +
-      "palm.casbin.v1.ArrayReply\"\000\022U\n\023GetAllNam" +
-      "edSubjects\022 .palm.casbin.v1.SimpleGetReq" +
-      "uest\032\032.palm.casbin.v1.ArrayReply\"\000\022K\n\rGe" +
-      "tAllObjects\022\034.palm.casbin.v1.EmptyReques" +
-      "t\032\032.palm.casbin.v1.ArrayReply\"\000\022T\n\022GetAl" +
-      "lNamedObjects\022 .palm.casbin.v1.SimpleGet" +
-      "Request\032\032.palm.casbin.v1.ArrayReply\"\000\022K\n" +
-      "\rGetAllActions\022\034.palm.casbin.v1.EmptyReq" +
-      "uest\032\032.palm.casbin.v1.ArrayReply\"\000\022T\n\022Ge" +
-      "tAllNamedActions\022 .palm.casbin.v1.Simple" +
-      "GetRequest\032\032.palm.casbin.v1.ArrayReply\"\000" +
-      "\022I\n\013GetAllRoles\022\034.palm.casbin.v1.EmptyRe" +
-      "quest\032\032.palm.casbin.v1.ArrayReply\"\000\022R\n\020G" +
-      "etAllNamedRoles\022 .palm.casbin.v1.SimpleG" +
-      "etRequest\032\032.palm.casbin.v1.ArrayReply\"\000\022" +
-      "G\n\tHasPolicy\022\035.palm.casbin.v1.PolicyRequ" +
-      "est\032\031.palm.casbin.v1.BoolReply\"\000\022L\n\016HasN" +
-      "amedPolicy\022\035.palm.casbin.v1.PolicyReques" +
-      "t\032\031.palm.casbin.v1.BoolReply\"\000\022O\n\021HasGro" +
-      "upingPolicy\022\035.palm.casbin.v1.PolicyReque" +
-      "st\032\031.palm.casbin.v1.BoolReply\"\000\022T\n\026HasNa" +
-      "medGroupingPolicy\022\035.palm.casbin.v1.Polic" +
-      "yRequest\032\031.palm.casbin.v1.BoolReply\"\000\022P\n" +
-      "\017GetRolesForUser\022\037.palm.casbin.v1.UserRo" +
-      "leRequest\032\032.palm.casbin.v1.ArrayReply\"\000\022" +
-      "X\n\027GetImplicitRolesForUser\022\037.palm.casbin" +
-      ".v1.UserRoleRequest\032\032.palm.casbin.v1.Arr" +
-      "ayReply\"\000\022P\n\017GetUsersForRole\022\037.palm.casb" +
-      "in.v1.UserRoleRequest\032\032.palm.casbin.v1.A" +
-      "rrayReply\"\000\022N\n\016HasRoleForUser\022\037.palm.cas" +
-      "bin.v1.UserRoleRequest\032\031.palm.casbin.v1." +
-      "BoolReply\"\000\022N\n\016AddRoleForUser\022\037.palm.cas" +
-      "bin.v1.UserRoleRequest\032\031.palm.casbin.v1." +
-      "BoolReply\"\000\022Q\n\021DeleteRoleForUser\022\037.palm." +
-      "casbin.v1.UserRoleRequest\032\031.palm.casbin." +
-      "v1.BoolReply\"\000\022R\n\022DeleteRolesForUser\022\037.p" +
-      "alm.casbin.v1.UserRoleRequest\032\031.palm.cas" +
-      "bin.v1.BoolReply\"\000\022J\n\nDeleteUser\022\037.palm." +
-      "casbin.v1.UserRoleRequest\032\031.palm.casbin." +
-      "v1.BoolReply\"\000\022K\n\nDeleteRole\022\037.palm.casb" +
-      "in.v1.UserRoleRequest\032\032.palm.casbin.v1.E" +
-      "mptyReply\"\000\022Z\n\025GetPermissionsForUser\022!.p" +
-      "alm.casbin.v1.PermissionRequest\032\034.palm.c" +
-      "asbin.v1.Array2DReply\"\000\022b\n\035GetImplicitPe" +
-      "rmissionsForUser\022!.palm.casbin.v1.Permis" +
-      "sionRequest\032\034.palm.casbin.v1.Array2DRepl" +
-      "y\"\000\022R\n\020DeletePermission\022!.palm.casbin.v1" +
-      ".PermissionRequest\032\031.palm.casbin.v1.Bool" +
-      "Reply\"\000\022V\n\024AddPermissionForUser\022!.palm.c" +
+      "\004user\030\002 \001(\t\022\014\n\004role\030\003 \001(\t\022\016\n\006domain\030\004 \003(" +
+      "\t\"_\n\021PermissionRequest\022\027\n\017enforcerHandle" +
+      "r\030\001 \001(\005\022\014\n\004user\030\002 \001(\t\022\023\n\013permissions\030\003 \003" +
+      "(\t\022\016\n\006domain\030\004 \003(\t\"K\n\014Array2DReply\022*\n\002d2" +
+      "\030\001 \003(\0132\036.palm.casbin.v1.Array2DReply.d\032\017" +
+      "\n\001d\022\n\n\002d1\030\001 \003(\t2\341#\n\006Casbin\022U\n\013NewEnforce" +
+      "r\022\".palm.casbin.v1.NewEnforcerRequest\032 ." +
+      "palm.casbin.v1.NewEnforcerReply\"\000\022R\n\nNew" +
+      "Adapter\022!.palm.casbin.v1.NewAdapterReque" +
+      "st\032\037.palm.casbin.v1.NewAdapterReply\"\000\022F\n" +
+      "\007Enforce\022\036.palm.casbin.v1.EnforceRequest" +
+      "\032\031.palm.casbin.v1.BoolReply\"\000\022H\n\nLoadPol" +
+      "icy\022\034.palm.casbin.v1.EmptyRequest\032\032.palm" +
+      ".casbin.v1.EmptyReply\"\000\022H\n\nSavePolicy\022\034." +
+      "palm.casbin.v1.EmptyRequest\032\032.palm.casbi" +
+      "n.v1.EmptyReply\"\000\022G\n\tAddPolicy\022\035.palm.ca" +
+      "sbin.v1.PolicyRequest\032\031.palm.casbin.v1.B" +
+      "oolReply\"\000\022L\n\016AddNamedPolicy\022\035.palm.casb" +
+      "in.v1.PolicyRequest\032\031.palm.casbin.v1.Boo" +
+      "lReply\"\000\022J\n\014RemovePolicy\022\035.palm.casbin.v" +
+      "1.PolicyRequest\032\031.palm.casbin.v1.BoolRep" +
+      "ly\"\000\022O\n\021RemoveNamedPolicy\022\035.palm.casbin." +
+      "v1.PolicyRequest\032\031.palm.casbin.v1.BoolRe" +
+      "ply\"\000\022Z\n\024RemoveFilteredPolicy\022%.palm.cas" +
+      "bin.v1.FilteredPolicyRequest\032\031.palm.casb" +
+      "in.v1.BoolReply\"\000\022_\n\031RemoveFilteredNamed" +
+      "Policy\022%.palm.casbin.v1.FilteredPolicyRe" +
+      "quest\032\031.palm.casbin.v1.BoolReply\"\000\022I\n\tGe" +
+      "tPolicy\022\034.palm.casbin.v1.EmptyRequest\032\034." +
+      "palm.casbin.v1.Array2DReply\"\000\022O\n\016GetName" +
+      "dPolicy\022\035.palm.casbin.v1.PolicyRequest\032\034" +
+      ".palm.casbin.v1.Array2DReply\"\000\022Z\n\021GetFil" +
+      "teredPolicy\022%.palm.casbin.v1.FilteredPol" +
+      "icyRequest\032\034.palm.casbin.v1.Array2DReply" +
+      "\"\000\022_\n\026GetFilteredNamedPolicy\022%.palm.casb" +
+      "in.v1.FilteredPolicyRequest\032\034.palm.casbi" +
+      "n.v1.Array2DReply\"\000\022O\n\021AddGroupingPolicy" +
+      "\022\035.palm.casbin.v1.PolicyRequest\032\031.palm.c" +
+      "asbin.v1.BoolReply\"\000\022T\n\026AddNamedGrouping" +
+      "Policy\022\035.palm.casbin.v1.PolicyRequest\032\031." +
+      "palm.casbin.v1.BoolReply\"\000\022R\n\024RemoveGrou" +
+      "pingPolicy\022\035.palm.casbin.v1.PolicyReques" +
+      "t\032\031.palm.casbin.v1.BoolReply\"\000\022W\n\031Remove" +
+      "NamedGroupingPolicy\022\035.palm.casbin.v1.Pol" +
+      "icyRequest\032\031.palm.casbin.v1.BoolReply\"\000\022" +
+      "b\n\034RemoveFilteredGroupingPolicy\022%.palm.c" +
+      "asbin.v1.FilteredPolicyRequest\032\031.palm.ca" +
+      "sbin.v1.BoolReply\"\000\022g\n!RemoveFilteredNam" +
+      "edGroupingPolicy\022%.palm.casbin.v1.Filter" +
+      "edPolicyRequest\032\031.palm.casbin.v1.BoolRep" +
+      "ly\"\000\022Q\n\021GetGroupingPolicy\022\034.palm.casbin." +
+      "v1.EmptyRequest\032\034.palm.casbin.v1.Array2D" +
+      "Reply\"\000\022W\n\026GetNamedGroupingPolicy\022\035.palm" +
+      ".casbin.v1.PolicyRequest\032\034.palm.casbin.v" +
+      "1.Array2DReply\"\000\022b\n\031GetFilteredGroupingP" +
+      "olicy\022%.palm.casbin.v1.FilteredPolicyReq" +
+      "uest\032\034.palm.casbin.v1.Array2DReply\"\000\022g\n\036" +
+      "GetFilteredNamedGroupingPolicy\022%.palm.ca" +
+      "sbin.v1.FilteredPolicyRequest\032\034.palm.cas" +
+      "bin.v1.Array2DReply\"\000\022L\n\016GetAllSubjects\022" +
+      "\034.palm.casbin.v1.EmptyRequest\032\032.palm.cas" +
+      "bin.v1.ArrayReply\"\000\022U\n\023GetAllNamedSubjec" +
+      "ts\022 .palm.casbin.v1.SimpleGetRequest\032\032.p" +
+      "alm.casbin.v1.ArrayReply\"\000\022K\n\rGetAllObje" +
+      "cts\022\034.palm.casbin.v1.EmptyRequest\032\032.palm" +
+      ".casbin.v1.ArrayReply\"\000\022T\n\022GetAllNamedOb" +
+      "jects\022 .palm.casbin.v1.SimpleGetRequest\032" +
+      "\032.palm.casbin.v1.ArrayReply\"\000\022K\n\rGetAllA" +
+      "ctions\022\034.palm.casbin.v1.EmptyRequest\032\032.p" +
+      "alm.casbin.v1.ArrayReply\"\000\022T\n\022GetAllName" +
+      "dActions\022 .palm.casbin.v1.SimpleGetReque" +
+      "st\032\032.palm.casbin.v1.ArrayReply\"\000\022I\n\013GetA" +
+      "llRoles\022\034.palm.casbin.v1.EmptyRequest\032\032." +
+      "palm.casbin.v1.ArrayReply\"\000\022R\n\020GetAllNam" +
+      "edRoles\022 .palm.casbin.v1.SimpleGetReques" +
+      "t\032\032.palm.casbin.v1.ArrayReply\"\000\022G\n\tHasPo" +
+      "licy\022\035.palm.casbin.v1.PolicyRequest\032\031.pa" +
+      "lm.casbin.v1.BoolReply\"\000\022L\n\016HasNamedPoli" +
+      "cy\022\035.palm.casbin.v1.PolicyRequest\032\031.palm" +
+      ".casbin.v1.BoolReply\"\000\022O\n\021HasGroupingPol" +
+      "icy\022\035.palm.casbin.v1.PolicyRequest\032\031.pal" +
+      "m.casbin.v1.BoolReply\"\000\022T\n\026HasNamedGroup" +
+      "ingPolicy\022\035.palm.casbin.v1.PolicyRequest" +
+      "\032\031.palm.casbin.v1.BoolReply\"\000\022K\n\nGetDoma" +
+      "ins\022\037.palm.casbin.v1.UserRoleRequest\032\032.p" +
+      "alm.casbin.v1.ArrayReply\"\000\022P\n\017GetRolesFo" +
+      "rUser\022\037.palm.casbin.v1.UserRoleRequest\032\032" +
+      ".palm.casbin.v1.ArrayReply\"\000\022X\n\027GetImpli" +
+      "citRolesForUser\022\037.palm.casbin.v1.UserRol" +
+      "eRequest\032\032.palm.casbin.v1.ArrayReply\"\000\022P" +
+      "\n\017GetUsersForRole\022\037.palm.casbin.v1.UserR" +
+      "oleRequest\032\032.palm.casbin.v1.ArrayReply\"\000" +
+      "\022N\n\016HasRoleForUser\022\037.palm.casbin.v1.User" +
+      "RoleRequest\032\031.palm.casbin.v1.BoolReply\"\000" +
+      "\022N\n\016AddRoleForUser\022\037.palm.casbin.v1.User" +
+      "RoleRequest\032\031.palm.casbin.v1.BoolReply\"\000" +
+      "\022Q\n\021DeleteRoleForUser\022\037.palm.casbin.v1.U" +
+      "serRoleRequest\032\031.palm.casbin.v1.BoolRepl" +
+      "y\"\000\022R\n\022DeleteRolesForUser\022\037.palm.casbin." +
+      "v1.UserRoleRequest\032\031.palm.casbin.v1.Bool" +
+      "Reply\"\000\022J\n\nDeleteUser\022\037.palm.casbin.v1.U" +
+      "serRoleRequest\032\031.palm.casbin.v1.BoolRepl" +
+      "y\"\000\022K\n\nDeleteRole\022\037.palm.casbin.v1.UserR" +
+      "oleRequest\032\032.palm.casbin.v1.EmptyReply\"\000" +
+      "\022Z\n\025GetPermissionsForUser\022!.palm.casbin." +
+      "v1.PermissionRequest\032\034.palm.casbin.v1.Ar" +
+      "ray2DReply\"\000\022b\n\035GetImplicitPermissionsFo" +
+      "rUser\022!.palm.casbin.v1.PermissionRequest" +
+      "\032\034.palm.casbin.v1.Array2DReply\"\000\022R\n\020Dele" +
+      "tePermission\022!.palm.casbin.v1.Permission" +
+      "Request\032\031.palm.casbin.v1.BoolReply\"\000\022V\n\024" +
+      "AddPermissionForUser\022!.palm.casbin.v1.Pe" +
+      "rmissionRequest\032\031.palm.casbin.v1.BoolRep" +
+      "ly\"\000\022Y\n\027DeletePermissionForUser\022!.palm.c" +
       "asbin.v1.PermissionRequest\032\031.palm.casbin" +
-      ".v1.BoolReply\"\000\022Y\n\027DeletePermissionForUs" +
-      "er\022!.palm.casbin.v1.PermissionRequest\032\031." +
-      "palm.casbin.v1.BoolReply\"\000\022Z\n\030DeletePerm" +
-      "issionsForUser\022!.palm.casbin.v1.Permissi" +
-      "onRequest\032\031.palm.casbin.v1.BoolReply\"\000\022V" +
-      "\n\024HasPermissionForUser\022!.palm.casbin.v1." +
-      "PermissionRequest\032\031.palm.casbin.v1.BoolR" +
-      "eply\"\000B0\n,com.github.saturn_xiv.palm.plu" +
-      "gins.casbin.v1P\001b\006proto3"
+      ".v1.BoolReply\"\000\022Z\n\030DeletePermissionsForU" +
+      "ser\022!.palm.casbin.v1.PermissionRequest\032\031" +
+      ".palm.casbin.v1.BoolReply\"\000\022V\n\024HasPermis" +
+      "sionForUser\022!.palm.casbin.v1.PermissionR" +
+      "equest\032\031.palm.casbin.v1.BoolReply\"\000B0\n,c" +
+      "om.github.saturn_xiv.palm.plugins.casbin" +
+      ".v1P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -322,13 +325,13 @@ public final class CasbinOuterClass {
     internal_static_palm_casbin_v1_UserRoleRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_casbin_v1_UserRoleRequest_descriptor,
-        new java.lang.String[] { "EnforcerHandler", "User", "Role", });
+        new java.lang.String[] { "EnforcerHandler", "User", "Role", "Domain", });
     internal_static_palm_casbin_v1_PermissionRequest_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_palm_casbin_v1_PermissionRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_casbin_v1_PermissionRequest_descriptor,
-        new java.lang.String[] { "EnforcerHandler", "User", "Permissions", });
+        new java.lang.String[] { "EnforcerHandler", "User", "Permissions", "Domain", });
     internal_static_palm_casbin_v1_Array2DReply_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_palm_casbin_v1_Array2DReply_fieldAccessorTable = new

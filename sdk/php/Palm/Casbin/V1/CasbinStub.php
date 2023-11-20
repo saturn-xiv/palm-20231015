@@ -2,8 +2,8 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 // Original file comments:
-// f2292d7:
-// https://github.com/casbin-rs/casbin-grpc/blob/main/api/protos/casbin.proto
+// 138d465:
+// https://github.com/casbin/casbin-server/blob/master/proto/casbin.proto
 namespace Palm\Casbin\V1;
 
 /**
@@ -535,6 +535,20 @@ class CasbinStub {
      * @return \Palm\Casbin\V1\ArrayReply for response data, null if if error occured
      *     initial metadata (if any) and status (if not ok) should be set to $context
      */
+    public function GetDomains(
+        \Palm\Casbin\V1\UserRoleRequest $request,
+        \Grpc\ServerContext $context
+    ): ?\Palm\Casbin\V1\ArrayReply {
+        $context->setStatus(\Grpc\Status::unimplemented());
+        return null;
+    }
+
+    /**
+     * @param \Palm\Casbin\V1\UserRoleRequest $request client request
+     * @param \Grpc\ServerContext $context server request context
+     * @return \Palm\Casbin\V1\ArrayReply for response data, null if if error occured
+     *     initial metadata (if any) and status (if not ok) should be set to $context
+     */
     public function GetRolesForUser(
         \Palm\Casbin\V1\UserRoleRequest $request,
         \Grpc\ServerContext $context
@@ -981,6 +995,12 @@ class CasbinStub {
                 $this,
                 'HasNamedGroupingPolicy',
                 '\Palm\Casbin\V1\PolicyRequest',
+                \Grpc\MethodDescriptor::UNARY_CALL
+            ),
+            '/palm.casbin.v1.Casbin/GetDomains' => new \Grpc\MethodDescriptor(
+                $this,
+                'GetDomains',
+                '\Palm\Casbin\V1\UserRoleRequest',
                 \Grpc\MethodDescriptor::UNARY_CALL
             ),
             '/palm.casbin.v1.Casbin/GetRolesForUser' => new \Grpc\MethodDescriptor(

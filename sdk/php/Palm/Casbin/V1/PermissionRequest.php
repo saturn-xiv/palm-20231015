@@ -25,6 +25,10 @@ class PermissionRequest extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated string permissions = 3;</code>
      */
     private $permissions;
+    /**
+     * Generated from protobuf field <code>repeated string domain = 4;</code>
+     */
+    private $domain;
 
     /**
      * Constructor.
@@ -35,6 +39,7 @@ class PermissionRequest extends \Google\Protobuf\Internal\Message
      *     @type int $enforcerHandler
      *     @type string $user
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $permissions
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $domain
      * }
      */
     public function __construct($data = NULL) {
@@ -104,6 +109,28 @@ class PermissionRequest extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
         $this->permissions = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string domain = 4;</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getDomain()
+    {
+        return $this->domain;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string domain = 4;</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setDomain($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->domain = $arr;
 
         return $this;
     }

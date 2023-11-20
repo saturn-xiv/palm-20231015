@@ -55,11 +55,13 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :enforcerHandler, :int32, 1
       optional :user, :string, 2
       optional :role, :string, 3
+      repeated :domain, :string, 4
     end
     add_message "palm.casbin.v1.PermissionRequest" do
       optional :enforcerHandler, :int32, 1
       optional :user, :string, 2
       repeated :permissions, :string, 3
+      repeated :domain, :string, 4
     end
     add_message "palm.casbin.v1.Array2DReply" do
       repeated :d2, :message, 1, "palm.casbin.v1.Array2DReply.d"

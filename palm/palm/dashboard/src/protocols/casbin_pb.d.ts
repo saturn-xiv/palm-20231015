@@ -276,6 +276,11 @@ export class UserRoleRequest extends jspb.Message {
   getRole(): string;
   setRole(value: string): UserRoleRequest;
 
+  getDomainList(): Array<string>;
+  setDomainList(value: Array<string>): UserRoleRequest;
+  clearDomainList(): UserRoleRequest;
+  addDomain(value: string, index?: number): UserRoleRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserRoleRequest.AsObject;
   static toObject(includeInstance: boolean, msg: UserRoleRequest): UserRoleRequest.AsObject;
@@ -289,6 +294,7 @@ export namespace UserRoleRequest {
     enforcerhandler: number,
     user: string,
     role: string,
+    domainList: Array<string>,
   }
 }
 
@@ -304,6 +310,11 @@ export class PermissionRequest extends jspb.Message {
   clearPermissionsList(): PermissionRequest;
   addPermissions(value: string, index?: number): PermissionRequest;
 
+  getDomainList(): Array<string>;
+  setDomainList(value: Array<string>): PermissionRequest;
+  clearDomainList(): PermissionRequest;
+  addDomain(value: string, index?: number): PermissionRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PermissionRequest.AsObject;
   static toObject(includeInstance: boolean, msg: PermissionRequest): PermissionRequest.AsObject;
@@ -317,6 +328,7 @@ export namespace PermissionRequest {
     enforcerhandler: number,
     user: string,
     permissionsList: Array<string>,
+    domainList: Array<string>,
   }
 }
 

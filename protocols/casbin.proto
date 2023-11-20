@@ -1,5 +1,5 @@
-// f2292d7:
-// https://github.com/casbin-rs/casbin-grpc/blob/main/api/protos/casbin.proto
+// 138d465:
+// https://github.com/casbin/casbin-server/blob/master/proto/casbin.proto
 syntax = "proto3";
 
 option java_multiple_files = true;
@@ -53,6 +53,8 @@ service Casbin {
   rpc HasNamedPolicy(PolicyRequest) returns (BoolReply) {}
   rpc HasGroupingPolicy(PolicyRequest) returns (BoolReply) {}
   rpc HasNamedGroupingPolicy(PolicyRequest) returns (BoolReply) {}
+
+  rpc GetDomains(UserRoleRequest) returns (ArrayReply) {}
 
   rpc GetRolesForUser(UserRoleRequest) returns (ArrayReply) {}
   rpc GetImplicitRolesForUser(UserRoleRequest) returns (ArrayReply) {}
@@ -134,12 +136,14 @@ message UserRoleRequest {
   int32 enforcerHandler = 1;
   string user = 2;
   string role = 3;
+  repeated string domain = 4;
 }
 
 message PermissionRequest {
   int32 enforcerHandler = 1;
   string user = 2;
   repeated string permissions = 3;
+  repeated string domain = 4;
 }
 
 message Array2DReply {

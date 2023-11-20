@@ -49,4 +49,29 @@ public interface PermissionRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getPermissionsBytes(int index);
+
+  /**
+   * <code>repeated string domain = 4;</code>
+   * @return A list containing the domain.
+   */
+  java.util.List<java.lang.String>
+      getDomainList();
+  /**
+   * <code>repeated string domain = 4;</code>
+   * @return The count of domain.
+   */
+  int getDomainCount();
+  /**
+   * <code>repeated string domain = 4;</code>
+   * @param index The index of the element to return.
+   * @return The domain at the given index.
+   */
+  java.lang.String getDomain(int index);
+  /**
+   * <code>repeated string domain = 4;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the domain at the given index.
+   */
+  com.google.protobuf.ByteString
+      getDomainBytes(int index);
 }

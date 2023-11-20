@@ -1166,6 +1166,37 @@ public final class CasbinGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest,
+      com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply> getGetDomainsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetDomains",
+      requestType = com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest.class,
+      responseType = com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest,
+      com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply> getGetDomainsMethod() {
+    io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest, com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply> getGetDomainsMethod;
+    if ((getGetDomainsMethod = CasbinGrpc.getGetDomainsMethod) == null) {
+      synchronized (CasbinGrpc.class) {
+        if ((getGetDomainsMethod = CasbinGrpc.getGetDomainsMethod) == null) {
+          CasbinGrpc.getGetDomainsMethod = getGetDomainsMethod =
+              io.grpc.MethodDescriptor.<com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest, com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetDomains"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply.getDefaultInstance()))
+              .setSchemaDescriptor(new CasbinMethodDescriptorSupplier("GetDomains"))
+              .build();
+        }
+      }
+    }
+    return getGetDomainsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest,
       com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply> getGetRolesForUserMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
@@ -1973,6 +2004,13 @@ public final class CasbinGrpc {
 
     /**
      */
+    default void getDomains(com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest request,
+        io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetDomainsMethod(), responseObserver);
+    }
+
+    /**
+     */
     default void getRolesForUser(com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest request,
         io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetRolesForUserMethod(), responseObserver);
@@ -2415,6 +2453,14 @@ public final class CasbinGrpc {
 
     /**
      */
+    public void getDomains(com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest request,
+        io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetDomainsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void getRolesForUser(com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest request,
         io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -2818,6 +2864,13 @@ public final class CasbinGrpc {
     public com.github.saturn_xiv.palm.plugins.casbin.v1.BoolReply hasNamedGroupingPolicy(com.github.saturn_xiv.palm.plugins.casbin.v1.PolicyRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getHasNamedGroupingPolicyMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply getDomains(com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetDomainsMethod(), getCallOptions(), request);
     }
 
     /**
@@ -3250,6 +3303,14 @@ public final class CasbinGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply> getDomains(
+        com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetDomainsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply> getRolesForUser(
         com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -3414,22 +3475,23 @@ public final class CasbinGrpc {
   private static final int METHODID_HAS_NAMED_POLICY = 34;
   private static final int METHODID_HAS_GROUPING_POLICY = 35;
   private static final int METHODID_HAS_NAMED_GROUPING_POLICY = 36;
-  private static final int METHODID_GET_ROLES_FOR_USER = 37;
-  private static final int METHODID_GET_IMPLICIT_ROLES_FOR_USER = 38;
-  private static final int METHODID_GET_USERS_FOR_ROLE = 39;
-  private static final int METHODID_HAS_ROLE_FOR_USER = 40;
-  private static final int METHODID_ADD_ROLE_FOR_USER = 41;
-  private static final int METHODID_DELETE_ROLE_FOR_USER = 42;
-  private static final int METHODID_DELETE_ROLES_FOR_USER = 43;
-  private static final int METHODID_DELETE_USER = 44;
-  private static final int METHODID_DELETE_ROLE = 45;
-  private static final int METHODID_GET_PERMISSIONS_FOR_USER = 46;
-  private static final int METHODID_GET_IMPLICIT_PERMISSIONS_FOR_USER = 47;
-  private static final int METHODID_DELETE_PERMISSION = 48;
-  private static final int METHODID_ADD_PERMISSION_FOR_USER = 49;
-  private static final int METHODID_DELETE_PERMISSION_FOR_USER = 50;
-  private static final int METHODID_DELETE_PERMISSIONS_FOR_USER = 51;
-  private static final int METHODID_HAS_PERMISSION_FOR_USER = 52;
+  private static final int METHODID_GET_DOMAINS = 37;
+  private static final int METHODID_GET_ROLES_FOR_USER = 38;
+  private static final int METHODID_GET_IMPLICIT_ROLES_FOR_USER = 39;
+  private static final int METHODID_GET_USERS_FOR_ROLE = 40;
+  private static final int METHODID_HAS_ROLE_FOR_USER = 41;
+  private static final int METHODID_ADD_ROLE_FOR_USER = 42;
+  private static final int METHODID_DELETE_ROLE_FOR_USER = 43;
+  private static final int METHODID_DELETE_ROLES_FOR_USER = 44;
+  private static final int METHODID_DELETE_USER = 45;
+  private static final int METHODID_DELETE_ROLE = 46;
+  private static final int METHODID_GET_PERMISSIONS_FOR_USER = 47;
+  private static final int METHODID_GET_IMPLICIT_PERMISSIONS_FOR_USER = 48;
+  private static final int METHODID_DELETE_PERMISSION = 49;
+  private static final int METHODID_ADD_PERMISSION_FOR_USER = 50;
+  private static final int METHODID_DELETE_PERMISSION_FOR_USER = 51;
+  private static final int METHODID_DELETE_PERMISSIONS_FOR_USER = 52;
+  private static final int METHODID_HAS_PERMISSION_FOR_USER = 53;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -3595,6 +3657,10 @@ public final class CasbinGrpc {
         case METHODID_HAS_NAMED_GROUPING_POLICY:
           serviceImpl.hasNamedGroupingPolicy((com.github.saturn_xiv.palm.plugins.casbin.v1.PolicyRequest) request,
               (io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.casbin.v1.BoolReply>) responseObserver);
+          break;
+        case METHODID_GET_DOMAINS:
+          serviceImpl.getDomains((com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest) request,
+              (io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply>) responseObserver);
           break;
         case METHODID_GET_ROLES_FOR_USER:
           serviceImpl.getRolesForUser((com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest) request,
@@ -3938,6 +4004,13 @@ public final class CasbinGrpc {
               com.github.saturn_xiv.palm.plugins.casbin.v1.BoolReply>(
                 service, METHODID_HAS_NAMED_GROUPING_POLICY)))
         .addMethod(
+          getGetDomainsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.github.saturn_xiv.palm.plugins.casbin.v1.UserRoleRequest,
+              com.github.saturn_xiv.palm.plugins.casbin.v1.ArrayReply>(
+                service, METHODID_GET_DOMAINS)))
+        .addMethod(
           getGetRolesForUserMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
@@ -4134,6 +4207,7 @@ public final class CasbinGrpc {
               .addMethod(getHasNamedPolicyMethod())
               .addMethod(getHasGroupingPolicyMethod())
               .addMethod(getHasNamedGroupingPolicyMethod())
+              .addMethod(getGetDomainsMethod())
               .addMethod(getGetRolesForUserMethod())
               .addMethod(getGetImplicitRolesForUserMethod())
               .addMethod(getGetUsersForRoleMethod())

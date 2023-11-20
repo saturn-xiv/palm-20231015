@@ -2206,10 +2206,35 @@ class UserRoleRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kDomainFieldNumber = 4,
     kUserFieldNumber = 2,
     kRoleFieldNumber = 3,
     kEnforcerHandlerFieldNumber = 1,
   };
+  // repeated string domain = 4;
+  int domain_size() const;
+  private:
+  int _internal_domain_size() const;
+  public:
+  void clear_domain();
+  const std::string& domain(int index) const;
+  std::string* mutable_domain(int index);
+  void set_domain(int index, const std::string& value);
+  void set_domain(int index, std::string&& value);
+  void set_domain(int index, const char* value);
+  void set_domain(int index, const char* value, size_t size);
+  std::string* add_domain();
+  void add_domain(const std::string& value);
+  void add_domain(std::string&& value);
+  void add_domain(const char* value);
+  void add_domain(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& domain() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_domain();
+  private:
+  const std::string& _internal_domain(int index) const;
+  std::string* _internal_add_domain();
+  public:
+
   // string user = 2;
   void clear_user();
   const std::string& user() const;
@@ -2255,6 +2280,7 @@ class UserRoleRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> domain_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr role_;
     int32_t enforcerhandler_;
@@ -2387,6 +2413,7 @@ class PermissionRequest final :
 
   enum : int {
     kPermissionsFieldNumber = 3,
+    kDomainFieldNumber = 4,
     kUserFieldNumber = 2,
     kEnforcerHandlerFieldNumber = 1,
   };
@@ -2412,6 +2439,30 @@ class PermissionRequest final :
   private:
   const std::string& _internal_permissions(int index) const;
   std::string* _internal_add_permissions();
+  public:
+
+  // repeated string domain = 4;
+  int domain_size() const;
+  private:
+  int _internal_domain_size() const;
+  public:
+  void clear_domain();
+  const std::string& domain(int index) const;
+  std::string* mutable_domain(int index);
+  void set_domain(int index, const std::string& value);
+  void set_domain(int index, std::string&& value);
+  void set_domain(int index, const char* value);
+  void set_domain(int index, const char* value, size_t size);
+  std::string* add_domain();
+  void add_domain(const std::string& value);
+  void add_domain(std::string&& value);
+  void add_domain(const char* value);
+  void add_domain(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& domain() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_domain();
+  private:
+  const std::string& _internal_domain(int index) const;
+  std::string* _internal_add_domain();
   public:
 
   // string user = 2;
@@ -2446,6 +2497,7 @@ class PermissionRequest final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> permissions_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> domain_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_;
     int32_t enforcerhandler_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -3824,6 +3876,81 @@ inline void UserRoleRequest::set_allocated_role(std::string* role) {
   // @@protoc_insertion_point(field_set_allocated:palm.casbin.v1.UserRoleRequest.role)
 }
 
+// repeated string domain = 4;
+inline int UserRoleRequest::_internal_domain_size() const {
+  return _impl_.domain_.size();
+}
+inline int UserRoleRequest::domain_size() const {
+  return _internal_domain_size();
+}
+inline void UserRoleRequest::clear_domain() {
+  _impl_.domain_.Clear();
+}
+inline std::string* UserRoleRequest::add_domain() {
+  std::string* _s = _internal_add_domain();
+  // @@protoc_insertion_point(field_add_mutable:palm.casbin.v1.UserRoleRequest.domain)
+  return _s;
+}
+inline const std::string& UserRoleRequest::_internal_domain(int index) const {
+  return _impl_.domain_.Get(index);
+}
+inline const std::string& UserRoleRequest::domain(int index) const {
+  // @@protoc_insertion_point(field_get:palm.casbin.v1.UserRoleRequest.domain)
+  return _internal_domain(index);
+}
+inline std::string* UserRoleRequest::mutable_domain(int index) {
+  // @@protoc_insertion_point(field_mutable:palm.casbin.v1.UserRoleRequest.domain)
+  return _impl_.domain_.Mutable(index);
+}
+inline void UserRoleRequest::set_domain(int index, const std::string& value) {
+  _impl_.domain_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:palm.casbin.v1.UserRoleRequest.domain)
+}
+inline void UserRoleRequest::set_domain(int index, std::string&& value) {
+  _impl_.domain_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:palm.casbin.v1.UserRoleRequest.domain)
+}
+inline void UserRoleRequest::set_domain(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.domain_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:palm.casbin.v1.UserRoleRequest.domain)
+}
+inline void UserRoleRequest::set_domain(int index, const char* value, size_t size) {
+  _impl_.domain_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:palm.casbin.v1.UserRoleRequest.domain)
+}
+inline std::string* UserRoleRequest::_internal_add_domain() {
+  return _impl_.domain_.Add();
+}
+inline void UserRoleRequest::add_domain(const std::string& value) {
+  _impl_.domain_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:palm.casbin.v1.UserRoleRequest.domain)
+}
+inline void UserRoleRequest::add_domain(std::string&& value) {
+  _impl_.domain_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:palm.casbin.v1.UserRoleRequest.domain)
+}
+inline void UserRoleRequest::add_domain(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.domain_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:palm.casbin.v1.UserRoleRequest.domain)
+}
+inline void UserRoleRequest::add_domain(const char* value, size_t size) {
+  _impl_.domain_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:palm.casbin.v1.UserRoleRequest.domain)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+UserRoleRequest::domain() const {
+  // @@protoc_insertion_point(field_list:palm.casbin.v1.UserRoleRequest.domain)
+  return _impl_.domain_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+UserRoleRequest::mutable_domain() {
+  // @@protoc_insertion_point(field_mutable_list:palm.casbin.v1.UserRoleRequest.domain)
+  return &_impl_.domain_;
+}
+
 // -------------------------------------------------------------------
 
 // PermissionRequest
@@ -3971,6 +4098,81 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 PermissionRequest::mutable_permissions() {
   // @@protoc_insertion_point(field_mutable_list:palm.casbin.v1.PermissionRequest.permissions)
   return &_impl_.permissions_;
+}
+
+// repeated string domain = 4;
+inline int PermissionRequest::_internal_domain_size() const {
+  return _impl_.domain_.size();
+}
+inline int PermissionRequest::domain_size() const {
+  return _internal_domain_size();
+}
+inline void PermissionRequest::clear_domain() {
+  _impl_.domain_.Clear();
+}
+inline std::string* PermissionRequest::add_domain() {
+  std::string* _s = _internal_add_domain();
+  // @@protoc_insertion_point(field_add_mutable:palm.casbin.v1.PermissionRequest.domain)
+  return _s;
+}
+inline const std::string& PermissionRequest::_internal_domain(int index) const {
+  return _impl_.domain_.Get(index);
+}
+inline const std::string& PermissionRequest::domain(int index) const {
+  // @@protoc_insertion_point(field_get:palm.casbin.v1.PermissionRequest.domain)
+  return _internal_domain(index);
+}
+inline std::string* PermissionRequest::mutable_domain(int index) {
+  // @@protoc_insertion_point(field_mutable:palm.casbin.v1.PermissionRequest.domain)
+  return _impl_.domain_.Mutable(index);
+}
+inline void PermissionRequest::set_domain(int index, const std::string& value) {
+  _impl_.domain_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:palm.casbin.v1.PermissionRequest.domain)
+}
+inline void PermissionRequest::set_domain(int index, std::string&& value) {
+  _impl_.domain_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:palm.casbin.v1.PermissionRequest.domain)
+}
+inline void PermissionRequest::set_domain(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.domain_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:palm.casbin.v1.PermissionRequest.domain)
+}
+inline void PermissionRequest::set_domain(int index, const char* value, size_t size) {
+  _impl_.domain_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:palm.casbin.v1.PermissionRequest.domain)
+}
+inline std::string* PermissionRequest::_internal_add_domain() {
+  return _impl_.domain_.Add();
+}
+inline void PermissionRequest::add_domain(const std::string& value) {
+  _impl_.domain_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:palm.casbin.v1.PermissionRequest.domain)
+}
+inline void PermissionRequest::add_domain(std::string&& value) {
+  _impl_.domain_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:palm.casbin.v1.PermissionRequest.domain)
+}
+inline void PermissionRequest::add_domain(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.domain_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:palm.casbin.v1.PermissionRequest.domain)
+}
+inline void PermissionRequest::add_domain(const char* value, size_t size) {
+  _impl_.domain_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:palm.casbin.v1.PermissionRequest.domain)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+PermissionRequest::domain() const {
+  // @@protoc_insertion_point(field_list:palm.casbin.v1.PermissionRequest.domain)
+  return _impl_.domain_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+PermissionRequest::mutable_domain() {
+  // @@protoc_insertion_point(field_mutable_list:palm.casbin.v1.PermissionRequest.domain)
+  return &_impl_.domain_;
 }
 
 // -------------------------------------------------------------------

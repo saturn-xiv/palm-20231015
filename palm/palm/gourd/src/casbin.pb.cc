@@ -190,7 +190,8 @@ struct FilteredPolicyRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FilteredPolicyRequestDefaultTypeInternal _FilteredPolicyRequest_default_instance_;
 PROTOBUF_CONSTEXPR UserRoleRequest::UserRoleRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.user_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.domain_)*/{}
+  , /*decltype(_impl_.user_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.role_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.enforcerhandler_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
@@ -206,6 +207,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 PROTOBUF_CONSTEXPR PermissionRequest::PermissionRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.permissions_)*/{}
+  , /*decltype(_impl_.domain_)*/{}
   , /*decltype(_impl_.user_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.enforcerhandler_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
@@ -355,6 +357,7 @@ const uint32_t TableStruct_casbin_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::palm::casbin::v1::UserRoleRequest, _impl_.enforcerhandler_),
   PROTOBUF_FIELD_OFFSET(::palm::casbin::v1::UserRoleRequest, _impl_.user_),
   PROTOBUF_FIELD_OFFSET(::palm::casbin::v1::UserRoleRequest, _impl_.role_),
+  PROTOBUF_FIELD_OFFSET(::palm::casbin::v1::UserRoleRequest, _impl_.domain_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::casbin::v1::PermissionRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -364,6 +367,7 @@ const uint32_t TableStruct_casbin_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::palm::casbin::v1::PermissionRequest, _impl_.enforcerhandler_),
   PROTOBUF_FIELD_OFFSET(::palm::casbin::v1::PermissionRequest, _impl_.user_),
   PROTOBUF_FIELD_OFFSET(::palm::casbin::v1::PermissionRequest, _impl_.permissions_),
+  PROTOBUF_FIELD_OFFSET(::palm::casbin::v1::PermissionRequest, _impl_.domain_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::palm::casbin::v1::Array2DReply_d, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -393,9 +397,9 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 77, -1, -1, sizeof(::palm::casbin::v1::ArrayReply)},
   { 84, -1, -1, sizeof(::palm::casbin::v1::FilteredPolicyRequest)},
   { 94, -1, -1, sizeof(::palm::casbin::v1::UserRoleRequest)},
-  { 103, -1, -1, sizeof(::palm::casbin::v1::PermissionRequest)},
-  { 112, -1, -1, sizeof(::palm::casbin::v1::Array2DReply_d)},
-  { 119, -1, -1, sizeof(::palm::casbin::v1::Array2DReply)},
+  { 104, -1, -1, sizeof(::palm::casbin::v1::PermissionRequest)},
+  { 114, -1, -1, sizeof(::palm::casbin::v1::Array2DReply_d)},
+  { 121, -1, -1, sizeof(::palm::casbin::v1::Array2DReply)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -434,131 +438,134 @@ const char descriptor_table_protodef_casbin_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "\001(\005\022\r\n\005pType\030\002 \001(\t\"\033\n\nArrayReply\022\r\n\005arra"
   "y\030\001 \003(\t\"h\n\025FilteredPolicyRequest\022\027\n\017enfo"
   "rcerHandler\030\001 \001(\005\022\r\n\005pType\030\002 \001(\t\022\022\n\nfiel"
-  "dIndex\030\003 \001(\005\022\023\n\013fieldValues\030\004 \003(\t\"F\n\017Use"
+  "dIndex\030\003 \001(\005\022\023\n\013fieldValues\030\004 \003(\t\"V\n\017Use"
   "rRoleRequest\022\027\n\017enforcerHandler\030\001 \001(\005\022\014\n"
-  "\004user\030\002 \001(\t\022\014\n\004role\030\003 \001(\t\"O\n\021PermissionR"
-  "equest\022\027\n\017enforcerHandler\030\001 \001(\005\022\014\n\004user\030"
-  "\002 \001(\t\022\023\n\013permissions\030\003 \003(\t\"K\n\014Array2DRep"
-  "ly\022*\n\002d2\030\001 \003(\0132\036.palm.casbin.v1.Array2DR"
-  "eply.d\032\017\n\001d\022\n\n\002d1\030\001 \003(\t2\224#\n\006Casbin\022U\n\013Ne"
-  "wEnforcer\022\".palm.casbin.v1.NewEnforcerRe"
-  "quest\032 .palm.casbin.v1.NewEnforcerReply\""
-  "\000\022R\n\nNewAdapter\022!.palm.casbin.v1.NewAdap"
-  "terRequest\032\037.palm.casbin.v1.NewAdapterRe"
-  "ply\"\000\022F\n\007Enforce\022\036.palm.casbin.v1.Enforc"
-  "eRequest\032\031.palm.casbin.v1.BoolReply\"\000\022H\n"
-  "\nLoadPolicy\022\034.palm.casbin.v1.EmptyReques"
-  "t\032\032.palm.casbin.v1.EmptyReply\"\000\022H\n\nSaveP"
-  "olicy\022\034.palm.casbin.v1.EmptyRequest\032\032.pa"
-  "lm.casbin.v1.EmptyReply\"\000\022G\n\tAddPolicy\022\035"
-  ".palm.casbin.v1.PolicyRequest\032\031.palm.cas"
-  "bin.v1.BoolReply\"\000\022L\n\016AddNamedPolicy\022\035.p"
-  "alm.casbin.v1.PolicyRequest\032\031.palm.casbi"
-  "n.v1.BoolReply\"\000\022J\n\014RemovePolicy\022\035.palm."
-  "casbin.v1.PolicyRequest\032\031.palm.casbin.v1"
-  ".BoolReply\"\000\022O\n\021RemoveNamedPolicy\022\035.palm"
-  ".casbin.v1.PolicyRequest\032\031.palm.casbin.v"
-  "1.BoolReply\"\000\022Z\n\024RemoveFilteredPolicy\022%."
-  "palm.casbin.v1.FilteredPolicyRequest\032\031.p"
-  "alm.casbin.v1.BoolReply\"\000\022_\n\031RemoveFilte"
-  "redNamedPolicy\022%.palm.casbin.v1.Filtered"
-  "PolicyRequest\032\031.palm.casbin.v1.BoolReply"
-  "\"\000\022I\n\tGetPolicy\022\034.palm.casbin.v1.EmptyRe"
-  "quest\032\034.palm.casbin.v1.Array2DReply\"\000\022O\n"
-  "\016GetNamedPolicy\022\035.palm.casbin.v1.PolicyR"
-  "equest\032\034.palm.casbin.v1.Array2DReply\"\000\022Z"
-  "\n\021GetFilteredPolicy\022%.palm.casbin.v1.Fil"
-  "teredPolicyRequest\032\034.palm.casbin.v1.Arra"
-  "y2DReply\"\000\022_\n\026GetFilteredNamedPolicy\022%.p"
-  "alm.casbin.v1.FilteredPolicyRequest\032\034.pa"
-  "lm.casbin.v1.Array2DReply\"\000\022O\n\021AddGroupi"
-  "ngPolicy\022\035.palm.casbin.v1.PolicyRequest\032"
-  "\031.palm.casbin.v1.BoolReply\"\000\022T\n\026AddNamed"
-  "GroupingPolicy\022\035.palm.casbin.v1.PolicyRe"
-  "quest\032\031.palm.casbin.v1.BoolReply\"\000\022R\n\024Re"
-  "moveGroupingPolicy\022\035.palm.casbin.v1.Poli"
-  "cyRequest\032\031.palm.casbin.v1.BoolReply\"\000\022W"
-  "\n\031RemoveNamedGroupingPolicy\022\035.palm.casbi"
-  "n.v1.PolicyRequest\032\031.palm.casbin.v1.Bool"
-  "Reply\"\000\022b\n\034RemoveFilteredGroupingPolicy\022"
-  "%.palm.casbin.v1.FilteredPolicyRequest\032\031"
-  ".palm.casbin.v1.BoolReply\"\000\022g\n!RemoveFil"
-  "teredNamedGroupingPolicy\022%.palm.casbin.v"
-  "1.FilteredPolicyRequest\032\031.palm.casbin.v1"
-  ".BoolReply\"\000\022Q\n\021GetGroupingPolicy\022\034.palm"
-  ".casbin.v1.EmptyRequest\032\034.palm.casbin.v1"
-  ".Array2DReply\"\000\022W\n\026GetNamedGroupingPolic"
-  "y\022\035.palm.casbin.v1.PolicyRequest\032\034.palm."
-  "casbin.v1.Array2DReply\"\000\022b\n\031GetFilteredG"
-  "roupingPolicy\022%.palm.casbin.v1.FilteredP"
-  "olicyRequest\032\034.palm.casbin.v1.Array2DRep"
-  "ly\"\000\022g\n\036GetFilteredNamedGroupingPolicy\022%"
-  ".palm.casbin.v1.FilteredPolicyRequest\032\034."
-  "palm.casbin.v1.Array2DReply\"\000\022L\n\016GetAllS"
-  "ubjects\022\034.palm.casbin.v1.EmptyRequest\032\032."
-  "palm.casbin.v1.ArrayReply\"\000\022U\n\023GetAllNam"
-  "edSubjects\022 .palm.casbin.v1.SimpleGetReq"
-  "uest\032\032.palm.casbin.v1.ArrayReply\"\000\022K\n\rGe"
-  "tAllObjects\022\034.palm.casbin.v1.EmptyReques"
-  "t\032\032.palm.casbin.v1.ArrayReply\"\000\022T\n\022GetAl"
-  "lNamedObjects\022 .palm.casbin.v1.SimpleGet"
-  "Request\032\032.palm.casbin.v1.ArrayReply\"\000\022K\n"
-  "\rGetAllActions\022\034.palm.casbin.v1.EmptyReq"
-  "uest\032\032.palm.casbin.v1.ArrayReply\"\000\022T\n\022Ge"
-  "tAllNamedActions\022 .palm.casbin.v1.Simple"
-  "GetRequest\032\032.palm.casbin.v1.ArrayReply\"\000"
-  "\022I\n\013GetAllRoles\022\034.palm.casbin.v1.EmptyRe"
-  "quest\032\032.palm.casbin.v1.ArrayReply\"\000\022R\n\020G"
-  "etAllNamedRoles\022 .palm.casbin.v1.SimpleG"
-  "etRequest\032\032.palm.casbin.v1.ArrayReply\"\000\022"
-  "G\n\tHasPolicy\022\035.palm.casbin.v1.PolicyRequ"
-  "est\032\031.palm.casbin.v1.BoolReply\"\000\022L\n\016HasN"
-  "amedPolicy\022\035.palm.casbin.v1.PolicyReques"
-  "t\032\031.palm.casbin.v1.BoolReply\"\000\022O\n\021HasGro"
-  "upingPolicy\022\035.palm.casbin.v1.PolicyReque"
-  "st\032\031.palm.casbin.v1.BoolReply\"\000\022T\n\026HasNa"
-  "medGroupingPolicy\022\035.palm.casbin.v1.Polic"
-  "yRequest\032\031.palm.casbin.v1.BoolReply\"\000\022P\n"
-  "\017GetRolesForUser\022\037.palm.casbin.v1.UserRo"
-  "leRequest\032\032.palm.casbin.v1.ArrayReply\"\000\022"
-  "X\n\027GetImplicitRolesForUser\022\037.palm.casbin"
-  ".v1.UserRoleRequest\032\032.palm.casbin.v1.Arr"
-  "ayReply\"\000\022P\n\017GetUsersForRole\022\037.palm.casb"
-  "in.v1.UserRoleRequest\032\032.palm.casbin.v1.A"
-  "rrayReply\"\000\022N\n\016HasRoleForUser\022\037.palm.cas"
-  "bin.v1.UserRoleRequest\032\031.palm.casbin.v1."
-  "BoolReply\"\000\022N\n\016AddRoleForUser\022\037.palm.cas"
-  "bin.v1.UserRoleRequest\032\031.palm.casbin.v1."
-  "BoolReply\"\000\022Q\n\021DeleteRoleForUser\022\037.palm."
-  "casbin.v1.UserRoleRequest\032\031.palm.casbin."
-  "v1.BoolReply\"\000\022R\n\022DeleteRolesForUser\022\037.p"
-  "alm.casbin.v1.UserRoleRequest\032\031.palm.cas"
-  "bin.v1.BoolReply\"\000\022J\n\nDeleteUser\022\037.palm."
-  "casbin.v1.UserRoleRequest\032\031.palm.casbin."
-  "v1.BoolReply\"\000\022K\n\nDeleteRole\022\037.palm.casb"
-  "in.v1.UserRoleRequest\032\032.palm.casbin.v1.E"
-  "mptyReply\"\000\022Z\n\025GetPermissionsForUser\022!.p"
-  "alm.casbin.v1.PermissionRequest\032\034.palm.c"
-  "asbin.v1.Array2DReply\"\000\022b\n\035GetImplicitPe"
-  "rmissionsForUser\022!.palm.casbin.v1.Permis"
-  "sionRequest\032\034.palm.casbin.v1.Array2DRepl"
-  "y\"\000\022R\n\020DeletePermission\022!.palm.casbin.v1"
-  ".PermissionRequest\032\031.palm.casbin.v1.Bool"
-  "Reply\"\000\022V\n\024AddPermissionForUser\022!.palm.c"
+  "\004user\030\002 \001(\t\022\014\n\004role\030\003 \001(\t\022\016\n\006domain\030\004 \003("
+  "\t\"_\n\021PermissionRequest\022\027\n\017enforcerHandle"
+  "r\030\001 \001(\005\022\014\n\004user\030\002 \001(\t\022\023\n\013permissions\030\003 \003"
+  "(\t\022\016\n\006domain\030\004 \003(\t\"K\n\014Array2DReply\022*\n\002d2"
+  "\030\001 \003(\0132\036.palm.casbin.v1.Array2DReply.d\032\017"
+  "\n\001d\022\n\n\002d1\030\001 \003(\t2\341#\n\006Casbin\022U\n\013NewEnforce"
+  "r\022\".palm.casbin.v1.NewEnforcerRequest\032 ."
+  "palm.casbin.v1.NewEnforcerReply\"\000\022R\n\nNew"
+  "Adapter\022!.palm.casbin.v1.NewAdapterReque"
+  "st\032\037.palm.casbin.v1.NewAdapterReply\"\000\022F\n"
+  "\007Enforce\022\036.palm.casbin.v1.EnforceRequest"
+  "\032\031.palm.casbin.v1.BoolReply\"\000\022H\n\nLoadPol"
+  "icy\022\034.palm.casbin.v1.EmptyRequest\032\032.palm"
+  ".casbin.v1.EmptyReply\"\000\022H\n\nSavePolicy\022\034."
+  "palm.casbin.v1.EmptyRequest\032\032.palm.casbi"
+  "n.v1.EmptyReply\"\000\022G\n\tAddPolicy\022\035.palm.ca"
+  "sbin.v1.PolicyRequest\032\031.palm.casbin.v1.B"
+  "oolReply\"\000\022L\n\016AddNamedPolicy\022\035.palm.casb"
+  "in.v1.PolicyRequest\032\031.palm.casbin.v1.Boo"
+  "lReply\"\000\022J\n\014RemovePolicy\022\035.palm.casbin.v"
+  "1.PolicyRequest\032\031.palm.casbin.v1.BoolRep"
+  "ly\"\000\022O\n\021RemoveNamedPolicy\022\035.palm.casbin."
+  "v1.PolicyRequest\032\031.palm.casbin.v1.BoolRe"
+  "ply\"\000\022Z\n\024RemoveFilteredPolicy\022%.palm.cas"
+  "bin.v1.FilteredPolicyRequest\032\031.palm.casb"
+  "in.v1.BoolReply\"\000\022_\n\031RemoveFilteredNamed"
+  "Policy\022%.palm.casbin.v1.FilteredPolicyRe"
+  "quest\032\031.palm.casbin.v1.BoolReply\"\000\022I\n\tGe"
+  "tPolicy\022\034.palm.casbin.v1.EmptyRequest\032\034."
+  "palm.casbin.v1.Array2DReply\"\000\022O\n\016GetName"
+  "dPolicy\022\035.palm.casbin.v1.PolicyRequest\032\034"
+  ".palm.casbin.v1.Array2DReply\"\000\022Z\n\021GetFil"
+  "teredPolicy\022%.palm.casbin.v1.FilteredPol"
+  "icyRequest\032\034.palm.casbin.v1.Array2DReply"
+  "\"\000\022_\n\026GetFilteredNamedPolicy\022%.palm.casb"
+  "in.v1.FilteredPolicyRequest\032\034.palm.casbi"
+  "n.v1.Array2DReply\"\000\022O\n\021AddGroupingPolicy"
+  "\022\035.palm.casbin.v1.PolicyRequest\032\031.palm.c"
+  "asbin.v1.BoolReply\"\000\022T\n\026AddNamedGrouping"
+  "Policy\022\035.palm.casbin.v1.PolicyRequest\032\031."
+  "palm.casbin.v1.BoolReply\"\000\022R\n\024RemoveGrou"
+  "pingPolicy\022\035.palm.casbin.v1.PolicyReques"
+  "t\032\031.palm.casbin.v1.BoolReply\"\000\022W\n\031Remove"
+  "NamedGroupingPolicy\022\035.palm.casbin.v1.Pol"
+  "icyRequest\032\031.palm.casbin.v1.BoolReply\"\000\022"
+  "b\n\034RemoveFilteredGroupingPolicy\022%.palm.c"
+  "asbin.v1.FilteredPolicyRequest\032\031.palm.ca"
+  "sbin.v1.BoolReply\"\000\022g\n!RemoveFilteredNam"
+  "edGroupingPolicy\022%.palm.casbin.v1.Filter"
+  "edPolicyRequest\032\031.palm.casbin.v1.BoolRep"
+  "ly\"\000\022Q\n\021GetGroupingPolicy\022\034.palm.casbin."
+  "v1.EmptyRequest\032\034.palm.casbin.v1.Array2D"
+  "Reply\"\000\022W\n\026GetNamedGroupingPolicy\022\035.palm"
+  ".casbin.v1.PolicyRequest\032\034.palm.casbin.v"
+  "1.Array2DReply\"\000\022b\n\031GetFilteredGroupingP"
+  "olicy\022%.palm.casbin.v1.FilteredPolicyReq"
+  "uest\032\034.palm.casbin.v1.Array2DReply\"\000\022g\n\036"
+  "GetFilteredNamedGroupingPolicy\022%.palm.ca"
+  "sbin.v1.FilteredPolicyRequest\032\034.palm.cas"
+  "bin.v1.Array2DReply\"\000\022L\n\016GetAllSubjects\022"
+  "\034.palm.casbin.v1.EmptyRequest\032\032.palm.cas"
+  "bin.v1.ArrayReply\"\000\022U\n\023GetAllNamedSubjec"
+  "ts\022 .palm.casbin.v1.SimpleGetRequest\032\032.p"
+  "alm.casbin.v1.ArrayReply\"\000\022K\n\rGetAllObje"
+  "cts\022\034.palm.casbin.v1.EmptyRequest\032\032.palm"
+  ".casbin.v1.ArrayReply\"\000\022T\n\022GetAllNamedOb"
+  "jects\022 .palm.casbin.v1.SimpleGetRequest\032"
+  "\032.palm.casbin.v1.ArrayReply\"\000\022K\n\rGetAllA"
+  "ctions\022\034.palm.casbin.v1.EmptyRequest\032\032.p"
+  "alm.casbin.v1.ArrayReply\"\000\022T\n\022GetAllName"
+  "dActions\022 .palm.casbin.v1.SimpleGetReque"
+  "st\032\032.palm.casbin.v1.ArrayReply\"\000\022I\n\013GetA"
+  "llRoles\022\034.palm.casbin.v1.EmptyRequest\032\032."
+  "palm.casbin.v1.ArrayReply\"\000\022R\n\020GetAllNam"
+  "edRoles\022 .palm.casbin.v1.SimpleGetReques"
+  "t\032\032.palm.casbin.v1.ArrayReply\"\000\022G\n\tHasPo"
+  "licy\022\035.palm.casbin.v1.PolicyRequest\032\031.pa"
+  "lm.casbin.v1.BoolReply\"\000\022L\n\016HasNamedPoli"
+  "cy\022\035.palm.casbin.v1.PolicyRequest\032\031.palm"
+  ".casbin.v1.BoolReply\"\000\022O\n\021HasGroupingPol"
+  "icy\022\035.palm.casbin.v1.PolicyRequest\032\031.pal"
+  "m.casbin.v1.BoolReply\"\000\022T\n\026HasNamedGroup"
+  "ingPolicy\022\035.palm.casbin.v1.PolicyRequest"
+  "\032\031.palm.casbin.v1.BoolReply\"\000\022K\n\nGetDoma"
+  "ins\022\037.palm.casbin.v1.UserRoleRequest\032\032.p"
+  "alm.casbin.v1.ArrayReply\"\000\022P\n\017GetRolesFo"
+  "rUser\022\037.palm.casbin.v1.UserRoleRequest\032\032"
+  ".palm.casbin.v1.ArrayReply\"\000\022X\n\027GetImpli"
+  "citRolesForUser\022\037.palm.casbin.v1.UserRol"
+  "eRequest\032\032.palm.casbin.v1.ArrayReply\"\000\022P"
+  "\n\017GetUsersForRole\022\037.palm.casbin.v1.UserR"
+  "oleRequest\032\032.palm.casbin.v1.ArrayReply\"\000"
+  "\022N\n\016HasRoleForUser\022\037.palm.casbin.v1.User"
+  "RoleRequest\032\031.palm.casbin.v1.BoolReply\"\000"
+  "\022N\n\016AddRoleForUser\022\037.palm.casbin.v1.User"
+  "RoleRequest\032\031.palm.casbin.v1.BoolReply\"\000"
+  "\022Q\n\021DeleteRoleForUser\022\037.palm.casbin.v1.U"
+  "serRoleRequest\032\031.palm.casbin.v1.BoolRepl"
+  "y\"\000\022R\n\022DeleteRolesForUser\022\037.palm.casbin."
+  "v1.UserRoleRequest\032\031.palm.casbin.v1.Bool"
+  "Reply\"\000\022J\n\nDeleteUser\022\037.palm.casbin.v1.U"
+  "serRoleRequest\032\031.palm.casbin.v1.BoolRepl"
+  "y\"\000\022K\n\nDeleteRole\022\037.palm.casbin.v1.UserR"
+  "oleRequest\032\032.palm.casbin.v1.EmptyReply\"\000"
+  "\022Z\n\025GetPermissionsForUser\022!.palm.casbin."
+  "v1.PermissionRequest\032\034.palm.casbin.v1.Ar"
+  "ray2DReply\"\000\022b\n\035GetImplicitPermissionsFo"
+  "rUser\022!.palm.casbin.v1.PermissionRequest"
+  "\032\034.palm.casbin.v1.Array2DReply\"\000\022R\n\020Dele"
+  "tePermission\022!.palm.casbin.v1.Permission"
+  "Request\032\031.palm.casbin.v1.BoolReply\"\000\022V\n\024"
+  "AddPermissionForUser\022!.palm.casbin.v1.Pe"
+  "rmissionRequest\032\031.palm.casbin.v1.BoolRep"
+  "ly\"\000\022Y\n\027DeletePermissionForUser\022!.palm.c"
   "asbin.v1.PermissionRequest\032\031.palm.casbin"
-  ".v1.BoolReply\"\000\022Y\n\027DeletePermissionForUs"
-  "er\022!.palm.casbin.v1.PermissionRequest\032\031."
-  "palm.casbin.v1.BoolReply\"\000\022Z\n\030DeletePerm"
-  "issionsForUser\022!.palm.casbin.v1.Permissi"
-  "onRequest\032\031.palm.casbin.v1.BoolReply\"\000\022V"
-  "\n\024HasPermissionForUser\022!.palm.casbin.v1."
-  "PermissionRequest\032\031.palm.casbin.v1.BoolR"
-  "eply\"\000B0\n,com.github.saturn_xiv.palm.plu"
-  "gins.casbin.v1P\001b\006proto3"
+  ".v1.BoolReply\"\000\022Z\n\030DeletePermissionsForU"
+  "ser\022!.palm.casbin.v1.PermissionRequest\032\031"
+  ".palm.casbin.v1.BoolReply\"\000\022V\n\024HasPermis"
+  "sionForUser\022!.palm.casbin.v1.PermissionR"
+  "equest\032\031.palm.casbin.v1.BoolReply\"\000B0\n,c"
+  "om.github.saturn_xiv.palm.plugins.casbin"
+  ".v1P\001b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_casbin_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_casbin_2eproto = {
-    false, false, 5464, descriptor_table_protodef_casbin_2eproto,
+    false, false, 5573, descriptor_table_protodef_casbin_2eproto,
     "casbin.proto",
     &descriptor_table_casbin_2eproto_once, nullptr, 0, 16,
     schemas, file_default_instances, TableStruct_casbin_2eproto::offsets,
@@ -3111,7 +3118,8 @@ UserRoleRequest::UserRoleRequest(const UserRoleRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   UserRoleRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.user_){}
+      decltype(_impl_.domain_){from._impl_.domain_}
+    , decltype(_impl_.user_){}
     , decltype(_impl_.role_){}
     , decltype(_impl_.enforcerhandler_){}
     , /*decltype(_impl_._cached_size_)*/{}};
@@ -3142,7 +3150,8 @@ inline void UserRoleRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.user_){}
+      decltype(_impl_.domain_){arena}
+    , decltype(_impl_.user_){}
     , decltype(_impl_.role_){}
     , decltype(_impl_.enforcerhandler_){0}
     , /*decltype(_impl_._cached_size_)*/{}
@@ -3168,6 +3177,7 @@ UserRoleRequest::~UserRoleRequest() {
 
 inline void UserRoleRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.domain_.~RepeatedPtrField();
   _impl_.user_.Destroy();
   _impl_.role_.Destroy();
 }
@@ -3182,6 +3192,7 @@ void UserRoleRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.domain_.Clear();
   _impl_.user_.ClearToEmpty();
   _impl_.role_.ClearToEmpty();
   _impl_.enforcerhandler_ = 0;
@@ -3219,6 +3230,21 @@ const char* UserRoleRequest::_InternalParse(const char* ptr, ::_pbi::ParseContex
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "palm.casbin.v1.UserRoleRequest.role"));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated string domain = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_domain();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "palm.casbin.v1.UserRoleRequest.domain"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -3277,6 +3303,16 @@ uint8_t* UserRoleRequest::_InternalSerialize(
         3, this->_internal_role(), target);
   }
 
+  // repeated string domain = 4;
+  for (int i = 0, n = this->_internal_domain_size(); i < n; i++) {
+    const auto& s = this->_internal_domain(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.casbin.v1.UserRoleRequest.domain");
+    target = stream->WriteString(4, s, target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -3292,6 +3328,14 @@ size_t UserRoleRequest::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated string domain = 4;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.domain_.size());
+  for (int i = 0, n = _impl_.domain_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.domain_.Get(i));
+  }
 
   // string user = 2;
   if (!this->_internal_user().empty()) {
@@ -3330,6 +3374,7 @@ void UserRoleRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const 
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_impl_.domain_.MergeFrom(from._impl_.domain_);
   if (!from._internal_user().empty()) {
     _this->_internal_set_user(from._internal_user());
   }
@@ -3358,6 +3403,7 @@ void UserRoleRequest::InternalSwap(UserRoleRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.domain_.InternalSwap(&other->_impl_.domain_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.user_, lhs_arena,
       &other->_impl_.user_, rhs_arena
@@ -3392,6 +3438,7 @@ PermissionRequest::PermissionRequest(const PermissionRequest& from)
   PermissionRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.permissions_){from._impl_.permissions_}
+    , decltype(_impl_.domain_){from._impl_.domain_}
     , decltype(_impl_.user_){}
     , decltype(_impl_.enforcerhandler_){}
     , /*decltype(_impl_._cached_size_)*/{}};
@@ -3415,6 +3462,7 @@ inline void PermissionRequest::SharedCtor(
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.permissions_){arena}
+    , decltype(_impl_.domain_){arena}
     , decltype(_impl_.user_){}
     , decltype(_impl_.enforcerhandler_){0}
     , /*decltype(_impl_._cached_size_)*/{}
@@ -3437,6 +3485,7 @@ PermissionRequest::~PermissionRequest() {
 inline void PermissionRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.permissions_.~RepeatedPtrField();
+  _impl_.domain_.~RepeatedPtrField();
   _impl_.user_.Destroy();
 }
 
@@ -3451,6 +3500,7 @@ void PermissionRequest::Clear() {
   (void) cached_has_bits;
 
   _impl_.permissions_.Clear();
+  _impl_.domain_.Clear();
   _impl_.user_.ClearToEmpty();
   _impl_.enforcerhandler_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -3492,6 +3542,21 @@ const char* PermissionRequest::_InternalParse(const char* ptr, ::_pbi::ParseCont
             CHK_(::_pbi::VerifyUTF8(str, "palm.casbin.v1.PermissionRequest.permissions"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated string domain = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_domain();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "palm.casbin.v1.PermissionRequest.domain"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -3550,6 +3615,16 @@ uint8_t* PermissionRequest::_InternalSerialize(
     target = stream->WriteString(3, s, target);
   }
 
+  // repeated string domain = 4;
+  for (int i = 0, n = this->_internal_domain_size(); i < n; i++) {
+    const auto& s = this->_internal_domain(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "palm.casbin.v1.PermissionRequest.domain");
+    target = stream->WriteString(4, s, target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -3572,6 +3647,14 @@ size_t PermissionRequest::ByteSizeLong() const {
   for (int i = 0, n = _impl_.permissions_.size(); i < n; i++) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
       _impl_.permissions_.Get(i));
+  }
+
+  // repeated string domain = 4;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.domain_.size());
+  for (int i = 0, n = _impl_.domain_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.domain_.Get(i));
   }
 
   // string user = 2;
@@ -3605,6 +3688,7 @@ void PermissionRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, cons
   (void) cached_has_bits;
 
   _this->_impl_.permissions_.MergeFrom(from._impl_.permissions_);
+  _this->_impl_.domain_.MergeFrom(from._impl_.domain_);
   if (!from._internal_user().empty()) {
     _this->_internal_set_user(from._internal_user());
   }
@@ -3631,6 +3715,7 @@ void PermissionRequest::InternalSwap(PermissionRequest* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.permissions_.InternalSwap(&other->_impl_.permissions_);
+  _impl_.domain_.InternalSwap(&other->_impl_.domain_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.user_, lhs_arena,
       &other->_impl_.user_, rhs_arena

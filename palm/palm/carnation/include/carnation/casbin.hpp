@@ -3,6 +3,7 @@
 #include "casbin.grpc.pb.h"
 #include "palm/cache.hpp"
 #include "palm/orm.hpp"
+#include "palm/queue.hpp"
 
 namespace carnation {
 
@@ -11,72 +12,207 @@ class CasbinServiceImpl final : public palm::casbin::v1::Casbin::Service {
   CasbinServiceImpl() : palm::casbin::v1::Casbin::Service() {}
   grpc::Status NewEnforcer(grpc::ServerContext* context,
                            const palm::casbin::v1::NewEnforcerRequest* request,
-                           palm::casbin::v1::NewEnforcerReply* reply) override {
-  }
-  /*
-    rpc NewEnforcer() returns () {}
-    rpc NewAdapter(NewAdapterRequest) returns (NewAdapterReply) {}
+                           palm::casbin::v1::NewEnforcerReply* reply) override;
 
-    rpc Enforce(EnforceRequest) returns (BoolReply) {}
+  grpc::Status NewAdapter(grpc::ServerContext* context,
+                          const palm::casbin::v1::NewAdapterRequest* request,
+                          palm::casbin::v1::NewAdapterReply* response) override;
 
-    rpc LoadPolicy(EmptyRequest) returns (EmptyReply) {}
-    rpc SavePolicy(EmptyRequest) returns (EmptyReply) {}
+  grpc::Status Enforce(grpc::ServerContext* context,
+                       const palm::casbin::v1::EnforceRequest* request,
+                       palm::casbin::v1::BoolReply* response) override;
 
-    rpc AddPolicy(PolicyRequest) returns (BoolReply) {}
-    rpc AddNamedPolicy(PolicyRequest) returns (BoolReply) {}
-    rpc RemovePolicy(PolicyRequest) returns (BoolReply) {}
-    rpc RemoveNamedPolicy(PolicyRequest) returns (BoolReply) {}
-    rpc RemoveFilteredPolicy(FilteredPolicyRequest) returns (BoolReply) {}
-    rpc RemoveFilteredNamedPolicy(FilteredPolicyRequest) returns (BoolReply) {}
-    rpc GetPolicy(EmptyRequest) returns (Array2DReply) {}
-    rpc GetNamedPolicy(PolicyRequest) returns (Array2DReply) {}
-    rpc GetFilteredPolicy(FilteredPolicyRequest) returns (Array2DReply) {}
-    rpc GetFilteredNamedPolicy(FilteredPolicyRequest) returns (Array2DReply) {}
+  grpc::Status LoadPolicy(grpc::ServerContext* context,
+                          const palm::casbin::v1::EmptyRequest* request,
+                          palm::casbin::v1::EmptyReply* response) override;
+  grpc::Status SavePolicy(grpc::ServerContext* context,
+                          const palm::casbin::v1::EmptyRequest* request,
+                          palm::casbin::v1::EmptyReply* response) override;
 
-    rpc AddGroupingPolicy(PolicyRequest) returns (BoolReply) {}
-    rpc AddNamedGroupingPolicy(PolicyRequest) returns (BoolReply) {}
-    rpc RemoveGroupingPolicy(PolicyRequest) returns (BoolReply) {}
-    rpc RemoveNamedGroupingPolicy(PolicyRequest) returns (BoolReply) {}
-    rpc RemoveFilteredGroupingPolicy(FilteredPolicyRequest) returns (BoolReply)
-    {} rpc RemoveFilteredNamedGroupingPolicy(FilteredPolicyRequest) returns
-    (BoolReply) {} rpc GetGroupingPolicy(EmptyRequest) returns (Array2DReply) {}
-    rpc GetNamedGroupingPolicy(PolicyRequest) returns (Array2DReply) {}
-    rpc GetFilteredGroupingPolicy(FilteredPolicyRequest) returns (Array2DReply)
-    {} rpc GetFilteredNamedGroupingPolicy(FilteredPolicyRequest) returns
-    (Array2DReply) {}
+  grpc::Status AddPolicy(grpc::ServerContext* context,
+                         const palm::casbin::v1::PolicyRequest* request,
+                         palm::casbin::v1::BoolReply* response) override;
+  grpc::Status AddNamedPolicy(grpc::ServerContext* context,
+                              const palm::casbin::v1::PolicyRequest* request,
+                              palm::casbin::v1::BoolReply* response) override;
+  grpc::Status RemovePolicy(grpc::ServerContext* context,
+                            const palm::casbin::v1::PolicyRequest* request,
+                            palm::casbin::v1::BoolReply* response) override;
+  grpc::Status RemoveNamedPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PolicyRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status RemoveFilteredPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::FilteredPolicyRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status RemoveFilteredNamedPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::FilteredPolicyRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status GetPolicy(grpc::ServerContext* context,
+                         const palm::casbin::v1::EmptyRequest* request,
+                         palm::casbin::v1::Array2DReply* response) override;
+  grpc::Status GetNamedPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PolicyRequest* request,
+      palm::casbin::v1::Array2DReply* response) override;
+  grpc::Status GetFilteredPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::FilteredPolicyRequest* request,
+      palm::casbin::v1::Array2DReply* response) override;
+  grpc::Status GetFilteredNamedPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::FilteredPolicyRequest* request,
+      palm::casbin::v1::Array2DReply* response) override;
 
-    rpc GetAllSubjects(EmptyRequest) returns (ArrayReply) {}
-    rpc GetAllNamedSubjects(SimpleGetRequest) returns (ArrayReply) {}
-    rpc GetAllObjects(EmptyRequest) returns (ArrayReply) {}
-    rpc GetAllNamedObjects(SimpleGetRequest) returns (ArrayReply) {}
-    rpc GetAllActions(EmptyRequest) returns (ArrayReply) {}
-    rpc GetAllNamedActions(SimpleGetRequest) returns (ArrayReply) {}
-    rpc GetAllRoles(EmptyRequest) returns (ArrayReply) {}
-    rpc GetAllNamedRoles(SimpleGetRequest) returns (ArrayReply) {}
+  grpc::Status AddGroupingPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PolicyRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status AddNamedGroupingPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PolicyRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status RemoveGroupingPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PolicyRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status RemoveNamedGroupingPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PolicyRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status RemoveFilteredGroupingPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::FilteredPolicyRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status RemoveFilteredNamedGroupingPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::FilteredPolicyRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status GetGroupingPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::EmptyRequest* request,
+      palm::casbin::v1::Array2DReply* response) override;
+  grpc::Status GetNamedGroupingPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PolicyRequest* request,
+      palm::casbin::v1::Array2DReply* response) override;
+  grpc::Status GetFilteredGroupingPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::FilteredPolicyRequest* request,
+      palm::casbin::v1::Array2DReply* response) override;
+  grpc::Status GetFilteredNamedGroupingPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::FilteredPolicyRequest* request,
+      palm::casbin::v1::Array2DReply* response) override;
 
-    rpc HasPolicy(PolicyRequest) returns (BoolReply) {}
-    rpc HasNamedPolicy(PolicyRequest) returns (BoolReply) {}
-    rpc HasGroupingPolicy(PolicyRequest) returns (BoolReply) {}
-    rpc HasNamedGroupingPolicy(PolicyRequest) returns (BoolReply) {}
+  grpc::Status GetAllSubjects(grpc::ServerContext* context,
+                              const palm::casbin::v1::EmptyRequest* request,
+                              palm::casbin::v1::ArrayReply* response) override;
+  grpc::Status GetAllNamedSubjects(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::SimpleGetRequest* request,
+      palm::casbin::v1::ArrayReply* response) override;
+  grpc::Status GetAllObjects(grpc::ServerContext* context,
+                             const palm::casbin::v1::EmptyRequest* request,
+                             palm::casbin::v1::ArrayReply* response) override;
+  grpc::Status GetAllNamedObjects(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::SimpleGetRequest* request,
+      palm::casbin::v1::ArrayReply* response) override;
+  grpc::Status GetAllActions(grpc::ServerContext* context,
+                             const palm::casbin::v1::EmptyRequest* request,
+                             palm::casbin::v1::ArrayReply* response) override;
+  grpc::Status GetAllNamedActions(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::SimpleGetRequest* request,
+      palm::casbin::v1::ArrayReply* response) override;
+  grpc::Status GetAllRoles(grpc::ServerContext* context,
+                           const palm::casbin::v1::EmptyRequest* request,
+                           palm::casbin::v1::ArrayReply* response) override;
+  grpc::Status GetAllNamedRoles(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::SimpleGetRequest* request,
+      palm::casbin::v1::ArrayReply* response) override;
 
-    rpc GetRolesForUser(UserRoleRequest) returns (ArrayReply) {}
-    rpc GetImplicitRolesForUser(UserRoleRequest) returns (ArrayReply) {}
-    rpc GetUsersForRole(UserRoleRequest) returns (ArrayReply) {}
-    rpc HasRoleForUser(UserRoleRequest) returns (BoolReply) {}
-    rpc AddRoleForUser(UserRoleRequest) returns (BoolReply) {}
-    rpc DeleteRoleForUser(UserRoleRequest) returns (BoolReply) {}
-    rpc DeleteRolesForUser(UserRoleRequest) returns (BoolReply) {}
-    rpc DeleteUser(UserRoleRequest) returns (BoolReply) {}
-    rpc DeleteRole(UserRoleRequest) returns (EmptyReply) {}
+  grpc::Status HasPolicy(grpc::ServerContext* context,
+                         const palm::casbin::v1::PolicyRequest* request,
+                         palm::casbin::v1::BoolReply* response) override;
+  grpc::Status HasNamedPolicy(grpc::ServerContext* context,
+                              const palm::casbin::v1::PolicyRequest* request,
+                              palm::casbin::v1::BoolReply* response) override;
+  grpc::Status HasGroupingPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PolicyRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status HasNamedGroupingPolicy(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PolicyRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status GetDomains(grpc::ServerContext* context,
+                          const palm::casbin::v1::UserRoleRequest* request,
+                          palm::casbin::v1::ArrayReply* response) override;
 
-    rpc GetPermissionsForUser(PermissionRequest) returns (Array2DReply) {}
-    rpc GetImplicitPermissionsForUser(PermissionRequest) returns (Array2DReply)
-    {} rpc DeletePermission(PermissionRequest) returns (BoolReply) {} rpc
-    AddPermissionForUser(PermissionRequest) returns (BoolReply) {} rpc
-    DeletePermissionForUser(PermissionRequest) returns (BoolReply) {} rpc
-    DeletePermissionsForUser(PermissionRequest) returns (BoolReply) {} rpc
-    HasPermissionForUser(PermissionRequest) returns (BoolReply) {}
-    */
+  grpc::Status GetRolesForUser(grpc::ServerContext* context,
+                               const palm::casbin::v1::UserRoleRequest* request,
+                               palm::casbin::v1::ArrayReply* response) override;
+  grpc::Status GetImplicitRolesForUser(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::UserRoleRequest* request,
+      palm::casbin::v1::ArrayReply* response) override;
+  grpc::Status GetUsersForRole(grpc::ServerContext* context,
+                               const palm::casbin::v1::UserRoleRequest* request,
+                               palm::casbin::v1::ArrayReply* response) override;
+  grpc::Status HasRoleForUser(grpc::ServerContext* context,
+                              const palm::casbin::v1::UserRoleRequest* request,
+                              palm::casbin::v1::BoolReply* response) override;
+  grpc::Status AddRoleForUser(grpc::ServerContext* context,
+                              const palm::casbin::v1::UserRoleRequest* request,
+                              palm::casbin::v1::BoolReply* response) override;
+  grpc::Status DeleteRoleForUser(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::UserRoleRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status DeleteRolesForUser(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::UserRoleRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status DeleteUser(grpc::ServerContext* context,
+                          const palm::casbin::v1::UserRoleRequest* request,
+                          palm::casbin::v1::BoolReply* response) override;
+  grpc::Status DeleteRole(grpc::ServerContext* context,
+                          const palm::casbin::v1::UserRoleRequest* request,
+                          palm::casbin::v1::EmptyReply* response) override;
+
+  grpc::Status GetPermissionsForUser(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PermissionRequest* request,
+      palm::casbin::v1::Array2DReply* response) override;
+  grpc::Status GetImplicitPermissionsForUser(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PermissionRequest* request,
+      palm::casbin::v1::Array2DReply* response) override;
+  grpc::Status DeletePermission(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PermissionRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status AddPermissionForUser(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PermissionRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status DeletePermissionForUser(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PermissionRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status DeletePermissionsForUser(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PermissionRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
+  grpc::Status HasPermissionForUser(
+      grpc::ServerContext* context,
+      const palm::casbin::v1::PermissionRequest* request,
+      palm::casbin::v1::BoolReply* response) override;
 
  private:
 };

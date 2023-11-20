@@ -2,8 +2,8 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 // Original file comments:
-// f2292d7:
-// https://github.com/casbin-rs/casbin-grpc/blob/main/api/protos/casbin.proto
+// 138d465:
+// https://github.com/casbin/casbin-server/blob/master/proto/casbin.proto
 namespace Palm\Casbin\V1;
 
 /**
@@ -535,6 +535,20 @@ class CasbinClient extends \Grpc\BaseStub {
         return $this->_simpleRequest('/palm.casbin.v1.Casbin/HasNamedGroupingPolicy',
         $argument,
         ['\Palm\Casbin\V1\BoolReply', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     * @param \Palm\Casbin\V1\UserRoleRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall
+     */
+    public function GetDomains(\Palm\Casbin\V1\UserRoleRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/palm.casbin.v1.Casbin/GetDomains',
+        $argument,
+        ['\Palm\Casbin\V1\ArrayReply', 'decode'],
         $metadata, $options);
     }
 

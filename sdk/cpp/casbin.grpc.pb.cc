@@ -61,6 +61,7 @@ static const char* Casbin_method_names[] = {
   "/palm.casbin.v1.Casbin/HasNamedPolicy",
   "/palm.casbin.v1.Casbin/HasGroupingPolicy",
   "/palm.casbin.v1.Casbin/HasNamedGroupingPolicy",
+  "/palm.casbin.v1.Casbin/GetDomains",
   "/palm.casbin.v1.Casbin/GetRolesForUser",
   "/palm.casbin.v1.Casbin/GetImplicitRolesForUser",
   "/palm.casbin.v1.Casbin/GetUsersForRole",
@@ -123,22 +124,23 @@ Casbin::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, co
   , rpcmethod_HasNamedPolicy_(Casbin_method_names[34], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_HasGroupingPolicy_(Casbin_method_names[35], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_HasNamedGroupingPolicy_(Casbin_method_names[36], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetRolesForUser_(Casbin_method_names[37], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetImplicitRolesForUser_(Casbin_method_names[38], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetUsersForRole_(Casbin_method_names[39], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_HasRoleForUser_(Casbin_method_names[40], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_AddRoleForUser_(Casbin_method_names[41], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeleteRoleForUser_(Casbin_method_names[42], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeleteRolesForUser_(Casbin_method_names[43], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeleteUser_(Casbin_method_names[44], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeleteRole_(Casbin_method_names[45], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetPermissionsForUser_(Casbin_method_names[46], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetImplicitPermissionsForUser_(Casbin_method_names[47], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeletePermission_(Casbin_method_names[48], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_AddPermissionForUser_(Casbin_method_names[49], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeletePermissionForUser_(Casbin_method_names[50], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_DeletePermissionsForUser_(Casbin_method_names[51], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_HasPermissionForUser_(Casbin_method_names[52], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetDomains_(Casbin_method_names[37], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetRolesForUser_(Casbin_method_names[38], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetImplicitRolesForUser_(Casbin_method_names[39], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetUsersForRole_(Casbin_method_names[40], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_HasRoleForUser_(Casbin_method_names[41], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_AddRoleForUser_(Casbin_method_names[42], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeleteRoleForUser_(Casbin_method_names[43], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeleteRolesForUser_(Casbin_method_names[44], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeleteUser_(Casbin_method_names[45], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeleteRole_(Casbin_method_names[46], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetPermissionsForUser_(Casbin_method_names[47], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetImplicitPermissionsForUser_(Casbin_method_names[48], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeletePermission_(Casbin_method_names[49], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_AddPermissionForUser_(Casbin_method_names[50], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeletePermissionForUser_(Casbin_method_names[51], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeletePermissionsForUser_(Casbin_method_names[52], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_HasPermissionForUser_(Casbin_method_names[53], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status Casbin::Stub::NewEnforcer(::grpc::ClientContext* context, const ::palm::casbin::v1::NewEnforcerRequest& request, ::palm::casbin::v1::NewEnforcerReply* response) {
@@ -992,6 +994,29 @@ void Casbin::Stub::async::HasNamedGroupingPolicy(::grpc::ClientContext* context,
   return result;
 }
 
+::grpc::Status Casbin::Stub::GetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::palm::casbin::v1::ArrayReply* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetDomains_, context, request, response);
+}
+
+void Casbin::Stub::async::GetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDomains_, context, request, response, std::move(f));
+}
+
+void Casbin::Stub::async::GetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDomains_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>* Casbin::Stub::PrepareAsyncGetDomainsRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::palm::casbin::v1::ArrayReply, ::palm::casbin::v1::UserRoleRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetDomains_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>* Casbin::Stub::AsyncGetDomainsRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetDomainsRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 ::grpc::Status Casbin::Stub::GetRolesForUser(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::palm::casbin::v1::ArrayReply* response) {
   return ::grpc::internal::BlockingUnaryCall< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetRolesForUser_, context, request, response);
 }
@@ -1739,7 +1764,7 @@ Casbin::Service::Service() {
              ::grpc::ServerContext* ctx,
              const ::palm::casbin::v1::UserRoleRequest* req,
              ::palm::casbin::v1::ArrayReply* resp) {
-               return service->GetRolesForUser(ctx, req, resp);
+               return service->GetDomains(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Casbin_method_names[38],
@@ -1749,7 +1774,7 @@ Casbin::Service::Service() {
              ::grpc::ServerContext* ctx,
              const ::palm::casbin::v1::UserRoleRequest* req,
              ::palm::casbin::v1::ArrayReply* resp) {
-               return service->GetImplicitRolesForUser(ctx, req, resp);
+               return service->GetRolesForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Casbin_method_names[39],
@@ -1759,17 +1784,17 @@ Casbin::Service::Service() {
              ::grpc::ServerContext* ctx,
              const ::palm::casbin::v1::UserRoleRequest* req,
              ::palm::casbin::v1::ArrayReply* resp) {
-               return service->GetUsersForRole(ctx, req, resp);
+               return service->GetImplicitRolesForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Casbin_method_names[40],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Casbin::Service, ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< Casbin::Service, ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Casbin::Service* service,
              ::grpc::ServerContext* ctx,
              const ::palm::casbin::v1::UserRoleRequest* req,
-             ::palm::casbin::v1::BoolReply* resp) {
-               return service->HasRoleForUser(ctx, req, resp);
+             ::palm::casbin::v1::ArrayReply* resp) {
+               return service->GetUsersForRole(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Casbin_method_names[41],
@@ -1779,7 +1804,7 @@ Casbin::Service::Service() {
              ::grpc::ServerContext* ctx,
              const ::palm::casbin::v1::UserRoleRequest* req,
              ::palm::casbin::v1::BoolReply* resp) {
-               return service->AddRoleForUser(ctx, req, resp);
+               return service->HasRoleForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Casbin_method_names[42],
@@ -1789,7 +1814,7 @@ Casbin::Service::Service() {
              ::grpc::ServerContext* ctx,
              const ::palm::casbin::v1::UserRoleRequest* req,
              ::palm::casbin::v1::BoolReply* resp) {
-               return service->DeleteRoleForUser(ctx, req, resp);
+               return service->AddRoleForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Casbin_method_names[43],
@@ -1799,7 +1824,7 @@ Casbin::Service::Service() {
              ::grpc::ServerContext* ctx,
              const ::palm::casbin::v1::UserRoleRequest* req,
              ::palm::casbin::v1::BoolReply* resp) {
-               return service->DeleteRolesForUser(ctx, req, resp);
+               return service->DeleteRoleForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Casbin_method_names[44],
@@ -1809,10 +1834,20 @@ Casbin::Service::Service() {
              ::grpc::ServerContext* ctx,
              const ::palm::casbin::v1::UserRoleRequest* req,
              ::palm::casbin::v1::BoolReply* resp) {
-               return service->DeleteUser(ctx, req, resp);
+               return service->DeleteRolesForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Casbin_method_names[45],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Casbin::Service, ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](Casbin::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::palm::casbin::v1::UserRoleRequest* req,
+             ::palm::casbin::v1::BoolReply* resp) {
+               return service->DeleteUser(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Casbin_method_names[46],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Casbin::Service, ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::EmptyReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Casbin::Service* service,
@@ -1822,7 +1857,7 @@ Casbin::Service::Service() {
                return service->DeleteRole(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Casbin_method_names[46],
+      Casbin_method_names[47],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Casbin::Service, ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::Array2DReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Casbin::Service* service,
@@ -1832,7 +1867,7 @@ Casbin::Service::Service() {
                return service->GetPermissionsForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Casbin_method_names[47],
+      Casbin_method_names[48],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Casbin::Service, ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::Array2DReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Casbin::Service* service,
@@ -1842,7 +1877,7 @@ Casbin::Service::Service() {
                return service->GetImplicitPermissionsForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Casbin_method_names[48],
+      Casbin_method_names[49],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Casbin::Service, ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Casbin::Service* service,
@@ -1852,7 +1887,7 @@ Casbin::Service::Service() {
                return service->DeletePermission(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Casbin_method_names[49],
+      Casbin_method_names[50],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Casbin::Service, ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Casbin::Service* service,
@@ -1862,7 +1897,7 @@ Casbin::Service::Service() {
                return service->AddPermissionForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Casbin_method_names[50],
+      Casbin_method_names[51],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Casbin::Service, ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Casbin::Service* service,
@@ -1872,7 +1907,7 @@ Casbin::Service::Service() {
                return service->DeletePermissionForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Casbin_method_names[51],
+      Casbin_method_names[52],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Casbin::Service, ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Casbin::Service* service,
@@ -1882,7 +1917,7 @@ Casbin::Service::Service() {
                return service->DeletePermissionsForUser(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      Casbin_method_names[52],
+      Casbin_method_names[53],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< Casbin::Service, ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](Casbin::Service* service,
@@ -2149,6 +2184,13 @@ Casbin::Service::~Service() {
 }
 
 ::grpc::Status Casbin::Service::HasNamedGroupingPolicy(::grpc::ServerContext* context, const ::palm::casbin::v1::PolicyRequest* request, ::palm::casbin::v1::BoolReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Casbin::Service::GetDomains(::grpc::ServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response) {
   (void) context;
   (void) request;
   (void) response;

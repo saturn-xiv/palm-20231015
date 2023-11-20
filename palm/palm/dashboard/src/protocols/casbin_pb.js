@@ -300,7 +300,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.palm.casbin.v1.UserRoleRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.casbin.v1.UserRoleRequest.repeatedFields_, null);
 };
 goog.inherits(proto.palm.casbin.v1.UserRoleRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -2339,6 +2339,13 @@ proto.palm.casbin.v1.FilteredPolicyRequest.prototype.clearFieldvaluesList = func
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.palm.casbin.v1.UserRoleRequest.repeatedFields_ = [4];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -2372,7 +2379,8 @@ proto.palm.casbin.v1.UserRoleRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     enforcerhandler: jspb.Message.getFieldWithDefault(msg, 1, 0),
     user: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    role: jspb.Message.getFieldWithDefault(msg, 3, "")
+    role: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    domainList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -2421,6 +2429,10 @@ proto.palm.casbin.v1.UserRoleRequest.deserializeBinaryFromReader = function(msg,
       var value = /** @type {string} */ (reader.readString());
       msg.setRole(value);
       break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addDomain(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2468,6 +2480,13 @@ proto.palm.casbin.v1.UserRoleRequest.serializeBinaryToWriter = function(message,
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getDomainList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      4,
       f
     );
   }
@@ -2528,13 +2547,50 @@ proto.palm.casbin.v1.UserRoleRequest.prototype.setRole = function(value) {
 };
 
 
+/**
+ * repeated string domain = 4;
+ * @return {!Array<string>}
+ */
+proto.palm.casbin.v1.UserRoleRequest.prototype.getDomainList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 4));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.palm.casbin.v1.UserRoleRequest} returns this
+ */
+proto.palm.casbin.v1.UserRoleRequest.prototype.setDomainList = function(value) {
+  return jspb.Message.setField(this, 4, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.palm.casbin.v1.UserRoleRequest} returns this
+ */
+proto.palm.casbin.v1.UserRoleRequest.prototype.addDomain = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 4, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.palm.casbin.v1.UserRoleRequest} returns this
+ */
+proto.palm.casbin.v1.UserRoleRequest.prototype.clearDomainList = function() {
+  return this.setDomainList([]);
+};
+
+
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.palm.casbin.v1.PermissionRequest.repeatedFields_ = [3];
+proto.palm.casbin.v1.PermissionRequest.repeatedFields_ = [3,4];
 
 
 
@@ -2569,7 +2625,8 @@ proto.palm.casbin.v1.PermissionRequest.toObject = function(includeInstance, msg)
   var f, obj = {
     enforcerhandler: jspb.Message.getFieldWithDefault(msg, 1, 0),
     user: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    permissionsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f
+    permissionsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
+    domainList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -2618,6 +2675,10 @@ proto.palm.casbin.v1.PermissionRequest.deserializeBinaryFromReader = function(ms
       var value = /** @type {string} */ (reader.readString());
       msg.addPermissions(value);
       break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addDomain(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2665,6 +2726,13 @@ proto.palm.casbin.v1.PermissionRequest.serializeBinaryToWriter = function(messag
   if (f.length > 0) {
     writer.writeRepeatedString(
       3,
+      f
+    );
+  }
+  f = message.getDomainList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      4,
       f
     );
   }
@@ -2741,6 +2809,43 @@ proto.palm.casbin.v1.PermissionRequest.prototype.addPermissions = function(value
  */
 proto.palm.casbin.v1.PermissionRequest.prototype.clearPermissionsList = function() {
   return this.setPermissionsList([]);
+};
+
+
+/**
+ * repeated string domain = 4;
+ * @return {!Array<string>}
+ */
+proto.palm.casbin.v1.PermissionRequest.prototype.getDomainList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 4));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.palm.casbin.v1.PermissionRequest} returns this
+ */
+proto.palm.casbin.v1.PermissionRequest.prototype.setDomainList = function(value) {
+  return jspb.Message.setField(this, 4, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.palm.casbin.v1.PermissionRequest} returns this
+ */
+proto.palm.casbin.v1.PermissionRequest.prototype.addDomain = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 4, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.palm.casbin.v1.PermissionRequest} returns this
+ */
+proto.palm.casbin.v1.PermissionRequest.prototype.clearDomainList = function() {
+  return this.setDomainList([]);
 };
 
 

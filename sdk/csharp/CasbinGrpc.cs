@@ -3,8 +3,8 @@
 //     source: casbin.proto
 // </auto-generated>
 // Original file comments:
-// f2292d7:
-// https://github.com/casbin-rs/casbin-grpc/blob/main/api/protos/casbin.proto
+// 138d465:
+// https://github.com/casbin/casbin-server/blob/master/proto/casbin.proto
 #pragma warning disable 0414, 1591, 8981
 #region Designer generated code
 
@@ -379,6 +379,14 @@ namespace Palm.Casbin.V1 {
         __Marshaller_palm_casbin_v1_BoolReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Palm.Casbin.V1.UserRoleRequest, global::Palm.Casbin.V1.ArrayReply> __Method_GetDomains = new grpc::Method<global::Palm.Casbin.V1.UserRoleRequest, global::Palm.Casbin.V1.ArrayReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetDomains",
+        __Marshaller_palm_casbin_v1_UserRoleRequest,
+        __Marshaller_palm_casbin_v1_ArrayReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Palm.Casbin.V1.UserRoleRequest, global::Palm.Casbin.V1.ArrayReply> __Method_GetRolesForUser = new grpc::Method<global::Palm.Casbin.V1.UserRoleRequest, global::Palm.Casbin.V1.ArrayReply>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -734,6 +742,12 @@ namespace Palm.Casbin.V1 {
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Palm.Casbin.V1.BoolReply> HasNamedGroupingPolicy(global::Palm.Casbin.V1.PolicyRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Palm.Casbin.V1.ArrayReply> GetDomains(global::Palm.Casbin.V1.UserRoleRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -1604,6 +1618,26 @@ namespace Palm.Casbin.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_HasNamedGroupingPolicy, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Palm.Casbin.V1.ArrayReply GetDomains(global::Palm.Casbin.V1.UserRoleRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetDomains(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Palm.Casbin.V1.ArrayReply GetDomains(global::Palm.Casbin.V1.UserRoleRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetDomains, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Palm.Casbin.V1.ArrayReply> GetDomainsAsync(global::Palm.Casbin.V1.UserRoleRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetDomainsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Palm.Casbin.V1.ArrayReply> GetDomainsAsync(global::Palm.Casbin.V1.UserRoleRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetDomains, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Palm.Casbin.V1.ArrayReply GetRolesForUser(global::Palm.Casbin.V1.UserRoleRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetRolesForUser(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -1974,6 +2008,7 @@ namespace Palm.Casbin.V1 {
           .AddMethod(__Method_HasNamedPolicy, serviceImpl.HasNamedPolicy)
           .AddMethod(__Method_HasGroupingPolicy, serviceImpl.HasGroupingPolicy)
           .AddMethod(__Method_HasNamedGroupingPolicy, serviceImpl.HasNamedGroupingPolicy)
+          .AddMethod(__Method_GetDomains, serviceImpl.GetDomains)
           .AddMethod(__Method_GetRolesForUser, serviceImpl.GetRolesForUser)
           .AddMethod(__Method_GetImplicitRolesForUser, serviceImpl.GetImplicitRolesForUser)
           .AddMethod(__Method_GetUsersForRole, serviceImpl.GetUsersForRole)
@@ -2036,6 +2071,7 @@ namespace Palm.Casbin.V1 {
       serviceBinder.AddMethod(__Method_HasNamedPolicy, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Palm.Casbin.V1.PolicyRequest, global::Palm.Casbin.V1.BoolReply>(serviceImpl.HasNamedPolicy));
       serviceBinder.AddMethod(__Method_HasGroupingPolicy, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Palm.Casbin.V1.PolicyRequest, global::Palm.Casbin.V1.BoolReply>(serviceImpl.HasGroupingPolicy));
       serviceBinder.AddMethod(__Method_HasNamedGroupingPolicy, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Palm.Casbin.V1.PolicyRequest, global::Palm.Casbin.V1.BoolReply>(serviceImpl.HasNamedGroupingPolicy));
+      serviceBinder.AddMethod(__Method_GetDomains, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Palm.Casbin.V1.UserRoleRequest, global::Palm.Casbin.V1.ArrayReply>(serviceImpl.GetDomains));
       serviceBinder.AddMethod(__Method_GetRolesForUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Palm.Casbin.V1.UserRoleRequest, global::Palm.Casbin.V1.ArrayReply>(serviceImpl.GetRolesForUser));
       serviceBinder.AddMethod(__Method_GetImplicitRolesForUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Palm.Casbin.V1.UserRoleRequest, global::Palm.Casbin.V1.ArrayReply>(serviceImpl.GetImplicitRolesForUser));
       serviceBinder.AddMethod(__Method_GetUsersForRole, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Palm.Casbin.V1.UserRoleRequest, global::Palm.Casbin.V1.ArrayReply>(serviceImpl.GetUsersForRole));

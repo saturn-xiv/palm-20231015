@@ -2,8 +2,8 @@
 // If you make any local change, they will be lost.
 // source: casbin.proto
 // Original file comments:
-// f2292d7:
-// https://github.com/casbin-rs/casbin-grpc/blob/main/api/protos/casbin.proto
+// 138d465:
+// https://github.com/casbin/casbin-server/blob/master/proto/casbin.proto
 #ifndef GRPC_casbin_2eproto__INCLUDED
 #define GRPC_casbin_2eproto__INCLUDED
 
@@ -300,6 +300,13 @@ class Casbin final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::BoolReply>> PrepareAsyncHasNamedGroupingPolicy(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::BoolReply>>(PrepareAsyncHasNamedGroupingPolicyRaw(context, request, cq));
     }
+    virtual ::grpc::Status GetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::palm::casbin::v1::ArrayReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::ArrayReply>> AsyncGetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::ArrayReply>>(AsyncGetDomainsRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::ArrayReply>> PrepareAsyncGetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::ArrayReply>>(PrepareAsyncGetDomainsRaw(context, request, cq));
+    }
     virtual ::grpc::Status GetRolesForUser(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::palm::casbin::v1::ArrayReply* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::ArrayReply>> AsyncGetRolesForUser(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::ArrayReply>>(AsyncGetRolesForUserRaw(context, request, cq));
@@ -489,6 +496,8 @@ class Casbin final {
       virtual void HasGroupingPolicy(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest* request, ::palm::casbin::v1::BoolReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void HasNamedGroupingPolicy(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest* request, ::palm::casbin::v1::BoolReply* response, std::function<void(::grpc::Status)>) = 0;
       virtual void HasNamedGroupingPolicy(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest* request, ::palm::casbin::v1::BoolReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetRolesForUser(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetRolesForUser(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetImplicitRolesForUser(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response, std::function<void(::grpc::Status)>) = 0;
@@ -600,6 +609,8 @@ class Casbin final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::BoolReply>* PrepareAsyncHasGroupingPolicyRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::BoolReply>* AsyncHasNamedGroupingPolicyRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::BoolReply>* PrepareAsyncHasNamedGroupingPolicyRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::ArrayReply>* AsyncGetDomainsRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::ArrayReply>* PrepareAsyncGetDomainsRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::ArrayReply>* AsyncGetRolesForUserRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::ArrayReply>* PrepareAsyncGetRolesForUserRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::casbin::v1::ArrayReply>* AsyncGetImplicitRolesForUserRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -895,6 +906,13 @@ class Casbin final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::BoolReply>> PrepareAsyncHasNamedGroupingPolicy(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::BoolReply>>(PrepareAsyncHasNamedGroupingPolicyRaw(context, request, cq));
     }
+    ::grpc::Status GetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::palm::casbin::v1::ArrayReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>> AsyncGetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>>(AsyncGetDomainsRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>> PrepareAsyncGetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>>(PrepareAsyncGetDomainsRaw(context, request, cq));
+    }
     ::grpc::Status GetRolesForUser(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::palm::casbin::v1::ArrayReply* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>> AsyncGetRolesForUser(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>>(AsyncGetRolesForUserRaw(context, request, cq));
@@ -1084,6 +1102,8 @@ class Casbin final {
       void HasGroupingPolicy(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest* request, ::palm::casbin::v1::BoolReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       void HasNamedGroupingPolicy(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest* request, ::palm::casbin::v1::BoolReply* response, std::function<void(::grpc::Status)>) override;
       void HasNamedGroupingPolicy(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest* request, ::palm::casbin::v1::BoolReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response, std::function<void(::grpc::Status)>) override;
+      void GetDomains(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetRolesForUser(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response, std::function<void(::grpc::Status)>) override;
       void GetRolesForUser(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetImplicitRolesForUser(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response, std::function<void(::grpc::Status)>) override;
@@ -1201,6 +1221,8 @@ class Casbin final {
     ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::BoolReply>* PrepareAsyncHasGroupingPolicyRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::BoolReply>* AsyncHasNamedGroupingPolicyRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::BoolReply>* PrepareAsyncHasNamedGroupingPolicyRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::PolicyRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>* AsyncGetDomainsRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>* PrepareAsyncGetDomainsRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>* AsyncGetRolesForUserRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>* PrepareAsyncGetRolesForUserRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::casbin::v1::ArrayReply>* AsyncGetImplicitRolesForUserRaw(::grpc::ClientContext* context, const ::palm::casbin::v1::UserRoleRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -1270,6 +1292,7 @@ class Casbin final {
     const ::grpc::internal::RpcMethod rpcmethod_HasNamedPolicy_;
     const ::grpc::internal::RpcMethod rpcmethod_HasGroupingPolicy_;
     const ::grpc::internal::RpcMethod rpcmethod_HasNamedGroupingPolicy_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetDomains_;
     const ::grpc::internal::RpcMethod rpcmethod_GetRolesForUser_;
     const ::grpc::internal::RpcMethod rpcmethod_GetImplicitRolesForUser_;
     const ::grpc::internal::RpcMethod rpcmethod_GetUsersForRole_;
@@ -1330,6 +1353,7 @@ class Casbin final {
     virtual ::grpc::Status HasNamedPolicy(::grpc::ServerContext* context, const ::palm::casbin::v1::PolicyRequest* request, ::palm::casbin::v1::BoolReply* response);
     virtual ::grpc::Status HasGroupingPolicy(::grpc::ServerContext* context, const ::palm::casbin::v1::PolicyRequest* request, ::palm::casbin::v1::BoolReply* response);
     virtual ::grpc::Status HasNamedGroupingPolicy(::grpc::ServerContext* context, const ::palm::casbin::v1::PolicyRequest* request, ::palm::casbin::v1::BoolReply* response);
+    virtual ::grpc::Status GetDomains(::grpc::ServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response);
     virtual ::grpc::Status GetRolesForUser(::grpc::ServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response);
     virtual ::grpc::Status GetImplicitRolesForUser(::grpc::ServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response);
     virtual ::grpc::Status GetUsersForRole(::grpc::ServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response);
@@ -2088,12 +2112,32 @@ class Casbin final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_GetDomains : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetDomains() {
+      ::grpc::Service::MarkMethodAsync(37);
+    }
+    ~WithAsyncMethod_GetDomains() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDomains(::grpc::ServerContext* /*context*/, const ::palm::casbin::v1::UserRoleRequest* /*request*/, ::palm::casbin::v1::ArrayReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDomains(::grpc::ServerContext* context, ::palm::casbin::v1::UserRoleRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::ArrayReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(37, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_GetRolesForUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetRolesForUser() {
-      ::grpc::Service::MarkMethodAsync(37);
+      ::grpc::Service::MarkMethodAsync(38);
     }
     ~WithAsyncMethod_GetRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2104,7 +2148,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetRolesForUser(::grpc::ServerContext* context, ::palm::casbin::v1::UserRoleRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::ArrayReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(37, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(38, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2113,7 +2157,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetImplicitRolesForUser() {
-      ::grpc::Service::MarkMethodAsync(38);
+      ::grpc::Service::MarkMethodAsync(39);
     }
     ~WithAsyncMethod_GetImplicitRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2124,7 +2168,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetImplicitRolesForUser(::grpc::ServerContext* context, ::palm::casbin::v1::UserRoleRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::ArrayReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(38, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(39, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2133,7 +2177,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetUsersForRole() {
-      ::grpc::Service::MarkMethodAsync(39);
+      ::grpc::Service::MarkMethodAsync(40);
     }
     ~WithAsyncMethod_GetUsersForRole() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2144,7 +2188,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetUsersForRole(::grpc::ServerContext* context, ::palm::casbin::v1::UserRoleRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::ArrayReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(39, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(40, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2153,7 +2197,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_HasRoleForUser() {
-      ::grpc::Service::MarkMethodAsync(40);
+      ::grpc::Service::MarkMethodAsync(41);
     }
     ~WithAsyncMethod_HasRoleForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2164,7 +2208,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestHasRoleForUser(::grpc::ServerContext* context, ::palm::casbin::v1::UserRoleRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::BoolReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(40, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(41, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2173,7 +2217,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_AddRoleForUser() {
-      ::grpc::Service::MarkMethodAsync(41);
+      ::grpc::Service::MarkMethodAsync(42);
     }
     ~WithAsyncMethod_AddRoleForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2184,7 +2228,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestAddRoleForUser(::grpc::ServerContext* context, ::palm::casbin::v1::UserRoleRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::BoolReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(41, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(42, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2193,7 +2237,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DeleteRoleForUser() {
-      ::grpc::Service::MarkMethodAsync(42);
+      ::grpc::Service::MarkMethodAsync(43);
     }
     ~WithAsyncMethod_DeleteRoleForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2204,7 +2248,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeleteRoleForUser(::grpc::ServerContext* context, ::palm::casbin::v1::UserRoleRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::BoolReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(42, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(43, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2213,7 +2257,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DeleteRolesForUser() {
-      ::grpc::Service::MarkMethodAsync(43);
+      ::grpc::Service::MarkMethodAsync(44);
     }
     ~WithAsyncMethod_DeleteRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2224,7 +2268,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeleteRolesForUser(::grpc::ServerContext* context, ::palm::casbin::v1::UserRoleRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::BoolReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(43, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(44, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2233,7 +2277,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DeleteUser() {
-      ::grpc::Service::MarkMethodAsync(44);
+      ::grpc::Service::MarkMethodAsync(45);
     }
     ~WithAsyncMethod_DeleteUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2244,7 +2288,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeleteUser(::grpc::ServerContext* context, ::palm::casbin::v1::UserRoleRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::BoolReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(44, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(45, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2253,7 +2297,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DeleteRole() {
-      ::grpc::Service::MarkMethodAsync(45);
+      ::grpc::Service::MarkMethodAsync(46);
     }
     ~WithAsyncMethod_DeleteRole() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2264,7 +2308,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeleteRole(::grpc::ServerContext* context, ::palm::casbin::v1::UserRoleRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::EmptyReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(45, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(46, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2273,7 +2317,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetPermissionsForUser() {
-      ::grpc::Service::MarkMethodAsync(46);
+      ::grpc::Service::MarkMethodAsync(47);
     }
     ~WithAsyncMethod_GetPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2284,7 +2328,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetPermissionsForUser(::grpc::ServerContext* context, ::palm::casbin::v1::PermissionRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::Array2DReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(46, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(47, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2293,7 +2337,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetImplicitPermissionsForUser() {
-      ::grpc::Service::MarkMethodAsync(47);
+      ::grpc::Service::MarkMethodAsync(48);
     }
     ~WithAsyncMethod_GetImplicitPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2304,7 +2348,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetImplicitPermissionsForUser(::grpc::ServerContext* context, ::palm::casbin::v1::PermissionRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::Array2DReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(47, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(48, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2313,7 +2357,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DeletePermission() {
-      ::grpc::Service::MarkMethodAsync(48);
+      ::grpc::Service::MarkMethodAsync(49);
     }
     ~WithAsyncMethod_DeletePermission() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2324,7 +2368,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeletePermission(::grpc::ServerContext* context, ::palm::casbin::v1::PermissionRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::BoolReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(48, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(49, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2333,7 +2377,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_AddPermissionForUser() {
-      ::grpc::Service::MarkMethodAsync(49);
+      ::grpc::Service::MarkMethodAsync(50);
     }
     ~WithAsyncMethod_AddPermissionForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2344,7 +2388,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestAddPermissionForUser(::grpc::ServerContext* context, ::palm::casbin::v1::PermissionRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::BoolReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(49, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(50, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2353,7 +2397,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DeletePermissionForUser() {
-      ::grpc::Service::MarkMethodAsync(50);
+      ::grpc::Service::MarkMethodAsync(51);
     }
     ~WithAsyncMethod_DeletePermissionForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2364,7 +2408,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeletePermissionForUser(::grpc::ServerContext* context, ::palm::casbin::v1::PermissionRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::BoolReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(50, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(51, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2373,7 +2417,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DeletePermissionsForUser() {
-      ::grpc::Service::MarkMethodAsync(51);
+      ::grpc::Service::MarkMethodAsync(52);
     }
     ~WithAsyncMethod_DeletePermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2384,7 +2428,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeletePermissionsForUser(::grpc::ServerContext* context, ::palm::casbin::v1::PermissionRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::BoolReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(51, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(52, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2393,7 +2437,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_HasPermissionForUser() {
-      ::grpc::Service::MarkMethodAsync(52);
+      ::grpc::Service::MarkMethodAsync(53);
     }
     ~WithAsyncMethod_HasPermissionForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2404,10 +2448,10 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestHasPermissionForUser(::grpc::ServerContext* context, ::palm::casbin::v1::PermissionRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::casbin::v1::BoolReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(52, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(53, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_NewEnforcer<WithAsyncMethod_NewAdapter<WithAsyncMethod_Enforce<WithAsyncMethod_LoadPolicy<WithAsyncMethod_SavePolicy<WithAsyncMethod_AddPolicy<WithAsyncMethod_AddNamedPolicy<WithAsyncMethod_RemovePolicy<WithAsyncMethod_RemoveNamedPolicy<WithAsyncMethod_RemoveFilteredPolicy<WithAsyncMethod_RemoveFilteredNamedPolicy<WithAsyncMethod_GetPolicy<WithAsyncMethod_GetNamedPolicy<WithAsyncMethod_GetFilteredPolicy<WithAsyncMethod_GetFilteredNamedPolicy<WithAsyncMethod_AddGroupingPolicy<WithAsyncMethod_AddNamedGroupingPolicy<WithAsyncMethod_RemoveGroupingPolicy<WithAsyncMethod_RemoveNamedGroupingPolicy<WithAsyncMethod_RemoveFilteredGroupingPolicy<WithAsyncMethod_RemoveFilteredNamedGroupingPolicy<WithAsyncMethod_GetGroupingPolicy<WithAsyncMethod_GetNamedGroupingPolicy<WithAsyncMethod_GetFilteredGroupingPolicy<WithAsyncMethod_GetFilteredNamedGroupingPolicy<WithAsyncMethod_GetAllSubjects<WithAsyncMethod_GetAllNamedSubjects<WithAsyncMethod_GetAllObjects<WithAsyncMethod_GetAllNamedObjects<WithAsyncMethod_GetAllActions<WithAsyncMethod_GetAllNamedActions<WithAsyncMethod_GetAllRoles<WithAsyncMethod_GetAllNamedRoles<WithAsyncMethod_HasPolicy<WithAsyncMethod_HasNamedPolicy<WithAsyncMethod_HasGroupingPolicy<WithAsyncMethod_HasNamedGroupingPolicy<WithAsyncMethod_GetRolesForUser<WithAsyncMethod_GetImplicitRolesForUser<WithAsyncMethod_GetUsersForRole<WithAsyncMethod_HasRoleForUser<WithAsyncMethod_AddRoleForUser<WithAsyncMethod_DeleteRoleForUser<WithAsyncMethod_DeleteRolesForUser<WithAsyncMethod_DeleteUser<WithAsyncMethod_DeleteRole<WithAsyncMethod_GetPermissionsForUser<WithAsyncMethod_GetImplicitPermissionsForUser<WithAsyncMethod_DeletePermission<WithAsyncMethod_AddPermissionForUser<WithAsyncMethod_DeletePermissionForUser<WithAsyncMethod_DeletePermissionsForUser<WithAsyncMethod_HasPermissionForUser<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_NewEnforcer<WithAsyncMethod_NewAdapter<WithAsyncMethod_Enforce<WithAsyncMethod_LoadPolicy<WithAsyncMethod_SavePolicy<WithAsyncMethod_AddPolicy<WithAsyncMethod_AddNamedPolicy<WithAsyncMethod_RemovePolicy<WithAsyncMethod_RemoveNamedPolicy<WithAsyncMethod_RemoveFilteredPolicy<WithAsyncMethod_RemoveFilteredNamedPolicy<WithAsyncMethod_GetPolicy<WithAsyncMethod_GetNamedPolicy<WithAsyncMethod_GetFilteredPolicy<WithAsyncMethod_GetFilteredNamedPolicy<WithAsyncMethod_AddGroupingPolicy<WithAsyncMethod_AddNamedGroupingPolicy<WithAsyncMethod_RemoveGroupingPolicy<WithAsyncMethod_RemoveNamedGroupingPolicy<WithAsyncMethod_RemoveFilteredGroupingPolicy<WithAsyncMethod_RemoveFilteredNamedGroupingPolicy<WithAsyncMethod_GetGroupingPolicy<WithAsyncMethod_GetNamedGroupingPolicy<WithAsyncMethod_GetFilteredGroupingPolicy<WithAsyncMethod_GetFilteredNamedGroupingPolicy<WithAsyncMethod_GetAllSubjects<WithAsyncMethod_GetAllNamedSubjects<WithAsyncMethod_GetAllObjects<WithAsyncMethod_GetAllNamedObjects<WithAsyncMethod_GetAllActions<WithAsyncMethod_GetAllNamedActions<WithAsyncMethod_GetAllRoles<WithAsyncMethod_GetAllNamedRoles<WithAsyncMethod_HasPolicy<WithAsyncMethod_HasNamedPolicy<WithAsyncMethod_HasGroupingPolicy<WithAsyncMethod_HasNamedGroupingPolicy<WithAsyncMethod_GetDomains<WithAsyncMethod_GetRolesForUser<WithAsyncMethod_GetImplicitRolesForUser<WithAsyncMethod_GetUsersForRole<WithAsyncMethod_HasRoleForUser<WithAsyncMethod_AddRoleForUser<WithAsyncMethod_DeleteRoleForUser<WithAsyncMethod_DeleteRolesForUser<WithAsyncMethod_DeleteUser<WithAsyncMethod_DeleteRole<WithAsyncMethod_GetPermissionsForUser<WithAsyncMethod_GetImplicitPermissionsForUser<WithAsyncMethod_DeletePermission<WithAsyncMethod_AddPermissionForUser<WithAsyncMethod_DeletePermissionForUser<WithAsyncMethod_DeletePermissionsForUser<WithAsyncMethod_HasPermissionForUser<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_NewEnforcer : public BaseClass {
    private:
@@ -3408,18 +3452,45 @@ class Casbin final {
       ::grpc::CallbackServerContext* /*context*/, const ::palm::casbin::v1::PolicyRequest* /*request*/, ::palm::casbin::v1::BoolReply* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_GetDomains : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetDomains() {
+      ::grpc::Service::MarkMethodCallback(37,
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response) { return this->GetDomains(context, request, response); }));}
+    void SetMessageAllocatorFor_GetDomains(
+        ::grpc::MessageAllocator< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(37);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetDomains() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDomains(::grpc::ServerContext* /*context*/, const ::palm::casbin::v1::UserRoleRequest* /*request*/, ::palm::casbin::v1::ArrayReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDomains(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::casbin::v1::UserRoleRequest* /*request*/, ::palm::casbin::v1::ArrayReply* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_GetRolesForUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetRolesForUser() {
-      ::grpc::Service::MarkMethodCallback(37,
+      ::grpc::Service::MarkMethodCallback(38,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response) { return this->GetRolesForUser(context, request, response); }));}
     void SetMessageAllocatorFor_GetRolesForUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(37);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(38);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3440,13 +3511,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetImplicitRolesForUser() {
-      ::grpc::Service::MarkMethodCallback(38,
+      ::grpc::Service::MarkMethodCallback(39,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response) { return this->GetImplicitRolesForUser(context, request, response); }));}
     void SetMessageAllocatorFor_GetImplicitRolesForUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(38);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(39);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3467,13 +3538,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetUsersForRole() {
-      ::grpc::Service::MarkMethodCallback(39,
+      ::grpc::Service::MarkMethodCallback(40,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::ArrayReply* response) { return this->GetUsersForRole(context, request, response); }));}
     void SetMessageAllocatorFor_GetUsersForRole(
         ::grpc::MessageAllocator< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(39);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(40);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3494,13 +3565,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_HasRoleForUser() {
-      ::grpc::Service::MarkMethodCallback(40,
+      ::grpc::Service::MarkMethodCallback(41,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::BoolReply* response) { return this->HasRoleForUser(context, request, response); }));}
     void SetMessageAllocatorFor_HasRoleForUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(40);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(41);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3521,13 +3592,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_AddRoleForUser() {
-      ::grpc::Service::MarkMethodCallback(41,
+      ::grpc::Service::MarkMethodCallback(42,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::BoolReply* response) { return this->AddRoleForUser(context, request, response); }));}
     void SetMessageAllocatorFor_AddRoleForUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(41);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(42);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3548,13 +3619,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_DeleteRoleForUser() {
-      ::grpc::Service::MarkMethodCallback(42,
+      ::grpc::Service::MarkMethodCallback(43,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::BoolReply* response) { return this->DeleteRoleForUser(context, request, response); }));}
     void SetMessageAllocatorFor_DeleteRoleForUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(42);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(43);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3575,13 +3646,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_DeleteRolesForUser() {
-      ::grpc::Service::MarkMethodCallback(43,
+      ::grpc::Service::MarkMethodCallback(44,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::BoolReply* response) { return this->DeleteRolesForUser(context, request, response); }));}
     void SetMessageAllocatorFor_DeleteRolesForUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(43);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(44);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3602,13 +3673,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_DeleteUser() {
-      ::grpc::Service::MarkMethodCallback(44,
+      ::grpc::Service::MarkMethodCallback(45,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::BoolReply* response) { return this->DeleteUser(context, request, response); }));}
     void SetMessageAllocatorFor_DeleteUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(44);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(45);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3629,13 +3700,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_DeleteRole() {
-      ::grpc::Service::MarkMethodCallback(45,
+      ::grpc::Service::MarkMethodCallback(46,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::EmptyReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::UserRoleRequest* request, ::palm::casbin::v1::EmptyReply* response) { return this->DeleteRole(context, request, response); }));}
     void SetMessageAllocatorFor_DeleteRole(
         ::grpc::MessageAllocator< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::EmptyReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(45);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(46);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::EmptyReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3656,13 +3727,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetPermissionsForUser() {
-      ::grpc::Service::MarkMethodCallback(46,
+      ::grpc::Service::MarkMethodCallback(47,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::Array2DReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::PermissionRequest* request, ::palm::casbin::v1::Array2DReply* response) { return this->GetPermissionsForUser(context, request, response); }));}
     void SetMessageAllocatorFor_GetPermissionsForUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::Array2DReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(46);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(47);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::Array2DReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3683,13 +3754,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetImplicitPermissionsForUser() {
-      ::grpc::Service::MarkMethodCallback(47,
+      ::grpc::Service::MarkMethodCallback(48,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::Array2DReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::PermissionRequest* request, ::palm::casbin::v1::Array2DReply* response) { return this->GetImplicitPermissionsForUser(context, request, response); }));}
     void SetMessageAllocatorFor_GetImplicitPermissionsForUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::Array2DReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(47);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(48);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::Array2DReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3710,13 +3781,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_DeletePermission() {
-      ::grpc::Service::MarkMethodCallback(48,
+      ::grpc::Service::MarkMethodCallback(49,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::PermissionRequest* request, ::palm::casbin::v1::BoolReply* response) { return this->DeletePermission(context, request, response); }));}
     void SetMessageAllocatorFor_DeletePermission(
         ::grpc::MessageAllocator< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(48);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(49);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3737,13 +3808,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_AddPermissionForUser() {
-      ::grpc::Service::MarkMethodCallback(49,
+      ::grpc::Service::MarkMethodCallback(50,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::PermissionRequest* request, ::palm::casbin::v1::BoolReply* response) { return this->AddPermissionForUser(context, request, response); }));}
     void SetMessageAllocatorFor_AddPermissionForUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(49);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(50);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3764,13 +3835,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_DeletePermissionForUser() {
-      ::grpc::Service::MarkMethodCallback(50,
+      ::grpc::Service::MarkMethodCallback(51,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::PermissionRequest* request, ::palm::casbin::v1::BoolReply* response) { return this->DeletePermissionForUser(context, request, response); }));}
     void SetMessageAllocatorFor_DeletePermissionForUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(50);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(51);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3791,13 +3862,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_DeletePermissionsForUser() {
-      ::grpc::Service::MarkMethodCallback(51,
+      ::grpc::Service::MarkMethodCallback(52,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::PermissionRequest* request, ::palm::casbin::v1::BoolReply* response) { return this->DeletePermissionsForUser(context, request, response); }));}
     void SetMessageAllocatorFor_DeletePermissionsForUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(51);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(52);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3818,13 +3889,13 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_HasPermissionForUser() {
-      ::grpc::Service::MarkMethodCallback(52,
+      ::grpc::Service::MarkMethodCallback(53,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::casbin::v1::PermissionRequest* request, ::palm::casbin::v1::BoolReply* response) { return this->HasPermissionForUser(context, request, response); }));}
     void SetMessageAllocatorFor_HasPermissionForUser(
         ::grpc::MessageAllocator< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(52);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(53);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -3839,7 +3910,7 @@ class Casbin final {
     virtual ::grpc::ServerUnaryReactor* HasPermissionForUser(
       ::grpc::CallbackServerContext* /*context*/, const ::palm::casbin::v1::PermissionRequest* /*request*/, ::palm::casbin::v1::BoolReply* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_NewEnforcer<WithCallbackMethod_NewAdapter<WithCallbackMethod_Enforce<WithCallbackMethod_LoadPolicy<WithCallbackMethod_SavePolicy<WithCallbackMethod_AddPolicy<WithCallbackMethod_AddNamedPolicy<WithCallbackMethod_RemovePolicy<WithCallbackMethod_RemoveNamedPolicy<WithCallbackMethod_RemoveFilteredPolicy<WithCallbackMethod_RemoveFilteredNamedPolicy<WithCallbackMethod_GetPolicy<WithCallbackMethod_GetNamedPolicy<WithCallbackMethod_GetFilteredPolicy<WithCallbackMethod_GetFilteredNamedPolicy<WithCallbackMethod_AddGroupingPolicy<WithCallbackMethod_AddNamedGroupingPolicy<WithCallbackMethod_RemoveGroupingPolicy<WithCallbackMethod_RemoveNamedGroupingPolicy<WithCallbackMethod_RemoveFilteredGroupingPolicy<WithCallbackMethod_RemoveFilteredNamedGroupingPolicy<WithCallbackMethod_GetGroupingPolicy<WithCallbackMethod_GetNamedGroupingPolicy<WithCallbackMethod_GetFilteredGroupingPolicy<WithCallbackMethod_GetFilteredNamedGroupingPolicy<WithCallbackMethod_GetAllSubjects<WithCallbackMethod_GetAllNamedSubjects<WithCallbackMethod_GetAllObjects<WithCallbackMethod_GetAllNamedObjects<WithCallbackMethod_GetAllActions<WithCallbackMethod_GetAllNamedActions<WithCallbackMethod_GetAllRoles<WithCallbackMethod_GetAllNamedRoles<WithCallbackMethod_HasPolicy<WithCallbackMethod_HasNamedPolicy<WithCallbackMethod_HasGroupingPolicy<WithCallbackMethod_HasNamedGroupingPolicy<WithCallbackMethod_GetRolesForUser<WithCallbackMethod_GetImplicitRolesForUser<WithCallbackMethod_GetUsersForRole<WithCallbackMethod_HasRoleForUser<WithCallbackMethod_AddRoleForUser<WithCallbackMethod_DeleteRoleForUser<WithCallbackMethod_DeleteRolesForUser<WithCallbackMethod_DeleteUser<WithCallbackMethod_DeleteRole<WithCallbackMethod_GetPermissionsForUser<WithCallbackMethod_GetImplicitPermissionsForUser<WithCallbackMethod_DeletePermission<WithCallbackMethod_AddPermissionForUser<WithCallbackMethod_DeletePermissionForUser<WithCallbackMethod_DeletePermissionsForUser<WithCallbackMethod_HasPermissionForUser<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_NewEnforcer<WithCallbackMethod_NewAdapter<WithCallbackMethod_Enforce<WithCallbackMethod_LoadPolicy<WithCallbackMethod_SavePolicy<WithCallbackMethod_AddPolicy<WithCallbackMethod_AddNamedPolicy<WithCallbackMethod_RemovePolicy<WithCallbackMethod_RemoveNamedPolicy<WithCallbackMethod_RemoveFilteredPolicy<WithCallbackMethod_RemoveFilteredNamedPolicy<WithCallbackMethod_GetPolicy<WithCallbackMethod_GetNamedPolicy<WithCallbackMethod_GetFilteredPolicy<WithCallbackMethod_GetFilteredNamedPolicy<WithCallbackMethod_AddGroupingPolicy<WithCallbackMethod_AddNamedGroupingPolicy<WithCallbackMethod_RemoveGroupingPolicy<WithCallbackMethod_RemoveNamedGroupingPolicy<WithCallbackMethod_RemoveFilteredGroupingPolicy<WithCallbackMethod_RemoveFilteredNamedGroupingPolicy<WithCallbackMethod_GetGroupingPolicy<WithCallbackMethod_GetNamedGroupingPolicy<WithCallbackMethod_GetFilteredGroupingPolicy<WithCallbackMethod_GetFilteredNamedGroupingPolicy<WithCallbackMethod_GetAllSubjects<WithCallbackMethod_GetAllNamedSubjects<WithCallbackMethod_GetAllObjects<WithCallbackMethod_GetAllNamedObjects<WithCallbackMethod_GetAllActions<WithCallbackMethod_GetAllNamedActions<WithCallbackMethod_GetAllRoles<WithCallbackMethod_GetAllNamedRoles<WithCallbackMethod_HasPolicy<WithCallbackMethod_HasNamedPolicy<WithCallbackMethod_HasGroupingPolicy<WithCallbackMethod_HasNamedGroupingPolicy<WithCallbackMethod_GetDomains<WithCallbackMethod_GetRolesForUser<WithCallbackMethod_GetImplicitRolesForUser<WithCallbackMethod_GetUsersForRole<WithCallbackMethod_HasRoleForUser<WithCallbackMethod_AddRoleForUser<WithCallbackMethod_DeleteRoleForUser<WithCallbackMethod_DeleteRolesForUser<WithCallbackMethod_DeleteUser<WithCallbackMethod_DeleteRole<WithCallbackMethod_GetPermissionsForUser<WithCallbackMethod_GetImplicitPermissionsForUser<WithCallbackMethod_DeletePermission<WithCallbackMethod_AddPermissionForUser<WithCallbackMethod_DeletePermissionForUser<WithCallbackMethod_DeletePermissionsForUser<WithCallbackMethod_HasPermissionForUser<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_NewEnforcer : public BaseClass {
@@ -4471,12 +4542,29 @@ class Casbin final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_GetDomains : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetDomains() {
+      ::grpc::Service::MarkMethodGeneric(37);
+    }
+    ~WithGenericMethod_GetDomains() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDomains(::grpc::ServerContext* /*context*/, const ::palm::casbin::v1::UserRoleRequest* /*request*/, ::palm::casbin::v1::ArrayReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_GetRolesForUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetRolesForUser() {
-      ::grpc::Service::MarkMethodGeneric(37);
+      ::grpc::Service::MarkMethodGeneric(38);
     }
     ~WithGenericMethod_GetRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4493,7 +4581,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetImplicitRolesForUser() {
-      ::grpc::Service::MarkMethodGeneric(38);
+      ::grpc::Service::MarkMethodGeneric(39);
     }
     ~WithGenericMethod_GetImplicitRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4510,7 +4598,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetUsersForRole() {
-      ::grpc::Service::MarkMethodGeneric(39);
+      ::grpc::Service::MarkMethodGeneric(40);
     }
     ~WithGenericMethod_GetUsersForRole() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4527,7 +4615,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_HasRoleForUser() {
-      ::grpc::Service::MarkMethodGeneric(40);
+      ::grpc::Service::MarkMethodGeneric(41);
     }
     ~WithGenericMethod_HasRoleForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4544,7 +4632,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_AddRoleForUser() {
-      ::grpc::Service::MarkMethodGeneric(41);
+      ::grpc::Service::MarkMethodGeneric(42);
     }
     ~WithGenericMethod_AddRoleForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4561,7 +4649,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DeleteRoleForUser() {
-      ::grpc::Service::MarkMethodGeneric(42);
+      ::grpc::Service::MarkMethodGeneric(43);
     }
     ~WithGenericMethod_DeleteRoleForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4578,7 +4666,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DeleteRolesForUser() {
-      ::grpc::Service::MarkMethodGeneric(43);
+      ::grpc::Service::MarkMethodGeneric(44);
     }
     ~WithGenericMethod_DeleteRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4595,7 +4683,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DeleteUser() {
-      ::grpc::Service::MarkMethodGeneric(44);
+      ::grpc::Service::MarkMethodGeneric(45);
     }
     ~WithGenericMethod_DeleteUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4612,7 +4700,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DeleteRole() {
-      ::grpc::Service::MarkMethodGeneric(45);
+      ::grpc::Service::MarkMethodGeneric(46);
     }
     ~WithGenericMethod_DeleteRole() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4629,7 +4717,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetPermissionsForUser() {
-      ::grpc::Service::MarkMethodGeneric(46);
+      ::grpc::Service::MarkMethodGeneric(47);
     }
     ~WithGenericMethod_GetPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4646,7 +4734,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetImplicitPermissionsForUser() {
-      ::grpc::Service::MarkMethodGeneric(47);
+      ::grpc::Service::MarkMethodGeneric(48);
     }
     ~WithGenericMethod_GetImplicitPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4663,7 +4751,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DeletePermission() {
-      ::grpc::Service::MarkMethodGeneric(48);
+      ::grpc::Service::MarkMethodGeneric(49);
     }
     ~WithGenericMethod_DeletePermission() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4680,7 +4768,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_AddPermissionForUser() {
-      ::grpc::Service::MarkMethodGeneric(49);
+      ::grpc::Service::MarkMethodGeneric(50);
     }
     ~WithGenericMethod_AddPermissionForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4697,7 +4785,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DeletePermissionForUser() {
-      ::grpc::Service::MarkMethodGeneric(50);
+      ::grpc::Service::MarkMethodGeneric(51);
     }
     ~WithGenericMethod_DeletePermissionForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4714,7 +4802,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DeletePermissionsForUser() {
-      ::grpc::Service::MarkMethodGeneric(51);
+      ::grpc::Service::MarkMethodGeneric(52);
     }
     ~WithGenericMethod_DeletePermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4731,7 +4819,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_HasPermissionForUser() {
-      ::grpc::Service::MarkMethodGeneric(52);
+      ::grpc::Service::MarkMethodGeneric(53);
     }
     ~WithGenericMethod_HasPermissionForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5483,12 +5571,32 @@ class Casbin final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_GetDomains : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetDomains() {
+      ::grpc::Service::MarkMethodRaw(37);
+    }
+    ~WithRawMethod_GetDomains() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDomains(::grpc::ServerContext* /*context*/, const ::palm::casbin::v1::UserRoleRequest* /*request*/, ::palm::casbin::v1::ArrayReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDomains(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(37, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_GetRolesForUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetRolesForUser() {
-      ::grpc::Service::MarkMethodRaw(37);
+      ::grpc::Service::MarkMethodRaw(38);
     }
     ~WithRawMethod_GetRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5499,7 +5607,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetRolesForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(37, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(38, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5508,7 +5616,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetImplicitRolesForUser() {
-      ::grpc::Service::MarkMethodRaw(38);
+      ::grpc::Service::MarkMethodRaw(39);
     }
     ~WithRawMethod_GetImplicitRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5519,7 +5627,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetImplicitRolesForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(38, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(39, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5528,7 +5636,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetUsersForRole() {
-      ::grpc::Service::MarkMethodRaw(39);
+      ::grpc::Service::MarkMethodRaw(40);
     }
     ~WithRawMethod_GetUsersForRole() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5539,7 +5647,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetUsersForRole(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(39, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(40, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5548,7 +5656,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_HasRoleForUser() {
-      ::grpc::Service::MarkMethodRaw(40);
+      ::grpc::Service::MarkMethodRaw(41);
     }
     ~WithRawMethod_HasRoleForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5559,7 +5667,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestHasRoleForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(40, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(41, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5568,7 +5676,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_AddRoleForUser() {
-      ::grpc::Service::MarkMethodRaw(41);
+      ::grpc::Service::MarkMethodRaw(42);
     }
     ~WithRawMethod_AddRoleForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5579,7 +5687,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestAddRoleForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(41, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(42, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5588,7 +5696,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DeleteRoleForUser() {
-      ::grpc::Service::MarkMethodRaw(42);
+      ::grpc::Service::MarkMethodRaw(43);
     }
     ~WithRawMethod_DeleteRoleForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5599,7 +5707,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeleteRoleForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(42, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(43, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5608,7 +5716,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DeleteRolesForUser() {
-      ::grpc::Service::MarkMethodRaw(43);
+      ::grpc::Service::MarkMethodRaw(44);
     }
     ~WithRawMethod_DeleteRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5619,7 +5727,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeleteRolesForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(43, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(44, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5628,7 +5736,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DeleteUser() {
-      ::grpc::Service::MarkMethodRaw(44);
+      ::grpc::Service::MarkMethodRaw(45);
     }
     ~WithRawMethod_DeleteUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5639,7 +5747,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeleteUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(44, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(45, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5648,7 +5756,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DeleteRole() {
-      ::grpc::Service::MarkMethodRaw(45);
+      ::grpc::Service::MarkMethodRaw(46);
     }
     ~WithRawMethod_DeleteRole() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5659,7 +5767,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeleteRole(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(45, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(46, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5668,7 +5776,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetPermissionsForUser() {
-      ::grpc::Service::MarkMethodRaw(46);
+      ::grpc::Service::MarkMethodRaw(47);
     }
     ~WithRawMethod_GetPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5679,7 +5787,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetPermissionsForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(46, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(47, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5688,7 +5796,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetImplicitPermissionsForUser() {
-      ::grpc::Service::MarkMethodRaw(47);
+      ::grpc::Service::MarkMethodRaw(48);
     }
     ~WithRawMethod_GetImplicitPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5699,7 +5807,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetImplicitPermissionsForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(47, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(48, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5708,7 +5816,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DeletePermission() {
-      ::grpc::Service::MarkMethodRaw(48);
+      ::grpc::Service::MarkMethodRaw(49);
     }
     ~WithRawMethod_DeletePermission() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5719,7 +5827,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeletePermission(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(48, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(49, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5728,7 +5836,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_AddPermissionForUser() {
-      ::grpc::Service::MarkMethodRaw(49);
+      ::grpc::Service::MarkMethodRaw(50);
     }
     ~WithRawMethod_AddPermissionForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5739,7 +5847,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestAddPermissionForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(49, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(50, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5748,7 +5856,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DeletePermissionForUser() {
-      ::grpc::Service::MarkMethodRaw(50);
+      ::grpc::Service::MarkMethodRaw(51);
     }
     ~WithRawMethod_DeletePermissionForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5759,7 +5867,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeletePermissionForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(50, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(51, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5768,7 +5876,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DeletePermissionsForUser() {
-      ::grpc::Service::MarkMethodRaw(51);
+      ::grpc::Service::MarkMethodRaw(52);
     }
     ~WithRawMethod_DeletePermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5779,7 +5887,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeletePermissionsForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(51, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(52, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -5788,7 +5896,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_HasPermissionForUser() {
-      ::grpc::Service::MarkMethodRaw(52);
+      ::grpc::Service::MarkMethodRaw(53);
     }
     ~WithRawMethod_HasPermissionForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -5799,7 +5907,7 @@ class Casbin final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestHasPermissionForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(52, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(53, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -6617,12 +6725,34 @@ class Casbin final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_GetDomains : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetDomains() {
+      ::grpc::Service::MarkMethodRawCallback(37,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDomains(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetDomains() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDomains(::grpc::ServerContext* /*context*/, const ::palm::casbin::v1::UserRoleRequest* /*request*/, ::palm::casbin::v1::ArrayReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDomains(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_GetRolesForUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetRolesForUser() {
-      ::grpc::Service::MarkMethodRawCallback(37,
+      ::grpc::Service::MarkMethodRawCallback(38,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetRolesForUser(context, request, response); }));
@@ -6644,7 +6774,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetImplicitRolesForUser() {
-      ::grpc::Service::MarkMethodRawCallback(38,
+      ::grpc::Service::MarkMethodRawCallback(39,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetImplicitRolesForUser(context, request, response); }));
@@ -6666,7 +6796,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetUsersForRole() {
-      ::grpc::Service::MarkMethodRawCallback(39,
+      ::grpc::Service::MarkMethodRawCallback(40,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetUsersForRole(context, request, response); }));
@@ -6688,7 +6818,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_HasRoleForUser() {
-      ::grpc::Service::MarkMethodRawCallback(40,
+      ::grpc::Service::MarkMethodRawCallback(41,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->HasRoleForUser(context, request, response); }));
@@ -6710,7 +6840,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_AddRoleForUser() {
-      ::grpc::Service::MarkMethodRawCallback(41,
+      ::grpc::Service::MarkMethodRawCallback(42,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->AddRoleForUser(context, request, response); }));
@@ -6732,7 +6862,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_DeleteRoleForUser() {
-      ::grpc::Service::MarkMethodRawCallback(42,
+      ::grpc::Service::MarkMethodRawCallback(43,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeleteRoleForUser(context, request, response); }));
@@ -6754,7 +6884,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_DeleteRolesForUser() {
-      ::grpc::Service::MarkMethodRawCallback(43,
+      ::grpc::Service::MarkMethodRawCallback(44,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeleteRolesForUser(context, request, response); }));
@@ -6776,7 +6906,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_DeleteUser() {
-      ::grpc::Service::MarkMethodRawCallback(44,
+      ::grpc::Service::MarkMethodRawCallback(45,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeleteUser(context, request, response); }));
@@ -6798,7 +6928,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_DeleteRole() {
-      ::grpc::Service::MarkMethodRawCallback(45,
+      ::grpc::Service::MarkMethodRawCallback(46,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeleteRole(context, request, response); }));
@@ -6820,7 +6950,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetPermissionsForUser() {
-      ::grpc::Service::MarkMethodRawCallback(46,
+      ::grpc::Service::MarkMethodRawCallback(47,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetPermissionsForUser(context, request, response); }));
@@ -6842,7 +6972,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetImplicitPermissionsForUser() {
-      ::grpc::Service::MarkMethodRawCallback(47,
+      ::grpc::Service::MarkMethodRawCallback(48,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetImplicitPermissionsForUser(context, request, response); }));
@@ -6864,7 +6994,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_DeletePermission() {
-      ::grpc::Service::MarkMethodRawCallback(48,
+      ::grpc::Service::MarkMethodRawCallback(49,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeletePermission(context, request, response); }));
@@ -6886,7 +7016,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_AddPermissionForUser() {
-      ::grpc::Service::MarkMethodRawCallback(49,
+      ::grpc::Service::MarkMethodRawCallback(50,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->AddPermissionForUser(context, request, response); }));
@@ -6908,7 +7038,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_DeletePermissionForUser() {
-      ::grpc::Service::MarkMethodRawCallback(50,
+      ::grpc::Service::MarkMethodRawCallback(51,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeletePermissionForUser(context, request, response); }));
@@ -6930,7 +7060,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_DeletePermissionsForUser() {
-      ::grpc::Service::MarkMethodRawCallback(51,
+      ::grpc::Service::MarkMethodRawCallback(52,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeletePermissionsForUser(context, request, response); }));
@@ -6952,7 +7082,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_HasPermissionForUser() {
-      ::grpc::Service::MarkMethodRawCallback(52,
+      ::grpc::Service::MarkMethodRawCallback(53,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->HasPermissionForUser(context, request, response); }));
@@ -7968,12 +8098,39 @@ class Casbin final {
     virtual ::grpc::Status StreamedHasNamedGroupingPolicy(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::casbin::v1::PolicyRequest,::palm::casbin::v1::BoolReply>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_GetDomains : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetDomains() {
+      ::grpc::Service::MarkMethodStreamed(37,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>* streamer) {
+                       return this->StreamedGetDomains(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetDomains() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetDomains(::grpc::ServerContext* /*context*/, const ::palm::casbin::v1::UserRoleRequest* /*request*/, ::palm::casbin::v1::ArrayReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetDomains(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::casbin::v1::UserRoleRequest,::palm::casbin::v1::ArrayReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_GetRolesForUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetRolesForUser() {
-      ::grpc::Service::MarkMethodStreamed(37,
+      ::grpc::Service::MarkMethodStreamed(38,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>(
             [this](::grpc::ServerContext* context,
@@ -8000,7 +8157,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetImplicitRolesForUser() {
-      ::grpc::Service::MarkMethodStreamed(38,
+      ::grpc::Service::MarkMethodStreamed(39,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>(
             [this](::grpc::ServerContext* context,
@@ -8027,7 +8184,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetUsersForRole() {
-      ::grpc::Service::MarkMethodStreamed(39,
+      ::grpc::Service::MarkMethodStreamed(40,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::ArrayReply>(
             [this](::grpc::ServerContext* context,
@@ -8054,7 +8211,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_HasRoleForUser() {
-      ::grpc::Service::MarkMethodStreamed(40,
+      ::grpc::Service::MarkMethodStreamed(41,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>(
             [this](::grpc::ServerContext* context,
@@ -8081,7 +8238,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_AddRoleForUser() {
-      ::grpc::Service::MarkMethodStreamed(41,
+      ::grpc::Service::MarkMethodStreamed(42,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>(
             [this](::grpc::ServerContext* context,
@@ -8108,7 +8265,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DeleteRoleForUser() {
-      ::grpc::Service::MarkMethodStreamed(42,
+      ::grpc::Service::MarkMethodStreamed(43,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>(
             [this](::grpc::ServerContext* context,
@@ -8135,7 +8292,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DeleteRolesForUser() {
-      ::grpc::Service::MarkMethodStreamed(43,
+      ::grpc::Service::MarkMethodStreamed(44,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>(
             [this](::grpc::ServerContext* context,
@@ -8162,7 +8319,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DeleteUser() {
-      ::grpc::Service::MarkMethodStreamed(44,
+      ::grpc::Service::MarkMethodStreamed(45,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::BoolReply>(
             [this](::grpc::ServerContext* context,
@@ -8189,7 +8346,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DeleteRole() {
-      ::grpc::Service::MarkMethodStreamed(45,
+      ::grpc::Service::MarkMethodStreamed(46,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::UserRoleRequest, ::palm::casbin::v1::EmptyReply>(
             [this](::grpc::ServerContext* context,
@@ -8216,7 +8373,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetPermissionsForUser() {
-      ::grpc::Service::MarkMethodStreamed(46,
+      ::grpc::Service::MarkMethodStreamed(47,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::Array2DReply>(
             [this](::grpc::ServerContext* context,
@@ -8243,7 +8400,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetImplicitPermissionsForUser() {
-      ::grpc::Service::MarkMethodStreamed(47,
+      ::grpc::Service::MarkMethodStreamed(48,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::Array2DReply>(
             [this](::grpc::ServerContext* context,
@@ -8270,7 +8427,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DeletePermission() {
-      ::grpc::Service::MarkMethodStreamed(48,
+      ::grpc::Service::MarkMethodStreamed(49,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>(
             [this](::grpc::ServerContext* context,
@@ -8297,7 +8454,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_AddPermissionForUser() {
-      ::grpc::Service::MarkMethodStreamed(49,
+      ::grpc::Service::MarkMethodStreamed(50,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>(
             [this](::grpc::ServerContext* context,
@@ -8324,7 +8481,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DeletePermissionForUser() {
-      ::grpc::Service::MarkMethodStreamed(50,
+      ::grpc::Service::MarkMethodStreamed(51,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>(
             [this](::grpc::ServerContext* context,
@@ -8351,7 +8508,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DeletePermissionsForUser() {
-      ::grpc::Service::MarkMethodStreamed(51,
+      ::grpc::Service::MarkMethodStreamed(52,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>(
             [this](::grpc::ServerContext* context,
@@ -8378,7 +8535,7 @@ class Casbin final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_HasPermissionForUser() {
-      ::grpc::Service::MarkMethodStreamed(52,
+      ::grpc::Service::MarkMethodStreamed(53,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::casbin::v1::PermissionRequest, ::palm::casbin::v1::BoolReply>(
             [this](::grpc::ServerContext* context,
@@ -8399,9 +8556,9 @@ class Casbin final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedHasPermissionForUser(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::casbin::v1::PermissionRequest,::palm::casbin::v1::BoolReply>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_NewEnforcer<WithStreamedUnaryMethod_NewAdapter<WithStreamedUnaryMethod_Enforce<WithStreamedUnaryMethod_LoadPolicy<WithStreamedUnaryMethod_SavePolicy<WithStreamedUnaryMethod_AddPolicy<WithStreamedUnaryMethod_AddNamedPolicy<WithStreamedUnaryMethod_RemovePolicy<WithStreamedUnaryMethod_RemoveNamedPolicy<WithStreamedUnaryMethod_RemoveFilteredPolicy<WithStreamedUnaryMethod_RemoveFilteredNamedPolicy<WithStreamedUnaryMethod_GetPolicy<WithStreamedUnaryMethod_GetNamedPolicy<WithStreamedUnaryMethod_GetFilteredPolicy<WithStreamedUnaryMethod_GetFilteredNamedPolicy<WithStreamedUnaryMethod_AddGroupingPolicy<WithStreamedUnaryMethod_AddNamedGroupingPolicy<WithStreamedUnaryMethod_RemoveGroupingPolicy<WithStreamedUnaryMethod_RemoveNamedGroupingPolicy<WithStreamedUnaryMethod_RemoveFilteredGroupingPolicy<WithStreamedUnaryMethod_RemoveFilteredNamedGroupingPolicy<WithStreamedUnaryMethod_GetGroupingPolicy<WithStreamedUnaryMethod_GetNamedGroupingPolicy<WithStreamedUnaryMethod_GetFilteredGroupingPolicy<WithStreamedUnaryMethod_GetFilteredNamedGroupingPolicy<WithStreamedUnaryMethod_GetAllSubjects<WithStreamedUnaryMethod_GetAllNamedSubjects<WithStreamedUnaryMethod_GetAllObjects<WithStreamedUnaryMethod_GetAllNamedObjects<WithStreamedUnaryMethod_GetAllActions<WithStreamedUnaryMethod_GetAllNamedActions<WithStreamedUnaryMethod_GetAllRoles<WithStreamedUnaryMethod_GetAllNamedRoles<WithStreamedUnaryMethod_HasPolicy<WithStreamedUnaryMethod_HasNamedPolicy<WithStreamedUnaryMethod_HasGroupingPolicy<WithStreamedUnaryMethod_HasNamedGroupingPolicy<WithStreamedUnaryMethod_GetRolesForUser<WithStreamedUnaryMethod_GetImplicitRolesForUser<WithStreamedUnaryMethod_GetUsersForRole<WithStreamedUnaryMethod_HasRoleForUser<WithStreamedUnaryMethod_AddRoleForUser<WithStreamedUnaryMethod_DeleteRoleForUser<WithStreamedUnaryMethod_DeleteRolesForUser<WithStreamedUnaryMethod_DeleteUser<WithStreamedUnaryMethod_DeleteRole<WithStreamedUnaryMethod_GetPermissionsForUser<WithStreamedUnaryMethod_GetImplicitPermissionsForUser<WithStreamedUnaryMethod_DeletePermission<WithStreamedUnaryMethod_AddPermissionForUser<WithStreamedUnaryMethod_DeletePermissionForUser<WithStreamedUnaryMethod_DeletePermissionsForUser<WithStreamedUnaryMethod_HasPermissionForUser<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_NewEnforcer<WithStreamedUnaryMethod_NewAdapter<WithStreamedUnaryMethod_Enforce<WithStreamedUnaryMethod_LoadPolicy<WithStreamedUnaryMethod_SavePolicy<WithStreamedUnaryMethod_AddPolicy<WithStreamedUnaryMethod_AddNamedPolicy<WithStreamedUnaryMethod_RemovePolicy<WithStreamedUnaryMethod_RemoveNamedPolicy<WithStreamedUnaryMethod_RemoveFilteredPolicy<WithStreamedUnaryMethod_RemoveFilteredNamedPolicy<WithStreamedUnaryMethod_GetPolicy<WithStreamedUnaryMethod_GetNamedPolicy<WithStreamedUnaryMethod_GetFilteredPolicy<WithStreamedUnaryMethod_GetFilteredNamedPolicy<WithStreamedUnaryMethod_AddGroupingPolicy<WithStreamedUnaryMethod_AddNamedGroupingPolicy<WithStreamedUnaryMethod_RemoveGroupingPolicy<WithStreamedUnaryMethod_RemoveNamedGroupingPolicy<WithStreamedUnaryMethod_RemoveFilteredGroupingPolicy<WithStreamedUnaryMethod_RemoveFilteredNamedGroupingPolicy<WithStreamedUnaryMethod_GetGroupingPolicy<WithStreamedUnaryMethod_GetNamedGroupingPolicy<WithStreamedUnaryMethod_GetFilteredGroupingPolicy<WithStreamedUnaryMethod_GetFilteredNamedGroupingPolicy<WithStreamedUnaryMethod_GetAllSubjects<WithStreamedUnaryMethod_GetAllNamedSubjects<WithStreamedUnaryMethod_GetAllObjects<WithStreamedUnaryMethod_GetAllNamedObjects<WithStreamedUnaryMethod_GetAllActions<WithStreamedUnaryMethod_GetAllNamedActions<WithStreamedUnaryMethod_GetAllRoles<WithStreamedUnaryMethod_GetAllNamedRoles<WithStreamedUnaryMethod_HasPolicy<WithStreamedUnaryMethod_HasNamedPolicy<WithStreamedUnaryMethod_HasGroupingPolicy<WithStreamedUnaryMethod_HasNamedGroupingPolicy<WithStreamedUnaryMethod_GetDomains<WithStreamedUnaryMethod_GetRolesForUser<WithStreamedUnaryMethod_GetImplicitRolesForUser<WithStreamedUnaryMethod_GetUsersForRole<WithStreamedUnaryMethod_HasRoleForUser<WithStreamedUnaryMethod_AddRoleForUser<WithStreamedUnaryMethod_DeleteRoleForUser<WithStreamedUnaryMethod_DeleteRolesForUser<WithStreamedUnaryMethod_DeleteUser<WithStreamedUnaryMethod_DeleteRole<WithStreamedUnaryMethod_GetPermissionsForUser<WithStreamedUnaryMethod_GetImplicitPermissionsForUser<WithStreamedUnaryMethod_DeletePermission<WithStreamedUnaryMethod_AddPermissionForUser<WithStreamedUnaryMethod_DeletePermissionForUser<WithStreamedUnaryMethod_DeletePermissionsForUser<WithStreamedUnaryMethod_HasPermissionForUser<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_NewEnforcer<WithStreamedUnaryMethod_NewAdapter<WithStreamedUnaryMethod_Enforce<WithStreamedUnaryMethod_LoadPolicy<WithStreamedUnaryMethod_SavePolicy<WithStreamedUnaryMethod_AddPolicy<WithStreamedUnaryMethod_AddNamedPolicy<WithStreamedUnaryMethod_RemovePolicy<WithStreamedUnaryMethod_RemoveNamedPolicy<WithStreamedUnaryMethod_RemoveFilteredPolicy<WithStreamedUnaryMethod_RemoveFilteredNamedPolicy<WithStreamedUnaryMethod_GetPolicy<WithStreamedUnaryMethod_GetNamedPolicy<WithStreamedUnaryMethod_GetFilteredPolicy<WithStreamedUnaryMethod_GetFilteredNamedPolicy<WithStreamedUnaryMethod_AddGroupingPolicy<WithStreamedUnaryMethod_AddNamedGroupingPolicy<WithStreamedUnaryMethod_RemoveGroupingPolicy<WithStreamedUnaryMethod_RemoveNamedGroupingPolicy<WithStreamedUnaryMethod_RemoveFilteredGroupingPolicy<WithStreamedUnaryMethod_RemoveFilteredNamedGroupingPolicy<WithStreamedUnaryMethod_GetGroupingPolicy<WithStreamedUnaryMethod_GetNamedGroupingPolicy<WithStreamedUnaryMethod_GetFilteredGroupingPolicy<WithStreamedUnaryMethod_GetFilteredNamedGroupingPolicy<WithStreamedUnaryMethod_GetAllSubjects<WithStreamedUnaryMethod_GetAllNamedSubjects<WithStreamedUnaryMethod_GetAllObjects<WithStreamedUnaryMethod_GetAllNamedObjects<WithStreamedUnaryMethod_GetAllActions<WithStreamedUnaryMethod_GetAllNamedActions<WithStreamedUnaryMethod_GetAllRoles<WithStreamedUnaryMethod_GetAllNamedRoles<WithStreamedUnaryMethod_HasPolicy<WithStreamedUnaryMethod_HasNamedPolicy<WithStreamedUnaryMethod_HasGroupingPolicy<WithStreamedUnaryMethod_HasNamedGroupingPolicy<WithStreamedUnaryMethod_GetRolesForUser<WithStreamedUnaryMethod_GetImplicitRolesForUser<WithStreamedUnaryMethod_GetUsersForRole<WithStreamedUnaryMethod_HasRoleForUser<WithStreamedUnaryMethod_AddRoleForUser<WithStreamedUnaryMethod_DeleteRoleForUser<WithStreamedUnaryMethod_DeleteRolesForUser<WithStreamedUnaryMethod_DeleteUser<WithStreamedUnaryMethod_DeleteRole<WithStreamedUnaryMethod_GetPermissionsForUser<WithStreamedUnaryMethod_GetImplicitPermissionsForUser<WithStreamedUnaryMethod_DeletePermission<WithStreamedUnaryMethod_AddPermissionForUser<WithStreamedUnaryMethod_DeletePermissionForUser<WithStreamedUnaryMethod_DeletePermissionsForUser<WithStreamedUnaryMethod_HasPermissionForUser<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_NewEnforcer<WithStreamedUnaryMethod_NewAdapter<WithStreamedUnaryMethod_Enforce<WithStreamedUnaryMethod_LoadPolicy<WithStreamedUnaryMethod_SavePolicy<WithStreamedUnaryMethod_AddPolicy<WithStreamedUnaryMethod_AddNamedPolicy<WithStreamedUnaryMethod_RemovePolicy<WithStreamedUnaryMethod_RemoveNamedPolicy<WithStreamedUnaryMethod_RemoveFilteredPolicy<WithStreamedUnaryMethod_RemoveFilteredNamedPolicy<WithStreamedUnaryMethod_GetPolicy<WithStreamedUnaryMethod_GetNamedPolicy<WithStreamedUnaryMethod_GetFilteredPolicy<WithStreamedUnaryMethod_GetFilteredNamedPolicy<WithStreamedUnaryMethod_AddGroupingPolicy<WithStreamedUnaryMethod_AddNamedGroupingPolicy<WithStreamedUnaryMethod_RemoveGroupingPolicy<WithStreamedUnaryMethod_RemoveNamedGroupingPolicy<WithStreamedUnaryMethod_RemoveFilteredGroupingPolicy<WithStreamedUnaryMethod_RemoveFilteredNamedGroupingPolicy<WithStreamedUnaryMethod_GetGroupingPolicy<WithStreamedUnaryMethod_GetNamedGroupingPolicy<WithStreamedUnaryMethod_GetFilteredGroupingPolicy<WithStreamedUnaryMethod_GetFilteredNamedGroupingPolicy<WithStreamedUnaryMethod_GetAllSubjects<WithStreamedUnaryMethod_GetAllNamedSubjects<WithStreamedUnaryMethod_GetAllObjects<WithStreamedUnaryMethod_GetAllNamedObjects<WithStreamedUnaryMethod_GetAllActions<WithStreamedUnaryMethod_GetAllNamedActions<WithStreamedUnaryMethod_GetAllRoles<WithStreamedUnaryMethod_GetAllNamedRoles<WithStreamedUnaryMethod_HasPolicy<WithStreamedUnaryMethod_HasNamedPolicy<WithStreamedUnaryMethod_HasGroupingPolicy<WithStreamedUnaryMethod_HasNamedGroupingPolicy<WithStreamedUnaryMethod_GetDomains<WithStreamedUnaryMethod_GetRolesForUser<WithStreamedUnaryMethod_GetImplicitRolesForUser<WithStreamedUnaryMethod_GetUsersForRole<WithStreamedUnaryMethod_HasRoleForUser<WithStreamedUnaryMethod_AddRoleForUser<WithStreamedUnaryMethod_DeleteRoleForUser<WithStreamedUnaryMethod_DeleteRolesForUser<WithStreamedUnaryMethod_DeleteUser<WithStreamedUnaryMethod_DeleteRole<WithStreamedUnaryMethod_GetPermissionsForUser<WithStreamedUnaryMethod_GetImplicitPermissionsForUser<WithStreamedUnaryMethod_DeletePermission<WithStreamedUnaryMethod_AddPermissionForUser<WithStreamedUnaryMethod_DeletePermissionForUser<WithStreamedUnaryMethod_DeletePermissionsForUser<WithStreamedUnaryMethod_HasPermissionForUser<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace v1
