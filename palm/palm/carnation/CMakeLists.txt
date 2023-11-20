@@ -4,6 +4,8 @@ file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 find_package(OpenSSL REQUIRED)
 find_package(PostgreSQL REQUIRED)
 find_package(libpqxx CONFIG REQUIRED)
+find_package(unofficial-libmariadb CONFIG REQUIRED)
+find_package(unofficial-sqlite3 CONFIG REQUIRED)
 find_package(redis++ CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(argparse CONFIG REQUIRED)
@@ -29,6 +31,8 @@ add_executable(carnation
   ${SOURCE_LIST}
   ${PROJECT_SOURCE_DIR}/src/utils.cpp
   "${PROJECT_SOURCE_DIR}/src/orm-postgresql.cpp"
+  "${PROJECT_SOURCE_DIR}/src/orm-mysql.cpp"
+  "${PROJECT_SOURCE_DIR}/src/orm-sqlite3.cpp"
   "${PROJECT_SOURCE_DIR}/src/cache-redis.cpp"
   "${PROJECT_SOURCE_DIR}/src/queue-rabbitmq.cpp"
 )
@@ -38,7 +42,7 @@ target_link_libraries(carnation PUBLIC gourd casbin
   OpenSSL::SSL OpenSSL::Crypto
   spdlog::spdlog argparse::argparse magic_enum::magic_enum    
   PkgConfig::tomlplusplus 
-  PostgreSQL::PostgreSQL libpqxx::pqxx
+  PostgreSQL::PostgreSQL libpqxx::pqxx unofficial::libmariadb unofficial::sqlite3::sqlite3 
   redis++::redis++_static
   rabbitmq::rabbitmq-static
 )

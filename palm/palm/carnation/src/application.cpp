@@ -48,7 +48,7 @@ carnation::Application::Application(int argc, char** argv) {
 void carnation::Application::launch(uint16_t port, const palm::Tls& tls) const {
   const std::string addr = absl::StrFormat("0.0.0.0:%d", port);
 
-  carnation::CasbinServiceImpl casbin_service;
+  carnation::services::CasbinServiceImpl casbin_service;
 
   grpc::EnableDefaultHealthCheckService(true);
   grpc::ServerBuilder builder;
