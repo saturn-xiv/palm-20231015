@@ -8,6 +8,7 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 
 import "nut.proto";
+import "rbac.proto";
 import "orchid.proto";
 
 message UserDetail {
@@ -20,19 +21,6 @@ message Oauth2State {
   string host = 2;
   optional string user = 3;
   string id = 9;
-}
-
-message Permission {
-  message Resource {
-    string type = 1;
-    optional int32 id = 2;
-  }
-  Resource object = 1;
-  string action = 2;
-  oneof subject {
-    int32 user = 11;
-    int32 role = 12;
-  }
 }
 
 // ----------------------------------------------------------------------------
@@ -88,7 +76,7 @@ message UserSignInResponse {
   string provider_type = 9;
 
   repeated string roles = 11;
-  repeated Permission permissions = 12;
+  repeated palm.rbac.v1.Permission permissions = 12;
 
   bool has_google = 21;
   bool has_wechat_mini_program = 22;
@@ -153,7 +141,7 @@ message UserLogsResponse {
     string ip = 3;
     Level level = 4;
     string message = 5;
-    Permission.Resource resource = 6;
+    palm.rbac.v1.Resource resource = 6;
     google.protobuf.Timestamp created_at = 11;
   }
 

@@ -1,0 +1,90 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.rbac.v1";
+package palm.rbac.v1;
+
+import "google/protobuf/empty.proto";
+
+service Rbac {
+  rpc GetRolesForUser(UserRequest) returns (RolesResponse) {}
+  rpc GetImplicitRolesForUser(UserRequest) returns (RolesResponse) {}
+  rpc AddRolesForUser(RolesForUserRequest) returns (google.protobuf.Empty) {}
+  rpc DeleteRolesForUser(RolesForUserRequest) returns (google.protobuf.Empty) {}
+  rpc HasImplicitRoleForUser(HasRoleForUserRequest)
+      returns (google.protobuf.Empty) {}
+  rpc DeleteUser(UserRequest) returns (google.protobuf.Empty) {}
+  rpc AddPermissionsForUser(PermissionsForUserRequest)
+      returns (google.protobuf.Empty) {}
+  rpc DeletePermissionsForUser(PermissionsForUserRequest)
+      returns (google.protobuf.Empty) {}
+  rpc GetPermissionsForUser(UserRequest) returns (PermissionsResponse) {}
+  rpc GetImplicitPermissionsForUser(UserRequest) returns (PermissionsResponse) {
+  }
+  rpc HasImplicitPermissionsForUser(UserRequest) returns (PermissionsResponse) {
+  }
+
+  rpc GetUsersForRole(RoleRequest) returns (UsersResponse) {}
+  rpc GetImplicitUsersForRole(RoleRequest) returns (UsersResponse) {}
+  rpc DeleteRole(RoleRequest) returns (google.protobuf.Empty) {}
+  rpc AddPermissionsForRole(PermissionsForRoleRequest)
+      returns (google.protobuf.Empty) {}
+  rpc DeletePermissionsForRole(PermissionsForRoleRequest)
+      returns (google.protobuf.Empty) {}
+  rpc GetPermissionsForRole(RoleRequest) returns (PermissionsResponse) {}
+}
+
+message UserRequest {
+  int32 id = 1;
+}
+
+message RolesResponse {
+  repeated string items = 1;
+}
+
+message RoleRequest {
+  string name = 1;
+}
+
+message UsersResponse {
+  repeated string items = 1;
+}
+
+message HasRoleForUserRequest {
+  int32 user = 1;
+  string role = 2;
+}
+message HasPermissionForUserRequest {
+  int32 user = 1;
+  string role = 2;
+}
+
+message RolesForUserRequest {
+  int32 user = 1;
+  repeated string roles = 2;
+}
+
+message Resource {
+  string type = 1;
+  optional string id = 2;
+}
+message Permission {
+  Resource object = 1;
+  string action = 2;
+  oneof subject {
+    int32 user = 11;
+    string role = 12;
+  }
+}
+message PermissionsResponse {
+  repeated Permission items = 1;
+}
+
+message PermissionsForUserRequest {
+  int32 user = 1;
+  repeated Permission items = 2;
+}
+
+message PermissionsForRoleRequest {
+  string role = 1;
+  repeated Permission items = 2;
+}

@@ -96,19 +96,19 @@ private static final long serialVersionUID = 0L;
         getMessageBytes();
 
     /**
-     * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+     * <code>.palm.rbac.v1.Resource resource = 6;</code>
      * @return Whether the resource field is set.
      */
     boolean hasResource();
     /**
-     * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+     * <code>.palm.rbac.v1.Resource resource = 6;</code>
      * @return The resource.
      */
-    com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource getResource();
+    com.github.saturn_xiv.palm.plugins.rbac.v1.Resource getResource();
     /**
-     * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+     * <code>.palm.rbac.v1.Resource resource = 6;</code>
      */
-    com.github.saturn_xiv.palm.plugins.auth.v1.Permission.ResourceOrBuilder getResourceOrBuilder();
+    com.github.saturn_xiv.palm.plugins.rbac.v1.ResourceOrBuilder getResourceOrBuilder();
 
     /**
      * <code>.google.protobuf.Timestamp created_at = 11;</code>
@@ -422,9 +422,9 @@ private static final long serialVersionUID = 0L;
     }
 
     public static final int RESOURCE_FIELD_NUMBER = 6;
-    private com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource resource_;
+    private com.github.saturn_xiv.palm.plugins.rbac.v1.Resource resource_;
     /**
-     * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+     * <code>.palm.rbac.v1.Resource resource = 6;</code>
      * @return Whether the resource field is set.
      */
     @java.lang.Override
@@ -432,19 +432,19 @@ private static final long serialVersionUID = 0L;
       return resource_ != null;
     }
     /**
-     * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+     * <code>.palm.rbac.v1.Resource resource = 6;</code>
      * @return The resource.
      */
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource getResource() {
-      return resource_ == null ? com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource.getDefaultInstance() : resource_;
+    public com.github.saturn_xiv.palm.plugins.rbac.v1.Resource getResource() {
+      return resource_ == null ? com.github.saturn_xiv.palm.plugins.rbac.v1.Resource.getDefaultInstance() : resource_;
     }
     /**
-     * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+     * <code>.palm.rbac.v1.Resource resource = 6;</code>
      */
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.auth.v1.Permission.ResourceOrBuilder getResourceOrBuilder() {
-      return resource_ == null ? com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource.getDefaultInstance() : resource_;
+    public com.github.saturn_xiv.palm.plugins.rbac.v1.ResourceOrBuilder getResourceOrBuilder() {
+      return resource_ == null ? com.github.saturn_xiv.palm.plugins.rbac.v1.Resource.getDefaultInstance() : resource_;
     }
 
     public static final int CREATED_AT_FIELD_NUMBER = 11;
@@ -1222,31 +1222,31 @@ private static final long serialVersionUID = 0L;
         return this;
       }
 
-      private com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource resource_;
+      private com.github.saturn_xiv.palm.plugins.rbac.v1.Resource resource_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource, com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource.Builder, com.github.saturn_xiv.palm.plugins.auth.v1.Permission.ResourceOrBuilder> resourceBuilder_;
+          com.github.saturn_xiv.palm.plugins.rbac.v1.Resource, com.github.saturn_xiv.palm.plugins.rbac.v1.Resource.Builder, com.github.saturn_xiv.palm.plugins.rbac.v1.ResourceOrBuilder> resourceBuilder_;
       /**
-       * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+       * <code>.palm.rbac.v1.Resource resource = 6;</code>
        * @return Whether the resource field is set.
        */
       public boolean hasResource() {
         return ((bitField0_ & 0x00000020) != 0);
       }
       /**
-       * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+       * <code>.palm.rbac.v1.Resource resource = 6;</code>
        * @return The resource.
        */
-      public com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource getResource() {
+      public com.github.saturn_xiv.palm.plugins.rbac.v1.Resource getResource() {
         if (resourceBuilder_ == null) {
-          return resource_ == null ? com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource.getDefaultInstance() : resource_;
+          return resource_ == null ? com.github.saturn_xiv.palm.plugins.rbac.v1.Resource.getDefaultInstance() : resource_;
         } else {
           return resourceBuilder_.getMessage();
         }
       }
       /**
-       * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+       * <code>.palm.rbac.v1.Resource resource = 6;</code>
        */
-      public Builder setResource(com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource value) {
+      public Builder setResource(com.github.saturn_xiv.palm.plugins.rbac.v1.Resource value) {
         if (resourceBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1260,10 +1260,10 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+       * <code>.palm.rbac.v1.Resource resource = 6;</code>
        */
       public Builder setResource(
-          com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource.Builder builderForValue) {
+          com.github.saturn_xiv.palm.plugins.rbac.v1.Resource.Builder builderForValue) {
         if (resourceBuilder_ == null) {
           resource_ = builderForValue.build();
         } else {
@@ -1274,13 +1274,13 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+       * <code>.palm.rbac.v1.Resource resource = 6;</code>
        */
-      public Builder mergeResource(com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource value) {
+      public Builder mergeResource(com.github.saturn_xiv.palm.plugins.rbac.v1.Resource value) {
         if (resourceBuilder_ == null) {
           if (((bitField0_ & 0x00000020) != 0) &&
             resource_ != null &&
-            resource_ != com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource.getDefaultInstance()) {
+            resource_ != com.github.saturn_xiv.palm.plugins.rbac.v1.Resource.getDefaultInstance()) {
             getResourceBuilder().mergeFrom(value);
           } else {
             resource_ = value;
@@ -1293,7 +1293,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+       * <code>.palm.rbac.v1.Resource resource = 6;</code>
        */
       public Builder clearResource() {
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -1306,33 +1306,33 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+       * <code>.palm.rbac.v1.Resource resource = 6;</code>
        */
-      public com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource.Builder getResourceBuilder() {
+      public com.github.saturn_xiv.palm.plugins.rbac.v1.Resource.Builder getResourceBuilder() {
         bitField0_ |= 0x00000020;
         onChanged();
         return getResourceFieldBuilder().getBuilder();
       }
       /**
-       * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+       * <code>.palm.rbac.v1.Resource resource = 6;</code>
        */
-      public com.github.saturn_xiv.palm.plugins.auth.v1.Permission.ResourceOrBuilder getResourceOrBuilder() {
+      public com.github.saturn_xiv.palm.plugins.rbac.v1.ResourceOrBuilder getResourceOrBuilder() {
         if (resourceBuilder_ != null) {
           return resourceBuilder_.getMessageOrBuilder();
         } else {
           return resource_ == null ?
-              com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource.getDefaultInstance() : resource_;
+              com.github.saturn_xiv.palm.plugins.rbac.v1.Resource.getDefaultInstance() : resource_;
         }
       }
       /**
-       * <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+       * <code>.palm.rbac.v1.Resource resource = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource, com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource.Builder, com.github.saturn_xiv.palm.plugins.auth.v1.Permission.ResourceOrBuilder> 
+          com.github.saturn_xiv.palm.plugins.rbac.v1.Resource, com.github.saturn_xiv.palm.plugins.rbac.v1.Resource.Builder, com.github.saturn_xiv.palm.plugins.rbac.v1.ResourceOrBuilder> 
           getResourceFieldBuilder() {
         if (resourceBuilder_ == null) {
           resourceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource, com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Resource.Builder, com.github.saturn_xiv.palm.plugins.auth.v1.Permission.ResourceOrBuilder>(
+              com.github.saturn_xiv.palm.plugins.rbac.v1.Resource, com.github.saturn_xiv.palm.plugins.rbac.v1.Resource.Builder, com.github.saturn_xiv.palm.plugins.rbac.v1.ResourceOrBuilder>(
                   getResource(),
                   getParentForChildren(),
                   isClean());

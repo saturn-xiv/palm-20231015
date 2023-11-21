@@ -34,7 +34,7 @@ class Item extends \Google\Protobuf\Internal\Message
      */
     protected $message = '';
     /**
-     * Generated from protobuf field <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
+     * Generated from protobuf field <code>.palm.rbac.v1.Resource resource = 6;</code>
      */
     protected $resource = null;
     /**
@@ -53,7 +53,7 @@ class Item extends \Google\Protobuf\Internal\Message
      *     @type string $ip
      *     @type int $level
      *     @type string $message
-     *     @type \Palm\Auth\V1\Permission\Resource $resource
+     *     @type \Palm\Rbac\V1\Resource $resource
      *     @type \Google\Protobuf\Timestamp $created_at
      * }
      */
@@ -173,8 +173,8 @@ class Item extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
-     * @return \Palm\Auth\V1\Permission\Resource|null
+     * Generated from protobuf field <code>.palm.rbac.v1.Resource resource = 6;</code>
+     * @return \Palm\Rbac\V1\Resource|null
      */
     public function getResource()
     {
@@ -192,13 +192,13 @@ class Item extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.palm.auth.v1.Permission.Resource resource = 6;</code>
-     * @param \Palm\Auth\V1\Permission\Resource $var
+     * Generated from protobuf field <code>.palm.rbac.v1.Resource resource = 6;</code>
+     * @param \Palm\Rbac\V1\Resource $var
      * @return $this
      */
     public function setResource($var)
     {
-        GPBUtil::checkMessage($var, \Palm\Auth\V1\Permission\Resource::class);
+        GPBUtil::checkMessage($var, \Palm\Rbac\V1\Resource::class);
         $this->resource = $var;
 
         return $this;

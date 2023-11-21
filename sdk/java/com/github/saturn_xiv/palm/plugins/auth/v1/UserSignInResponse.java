@@ -189,41 +189,41 @@ private static final long serialVersionUID = 0L;
 
   public static final int PERMISSIONS_FIELD_NUMBER = 12;
   @SuppressWarnings("serial")
-  private java.util.List<com.github.saturn_xiv.palm.plugins.auth.v1.Permission> permissions_;
+  private java.util.List<com.github.saturn_xiv.palm.plugins.rbac.v1.Permission> permissions_;
   /**
-   * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+   * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
    */
   @java.lang.Override
-  public java.util.List<com.github.saturn_xiv.palm.plugins.auth.v1.Permission> getPermissionsList() {
+  public java.util.List<com.github.saturn_xiv.palm.plugins.rbac.v1.Permission> getPermissionsList() {
     return permissions_;
   }
   /**
-   * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+   * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
    */
   @java.lang.Override
-  public java.util.List<? extends com.github.saturn_xiv.palm.plugins.auth.v1.PermissionOrBuilder> 
+  public java.util.List<? extends com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionOrBuilder> 
       getPermissionsOrBuilderList() {
     return permissions_;
   }
   /**
-   * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+   * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
    */
   @java.lang.Override
   public int getPermissionsCount() {
     return permissions_.size();
   }
   /**
-   * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+   * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
    */
   @java.lang.Override
-  public com.github.saturn_xiv.palm.plugins.auth.v1.Permission getPermissions(int index) {
+  public com.github.saturn_xiv.palm.plugins.rbac.v1.Permission getPermissions(int index) {
     return permissions_.get(index);
   }
   /**
-   * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+   * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
    */
   @java.lang.Override
-  public com.github.saturn_xiv.palm.plugins.auth.v1.PermissionOrBuilder getPermissionsOrBuilder(
+  public com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionOrBuilder getPermissionsOrBuilder(
       int index) {
     return permissions_.get(index);
   }
@@ -785,9 +785,9 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 90
             case 98: {
-              com.github.saturn_xiv.palm.plugins.auth.v1.Permission m =
+              com.github.saturn_xiv.palm.plugins.rbac.v1.Permission m =
                   input.readMessage(
-                      com.github.saturn_xiv.palm.plugins.auth.v1.Permission.parser(),
+                      com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.parser(),
                       extensionRegistry);
               if (permissionsBuilder_ == null) {
                 ensurePermissionsIsMutable();
@@ -1196,22 +1196,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.util.List<com.github.saturn_xiv.palm.plugins.auth.v1.Permission> permissions_ =
+    private java.util.List<com.github.saturn_xiv.palm.plugins.rbac.v1.Permission> permissions_ =
       java.util.Collections.emptyList();
     private void ensurePermissionsIsMutable() {
       if (!((bitField0_ & 0x00000010) != 0)) {
-        permissions_ = new java.util.ArrayList<com.github.saturn_xiv.palm.plugins.auth.v1.Permission>(permissions_);
+        permissions_ = new java.util.ArrayList<com.github.saturn_xiv.palm.plugins.rbac.v1.Permission>(permissions_);
         bitField0_ |= 0x00000010;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.github.saturn_xiv.palm.plugins.auth.v1.Permission, com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Builder, com.github.saturn_xiv.palm.plugins.auth.v1.PermissionOrBuilder> permissionsBuilder_;
+        com.github.saturn_xiv.palm.plugins.rbac.v1.Permission, com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.Builder, com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionOrBuilder> permissionsBuilder_;
 
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
-    public java.util.List<com.github.saturn_xiv.palm.plugins.auth.v1.Permission> getPermissionsList() {
+    public java.util.List<com.github.saturn_xiv.palm.plugins.rbac.v1.Permission> getPermissionsList() {
       if (permissionsBuilder_ == null) {
         return java.util.Collections.unmodifiableList(permissions_);
       } else {
@@ -1219,7 +1219,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
     public int getPermissionsCount() {
       if (permissionsBuilder_ == null) {
@@ -1229,9 +1229,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
-    public com.github.saturn_xiv.palm.plugins.auth.v1.Permission getPermissions(int index) {
+    public com.github.saturn_xiv.palm.plugins.rbac.v1.Permission getPermissions(int index) {
       if (permissionsBuilder_ == null) {
         return permissions_.get(index);
       } else {
@@ -1239,10 +1239,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
     public Builder setPermissions(
-        int index, com.github.saturn_xiv.palm.plugins.auth.v1.Permission value) {
+        int index, com.github.saturn_xiv.palm.plugins.rbac.v1.Permission value) {
       if (permissionsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1256,10 +1256,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
     public Builder setPermissions(
-        int index, com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Builder builderForValue) {
+        int index, com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.Builder builderForValue) {
       if (permissionsBuilder_ == null) {
         ensurePermissionsIsMutable();
         permissions_.set(index, builderForValue.build());
@@ -1270,9 +1270,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
-    public Builder addPermissions(com.github.saturn_xiv.palm.plugins.auth.v1.Permission value) {
+    public Builder addPermissions(com.github.saturn_xiv.palm.plugins.rbac.v1.Permission value) {
       if (permissionsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1286,10 +1286,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
     public Builder addPermissions(
-        int index, com.github.saturn_xiv.palm.plugins.auth.v1.Permission value) {
+        int index, com.github.saturn_xiv.palm.plugins.rbac.v1.Permission value) {
       if (permissionsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1303,10 +1303,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
     public Builder addPermissions(
-        com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Builder builderForValue) {
+        com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.Builder builderForValue) {
       if (permissionsBuilder_ == null) {
         ensurePermissionsIsMutable();
         permissions_.add(builderForValue.build());
@@ -1317,10 +1317,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
     public Builder addPermissions(
-        int index, com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Builder builderForValue) {
+        int index, com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.Builder builderForValue) {
       if (permissionsBuilder_ == null) {
         ensurePermissionsIsMutable();
         permissions_.add(index, builderForValue.build());
@@ -1331,10 +1331,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
     public Builder addAllPermissions(
-        java.lang.Iterable<? extends com.github.saturn_xiv.palm.plugins.auth.v1.Permission> values) {
+        java.lang.Iterable<? extends com.github.saturn_xiv.palm.plugins.rbac.v1.Permission> values) {
       if (permissionsBuilder_ == null) {
         ensurePermissionsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -1346,7 +1346,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
     public Builder clearPermissions() {
       if (permissionsBuilder_ == null) {
@@ -1359,7 +1359,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
     public Builder removePermissions(int index) {
       if (permissionsBuilder_ == null) {
@@ -1372,16 +1372,16 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
-    public com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Builder getPermissionsBuilder(
+    public com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.Builder getPermissionsBuilder(
         int index) {
       return getPermissionsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
-    public com.github.saturn_xiv.palm.plugins.auth.v1.PermissionOrBuilder getPermissionsOrBuilder(
+    public com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionOrBuilder getPermissionsOrBuilder(
         int index) {
       if (permissionsBuilder_ == null) {
         return permissions_.get(index);  } else {
@@ -1389,9 +1389,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
-    public java.util.List<? extends com.github.saturn_xiv.palm.plugins.auth.v1.PermissionOrBuilder> 
+    public java.util.List<? extends com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionOrBuilder> 
          getPermissionsOrBuilderList() {
       if (permissionsBuilder_ != null) {
         return permissionsBuilder_.getMessageOrBuilderList();
@@ -1400,33 +1400,33 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
-    public com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Builder addPermissionsBuilder() {
+    public com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.Builder addPermissionsBuilder() {
       return getPermissionsFieldBuilder().addBuilder(
-          com.github.saturn_xiv.palm.plugins.auth.v1.Permission.getDefaultInstance());
+          com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.getDefaultInstance());
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
-    public com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Builder addPermissionsBuilder(
+    public com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.Builder addPermissionsBuilder(
         int index) {
       return getPermissionsFieldBuilder().addBuilder(
-          index, com.github.saturn_xiv.palm.plugins.auth.v1.Permission.getDefaultInstance());
+          index, com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.getDefaultInstance());
     }
     /**
-     * <code>repeated .palm.auth.v1.Permission permissions = 12;</code>
+     * <code>repeated .palm.rbac.v1.Permission permissions = 12;</code>
      */
-    public java.util.List<com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Builder> 
+    public java.util.List<com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.Builder> 
          getPermissionsBuilderList() {
       return getPermissionsFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.github.saturn_xiv.palm.plugins.auth.v1.Permission, com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Builder, com.github.saturn_xiv.palm.plugins.auth.v1.PermissionOrBuilder> 
+        com.github.saturn_xiv.palm.plugins.rbac.v1.Permission, com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.Builder, com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionOrBuilder> 
         getPermissionsFieldBuilder() {
       if (permissionsBuilder_ == null) {
         permissionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            com.github.saturn_xiv.palm.plugins.auth.v1.Permission, com.github.saturn_xiv.palm.plugins.auth.v1.Permission.Builder, com.github.saturn_xiv.palm.plugins.auth.v1.PermissionOrBuilder>(
+            com.github.saturn_xiv.palm.plugins.rbac.v1.Permission, com.github.saturn_xiv.palm.plugins.rbac.v1.Permission.Builder, com.github.saturn_xiv.palm.plugins.rbac.v1.PermissionOrBuilder>(
                 permissions_,
                 ((bitField0_ & 0x00000010) != 0),
                 getParentForChildren(),

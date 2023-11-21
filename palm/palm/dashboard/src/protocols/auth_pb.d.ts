@@ -4,6 +4,7 @@ import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb'; // proto import: "google/protobuf/timestamp.proto"
 import * as google_protobuf_duration_pb from 'google-protobuf/google/protobuf/duration_pb'; // proto import: "google/protobuf/duration.proto"
 import * as nut_pb from './nut_pb'; // proto import: "nut.proto"
+import * as rbac_pb from './rbac_pb'; // proto import: "rbac.proto"
 import * as orchid_pb from './orchid_pb'; // proto import: "orchid.proto"
 
 
@@ -63,76 +64,6 @@ export namespace Oauth2State {
   export enum UserCase { 
     _USER_NOT_SET = 0,
     USER = 3,
-  }
-}
-
-export class Permission extends jspb.Message {
-  getObject(): Permission.Resource | undefined;
-  setObject(value?: Permission.Resource): Permission;
-  hasObject(): boolean;
-  clearObject(): Permission;
-
-  getAction(): string;
-  setAction(value: string): Permission;
-
-  getUser(): number;
-  setUser(value: number): Permission;
-
-  getRole(): number;
-  setRole(value: number): Permission;
-
-  getSubjectCase(): Permission.SubjectCase;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Permission.AsObject;
-  static toObject(includeInstance: boolean, msg: Permission): Permission.AsObject;
-  static serializeBinaryToWriter(message: Permission, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Permission;
-  static deserializeBinaryFromReader(message: Permission, reader: jspb.BinaryReader): Permission;
-}
-
-export namespace Permission {
-  export type AsObject = {
-    object?: Permission.Resource.AsObject,
-    action: string,
-    user: number,
-    role: number,
-  }
-
-  export class Resource extends jspb.Message {
-    getType(): string;
-    setType(value: string): Resource;
-
-    getId(): number;
-    setId(value: number): Resource;
-    hasId(): boolean;
-    clearId(): Resource;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Resource.AsObject;
-    static toObject(includeInstance: boolean, msg: Resource): Resource.AsObject;
-    static serializeBinaryToWriter(message: Resource, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Resource;
-    static deserializeBinaryFromReader(message: Resource, reader: jspb.BinaryReader): Resource;
-  }
-
-  export namespace Resource {
-    export type AsObject = {
-      type: string,
-      id?: number,
-    }
-
-    export enum IdCase { 
-      _ID_NOT_SET = 0,
-      ID = 2,
-    }
-  }
-
-
-  export enum SubjectCase { 
-    SUBJECT_NOT_SET = 0,
-    USER = 11,
-    ROLE = 12,
   }
 }
 
@@ -227,10 +158,10 @@ export class UserSignInResponse extends jspb.Message {
   clearRolesList(): UserSignInResponse;
   addRoles(value: string, index?: number): UserSignInResponse;
 
-  getPermissionsList(): Array<Permission>;
-  setPermissionsList(value: Array<Permission>): UserSignInResponse;
+  getPermissionsList(): Array<rbac_pb.Permission>;
+  setPermissionsList(value: Array<rbac_pb.Permission>): UserSignInResponse;
   clearPermissionsList(): UserSignInResponse;
-  addPermissions(value?: Permission, index?: number): Permission;
+  addPermissions(value?: rbac_pb.Permission, index?: number): rbac_pb.Permission;
 
   getHasGoogle(): boolean;
   setHasGoogle(value: boolean): UserSignInResponse;
@@ -255,7 +186,7 @@ export namespace UserSignInResponse {
     user?: UserIndexResponse.Item.AsObject,
     providerType: string,
     rolesList: Array<string>,
-    permissionsList: Array<Permission.AsObject>,
+    permissionsList: Array<rbac_pb.Permission.AsObject>,
     hasGoogle: boolean,
     hasWechatMiniProgram: boolean,
     hasWechatOauth2: boolean,
@@ -491,8 +422,8 @@ export namespace UserLogsResponse {
     getMessage(): string;
     setMessage(value: string): Item;
 
-    getResource(): Permission.Resource | undefined;
-    setResource(value?: Permission.Resource): Item;
+    getResource(): rbac_pb.Resource | undefined;
+    setResource(value?: rbac_pb.Resource): Item;
     hasResource(): boolean;
     clearResource(): Item;
 
@@ -516,7 +447,7 @@ export namespace UserLogsResponse {
       ip: string,
       level: UserLogsResponse.Item.Level,
       message: string,
-      resource?: Permission.Resource.AsObject,
+      resource?: rbac_pb.Resource.AsObject,
       createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
 
