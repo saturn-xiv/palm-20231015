@@ -53,7 +53,6 @@ void carnation::adapters::PostgreSqlAdapter::SavePolicy(
   palm::postgresql::PooledConnection con(this->_pool);
   {
     pqxx::work tx{*con.db};
-    carnation::dao::clear_policy(tx);
     save_policy(tx, model, "p");
     save_policy(tx, model, "g");
     tx.commit();
