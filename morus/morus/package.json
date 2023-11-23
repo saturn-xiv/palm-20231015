@@ -17,8 +17,7 @@
     "grpc-health-check": "^2.0.0",
     "jsdom": "^22.1.0",
     "marked": "^9.1.6",
-    "pino": "^8.16.2",
-    "pino-pretty": "^10.2.3",
+    "tslog": "^4.9.2",
     "utf-8-validate": "^6.0.3"
   },
   "devDependencies": {

@@ -7,6 +7,18 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 
+/*
+systemctl enable sshd
+systemctl enable systemd-networkd
+systemctl enable systemd-resolved
+
+/etc/systemd/network/20-wired.network:
+[Match]
+Name=enp1s0
+[Network]
+DHCP=yes
+*/
+
 message Contact {
   optional string phone = 1;
   optional string wechat = 2;

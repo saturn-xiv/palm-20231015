@@ -1,4 +1,6 @@
 #include "carnation/application.hpp"
+#include "carnation/casbin.hpp"
+#include "carnation/rbac.hpp"
 #include "palm/version.hpp"
 
 #include <absl/strings/str_format.h>
