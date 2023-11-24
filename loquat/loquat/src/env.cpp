@@ -79,7 +79,8 @@ std::pair<std::string, std::string> loquat::Jwt::verify(
 
 std::unique_ptr<crypto::tink::JwtMac> loquat::Jwt::load() {
   auto keyset = this->Keyset::load(crypto::tink::JwtHs512Template());
-  auto jwt_r = keyset->GetPrimitive<crypto::tink::JwtMac>();
+  auto jwt_r = keyset->GetPrimitive<crypto::tink::JwtMac>(
+      crypto::tink::ConfigGlobalRegistry());
   this->check(jwt_r);
   auto jwt = std::move(jwt_r.value());
   return jwt;
@@ -101,7 +102,8 @@ void loquat::HMac::verify(const std::string& code, const std::string& plain) {
 
 std::unique_ptr<crypto::tink::Mac> loquat::HMac::load() {
   auto keyset = this->Keyset::load(crypto::tink::MacKeyTemplates::HmacSha512());
-  auto mac_r = keyset->GetPrimitive<crypto::tink::Mac>();
+  auto mac_r = keyset->GetPrimitive<crypto::tink::Mac>(
+      crypto::tink::ConfigGlobalRegistry());
   this->check(mac_r);
   auto mac = std::move(mac_r.value());
   return mac;
@@ -125,7 +127,8 @@ std::string loquat::Aes::decrypt(const std::string& code) {
 
 std::unique_ptr<crypto::tink::Aead> loquat::Aes::load() {
   auto keyset = this->Keyset::load(crypto::tink::AeadKeyTemplates::Aes256Gcm());
-  auto aes_r = keyset->GetPrimitive<crypto::tink::Aead>();
+  auto aes_r = keyset->GetPrimitive<crypto::tink::Aead>(
+      crypto::tink::ConfigGlobalRegistry());
   this->check(aes_r);
   auto aes = std::move(aes_r.value());
   return aes;
@@ -158,7 +161,8 @@ std::unique_ptr<crypto::tink::KeysetHandle> loquat::Keyset::load(
   } else {
     spdlog::warn("not exists, try to create {}", file.string());
 
-    auto keyset_handle_r = crypto::tink::KeysetHandle::GenerateNew(tpl);
+    auto keyset_handle_r = crypto::tink::KeysetHandle::GenerateNew(
+        tpl, crypto::tink::KeyGenConfigGlobalRegistry());
     this->check(keyset_handle_r);
     auto keyset_handler = std::move(keyset_handle_r.value());
     {

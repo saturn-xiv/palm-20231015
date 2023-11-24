@@ -44,7 +44,7 @@ FetchContent_Declare(argparse
 )
 FetchContent_Declare(tink
   GIT_REPOSITORY  "https://github.com/tink-crypto/tink-cc.git"
-  GIT_TAG         "6b16bea" # TODO openssl v3 v2.0.0
+  GIT_TAG         "v2.1.0" # TODO openssl v3 v2.0.0
 )
 FetchContent_MakeAvailable(spdlog argparse tomlplusplus tink)
 
