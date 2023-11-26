@@ -1,19 +1,27 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import logging
 import argparse
 import sys
 import tomllib
+import os.path
+import select
+
+from systemd import journal
+
+NAME = 'daffodil'
+VERSION = "2023.11.24"
 
 
-from palm import VERSION,  RedisClient, MinioClient, RabbitMqClient, is_stopped
-from palm.tex import TEX2PDF_QUEUE, create_tex2pdf_queue_callback
-from palm.server import Rpc as RpcServer
+def is_stopped():
+    return os.path.isfile('.stop')
 
-NAME = 'lily'
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         prog=NAME,
-        description='A tex to pdf/word converter',
+        description='A systemd-journal clawer',
         epilog='https://github.com/saturn-xiv/palm')
     parser.add_argument('-c', '--config',
                         type=str,
@@ -22,8 +30,6 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--debug',
                         action='store_true',
                         help='run on debug mode')
-    parser.add_argument('-w', '--worker',
-                        help='run queue worker %s' % (TEX2PDF_QUEUE))
     parser.add_argument('-v', '--version',
                         action='store_true',
                         help=('print %s version' % NAME))
@@ -40,21 +46,16 @@ if __name__ == '__main__':
         sys.exit(1)
 
     logging.info('load configuration from %s', args.config)
-
     with open(args.config, 'rb') as cfg_fd:
         config = tomllib.load(cfg_fd)
-
-        redis_client = RedisClient(config['redis'])
-        minio_client = MinioClient(config['minio'])
-        rabbitmq_client = RabbitMqClient(config['rabbitmq'])
-        if args.worker:
-            if args.worker == TEX2PDF_QUEUE:
-                callback = create_tex2pdf_queue_callback(minio_client)
-                rabbitmq_client.start_consuming(TEX2PDF_QUEUE, callback)
-            else:
-                logging.error('unimplemented queue %s', args.worker)
-                sys.exit(1)
-            sys.exit()
-        rpc_server = RpcServer(
-            config['rpc'], minio_client, redis_client, rabbitmq_client)
-        rpc_server.start()
+        jr = journal.Reader()
+        jr.seek_tail()
+        jr.add_match(_SYSTEMD_UNIT="sshd.service")
+        jp = select.poll()
+        jp.register(jr, jr.get_events())
+        jp.poll()
+        i = 0
+        while True:
+            it = jr.get_next()
+            i = i+1
+            print("receive: ", i, it)
