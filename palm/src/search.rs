@@ -46,10 +46,10 @@ pub struct OpenSearch {
 #[macro_export]
 macro_rules! check_response {
     ($x:expr) => {{
-        let c = $x.status_code();
+        let c = $x.status_code().as_u16();
         match $x.exception().await? {
             Some(e) => Err(Box::new(HttpError(
-                c,
+                hyper::StatusCode::from_u16(c)?,
                 e.error().reason().map(|x| x.to_string()),
             ))),
             None => Ok(()),

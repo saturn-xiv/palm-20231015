@@ -22,7 +22,7 @@ pub struct RobotsTxt {
 }
 
 impl RobotsTxt {
-    pub const FILE: &str = "robots.txt";
+    pub const FILE: &'static str = "robots.txt";
 }
 
 // https://www.sitemaps.org/protocol.html#

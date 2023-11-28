@@ -9,15 +9,15 @@ use actix_session::{
 };
 use actix_web::{
     cookie::{time::Duration as CookieDuration, Key as CookieKey, SameSite},
+    http::{
+        header::{ACCEPT, ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE, COOKIE},
+        Method,
+    },
     middleware, web, App, HttpServer,
 };
 use casbin::CoreApi;
 use chrono::Duration;
 use data_encoding::BASE64;
-use hyper::{
-    header::{ACCEPT, ACCEPT_LANGUAGE, AUTHORIZATION, CONTENT_TYPE, COOKIE},
-    Method,
-};
 use nix::unistd::getpid;
 use palm::{
     aws::s3::Config as S3,

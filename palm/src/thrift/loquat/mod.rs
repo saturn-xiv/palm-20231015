@@ -32,10 +32,10 @@ impl Default for Config {
 }
 
 impl Config {
-    const JWT: &str = "N6loquat2v15JwtIfE";
-    const AES: &str = "N6loquat2v15AesIfE";
-    const HMAC: &str = "N6loquat2v16HmacIfE";
-    const HEALTH: &str = "N6loquat2v18HealthIfE";
+    const JWT: &'static str = "N6loquat2v15JwtIfE";
+    const AES: &'static str = "N6loquat2v15AesIfE";
+    const HMAC: &'static str = "N6loquat2v16HmacIfE";
+    const HEALTH: &'static str = "N6loquat2v18HealthIfE";
     pub fn open(&self, service: &str) -> Result<(Input, Output)> {
         self.thrift.open(service)
     }

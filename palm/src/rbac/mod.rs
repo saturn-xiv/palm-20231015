@@ -101,8 +101,8 @@ pub enum Role {
 }
 
 impl Role {
-    pub const ADMINISTRATOR: &str = "administrator";
-    pub const ROOT: &str = "root";
+    pub const ADMINISTRATOR: &'static str = "administrator";
+    pub const ROOT: &'static str = "root";
 }
 
 impl Subject for Role {
@@ -164,7 +164,7 @@ impl Resource {
             id,
         }
     }
-    const SEP: &str = "://";
+    const SEP: &'static str = "://";
 }
 
 impl From<Resource> for v1::resources_response::Item {

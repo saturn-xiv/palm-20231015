@@ -32,7 +32,10 @@ impl Config {
         debug!("receive {body}");
         if !status.is_success() {
             error!("{}\n{}", status, body);
-            return Err(Box::new(HttpError(status, Some(body))));
+            return Err(Box::new(HttpError(
+                StatusCode::from_u16(status.as_u16())?,
+                Some(body),
+            )));
         }
         if let Ok(it) = serde_json::from_str(&body) {
             return Ok(it);

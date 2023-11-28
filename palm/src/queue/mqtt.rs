@@ -101,7 +101,7 @@ impl Config {
                     .will_message(
                         MessageBuilder::new()
                             .topic(Self::LAST_WORD_TOPIC)
-                            .payload(flexbuffers::to_vec(&WillMessage {
+                            .payload(flexbuffers::to_vec(WillMessage {
                                 id: self.to_string(),
                             })?)
                             .finalize(),

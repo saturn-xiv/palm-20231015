@@ -34,8 +34,8 @@ pub struct Args {
 }
 
 impl Args {
-    const DEFAULT_TARGET: &str = "/tmp";
-    const DEFAULT_KEEP: &str = "7";
+    const DEFAULT_TARGET: &'static str = "/tmp";
+    const DEFAULT_KEEP: &'static str = "7";
 
     pub async fn launch(&self) -> Result<()> {
         match &self.command {

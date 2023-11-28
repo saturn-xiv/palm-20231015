@@ -25,7 +25,7 @@ pub struct MessageRequest {
 }
 
 impl MessageRequest {
-    pub const USER_INFO_MODIFIED: &str = "user_info_modified";
-    pub const USER_AUTHORIZATION_REVOKE: &str = "user_authorization_revoke";
-    pub const USER_AUTHORIZATION_CANCELLATION: &str = "user_authorization_cancellation";
+    pub const USER_INFO_MODIFIED: &'static str = "user_info_modified";
+    pub const USER_AUTHORIZATION_REVOKE: &'static str = "user_authorization_revoke";
+    pub const USER_AUTHORIZATION_CANCELLATION: &'static str = "user_authorization_cancellation";
 }

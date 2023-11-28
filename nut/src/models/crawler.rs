@@ -1,4 +1,3 @@
-use actix_web::http::StatusCode;
 use chrono::NaiveDateTime;
 use diesel::{
     delete,
@@ -6,6 +5,7 @@ use diesel::{
     insert_into,
     prelude::*,
 };
+use hyper::StatusCode;
 use palm::{HttpError, Result};
 use rand::{rngs::SmallRng, seq::SliceRandom, SeedableRng};
 use serde::Serialize;
@@ -33,7 +33,7 @@ pub async fn pull(db: &mut Connection, url: &str) -> Result<()> {
     let body = response.bytes().await?;
     // let body = body.replace(char::from(0), "");
     match status {
-        StatusCode::OK => {
+        reqwest::StatusCode::OK => {
             if let Ok(last) = db.latest(url) {
                 if last.body == body {
                     debug!("ignore to save {}", url);

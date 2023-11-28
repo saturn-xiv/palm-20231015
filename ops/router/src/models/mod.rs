@@ -21,5 +21,5 @@ impl Administrator {
         hmac.verify(&self.password, plain.as_bytes())
     }
 
-    pub const ACTION_SIGN_IN: &str = "sign-in";
+    pub const ACTION_SIGN_IN: &'static str = "sign-in";
 }

@@ -16,8 +16,8 @@ pub struct Session {
 }
 
 impl Session {
-    const DEFAULT_LANG: &str = "en-US";
-    const DEFAULT_CLIENT_IP: &str = "n/a";
+    const DEFAULT_LANG: &'static str = "en-US";
+    const DEFAULT_CLIENT_IP: &'static str = "n/a";
     fn detect_locale(meta: &MetadataMap) -> String {
         if let Some(it) = meta.get(ACCEPT_LANGUAGE.as_str().to_lowercase()) {
             if let Ok(it) = it.to_str() {

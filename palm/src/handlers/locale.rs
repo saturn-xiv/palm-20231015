@@ -1,8 +1,9 @@
 use std::fmt;
 
-use actix_web::{dev::Payload, web, Error, FromRequest, HttpRequest};
+use actix_web::{
+    dev::Payload, http::header::ACCEPT_LANGUAGE, web, Error, FromRequest, HttpRequest,
+};
 use futures::future::{ok, Ready};
-use hyper::header::ACCEPT_LANGUAGE;
 use language_tags::LanguageTag;
 use serde::Deserialize;
 

@@ -1,8 +1,7 @@
 use std::result::Result as StdResult;
 
-use actix_web::{dev::Payload, web, Error, FromRequest, HttpRequest};
+use actix_web::{dev::Payload, http::header::AUTHORIZATION, web, Error, FromRequest, HttpRequest};
 use futures::future::{ok, Ready};
-use hyper::header::AUTHORIZATION;
 use serde::{Deserialize, Serialize};
 
 use super::super::jwt::BEARER;

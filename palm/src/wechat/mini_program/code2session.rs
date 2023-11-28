@@ -8,7 +8,7 @@ pub struct Query {
     pub grant_type: String,
 }
 impl Query {
-    pub const GRANT_TYPE: &str = "authorization_code";
+    pub const GRANT_TYPE: &'static str = "authorization_code";
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, Clone)]

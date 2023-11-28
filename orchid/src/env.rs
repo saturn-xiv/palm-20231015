@@ -16,7 +16,7 @@ pub struct Config {
 }
 
 impl Config {
-    pub const AUDIENCE: &str = env!("CARGO_PKG_NAME");
+    pub const AUDIENCE: &'static str = env!("CARGO_PKG_NAME");
 
     pub fn wechat(&self, app_id: &str) -> Result<WechatConfig> {
         let file = Path::new("wechat").join(app_id).with_extension("toml");
