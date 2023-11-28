@@ -4,6 +4,7 @@
     "ms-python.python",
     "ms-python.autopep8",
     "rust-lang.rust-analyzer",
+    "golang.go",
     "redhat.ansible",
     "redhat.vscode-xml",
     "redhat.vscode-yaml",
