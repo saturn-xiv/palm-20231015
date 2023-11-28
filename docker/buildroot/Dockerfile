@@ -39,8 +39,9 @@ RUN git config --global core.quotepath false \
 RUN echo 'set-option -g history-limit 102400' > $HOME/.tmux.conf \
     && echo 'set-option -g default-shell "/bin/zsh"' >> $HOME/.tmux.conf
 
+# https://github.com/buildroot/buildroot
 # https://buildroot.org/downloads/manual/manual.html#requirement
-ENV BUILDROOT_VERSION "2023.02.6"
+ENV BUILDROOT_VERSION "2023.08.3"
 RUN git clone -b ${BUILDROOT_VERSION} https://git.buildroot.net/buildroot $HOME/downloads/buildroot
 RUN echo 'export BR2_DL_DIR=$HOME/downloads' >> $HOME/.zshrc
 # make list-defconfigs
@@ -63,7 +64,8 @@ RUN zsh -c "source $HOME/.zshrc \
     && cd $HOME/build/rpi4-64 \
     && make source"
 
-ENV OPENWRT_VERSION "v23.05.0"
+# https://github.com/openwrt/openwrt
+ENV OPENWRT_VERSION "v23.05.2"
 RUN git clone -b ${OPENWRT_VERSION} https://git.openwrt.org/openwrt/openwrt.git $HOME/downloads/openwrt
 RUN zsh -c "source $HOME/.zshrc \
     && cd $HOME/downloads/openwrt \

@@ -102,7 +102,7 @@ RUN cd $HOME/downloads \
 
 
 # https://github.com/bazelbuild/bazelisk
-ENV BAZEL_VERSION "v1.18.0"
+ENV BAZEL_VERSION "v1.19.0"
 RUN wget -q -O $HOME/.local/bin/bazel \
     https://github.com/bazelbuild/bazelisk/releases/download/${BAZEL_VERSION}/bazelisk-linux-amd64
 RUN chmod +x $HOME/.local/bin/bazel
@@ -121,12 +121,12 @@ RUN zsh -c "source $HOME/.zshrc \
     && gem install bundler"
 
 # https://go.dev/doc/install
-ENV GO_VERSION "1.21.3"
+ENV GO_VERSION "1.21.4"
 RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
 RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
-RUN echo 'export GOROOT=$HOME/local/go' >> $HOME/.zshrc \
-    && echo 'export PATH=$GOROOT/bin:$PATH' >> $HOME/.zshrc \
-    && echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc
+RUN echo 'export PATH=$HOME/local/go/bin:$PATH' >> $HOME/.zshrc \
+    && echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc \
+    && echo 'export PATH="$(go env GOPATH)/bin:$PATH"' >> $HOME/.zshrc
 
 # https://github.com/sdkman/sdkman-cli
 # https://docs.gradle.org/current/userguide/compatibility.html
@@ -175,7 +175,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && cargo install mdbook"
 
 # https://www.swift.org/download/#releases
-ENV SWIFT_VERSION "5.8.1"
+ENV SWIFT_VERSION "5.9.1"
 RUN wget -q -P $HOME/downloads https://download.swift.org/swift-${SWIFT_VERSION}-release/ubuntu2204/swift-${SWIFT_VERSION}-RELEASE/swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04.tar.gz \
     && cd /opt \
     && sudo tar xf $HOME/downloads/swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04.tar.gz \
@@ -209,7 +209,7 @@ RUN curl -fsSL -o $HOME/downloads/dbmate https://github.com/amacneil/dbmate/rele
     && sudo chmod +x /usr/bin/dbmate
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.59.2"
+ENV GRPC_VERSION "v1.59.3"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 # ENV PROTOBUF_VERSION "v3.21.8"
 # RUN cd $HOME/downloads/grpc/third_party/protobuf \
@@ -243,7 +243,7 @@ RUN mkdir -p $HOME/build/protobuf-javascript \
 
 # https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
 # https://github.com/grpc/grpc-java
-ENV GRPC_JAVA_PLUGIN_VERSION "1.59.0"
+ENV GRPC_JAVA_PLUGIN_VERSION "1.59.1"
 RUN wget -q -O $HOME/.local/bin/grpc_java_plugin \
     https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${GRPC_JAVA_PLUGIN_VERSION}/protoc-gen-grpc-java-${GRPC_JAVA_PLUGIN_VERSION}-linux-x86_64.exe
 RUN chmod +x $HOME/.local/bin/grpc_java_plugin
@@ -257,6 +257,7 @@ RUN zsh -c "source $HOME/.zshrc \
 RUN zsh -c "source $HOME/.zshrc \
     && go install google.golang.org/protobuf/cmd/protoc-gen-go@latest \
     && go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest"
+
 
 # https://github.com/google/flatbuffers
 ENV FLATBUFFERS_VERSION "v23.5.26"

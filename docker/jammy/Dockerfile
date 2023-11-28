@@ -114,6 +114,14 @@ RUN zsh -c "source $HOME/.zshrc \
     && sdk install maven \
     && sdk install gradle ${GRADLE_VERSION}"
 
+# https://go.dev/doc/install
+ENV GO_VERSION "1.21.4"
+RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
+RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
+RUN echo 'export PATH=$HOME/local/go/bin:$PATH' >> $HOME/.zshrc \
+    && echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc \
+    && echo 'export PATH="$(go env GOPATH)/bin:$PATH"' >> $HOME/.zshrc
+    
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN zsh -c "source $HOME/.cargo/env \
@@ -129,7 +137,7 @@ RUN $HOME/local/vcpkg/bootstrap-vcpkg.sh \
     && echo 'export VCPKG_DISABLE_METRICS=1' >> $HOME/.zshrc
 
 # https://github.com/grpc/grpc
-ENV GRPC_VERSION "v1.59.2"
+ENV GRPC_VERSION "v1.59.3"
 RUN git clone --recurse-submodules -b $GRPC_VERSION https://github.com/grpc/grpc.git $HOME/downloads/grpc
 RUN apt install -y libssl-dev
 RUN zsh -c "source $HOME/.zshrc \
