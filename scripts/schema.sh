@@ -9,8 +9,8 @@ export PALM_PROTOCOLS=$WORKSPACE/palm/protocols
 # -----------------------------------------------------------------------------
 
 function generate_grpc_by_lang() {
-    local target=$WORKSPACE/tmp/protocols/$1
-    echo "generate code for grpc-$1"
+    local target=$WORKSPACE/sdk/$1
+    echo "generate sdk for grpc-$1"
     if [ -d $target ]
     then
         rm -r $target
@@ -24,8 +24,8 @@ function generate_grpc_by_lang() {
 }
 
 function generate_grpc_for_php() {
-    local target=$WORKSPACE/tmp/protocols/php
-    echo "generate code for grpc-php"
+    local target=$WORKSPACE/sdk/php
+    echo "generate sdk for grpc-php"
     if [ -d $target ]
     then
         rm -r $target
@@ -53,19 +53,18 @@ function generate_loquat() {
 }
 
 # https://github.com/grpc/grpc-web#code-generator-plugin
-function generate_dashboard() {
-    echo "generate code for dashboard"
-    local target=$WORKSPACE/dashboard/src/protocols
-    if [ -d $target ]
+function generate_typescript() {
+    echo "generate typescript sdk($1)"    
+    if [ -d $1 ]
     then
-        rm -r $target
+        rm -r $1
     fi
-    mkdir -p $target
+    mkdir -p $1
     
     $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
         -I $PROTOBUF_ROOT/include/google/protobuf \
-        --js_out=import_style=commonjs,binary:$target \
-        --grpc-web_out=import_style=typescript,mode=grpcweb:$target \
+        --js_out=import_style=commonjs,binary:$1 \
+        --grpc-web_out=import_style=typescript,mode=grpcweb:$1 \
         $PALM_PROTOCOLS/*.proto
 }
 
@@ -244,8 +243,9 @@ do
 done
 
 generate_grpc_for_php
+generate_typescript $WORKSPACE/sdk/typescript
 
-generate_dashboard
+generate_typescript $WORKSPACE/dashboard/src/protocols
 generate_loquat
 generate_musa
 generate_gardenia
