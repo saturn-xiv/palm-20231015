@@ -13,13 +13,13 @@ serde_json = "1"
 version = "0.4"
 features = ["serde"]
 
-[dependencies.hyper]
-version = "0.14"
-features = ["full"]
-
 [dependencies.validator]
 version = "0.16"
 features = ["derive", "phone", "card", "unic"]
+
+[dependencies.hyper]
+version = "1"
+features = ["full"]
 
 [dependencies.serde]
 version = "1"
@@ -28,7 +28,14 @@ features = ["derive"]
 [dependencies.diesel]
 version = "2"
 default-features = false
-features = ["bigdecimal", "postgres", "mysql", "sqlite", "extras", "128-column-tables"]
+features = [
+    "bigdecimal",
+    "postgres",
+    "mysql",
+    "sqlite",
+    "extras",
+    "128-column-tables",
+]
 
 [dependencies.actix-web]
 version = "4"

@@ -31,15 +31,13 @@ function build_grpc() {
     if [ -d $BUILD_ROOT ]
     then
         rm -r $BUILD_ROOT
-    fi
-    mkdir -p $BUILD_ROOT
-    cd $BUILD_ROOT
+    fi    
     CC=clang CXX=clang++ cmake -DCMAKE_BUILD_TYPE=Release \
     -DABSL_PROPAGATE_CXX_STD=ON \
     -DgRPC_INSTALL=ON -DgRPC_SSL_PROVIDER=package -DgRPC_BUILD_TESTS=OFF \
-    -DCMAKE_INSTALL_PREFIX=$INSTALL_ROOT $SOURCE_ROOT
-    make # -j $(nproc --ignore=2)
-    make install
+    -DCMAKE_INSTALL_PREFIX=$INSTALL_ROOT -B $BUILD_ROOT -S $SOURCE_ROOT
+    make -j $(nproc --ignore=2) -C $BUILD_ROOT
+    make install -C $BUILD_ROOT
 }
 
 if [ "$#" -ne 1 ]

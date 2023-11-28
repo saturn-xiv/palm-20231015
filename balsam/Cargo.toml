@@ -55,13 +55,13 @@ features = ["transport"]
 version = "0.11"
 features = ["json", "cookies"]
 
-[dependencies.hyper]
-version = "0.14"
-features = ["full"]
-
 [dependencies.validator]
 version = "0.16"
 features = ["derive", "phone", "card", "unic"]
+
+[dependencies.hyper]
+version = "1"
+features = ["full"]
 
 [dependencies.serde]
 version = "1"

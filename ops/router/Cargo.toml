@@ -34,10 +34,6 @@ features = ["alloc"]
 version = "0.10"
 features = ["transport"]
 
-[dependencies.hyper]
-version = "0.14"
-features = ["full"]
-
 [dependencies.validator]
 version = "0.16"
 features = ["derive", "phone", "card", "unic"]
@@ -45,6 +41,10 @@ features = ["derive", "phone", "card", "unic"]
 [dependencies.nix]
 version = "0.27"
 features = ["reboot"]
+
+[dependencies.hyper]
+version = "1"
+features = ["full"]
 
 [dependencies.serde]
 version = "1"

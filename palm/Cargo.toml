@@ -45,10 +45,10 @@ actix-web-lab = "0.20"
 ipnetwork = "0.20"
 imageproc = "0.23"
 image = "0.24"
-aws-sdk-s3 = "0.35"
-aws-sdk-sqs = "0.35"
-aws-config = "0.57"
-aws-credential-types = "0.57"
+aws-sdk-s3 = "1"
+aws-sdk-sqs = "1"
+aws-config = "1"
+aws-credential-types = "1"
 async-mutex = "1"
 bytes = "1"
 bytesize = "1"
@@ -95,10 +95,6 @@ features = ["transport"]
 version = "0.11"
 features = ["json", "cookies"]
 
-[dependencies.hyper]
-version = "0.14"
-features = ["full"]
-
 [dependencies.validator]
 version = "0.16"
 features = ["derive", "phone", "card", "unic"]
@@ -119,6 +115,10 @@ features = ["user", "process"]
 version = "1"
 default-features = false
 features = ["disp_hexstring", "serde_bytes"]
+
+[dependencies.hyper]
+version = "1"
+features = ["full"]
 
 [dependencies.serde]
 version = "1"

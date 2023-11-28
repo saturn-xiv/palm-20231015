@@ -30,10 +30,6 @@ features = ["cookie-session", "redis-rs-session"]
 version = "0.10"
 features = ["transport"]
 
-[dependencies.hyper]
-version = "0.14"
-features = ["full"]
-
 [dependencies.cookie]
 version = "0.18"
 features = ["secure", "private", "percent-encode"]
@@ -41,6 +37,10 @@ features = ["secure", "private", "percent-encode"]
 [dependencies.nix]
 version = "0.27"
 features = ["hostname", "process"]
+
+[dependencies.hyper]
+version = "1"
+features = ["full"]
 
 [dependencies.serde]
 version = "1"
