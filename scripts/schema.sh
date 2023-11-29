@@ -221,6 +221,23 @@ function generate_babel() {
             $PALM_PROTOCOLS/$p.proto        
     done
 }
+
+function generate_metasequoia() {
+    echo "generate code for metasequoia"
+    local target=$WORKSPACE/metasequoia/v2
+    if [ -d $target ]
+    then
+        rm -r $target
+    fi
+    mkdir $target
+    cd $target
+    protoc -I $PALM_PROTOCOLS -I $PROTOBUF_ROOT/include/google/protobuf \
+        --go_out=. --go_opt=paths=source_relative \
+        --go-grpc_out=. --go-grpc_opt=paths=source_relative \
+        $PALM_PROTOCOLS/metasequoia.proto
+    gofmt -w *.go
+}
+
 # -----------------------------------------------------------------------------
 
 generate_diesel_postgresql "postgres://www:change-me@127.0.0.1:5432/demo"
@@ -253,8 +270,10 @@ generate_babel
 generate_lemon
 generate_morus
 generate_lily
+generate_metasequoia
 
 echo 'format rust code'
+cd $WORKSPACE
 cargo fmt
 
 # ----------------------------------------------------------
