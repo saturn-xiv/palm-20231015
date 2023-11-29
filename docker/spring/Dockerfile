@@ -127,6 +127,11 @@ RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
 RUN echo 'export PATH=$HOME/local/go/bin:$PATH' >> $HOME/.zshrc \
     && echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc \
     && echo 'export PATH="$(go env GOPATH)/bin:$PATH"' >> $HOME/.zshrc
+# https://code.visualstudio.com/docs/languages/go
+RUN zsh -c "source $HOME/.zshrc \
+    && go install golang.org/x/tools/gopls@latest \
+    && go install github.com/go-delve/delve/cmd/dlv@latest \
+    && go install honnef.co/go/tools/cmd/staticcheck@latest"
 
 # https://github.com/sdkman/sdkman-cli
 # https://docs.gradle.org/current/userguide/compatibility.html
