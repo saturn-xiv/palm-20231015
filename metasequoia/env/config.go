@@ -3,7 +3,6 @@ package env
 import (
 	"fmt"
 
-	"github.com/go-pg/pg/v10"
 	"github.com/redis/go-redis/v9"
 )
 
@@ -40,15 +39,10 @@ type PostgreSql struct {
 	Password string `toml:"password"`
 }
 
-func (p *PostgreSql) Options() pg.Options {
-	return pg.Options{
-		Network:   "tcp",
-		Database:  p.DbName,
-		User:      p.User,
-		Password:  p.Password,
-		Addr:      fmt.Sprintf("%s:%d", p.Host, p.Port),
-		TLSConfig: nil,
-	}
+func (p *PostgreSql) Url() string {
+	return fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable TimeZone=UTC",
+		p.Host, p.Port, p.User, p.Password, p.DbName,
+	)
 }
 
 type RabbitMq struct {
