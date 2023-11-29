@@ -12,6 +12,8 @@ import (
 	gormadapter "github.com/casbin/gorm-adapter/v3"
 	rediswatcher "github.com/casbin/redis-watcher/v2"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/health"
+	"google.golang.org/grpc/health/grpc_health_v1"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 
@@ -98,5 +100,6 @@ func main() {
 
 	server := grpc.NewServer(opts...)
 	pb.RegisterLocaleServer(server, services.LocaleService{})
+	grpc_health_v1.RegisterHealthServer(server, health.NewServer())
 	server.Serve(socket)
 }
