@@ -1,0 +1,291 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.metasequoia.v1";
+option go_package = "github.com/saturn_xiv/palm/metasequoia/v2";
+package palm.metasequoia.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+service User {
+  rpc SignInByPassword(UserSignInByPasswordRequest)
+      returns (UserSignInResponse) {}
+  rpc SignUpByEmail(UserSignUpByEmailRequest) returns (google.protobuf.Empty) {}
+  rpc ConfirmByEmail(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc ConfirmByToken(UserTokenRequest) returns (google.protobuf.Empty) {}
+  rpc UnlockByEmail(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc UnlockByToken(UserTokenRequest) returns (google.protobuf.Empty) {}
+  rpc ForgotPassword(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc ResetPassword(UserResetPasswordRequest) returns (google.protobuf.Empty) {}
+
+  rpc Refresh(google.protobuf.Duration) returns (UserSignInResponse) {}
+  rpc Logs(UserLogsRequest) returns (UserLogsResponse) {}
+  rpc SetProfile(UserProfile) returns (google.protobuf.Empty) {}
+  rpc GetProfile(google.protobuf.Empty) returns (UserProfile) {}
+  rpc ChangePassword(UserChangePasswordRequest)
+      returns (google.protobuf.Empty) {}
+  rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc Index(google.protobuf.Empty) returns (UserIndexResponse) {}
+  rpc Show(UserQueryRequest) returns (UserIndexResponse.Item) {}
+  rpc Disable(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc Enable(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc Lock(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc Unlock(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc Confirm(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc Delete(UserQueryRequest) returns (google.protobuf.Empty) {}
+  rpc SetPassword(UserSetPasswordRequest) returns (google.protobuf.Empty) {}
+}
+
+message UserProfile {
+  map<string, string> payload = 1;
+}
+
+message UserIndexResponse {
+  message Item {
+    string nickname = 1;
+    string real_name = 2;
+    string email = 3;
+    string locale = 18;
+    string timezone = 19;
+    optional google.protobuf.Timestamp confirmed_at = 91;
+    optional google.protobuf.Timestamp locked_at = 92;
+    optional google.protobuf.Timestamp deleted_at = 93;
+    UserSignInResponse.By by = 99;
+  }
+  repeated Item items = 1;
+}
+
+message UserSetPasswordRequest {
+  string password = 1;
+}
+
+message UserChangePasswordRequest {
+  string current_password = 1;
+  string new_password = 2;
+  string password_confirmation = 3;
+}
+
+message UserLogsRequest {
+  optional string plugin = 1;
+  google.protobuf.Timestamp from = 2;
+  google.protobuf.Timestamp to = 3;
+}
+
+message UserLogsResponse {
+  message Item {
+    enum Level {
+      DEBUG = 0;
+      INFO = 1;
+      WARNING = 2;
+      ERROR = 3;
+    }
+    int32 id = 1;
+    Level level = 2;
+    string plugin = 3;
+    string ip = 4;
+    string message = 5;
+    google.protobuf.Timestamp created_at = 9;
+  }
+  repeated Item items = 1;
+}
+
+message UserResetPasswordRequest {
+  string token = 1;
+  string password = 2;
+}
+
+message UserTokenRequest {
+  string token = 1;
+}
+
+message UserQueryRequest {
+  oneof by {
+    string email = 1;
+    string nickname = 2;
+    string phone = 3;
+    string uid = 4;
+  }
+}
+
+message UserSignUpByEmailRequest {
+  string nickname = 1;
+  string real_name = 2;
+  string email = 3;
+  string password = 4;
+  string locale = 11;
+  string timezone = 12;
+  string home = 99;
+}
+
+message UserSignInByPasswordRequest {
+  oneof user {
+    string email = 1;
+    string nickname = 2;
+    string phone = 3;
+  }
+  string password = 11;
+  google.protobuf.Duration ttl = 19;
+}
+
+message UserSignInResponse {
+  enum By {
+    Nickname = 0;
+    Email = 1;
+    Phone = 2;
+    WechatOauth2 = 11;
+    WechatMiniProgram = 12;
+    Facebook = 21;
+    Google = 22;
+  }
+  string real_name = 1;
+  By by = 9;
+  string token = 11;
+  repeated Role roles = 12;
+  repeated Permission permissions = 13;
+}
+
+// ----------------------------------------------------------------------------
+
+message Permission {
+  oneof subject {
+    int32 user = 1;
+    Role role = 2;
+  }
+  Resource object = 11;
+  string action = 12;
+}
+message Resource {
+  oneof id {
+    string s = 1;
+    int32 i = 2;
+  }
+  string type = 11;
+}
+
+message Role {
+  message Member {
+    string name = 1;
+  }
+  oneof by {
+    google.protobuf.Empty administrator = 1;
+    google.protobuf.Empty root = 2;
+    Member member = 3;
+  }
+}
+
+service Rbac {
+  rpc GetRolesForUser(UserQueryRequest) returns (RbacRolesResponse) {};
+  rpc GetImplicitRolesForUser(UserQueryRequest) returns (RbacRolesResponse) {};
+  rpc AddRolesForUser(RbacRolesForUserRequest) returns (google.protobuf.Empty) {
+  };
+  rpc DeleteRolesForUser(RbacRolesForUserRequest)
+      returns (google.protobuf.Empty) {};
+  rpc AddPermissionsForRole(RbacPermissionsForRoleRequest)
+      returns (google.protobuf.Empty) {};
+  rpc DeletePermissionsForRole(RbacPermissionsForRoleRequest)
+      returns (google.protobuf.Empty) {};
+
+  rpc GetPermissionsForUser(UserQueryRequest)
+      returns (RbacPermissionsResponse) {};
+  rpc GetImplicitPermissionsForUser(UserQueryRequest)
+      returns (RbacPermissionsResponse) {};
+  rpc AddPermissionsForUser(RbacPermissionsForUserRequest)
+      returns (google.protobuf.Empty) {};
+  rpc DeletePermissionsForUser(RbacPermissionsForUserRequest)
+      returns (google.protobuf.Empty) {};
+}
+message RbacPermissionItem {
+  string action = 1;
+  Resource resource = 2;
+}
+message RbacPermissionsForUserRequest {
+  int32 user = 1;
+  repeated RbacPermissionItem permissions = 2;
+}
+message RbacPermissionsForRoleRequest {
+  Role role = 1;
+  repeated RbacPermissionItem permissions = 2;
+}
+message RbacRolesForUserRequest {
+  int32 user = 1;
+  repeated Role roles = 2;
+}
+message RbacRolesResponse {
+  repeated Role items = 1;
+}
+message RbacPermissionsResponse {
+  repeated Permission items = 1;
+}
+
+// ----------------------------------------------------------------------------
+
+service Setting {
+  rpc Set(SettingSetRequest) returns (google.protobuf.Empty) {};
+  rpc Get(SettingGetRequest) returns (SettingsResponse.Item) {};
+  rpc ByUser(SettingByUserRequest) returns (SettingsResponse) {};
+  rpc My(google.protobuf.Empty) returns (SettingsResponse) {};
+  rpc Global(google.protobuf.Empty) returns (SettingsResponse) {};
+}
+
+message SettingSetRequest {
+  bool global = 1;
+  string key = 2;
+  bytes value = 3;
+}
+
+message SettingGetRequest {
+  bool global = 1;
+  string key = 2;
+}
+
+message SettingByUserRequest {
+  int32 user = 1;
+}
+
+message SettingsResponse {
+  message Item {
+    int32 id = 1;
+    optional int32 user_id = 2;
+    string key = 3;
+    bytes value = 4;
+    google.protobuf.Timestamp created_at = 11;
+    google.protobuf.Timestamp updated_at = 12;
+  }
+  repeated Item items = 1;
+}
+// ----------------------------------------------------------------------------
+
+service Locale {
+  rpc Set(LocaleSetRequest) returns (google.protobuf.Empty) {}
+  rpc Get(LocaleGetRequest) returns (LocalesResponse.Item) {}
+  rpc ByLang(LocaleByLangRequest) returns (LocalesResponse) {}
+}
+
+message LocaleByLangRequest {
+  string lang = 1;
+}
+
+message LocaleGetRequest {
+  string lang = 1;
+  string code = 2;
+}
+
+message LocalesResponse {
+  message Item {
+    int32 id = 1;
+    string lang = 2;
+    string code = 3;
+    string message = 4;
+    google.protobuf.Timestamp created_at = 11;
+    google.protobuf.Timestamp updated_at = 12;
+  }
+  repeated Item items = 1;
+}
+
+message LocaleSetRequest {
+  string lang = 1;
+  string code = 2;
+  string message = 3;
+}
