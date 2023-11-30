@@ -15,6 +15,68 @@ public final class RbacGrpc {
   public static final java.lang.String SERVICE_NAME = "palm.metasequoia.v1.Rbac";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacCanRequest,
+      com.google.protobuf.Empty> getCanMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Can",
+      requestType = com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacCanRequest.class,
+      responseType = com.google.protobuf.Empty.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacCanRequest,
+      com.google.protobuf.Empty> getCanMethod() {
+    io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacCanRequest, com.google.protobuf.Empty> getCanMethod;
+    if ((getCanMethod = RbacGrpc.getCanMethod) == null) {
+      synchronized (RbacGrpc.class) {
+        if ((getCanMethod = RbacGrpc.getCanMethod) == null) {
+          RbacGrpc.getCanMethod = getCanMethod =
+              io.grpc.MethodDescriptor.<com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacCanRequest, com.google.protobuf.Empty>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Can"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacCanRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.Empty.getDefaultInstance()))
+              .setSchemaDescriptor(new RbacMethodDescriptorSupplier("Can"))
+              .build();
+        }
+      }
+    }
+    return getCanMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacHasRequest,
+      com.google.protobuf.Empty> getHasMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Has",
+      requestType = com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacHasRequest.class,
+      responseType = com.google.protobuf.Empty.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacHasRequest,
+      com.google.protobuf.Empty> getHasMethod() {
+    io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacHasRequest, com.google.protobuf.Empty> getHasMethod;
+    if ((getHasMethod = RbacGrpc.getHasMethod) == null) {
+      synchronized (RbacGrpc.class) {
+        if ((getHasMethod = RbacGrpc.getHasMethod) == null) {
+          RbacGrpc.getHasMethod = getHasMethod =
+              io.grpc.MethodDescriptor.<com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacHasRequest, com.google.protobuf.Empty>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Has"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacHasRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.Empty.getDefaultInstance()))
+              .setSchemaDescriptor(new RbacMethodDescriptorSupplier("Has"))
+              .build();
+        }
+      }
+    }
+    return getHasMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<com.github.saturn_xiv.palm.plugins.metasequoia.v1.UserQueryRequest,
       com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacRolesResponse> getGetRolesForUserMethod;
 
@@ -375,6 +437,20 @@ public final class RbacGrpc {
 
     /**
      */
+    default void can(com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacCanRequest request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCanMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void has(com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacHasRequest request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHasMethod(), responseObserver);
+    }
+
+    /**
+     */
     default void getRolesForUser(com.github.saturn_xiv.palm.plugins.metasequoia.v1.UserQueryRequest request,
         io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacRolesResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetRolesForUserMethod(), responseObserver);
@@ -469,6 +545,22 @@ public final class RbacGrpc {
     protected RbacStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new RbacStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public void can(com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacCanRequest request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCanMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void has(com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacHasRequest request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getHasMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -570,6 +662,20 @@ public final class RbacGrpc {
 
     /**
      */
+    public com.google.protobuf.Empty can(com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacCanRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCanMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.google.protobuf.Empty has(com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacHasRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getHasMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacRolesResponse getRolesForUser(com.github.saturn_xiv.palm.plugins.metasequoia.v1.UserQueryRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetRolesForUserMethod(), getCallOptions(), request);
@@ -657,6 +763,22 @@ public final class RbacGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> can(
+        com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacCanRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCanMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> has(
+        com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacHasRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getHasMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacRolesResponse> getRolesForUser(
         com.github.saturn_xiv.palm.plugins.metasequoia.v1.UserQueryRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -736,16 +858,18 @@ public final class RbacGrpc {
     }
   }
 
-  private static final int METHODID_GET_ROLES_FOR_USER = 0;
-  private static final int METHODID_GET_IMPLICIT_ROLES_FOR_USER = 1;
-  private static final int METHODID_ADD_ROLES_FOR_USER = 2;
-  private static final int METHODID_DELETE_ROLES_FOR_USER = 3;
-  private static final int METHODID_ADD_PERMISSIONS_FOR_ROLE = 4;
-  private static final int METHODID_DELETE_PERMISSIONS_FOR_ROLE = 5;
-  private static final int METHODID_GET_PERMISSIONS_FOR_USER = 6;
-  private static final int METHODID_GET_IMPLICIT_PERMISSIONS_FOR_USER = 7;
-  private static final int METHODID_ADD_PERMISSIONS_FOR_USER = 8;
-  private static final int METHODID_DELETE_PERMISSIONS_FOR_USER = 9;
+  private static final int METHODID_CAN = 0;
+  private static final int METHODID_HAS = 1;
+  private static final int METHODID_GET_ROLES_FOR_USER = 2;
+  private static final int METHODID_GET_IMPLICIT_ROLES_FOR_USER = 3;
+  private static final int METHODID_ADD_ROLES_FOR_USER = 4;
+  private static final int METHODID_DELETE_ROLES_FOR_USER = 5;
+  private static final int METHODID_ADD_PERMISSIONS_FOR_ROLE = 6;
+  private static final int METHODID_DELETE_PERMISSIONS_FOR_ROLE = 7;
+  private static final int METHODID_GET_PERMISSIONS_FOR_USER = 8;
+  private static final int METHODID_GET_IMPLICIT_PERMISSIONS_FOR_USER = 9;
+  private static final int METHODID_ADD_PERMISSIONS_FOR_USER = 10;
+  private static final int METHODID_DELETE_PERMISSIONS_FOR_USER = 11;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -764,6 +888,14 @@ public final class RbacGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_CAN:
+          serviceImpl.can((com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacCanRequest) request,
+              (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
+          break;
+        case METHODID_HAS:
+          serviceImpl.has((com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacHasRequest) request,
+              (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
+          break;
         case METHODID_GET_ROLES_FOR_USER:
           serviceImpl.getRolesForUser((com.github.saturn_xiv.palm.plugins.metasequoia.v1.UserQueryRequest) request,
               (io.grpc.stub.StreamObserver<com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacRolesResponse>) responseObserver);
@@ -822,6 +954,20 @@ public final class RbacGrpc {
 
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getCanMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacCanRequest,
+              com.google.protobuf.Empty>(
+                service, METHODID_CAN)))
+        .addMethod(
+          getHasMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.github.saturn_xiv.palm.plugins.metasequoia.v1.RbacHasRequest,
+              com.google.protobuf.Empty>(
+                service, METHODID_HAS)))
         .addMethod(
           getGetRolesForUserMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -940,6 +1086,8 @@ public final class RbacGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RbacFileDescriptorSupplier())
+              .addMethod(getCanMethod())
+              .addMethod(getHasMethod())
               .addMethod(getGetRolesForUserMethod())
               .addMethod(getGetImplicitRolesForUserMethod())
               .addMethod(getAddRolesForUserMethod())

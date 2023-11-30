@@ -1007,19 +1007,39 @@ namespace Palm.Metasequoia.V1 {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Palm.Metasequoia.V1.RbacCanRequest> __Marshaller_palm_metasequoia_v1_RbacCanRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Palm.Metasequoia.V1.RbacCanRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Google.Protobuf.WellKnownTypes.Empty.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Palm.Metasequoia.V1.RbacHasRequest> __Marshaller_palm_metasequoia_v1_RbacHasRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Palm.Metasequoia.V1.RbacHasRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Palm.Metasequoia.V1.UserQueryRequest> __Marshaller_palm_metasequoia_v1_UserQueryRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Palm.Metasequoia.V1.UserQueryRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Palm.Metasequoia.V1.RbacRolesResponse> __Marshaller_palm_metasequoia_v1_RbacRolesResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Palm.Metasequoia.V1.RbacRolesResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Palm.Metasequoia.V1.RbacRolesForUserRequest> __Marshaller_palm_metasequoia_v1_RbacRolesForUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Palm.Metasequoia.V1.RbacRolesForUserRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Google.Protobuf.WellKnownTypes.Empty.Parser));
-    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Palm.Metasequoia.V1.RbacPermissionsForRoleRequest> __Marshaller_palm_metasequoia_v1_RbacPermissionsForRoleRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Palm.Metasequoia.V1.RbacPermissionsForRoleRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Palm.Metasequoia.V1.RbacPermissionsResponse> __Marshaller_palm_metasequoia_v1_RbacPermissionsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Palm.Metasequoia.V1.RbacPermissionsResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Palm.Metasequoia.V1.RbacPermissionsForUserRequest> __Marshaller_palm_metasequoia_v1_RbacPermissionsForUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Palm.Metasequoia.V1.RbacPermissionsForUserRequest.Parser));
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Palm.Metasequoia.V1.RbacCanRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_Can = new grpc::Method<global::Palm.Metasequoia.V1.RbacCanRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Can",
+        __Marshaller_palm_metasequoia_v1_RbacCanRequest,
+        __Marshaller_google_protobuf_Empty);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Palm.Metasequoia.V1.RbacHasRequest, global::Google.Protobuf.WellKnownTypes.Empty> __Method_Has = new grpc::Method<global::Palm.Metasequoia.V1.RbacHasRequest, global::Google.Protobuf.WellKnownTypes.Empty>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Has",
+        __Marshaller_palm_metasequoia_v1_RbacHasRequest,
+        __Marshaller_google_protobuf_Empty);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Palm.Metasequoia.V1.UserQueryRequest, global::Palm.Metasequoia.V1.RbacRolesResponse> __Method_GetRolesForUser = new grpc::Method<global::Palm.Metasequoia.V1.UserQueryRequest, global::Palm.Metasequoia.V1.RbacRolesResponse>(
@@ -1112,6 +1132,18 @@ namespace Palm.Metasequoia.V1 {
     public abstract partial class RbacBase
     {
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Google.Protobuf.WellKnownTypes.Empty> Can(global::Palm.Metasequoia.V1.RbacCanRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Google.Protobuf.WellKnownTypes.Empty> Has(global::Palm.Metasequoia.V1.RbacHasRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Palm.Metasequoia.V1.RbacRolesResponse> GetRolesForUser(global::Palm.Metasequoia.V1.UserQueryRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -1200,6 +1232,46 @@ namespace Palm.Metasequoia.V1 {
       {
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty Can(global::Palm.Metasequoia.V1.RbacCanRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Can(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty Can(global::Palm.Metasequoia.V1.RbacCanRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Can, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Google.Protobuf.WellKnownTypes.Empty> CanAsync(global::Palm.Metasequoia.V1.RbacCanRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CanAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Google.Protobuf.WellKnownTypes.Empty> CanAsync(global::Palm.Metasequoia.V1.RbacCanRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Can, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty Has(global::Palm.Metasequoia.V1.RbacHasRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Has(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty Has(global::Palm.Metasequoia.V1.RbacHasRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Has, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Google.Protobuf.WellKnownTypes.Empty> HasAsync(global::Palm.Metasequoia.V1.RbacHasRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return HasAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Google.Protobuf.WellKnownTypes.Empty> HasAsync(global::Palm.Metasequoia.V1.RbacHasRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Has, null, options, request);
+      }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Palm.Metasequoia.V1.RbacRolesResponse GetRolesForUser(global::Palm.Metasequoia.V1.UserQueryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -1414,6 +1486,8 @@ namespace Palm.Metasequoia.V1 {
     public static grpc::ServerServiceDefinition BindService(RbacBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
+          .AddMethod(__Method_Can, serviceImpl.Can)
+          .AddMethod(__Method_Has, serviceImpl.Has)
           .AddMethod(__Method_GetRolesForUser, serviceImpl.GetRolesForUser)
           .AddMethod(__Method_GetImplicitRolesForUser, serviceImpl.GetImplicitRolesForUser)
           .AddMethod(__Method_AddRolesForUser, serviceImpl.AddRolesForUser)
@@ -1433,6 +1507,8 @@ namespace Palm.Metasequoia.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public static void BindService(grpc::ServiceBinderBase serviceBinder, RbacBase serviceImpl)
     {
+      serviceBinder.AddMethod(__Method_Can, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Palm.Metasequoia.V1.RbacCanRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.Can));
+      serviceBinder.AddMethod(__Method_Has, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Palm.Metasequoia.V1.RbacHasRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.Has));
       serviceBinder.AddMethod(__Method_GetRolesForUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Palm.Metasequoia.V1.UserQueryRequest, global::Palm.Metasequoia.V1.RbacRolesResponse>(serviceImpl.GetRolesForUser));
       serviceBinder.AddMethod(__Method_GetImplicitRolesForUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Palm.Metasequoia.V1.UserQueryRequest, global::Palm.Metasequoia.V1.RbacRolesResponse>(serviceImpl.GetImplicitRolesForUser));
       serviceBinder.AddMethod(__Method_AddRolesForUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Palm.Metasequoia.V1.RbacRolesForUserRequest, global::Google.Protobuf.WellKnownTypes.Empty>(serviceImpl.AddRolesForUser));

@@ -615,6 +615,58 @@ export namespace Role {
   }
 }
 
+export class RbacCanRequest extends jspb.Message {
+  getUser(): number;
+  setUser(value: number): RbacCanRequest;
+
+  getObject(): Resource | undefined;
+  setObject(value?: Resource): RbacCanRequest;
+  hasObject(): boolean;
+  clearObject(): RbacCanRequest;
+
+  getAction(): string;
+  setAction(value: string): RbacCanRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacCanRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacCanRequest): RbacCanRequest.AsObject;
+  static serializeBinaryToWriter(message: RbacCanRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacCanRequest;
+  static deserializeBinaryFromReader(message: RbacCanRequest, reader: jspb.BinaryReader): RbacCanRequest;
+}
+
+export namespace RbacCanRequest {
+  export type AsObject = {
+    user: number,
+    object?: Resource.AsObject,
+    action: string,
+  }
+}
+
+export class RbacHasRequest extends jspb.Message {
+  getUser(): number;
+  setUser(value: number): RbacHasRequest;
+
+  getRole(): Role | undefined;
+  setRole(value?: Role): RbacHasRequest;
+  hasRole(): boolean;
+  clearRole(): RbacHasRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RbacHasRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RbacHasRequest): RbacHasRequest.AsObject;
+  static serializeBinaryToWriter(message: RbacHasRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RbacHasRequest;
+  static deserializeBinaryFromReader(message: RbacHasRequest, reader: jspb.BinaryReader): RbacHasRequest;
+}
+
+export namespace RbacHasRequest {
+  export type AsObject = {
+    user: number,
+    role?: Role.AsObject,
+  }
+}
+
 export class RbacPermissionItem extends jspb.Message {
   getAction(): string;
   setAction(value: string): RbacPermissionItem;

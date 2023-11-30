@@ -8,6 +8,34 @@ namespace Palm\Metasequoia\V1;
 class RbacStub {
 
     /**
+     * @param \Palm\Metasequoia\V1\RbacCanRequest $request client request
+     * @param \Grpc\ServerContext $context server request context
+     * @return \Google\Protobuf\GPBEmpty for response data, null if if error occured
+     *     initial metadata (if any) and status (if not ok) should be set to $context
+     */
+    public function Can(
+        \Palm\Metasequoia\V1\RbacCanRequest $request,
+        \Grpc\ServerContext $context
+    ): ?\Google\Protobuf\GPBEmpty {
+        $context->setStatus(\Grpc\Status::unimplemented());
+        return null;
+    }
+
+    /**
+     * @param \Palm\Metasequoia\V1\RbacHasRequest $request client request
+     * @param \Grpc\ServerContext $context server request context
+     * @return \Google\Protobuf\GPBEmpty for response data, null if if error occured
+     *     initial metadata (if any) and status (if not ok) should be set to $context
+     */
+    public function Has(
+        \Palm\Metasequoia\V1\RbacHasRequest $request,
+        \Grpc\ServerContext $context
+    ): ?\Google\Protobuf\GPBEmpty {
+        $context->setStatus(\Grpc\Status::unimplemented());
+        return null;
+    }
+
+    /**
      * @param \Palm\Metasequoia\V1\UserQueryRequest $request client request
      * @param \Grpc\ServerContext $context server request context
      * @return \Palm\Metasequoia\V1\RbacRolesResponse for response data, null if if error occured
@@ -155,6 +183,18 @@ class RbacStub {
     public final function getMethodDescriptors(): array
     {
         return [
+            '/palm.metasequoia.v1.Rbac/Can' => new \Grpc\MethodDescriptor(
+                $this,
+                'Can',
+                '\Palm\Metasequoia\V1\RbacCanRequest',
+                \Grpc\MethodDescriptor::UNARY_CALL
+            ),
+            '/palm.metasequoia.v1.Rbac/Has' => new \Grpc\MethodDescriptor(
+                $this,
+                'Has',
+                '\Palm\Metasequoia\V1\RbacHasRequest',
+                \Grpc\MethodDescriptor::UNARY_CALL
+            ),
             '/palm.metasequoia.v1.Rbac/GetRolesForUser' => new \Grpc\MethodDescriptor(
                 $this,
                 'GetRolesForUser',

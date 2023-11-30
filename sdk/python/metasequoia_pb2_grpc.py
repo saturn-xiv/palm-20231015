@@ -803,6 +803,16 @@ class RbacStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.Can = channel.unary_unary(
+                '/palm.metasequoia.v1.Rbac/Can',
+                request_serializer=metasequoia__pb2.RbacCanRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
+        self.Has = channel.unary_unary(
+                '/palm.metasequoia.v1.Rbac/Has',
+                request_serializer=metasequoia__pb2.RbacHasRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
         self.GetRolesForUser = channel.unary_unary(
                 '/palm.metasequoia.v1.Rbac/GetRolesForUser',
                 request_serializer=metasequoia__pb2.UserQueryRequest.SerializeToString,
@@ -857,6 +867,18 @@ class RbacStub(object):
 
 class RbacServicer(object):
     """Missing associated documentation comment in .proto file."""
+
+    def Can(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Has(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def GetRolesForUser(self, request, context):
         """Missing associated documentation comment in .proto file."""
@@ -921,6 +943,16 @@ class RbacServicer(object):
 
 def add_RbacServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'Can': grpc.unary_unary_rpc_method_handler(
+                    servicer.Can,
+                    request_deserializer=metasequoia__pb2.RbacCanRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            ),
+            'Has': grpc.unary_unary_rpc_method_handler(
+                    servicer.Has,
+                    request_deserializer=metasequoia__pb2.RbacHasRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            ),
             'GetRolesForUser': grpc.unary_unary_rpc_method_handler(
                     servicer.GetRolesForUser,
                     request_deserializer=metasequoia__pb2.UserQueryRequest.FromString,
@@ -980,6 +1012,40 @@ def add_RbacServicer_to_server(servicer, server):
  # This class is part of an EXPERIMENTAL API.
 class Rbac(object):
     """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def Can(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/palm.metasequoia.v1.Rbac/Can',
+            metasequoia__pb2.RbacCanRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Has(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/palm.metasequoia.v1.Rbac/Has',
+            metasequoia__pb2.RbacHasRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def GetRolesForUser(request,

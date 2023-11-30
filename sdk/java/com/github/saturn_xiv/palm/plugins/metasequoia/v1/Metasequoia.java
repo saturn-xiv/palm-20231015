@@ -110,6 +110,16 @@ public final class Metasequoia {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_palm_metasequoia_v1_Role_Member_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_palm_metasequoia_v1_RbacCanRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_palm_metasequoia_v1_RbacCanRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_palm_metasequoia_v1_RbacHasRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_palm_metasequoia_v1_RbacHasRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_palm_metasequoia_v1_RbacPermissionItem_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -260,134 +270,142 @@ public final class Metasequoia {
       "buf.EmptyH\000\022&\n\004root\030\002 \001(\0132\026.google.proto" +
       "buf.EmptyH\000\0222\n\006member\030\003 \001(\0132 .palm.metas" +
       "equoia.v1.Role.MemberH\000\032\026\n\006Member\022\014\n\004nam" +
-      "e\030\001 \001(\tB\004\n\002by\"U\n\022RbacPermissionItem\022\016\n\006a" +
-      "ction\030\001 \001(\t\022/\n\010resource\030\002 \001(\0132\035.palm.met" +
-      "asequoia.v1.Resource\"k\n\035RbacPermissionsF" +
-      "orUserRequest\022\014\n\004user\030\001 \001(\005\022<\n\013permissio" +
-      "ns\030\002 \003(\0132\'.palm.metasequoia.v1.RbacPermi" +
-      "ssionItem\"\206\001\n\035RbacPermissionsForRoleRequ" +
-      "est\022\'\n\004role\030\001 \001(\0132\031.palm.metasequoia.v1." +
-      "Role\022<\n\013permissions\030\002 \003(\0132\'.palm.metaseq" +
-      "uoia.v1.RbacPermissionItem\"Q\n\027RbacRolesF" +
-      "orUserRequest\022\014\n\004user\030\001 \001(\005\022(\n\005roles\030\002 \003" +
-      "(\0132\031.palm.metasequoia.v1.Role\"=\n\021RbacRol" +
-      "esResponse\022(\n\005items\030\001 \003(\0132\031.palm.metaseq" +
-      "uoia.v1.Role\"I\n\027RbacPermissionsResponse\022" +
-      ".\n\005items\030\001 \003(\0132\037.palm.metasequoia.v1.Per" +
-      "mission\"?\n\021SettingSetRequest\022\016\n\006global\030\001" +
-      " \001(\010\022\013\n\003key\030\002 \001(\t\022\r\n\005value\030\003 \001(\014\"0\n\021Sett" +
-      "ingGetRequest\022\016\n\006global\030\001 \001(\010\022\013\n\003key\030\002 \001" +
-      "(\t\"$\n\024SettingByUserRequest\022\014\n\004user\030\001 \001(\005" +
-      "\"\200\002\n\020SettingsResponse\0229\n\005items\030\001 \003(\0132*.p" +
-      "alm.metasequoia.v1.SettingsResponse.Item" +
-      "\032\260\001\n\004Item\022\n\n\002id\030\001 \001(\005\022\024\n\007user_id\030\002 \001(\005H\000" +
-      "\210\001\001\022\013\n\003key\030\003 \001(\t\022\r\n\005value\030\004 \001(\014\022.\n\ncreat" +
-      "ed_at\030\013 \001(\0132\032.google.protobuf.Timestamp\022" +
-      ".\n\nupdated_at\030\014 \001(\0132\032.google.protobuf.Ti" +
-      "mestampB\n\n\010_user_id\"#\n\023LocaleByLangReque" +
-      "st\022\014\n\004lang\030\001 \001(\t\".\n\020LocaleGetRequest\022\014\n\004" +
-      "lang\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\"\355\001\n\017LocalesResp" +
-      "onse\0228\n\005items\030\001 \003(\0132).palm.metasequoia.v" +
-      "1.LocalesResponse.Item\032\237\001\n\004Item\022\n\n\002id\030\001 " +
-      "\001(\005\022\014\n\004lang\030\002 \001(\t\022\014\n\004code\030\003 \001(\t\022\017\n\007messa" +
-      "ge\030\004 \001(\t\022.\n\ncreated_at\030\013 \001(\0132\032.google.pr" +
-      "otobuf.Timestamp\022.\n\nupdated_at\030\014 \001(\0132\032.g" +
-      "oogle.protobuf.Timestamp\"?\n\020LocaleSetReq" +
-      "uest\022\014\n\004lang\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\022\017\n\007mess" +
-      "age\030\003 \001(\t2\336\016\n\004User\022o\n\020SignInByPassword\0220" +
-      ".palm.metasequoia.v1.UserSignInByPasswor" +
-      "dRequest\032\'.palm.metasequoia.v1.UserSignI" +
-      "nResponse\"\000\022X\n\rSignUpByEmail\022-.palm.meta" +
-      "sequoia.v1.UserSignUpByEmailRequest\032\026.go" +
-      "ogle.protobuf.Empty\"\000\022Q\n\016ConfirmByEmail\022" +
-      "%.palm.metasequoia.v1.UserQueryRequest\032\026" +
-      ".google.protobuf.Empty\"\000\022Q\n\016ConfirmByTok" +
-      "en\022%.palm.metasequoia.v1.UserTokenReques" +
-      "t\032\026.google.protobuf.Empty\"\000\022P\n\rUnlockByE" +
-      "mail\022%.palm.metasequoia.v1.UserQueryRequ" +
-      "est\032\026.google.protobuf.Empty\"\000\022P\n\rUnlockB" +
-      "yToken\022%.palm.metasequoia.v1.UserTokenRe" +
-      "quest\032\026.google.protobuf.Empty\"\000\022Q\n\016Forgo" +
-      "tPassword\022%.palm.metasequoia.v1.UserQuer" +
-      "yRequest\032\026.google.protobuf.Empty\"\000\022X\n\rRe" +
-      "setPassword\022-.palm.metasequoia.v1.UserRe" +
-      "setPasswordRequest\032\026.google.protobuf.Emp" +
-      "ty\"\000\022O\n\007Refresh\022\031.google.protobuf.Durati" +
-      "on\032\'.palm.metasequoia.v1.UserSignInRespo" +
-      "nse\"\000\022U\n\004Logs\022$.palm.metasequoia.v1.User" +
-      "LogsRequest\032%.palm.metasequoia.v1.UserLo" +
-      "gsResponse\"\000\022H\n\nSetProfile\022 .palm.metase" +
-      "quoia.v1.UserProfile\032\026.google.protobuf.E" +
-      "mpty\"\000\022H\n\nGetProfile\022\026.google.protobuf.E" +
-      "mpty\032 .palm.metasequoia.v1.UserProfile\"\000" +
-      "\022Z\n\016ChangePassword\022..palm.metasequoia.v1" +
-      ".UserChangePasswordRequest\032\026.google.prot" +
-      "obuf.Empty\"\000\022;\n\007SignOut\022\026.google.protobu" +
-      "f.Empty\032\026.google.protobuf.Empty\"\000\022I\n\005Ind" +
-      "ex\022\026.google.protobuf.Empty\032&.palm.metase" +
-      "quoia.v1.UserIndexResponse\"\000\022\\\n\004Show\022%.p" +
-      "alm.metasequoia.v1.UserQueryRequest\032+.pa" +
-      "lm.metasequoia.v1.UserIndexResponse.Item" +
-      "\"\000\022J\n\007Disable\022%.palm.metasequoia.v1.User" +
-      "QueryRequest\032\026.google.protobuf.Empty\"\000\022I" +
-      "\n\006Enable\022%.palm.metasequoia.v1.UserQuery" +
-      "Request\032\026.google.protobuf.Empty\"\000\022G\n\004Loc" +
-      "k\022%.palm.metasequoia.v1.UserQueryRequest" +
-      "\032\026.google.protobuf.Empty\"\000\022I\n\006Unlock\022%.p" +
-      "alm.metasequoia.v1.UserQueryRequest\032\026.go" +
-      "ogle.protobuf.Empty\"\000\022J\n\007Confirm\022%.palm." +
-      "metasequoia.v1.UserQueryRequest\032\026.google" +
-      ".protobuf.Empty\"\000\022I\n\006Delete\022%.palm.metas" +
-      "equoia.v1.UserQueryRequest\032\026.google.prot" +
-      "obuf.Empty\"\000\022T\n\013SetPassword\022+.palm.metas" +
-      "equoia.v1.UserSetPasswordRequest\032\026.googl" +
-      "e.protobuf.Empty\"\0002\231\010\n\004Rbac\022b\n\017GetRolesF" +
-      "orUser\022%.palm.metasequoia.v1.UserQueryRe" +
-      "quest\032&.palm.metasequoia.v1.RbacRolesRes" +
-      "ponse\"\000\022j\n\027GetImplicitRolesForUser\022%.pal" +
+      "e\030\001 \001(\tB\004\n\002by\"]\n\016RbacCanRequest\022\014\n\004user\030" +
+      "\001 \001(\005\022-\n\006object\030\002 \001(\0132\035.palm.metasequoia" +
+      ".v1.Resource\022\016\n\006action\030\003 \001(\t\"G\n\016RbacHasR" +
+      "equest\022\014\n\004user\030\001 \001(\005\022\'\n\004role\030\002 \001(\0132\031.pal" +
+      "m.metasequoia.v1.Role\"U\n\022RbacPermissionI" +
+      "tem\022\016\n\006action\030\001 \001(\t\022/\n\010resource\030\002 \001(\0132\035." +
+      "palm.metasequoia.v1.Resource\"k\n\035RbacPerm" +
+      "issionsForUserRequest\022\014\n\004user\030\001 \001(\005\022<\n\013p" +
+      "ermissions\030\002 \003(\0132\'.palm.metasequoia.v1.R" +
+      "bacPermissionItem\"\206\001\n\035RbacPermissionsFor" +
+      "RoleRequest\022\'\n\004role\030\001 \001(\0132\031.palm.metaseq" +
+      "uoia.v1.Role\022<\n\013permissions\030\002 \003(\0132\'.palm" +
+      ".metasequoia.v1.RbacPermissionItem\"Q\n\027Rb" +
+      "acRolesForUserRequest\022\014\n\004user\030\001 \001(\005\022(\n\005r" +
+      "oles\030\002 \003(\0132\031.palm.metasequoia.v1.Role\"=\n" +
+      "\021RbacRolesResponse\022(\n\005items\030\001 \003(\0132\031.palm" +
+      ".metasequoia.v1.Role\"I\n\027RbacPermissionsR" +
+      "esponse\022.\n\005items\030\001 \003(\0132\037.palm.metasequoi" +
+      "a.v1.Permission\"?\n\021SettingSetRequest\022\016\n\006" +
+      "global\030\001 \001(\010\022\013\n\003key\030\002 \001(\t\022\r\n\005value\030\003 \001(\014" +
+      "\"0\n\021SettingGetRequest\022\016\n\006global\030\001 \001(\010\022\013\n" +
+      "\003key\030\002 \001(\t\"$\n\024SettingByUserRequest\022\014\n\004us" +
+      "er\030\001 \001(\005\"\200\002\n\020SettingsResponse\0229\n\005items\030\001" +
+      " \003(\0132*.palm.metasequoia.v1.SettingsRespo" +
+      "nse.Item\032\260\001\n\004Item\022\n\n\002id\030\001 \001(\005\022\024\n\007user_id" +
+      "\030\002 \001(\005H\000\210\001\001\022\013\n\003key\030\003 \001(\t\022\r\n\005value\030\004 \001(\014\022" +
+      ".\n\ncreated_at\030\013 \001(\0132\032.google.protobuf.Ti" +
+      "mestamp\022.\n\nupdated_at\030\014 \001(\0132\032.google.pro" +
+      "tobuf.TimestampB\n\n\010_user_id\"#\n\023LocaleByL" +
+      "angRequest\022\014\n\004lang\030\001 \001(\t\".\n\020LocaleGetReq" +
+      "uest\022\014\n\004lang\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\"\355\001\n\017Loc" +
+      "alesResponse\0228\n\005items\030\001 \003(\0132).palm.metas" +
+      "equoia.v1.LocalesResponse.Item\032\237\001\n\004Item\022" +
+      "\n\n\002id\030\001 \001(\005\022\014\n\004lang\030\002 \001(\t\022\014\n\004code\030\003 \001(\t\022" +
+      "\017\n\007message\030\004 \001(\t\022.\n\ncreated_at\030\013 \001(\0132\032.g" +
+      "oogle.protobuf.Timestamp\022.\n\nupdated_at\030\014" +
+      " \001(\0132\032.google.protobuf.Timestamp\"?\n\020Loca" +
+      "leSetRequest\022\014\n\004lang\030\001 \001(\t\022\014\n\004code\030\002 \001(\t" +
+      "\022\017\n\007message\030\003 \001(\t2\336\016\n\004User\022o\n\020SignInByPa" +
+      "ssword\0220.palm.metasequoia.v1.UserSignInB" +
+      "yPasswordRequest\032\'.palm.metasequoia.v1.U" +
+      "serSignInResponse\"\000\022X\n\rSignUpByEmail\022-.p" +
+      "alm.metasequoia.v1.UserSignUpByEmailRequ" +
+      "est\032\026.google.protobuf.Empty\"\000\022Q\n\016Confirm" +
+      "ByEmail\022%.palm.metasequoia.v1.UserQueryR" +
+      "equest\032\026.google.protobuf.Empty\"\000\022Q\n\016Conf" +
+      "irmByToken\022%.palm.metasequoia.v1.UserTok" +
+      "enRequest\032\026.google.protobuf.Empty\"\000\022P\n\rU" +
+      "nlockByEmail\022%.palm.metasequoia.v1.UserQ" +
+      "ueryRequest\032\026.google.protobuf.Empty\"\000\022P\n" +
+      "\rUnlockByToken\022%.palm.metasequoia.v1.Use" +
+      "rTokenRequest\032\026.google.protobuf.Empty\"\000\022" +
+      "Q\n\016ForgotPassword\022%.palm.metasequoia.v1." +
+      "UserQueryRequest\032\026.google.protobuf.Empty" +
+      "\"\000\022X\n\rResetPassword\022-.palm.metasequoia.v" +
+      "1.UserResetPasswordRequest\032\026.google.prot" +
+      "obuf.Empty\"\000\022O\n\007Refresh\022\031.google.protobu" +
+      "f.Duration\032\'.palm.metasequoia.v1.UserSig" +
+      "nInResponse\"\000\022U\n\004Logs\022$.palm.metasequoia" +
+      ".v1.UserLogsRequest\032%.palm.metasequoia.v" +
+      "1.UserLogsResponse\"\000\022H\n\nSetProfile\022 .pal" +
+      "m.metasequoia.v1.UserProfile\032\026.google.pr" +
+      "otobuf.Empty\"\000\022H\n\nGetProfile\022\026.google.pr" +
+      "otobuf.Empty\032 .palm.metasequoia.v1.UserP" +
+      "rofile\"\000\022Z\n\016ChangePassword\022..palm.metase" +
+      "quoia.v1.UserChangePasswordRequest\032\026.goo" +
+      "gle.protobuf.Empty\"\000\022;\n\007SignOut\022\026.google" +
+      ".protobuf.Empty\032\026.google.protobuf.Empty\"" +
+      "\000\022I\n\005Index\022\026.google.protobuf.Empty\032&.pal" +
+      "m.metasequoia.v1.UserIndexResponse\"\000\022\\\n\004" +
+      "Show\022%.palm.metasequoia.v1.UserQueryRequ" +
+      "est\032+.palm.metasequoia.v1.UserIndexRespo" +
+      "nse.Item\"\000\022J\n\007Disable\022%.palm.metasequoia" +
+      ".v1.UserQueryRequest\032\026.google.protobuf.E" +
+      "mpty\"\000\022I\n\006Enable\022%.palm.metasequoia.v1.U" +
+      "serQueryRequest\032\026.google.protobuf.Empty\"" +
+      "\000\022G\n\004Lock\022%.palm.metasequoia.v1.UserQuer" +
+      "yRequest\032\026.google.protobuf.Empty\"\000\022I\n\006Un" +
+      "lock\022%.palm.metasequoia.v1.UserQueryRequ" +
+      "est\032\026.google.protobuf.Empty\"\000\022J\n\007Confirm" +
+      "\022%.palm.metasequoia.v1.UserQueryRequest\032" +
+      "\026.google.protobuf.Empty\"\000\022I\n\006Delete\022%.pa" +
+      "lm.metasequoia.v1.UserQueryRequest\032\026.goo" +
+      "gle.protobuf.Empty\"\000\022T\n\013SetPassword\022+.pa" +
+      "lm.metasequoia.v1.UserSetPasswordRequest" +
+      "\032\026.google.protobuf.Empty\"\0002\245\t\n\004Rbac\022D\n\003C" +
+      "an\022#.palm.metasequoia.v1.RbacCanRequest\032" +
+      "\026.google.protobuf.Empty\"\000\022D\n\003Has\022#.palm." +
+      "metasequoia.v1.RbacHasRequest\032\026.google.p" +
+      "rotobuf.Empty\"\000\022b\n\017GetRolesForUser\022%.pal" +
       "m.metasequoia.v1.UserQueryRequest\032&.palm" +
-      ".metasequoia.v1.RbacRolesResponse\"\000\022Y\n\017A" +
-      "ddRolesForUser\022,.palm.metasequoia.v1.Rba" +
-      "cRolesForUserRequest\032\026.google.protobuf.E" +
-      "mpty\"\000\022\\\n\022DeleteRolesForUser\022,.palm.meta" +
-      "sequoia.v1.RbacRolesForUserRequest\032\026.goo" +
-      "gle.protobuf.Empty\"\000\022e\n\025AddPermissionsFo" +
-      "rRole\0222.palm.metasequoia.v1.RbacPermissi" +
-      "onsForRoleRequest\032\026.google.protobuf.Empt" +
-      "y\"\000\022h\n\030DeletePermissionsForRole\0222.palm.m" +
-      "etasequoia.v1.RbacPermissionsForRoleRequ" +
-      "est\032\026.google.protobuf.Empty\"\000\022n\n\025GetPerm" +
-      "issionsForUser\022%.palm.metasequoia.v1.Use" +
-      "rQueryRequest\032,.palm.metasequoia.v1.Rbac" +
-      "PermissionsResponse\"\000\022v\n\035GetImplicitPerm" +
-      "issionsForUser\022%.palm.metasequoia.v1.Use" +
-      "rQueryRequest\032,.palm.metasequoia.v1.Rbac" +
-      "PermissionsResponse\"\000\022e\n\025AddPermissionsF" +
-      "orUser\0222.palm.metasequoia.v1.RbacPermiss" +
-      "ionsForUserRequest\032\026.google.protobuf.Emp" +
-      "ty\"\000\022h\n\030DeletePermissionsForUser\0222.palm." +
-      "metasequoia.v1.RbacPermissionsForUserReq" +
-      "uest\032\026.google.protobuf.Empty\"\0002\237\003\n\007Setti" +
-      "ng\022G\n\003Set\022&.palm.metasequoia.v1.SettingS" +
-      "etRequest\032\026.google.protobuf.Empty\"\000\022[\n\003G" +
-      "et\022&.palm.metasequoia.v1.SettingGetReque" +
-      "st\032*.palm.metasequoia.v1.SettingsRespons" +
-      "e.Item\"\000\022\\\n\006ByUser\022).palm.metasequoia.v1" +
-      ".SettingByUserRequest\032%.palm.metasequoia" +
-      ".v1.SettingsResponse\"\000\022E\n\002My\022\026.google.pr" +
-      "otobuf.Empty\032%.palm.metasequoia.v1.Setti" +
-      "ngsResponse\"\000\022I\n\006Global\022\026.google.protobu" +
-      "f.Empty\032%.palm.metasequoia.v1.SettingsRe" +
-      "sponse\"\0002\207\002\n\006Locale\022F\n\003Set\022%.palm.metase" +
-      "quoia.v1.LocaleSetRequest\032\026.google.proto" +
-      "buf.Empty\"\000\022Y\n\003Get\022%.palm.metasequoia.v1" +
-      ".LocaleGetRequest\032).palm.metasequoia.v1." +
-      "LocalesResponse.Item\"\000\022Z\n\006ByLang\022(.palm." +
-      "metasequoia.v1.LocaleByLangRequest\032$.pal" +
-      "m.metasequoia.v1.LocalesResponse\"\000B`\n1co" +
-      "m.github.saturn_xiv.palm.plugins.metaseq" +
-      "uoia.v1P\001Z)github.com/saturn_xiv/palm/me" +
-      "tasequoia/v2b\006proto3"
+      ".metasequoia.v1.RbacRolesResponse\"\000\022j\n\027G" +
+      "etImplicitRolesForUser\022%.palm.metasequoi" +
+      "a.v1.UserQueryRequest\032&.palm.metasequoia" +
+      ".v1.RbacRolesResponse\"\000\022Y\n\017AddRolesForUs" +
+      "er\022,.palm.metasequoia.v1.RbacRolesForUse" +
+      "rRequest\032\026.google.protobuf.Empty\"\000\022\\\n\022De" +
+      "leteRolesForUser\022,.palm.metasequoia.v1.R" +
+      "bacRolesForUserRequest\032\026.google.protobuf" +
+      ".Empty\"\000\022e\n\025AddPermissionsForRole\0222.palm" +
+      ".metasequoia.v1.RbacPermissionsForRoleRe" +
+      "quest\032\026.google.protobuf.Empty\"\000\022h\n\030Delet" +
+      "ePermissionsForRole\0222.palm.metasequoia.v" +
+      "1.RbacPermissionsForRoleRequest\032\026.google" +
+      ".protobuf.Empty\"\000\022n\n\025GetPermissionsForUs" +
+      "er\022%.palm.metasequoia.v1.UserQueryReques" +
+      "t\032,.palm.metasequoia.v1.RbacPermissionsR" +
+      "esponse\"\000\022v\n\035GetImplicitPermissionsForUs" +
+      "er\022%.palm.metasequoia.v1.UserQueryReques" +
+      "t\032,.palm.metasequoia.v1.RbacPermissionsR" +
+      "esponse\"\000\022e\n\025AddPermissionsForUser\0222.pal" +
+      "m.metasequoia.v1.RbacPermissionsForUserR" +
+      "equest\032\026.google.protobuf.Empty\"\000\022h\n\030Dele" +
+      "tePermissionsForUser\0222.palm.metasequoia." +
+      "v1.RbacPermissionsForUserRequest\032\026.googl" +
+      "e.protobuf.Empty\"\0002\237\003\n\007Setting\022G\n\003Set\022&." +
+      "palm.metasequoia.v1.SettingSetRequest\032\026." +
+      "google.protobuf.Empty\"\000\022[\n\003Get\022&.palm.me" +
+      "tasequoia.v1.SettingGetRequest\032*.palm.me" +
+      "tasequoia.v1.SettingsResponse.Item\"\000\022\\\n\006" +
+      "ByUser\022).palm.metasequoia.v1.SettingByUs" +
+      "erRequest\032%.palm.metasequoia.v1.Settings" +
+      "Response\"\000\022E\n\002My\022\026.google.protobuf.Empty" +
+      "\032%.palm.metasequoia.v1.SettingsResponse\"" +
+      "\000\022I\n\006Global\022\026.google.protobuf.Empty\032%.pa" +
+      "lm.metasequoia.v1.SettingsResponse\"\0002\207\002\n" +
+      "\006Locale\022F\n\003Set\022%.palm.metasequoia.v1.Loc" +
+      "aleSetRequest\032\026.google.protobuf.Empty\"\000\022" +
+      "Y\n\003Get\022%.palm.metasequoia.v1.LocaleGetRe" +
+      "quest\032).palm.metasequoia.v1.LocalesRespo" +
+      "nse.Item\"\000\022Z\n\006ByLang\022(.palm.metasequoia." +
+      "v1.LocaleByLangRequest\032$.palm.metasequoi" +
+      "a.v1.LocalesResponse\"\000B`\n1com.github.sat" +
+      "urn_xiv.palm.plugins.metasequoia.v1P\001Z)g" +
+      "ithub.com/saturn_xiv/palm/metasequoia/v2" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -510,62 +528,74 @@ public final class Metasequoia {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_Role_Member_descriptor,
         new java.lang.String[] { "Name", });
-    internal_static_palm_metasequoia_v1_RbacPermissionItem_descriptor =
+    internal_static_palm_metasequoia_v1_RbacCanRequest_descriptor =
       getDescriptor().getMessageTypes().get(15);
+    internal_static_palm_metasequoia_v1_RbacCanRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_palm_metasequoia_v1_RbacCanRequest_descriptor,
+        new java.lang.String[] { "User", "Object", "Action", });
+    internal_static_palm_metasequoia_v1_RbacHasRequest_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_palm_metasequoia_v1_RbacHasRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_palm_metasequoia_v1_RbacHasRequest_descriptor,
+        new java.lang.String[] { "User", "Role", });
+    internal_static_palm_metasequoia_v1_RbacPermissionItem_descriptor =
+      getDescriptor().getMessageTypes().get(17);
     internal_static_palm_metasequoia_v1_RbacPermissionItem_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_RbacPermissionItem_descriptor,
         new java.lang.String[] { "Action", "Resource", });
     internal_static_palm_metasequoia_v1_RbacPermissionsForUserRequest_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_palm_metasequoia_v1_RbacPermissionsForUserRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_RbacPermissionsForUserRequest_descriptor,
         new java.lang.String[] { "User", "Permissions", });
     internal_static_palm_metasequoia_v1_RbacPermissionsForRoleRequest_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_palm_metasequoia_v1_RbacPermissionsForRoleRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_RbacPermissionsForRoleRequest_descriptor,
         new java.lang.String[] { "Role", "Permissions", });
     internal_static_palm_metasequoia_v1_RbacRolesForUserRequest_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_palm_metasequoia_v1_RbacRolesForUserRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_RbacRolesForUserRequest_descriptor,
         new java.lang.String[] { "User", "Roles", });
     internal_static_palm_metasequoia_v1_RbacRolesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_palm_metasequoia_v1_RbacRolesResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_RbacRolesResponse_descriptor,
         new java.lang.String[] { "Items", });
     internal_static_palm_metasequoia_v1_RbacPermissionsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_palm_metasequoia_v1_RbacPermissionsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_RbacPermissionsResponse_descriptor,
         new java.lang.String[] { "Items", });
     internal_static_palm_metasequoia_v1_SettingSetRequest_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_palm_metasequoia_v1_SettingSetRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_SettingSetRequest_descriptor,
         new java.lang.String[] { "Global", "Key", "Value", });
     internal_static_palm_metasequoia_v1_SettingGetRequest_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_palm_metasequoia_v1_SettingGetRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_SettingGetRequest_descriptor,
         new java.lang.String[] { "Global", "Key", });
     internal_static_palm_metasequoia_v1_SettingByUserRequest_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(25);
     internal_static_palm_metasequoia_v1_SettingByUserRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_SettingByUserRequest_descriptor,
         new java.lang.String[] { "User", });
     internal_static_palm_metasequoia_v1_SettingsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(26);
     internal_static_palm_metasequoia_v1_SettingsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_SettingsResponse_descriptor,
@@ -577,19 +607,19 @@ public final class Metasequoia {
         internal_static_palm_metasequoia_v1_SettingsResponse_Item_descriptor,
         new java.lang.String[] { "Id", "UserId", "Key", "Value", "CreatedAt", "UpdatedAt", "UserId", });
     internal_static_palm_metasequoia_v1_LocaleByLangRequest_descriptor =
-      getDescriptor().getMessageTypes().get(25);
+      getDescriptor().getMessageTypes().get(27);
     internal_static_palm_metasequoia_v1_LocaleByLangRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_LocaleByLangRequest_descriptor,
         new java.lang.String[] { "Lang", });
     internal_static_palm_metasequoia_v1_LocaleGetRequest_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_palm_metasequoia_v1_LocaleGetRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_LocaleGetRequest_descriptor,
         new java.lang.String[] { "Lang", "Code", });
     internal_static_palm_metasequoia_v1_LocalesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_palm_metasequoia_v1_LocalesResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_LocalesResponse_descriptor,
@@ -601,7 +631,7 @@ public final class Metasequoia {
         internal_static_palm_metasequoia_v1_LocalesResponse_Item_descriptor,
         new java.lang.String[] { "Id", "Lang", "Code", "Message", "CreatedAt", "UpdatedAt", });
     internal_static_palm_metasequoia_v1_LocaleSetRequest_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_palm_metasequoia_v1_LocaleSetRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_metasequoia_v1_LocaleSetRequest_descriptor,

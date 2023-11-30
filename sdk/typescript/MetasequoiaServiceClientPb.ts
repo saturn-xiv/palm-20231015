@@ -1051,6 +1051,92 @@ export class RbacClient {
     this.options_ = options;
   }
 
+  methodDescriptorCan = new grpcWeb.MethodDescriptor(
+    '/palm.metasequoia.v1.Rbac/Can',
+    grpcWeb.MethodType.UNARY,
+    metasequoia_pb.RbacCanRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: metasequoia_pb.RbacCanRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  can(
+    request: metasequoia_pb.RbacCanRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  can(
+    request: metasequoia_pb.RbacCanRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  can(
+    request: metasequoia_pb.RbacCanRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.metasequoia.v1.Rbac/Can',
+        request,
+        metadata || {},
+        this.methodDescriptorCan,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.metasequoia.v1.Rbac/Can',
+    request,
+    metadata || {},
+    this.methodDescriptorCan);
+  }
+
+  methodDescriptorHas = new grpcWeb.MethodDescriptor(
+    '/palm.metasequoia.v1.Rbac/Has',
+    grpcWeb.MethodType.UNARY,
+    metasequoia_pb.RbacHasRequest,
+    google_protobuf_empty_pb.Empty,
+    (request: metasequoia_pb.RbacHasRequest) => {
+      return request.serializeBinary();
+    },
+    google_protobuf_empty_pb.Empty.deserializeBinary
+  );
+
+  has(
+    request: metasequoia_pb.RbacHasRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<google_protobuf_empty_pb.Empty>;
+
+  has(
+    request: metasequoia_pb.RbacHasRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void): grpcWeb.ClientReadableStream<google_protobuf_empty_pb.Empty>;
+
+  has(
+    request: metasequoia_pb.RbacHasRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: google_protobuf_empty_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/palm.metasequoia.v1.Rbac/Has',
+        request,
+        metadata || {},
+        this.methodDescriptorHas,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/palm.metasequoia.v1.Rbac/Has',
+    request,
+    metadata || {},
+    this.methodDescriptorHas);
+  }
+
   methodDescriptorGetRolesForUser = new grpcWeb.MethodDescriptor(
     '/palm.metasequoia.v1.Rbac/GetRolesForUser',
     grpcWeb.MethodType.UNARY,

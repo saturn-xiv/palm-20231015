@@ -176,6 +176,9 @@ message Role {
 }
 
 service Rbac {
+  rpc Can(RbacCanRequest) returns (google.protobuf.Empty) {}
+  rpc Has(RbacHasRequest) returns (google.protobuf.Empty) {}
+
   rpc GetRolesForUser(UserQueryRequest) returns (RbacRolesResponse) {};
   rpc GetImplicitRolesForUser(UserQueryRequest) returns (RbacRolesResponse) {};
   rpc AddRolesForUser(RbacRolesForUserRequest) returns (google.protobuf.Empty) {
@@ -196,6 +199,18 @@ service Rbac {
   rpc DeletePermissionsForUser(RbacPermissionsForUserRequest)
       returns (google.protobuf.Empty) {};
 }
+
+message RbacCanRequest {
+  int32 user = 1;
+  Resource object = 2;
+  string action = 3;
+}
+
+message RbacHasRequest {
+  int32 user = 1;
+  Role role = 2;
+}
+
 message RbacPermissionItem {
   string action = 1;
   Resource resource = 2;

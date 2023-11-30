@@ -81,6 +81,12 @@ extern LocalesResponse_ItemDefaultTypeInternal _LocalesResponse_Item_default_ins
 class Permission;
 struct PermissionDefaultTypeInternal;
 extern PermissionDefaultTypeInternal _Permission_default_instance_;
+class RbacCanRequest;
+struct RbacCanRequestDefaultTypeInternal;
+extern RbacCanRequestDefaultTypeInternal _RbacCanRequest_default_instance_;
+class RbacHasRequest;
+struct RbacHasRequestDefaultTypeInternal;
+extern RbacHasRequestDefaultTypeInternal _RbacHasRequest_default_instance_;
 class RbacPermissionItem;
 struct RbacPermissionItemDefaultTypeInternal;
 extern RbacPermissionItemDefaultTypeInternal _RbacPermissionItem_default_instance_;
@@ -4137,6 +4143,376 @@ class Role final :
   friend struct ::TableStruct_metasequoia_2eproto;
 };// -------------------------------------------------------------------
 
+class RbacCanRequest final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.metasequoia.v1.RbacCanRequest) */ {
+ public:
+  inline RbacCanRequest() : RbacCanRequest(nullptr) {}
+  ~RbacCanRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR RbacCanRequest(::google::protobuf::internal::ConstantInitialized);
+
+  RbacCanRequest(const RbacCanRequest& from);
+  RbacCanRequest(RbacCanRequest&& from) noexcept
+    : RbacCanRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline RbacCanRequest& operator=(const RbacCanRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RbacCanRequest& operator=(RbacCanRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RbacCanRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RbacCanRequest* internal_default_instance() {
+    return reinterpret_cast<const RbacCanRequest*>(
+               &_RbacCanRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    19;
+
+  friend void swap(RbacCanRequest& a, RbacCanRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RbacCanRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RbacCanRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RbacCanRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RbacCanRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const RbacCanRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const RbacCanRequest& from) {
+    RbacCanRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RbacCanRequest* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.metasequoia.v1.RbacCanRequest";
+  }
+  protected:
+  explicit RbacCanRequest(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kActionFieldNumber = 3,
+    kObjectFieldNumber = 2,
+    kUserFieldNumber = 1,
+  };
+  // string action = 3;
+  void clear_action() ;
+  const std::string& action() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_action(Arg_&& arg, Args_... args);
+  std::string* mutable_action();
+  PROTOBUF_NODISCARD std::string* release_action();
+  void set_allocated_action(std::string* ptr);
+
+  private:
+  const std::string& _internal_action() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_action(
+      const std::string& value);
+  std::string* _internal_mutable_action();
+
+  public:
+  // .palm.metasequoia.v1.Resource object = 2;
+  bool has_object() const;
+  void clear_object() ;
+  const ::palm::metasequoia::v1::Resource& object() const;
+  PROTOBUF_NODISCARD ::palm::metasequoia::v1::Resource* release_object();
+  ::palm::metasequoia::v1::Resource* mutable_object();
+  void set_allocated_object(::palm::metasequoia::v1::Resource* value);
+  void unsafe_arena_set_allocated_object(::palm::metasequoia::v1::Resource* value);
+  ::palm::metasequoia::v1::Resource* unsafe_arena_release_object();
+
+  private:
+  const ::palm::metasequoia::v1::Resource& _internal_object() const;
+  ::palm::metasequoia::v1::Resource* _internal_mutable_object();
+
+  public:
+  // int32 user = 1;
+  void clear_user() ;
+  ::int32_t user() const;
+  void set_user(::int32_t value);
+
+  private:
+  ::int32_t _internal_user() const;
+  void _internal_set_user(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.metasequoia.v1.RbacCanRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 3, 1, 49, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr action_;
+    ::palm::metasequoia::v1::Resource* object_;
+    ::int32_t user_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_metasequoia_2eproto;
+};// -------------------------------------------------------------------
+
+class RbacHasRequest final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.metasequoia.v1.RbacHasRequest) */ {
+ public:
+  inline RbacHasRequest() : RbacHasRequest(nullptr) {}
+  ~RbacHasRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR RbacHasRequest(::google::protobuf::internal::ConstantInitialized);
+
+  RbacHasRequest(const RbacHasRequest& from);
+  RbacHasRequest(RbacHasRequest&& from) noexcept
+    : RbacHasRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline RbacHasRequest& operator=(const RbacHasRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RbacHasRequest& operator=(RbacHasRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RbacHasRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RbacHasRequest* internal_default_instance() {
+    return reinterpret_cast<const RbacHasRequest*>(
+               &_RbacHasRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    20;
+
+  friend void swap(RbacHasRequest& a, RbacHasRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RbacHasRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RbacHasRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RbacHasRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RbacHasRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const RbacHasRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const RbacHasRequest& from) {
+    RbacHasRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RbacHasRequest* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.metasequoia.v1.RbacHasRequest";
+  }
+  protected:
+  explicit RbacHasRequest(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRoleFieldNumber = 2,
+    kUserFieldNumber = 1,
+  };
+  // .palm.metasequoia.v1.Role role = 2;
+  bool has_role() const;
+  void clear_role() ;
+  const ::palm::metasequoia::v1::Role& role() const;
+  PROTOBUF_NODISCARD ::palm::metasequoia::v1::Role* release_role();
+  ::palm::metasequoia::v1::Role* mutable_role();
+  void set_allocated_role(::palm::metasequoia::v1::Role* value);
+  void unsafe_arena_set_allocated_role(::palm::metasequoia::v1::Role* value);
+  ::palm::metasequoia::v1::Role* unsafe_arena_release_role();
+
+  private:
+  const ::palm::metasequoia::v1::Role& _internal_role() const;
+  ::palm::metasequoia::v1::Role* _internal_mutable_role();
+
+  public:
+  // int32 user = 1;
+  void clear_user() ;
+  ::int32_t user() const;
+  void set_user(::int32_t value);
+
+  private:
+  ::int32_t _internal_user() const;
+  void _internal_set_user(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.metasequoia.v1.RbacHasRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<1, 2, 1, 0, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::palm::metasequoia::v1::Role* role_;
+    ::int32_t user_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_metasequoia_2eproto;
+};// -------------------------------------------------------------------
+
 class RbacPermissionItem final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.metasequoia.v1.RbacPermissionItem) */ {
  public:
@@ -4193,7 +4569,7 @@ class RbacPermissionItem final :
                &_RbacPermissionItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    21;
 
   friend void swap(RbacPermissionItem& a, RbacPermissionItem& b) {
     a.Swap(&b);
@@ -4375,7 +4751,7 @@ class RbacPermissionsForUserRequest final :
                &_RbacPermissionsForUserRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    22;
 
   friend void swap(RbacPermissionsForUserRequest& a, RbacPermissionsForUserRequest& b) {
     a.Swap(&b);
@@ -4553,7 +4929,7 @@ class RbacPermissionsForRoleRequest final :
                &_RbacPermissionsForRoleRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    23;
 
   friend void swap(RbacPermissionsForRoleRequest& a, RbacPermissionsForRoleRequest& b) {
     a.Swap(&b);
@@ -4737,7 +5113,7 @@ class RbacRolesForUserRequest final :
                &_RbacRolesForUserRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    24;
 
   friend void swap(RbacRolesForUserRequest& a, RbacRolesForUserRequest& b) {
     a.Swap(&b);
@@ -4915,7 +5291,7 @@ class RbacRolesResponse final :
                &_RbacRolesResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    25;
 
   friend void swap(RbacRolesResponse& a, RbacRolesResponse& b) {
     a.Swap(&b);
@@ -5081,7 +5457,7 @@ class RbacPermissionsResponse final :
                &_RbacPermissionsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    26;
 
   friend void swap(RbacPermissionsResponse& a, RbacPermissionsResponse& b) {
     a.Swap(&b);
@@ -5247,7 +5623,7 @@ class SettingSetRequest final :
                &_SettingSetRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    27;
 
   friend void swap(SettingSetRequest& a, SettingSetRequest& b) {
     a.Swap(&b);
@@ -5441,7 +5817,7 @@ class SettingGetRequest final :
                &_SettingGetRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    28;
 
   friend void swap(SettingGetRequest& a, SettingGetRequest& b) {
     a.Swap(&b);
@@ -5617,7 +5993,7 @@ class SettingByUserRequest final :
                &_SettingByUserRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    29;
 
   friend void swap(SettingByUserRequest& a, SettingByUserRequest& b) {
     a.Swap(&b);
@@ -5775,7 +6151,7 @@ class SettingsResponse_Item final :
                &_SettingsResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    30;
 
   friend void swap(SettingsResponse_Item& a, SettingsResponse_Item& b) {
     a.Swap(&b);
@@ -6017,7 +6393,7 @@ class SettingsResponse final :
                &_SettingsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    31;
 
   friend void swap(SettingsResponse& a, SettingsResponse& b) {
     a.Swap(&b);
@@ -6185,7 +6561,7 @@ class LocaleByLangRequest final :
                &_LocaleByLangRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    30;
+    32;
 
   friend void swap(LocaleByLangRequest& a, LocaleByLangRequest& b) {
     a.Swap(&b);
@@ -6349,7 +6725,7 @@ class LocaleGetRequest final :
                &_LocaleGetRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    31;
+    33;
 
   friend void swap(LocaleGetRequest& a, LocaleGetRequest& b) {
     a.Swap(&b);
@@ -6531,7 +6907,7 @@ class LocalesResponse_Item final :
                &_LocalesResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    34;
 
   friend void swap(LocalesResponse_Item& a, LocalesResponse_Item& b) {
     a.Swap(&b);
@@ -6778,7 +7154,7 @@ class LocalesResponse final :
                &_LocalesResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    35;
 
   friend void swap(LocalesResponse& a, LocalesResponse& b) {
     a.Swap(&b);
@@ -6946,7 +7322,7 @@ class LocaleSetRequest final :
                &_LocaleSetRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    36;
 
   friend void swap(LocaleSetRequest& a, LocaleSetRequest& b) {
     a.Swap(&b);
@@ -10771,6 +11147,301 @@ inline void Role::clear_has_by() {
 inline Role::ByCase Role::by_case() const {
   return Role::ByCase(_impl_._oneof_case_[0]);
 }
+// -------------------------------------------------------------------
+
+// RbacCanRequest
+
+// int32 user = 1;
+inline void RbacCanRequest::clear_user() {
+  _impl_.user_ = 0;
+}
+inline ::int32_t RbacCanRequest::user() const {
+  // @@protoc_insertion_point(field_get:palm.metasequoia.v1.RbacCanRequest.user)
+  return _internal_user();
+}
+inline void RbacCanRequest::set_user(::int32_t value) {
+  _internal_set_user(value);
+  // @@protoc_insertion_point(field_set:palm.metasequoia.v1.RbacCanRequest.user)
+}
+inline ::int32_t RbacCanRequest::_internal_user() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.user_;
+}
+inline void RbacCanRequest::_internal_set_user(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.user_ = value;
+}
+
+// .palm.metasequoia.v1.Resource object = 2;
+inline bool RbacCanRequest::has_object() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.object_ != nullptr);
+  return value;
+}
+inline void RbacCanRequest::clear_object() {
+  if (_impl_.object_ != nullptr) _impl_.object_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::palm::metasequoia::v1::Resource& RbacCanRequest::_internal_object() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::palm::metasequoia::v1::Resource* p = _impl_.object_;
+  return p != nullptr ? *p : reinterpret_cast<const ::palm::metasequoia::v1::Resource&>(::palm::metasequoia::v1::_Resource_default_instance_);
+}
+inline const ::palm::metasequoia::v1::Resource& RbacCanRequest::object() const {
+  // @@protoc_insertion_point(field_get:palm.metasequoia.v1.RbacCanRequest.object)
+  return _internal_object();
+}
+inline void RbacCanRequest::unsafe_arena_set_allocated_object(::palm::metasequoia::v1::Resource* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.object_);
+  }
+  _impl_.object_ = reinterpret_cast<::palm::metasequoia::v1::Resource*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.metasequoia.v1.RbacCanRequest.object)
+}
+inline ::palm::metasequoia::v1::Resource* RbacCanRequest::release_object() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::palm::metasequoia::v1::Resource* released = _impl_.object_;
+  _impl_.object_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::palm::metasequoia::v1::Resource* RbacCanRequest::unsafe_arena_release_object() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.metasequoia.v1.RbacCanRequest.object)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::palm::metasequoia::v1::Resource* temp = _impl_.object_;
+  _impl_.object_ = nullptr;
+  return temp;
+}
+inline ::palm::metasequoia::v1::Resource* RbacCanRequest::_internal_mutable_object() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.object_ == nullptr) {
+    auto* p = CreateMaybeMessage<::palm::metasequoia::v1::Resource>(GetArenaForAllocation());
+    _impl_.object_ = reinterpret_cast<::palm::metasequoia::v1::Resource*>(p);
+  }
+  return _impl_.object_;
+}
+inline ::palm::metasequoia::v1::Resource* RbacCanRequest::mutable_object() {
+  ::palm::metasequoia::v1::Resource* _msg = _internal_mutable_object();
+  // @@protoc_insertion_point(field_mutable:palm.metasequoia.v1.RbacCanRequest.object)
+  return _msg;
+}
+inline void RbacCanRequest::set_allocated_object(::palm::metasequoia::v1::Resource* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::palm::metasequoia::v1::Resource*>(_impl_.object_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::palm::metasequoia::v1::Resource*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.object_ = reinterpret_cast<::palm::metasequoia::v1::Resource*>(value);
+  // @@protoc_insertion_point(field_set_allocated:palm.metasequoia.v1.RbacCanRequest.object)
+}
+
+// string action = 3;
+inline void RbacCanRequest::clear_action() {
+  _impl_.action_.ClearToEmpty();
+}
+inline const std::string& RbacCanRequest::action() const {
+  // @@protoc_insertion_point(field_get:palm.metasequoia.v1.RbacCanRequest.action)
+  return _internal_action();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void RbacCanRequest::set_action(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.action_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:palm.metasequoia.v1.RbacCanRequest.action)
+}
+inline std::string* RbacCanRequest::mutable_action() {
+  std::string* _s = _internal_mutable_action();
+  // @@protoc_insertion_point(field_mutable:palm.metasequoia.v1.RbacCanRequest.action)
+  return _s;
+}
+inline const std::string& RbacCanRequest::_internal_action() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.action_.Get();
+}
+inline void RbacCanRequest::_internal_set_action(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.action_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RbacCanRequest::_internal_mutable_action() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.action_.Mutable( GetArenaForAllocation());
+}
+inline std::string* RbacCanRequest::release_action() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.metasequoia.v1.RbacCanRequest.action)
+  return _impl_.action_.Release();
+}
+inline void RbacCanRequest::set_allocated_action(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.action_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.action_.IsDefault()) {
+          _impl_.action_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.metasequoia.v1.RbacCanRequest.action)
+}
+
+// -------------------------------------------------------------------
+
+// RbacHasRequest
+
+// int32 user = 1;
+inline void RbacHasRequest::clear_user() {
+  _impl_.user_ = 0;
+}
+inline ::int32_t RbacHasRequest::user() const {
+  // @@protoc_insertion_point(field_get:palm.metasequoia.v1.RbacHasRequest.user)
+  return _internal_user();
+}
+inline void RbacHasRequest::set_user(::int32_t value) {
+  _internal_set_user(value);
+  // @@protoc_insertion_point(field_set:palm.metasequoia.v1.RbacHasRequest.user)
+}
+inline ::int32_t RbacHasRequest::_internal_user() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.user_;
+}
+inline void RbacHasRequest::_internal_set_user(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.user_ = value;
+}
+
+// .palm.metasequoia.v1.Role role = 2;
+inline bool RbacHasRequest::has_role() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.role_ != nullptr);
+  return value;
+}
+inline void RbacHasRequest::clear_role() {
+  if (_impl_.role_ != nullptr) _impl_.role_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::palm::metasequoia::v1::Role& RbacHasRequest::_internal_role() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::palm::metasequoia::v1::Role* p = _impl_.role_;
+  return p != nullptr ? *p : reinterpret_cast<const ::palm::metasequoia::v1::Role&>(::palm::metasequoia::v1::_Role_default_instance_);
+}
+inline const ::palm::metasequoia::v1::Role& RbacHasRequest::role() const {
+  // @@protoc_insertion_point(field_get:palm.metasequoia.v1.RbacHasRequest.role)
+  return _internal_role();
+}
+inline void RbacHasRequest::unsafe_arena_set_allocated_role(::palm::metasequoia::v1::Role* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.role_);
+  }
+  _impl_.role_ = reinterpret_cast<::palm::metasequoia::v1::Role*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.metasequoia.v1.RbacHasRequest.role)
+}
+inline ::palm::metasequoia::v1::Role* RbacHasRequest::release_role() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::palm::metasequoia::v1::Role* released = _impl_.role_;
+  _impl_.role_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArenaForAllocation() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::palm::metasequoia::v1::Role* RbacHasRequest::unsafe_arena_release_role() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.metasequoia.v1.RbacHasRequest.role)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::palm::metasequoia::v1::Role* temp = _impl_.role_;
+  _impl_.role_ = nullptr;
+  return temp;
+}
+inline ::palm::metasequoia::v1::Role* RbacHasRequest::_internal_mutable_role() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.role_ == nullptr) {
+    auto* p = CreateMaybeMessage<::palm::metasequoia::v1::Role>(GetArenaForAllocation());
+    _impl_.role_ = reinterpret_cast<::palm::metasequoia::v1::Role*>(p);
+  }
+  return _impl_.role_;
+}
+inline ::palm::metasequoia::v1::Role* RbacHasRequest::mutable_role() {
+  ::palm::metasequoia::v1::Role* _msg = _internal_mutable_role();
+  // @@protoc_insertion_point(field_mutable:palm.metasequoia.v1.RbacHasRequest.role)
+  return _msg;
+}
+inline void RbacHasRequest::set_allocated_role(::palm::metasequoia::v1::Role* value) {
+  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::palm::metasequoia::v1::Role*>(_impl_.role_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena =
+        ::google::protobuf::Arena::InternalGetOwningArena(reinterpret_cast<::palm::metasequoia::v1::Role*>(value));
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.role_ = reinterpret_cast<::palm::metasequoia::v1::Role*>(value);
+  // @@protoc_insertion_point(field_set_allocated:palm.metasequoia.v1.RbacHasRequest.role)
+}
+
 // -------------------------------------------------------------------
 
 // RbacPermissionItem

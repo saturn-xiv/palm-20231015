@@ -454,6 +454,46 @@ struct RoleDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RoleDefaultTypeInternal _Role_default_instance_;
         template <typename>
+PROTOBUF_CONSTEXPR RbacCanRequest::RbacCanRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.action_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.object_)*/ nullptr,
+      /*decltype(_impl_.user_)*/ 0,
+    } {}
+struct RbacCanRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RbacCanRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RbacCanRequestDefaultTypeInternal() {}
+  union {
+    RbacCanRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacCanRequestDefaultTypeInternal _RbacCanRequest_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR RbacHasRequest::RbacHasRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.role_)*/ nullptr,
+      /*decltype(_impl_.user_)*/ 0,
+    } {}
+struct RbacHasRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RbacHasRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RbacHasRequestDefaultTypeInternal() {}
+  union {
+    RbacHasRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacHasRequestDefaultTypeInternal _RbacHasRequest_default_instance_;
+        template <typename>
 PROTOBUF_CONSTEXPR RbacPermissionItem::RbacPermissionItem(::_pbi::ConstantInitialized)
     : _impl_{
       /*decltype(_impl_._has_bits_)*/ {},
@@ -781,7 +821,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace v1
 }  // namespace metasequoia
 }  // namespace palm
-static ::_pb::Metadata file_level_metadata_metasequoia_2eproto[35];
+static ::_pb::Metadata file_level_metadata_metasequoia_2eproto[37];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_metasequoia_2eproto[2];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_metasequoia_2eproto = nullptr;
@@ -1035,6 +1075,32 @@ const ::uint32_t TableStruct_metasequoia_2eproto::offsets[] PROTOBUF_SECTION_VAR
     ::_pbi::kInvalidFieldOffsetTag,
     ::_pbi::kInvalidFieldOffsetTag,
     PROTOBUF_FIELD_OFFSET(::palm::metasequoia::v1::Role, _impl_.by_),
+    PROTOBUF_FIELD_OFFSET(::palm::metasequoia::v1::RbacCanRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::palm::metasequoia::v1::RbacCanRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::palm::metasequoia::v1::RbacCanRequest, _impl_.user_),
+    PROTOBUF_FIELD_OFFSET(::palm::metasequoia::v1::RbacCanRequest, _impl_.object_),
+    PROTOBUF_FIELD_OFFSET(::palm::metasequoia::v1::RbacCanRequest, _impl_.action_),
+    ~0u,
+    0,
+    ~0u,
+    PROTOBUF_FIELD_OFFSET(::palm::metasequoia::v1::RbacHasRequest, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::palm::metasequoia::v1::RbacHasRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::palm::metasequoia::v1::RbacHasRequest, _impl_.user_),
+    PROTOBUF_FIELD_OFFSET(::palm::metasequoia::v1::RbacHasRequest, _impl_.role_),
+    ~0u,
+    0,
     PROTOBUF_FIELD_OFFSET(::palm::metasequoia::v1::RbacPermissionItem, _impl_._has_bits_),
     PROTOBUF_FIELD_OFFSET(::palm::metasequoia::v1::RbacPermissionItem, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -1238,22 +1304,24 @@ static const ::_pbi::MigrationSchema
         {215, -1, -1, sizeof(::palm::metasequoia::v1::Resource)},
         {227, -1, -1, sizeof(::palm::metasequoia::v1::Role_Member)},
         {236, -1, -1, sizeof(::palm::metasequoia::v1::Role)},
-        {248, 258, -1, sizeof(::palm::metasequoia::v1::RbacPermissionItem)},
-        {260, -1, -1, sizeof(::palm::metasequoia::v1::RbacPermissionsForUserRequest)},
-        {270, 280, -1, sizeof(::palm::metasequoia::v1::RbacPermissionsForRoleRequest)},
-        {282, -1, -1, sizeof(::palm::metasequoia::v1::RbacRolesForUserRequest)},
-        {292, -1, -1, sizeof(::palm::metasequoia::v1::RbacRolesResponse)},
-        {301, -1, -1, sizeof(::palm::metasequoia::v1::RbacPermissionsResponse)},
-        {310, -1, -1, sizeof(::palm::metasequoia::v1::SettingSetRequest)},
-        {321, -1, -1, sizeof(::palm::metasequoia::v1::SettingGetRequest)},
-        {331, -1, -1, sizeof(::palm::metasequoia::v1::SettingByUserRequest)},
-        {340, 354, -1, sizeof(::palm::metasequoia::v1::SettingsResponse_Item)},
-        {360, -1, -1, sizeof(::palm::metasequoia::v1::SettingsResponse)},
-        {369, -1, -1, sizeof(::palm::metasequoia::v1::LocaleByLangRequest)},
-        {378, -1, -1, sizeof(::palm::metasequoia::v1::LocaleGetRequest)},
-        {388, 402, -1, sizeof(::palm::metasequoia::v1::LocalesResponse_Item)},
-        {408, -1, -1, sizeof(::palm::metasequoia::v1::LocalesResponse)},
-        {417, -1, -1, sizeof(::palm::metasequoia::v1::LocaleSetRequest)},
+        {248, 259, -1, sizeof(::palm::metasequoia::v1::RbacCanRequest)},
+        {262, 272, -1, sizeof(::palm::metasequoia::v1::RbacHasRequest)},
+        {274, 284, -1, sizeof(::palm::metasequoia::v1::RbacPermissionItem)},
+        {286, -1, -1, sizeof(::palm::metasequoia::v1::RbacPermissionsForUserRequest)},
+        {296, 306, -1, sizeof(::palm::metasequoia::v1::RbacPermissionsForRoleRequest)},
+        {308, -1, -1, sizeof(::palm::metasequoia::v1::RbacRolesForUserRequest)},
+        {318, -1, -1, sizeof(::palm::metasequoia::v1::RbacRolesResponse)},
+        {327, -1, -1, sizeof(::palm::metasequoia::v1::RbacPermissionsResponse)},
+        {336, -1, -1, sizeof(::palm::metasequoia::v1::SettingSetRequest)},
+        {347, -1, -1, sizeof(::palm::metasequoia::v1::SettingGetRequest)},
+        {357, -1, -1, sizeof(::palm::metasequoia::v1::SettingByUserRequest)},
+        {366, 380, -1, sizeof(::palm::metasequoia::v1::SettingsResponse_Item)},
+        {386, -1, -1, sizeof(::palm::metasequoia::v1::SettingsResponse)},
+        {395, -1, -1, sizeof(::palm::metasequoia::v1::LocaleByLangRequest)},
+        {404, -1, -1, sizeof(::palm::metasequoia::v1::LocaleGetRequest)},
+        {414, 428, -1, sizeof(::palm::metasequoia::v1::LocalesResponse_Item)},
+        {434, -1, -1, sizeof(::palm::metasequoia::v1::LocalesResponse)},
+        {443, -1, -1, sizeof(::palm::metasequoia::v1::LocaleSetRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -1276,6 +1344,8 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::palm::metasequoia::v1::_Resource_default_instance_._instance,
     &::palm::metasequoia::v1::_Role_Member_default_instance_._instance,
     &::palm::metasequoia::v1::_Role_default_instance_._instance,
+    &::palm::metasequoia::v1::_RbacCanRequest_default_instance_._instance,
+    &::palm::metasequoia::v1::_RbacHasRequest_default_instance_._instance,
     &::palm::metasequoia::v1::_RbacPermissionItem_default_instance_._instance,
     &::palm::metasequoia::v1::_RbacPermissionsForUserRequest_default_instance_._instance,
     &::palm::metasequoia::v1::_RbacPermissionsForRoleRequest_default_instance_._instance,
@@ -1356,134 +1426,142 @@ const char descriptor_table_protodef_metasequoia_2eproto[] PROTOBUF_SECTION_VARI
     "buf.EmptyH\000\022&\n\004root\030\002 \001(\0132\026.google.proto"
     "buf.EmptyH\000\0222\n\006member\030\003 \001(\0132 .palm.metas"
     "equoia.v1.Role.MemberH\000\032\026\n\006Member\022\014\n\004nam"
-    "e\030\001 \001(\tB\004\n\002by\"U\n\022RbacPermissionItem\022\016\n\006a"
-    "ction\030\001 \001(\t\022/\n\010resource\030\002 \001(\0132\035.palm.met"
-    "asequoia.v1.Resource\"k\n\035RbacPermissionsF"
-    "orUserRequest\022\014\n\004user\030\001 \001(\005\022<\n\013permissio"
-    "ns\030\002 \003(\0132\'.palm.metasequoia.v1.RbacPermi"
-    "ssionItem\"\206\001\n\035RbacPermissionsForRoleRequ"
-    "est\022\'\n\004role\030\001 \001(\0132\031.palm.metasequoia.v1."
-    "Role\022<\n\013permissions\030\002 \003(\0132\'.palm.metaseq"
-    "uoia.v1.RbacPermissionItem\"Q\n\027RbacRolesF"
-    "orUserRequest\022\014\n\004user\030\001 \001(\005\022(\n\005roles\030\002 \003"
-    "(\0132\031.palm.metasequoia.v1.Role\"=\n\021RbacRol"
-    "esResponse\022(\n\005items\030\001 \003(\0132\031.palm.metaseq"
-    "uoia.v1.Role\"I\n\027RbacPermissionsResponse\022"
-    ".\n\005items\030\001 \003(\0132\037.palm.metasequoia.v1.Per"
-    "mission\"\?\n\021SettingSetRequest\022\016\n\006global\030\001"
-    " \001(\010\022\013\n\003key\030\002 \001(\t\022\r\n\005value\030\003 \001(\014\"0\n\021Sett"
-    "ingGetRequest\022\016\n\006global\030\001 \001(\010\022\013\n\003key\030\002 \001"
-    "(\t\"$\n\024SettingByUserRequest\022\014\n\004user\030\001 \001(\005"
-    "\"\200\002\n\020SettingsResponse\0229\n\005items\030\001 \003(\0132*.p"
-    "alm.metasequoia.v1.SettingsResponse.Item"
-    "\032\260\001\n\004Item\022\n\n\002id\030\001 \001(\005\022\024\n\007user_id\030\002 \001(\005H\000"
-    "\210\001\001\022\013\n\003key\030\003 \001(\t\022\r\n\005value\030\004 \001(\014\022.\n\ncreat"
-    "ed_at\030\013 \001(\0132\032.google.protobuf.Timestamp\022"
-    ".\n\nupdated_at\030\014 \001(\0132\032.google.protobuf.Ti"
-    "mestampB\n\n\010_user_id\"#\n\023LocaleByLangReque"
-    "st\022\014\n\004lang\030\001 \001(\t\".\n\020LocaleGetRequest\022\014\n\004"
-    "lang\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\"\355\001\n\017LocalesResp"
-    "onse\0228\n\005items\030\001 \003(\0132).palm.metasequoia.v"
-    "1.LocalesResponse.Item\032\237\001\n\004Item\022\n\n\002id\030\001 "
-    "\001(\005\022\014\n\004lang\030\002 \001(\t\022\014\n\004code\030\003 \001(\t\022\017\n\007messa"
-    "ge\030\004 \001(\t\022.\n\ncreated_at\030\013 \001(\0132\032.google.pr"
-    "otobuf.Timestamp\022.\n\nupdated_at\030\014 \001(\0132\032.g"
-    "oogle.protobuf.Timestamp\"\?\n\020LocaleSetReq"
-    "uest\022\014\n\004lang\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\022\017\n\007mess"
-    "age\030\003 \001(\t2\336\016\n\004User\022o\n\020SignInByPassword\0220"
-    ".palm.metasequoia.v1.UserSignInByPasswor"
-    "dRequest\032\'.palm.metasequoia.v1.UserSignI"
-    "nResponse\"\000\022X\n\rSignUpByEmail\022-.palm.meta"
-    "sequoia.v1.UserSignUpByEmailRequest\032\026.go"
-    "ogle.protobuf.Empty\"\000\022Q\n\016ConfirmByEmail\022"
-    "%.palm.metasequoia.v1.UserQueryRequest\032\026"
-    ".google.protobuf.Empty\"\000\022Q\n\016ConfirmByTok"
-    "en\022%.palm.metasequoia.v1.UserTokenReques"
-    "t\032\026.google.protobuf.Empty\"\000\022P\n\rUnlockByE"
-    "mail\022%.palm.metasequoia.v1.UserQueryRequ"
-    "est\032\026.google.protobuf.Empty\"\000\022P\n\rUnlockB"
-    "yToken\022%.palm.metasequoia.v1.UserTokenRe"
-    "quest\032\026.google.protobuf.Empty\"\000\022Q\n\016Forgo"
-    "tPassword\022%.palm.metasequoia.v1.UserQuer"
-    "yRequest\032\026.google.protobuf.Empty\"\000\022X\n\rRe"
-    "setPassword\022-.palm.metasequoia.v1.UserRe"
-    "setPasswordRequest\032\026.google.protobuf.Emp"
-    "ty\"\000\022O\n\007Refresh\022\031.google.protobuf.Durati"
-    "on\032\'.palm.metasequoia.v1.UserSignInRespo"
-    "nse\"\000\022U\n\004Logs\022$.palm.metasequoia.v1.User"
-    "LogsRequest\032%.palm.metasequoia.v1.UserLo"
-    "gsResponse\"\000\022H\n\nSetProfile\022 .palm.metase"
-    "quoia.v1.UserProfile\032\026.google.protobuf.E"
-    "mpty\"\000\022H\n\nGetProfile\022\026.google.protobuf.E"
-    "mpty\032 .palm.metasequoia.v1.UserProfile\"\000"
-    "\022Z\n\016ChangePassword\022..palm.metasequoia.v1"
-    ".UserChangePasswordRequest\032\026.google.prot"
-    "obuf.Empty\"\000\022;\n\007SignOut\022\026.google.protobu"
-    "f.Empty\032\026.google.protobuf.Empty\"\000\022I\n\005Ind"
-    "ex\022\026.google.protobuf.Empty\032&.palm.metase"
-    "quoia.v1.UserIndexResponse\"\000\022\\\n\004Show\022%.p"
-    "alm.metasequoia.v1.UserQueryRequest\032+.pa"
-    "lm.metasequoia.v1.UserIndexResponse.Item"
-    "\"\000\022J\n\007Disable\022%.palm.metasequoia.v1.User"
-    "QueryRequest\032\026.google.protobuf.Empty\"\000\022I"
-    "\n\006Enable\022%.palm.metasequoia.v1.UserQuery"
-    "Request\032\026.google.protobuf.Empty\"\000\022G\n\004Loc"
-    "k\022%.palm.metasequoia.v1.UserQueryRequest"
-    "\032\026.google.protobuf.Empty\"\000\022I\n\006Unlock\022%.p"
-    "alm.metasequoia.v1.UserQueryRequest\032\026.go"
-    "ogle.protobuf.Empty\"\000\022J\n\007Confirm\022%.palm."
-    "metasequoia.v1.UserQueryRequest\032\026.google"
-    ".protobuf.Empty\"\000\022I\n\006Delete\022%.palm.metas"
-    "equoia.v1.UserQueryRequest\032\026.google.prot"
-    "obuf.Empty\"\000\022T\n\013SetPassword\022+.palm.metas"
-    "equoia.v1.UserSetPasswordRequest\032\026.googl"
-    "e.protobuf.Empty\"\0002\231\010\n\004Rbac\022b\n\017GetRolesF"
-    "orUser\022%.palm.metasequoia.v1.UserQueryRe"
-    "quest\032&.palm.metasequoia.v1.RbacRolesRes"
-    "ponse\"\000\022j\n\027GetImplicitRolesForUser\022%.pal"
+    "e\030\001 \001(\tB\004\n\002by\"]\n\016RbacCanRequest\022\014\n\004user\030"
+    "\001 \001(\005\022-\n\006object\030\002 \001(\0132\035.palm.metasequoia"
+    ".v1.Resource\022\016\n\006action\030\003 \001(\t\"G\n\016RbacHasR"
+    "equest\022\014\n\004user\030\001 \001(\005\022\'\n\004role\030\002 \001(\0132\031.pal"
+    "m.metasequoia.v1.Role\"U\n\022RbacPermissionI"
+    "tem\022\016\n\006action\030\001 \001(\t\022/\n\010resource\030\002 \001(\0132\035."
+    "palm.metasequoia.v1.Resource\"k\n\035RbacPerm"
+    "issionsForUserRequest\022\014\n\004user\030\001 \001(\005\022<\n\013p"
+    "ermissions\030\002 \003(\0132\'.palm.metasequoia.v1.R"
+    "bacPermissionItem\"\206\001\n\035RbacPermissionsFor"
+    "RoleRequest\022\'\n\004role\030\001 \001(\0132\031.palm.metaseq"
+    "uoia.v1.Role\022<\n\013permissions\030\002 \003(\0132\'.palm"
+    ".metasequoia.v1.RbacPermissionItem\"Q\n\027Rb"
+    "acRolesForUserRequest\022\014\n\004user\030\001 \001(\005\022(\n\005r"
+    "oles\030\002 \003(\0132\031.palm.metasequoia.v1.Role\"=\n"
+    "\021RbacRolesResponse\022(\n\005items\030\001 \003(\0132\031.palm"
+    ".metasequoia.v1.Role\"I\n\027RbacPermissionsR"
+    "esponse\022.\n\005items\030\001 \003(\0132\037.palm.metasequoi"
+    "a.v1.Permission\"\?\n\021SettingSetRequest\022\016\n\006"
+    "global\030\001 \001(\010\022\013\n\003key\030\002 \001(\t\022\r\n\005value\030\003 \001(\014"
+    "\"0\n\021SettingGetRequest\022\016\n\006global\030\001 \001(\010\022\013\n"
+    "\003key\030\002 \001(\t\"$\n\024SettingByUserRequest\022\014\n\004us"
+    "er\030\001 \001(\005\"\200\002\n\020SettingsResponse\0229\n\005items\030\001"
+    " \003(\0132*.palm.metasequoia.v1.SettingsRespo"
+    "nse.Item\032\260\001\n\004Item\022\n\n\002id\030\001 \001(\005\022\024\n\007user_id"
+    "\030\002 \001(\005H\000\210\001\001\022\013\n\003key\030\003 \001(\t\022\r\n\005value\030\004 \001(\014\022"
+    ".\n\ncreated_at\030\013 \001(\0132\032.google.protobuf.Ti"
+    "mestamp\022.\n\nupdated_at\030\014 \001(\0132\032.google.pro"
+    "tobuf.TimestampB\n\n\010_user_id\"#\n\023LocaleByL"
+    "angRequest\022\014\n\004lang\030\001 \001(\t\".\n\020LocaleGetReq"
+    "uest\022\014\n\004lang\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\"\355\001\n\017Loc"
+    "alesResponse\0228\n\005items\030\001 \003(\0132).palm.metas"
+    "equoia.v1.LocalesResponse.Item\032\237\001\n\004Item\022"
+    "\n\n\002id\030\001 \001(\005\022\014\n\004lang\030\002 \001(\t\022\014\n\004code\030\003 \001(\t\022"
+    "\017\n\007message\030\004 \001(\t\022.\n\ncreated_at\030\013 \001(\0132\032.g"
+    "oogle.protobuf.Timestamp\022.\n\nupdated_at\030\014"
+    " \001(\0132\032.google.protobuf.Timestamp\"\?\n\020Loca"
+    "leSetRequest\022\014\n\004lang\030\001 \001(\t\022\014\n\004code\030\002 \001(\t"
+    "\022\017\n\007message\030\003 \001(\t2\336\016\n\004User\022o\n\020SignInByPa"
+    "ssword\0220.palm.metasequoia.v1.UserSignInB"
+    "yPasswordRequest\032\'.palm.metasequoia.v1.U"
+    "serSignInResponse\"\000\022X\n\rSignUpByEmail\022-.p"
+    "alm.metasequoia.v1.UserSignUpByEmailRequ"
+    "est\032\026.google.protobuf.Empty\"\000\022Q\n\016Confirm"
+    "ByEmail\022%.palm.metasequoia.v1.UserQueryR"
+    "equest\032\026.google.protobuf.Empty\"\000\022Q\n\016Conf"
+    "irmByToken\022%.palm.metasequoia.v1.UserTok"
+    "enRequest\032\026.google.protobuf.Empty\"\000\022P\n\rU"
+    "nlockByEmail\022%.palm.metasequoia.v1.UserQ"
+    "ueryRequest\032\026.google.protobuf.Empty\"\000\022P\n"
+    "\rUnlockByToken\022%.palm.metasequoia.v1.Use"
+    "rTokenRequest\032\026.google.protobuf.Empty\"\000\022"
+    "Q\n\016ForgotPassword\022%.palm.metasequoia.v1."
+    "UserQueryRequest\032\026.google.protobuf.Empty"
+    "\"\000\022X\n\rResetPassword\022-.palm.metasequoia.v"
+    "1.UserResetPasswordRequest\032\026.google.prot"
+    "obuf.Empty\"\000\022O\n\007Refresh\022\031.google.protobu"
+    "f.Duration\032\'.palm.metasequoia.v1.UserSig"
+    "nInResponse\"\000\022U\n\004Logs\022$.palm.metasequoia"
+    ".v1.UserLogsRequest\032%.palm.metasequoia.v"
+    "1.UserLogsResponse\"\000\022H\n\nSetProfile\022 .pal"
+    "m.metasequoia.v1.UserProfile\032\026.google.pr"
+    "otobuf.Empty\"\000\022H\n\nGetProfile\022\026.google.pr"
+    "otobuf.Empty\032 .palm.metasequoia.v1.UserP"
+    "rofile\"\000\022Z\n\016ChangePassword\022..palm.metase"
+    "quoia.v1.UserChangePasswordRequest\032\026.goo"
+    "gle.protobuf.Empty\"\000\022;\n\007SignOut\022\026.google"
+    ".protobuf.Empty\032\026.google.protobuf.Empty\""
+    "\000\022I\n\005Index\022\026.google.protobuf.Empty\032&.pal"
+    "m.metasequoia.v1.UserIndexResponse\"\000\022\\\n\004"
+    "Show\022%.palm.metasequoia.v1.UserQueryRequ"
+    "est\032+.palm.metasequoia.v1.UserIndexRespo"
+    "nse.Item\"\000\022J\n\007Disable\022%.palm.metasequoia"
+    ".v1.UserQueryRequest\032\026.google.protobuf.E"
+    "mpty\"\000\022I\n\006Enable\022%.palm.metasequoia.v1.U"
+    "serQueryRequest\032\026.google.protobuf.Empty\""
+    "\000\022G\n\004Lock\022%.palm.metasequoia.v1.UserQuer"
+    "yRequest\032\026.google.protobuf.Empty\"\000\022I\n\006Un"
+    "lock\022%.palm.metasequoia.v1.UserQueryRequ"
+    "est\032\026.google.protobuf.Empty\"\000\022J\n\007Confirm"
+    "\022%.palm.metasequoia.v1.UserQueryRequest\032"
+    "\026.google.protobuf.Empty\"\000\022I\n\006Delete\022%.pa"
+    "lm.metasequoia.v1.UserQueryRequest\032\026.goo"
+    "gle.protobuf.Empty\"\000\022T\n\013SetPassword\022+.pa"
+    "lm.metasequoia.v1.UserSetPasswordRequest"
+    "\032\026.google.protobuf.Empty\"\0002\245\t\n\004Rbac\022D\n\003C"
+    "an\022#.palm.metasequoia.v1.RbacCanRequest\032"
+    "\026.google.protobuf.Empty\"\000\022D\n\003Has\022#.palm."
+    "metasequoia.v1.RbacHasRequest\032\026.google.p"
+    "rotobuf.Empty\"\000\022b\n\017GetRolesForUser\022%.pal"
     "m.metasequoia.v1.UserQueryRequest\032&.palm"
-    ".metasequoia.v1.RbacRolesResponse\"\000\022Y\n\017A"
-    "ddRolesForUser\022,.palm.metasequoia.v1.Rba"
-    "cRolesForUserRequest\032\026.google.protobuf.E"
-    "mpty\"\000\022\\\n\022DeleteRolesForUser\022,.palm.meta"
-    "sequoia.v1.RbacRolesForUserRequest\032\026.goo"
-    "gle.protobuf.Empty\"\000\022e\n\025AddPermissionsFo"
-    "rRole\0222.palm.metasequoia.v1.RbacPermissi"
-    "onsForRoleRequest\032\026.google.protobuf.Empt"
-    "y\"\000\022h\n\030DeletePermissionsForRole\0222.palm.m"
-    "etasequoia.v1.RbacPermissionsForRoleRequ"
-    "est\032\026.google.protobuf.Empty\"\000\022n\n\025GetPerm"
-    "issionsForUser\022%.palm.metasequoia.v1.Use"
-    "rQueryRequest\032,.palm.metasequoia.v1.Rbac"
-    "PermissionsResponse\"\000\022v\n\035GetImplicitPerm"
-    "issionsForUser\022%.palm.metasequoia.v1.Use"
-    "rQueryRequest\032,.palm.metasequoia.v1.Rbac"
-    "PermissionsResponse\"\000\022e\n\025AddPermissionsF"
-    "orUser\0222.palm.metasequoia.v1.RbacPermiss"
-    "ionsForUserRequest\032\026.google.protobuf.Emp"
-    "ty\"\000\022h\n\030DeletePermissionsForUser\0222.palm."
-    "metasequoia.v1.RbacPermissionsForUserReq"
-    "uest\032\026.google.protobuf.Empty\"\0002\237\003\n\007Setti"
-    "ng\022G\n\003Set\022&.palm.metasequoia.v1.SettingS"
-    "etRequest\032\026.google.protobuf.Empty\"\000\022[\n\003G"
-    "et\022&.palm.metasequoia.v1.SettingGetReque"
-    "st\032*.palm.metasequoia.v1.SettingsRespons"
-    "e.Item\"\000\022\\\n\006ByUser\022).palm.metasequoia.v1"
-    ".SettingByUserRequest\032%.palm.metasequoia"
-    ".v1.SettingsResponse\"\000\022E\n\002My\022\026.google.pr"
-    "otobuf.Empty\032%.palm.metasequoia.v1.Setti"
-    "ngsResponse\"\000\022I\n\006Global\022\026.google.protobu"
-    "f.Empty\032%.palm.metasequoia.v1.SettingsRe"
-    "sponse\"\0002\207\002\n\006Locale\022F\n\003Set\022%.palm.metase"
-    "quoia.v1.LocaleSetRequest\032\026.google.proto"
-    "buf.Empty\"\000\022Y\n\003Get\022%.palm.metasequoia.v1"
-    ".LocaleGetRequest\032).palm.metasequoia.v1."
-    "LocalesResponse.Item\"\000\022Z\n\006ByLang\022(.palm."
-    "metasequoia.v1.LocaleByLangRequest\032$.pal"
-    "m.metasequoia.v1.LocalesResponse\"\000B`\n1co"
-    "m.github.saturn_xiv.palm.plugins.metaseq"
-    "uoia.v1P\001Z)github.com/saturn_xiv/palm/me"
-    "tasequoia/v2b\006proto3"
+    ".metasequoia.v1.RbacRolesResponse\"\000\022j\n\027G"
+    "etImplicitRolesForUser\022%.palm.metasequoi"
+    "a.v1.UserQueryRequest\032&.palm.metasequoia"
+    ".v1.RbacRolesResponse\"\000\022Y\n\017AddRolesForUs"
+    "er\022,.palm.metasequoia.v1.RbacRolesForUse"
+    "rRequest\032\026.google.protobuf.Empty\"\000\022\\\n\022De"
+    "leteRolesForUser\022,.palm.metasequoia.v1.R"
+    "bacRolesForUserRequest\032\026.google.protobuf"
+    ".Empty\"\000\022e\n\025AddPermissionsForRole\0222.palm"
+    ".metasequoia.v1.RbacPermissionsForRoleRe"
+    "quest\032\026.google.protobuf.Empty\"\000\022h\n\030Delet"
+    "ePermissionsForRole\0222.palm.metasequoia.v"
+    "1.RbacPermissionsForRoleRequest\032\026.google"
+    ".protobuf.Empty\"\000\022n\n\025GetPermissionsForUs"
+    "er\022%.palm.metasequoia.v1.UserQueryReques"
+    "t\032,.palm.metasequoia.v1.RbacPermissionsR"
+    "esponse\"\000\022v\n\035GetImplicitPermissionsForUs"
+    "er\022%.palm.metasequoia.v1.UserQueryReques"
+    "t\032,.palm.metasequoia.v1.RbacPermissionsR"
+    "esponse\"\000\022e\n\025AddPermissionsForUser\0222.pal"
+    "m.metasequoia.v1.RbacPermissionsForUserR"
+    "equest\032\026.google.protobuf.Empty\"\000\022h\n\030Dele"
+    "tePermissionsForUser\0222.palm.metasequoia."
+    "v1.RbacPermissionsForUserRequest\032\026.googl"
+    "e.protobuf.Empty\"\0002\237\003\n\007Setting\022G\n\003Set\022&."
+    "palm.metasequoia.v1.SettingSetRequest\032\026."
+    "google.protobuf.Empty\"\000\022[\n\003Get\022&.palm.me"
+    "tasequoia.v1.SettingGetRequest\032*.palm.me"
+    "tasequoia.v1.SettingsResponse.Item\"\000\022\\\n\006"
+    "ByUser\022).palm.metasequoia.v1.SettingByUs"
+    "erRequest\032%.palm.metasequoia.v1.Settings"
+    "Response\"\000\022E\n\002My\022\026.google.protobuf.Empty"
+    "\032%.palm.metasequoia.v1.SettingsResponse\""
+    "\000\022I\n\006Global\022\026.google.protobuf.Empty\032%.pa"
+    "lm.metasequoia.v1.SettingsResponse\"\0002\207\002\n"
+    "\006Locale\022F\n\003Set\022%.palm.metasequoia.v1.Loc"
+    "aleSetRequest\032\026.google.protobuf.Empty\"\000\022"
+    "Y\n\003Get\022%.palm.metasequoia.v1.LocaleGetRe"
+    "quest\032).palm.metasequoia.v1.LocalesRespo"
+    "nse.Item\"\000\022Z\n\006ByLang\022(.palm.metasequoia."
+    "v1.LocaleByLangRequest\032$.palm.metasequoi"
+    "a.v1.LocalesResponse\"\000B`\n1com.github.sat"
+    "urn_xiv.palm.plugins.metasequoia.v1P\001Z)g"
+    "ithub.com/saturn_xiv/palm/metasequoia/v2"
+    "b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_metasequoia_2eproto_deps[3] =
     {
@@ -1495,13 +1573,13 @@ static ::absl::once_flag descriptor_table_metasequoia_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_metasequoia_2eproto = {
     false,
     false,
-    7580,
+    7888,
     descriptor_table_protodef_metasequoia_2eproto,
     "metasequoia.proto",
     &descriptor_table_metasequoia_2eproto_once,
     descriptor_table_metasequoia_2eproto_deps,
     3,
-    35,
+    37,
     schemas,
     file_default_instances,
     TableStruct_metasequoia_2eproto::offsets,
@@ -6917,6 +6995,510 @@ void Role::InternalSwap(Role* other) {
 }
 // ===================================================================
 
+class RbacCanRequest::_Internal {
+ public:
+  using HasBits = decltype(std::declval<RbacCanRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(RbacCanRequest, _impl_._has_bits_);
+  static const ::palm::metasequoia::v1::Resource& object(const RbacCanRequest* msg);
+  static void set_has_object(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::palm::metasequoia::v1::Resource& RbacCanRequest::_Internal::object(const RbacCanRequest* msg) {
+  return *msg->_impl_.object_;
+}
+RbacCanRequest::RbacCanRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.RbacCanRequest)
+}
+RbacCanRequest::RbacCanRequest(const RbacCanRequest& from) : ::google::protobuf::Message() {
+  RbacCanRequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.action_){},
+      decltype(_impl_.object_){nullptr},
+      decltype(_impl_.user_){},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.action_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.action_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_action().empty()) {
+    _this->_impl_.action_.Set(from._internal_action(), _this->GetArenaForAllocation());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.object_ = new ::palm::metasequoia::v1::Resource(*from._impl_.object_);
+  }
+  _this->_impl_.user_ = from._impl_.user_;
+
+  // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.RbacCanRequest)
+}
+inline void RbacCanRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.action_){},
+      decltype(_impl_.object_){nullptr},
+      decltype(_impl_.user_){0},
+  };
+  _impl_.action_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.action_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+RbacCanRequest::~RbacCanRequest() {
+  // @@protoc_insertion_point(destructor:palm.metasequoia.v1.RbacCanRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void RbacCanRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.action_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.object_;
+}
+void RbacCanRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void RbacCanRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.RbacCanRequest)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.action_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.object_ != nullptr);
+    _impl_.object_->Clear();
+  }
+  _impl_.user_ = 0;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* RbacCanRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 1, 49, 2> RbacCanRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(RbacCanRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_RbacCanRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // int32 user = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RbacCanRequest, _impl_.user_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(RbacCanRequest, _impl_.user_)}},
+    // .palm.metasequoia.v1.Resource object = 2;
+    {::_pbi::TcParser::FastMtS1,
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(RbacCanRequest, _impl_.object_)}},
+    // string action = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(RbacCanRequest, _impl_.action_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 user = 1;
+    {PROTOBUF_FIELD_OFFSET(RbacCanRequest, _impl_.user_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // .palm.metasequoia.v1.Resource object = 2;
+    {PROTOBUF_FIELD_OFFSET(RbacCanRequest, _impl_.object_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string action = 3;
+    {PROTOBUF_FIELD_OFFSET(RbacCanRequest, _impl_.action_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::palm::metasequoia::v1::Resource>()},
+  }}, {{
+    "\42\0\0\6\0\0\0\0"
+    "palm.metasequoia.v1.RbacCanRequest"
+    "action"
+  }},
+};
+
+::uint8_t* RbacCanRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.metasequoia.v1.RbacCanRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // int32 user = 1;
+  if (this->_internal_user() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<1>(
+            stream, this->_internal_user(), target);
+  }
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // .palm.metasequoia.v1.Resource object = 2;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::object(this),
+        _Internal::object(this).GetCachedSize(), target, stream);
+  }
+
+  // string action = 3;
+  if (!this->_internal_action().empty()) {
+    const std::string& _s = this->_internal_action();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.metasequoia.v1.RbacCanRequest.action");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.metasequoia.v1.RbacCanRequest)
+  return target;
+}
+
+::size_t RbacCanRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.metasequoia.v1.RbacCanRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string action = 3;
+  if (!this->_internal_action().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_action());
+  }
+
+  // .palm.metasequoia.v1.Resource object = 2;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *_impl_.object_);
+  }
+
+  // int32 user = 1;
+  if (this->_internal_user() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_user());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData RbacCanRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    RbacCanRequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*RbacCanRequest::GetClassData() const { return &_class_data_; }
+
+
+void RbacCanRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<RbacCanRequest*>(&to_msg);
+  auto& from = static_cast<const RbacCanRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.metasequoia.v1.RbacCanRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_action().empty()) {
+    _this->_internal_set_action(from._internal_action());
+  }
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_object()->::palm::metasequoia::v1::Resource::MergeFrom(
+        from._internal_object());
+  }
+  if (from._internal_user() != 0) {
+    _this->_internal_set_user(from._internal_user());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RbacCanRequest::CopyFrom(const RbacCanRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.metasequoia.v1.RbacCanRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool RbacCanRequest::IsInitialized() const {
+  return true;
+}
+
+void RbacCanRequest::InternalSwap(RbacCanRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.action_, lhs_arena,
+                                       &other->_impl_.action_, rhs_arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RbacCanRequest, _impl_.user_)
+      + sizeof(RbacCanRequest::_impl_.user_)
+      - PROTOBUF_FIELD_OFFSET(RbacCanRequest, _impl_.object_)>(
+          reinterpret_cast<char*>(&_impl_.object_),
+          reinterpret_cast<char*>(&other->_impl_.object_));
+}
+
+::google::protobuf::Metadata RbacCanRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
+      file_level_metadata_metasequoia_2eproto[19]);
+}
+// ===================================================================
+
+class RbacHasRequest::_Internal {
+ public:
+  using HasBits = decltype(std::declval<RbacHasRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(RbacHasRequest, _impl_._has_bits_);
+  static const ::palm::metasequoia::v1::Role& role(const RbacHasRequest* msg);
+  static void set_has_role(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::palm::metasequoia::v1::Role& RbacHasRequest::_Internal::role(const RbacHasRequest* msg) {
+  return *msg->_impl_.role_;
+}
+RbacHasRequest::RbacHasRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.RbacHasRequest)
+}
+RbacHasRequest::RbacHasRequest(const RbacHasRequest& from) : ::google::protobuf::Message() {
+  RbacHasRequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.role_){nullptr},
+      decltype(_impl_.user_){},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.role_ = new ::palm::metasequoia::v1::Role(*from._impl_.role_);
+  }
+  _this->_impl_.user_ = from._impl_.user_;
+
+  // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.RbacHasRequest)
+}
+inline void RbacHasRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.role_){nullptr},
+      decltype(_impl_.user_){0},
+  };
+}
+RbacHasRequest::~RbacHasRequest() {
+  // @@protoc_insertion_point(destructor:palm.metasequoia.v1.RbacHasRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void RbacHasRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.role_;
+}
+void RbacHasRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void RbacHasRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.RbacHasRequest)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.role_ != nullptr);
+    _impl_.role_->Clear();
+  }
+  _impl_.user_ = 0;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* RbacHasRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RbacHasRequest::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(RbacHasRequest, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_RbacHasRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // .palm.metasequoia.v1.Role role = 2;
+    {::_pbi::TcParser::FastMtS1,
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(RbacHasRequest, _impl_.role_)}},
+    // int32 user = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(RbacHasRequest, _impl_.user_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(RbacHasRequest, _impl_.user_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 user = 1;
+    {PROTOBUF_FIELD_OFFSET(RbacHasRequest, _impl_.user_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // .palm.metasequoia.v1.Role role = 2;
+    {PROTOBUF_FIELD_OFFSET(RbacHasRequest, _impl_.role_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::palm::metasequoia::v1::Role>()},
+  }}, {{
+  }},
+};
+
+::uint8_t* RbacHasRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:palm.metasequoia.v1.RbacHasRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // int32 user = 1;
+  if (this->_internal_user() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<1>(
+            stream, this->_internal_user(), target);
+  }
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // .palm.metasequoia.v1.Role role = 2;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::role(this),
+        _Internal::role(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:palm.metasequoia.v1.RbacHasRequest)
+  return target;
+}
+
+::size_t RbacHasRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:palm.metasequoia.v1.RbacHasRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .palm.metasequoia.v1.Role role = 2;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *_impl_.role_);
+  }
+
+  // int32 user = 1;
+  if (this->_internal_user() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_user());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData RbacHasRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    RbacHasRequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*RbacHasRequest::GetClassData() const { return &_class_data_; }
+
+
+void RbacHasRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<RbacHasRequest*>(&to_msg);
+  auto& from = static_cast<const RbacHasRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:palm.metasequoia.v1.RbacHasRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_role()->::palm::metasequoia::v1::Role::MergeFrom(
+        from._internal_role());
+  }
+  if (from._internal_user() != 0) {
+    _this->_internal_set_user(from._internal_user());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RbacHasRequest::CopyFrom(const RbacHasRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:palm.metasequoia.v1.RbacHasRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool RbacHasRequest::IsInitialized() const {
+  return true;
+}
+
+void RbacHasRequest::InternalSwap(RbacHasRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RbacHasRequest, _impl_.user_)
+      + sizeof(RbacHasRequest::_impl_.user_)
+      - PROTOBUF_FIELD_OFFSET(RbacHasRequest, _impl_.role_)>(
+          reinterpret_cast<char*>(&_impl_.role_),
+          reinterpret_cast<char*>(&other->_impl_.role_));
+}
+
+::google::protobuf::Metadata RbacHasRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
+      file_level_metadata_metasequoia_2eproto[20]);
+}
+// ===================================================================
+
 class RbacPermissionItem::_Internal {
  public:
   using HasBits = decltype(std::declval<RbacPermissionItem>()._impl_._has_bits_);
@@ -7156,7 +7738,7 @@ void RbacPermissionItem::InternalSwap(RbacPermissionItem* other) {
 ::google::protobuf::Metadata RbacPermissionItem::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[19]);
+      file_level_metadata_metasequoia_2eproto[21]);
 }
 // ===================================================================
 
@@ -7355,7 +7937,7 @@ void RbacPermissionsForUserRequest::InternalSwap(RbacPermissionsForUserRequest* 
 ::google::protobuf::Metadata RbacPermissionsForUserRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[20]);
+      file_level_metadata_metasequoia_2eproto[22]);
 }
 // ===================================================================
 
@@ -7580,7 +8162,7 @@ void RbacPermissionsForRoleRequest::InternalSwap(RbacPermissionsForRoleRequest* 
 ::google::protobuf::Metadata RbacPermissionsForRoleRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[21]);
+      file_level_metadata_metasequoia_2eproto[23]);
 }
 // ===================================================================
 
@@ -7779,7 +8361,7 @@ void RbacRolesForUserRequest::InternalSwap(RbacRolesForUserRequest* other) {
 ::google::protobuf::Metadata RbacRolesForUserRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[22]);
+      file_level_metadata_metasequoia_2eproto[24]);
 }
 // ===================================================================
 
@@ -7951,7 +8533,7 @@ void RbacRolesResponse::InternalSwap(RbacRolesResponse* other) {
 ::google::protobuf::Metadata RbacRolesResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[23]);
+      file_level_metadata_metasequoia_2eproto[25]);
 }
 // ===================================================================
 
@@ -8123,7 +8705,7 @@ void RbacPermissionsResponse::InternalSwap(RbacPermissionsResponse* other) {
 ::google::protobuf::Metadata RbacPermissionsResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[24]);
+      file_level_metadata_metasequoia_2eproto[26]);
 }
 // ===================================================================
 
@@ -8379,7 +8961,7 @@ void SettingSetRequest::InternalSwap(SettingSetRequest* other) {
 ::google::protobuf::Metadata SettingSetRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[25]);
+      file_level_metadata_metasequoia_2eproto[27]);
 }
 // ===================================================================
 
@@ -8596,7 +9178,7 @@ void SettingGetRequest::InternalSwap(SettingGetRequest* other) {
 ::google::protobuf::Metadata SettingGetRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[26]);
+      file_level_metadata_metasequoia_2eproto[28]);
 }
 // ===================================================================
 
@@ -8762,7 +9344,7 @@ void SettingByUserRequest::InternalSwap(SettingByUserRequest* other) {
 ::google::protobuf::Metadata SettingByUserRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[27]);
+      file_level_metadata_metasequoia_2eproto[29]);
 }
 // ===================================================================
 
@@ -9155,7 +9737,7 @@ void SettingsResponse_Item::InternalSwap(SettingsResponse_Item* other) {
 ::google::protobuf::Metadata SettingsResponse_Item::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[28]);
+      file_level_metadata_metasequoia_2eproto[30]);
 }
 // ===================================================================
 
@@ -9327,7 +9909,7 @@ void SettingsResponse::InternalSwap(SettingsResponse* other) {
 ::google::protobuf::Metadata SettingsResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[29]);
+      file_level_metadata_metasequoia_2eproto[31]);
 }
 // ===================================================================
 
@@ -9518,7 +10100,7 @@ void LocaleByLangRequest::InternalSwap(LocaleByLangRequest* other) {
 ::google::protobuf::Metadata LocaleByLangRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[30]);
+      file_level_metadata_metasequoia_2eproto[32]);
 }
 // ===================================================================
 
@@ -9750,7 +10332,7 @@ void LocaleGetRequest::InternalSwap(LocaleGetRequest* other) {
 ::google::protobuf::Metadata LocaleGetRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[31]);
+      file_level_metadata_metasequoia_2eproto[33]);
 }
 // ===================================================================
 
@@ -10157,7 +10739,7 @@ void LocalesResponse_Item::InternalSwap(LocalesResponse_Item* other) {
 ::google::protobuf::Metadata LocalesResponse_Item::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[32]);
+      file_level_metadata_metasequoia_2eproto[34]);
 }
 // ===================================================================
 
@@ -10329,7 +10911,7 @@ void LocalesResponse::InternalSwap(LocalesResponse* other) {
 ::google::protobuf::Metadata LocalesResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[33]);
+      file_level_metadata_metasequoia_2eproto[35]);
 }
 // ===================================================================
 
@@ -10603,7 +11185,7 @@ void LocaleSetRequest::InternalSwap(LocaleSetRequest* other) {
 ::google::protobuf::Metadata LocaleSetRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
-      file_level_metadata_metasequoia_2eproto[34]);
+      file_level_metadata_metasequoia_2eproto[36]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1

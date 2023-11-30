@@ -52,6 +52,8 @@ module Palm
           self.unmarshal_class_method = :decode
           self.service_name = 'palm.metasequoia.v1.Rbac'
 
+          rpc :Can, ::Palm::Metasequoia::V1::RbacCanRequest, ::Google::Protobuf::Empty
+          rpc :Has, ::Palm::Metasequoia::V1::RbacHasRequest, ::Google::Protobuf::Empty
           rpc :GetRolesForUser, ::Palm::Metasequoia::V1::UserQueryRequest, ::Palm::Metasequoia::V1::RbacRolesResponse
           rpc :GetImplicitRolesForUser, ::Palm::Metasequoia::V1::UserQueryRequest, ::Palm::Metasequoia::V1::RbacRolesResponse
           rpc :AddRolesForUser, ::Palm::Metasequoia::V1::RbacRolesForUserRequest, ::Google::Protobuf::Empty

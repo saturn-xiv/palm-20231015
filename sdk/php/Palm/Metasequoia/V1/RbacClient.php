@@ -17,6 +17,34 @@ class RbacClient extends \Grpc\BaseStub {
     }
 
     /**
+     * @param \Palm\Metasequoia\V1\RbacCanRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall
+     */
+    public function Can(\Palm\Metasequoia\V1\RbacCanRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/palm.metasequoia.v1.Rbac/Can',
+        $argument,
+        ['\Google\Protobuf\GPBEmpty', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     * @param \Palm\Metasequoia\V1\RbacHasRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall
+     */
+    public function Has(\Palm\Metasequoia\V1\RbacHasRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/palm.metasequoia.v1.Rbac/Has',
+        $argument,
+        ['\Google\Protobuf\GPBEmpty', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
      * @param \Palm\Metasequoia\V1\UserQueryRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options

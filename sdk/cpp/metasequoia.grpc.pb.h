@@ -3698,6 +3698,20 @@ class Rbac final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
+    virtual ::grpc::Status Can(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncCan(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncCanRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncCan(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncCanRaw(context, request, cq));
+    }
+    virtual ::grpc::Status Has(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncHas(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncHasRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncHas(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncHasRaw(context, request, cq));
+    }
     virtual ::grpc::Status GetRolesForUser(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest& request, ::palm::metasequoia::v1::RbacRolesResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::metasequoia::v1::RbacRolesResponse>> AsyncGetRolesForUser(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::palm::metasequoia::v1::RbacRolesResponse>>(AsyncGetRolesForUserRaw(context, request, cq));
@@ -3771,6 +3785,10 @@ class Rbac final {
     class async_interface {
      public:
       virtual ~async_interface() {}
+      virtual void Can(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Can(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Has(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Has(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetRolesForUser(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest* request, ::palm::metasequoia::v1::RbacRolesResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetRolesForUser(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest* request, ::palm::metasequoia::v1::RbacRolesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetImplicitRolesForUser(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest* request, ::palm::metasequoia::v1::RbacRolesResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -3796,6 +3814,10 @@ class Rbac final {
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncCanRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncCanRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncHasRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncHasRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::metasequoia::v1::RbacRolesResponse>* AsyncGetRolesForUserRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::metasequoia::v1::RbacRolesResponse>* PrepareAsyncGetRolesForUserRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::palm::metasequoia::v1::RbacRolesResponse>* AsyncGetImplicitRolesForUserRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -3820,6 +3842,20 @@ class Rbac final {
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+    ::grpc::Status Can(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncCan(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncCanRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncCan(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncCanRaw(context, request, cq));
+    }
+    ::grpc::Status Has(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncHas(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncHasRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncHas(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncHasRaw(context, request, cq));
+    }
     ::grpc::Status GetRolesForUser(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest& request, ::palm::metasequoia::v1::RbacRolesResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::metasequoia::v1::RbacRolesResponse>> AsyncGetRolesForUser(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::palm::metasequoia::v1::RbacRolesResponse>>(AsyncGetRolesForUserRaw(context, request, cq));
@@ -3893,6 +3929,10 @@ class Rbac final {
     class async final :
       public StubInterface::async_interface {
      public:
+      void Can(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void Can(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Has(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      void Has(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetRolesForUser(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest* request, ::palm::metasequoia::v1::RbacRolesResponse* response, std::function<void(::grpc::Status)>) override;
       void GetRolesForUser(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest* request, ::palm::metasequoia::v1::RbacRolesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetImplicitRolesForUser(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest* request, ::palm::metasequoia::v1::RbacRolesResponse* response, std::function<void(::grpc::Status)>) override;
@@ -3924,6 +3964,10 @@ class Rbac final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncCanRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncCanRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacCanRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncHasRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncHasRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacHasRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::metasequoia::v1::RbacRolesResponse>* AsyncGetRolesForUserRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::metasequoia::v1::RbacRolesResponse>* PrepareAsyncGetRolesForUserRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::palm::metasequoia::v1::RbacRolesResponse>* AsyncGetImplicitRolesForUserRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::UserQueryRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -3944,6 +3988,8 @@ class Rbac final {
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncAddPermissionsForUserRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacPermissionsForUserRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncDeletePermissionsForUserRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacPermissionsForUserRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncDeletePermissionsForUserRaw(::grpc::ClientContext* context, const ::palm::metasequoia::v1::RbacPermissionsForUserRequest& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_Can_;
+    const ::grpc::internal::RpcMethod rpcmethod_Has_;
     const ::grpc::internal::RpcMethod rpcmethod_GetRolesForUser_;
     const ::grpc::internal::RpcMethod rpcmethod_GetImplicitRolesForUser_;
     const ::grpc::internal::RpcMethod rpcmethod_AddRolesForUser_;
@@ -3961,6 +4007,8 @@ class Rbac final {
    public:
     Service();
     virtual ~Service();
+    virtual ::grpc::Status Can(::grpc::ServerContext* context, const ::palm::metasequoia::v1::RbacCanRequest* request, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status Has(::grpc::ServerContext* context, const ::palm::metasequoia::v1::RbacHasRequest* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status GetRolesForUser(::grpc::ServerContext* context, const ::palm::metasequoia::v1::UserQueryRequest* request, ::palm::metasequoia::v1::RbacRolesResponse* response);
     virtual ::grpc::Status GetImplicitRolesForUser(::grpc::ServerContext* context, const ::palm::metasequoia::v1::UserQueryRequest* request, ::palm::metasequoia::v1::RbacRolesResponse* response);
     virtual ::grpc::Status AddRolesForUser(::grpc::ServerContext* context, const ::palm::metasequoia::v1::RbacRolesForUserRequest* request, ::google::protobuf::Empty* response);
@@ -3973,12 +4021,52 @@ class Rbac final {
     virtual ::grpc::Status DeletePermissionsForUser(::grpc::ServerContext* context, const ::palm::metasequoia::v1::RbacPermissionsForUserRequest* request, ::google::protobuf::Empty* response);
   };
   template <class BaseClass>
+  class WithAsyncMethod_Can : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_Can() {
+      ::grpc::Service::MarkMethodAsync(0);
+    }
+    ~WithAsyncMethod_Can() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Can(::grpc::ServerContext* /*context*/, const ::palm::metasequoia::v1::RbacCanRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestCan(::grpc::ServerContext* context, ::palm::metasequoia::v1::RbacCanRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_Has : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_Has() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_Has() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Has(::grpc::ServerContext* /*context*/, const ::palm::metasequoia::v1::RbacHasRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestHas(::grpc::ServerContext* context, ::palm::metasequoia::v1::RbacHasRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_GetRolesForUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetRolesForUser() {
-      ::grpc::Service::MarkMethodAsync(0);
+      ::grpc::Service::MarkMethodAsync(2);
     }
     ~WithAsyncMethod_GetRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -3989,7 +4077,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetRolesForUser(::grpc::ServerContext* context, ::palm::metasequoia::v1::UserQueryRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::metasequoia::v1::RbacRolesResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3998,7 +4086,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetImplicitRolesForUser() {
-      ::grpc::Service::MarkMethodAsync(1);
+      ::grpc::Service::MarkMethodAsync(3);
     }
     ~WithAsyncMethod_GetImplicitRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4009,7 +4097,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetImplicitRolesForUser(::grpc::ServerContext* context, ::palm::metasequoia::v1::UserQueryRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::metasequoia::v1::RbacRolesResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4018,7 +4106,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_AddRolesForUser() {
-      ::grpc::Service::MarkMethodAsync(2);
+      ::grpc::Service::MarkMethodAsync(4);
     }
     ~WithAsyncMethod_AddRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4029,7 +4117,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestAddRolesForUser(::grpc::ServerContext* context, ::palm::metasequoia::v1::RbacRolesForUserRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4038,7 +4126,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DeleteRolesForUser() {
-      ::grpc::Service::MarkMethodAsync(3);
+      ::grpc::Service::MarkMethodAsync(5);
     }
     ~WithAsyncMethod_DeleteRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4049,7 +4137,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeleteRolesForUser(::grpc::ServerContext* context, ::palm::metasequoia::v1::RbacRolesForUserRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4058,7 +4146,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_AddPermissionsForRole() {
-      ::grpc::Service::MarkMethodAsync(4);
+      ::grpc::Service::MarkMethodAsync(6);
     }
     ~WithAsyncMethod_AddPermissionsForRole() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4069,7 +4157,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestAddPermissionsForRole(::grpc::ServerContext* context, ::palm::metasequoia::v1::RbacPermissionsForRoleRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4078,7 +4166,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DeletePermissionsForRole() {
-      ::grpc::Service::MarkMethodAsync(5);
+      ::grpc::Service::MarkMethodAsync(7);
     }
     ~WithAsyncMethod_DeletePermissionsForRole() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4089,7 +4177,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeletePermissionsForRole(::grpc::ServerContext* context, ::palm::metasequoia::v1::RbacPermissionsForRoleRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4098,7 +4186,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetPermissionsForUser() {
-      ::grpc::Service::MarkMethodAsync(6);
+      ::grpc::Service::MarkMethodAsync(8);
     }
     ~WithAsyncMethod_GetPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4109,7 +4197,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetPermissionsForUser(::grpc::ServerContext* context, ::palm::metasequoia::v1::UserQueryRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::metasequoia::v1::RbacPermissionsResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4118,7 +4206,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetImplicitPermissionsForUser() {
-      ::grpc::Service::MarkMethodAsync(7);
+      ::grpc::Service::MarkMethodAsync(9);
     }
     ~WithAsyncMethod_GetImplicitPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4129,7 +4217,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetImplicitPermissionsForUser(::grpc::ServerContext* context, ::palm::metasequoia::v1::UserQueryRequest* request, ::grpc::ServerAsyncResponseWriter< ::palm::metasequoia::v1::RbacPermissionsResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4138,7 +4226,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_AddPermissionsForUser() {
-      ::grpc::Service::MarkMethodAsync(8);
+      ::grpc::Service::MarkMethodAsync(10);
     }
     ~WithAsyncMethod_AddPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4149,7 +4237,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestAddPermissionsForUser(::grpc::ServerContext* context, ::palm::metasequoia::v1::RbacPermissionsForUserRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4158,7 +4246,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_DeletePermissionsForUser() {
-      ::grpc::Service::MarkMethodAsync(9);
+      ::grpc::Service::MarkMethodAsync(11);
     }
     ~WithAsyncMethod_DeletePermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4169,23 +4257,77 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeletePermissionsForUser(::grpc::ServerContext* context, ::palm::metasequoia::v1::RbacPermissionsForUserRequest* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_GetRolesForUser<WithAsyncMethod_GetImplicitRolesForUser<WithAsyncMethod_AddRolesForUser<WithAsyncMethod_DeleteRolesForUser<WithAsyncMethod_AddPermissionsForRole<WithAsyncMethod_DeletePermissionsForRole<WithAsyncMethod_GetPermissionsForUser<WithAsyncMethod_GetImplicitPermissionsForUser<WithAsyncMethod_AddPermissionsForUser<WithAsyncMethod_DeletePermissionsForUser<Service > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_Can<WithAsyncMethod_Has<WithAsyncMethod_GetRolesForUser<WithAsyncMethod_GetImplicitRolesForUser<WithAsyncMethod_AddRolesForUser<WithAsyncMethod_DeleteRolesForUser<WithAsyncMethod_AddPermissionsForRole<WithAsyncMethod_DeletePermissionsForRole<WithAsyncMethod_GetPermissionsForUser<WithAsyncMethod_GetImplicitPermissionsForUser<WithAsyncMethod_AddPermissionsForUser<WithAsyncMethod_DeletePermissionsForUser<Service > > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_Can : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_Can() {
+      ::grpc::Service::MarkMethodCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacCanRequest, ::google::protobuf::Empty>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::palm::metasequoia::v1::RbacCanRequest* request, ::google::protobuf::Empty* response) { return this->Can(context, request, response); }));}
+    void SetMessageAllocatorFor_Can(
+        ::grpc::MessageAllocator< ::palm::metasequoia::v1::RbacCanRequest, ::google::protobuf::Empty>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacCanRequest, ::google::protobuf::Empty>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_Can() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Can(::grpc::ServerContext* /*context*/, const ::palm::metasequoia::v1::RbacCanRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* Can(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::metasequoia::v1::RbacCanRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_Has : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_Has() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacHasRequest, ::google::protobuf::Empty>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::palm::metasequoia::v1::RbacHasRequest* request, ::google::protobuf::Empty* response) { return this->Has(context, request, response); }));}
+    void SetMessageAllocatorFor_Has(
+        ::grpc::MessageAllocator< ::palm::metasequoia::v1::RbacHasRequest, ::google::protobuf::Empty>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacHasRequest, ::google::protobuf::Empty>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_Has() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Has(::grpc::ServerContext* /*context*/, const ::palm::metasequoia::v1::RbacHasRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* Has(
+      ::grpc::CallbackServerContext* /*context*/, const ::palm::metasequoia::v1::RbacHasRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
+  };
   template <class BaseClass>
   class WithCallbackMethod_GetRolesForUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetRolesForUser() {
-      ::grpc::Service::MarkMethodCallback(0,
+      ::grpc::Service::MarkMethodCallback(2,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacRolesResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::metasequoia::v1::UserQueryRequest* request, ::palm::metasequoia::v1::RbacRolesResponse* response) { return this->GetRolesForUser(context, request, response); }));}
     void SetMessageAllocatorFor_GetRolesForUser(
         ::grpc::MessageAllocator< ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacRolesResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacRolesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4206,13 +4348,13 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetImplicitRolesForUser() {
-      ::grpc::Service::MarkMethodCallback(1,
+      ::grpc::Service::MarkMethodCallback(3,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacRolesResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::metasequoia::v1::UserQueryRequest* request, ::palm::metasequoia::v1::RbacRolesResponse* response) { return this->GetImplicitRolesForUser(context, request, response); }));}
     void SetMessageAllocatorFor_GetImplicitRolesForUser(
         ::grpc::MessageAllocator< ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacRolesResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacRolesResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4233,13 +4375,13 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_AddRolesForUser() {
-      ::grpc::Service::MarkMethodCallback(2,
+      ::grpc::Service::MarkMethodCallback(4,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacRolesForUserRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::metasequoia::v1::RbacRolesForUserRequest* request, ::google::protobuf::Empty* response) { return this->AddRolesForUser(context, request, response); }));}
     void SetMessageAllocatorFor_AddRolesForUser(
         ::grpc::MessageAllocator< ::palm::metasequoia::v1::RbacRolesForUserRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacRolesForUserRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4260,13 +4402,13 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_DeleteRolesForUser() {
-      ::grpc::Service::MarkMethodCallback(3,
+      ::grpc::Service::MarkMethodCallback(5,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacRolesForUserRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::metasequoia::v1::RbacRolesForUserRequest* request, ::google::protobuf::Empty* response) { return this->DeleteRolesForUser(context, request, response); }));}
     void SetMessageAllocatorFor_DeleteRolesForUser(
         ::grpc::MessageAllocator< ::palm::metasequoia::v1::RbacRolesForUserRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacRolesForUserRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4287,13 +4429,13 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_AddPermissionsForRole() {
-      ::grpc::Service::MarkMethodCallback(4,
+      ::grpc::Service::MarkMethodCallback(6,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacPermissionsForRoleRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::metasequoia::v1::RbacPermissionsForRoleRequest* request, ::google::protobuf::Empty* response) { return this->AddPermissionsForRole(context, request, response); }));}
     void SetMessageAllocatorFor_AddPermissionsForRole(
         ::grpc::MessageAllocator< ::palm::metasequoia::v1::RbacPermissionsForRoleRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacPermissionsForRoleRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4314,13 +4456,13 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_DeletePermissionsForRole() {
-      ::grpc::Service::MarkMethodCallback(5,
+      ::grpc::Service::MarkMethodCallback(7,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacPermissionsForRoleRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::metasequoia::v1::RbacPermissionsForRoleRequest* request, ::google::protobuf::Empty* response) { return this->DeletePermissionsForRole(context, request, response); }));}
     void SetMessageAllocatorFor_DeletePermissionsForRole(
         ::grpc::MessageAllocator< ::palm::metasequoia::v1::RbacPermissionsForRoleRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacPermissionsForRoleRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4341,13 +4483,13 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetPermissionsForUser() {
-      ::grpc::Service::MarkMethodCallback(6,
+      ::grpc::Service::MarkMethodCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacPermissionsResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::metasequoia::v1::UserQueryRequest* request, ::palm::metasequoia::v1::RbacPermissionsResponse* response) { return this->GetPermissionsForUser(context, request, response); }));}
     void SetMessageAllocatorFor_GetPermissionsForUser(
         ::grpc::MessageAllocator< ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacPermissionsResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacPermissionsResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4368,13 +4510,13 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetImplicitPermissionsForUser() {
-      ::grpc::Service::MarkMethodCallback(7,
+      ::grpc::Service::MarkMethodCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacPermissionsResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::metasequoia::v1::UserQueryRequest* request, ::palm::metasequoia::v1::RbacPermissionsResponse* response) { return this->GetImplicitPermissionsForUser(context, request, response); }));}
     void SetMessageAllocatorFor_GetImplicitPermissionsForUser(
         ::grpc::MessageAllocator< ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacPermissionsResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacPermissionsResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4395,13 +4537,13 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_AddPermissionsForUser() {
-      ::grpc::Service::MarkMethodCallback(8,
+      ::grpc::Service::MarkMethodCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacPermissionsForUserRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::metasequoia::v1::RbacPermissionsForUserRequest* request, ::google::protobuf::Empty* response) { return this->AddPermissionsForUser(context, request, response); }));}
     void SetMessageAllocatorFor_AddPermissionsForUser(
         ::grpc::MessageAllocator< ::palm::metasequoia::v1::RbacPermissionsForUserRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacPermissionsForUserRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4422,13 +4564,13 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_DeletePermissionsForUser() {
-      ::grpc::Service::MarkMethodCallback(9,
+      ::grpc::Service::MarkMethodCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacPermissionsForUserRequest, ::google::protobuf::Empty>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::palm::metasequoia::v1::RbacPermissionsForUserRequest* request, ::google::protobuf::Empty* response) { return this->DeletePermissionsForUser(context, request, response); }));}
     void SetMessageAllocatorFor_DeletePermissionsForUser(
         ::grpc::MessageAllocator< ::palm::metasequoia::v1::RbacPermissionsForUserRequest, ::google::protobuf::Empty>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::palm::metasequoia::v1::RbacPermissionsForUserRequest, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -4443,15 +4585,49 @@ class Rbac final {
     virtual ::grpc::ServerUnaryReactor* DeletePermissionsForUser(
       ::grpc::CallbackServerContext* /*context*/, const ::palm::metasequoia::v1::RbacPermissionsForUserRequest* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_GetRolesForUser<WithCallbackMethod_GetImplicitRolesForUser<WithCallbackMethod_AddRolesForUser<WithCallbackMethod_DeleteRolesForUser<WithCallbackMethod_AddPermissionsForRole<WithCallbackMethod_DeletePermissionsForRole<WithCallbackMethod_GetPermissionsForUser<WithCallbackMethod_GetImplicitPermissionsForUser<WithCallbackMethod_AddPermissionsForUser<WithCallbackMethod_DeletePermissionsForUser<Service > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_Can<WithCallbackMethod_Has<WithCallbackMethod_GetRolesForUser<WithCallbackMethod_GetImplicitRolesForUser<WithCallbackMethod_AddRolesForUser<WithCallbackMethod_DeleteRolesForUser<WithCallbackMethod_AddPermissionsForRole<WithCallbackMethod_DeletePermissionsForRole<WithCallbackMethod_GetPermissionsForUser<WithCallbackMethod_GetImplicitPermissionsForUser<WithCallbackMethod_AddPermissionsForUser<WithCallbackMethod_DeletePermissionsForUser<Service > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
+  template <class BaseClass>
+  class WithGenericMethod_Can : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_Can() {
+      ::grpc::Service::MarkMethodGeneric(0);
+    }
+    ~WithGenericMethod_Can() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Can(::grpc::ServerContext* /*context*/, const ::palm::metasequoia::v1::RbacCanRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_Has : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_Has() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_Has() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Has(::grpc::ServerContext* /*context*/, const ::palm::metasequoia::v1::RbacHasRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
   template <class BaseClass>
   class WithGenericMethod_GetRolesForUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetRolesForUser() {
-      ::grpc::Service::MarkMethodGeneric(0);
+      ::grpc::Service::MarkMethodGeneric(2);
     }
     ~WithGenericMethod_GetRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4468,7 +4644,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetImplicitRolesForUser() {
-      ::grpc::Service::MarkMethodGeneric(1);
+      ::grpc::Service::MarkMethodGeneric(3);
     }
     ~WithGenericMethod_GetImplicitRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4485,7 +4661,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_AddRolesForUser() {
-      ::grpc::Service::MarkMethodGeneric(2);
+      ::grpc::Service::MarkMethodGeneric(4);
     }
     ~WithGenericMethod_AddRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4502,7 +4678,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DeleteRolesForUser() {
-      ::grpc::Service::MarkMethodGeneric(3);
+      ::grpc::Service::MarkMethodGeneric(5);
     }
     ~WithGenericMethod_DeleteRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4519,7 +4695,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_AddPermissionsForRole() {
-      ::grpc::Service::MarkMethodGeneric(4);
+      ::grpc::Service::MarkMethodGeneric(6);
     }
     ~WithGenericMethod_AddPermissionsForRole() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4536,7 +4712,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DeletePermissionsForRole() {
-      ::grpc::Service::MarkMethodGeneric(5);
+      ::grpc::Service::MarkMethodGeneric(7);
     }
     ~WithGenericMethod_DeletePermissionsForRole() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4553,7 +4729,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetPermissionsForUser() {
-      ::grpc::Service::MarkMethodGeneric(6);
+      ::grpc::Service::MarkMethodGeneric(8);
     }
     ~WithGenericMethod_GetPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4570,7 +4746,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetImplicitPermissionsForUser() {
-      ::grpc::Service::MarkMethodGeneric(7);
+      ::grpc::Service::MarkMethodGeneric(9);
     }
     ~WithGenericMethod_GetImplicitPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4587,7 +4763,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_AddPermissionsForUser() {
-      ::grpc::Service::MarkMethodGeneric(8);
+      ::grpc::Service::MarkMethodGeneric(10);
     }
     ~WithGenericMethod_AddPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4604,7 +4780,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_DeletePermissionsForUser() {
-      ::grpc::Service::MarkMethodGeneric(9);
+      ::grpc::Service::MarkMethodGeneric(11);
     }
     ~WithGenericMethod_DeletePermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4616,12 +4792,52 @@ class Rbac final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_Can : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_Can() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_Can() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Can(::grpc::ServerContext* /*context*/, const ::palm::metasequoia::v1::RbacCanRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestCan(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_Has : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_Has() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_Has() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Has(::grpc::ServerContext* /*context*/, const ::palm::metasequoia::v1::RbacHasRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestHas(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_GetRolesForUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetRolesForUser() {
-      ::grpc::Service::MarkMethodRaw(0);
+      ::grpc::Service::MarkMethodRaw(2);
     }
     ~WithRawMethod_GetRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4632,7 +4848,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetRolesForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4641,7 +4857,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetImplicitRolesForUser() {
-      ::grpc::Service::MarkMethodRaw(1);
+      ::grpc::Service::MarkMethodRaw(3);
     }
     ~WithRawMethod_GetImplicitRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4652,7 +4868,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetImplicitRolesForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4661,7 +4877,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_AddRolesForUser() {
-      ::grpc::Service::MarkMethodRaw(2);
+      ::grpc::Service::MarkMethodRaw(4);
     }
     ~WithRawMethod_AddRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4672,7 +4888,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestAddRolesForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4681,7 +4897,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DeleteRolesForUser() {
-      ::grpc::Service::MarkMethodRaw(3);
+      ::grpc::Service::MarkMethodRaw(5);
     }
     ~WithRawMethod_DeleteRolesForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4692,7 +4908,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeleteRolesForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4701,7 +4917,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_AddPermissionsForRole() {
-      ::grpc::Service::MarkMethodRaw(4);
+      ::grpc::Service::MarkMethodRaw(6);
     }
     ~WithRawMethod_AddPermissionsForRole() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4712,7 +4928,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestAddPermissionsForRole(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4721,7 +4937,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DeletePermissionsForRole() {
-      ::grpc::Service::MarkMethodRaw(5);
+      ::grpc::Service::MarkMethodRaw(7);
     }
     ~WithRawMethod_DeletePermissionsForRole() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4732,7 +4948,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeletePermissionsForRole(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4741,7 +4957,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetPermissionsForUser() {
-      ::grpc::Service::MarkMethodRaw(6);
+      ::grpc::Service::MarkMethodRaw(8);
     }
     ~WithRawMethod_GetPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4752,7 +4968,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetPermissionsForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4761,7 +4977,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetImplicitPermissionsForUser() {
-      ::grpc::Service::MarkMethodRaw(7);
+      ::grpc::Service::MarkMethodRaw(9);
     }
     ~WithRawMethod_GetImplicitPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4772,7 +4988,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetImplicitPermissionsForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4781,7 +4997,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_AddPermissionsForUser() {
-      ::grpc::Service::MarkMethodRaw(8);
+      ::grpc::Service::MarkMethodRaw(10);
     }
     ~WithRawMethod_AddPermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4792,7 +5008,7 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestAddPermissionsForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -4801,7 +5017,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_DeletePermissionsForUser() {
-      ::grpc::Service::MarkMethodRaw(9);
+      ::grpc::Service::MarkMethodRaw(11);
     }
     ~WithRawMethod_DeletePermissionsForUser() override {
       BaseClassMustBeDerivedFromService(this);
@@ -4812,8 +5028,52 @@ class Rbac final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestDeletePermissionsForUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_Can : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_Can() {
+      ::grpc::Service::MarkMethodRawCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Can(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_Can() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Can(::grpc::ServerContext* /*context*/, const ::palm::metasequoia::v1::RbacCanRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* Can(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_Has : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_Has() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Has(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_Has() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Has(::grpc::ServerContext* /*context*/, const ::palm::metasequoia::v1::RbacHasRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* Has(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithRawCallbackMethod_GetRolesForUser : public BaseClass {
@@ -4821,7 +5081,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetRolesForUser() {
-      ::grpc::Service::MarkMethodRawCallback(0,
+      ::grpc::Service::MarkMethodRawCallback(2,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetRolesForUser(context, request, response); }));
@@ -4843,7 +5103,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetImplicitRolesForUser() {
-      ::grpc::Service::MarkMethodRawCallback(1,
+      ::grpc::Service::MarkMethodRawCallback(3,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetImplicitRolesForUser(context, request, response); }));
@@ -4865,7 +5125,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_AddRolesForUser() {
-      ::grpc::Service::MarkMethodRawCallback(2,
+      ::grpc::Service::MarkMethodRawCallback(4,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->AddRolesForUser(context, request, response); }));
@@ -4887,7 +5147,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_DeleteRolesForUser() {
-      ::grpc::Service::MarkMethodRawCallback(3,
+      ::grpc::Service::MarkMethodRawCallback(5,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeleteRolesForUser(context, request, response); }));
@@ -4909,7 +5169,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_AddPermissionsForRole() {
-      ::grpc::Service::MarkMethodRawCallback(4,
+      ::grpc::Service::MarkMethodRawCallback(6,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->AddPermissionsForRole(context, request, response); }));
@@ -4931,7 +5191,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_DeletePermissionsForRole() {
-      ::grpc::Service::MarkMethodRawCallback(5,
+      ::grpc::Service::MarkMethodRawCallback(7,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeletePermissionsForRole(context, request, response); }));
@@ -4953,7 +5213,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetPermissionsForUser() {
-      ::grpc::Service::MarkMethodRawCallback(6,
+      ::grpc::Service::MarkMethodRawCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetPermissionsForUser(context, request, response); }));
@@ -4975,7 +5235,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetImplicitPermissionsForUser() {
-      ::grpc::Service::MarkMethodRawCallback(7,
+      ::grpc::Service::MarkMethodRawCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetImplicitPermissionsForUser(context, request, response); }));
@@ -4997,7 +5257,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_AddPermissionsForUser() {
-      ::grpc::Service::MarkMethodRawCallback(8,
+      ::grpc::Service::MarkMethodRawCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->AddPermissionsForUser(context, request, response); }));
@@ -5019,7 +5279,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_DeletePermissionsForUser() {
-      ::grpc::Service::MarkMethodRawCallback(9,
+      ::grpc::Service::MarkMethodRawCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeletePermissionsForUser(context, request, response); }));
@@ -5036,12 +5296,66 @@ class Rbac final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_Can : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_Can() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::palm::metasequoia::v1::RbacCanRequest, ::google::protobuf::Empty>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::palm::metasequoia::v1::RbacCanRequest, ::google::protobuf::Empty>* streamer) {
+                       return this->StreamedCan(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_Can() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status Can(::grpc::ServerContext* /*context*/, const ::palm::metasequoia::v1::RbacCanRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedCan(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::metasequoia::v1::RbacCanRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_Has : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_Has() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::palm::metasequoia::v1::RbacHasRequest, ::google::protobuf::Empty>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::palm::metasequoia::v1::RbacHasRequest, ::google::protobuf::Empty>* streamer) {
+                       return this->StreamedHas(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_Has() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status Has(::grpc::ServerContext* /*context*/, const ::palm::metasequoia::v1::RbacHasRequest* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedHas(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::metasequoia::v1::RbacHasRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_GetRolesForUser : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetRolesForUser() {
-      ::grpc::Service::MarkMethodStreamed(0,
+      ::grpc::Service::MarkMethodStreamed(2,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacRolesResponse>(
             [this](::grpc::ServerContext* context,
@@ -5068,7 +5382,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetImplicitRolesForUser() {
-      ::grpc::Service::MarkMethodStreamed(1,
+      ::grpc::Service::MarkMethodStreamed(3,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacRolesResponse>(
             [this](::grpc::ServerContext* context,
@@ -5095,7 +5409,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_AddRolesForUser() {
-      ::grpc::Service::MarkMethodStreamed(2,
+      ::grpc::Service::MarkMethodStreamed(4,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::metasequoia::v1::RbacRolesForUserRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -5122,7 +5436,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DeleteRolesForUser() {
-      ::grpc::Service::MarkMethodStreamed(3,
+      ::grpc::Service::MarkMethodStreamed(5,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::metasequoia::v1::RbacRolesForUserRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -5149,7 +5463,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_AddPermissionsForRole() {
-      ::grpc::Service::MarkMethodStreamed(4,
+      ::grpc::Service::MarkMethodStreamed(6,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::metasequoia::v1::RbacPermissionsForRoleRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -5176,7 +5490,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DeletePermissionsForRole() {
-      ::grpc::Service::MarkMethodStreamed(5,
+      ::grpc::Service::MarkMethodStreamed(7,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::metasequoia::v1::RbacPermissionsForRoleRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -5203,7 +5517,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetPermissionsForUser() {
-      ::grpc::Service::MarkMethodStreamed(6,
+      ::grpc::Service::MarkMethodStreamed(8,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacPermissionsResponse>(
             [this](::grpc::ServerContext* context,
@@ -5230,7 +5544,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetImplicitPermissionsForUser() {
-      ::grpc::Service::MarkMethodStreamed(7,
+      ::grpc::Service::MarkMethodStreamed(9,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::metasequoia::v1::UserQueryRequest, ::palm::metasequoia::v1::RbacPermissionsResponse>(
             [this](::grpc::ServerContext* context,
@@ -5257,7 +5571,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_AddPermissionsForUser() {
-      ::grpc::Service::MarkMethodStreamed(8,
+      ::grpc::Service::MarkMethodStreamed(10,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::metasequoia::v1::RbacPermissionsForUserRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -5284,7 +5598,7 @@ class Rbac final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_DeletePermissionsForUser() {
-      ::grpc::Service::MarkMethodStreamed(9,
+      ::grpc::Service::MarkMethodStreamed(11,
         new ::grpc::internal::StreamedUnaryHandler<
           ::palm::metasequoia::v1::RbacPermissionsForUserRequest, ::google::protobuf::Empty>(
             [this](::grpc::ServerContext* context,
@@ -5305,9 +5619,9 @@ class Rbac final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedDeletePermissionsForUser(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::palm::metasequoia::v1::RbacPermissionsForUserRequest,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_GetRolesForUser<WithStreamedUnaryMethod_GetImplicitRolesForUser<WithStreamedUnaryMethod_AddRolesForUser<WithStreamedUnaryMethod_DeleteRolesForUser<WithStreamedUnaryMethod_AddPermissionsForRole<WithStreamedUnaryMethod_DeletePermissionsForRole<WithStreamedUnaryMethod_GetPermissionsForUser<WithStreamedUnaryMethod_GetImplicitPermissionsForUser<WithStreamedUnaryMethod_AddPermissionsForUser<WithStreamedUnaryMethod_DeletePermissionsForUser<Service > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_Can<WithStreamedUnaryMethod_Has<WithStreamedUnaryMethod_GetRolesForUser<WithStreamedUnaryMethod_GetImplicitRolesForUser<WithStreamedUnaryMethod_AddRolesForUser<WithStreamedUnaryMethod_DeleteRolesForUser<WithStreamedUnaryMethod_AddPermissionsForRole<WithStreamedUnaryMethod_DeletePermissionsForRole<WithStreamedUnaryMethod_GetPermissionsForUser<WithStreamedUnaryMethod_GetImplicitPermissionsForUser<WithStreamedUnaryMethod_AddPermissionsForUser<WithStreamedUnaryMethod_DeletePermissionsForUser<Service > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_GetRolesForUser<WithStreamedUnaryMethod_GetImplicitRolesForUser<WithStreamedUnaryMethod_AddRolesForUser<WithStreamedUnaryMethod_DeleteRolesForUser<WithStreamedUnaryMethod_AddPermissionsForRole<WithStreamedUnaryMethod_DeletePermissionsForRole<WithStreamedUnaryMethod_GetPermissionsForUser<WithStreamedUnaryMethod_GetImplicitPermissionsForUser<WithStreamedUnaryMethod_AddPermissionsForUser<WithStreamedUnaryMethod_DeletePermissionsForUser<Service > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Can<WithStreamedUnaryMethod_Has<WithStreamedUnaryMethod_GetRolesForUser<WithStreamedUnaryMethod_GetImplicitRolesForUser<WithStreamedUnaryMethod_AddRolesForUser<WithStreamedUnaryMethod_DeleteRolesForUser<WithStreamedUnaryMethod_AddPermissionsForRole<WithStreamedUnaryMethod_DeletePermissionsForRole<WithStreamedUnaryMethod_GetPermissionsForUser<WithStreamedUnaryMethod_GetImplicitPermissionsForUser<WithStreamedUnaryMethod_AddPermissionsForUser<WithStreamedUnaryMethod_DeletePermissionsForUser<Service > > > > > > > > > > > > StreamedService;
 };
 
 // ----------------------------------------------------------------------------
