@@ -230,7 +230,7 @@ function generate_metasequoia() {
         rm -r $target
     fi
     mkdir $target
-    cd $target
+    cd $targetYes
     protoc -I $PALM_PROTOCOLS -I $PROTOBUF_ROOT/include/google/protobuf \
         --go_out=. --go_opt=paths=source_relative \
         --go-grpc_out=. --go-grpc_opt=paths=source_relative \

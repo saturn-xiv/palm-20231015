@@ -99,6 +99,9 @@ func main() {
 	var opts []grpc.ServerOption
 
 	server := grpc.NewServer(opts...)
+	pb.RegisterUserServer(server, services.UserService{})
+	pb.RegisterRbacServer(server, services.RbacService{})
+	pb.RegisterSettingServer(server, services.SettingService{})
 	pb.RegisterLocaleServer(server, services.LocaleService{})
 	grpc_health_v1.RegisterHealthServer(server, health.NewServer())
 	server.Serve(socket)
