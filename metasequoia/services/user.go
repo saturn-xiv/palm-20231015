@@ -3,13 +3,22 @@ package services
 import (
 	"context"
 
+	"github.com/saturn_xiv/palm/metasequoia/env"
 	pb "github.com/saturn_xiv/palm/metasequoia/v2"
 	"google.golang.org/protobuf/types/known/durationpb"
 	"google.golang.org/protobuf/types/known/emptypb"
 )
 
 type UserService struct {
+	hmac *env.HMac
+	jwt  *env.Jwt
+	aes  *env.Aes
+
 	pb.UnimplementedUserServer
+}
+
+func NewUserService(aes *env.Aes, hmac *env.HMac, jwt *env.Jwt) UserService {
+	return UserService{hmac: hmac, jwt: jwt, aes: aes}
 }
 
 func (p UserService) SignInByPassword(_ctx context.Context, _in *pb.UserSignInByPasswordRequest) (*pb.UserSignInResponse, error) {

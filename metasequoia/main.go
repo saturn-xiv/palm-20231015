@@ -50,9 +50,12 @@ func main() {
 	logger.Println("load configuration from", config_file)
 
 	var config env.Config
-	_, err := toml.DecodeFile(config_file, &config)
-	if err != nil {
+	if _, err := toml.DecodeFile(config_file, &config); err != nil {
 		logger.Fatalln("parse file", err)
+	}
+	aes, hmac, jwt, err := config.OpenSecrets()
+	if err != nil {
+		logger.Fatalln(err)
 	}
 
 	watcher, err := rediswatcher.NewWatcher(config.Redis.Addr(), rediswatcher.WatcherOptions{
@@ -99,7 +102,7 @@ func main() {
 	var opts []grpc.ServerOption
 
 	server := grpc.NewServer(opts...)
-	pb.RegisterUserServer(server, services.UserService{})
+	pb.RegisterUserServer(server, services.NewUserService(aes, hmac, jwt))
 	pb.RegisterRbacServer(server, services.RbacService{})
 	pb.RegisterSettingServer(server, services.SettingService{})
 	pb.RegisterLocaleServer(server, services.LocaleService{})

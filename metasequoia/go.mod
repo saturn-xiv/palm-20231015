@@ -8,6 +8,7 @@ require (
 	github.com/casbin/gorm-adapter/v3 v3.20.0
 	github.com/casbin/redis-watcher/v2 v2.5.0
 	github.com/redis/go-redis/v9 v9.3.0
+	github.com/tink-crypto/tink-go/v2 v2.0.0
 	google.golang.org/grpc v1.59.0
 	google.golang.org/protobuf v1.31.0
 	gorm.io/driver/postgres v1.4.4
