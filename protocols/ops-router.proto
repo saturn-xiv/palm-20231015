@@ -1,0 +1,272 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.ops.router.v1";
+option go_package = "github.com/saturn_xiv/palm/ops/router/v2";
+package palm.ops.router.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+message Contact {
+  optional string phone = 1;
+  optional string wechat = 2;
+  optional string email = 3;
+  optional string address = 99;
+}
+
+// ----------------------------------------------------------------------------
+
+service Router {
+  rpc Reboot(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc Apply(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc Status(google.protobuf.Empty) returns (RouterStatusResponse) {}
+
+  rpc SetDns(Dns) returns (google.protobuf.Empty) {}
+  rpc SetWan(RouterSetWanRequest) returns (google.protobuf.Empty) {}
+  rpc SetWanPool(WanPool) returns (google.protobuf.Empty) {}
+  rpc SetLan(RouterSetLanRequest) returns (google.protobuf.Empty) {}
+  rpc SetDmz(RouterSetDmzRequest) returns (google.protobuf.Empty) {}
+  rpc CreateRule(Rule) returns (google.protobuf.Empty) {}
+  rpc UpdateRule(RouterIndexRuleResponse.Item) returns (google.protobuf.Empty) {
+  }
+  rpc IndexRule(google.protobuf.Empty) returns (RouterIndexRuleResponse) {}
+  rpc UpdateHost(RouterUpdateHostRequest) returns (google.protobuf.Empty) {}
+
+  rpc IndexUser(google.protobuf.Empty) returns (RouterIndexUserResponse) {}
+  rpc UpdateUser(RouterIndexUserResponse.Item) returns (google.protobuf.Empty) {
+  }
+  rpc CreateUser(RouterCreateUserRequest) returns (google.protobuf.Empty) {}
+}
+
+message RouterSetLanRequest {
+  Lan payload = 1;
+  bool enable = 2;
+}
+
+message RouterSetDmzRequest {
+  Dmz payload = 1;
+  bool enable = 2;
+}
+
+message RouterSetWanRequest {
+  Wan payload = 1;
+  bool enable = 2;
+}
+
+message WanPool {
+  message Item {
+    string device = 1;
+    uint32 weight = 2;
+  }
+  repeated Item items = 1;
+}
+
+message RouterCreateUserRequest {
+  string name = 1;
+  Contact contact = 2;
+}
+
+message RouterIndexUserResponse {
+  message Item {
+    int32 id = 1;
+    string name = 2;
+    Contact contact = 3;
+  }
+  repeated Item items = 1;
+}
+
+message RouterUpdateHostRequest {
+  int32 id = 1;
+  int32 user = 2;
+  string group = 3;
+  string ip = 4;
+  bool fixed = 5;
+  string zone = 8;
+  optional string location = 9;
+}
+
+message RouterIndexRuleResponse {
+  message Item {
+    int32 id = 1;
+    string name = 2;
+    string group = 3;
+
+    oneof payload {
+      Rule.InBound in = 11;
+      Rule.OutBound out = 12;
+      Rule.Nat nat = 13;
+    }
+  }
+  repeated Item items = 1;
+}
+
+message Host {
+  message Owner {
+    string name = 1;
+    Contact contact = 2;
+  }
+
+  int32 id = 1;
+  string name = 2;
+  string mac = 3;
+  string ip = 4;
+  bool fixed = 5;
+  string group = 9;
+  optional string location = 11;
+  Owner owner = 12;
+}
+
+message Rule {
+  enum Protocol {
+    Icmp = 0;
+    Tcp = 1;
+    Udp = 2;
+  }
+  message InBound {
+    string device = 1;
+    bool tcp = 2;
+    uint32 port = 3;
+
+    optional string source = 4;
+  }
+  message OutBound {
+    message Host {
+      string to = 1;
+      Protocol protocol = 2;
+      uint32 port = 3;
+    }
+    message Speed {
+      optional uint32 up = 1;
+      optional uint32 down = 2;
+    }
+    message Time {
+      google.protobuf.Timestamp from = 1;
+      google.protobuf.Timestamp to = 2;
+
+      bool monday = 11;
+      bool tuesday = 12;
+      bool wednesday = 13;
+      bool thursday = 14;
+      bool friday = 15;
+      bool saturday = 16;
+      bool sunday = 17;
+    }
+
+    oneof payload {
+      Host host = 1;
+      Speed speed = 2;
+      Time time = 3;
+    }
+  }
+  message Nat {
+    message Source {
+      string device = 1;
+      uint32 port = 3;
+    }
+    message Destination {
+      string ip = 1;
+      uint32 port = 3;
+    }
+    Source source = 1;
+    bool tcp = 2;
+    Destination destination = 3;
+  }
+
+  string name = 1;
+  string group = 2;
+
+  oneof payload {
+    InBound in = 11;
+    OutBound out = 12;
+    Nat nat = 13;
+  }
+}
+
+message RouterStatusResponse {
+  map<string, string> interfaces = 1;
+
+  Lan lan = 11;
+  Dmz dmz = 12;
+  Dns dns = 13;
+  repeated Wan wan = 14;
+  WanPool wan_pool = 15;
+
+  repeated Rule rules = 21;
+  repeated Host hosts = 22;
+
+  message Ip {
+    string address = 1;
+    string route = 2;
+    string rule = 3;
+  }
+  Ip ip = 97;
+  string firewall = 98;
+  google.protobuf.Duration uptime = 99;
+}
+
+message Lan {
+  string device = 1;
+  string mac = 2;
+  uint32 metric = 3;
+  string address = 11;
+}
+
+message Dmz {
+  string device = 1;
+  string mac = 2;
+  uint32 metric = 3;
+  string address = 11;
+}
+
+message Wan {
+  string device = 1;
+  uint32 metric = 2;
+  string name = 9;
+
+  string mac = 11;
+  oneof ip {
+    Dhcp dhcp = 21;
+    Static static = 22;
+  }
+  bool enable = 99;
+}
+
+message Dhcp { bool v6 = 1; };
+message Static {
+  string address = 1;
+  string gateway = 3;
+  string dns1 = 4;
+  optional string dns2 = 5;
+}
+
+message Dns { repeated string items = 1; }
+
+// ----------------------------------------------------------------------------
+
+service User {
+  rpc SignIn(UserSignInRequest) returns (UserSignInResponse) {}
+  rpc Refresh(google.protobuf.Duration) returns (UserSignInResponse) {}
+  rpc Update(UserUpdateRequest) returns (google.protobuf.Empty) {}
+  rpc SignOut(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc Logs(google.protobuf.Empty) returns (UserLogsResponse) {}
+}
+
+message UserProfile {
+  string nickname = 1;
+  string password = 2;
+}
+
+message UserSignInRequest {
+  UserProfile user = 1;
+  google.protobuf.Duration ttl = 9;
+}
+
+message UserSignInResponse { string token = 1; }
+
+message UserUpdateRequest {
+  UserProfile current = 1;
+  UserProfile new = 2;
+}
+
+message UserLogsResponse { repeated string items = 1; }

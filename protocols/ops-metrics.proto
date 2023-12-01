@@ -1,0 +1,43 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.ops.metrics.v1";
+option go_package = "github.com/saturn_xiv/palm/ops/metrics/v2";
+package palm.ops.metrics.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service Report {
+  rpc Heartbeat(ReportHeartbeatRequest) returns (google.protobuf.Empty) {}
+  rpc Journal(ReportJournalRequest) returns (google.protobuf.Empty) {}
+  rpc Nginx(ReportNginxRequest) returns (google.protobuf.Empty) {}
+}
+
+message ReportHeartbeatRequest { google.protobuf.Timestamp created_at = 11; }
+
+message ReportJournalRequest {
+  string hostname = 1;
+  string user = 2;
+  string group = 3;
+  string command = 4;
+  string message = 9;
+  google.protobuf.Timestamp created_at = 11;
+}
+
+message ReportNginxRequest {
+  message Access {
+    string client_ip = 1;
+    string method = 2;
+    string path = 3;
+    float version = 4;
+    uint32 status = 5;
+    uint64 body_bytes_sent = 6;
+    float request_time = 7;
+    optional string http_referer = 8;
+  }
+  oneof payload {
+    Access access = 1;
+    string error = 2;
+  }
+  google.protobuf.Timestamp created_at = 9;
+}

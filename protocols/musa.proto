@@ -1,0 +1,285 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.musa.v1";
+option go_package = "github.com/saturn_xiv/palm/musa/v2";
+package palm.musa.v1;
+
+import "google/protobuf/empty.proto";
+
+// ----------------------------------------------------------------------------
+enum WechatPayCurrency {
+  CNY = 0;
+}
+enum WechatPayNotifyAction {
+  TRANSCATION = 0;
+  REFUND = 1;
+}
+
+message WechatPayPrepayRequest {
+  message Amount {
+    int32 total = 1;
+    WechatPayCurrency currency = 2;
+  }
+
+  string app_id = 1;
+  optional string out_trade_no = 2;
+
+  optional string payer_open_id = 11;
+  Amount amount = 12;
+
+  string description = 98;
+  string notify_host = 99;
+}
+
+message WechatPayCloseOrderRequest {
+  string out_trade_no = 1;
+  string reason = 2;
+}
+
+message Error {
+  string code = 1;
+  string message = 2;
+}
+// ----------------------------------------------------------------------------
+
+service WechatPayNative {
+  rpc Prepay(WechatPayPrepayRequest)
+      returns (WechatPayNativeQrCodeUrlResponse) {}
+}
+
+message WechatPayNativeQrCodeUrlResponse {
+  string url = 1;
+  string out_trade_no = 2;
+}
+
+message WechatPayTradeResponse {
+  string trade_state = 1;
+  string trade_state_desc = 2;
+}
+
+message WechatPayQueryOrderByIdRequest { string transaction_id = 1; }
+message WechatPayQueryOrderByOutTradeNoRequest { string out_trade_no = 1; }
+
+// ----------------------------------------------------------------------------
+
+service WechatPayJsapi {
+  rpc Prepay(WechatPayPrepayRequest) returns (WechatPayJsapiPrepayIdResponse) {}
+  rpc QueryOrderByOutTradeNo(WechatPayQueryOrderByOutTradeNoRequest)
+      returns (WechatPayTradeResponse) {}
+  rpc QueryOrderById(WechatPayQueryOrderByIdRequest)
+      returns (WechatPayTradeResponse) {}
+  rpc CloseOrder(WechatPayCloseOrderRequest) returns (google.protobuf.Empty) {}
+}
+
+message WechatPayJsapiPrepayIdResponse {
+  string app_id = 1;
+  string time_stamp = 2;
+  string nonce_str = 3;
+  string package = 4;
+  string sign_type = 5;
+  string pay_sign = 6;
+
+  string out_trade_no = 11;
+}
+
+// ----------------------------------------------------------------------------
+
+service WechatPayBill {
+  rpc Trade(WechatPayTradeBillRequest) returns (WechatPayBillResponse) {}
+  rpc FundFlow(WechatPayFundFlowBillRequest) returns (WechatPayBillResponse) {}
+}
+
+enum WechatPayTarType {
+  GZIP = 0;
+}
+
+message WechatPayBillDate {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+}
+
+message WechatPayBillResponse { bytes content = 1; }
+message WechatPayTradeBillRequest {
+  enum BillType {
+    ALL = 0;
+    SUCCESS = 1;
+    REFUND = 2;
+  }
+  WechatPayBillDate bill_date = 1;
+  BillType bill_type = 2;
+}
+
+message WechatPayFundFlowBillRequest {
+  enum AccountType {
+    BASIC = 0;
+    OPERATION = 1;
+    FEES = 2;
+  }
+  WechatPayBillDate bill_date = 1;
+  AccountType account_type = 2;
+}
+
+// ----------------------------------------------------------------------------
+
+service WechatPayRefund {
+  rpc Create(WechatPayCreateRefundRequest) returns (WechatPayRefundResponse) {}
+  rpc Query(WechatPayQueryRefundRequest) returns (WechatPayRefundResponse) {}
+}
+
+message WechatPayCreateRefundRequest {
+  message Amount {
+    int32 total = 1;
+    int32 refund = 2;
+    WechatPayCurrency currency = 3;
+  }
+  string out_trade_no = 1;
+  string reason = 2;
+  Amount amount = 3;
+  string notify_host = 11;
+}
+message WechatPayQueryRefundRequest { string out_refund_no = 1; }
+message WechatPayRefundResponse {
+  string out_refund_no = 1;
+  string channel = 2;
+  string status = 3;
+  string user_received_account = 4;
+  string create_time = 99;
+}
+
+// ----------------------------------------------------------------------------
+
+service WechatPayTransfer {
+  rpc ExecuteBatch(WechatPayExecuteBatchTransferRequest)
+      returns (WechatPayExecuteBatchTransferResponse) {}
+  rpc QueryBatch(WechatPayQueryBatchTransferRequest)
+      returns (WechatPayQueryBatchTransferResponse) {}
+  rpc QueryDetail(WechatPayQueryTransferDetailRequest)
+      returns (WechatPayQueryTransferDetailResponse) {}
+  rpc GetBillReceipt(WechatPayTransferGetBillReceiptRequest)
+      returns (WechatPayTransferGetReceiptResponse) {}
+  rpc GetElectronicReceipt(WechatPayTransferGetElectronicReceiptRequest)
+      returns (WechatPayTransferGetReceiptResponse) {}
+}
+
+message WechatPayTransferGetElectronicReceiptRequest {
+  enum AcceptType {
+    BATCH_TRANSFER = 0;
+    TRANSFER_TO_POCKET = 1;
+    TRANSFER_TO_BANK = 2;
+  }
+  AcceptType accept_type = 1;
+  optional string out_batch_no = 2;
+  string out_detail_no = 3;
+}
+
+message WechatPayTransferGetReceiptResponse { bytes payload = 1; }
+
+message WechatPayTransferGetBillReceiptRequest { string out_batch_no = 1; }
+
+message WechatPayExecuteBatchTransferRequest {
+  message Batch {
+    string name = 1;
+    string remark = 2;
+    optional string out_no = 3;
+  }
+
+  message Detail {
+    string open_id = 1;
+    string username = 2;
+    int64 amount = 3;
+    string remark = 4;
+  }
+  string app_id = 1;
+  Batch batch = 2;
+  repeated Detail details = 3;
+
+  string scene_id = 9;
+}
+message WechatPayExecuteBatchTransferResponse {
+  message Detail {
+    string open_id = 1;
+    string out_detail_no = 2;
+  }
+  message Succeeded {
+    string batch_id = 1;
+    string create_time = 2;
+  }
+
+  string out_batch_no = 1;
+  repeated Detail details = 2;
+
+  oneof payload {
+    Succeeded succeeded = 11;
+    Error error = 12;
+  }
+}
+message WechatPayQueryBatchTransferRequest {
+  enum DetailStatus {
+    ALL = 0;
+    SUCCESS = 1;
+    WAIT_PAY = 2;
+    FAIL = 9;
+  }
+  string out_batch_no = 1;
+  int32 offset = 2;
+  int32 limit = 3;
+  DetailStatus detail_status = 9;
+}
+message WechatPayQueryBatchTransferResponse {
+  message Detail {
+    string detail_id = 1;
+    string out_detail_no = 2;
+    string status = 3;
+  }
+  message Batch {
+    string app_id = 1;
+    string mch_id = 2;
+    string transfer_scene_id = 9;
+
+    string batch_id = 11;
+    string out_batch_no = 12;
+    string batch_status = 13;
+    string batch_type = 14;
+    string batch_name = 15;
+    string batch_remark = 16;
+
+    optional string close_reason = 21;
+    int64 total_amount = 22;
+    int32 total_num = 23;
+    optional string create_time = 24;
+    optional string update_time = 25;
+    optional int64 success_amount = 26;
+    optional int32 success_num = 27;
+    optional int64 fail_amount = 28;
+    optional int32 fail_num = 29;
+  }
+
+  Batch batch = 1;
+  repeated Detail details = 9;
+}
+
+message WechatPayQueryTransferDetailRequest {
+  string out_batch_no = 1;
+  string out_detail_no = 2;
+}
+
+message WechatPayQueryTransferDetailResponse {
+  string app_id = 1;
+  string mch_id = 2;
+  string open_id = 3;
+  optional string user_name = 4;
+
+  string batch_id = 11;
+  string out_batch_no = 12;
+  string out_detail_no = 13;
+  string detail_id = 14;
+  string detail_status = 15;
+  int64 transfer_amount = 16;
+  string transfer_remark = 17;
+  optional string fail_reason = 18;
+  string initiate_time = 19;
+  string update_time = 20;
+}
+
+// ----------------------------------------------------------------------------

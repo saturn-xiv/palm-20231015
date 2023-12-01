@@ -1,0 +1,11 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.babel.v1";
+option go_package = "github.com/saturn_xiv/palm/babel/v2";
+package palm.babel.v1;
+
+service Pali {}
+
+service Tibetan {}
+
+service Sanskrit {}

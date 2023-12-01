@@ -1,0 +1,7 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.github.saturn_xiv.palm.plugins.cscd.v1";
+option go_package = "github.com/saturn_xiv/palm/cscd/v2";
+package palm.cscd.v1;
+
+service Section {}
