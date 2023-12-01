@@ -58,7 +58,7 @@ func (p *Jwt) Sign(issuer string, subject string, audience string, claims map[st
 }
 
 func newJwt(file string, secret tink.AEAD) (*Jwt, error) {
-	handle, err := load_key(file, secret)
+	handle, err := restore_key(file, secret)
 	if err != nil {
 		return nil, err
 	}

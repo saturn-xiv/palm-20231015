@@ -18,7 +18,7 @@ func (p *HMac) Verify(code []byte, plain []byte) error {
 }
 
 func newHMac(file string, secret tink.AEAD) (*HMac, error) {
-	handle, err := load_key(file, secret)
+	handle, err := restore_key(file, secret)
 	if err != nil {
 		return nil, err
 	}

@@ -9,6 +9,7 @@ import (
 
 	"github.com/redis/go-redis/v9"
 	"github.com/tink-crypto/tink-go/v2/aead"
+	"github.com/tink-crypto/tink-go/v2/insecurecleartextkeyset"
 	"github.com/tink-crypto/tink-go/v2/jwt"
 	"github.com/tink-crypto/tink-go/v2/keyset"
 	"github.com/tink-crypto/tink-go/v2/mac"
@@ -16,7 +17,6 @@ import (
 
 type Config struct {
 	// openssl rand -base64 32
-	Secrets    string     `toml:"secrets"`
 	Redis      Redis      `toml:"redis"`
 	Postgresql PostgreSql `toml:"postgresql"`
 	RabbitMq   RabbitMq   `toml:"rabbitmq"`
@@ -28,7 +28,6 @@ func (p *Config) OpenSecrets() (*Aes, *HMac, *Jwt, error) {
 	hmac_key_file_name := "hmac.bin"
 	aes_key_file_name := "aes.bin"
 	if _, err := os.Stat(master_key_file_name); errors.Is(err, os.ErrNotExist) {
-
 		master_key, err := keyset.NewHandle(aead.AES256GCMKeyTemplate())
 		if err != nil {
 			return nil, nil, nil, err
@@ -47,7 +46,7 @@ func (p *Config) OpenSecrets() (*Aes, *HMac, *Jwt, error) {
 			defer file.Close()
 
 			writer := keyset.NewBinaryWriter(file)
-			if err = master_key.WriteWithNoSecrets(writer); err != nil {
+			if err = insecurecleartextkeyset.Write(master_key, writer); err != nil {
 				return nil, nil, nil, err
 			}
 			if err = os.Chmod(master_key_file_name, 0400); err != nil {
@@ -55,16 +54,16 @@ func (p *Config) OpenSecrets() (*Aes, *HMac, *Jwt, error) {
 			}
 		}
 		log.Printf("generate a new aes key file %s", aes_key_file_name)
-		if err = store_key(aes_key_file_name, secret, aead.AES256GCMKeyTemplate()); err != nil {
+		if err = dump_key(aes_key_file_name, secret, aead.AES256GCMKeyTemplate()); err != nil {
 			return nil, nil, nil, err
 		}
 		log.Printf("generate a new hmac key file %s", hmac_key_file_name)
-		if err = store_key(hmac_key_file_name, secret, mac.HMACSHA512Tag512KeyTemplate()); err != nil {
+		if err = dump_key(hmac_key_file_name, secret, mac.HMACSHA512Tag512KeyTemplate()); err != nil {
 			return nil, nil, nil, err
 		}
 
 		log.Printf("generate a new jwt key file %s", jwt_key_file_name)
-		if err = store_key(jwt_key_file_name, secret, jwt.HS512Template()); err != nil {
+		if err = dump_key(jwt_key_file_name, secret, jwt.HS512Template()); err != nil {
 			return nil, nil, nil, err
 		}
 
@@ -74,8 +73,10 @@ func (p *Config) OpenSecrets() (*Aes, *HMac, *Jwt, error) {
 	if err != nil {
 		return nil, nil, nil, err
 	}
+	defer master_key_file.Close()
+
 	master_key_file_reader := keyset.NewBinaryReader(master_key_file)
-	master_key, err := keyset.ReadWithNoSecrets(master_key_file_reader)
+	master_key, err := insecurecleartextkeyset.Read(master_key_file_reader)
 	if err != nil {
 		return nil, nil, nil, err
 	}

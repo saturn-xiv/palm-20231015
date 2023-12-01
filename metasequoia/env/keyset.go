@@ -9,7 +9,7 @@ import (
 	"github.com/tink-crypto/tink-go/v2/tink"
 )
 
-func load_key(name string, secret tink.AEAD) (*keyset.Handle, error) {
+func restore_key(name string, secret tink.AEAD) (*keyset.Handle, error) {
 	file, err := os.Open(name)
 	if err != nil {
 		return nil, err
@@ -22,7 +22,7 @@ func load_key(name string, secret tink.AEAD) (*keyset.Handle, error) {
 	return handle, nil
 }
 
-func store_key(name string, secret tink.AEAD, key *tinkpb.KeyTemplate) error {
+func dump_key(name string, secret tink.AEAD, key *tinkpb.KeyTemplate) error {
 	ks, err := keyset.NewHandle(key)
 	if err != nil {
 		return err

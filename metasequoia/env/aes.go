@@ -24,7 +24,7 @@ func (p *Aes) Decrypt(code []byte, salt []byte) ([]byte, error) {
 }
 
 func newAes(file string, secret tink.AEAD) (*Aes, error) {
-	handle, err := load_key(file, secret)
+	handle, err := restore_key(file, secret)
 	if err != nil {
 		return nil, err
 	}
