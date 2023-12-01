@@ -3,6 +3,7 @@ package services
 import (
 	"context"
 
+	"github.com/casbin/casbin/v2"
 	"github.com/saturn_xiv/palm/env"
 	pb "github.com/saturn_xiv/palm/metasequoia/v2"
 	"google.golang.org/protobuf/types/known/durationpb"
@@ -10,15 +11,16 @@ import (
 )
 
 type UserService struct {
-	hmac *env.HMac
-	jwt  *env.Jwt
-	aes  *env.Aes
+	hmac     *env.HMac
+	jwt      *env.Jwt
+	aes      *env.Aes
+	enforcer *casbin.Enforcer
 
 	pb.UnimplementedUserServer
 }
 
-func NewUserService(aes *env.Aes, hmac *env.HMac, jwt *env.Jwt) UserService {
-	return UserService{hmac: hmac, jwt: jwt, aes: aes}
+func NewUserService(aes *env.Aes, hmac *env.HMac, jwt *env.Jwt, enforcer *casbin.Enforcer) UserService {
+	return UserService{hmac: hmac, jwt: jwt, aes: aes, enforcer: enforcer}
 }
 
 func (p UserService) SignInByPassword(_ctx context.Context, _in *pb.UserSignInByPasswordRequest) (*pb.UserSignInResponse, error) {

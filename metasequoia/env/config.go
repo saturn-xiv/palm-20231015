@@ -2,7 +2,6 @@ package env
 
 import (
 	"errors"
-	"fmt"
 	"os"
 
 	log "github.com/sirupsen/logrus"
@@ -103,18 +102,4 @@ func (p *Config) OpenSecrets() (*Aes, *HMac, *Jwt, error) {
 
 	return aes, hmac, jwt, nil
 
-}
-
-type PostgreSql struct {
-	Host     string `toml:"host"`
-	Port     uint16 `toml:"port"`
-	DbName   string `toml:"dbname"`
-	User     string `toml:"user"`
-	Password string `toml:"password"`
-}
-
-func (p *PostgreSql) Url() string {
-	return fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable TimeZone=UTC",
-		p.Host, p.Port, p.User, p.Password, p.DbName,
-	)
 }

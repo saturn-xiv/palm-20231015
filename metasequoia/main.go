@@ -8,19 +8,14 @@ import (
 	"net"
 	"net/http"
 	"os"
-	"strings"
 
 	"github.com/BurntSushi/toml"
 	"github.com/casbin/casbin/v2"
-	gormadapter "github.com/casbin/gorm-adapter/v3"
-	rediswatcher "github.com/casbin/redis-watcher/v2"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
 
 	"github.com/saturn_xiv/palm/env"
 	metasequoia_controllers "github.com/saturn_xiv/palm/metasequoia/controllers"
@@ -29,10 +24,6 @@ import (
 	metasequoia_pb "github.com/saturn_xiv/palm/metasequoia/v2"
 	"github.com/saturn_xiv/palm/queue"
 )
-
-func updateCallback(msg string) {
-	log.Info(msg)
-}
 
 func main() {
 	var debug bool
@@ -80,38 +71,19 @@ func main() {
 		log.Fatal(err)
 	}
 
-	watcher, err := rediswatcher.NewWatcherWithCluster(strings.Join(config.Redis.Addrs(), ","), rediswatcher.WatcherOptions{
-		Channel:    config.Redis.Namespace + "-casbin-watcher",
-		IgnoreSelf: false,
-	})
-	if err != nil {
-		log.Fatalf("create casbin watcher: %s", err)
-	}
-
-	pg_db, err := gorm.Open(postgres.Open(config.Postgresql.Url()), &gorm.Config{})
+	pg_db, err := config.Postgresql.Open()
 	if err != nil {
 		log.Fatalf("open database: %s", err)
 	}
-	adapter, err := gormadapter.NewAdapterByDB(pg_db)
+
+	redis_casbin_watcher, err := config.Redis.CasbinWatcher()
 	if err != nil {
-		log.Fatalf("create casbin adapter: %s", err)
-	}
-	enforcer, err := casbin.NewEnforcer("rbac_model.conf", adapter)
-	if err != nil {
-		log.Fatalf("create casbin enforcer: %s", err)
-	}
-	err = enforcer.SetWatcher(watcher)
-	if err != nil {
-		log.Fatalf("set casbin watcher: %s", err)
-	}
-	err = watcher.SetUpdateCallback(updateCallback)
-	if err != nil {
-		log.Fatalf("set casbin update callback: %s", err)
+		log.Fatalf("open casbin watcher: %s", err)
 	}
 
-	err = enforcer.LoadPolicy()
+	enforcer, err := env.OpenCasbin(pg_db, redis_casbin_watcher, "rbac_model.conf")
 	if err != nil {
-		log.Fatalf("load casbin policy: %s", err)
+		log.Fatalf("open casbin enforcer: %s", err)
 	}
 
 	if http_server {
@@ -121,7 +93,7 @@ func main() {
 		}
 	}
 	if rpc_server {
-		if err = start_rpc(port, aes, hmac, jwt); err != nil {
+		if err = start_rpc(port, aes, hmac, jwt, enforcer); err != nil {
 			log.Fatalf("start gRPC server: %s", err)
 			return
 		}
@@ -167,7 +139,7 @@ func start_http(port int) error {
 	return router.Run(address)
 }
 
-func start_rpc(port int, aes *env.Aes, hmac *env.HMac, jwt *env.Jwt) error {
+func start_rpc(port int, aes *env.Aes, hmac *env.HMac, jwt *env.Jwt, enforcer *casbin.Enforcer) error {
 	network := "tcp"
 	address := fmt.Sprintf("0.0.0.0:%d", port)
 	log.Infof("start gRPC on %s://%s", network, address)
@@ -178,7 +150,7 @@ func start_rpc(port int, aes *env.Aes, hmac *env.HMac, jwt *env.Jwt) error {
 	var opts []grpc.ServerOption
 
 	server := grpc.NewServer(opts...)
-	metasequoia_pb.RegisterUserServer(server, metasequoia_services.NewUserService(aes, hmac, jwt))
+	metasequoia_pb.RegisterUserServer(server, metasequoia_services.NewUserService(aes, hmac, jwt, enforcer))
 	metasequoia_pb.RegisterRbacServer(server, metasequoia_services.RbacService{})
 	metasequoia_pb.RegisterSettingServer(server, metasequoia_services.SettingService{})
 	metasequoia_pb.RegisterLocaleServer(server, metasequoia_services.LocaleService{})
