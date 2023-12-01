@@ -3,7 +3,7 @@ package services
 import (
 	"context"
 
-	"github.com/saturn_xiv/palm/metasequoia/env"
+	"github.com/saturn_xiv/palm/env"
 	pb "github.com/saturn_xiv/palm/metasequoia/v2"
 	"google.golang.org/protobuf/types/known/durationpb"
 	"google.golang.org/protobuf/types/known/emptypb"

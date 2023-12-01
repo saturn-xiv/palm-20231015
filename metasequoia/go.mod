@@ -1,4 +1,4 @@
-module github.com/saturn_xiv/palm/metasequoia
+module github.com/saturn_xiv/palm
 
 go 1.21.4
 

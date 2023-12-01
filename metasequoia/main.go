@@ -17,9 +17,9 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 
-	"github.com/saturn_xiv/palm/metasequoia/env"
-	"github.com/saturn_xiv/palm/metasequoia/services"
-	pb "github.com/saturn_xiv/palm/metasequoia/v2"
+	"github.com/saturn_xiv/palm/env"
+	metasequoia_services "github.com/saturn_xiv/palm/metasequoia/services"
+	metasequoia_pb "github.com/saturn_xiv/palm/metasequoia/v2"
 )
 
 func updateCallback(msg string) {
@@ -102,10 +102,11 @@ func main() {
 	var opts []grpc.ServerOption
 
 	server := grpc.NewServer(opts...)
-	pb.RegisterUserServer(server, services.NewUserService(aes, hmac, jwt))
-	pb.RegisterRbacServer(server, services.RbacService{})
-	pb.RegisterSettingServer(server, services.SettingService{})
-	pb.RegisterLocaleServer(server, services.LocaleService{})
+	metasequoia_pb.RegisterUserServer(server, metasequoia_services.NewUserService(aes, hmac, jwt))
+	metasequoia_pb.RegisterRbacServer(server, metasequoia_services.RbacService{})
+	metasequoia_pb.RegisterSettingServer(server, metasequoia_services.SettingService{})
+	metasequoia_pb.RegisterLocaleServer(server, metasequoia_services.LocaleService{})
+
 	grpc_health_v1.RegisterHealthServer(server, health.NewServer())
 	server.Serve(socket)
 }
