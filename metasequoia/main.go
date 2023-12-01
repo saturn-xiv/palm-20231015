@@ -8,6 +8,7 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/BurntSushi/toml"
 	"github.com/casbin/casbin/v2"
@@ -37,12 +38,14 @@ func main() {
 	var port int
 	var http_server bool
 	var rpc_server bool
+	var worker string
 	var config_file string
 
 	flag.BoolVar(&debug, "debug", false, "run on debug mode")
 	flag.BoolVar(&version, "version", false, "show version")
 	flag.BoolVar(&rpc_server, "rpc-server", false, "start a gRPC server")
 	flag.BoolVar(&http_server, "http-server", false, "start a HTTP server")
+	flag.StringVar(&worker, "worker", env.QueueName(metasequoia_pb.EmailTask{}), "start a RabbitMQ consumer")
 	flag.IntVar(&port, "port", 8080, "listening port")
 	flag.StringVar(&config_file, "config", "config.toml", "configuration file")
 	flag.Parse()
@@ -68,57 +71,56 @@ func main() {
 
 	var config env.Config
 	if _, err := toml.DecodeFile(config_file, &config); err != nil {
-		log.Fatal("parse file", err)
+		log.Fatalf("parse file: %s", err)
 	}
 	aes, hmac, jwt, err := config.OpenSecrets()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	watcher, err := rediswatcher.NewWatcher(config.Redis.Addr(), rediswatcher.WatcherOptions{
-		Options:    config.Redis.Options(),
-		Channel:    "/casbin",
+	watcher, err := rediswatcher.NewWatcherWithCluster(strings.Join(config.Redis.Addrs(), ","), rediswatcher.WatcherOptions{
+		Channel:    config.Redis.Namespace + "-casbin-watcher",
 		IgnoreSelf: false,
 	})
 	if err != nil {
-		log.Fatal("create casbin watcher", err)
+		log.Fatalf("create casbin watcher: %s", err)
 	}
 
 	pg_db, err := gorm.Open(postgres.Open(config.Postgresql.Url()), &gorm.Config{})
 	if err != nil {
-		log.Fatal("open database", err)
+		log.Fatalf("open database: %s", err)
 	}
 	adapter, err := gormadapter.NewAdapterByDB(pg_db)
 	if err != nil {
-		log.Fatal("create casbin adapter", err)
+		log.Fatalf("create casbin adapter: %s", err)
 	}
 	enforcer, err := casbin.NewEnforcer("rbac_model.conf", adapter)
 	if err != nil {
-		log.Fatal("create casbin enforcer", err)
+		log.Fatalf("create casbin enforcer: %s", err)
 	}
 	err = enforcer.SetWatcher(watcher)
 	if err != nil {
-		log.Fatal("set casbin watcher", err)
+		log.Fatalf("set casbin watcher: %s", err)
 	}
 	err = watcher.SetUpdateCallback(updateCallback)
 	if err != nil {
-		log.Fatal("set casbin update callback", err)
+		log.Fatalf("set casbin update callback: %s", err)
 	}
 
 	err = enforcer.LoadPolicy()
 	if err != nil {
-		log.Fatal("load casbin policy", err)
+		log.Fatalf("load casbin policy: %s", err)
 	}
 
 	if http_server {
 		if err = start_http(port); err != nil {
-			log.Fatal(err)
+			log.Fatalf("start HTTP server: %s", err)
 			return
 		}
 	}
 	if rpc_server {
 		if err = start_rpc(port, aes, hmac, jwt); err != nil {
-			log.Fatal(err)
+			log.Fatalf("start gRPC server: %s", err)
 			return
 		}
 	}

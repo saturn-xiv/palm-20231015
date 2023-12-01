@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"reflect"
 
 	"github.com/redis/go-redis/v9"
 	log "github.com/sirupsen/logrus"
@@ -108,22 +109,25 @@ func (p *Config) OpenSecrets() (*Aes, *HMac, *Jwt, error) {
 }
 
 type Redis struct {
+	Nodes     []RedisNode `toml:"nodes"`
+	Namespace string      `toml:"namespace"`
+}
+
+func (p *Redis) Addrs() []string {
+	items := make([]string, 0)
+	for _, it := range p.Nodes {
+		items = append(items, fmt.Sprintf("%s:%d", it.Host, it.Port))
+	}
+	return items
+}
+
+func (p *Redis) Options() redis.ClusterOptions {
+	return redis.ClusterOptions{Addrs: p.Addrs()}
+}
+
+type RedisNode struct {
 	Host string `toml:"host"`
 	Port uint16 `toml:"port"`
-	Db   int    `toml:"db"`
-}
-
-func (p *Redis) Addr() string {
-	return fmt.Sprintf("%s:%d", p.Host, p.Port)
-}
-
-func (p *Redis) Options() redis.Options {
-	return redis.Options{
-		Network:  "tcp",
-		Password: "",
-		Addr:     p.Addr(),
-		DB:       p.Db,
-	}
 }
 
 type PostgreSql struct {
@@ -152,4 +156,9 @@ func RandomBytes(len int) []byte {
 	buf := make([]byte, len)
 	rand.Read(buf)
 	return buf
+}
+
+func QueueName(i any) string {
+	t := reflect.TypeOf(i)
+	return t.PkgPath() + "." + t.Name()
 }
