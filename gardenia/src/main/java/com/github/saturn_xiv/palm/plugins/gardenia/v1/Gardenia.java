@@ -24,8 +24,9 @@ public final class Gardenia {
   static {
     java.lang.String[] descriptorData = {
       "\n\016gardenia.proto\022\020palm.gardenia.v12\n\n\010Op" +
-      "enFireB2\n.com.github.saturn_xiv.palm.plu" +
-      "gins.gardenia.v1P\001b\006proto3"
+      "enFireBZ\n.com.github.saturn_xiv.palm.plu" +
+      "gins.gardenia.v1P\001Z&github.com/saturn_xi" +
+      "v/palm/gardenia/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

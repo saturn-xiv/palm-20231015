@@ -69,6 +69,24 @@ function generate_morus() {
         --grpc_out=grpc_js:$target $PALM_PROTOCOLS/morus.proto
 }
 
+function generate_gardenia() {
+    cd $WORKSPACE
+    local target=gardenia/src/main/java
+
+    echo "generate gRPC for gardenia"
+    local gardenia_target=$target/com/github/saturn_xiv/palm/plugins/gardenia/v1
+    if [ -d $gardenia_target ]
+    then
+        rm -r $gardenia_target
+    fi
+    $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
+        -I $PROTOBUF_ROOT/include/google/protobuf \
+        --java_out=$target --grpc_out=$target \
+        --plugin=protoc-gen-grpc=$PROTOBUF_ROOT/bin/grpc_java_plugin \
+        $PALM_PROTOCOLS/gardenia.proto
+
+}
+
 function generate_lily() {
     echo "generate code for lily"
     local target=$WORKSPACE/lily/palm
@@ -183,6 +201,7 @@ generate_typescript $WORKSPACE/sdk/typescript
 generate_musa
 generate_morus
 generate_lily
+generate_gardenia
 generate_metasequoia
 
 # ----------------------------------------------------------
