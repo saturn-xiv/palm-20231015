@@ -23,256 +23,6 @@ namespace _fl = ::google::protobuf::internal::field_layout;
 namespace palm {
 namespace lemon {
 namespace v1 {
-        template <typename>
-PROTOBUF_CONSTEXPR SiteLayoutRequest::SiteLayoutRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.locale_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.theme_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteLayoutRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteLayoutRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteLayoutRequestDefaultTypeInternal() {}
-  union {
-    SiteLayoutRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteLayoutRequestDefaultTypeInternal _SiteLayoutRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteLayoutResponse::SiteLayoutResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.layout_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
-struct SiteLayoutResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteLayoutResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteLayoutResponseDefaultTypeInternal() {}
-  union {
-    SiteLayoutResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteLayoutResponseDefaultTypeInternal _SiteLayoutResponse_default_instance_;
-      template <typename>
-PROTOBUF_CONSTEXPR SiteRssResponse_ItemsEntry_DoNotUse::SiteRssResponse_ItemsEntry_DoNotUse(::_pbi::ConstantInitialized) {}
-struct SiteRssResponse_ItemsEntry_DoNotUseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteRssResponse_ItemsEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteRssResponse_ItemsEntry_DoNotUseDefaultTypeInternal() {}
-  union {
-    SiteRssResponse_ItemsEntry_DoNotUse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteRssResponse_ItemsEntry_DoNotUseDefaultTypeInternal _SiteRssResponse_ItemsEntry_DoNotUse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteRssResponse::SiteRssResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /* decltype(_impl_.items_) */ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteRssResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteRssResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteRssResponseDefaultTypeInternal() {}
-  union {
-    SiteRssResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteRssResponseDefaultTypeInternal _SiteRssResponse_default_instance_;
-      template <typename>
-PROTOBUF_CONSTEXPR SiteSitemapResponse_ItemsEntry_DoNotUse::SiteSitemapResponse_ItemsEntry_DoNotUse(::_pbi::ConstantInitialized) {}
-struct SiteSitemapResponse_ItemsEntry_DoNotUseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteSitemapResponse_ItemsEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteSitemapResponse_ItemsEntry_DoNotUseDefaultTypeInternal() {}
-  union {
-    SiteSitemapResponse_ItemsEntry_DoNotUse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSitemapResponse_ItemsEntry_DoNotUseDefaultTypeInternal _SiteSitemapResponse_ItemsEntry_DoNotUse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteSitemapResponse::SiteSitemapResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /* decltype(_impl_.items_) */ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteSitemapResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteSitemapResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteSitemapResponseDefaultTypeInternal() {}
-  union {
-    SiteSitemapResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSitemapResponseDefaultTypeInternal _SiteSitemapResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteShowPageRequest::SiteShowPageRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.slug_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteShowPageRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteShowPageRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteShowPageRequestDefaultTypeInternal() {}
-  union {
-    SiteShowPageRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteShowPageRequestDefaultTypeInternal _SiteShowPageRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteShowPageResponse_Link::SiteShowPageResponse_Link(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.slug_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteShowPageResponse_LinkDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteShowPageResponse_LinkDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteShowPageResponse_LinkDefaultTypeInternal() {}
-  union {
-    SiteShowPageResponse_Link _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteShowPageResponse_LinkDefaultTypeInternal _SiteShowPageResponse_Link_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteShowPageResponse::SiteShowPageResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.related_)*/ {},
-      /*decltype(_impl_.page_)*/ nullptr,
-    } {}
-struct SiteShowPageResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteShowPageResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteShowPageResponseDefaultTypeInternal() {}
-  union {
-    SiteShowPageResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteShowPageResponseDefaultTypeInternal _SiteShowPageResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteHomePageRequest::SiteHomePageRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.locale_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.theme_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteHomePageRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteHomePageRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteHomePageRequestDefaultTypeInternal() {}
-  union {
-    SiteHomePageRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteHomePageRequestDefaultTypeInternal _SiteHomePageRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteHomePageResponse::SiteHomePageResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.payload_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
-struct SiteHomePageResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteHomePageResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteHomePageResponseDefaultTypeInternal() {}
-  union {
-    SiteHomePageResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteHomePageResponseDefaultTypeInternal _SiteHomePageResponse_default_instance_;
-      template <typename>
-PROTOBUF_CONSTEXPR CleanWhiteLayout::CleanWhiteLayout(::_pbi::ConstantInitialized) {}
-struct CleanWhiteLayoutDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR CleanWhiteLayoutDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~CleanWhiteLayoutDefaultTypeInternal() {}
-  union {
-    CleanWhiteLayout _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CleanWhiteLayoutDefaultTypeInternal _CleanWhiteLayout_default_instance_;
-      template <typename>
-PROTOBUF_CONSTEXPR DocsyLayout::DocsyLayout(::_pbi::ConstantInitialized) {}
-struct DocsyLayoutDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DocsyLayoutDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DocsyLayoutDefaultTypeInternal() {}
-  union {
-    DocsyLayout _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DocsyLayoutDefaultTypeInternal _DocsyLayout_default_instance_;
-      template <typename>
-PROTOBUF_CONSTEXPR GantryLayout::GantryLayout(::_pbi::ConstantInitialized) {}
-struct GantryLayoutDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR GantryLayoutDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~GantryLayoutDefaultTypeInternal() {}
-  union {
-    GantryLayout _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GantryLayoutDefaultTypeInternal _GantryLayout_default_instance_;
-      template <typename>
-PROTOBUF_CONSTEXPR HinodeLayout::HinodeLayout(::_pbi::ConstantInitialized) {}
-struct HinodeLayoutDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR HinodeLayoutDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~HinodeLayoutDefaultTypeInternal() {}
-  union {
-    HinodeLayout _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HinodeLayoutDefaultTypeInternal _HinodeLayout_default_instance_;
-      template <typename>
-PROTOBUF_CONSTEXPR UniversalLayout::UniversalLayout(::_pbi::ConstantInitialized) {}
-struct UniversalLayoutDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UniversalLayoutDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UniversalLayoutDefaultTypeInternal() {}
-  union {
-    UniversalLayout _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UniversalLayoutDefaultTypeInternal _UniversalLayout_default_instance_;
       template <typename>
 PROTOBUF_CONSTEXPR XCorporationLayout::XCorporationLayout(::_pbi::ConstantInitialized) {}
 struct XCorporationLayoutDefaultTypeInternal {
@@ -286,41 +36,185 @@ struct XCorporationLayoutDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 XCorporationLayoutDefaultTypeInternal _XCorporationLayout_default_instance_;
       template <typename>
-PROTOBUF_CONSTEXPR CleanWhiteHomePage::CleanWhiteHomePage(::_pbi::ConstantInitialized) {}
-struct CleanWhiteHomePageDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR CleanWhiteHomePageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~CleanWhiteHomePageDefaultTypeInternal() {}
+PROTOBUF_CONSTEXPR XCorporationHomePage::XCorporationHomePage(::_pbi::ConstantInitialized) {}
+struct XCorporationHomePageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR XCorporationHomePageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~XCorporationHomePageDefaultTypeInternal() {}
   union {
-    CleanWhiteHomePage _instance;
+    XCorporationHomePage _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CleanWhiteHomePageDefaultTypeInternal _CleanWhiteHomePage_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 XCorporationHomePageDefaultTypeInternal _XCorporationHomePage_default_instance_;
       template <typename>
-PROTOBUF_CONSTEXPR DocsyHomePage::DocsyHomePage(::_pbi::ConstantInitialized) {}
-struct DocsyHomePageDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DocsyHomePageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DocsyHomePageDefaultTypeInternal() {}
+PROTOBUF_CONSTEXPR UniversalLayout::UniversalLayout(::_pbi::ConstantInitialized) {}
+struct UniversalLayoutDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UniversalLayoutDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UniversalLayoutDefaultTypeInternal() {}
   union {
-    DocsyHomePage _instance;
+    UniversalLayout _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DocsyHomePageDefaultTypeInternal _DocsyHomePage_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UniversalLayoutDefaultTypeInternal _UniversalLayout_default_instance_;
       template <typename>
-PROTOBUF_CONSTEXPR GantryHomePage::GantryHomePage(::_pbi::ConstantInitialized) {}
-struct GantryHomePageDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR GantryHomePageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~GantryHomePageDefaultTypeInternal() {}
+PROTOBUF_CONSTEXPR UniversalHomePage::UniversalHomePage(::_pbi::ConstantInitialized) {}
+struct UniversalHomePageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UniversalHomePageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UniversalHomePageDefaultTypeInternal() {}
   union {
-    GantryHomePage _instance;
+    UniversalHomePage _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GantryHomePageDefaultTypeInternal _GantryHomePage_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UniversalHomePageDefaultTypeInternal _UniversalHomePage_default_instance_;
+
+inline constexpr Sitemap_Index::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : links_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Sitemap_Index::Sitemap_Index(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct Sitemap_IndexDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Sitemap_IndexDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Sitemap_IndexDefaultTypeInternal() {}
+  union {
+    Sitemap_Index _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Sitemap_IndexDefaultTypeInternal _Sitemap_Index_default_instance_;
+
+inline constexpr SiteShowPageResponse_Link::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : slug_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        title_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteShowPageResponse_Link::SiteShowPageResponse_Link(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteShowPageResponse_LinkDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteShowPageResponse_LinkDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteShowPageResponse_LinkDefaultTypeInternal() {}
+  union {
+    SiteShowPageResponse_Link _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteShowPageResponse_LinkDefaultTypeInternal _SiteShowPageResponse_Link_default_instance_;
+
+inline constexpr SiteShowPageRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : slug_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteShowPageRequest::SiteShowPageRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteShowPageRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteShowPageRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteShowPageRequestDefaultTypeInternal() {}
+  union {
+    SiteShowPageRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteShowPageRequestDefaultTypeInternal _SiteShowPageRequest_default_instance_;
+
+inline constexpr SiteLayoutRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : locale_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        theme_{static_cast< ::palm::lemon::v1::Theme >(0)},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteLayoutRequest::SiteLayoutRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteLayoutRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteLayoutRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteLayoutRequestDefaultTypeInternal() {}
+  union {
+    SiteLayoutRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteLayoutRequestDefaultTypeInternal _SiteLayoutRequest_default_instance_;
+
+inline constexpr SiteHomePageRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : locale_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        theme_{static_cast< ::palm::lemon::v1::Theme >(0)},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteHomePageRequest::SiteHomePageRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteHomePageRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteHomePageRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteHomePageRequestDefaultTypeInternal() {}
+  union {
+    SiteHomePageRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteHomePageRequestDefaultTypeInternal _SiteHomePageRequest_default_instance_;
+
+inline constexpr Page::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : slug_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        title_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Page::Page(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct PageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PageDefaultTypeInternal() {}
+  union {
+    Page _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PageDefaultTypeInternal _Page_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR HinodeLayout::HinodeLayout(::_pbi::ConstantInitialized) {}
+struct HinodeLayoutDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR HinodeLayoutDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~HinodeLayoutDefaultTypeInternal() {}
+  union {
+    HinodeLayout _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HinodeLayoutDefaultTypeInternal _HinodeLayout_default_instance_;
       template <typename>
 PROTOBUF_CONSTEXPR HinodeHomePage::HinodeHomePage(::_pbi::ConstantInitialized) {}
 struct HinodeHomePageDefaultTypeInternal {
@@ -334,99 +228,91 @@ struct HinodeHomePageDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HinodeHomePageDefaultTypeInternal _HinodeHomePage_default_instance_;
       template <typename>
-PROTOBUF_CONSTEXPR UniversalHomePage::UniversalHomePage(::_pbi::ConstantInitialized) {}
-struct UniversalHomePageDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UniversalHomePageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UniversalHomePageDefaultTypeInternal() {}
+PROTOBUF_CONSTEXPR GantryLayout::GantryLayout(::_pbi::ConstantInitialized) {}
+struct GantryLayoutDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GantryLayoutDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GantryLayoutDefaultTypeInternal() {}
   union {
-    UniversalHomePage _instance;
+    GantryLayout _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UniversalHomePageDefaultTypeInternal _UniversalHomePage_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GantryLayoutDefaultTypeInternal _GantryLayout_default_instance_;
       template <typename>
-PROTOBUF_CONSTEXPR XCorporationHomePage::XCorporationHomePage(::_pbi::ConstantInitialized) {}
-struct XCorporationHomePageDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR XCorporationHomePageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~XCorporationHomePageDefaultTypeInternal() {}
+PROTOBUF_CONSTEXPR GantryHomePage::GantryHomePage(::_pbi::ConstantInitialized) {}
+struct GantryHomePageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GantryHomePageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GantryHomePageDefaultTypeInternal() {}
   union {
-    XCorporationHomePage _instance;
+    GantryHomePage _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 XCorporationHomePageDefaultTypeInternal _XCorporationHomePage_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rss_Link::Rss_Link(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.path_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.description_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.updated_at_)*/ nullptr,
-    } {}
-struct Rss_LinkDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rss_LinkDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Rss_LinkDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GantryHomePageDefaultTypeInternal _GantryHomePage_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR DocsyLayout::DocsyLayout(::_pbi::ConstantInitialized) {}
+struct DocsyLayoutDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DocsyLayoutDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DocsyLayoutDefaultTypeInternal() {}
   union {
-    Rss_Link _instance;
+    DocsyLayout _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rss_LinkDefaultTypeInternal _Rss_Link_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rss::Rss(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.links_)*/ {},
-      /*decltype(_impl_.home_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.description_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct RssDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RssDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RssDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DocsyLayoutDefaultTypeInternal _DocsyLayout_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR DocsyHomePage::DocsyHomePage(::_pbi::ConstantInitialized) {}
+struct DocsyHomePageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DocsyHomePageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DocsyHomePageDefaultTypeInternal() {}
   union {
-    Rss _instance;
+    DocsyHomePage _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RssDefaultTypeInternal _Rss_default_instance_;
-        template <typename>
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DocsyHomePageDefaultTypeInternal _DocsyHomePage_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR CleanWhiteLayout::CleanWhiteLayout(::_pbi::ConstantInitialized) {}
+struct CleanWhiteLayoutDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CleanWhiteLayoutDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CleanWhiteLayoutDefaultTypeInternal() {}
+  union {
+    CleanWhiteLayout _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CleanWhiteLayoutDefaultTypeInternal _CleanWhiteLayout_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR CleanWhiteHomePage::CleanWhiteHomePage(::_pbi::ConstantInitialized) {}
+struct CleanWhiteHomePageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CleanWhiteHomePageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CleanWhiteHomePageDefaultTypeInternal() {}
+  union {
+    CleanWhiteHomePage _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CleanWhiteHomePageDefaultTypeInternal _CleanWhiteHomePage_default_instance_;
+
+inline constexpr Sitemap_Link::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        path_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        updated_at_{nullptr},
+        change_freq_{static_cast< ::palm::lemon::v1::Sitemap_Link_ChangeFreq >(0)},
+        priority_{0} {}
+
+template <typename>
 PROTOBUF_CONSTEXPR Sitemap_Link::Sitemap_Link(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.path_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.updated_at_)*/ nullptr,
-      /*decltype(_impl_.change_freq_)*/ 0,
-      /*decltype(_impl_.priority_)*/ 0,
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct Sitemap_LinkDefaultTypeInternal {
   PROTOBUF_CONSTEXPR Sitemap_LinkDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~Sitemap_LinkDefaultTypeInternal() {}
@@ -437,12 +323,103 @@ struct Sitemap_LinkDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Sitemap_LinkDefaultTypeInternal _Sitemap_Link_default_instance_;
-        template <typename>
+
+inline constexpr SiteShowPageResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        related_{},
+        page_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteShowPageResponse::SiteShowPageResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteShowPageResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteShowPageResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteShowPageResponseDefaultTypeInternal() {}
+  union {
+    SiteShowPageResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteShowPageResponseDefaultTypeInternal _SiteShowPageResponse_default_instance_;
+
+inline constexpr SiteLayoutResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : layout_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteLayoutResponse::SiteLayoutResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteLayoutResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteLayoutResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteLayoutResponseDefaultTypeInternal() {}
+  union {
+    SiteLayoutResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteLayoutResponseDefaultTypeInternal _SiteLayoutResponse_default_instance_;
+
+inline constexpr SiteHomePageResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : payload_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteHomePageResponse::SiteHomePageResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteHomePageResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteHomePageResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteHomePageResponseDefaultTypeInternal() {}
+  union {
+    SiteHomePageResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteHomePageResponseDefaultTypeInternal _SiteHomePageResponse_default_instance_;
+
+inline constexpr Rss_Link::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        path_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        title_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        description_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        updated_at_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Rss_Link::Rss_Link(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct Rss_LinkDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Rss_LinkDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Rss_LinkDefaultTypeInternal() {}
+  union {
+    Rss_Link _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rss_LinkDefaultTypeInternal _Rss_Link_default_instance_;
+
+inline constexpr Sitemap_UrlSet::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : links_{},
+        _cached_size_{0} {}
+
+template <typename>
 PROTOBUF_CONSTEXPR Sitemap_UrlSet::Sitemap_UrlSet(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.links_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct Sitemap_UrlSetDefaultTypeInternal {
   PROTOBUF_CONSTEXPR Sitemap_UrlSetDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~Sitemap_UrlSetDefaultTypeInternal() {}
@@ -453,33 +430,47 @@ struct Sitemap_UrlSetDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Sitemap_UrlSetDefaultTypeInternal _Sitemap_UrlSet_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Sitemap_Index::Sitemap_Index(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.links_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct Sitemap_IndexDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Sitemap_IndexDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Sitemap_IndexDefaultTypeInternal() {}
+
+inline constexpr Rss::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : links_{},
+        home_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        title_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        description_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Rss::Rss(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RssDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RssDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RssDefaultTypeInternal() {}
   union {
-    Sitemap_Index _instance;
+    Rss _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Sitemap_IndexDefaultTypeInternal _Sitemap_Index_default_instance_;
-        template <typename>
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RssDefaultTypeInternal _Rss_default_instance_;
+
+inline constexpr Sitemap::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : home_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        body_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+template <typename>
 PROTOBUF_CONSTEXPR Sitemap::Sitemap(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.home_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.body_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct SitemapDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SitemapDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~SitemapDefaultTypeInternal() {}
@@ -490,29 +481,68 @@ struct SitemapDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SitemapDefaultTypeInternal _Sitemap_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Page::Page(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.slug_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct PageDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR PageDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~PageDefaultTypeInternal() {}
+      template <typename>
+PROTOBUF_CONSTEXPR SiteRssResponse_ItemsEntry_DoNotUse::SiteRssResponse_ItemsEntry_DoNotUse(::_pbi::ConstantInitialized) {}
+struct SiteRssResponse_ItemsEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteRssResponse_ItemsEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteRssResponse_ItemsEntry_DoNotUseDefaultTypeInternal() {}
   union {
-    Page _instance;
+    SiteRssResponse_ItemsEntry_DoNotUse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PageDefaultTypeInternal _Page_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteRssResponse_ItemsEntry_DoNotUseDefaultTypeInternal _SiteRssResponse_ItemsEntry_DoNotUse_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR SiteSitemapResponse_ItemsEntry_DoNotUse::SiteSitemapResponse_ItemsEntry_DoNotUse(::_pbi::ConstantInitialized) {}
+struct SiteSitemapResponse_ItemsEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteSitemapResponse_ItemsEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteSitemapResponse_ItemsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    SiteSitemapResponse_ItemsEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSitemapResponse_ItemsEntry_DoNotUseDefaultTypeInternal _SiteSitemapResponse_ItemsEntry_DoNotUse_default_instance_;
+
+inline constexpr SiteRssResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteRssResponse::SiteRssResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteRssResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteRssResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteRssResponseDefaultTypeInternal() {}
+  union {
+    SiteRssResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteRssResponseDefaultTypeInternal _SiteRssResponse_default_instance_;
+
+inline constexpr SiteSitemapResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteSitemapResponse::SiteSitemapResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteSitemapResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteSitemapResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteSitemapResponseDefaultTypeInternal() {}
+  union {
+    SiteSitemapResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSitemapResponseDefaultTypeInternal _SiteSitemapResponse_default_instance_;
 }  // namespace v1
 }  // namespace lemon
 }  // namespace palm
@@ -1019,19 +1049,10 @@ const ::google::protobuf::EnumDescriptor* Sitemap_Link_ChangeFreq_descriptor() {
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_lemon_2eproto);
   return file_level_enum_descriptors_lemon_2eproto[0];
 }
+PROTOBUF_CONSTINIT const uint32_t Sitemap_Link_ChangeFreq_internal_data_[] = {
+    458752u, 0u, };
 bool Sitemap_Link_ChangeFreq_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-      return true;
-    default:
-      return false;
-  }
+  return 0 <= value && value <= 6;
 }
 #if (__cplusplus < 201703) && \
   (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
@@ -1053,18 +1074,10 @@ const ::google::protobuf::EnumDescriptor* Theme_descriptor() {
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_lemon_2eproto);
   return file_level_enum_descriptors_lemon_2eproto[1];
 }
+PROTOBUF_CONSTINIT const uint32_t Theme_internal_data_[] = {
+    393216u, 0u, };
 bool Theme_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-      return true;
-    default:
-      return false;
-  }
+  return 0 <= value && value <= 5;
 }
 // ===================================================================
 
@@ -1077,38 +1090,34 @@ SiteLayoutRequest::SiteLayoutRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.SiteLayoutRequest)
 }
-SiteLayoutRequest::SiteLayoutRequest(const SiteLayoutRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteLayoutRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : locale_(arena, from.locale_),
+        _cached_size_{0} {}
+
+SiteLayoutRequest::SiteLayoutRequest(
+    ::google::protobuf::Arena* arena,
+    const SiteLayoutRequest& from)
+    : ::google::protobuf::Message(arena) {
   SiteLayoutRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.locale_){},
-      decltype(_impl_.theme_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.locale_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.locale_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_locale().empty()) {
-    _this->_impl_.locale_.Set(from._internal_locale(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.theme_ = from._impl_.theme_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.theme_ = from._impl_.theme_;
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.SiteLayoutRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteLayoutRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : locale_(arena),
+        _cached_size_{0} {}
+
 inline void SiteLayoutRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.locale_){},
-      decltype(_impl_.theme_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.locale_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.locale_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.theme_ = {};
 }
 SiteLayoutRequest::~SiteLayoutRequest() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.SiteLayoutRequest)
@@ -1116,15 +1125,14 @@ SiteLayoutRequest::~SiteLayoutRequest() {
   SharedDtor();
 }
 inline void SiteLayoutRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.locale_.Destroy();
-}
-void SiteLayoutRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteLayoutRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.SiteLayoutRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1235,11 +1243,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 46, 2> SiteLayoutRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteLayoutRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteLayoutRequest::MergeImpl
+    SiteLayoutRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteLayoutRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteLayoutRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteLayoutRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteLayoutRequest*>(&to_msg);
@@ -1269,13 +1278,15 @@ PROTOBUF_NOINLINE bool SiteLayoutRequest::IsInitialized() const {
   return true;
 }
 
-void SiteLayoutRequest::InternalSwap(SiteLayoutRequest* other) {
+::_pbi::CachedSize* SiteLayoutRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteLayoutRequest::InternalSwap(SiteLayoutRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.locale_, lhs_arena,
-                                       &other->_impl_.locale_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.locale_, &other->_impl_.locale_, arena);
   swap(_impl_.theme_, other->_impl_.theme_);
 }
 
@@ -1317,14 +1328,12 @@ const ::palm::lemon::v1::XCorporationLayout& SiteLayoutResponse::_Internal::x_co
   return *msg->_impl_.layout_.x_corporation_;
 }
 void SiteLayoutResponse::set_allocated_clean_white(::palm::lemon::v1::CleanWhiteLayout* clean_white) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_layout();
   if (clean_white) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(clean_white);
+    ::google::protobuf::Arena* submessage_arena = clean_white->GetArena();
     if (message_arena != submessage_arena) {
-      clean_white = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, clean_white, submessage_arena);
+      clean_white = ::google::protobuf::internal::GetOwnedMessage(message_arena, clean_white, submessage_arena);
     }
     set_has_clean_white();
     _impl_.layout_.clean_white_ = clean_white;
@@ -1332,14 +1341,12 @@ void SiteLayoutResponse::set_allocated_clean_white(::palm::lemon::v1::CleanWhite
   // @@protoc_insertion_point(field_set_allocated:palm.lemon.v1.SiteLayoutResponse.clean_white)
 }
 void SiteLayoutResponse::set_allocated_docsy(::palm::lemon::v1::DocsyLayout* docsy) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_layout();
   if (docsy) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(docsy);
+    ::google::protobuf::Arena* submessage_arena = docsy->GetArena();
     if (message_arena != submessage_arena) {
-      docsy = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, docsy, submessage_arena);
+      docsy = ::google::protobuf::internal::GetOwnedMessage(message_arena, docsy, submessage_arena);
     }
     set_has_docsy();
     _impl_.layout_.docsy_ = docsy;
@@ -1347,14 +1354,12 @@ void SiteLayoutResponse::set_allocated_docsy(::palm::lemon::v1::DocsyLayout* doc
   // @@protoc_insertion_point(field_set_allocated:palm.lemon.v1.SiteLayoutResponse.docsy)
 }
 void SiteLayoutResponse::set_allocated_gantry(::palm::lemon::v1::GantryLayout* gantry) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_layout();
   if (gantry) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(gantry);
+    ::google::protobuf::Arena* submessage_arena = gantry->GetArena();
     if (message_arena != submessage_arena) {
-      gantry = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, gantry, submessage_arena);
+      gantry = ::google::protobuf::internal::GetOwnedMessage(message_arena, gantry, submessage_arena);
     }
     set_has_gantry();
     _impl_.layout_.gantry_ = gantry;
@@ -1362,14 +1367,12 @@ void SiteLayoutResponse::set_allocated_gantry(::palm::lemon::v1::GantryLayout* g
   // @@protoc_insertion_point(field_set_allocated:palm.lemon.v1.SiteLayoutResponse.gantry)
 }
 void SiteLayoutResponse::set_allocated_hinode(::palm::lemon::v1::HinodeLayout* hinode) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_layout();
   if (hinode) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(hinode);
+    ::google::protobuf::Arena* submessage_arena = hinode->GetArena();
     if (message_arena != submessage_arena) {
-      hinode = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, hinode, submessage_arena);
+      hinode = ::google::protobuf::internal::GetOwnedMessage(message_arena, hinode, submessage_arena);
     }
     set_has_hinode();
     _impl_.layout_.hinode_ = hinode;
@@ -1377,14 +1380,12 @@ void SiteLayoutResponse::set_allocated_hinode(::palm::lemon::v1::HinodeLayout* h
   // @@protoc_insertion_point(field_set_allocated:palm.lemon.v1.SiteLayoutResponse.hinode)
 }
 void SiteLayoutResponse::set_allocated_universal(::palm::lemon::v1::UniversalLayout* universal) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_layout();
   if (universal) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(universal);
+    ::google::protobuf::Arena* submessage_arena = universal->GetArena();
     if (message_arena != submessage_arena) {
-      universal = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, universal, submessage_arena);
+      universal = ::google::protobuf::internal::GetOwnedMessage(message_arena, universal, submessage_arena);
     }
     set_has_universal();
     _impl_.layout_.universal_ = universal;
@@ -1392,14 +1393,12 @@ void SiteLayoutResponse::set_allocated_universal(::palm::lemon::v1::UniversalLay
   // @@protoc_insertion_point(field_set_allocated:palm.lemon.v1.SiteLayoutResponse.universal)
 }
 void SiteLayoutResponse::set_allocated_x_corporation(::palm::lemon::v1::XCorporationLayout* x_corporation) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_layout();
   if (x_corporation) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(x_corporation);
+    ::google::protobuf::Arena* submessage_arena = x_corporation->GetArena();
     if (message_arena != submessage_arena) {
-      x_corporation = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, x_corporation, submessage_arena);
+      x_corporation = ::google::protobuf::internal::GetOwnedMessage(message_arena, x_corporation, submessage_arena);
     }
     set_has_x_corporation();
     _impl_.layout_.x_corporation_ = x_corporation;
@@ -1411,63 +1410,56 @@ SiteLayoutResponse::SiteLayoutResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.SiteLayoutResponse)
 }
-SiteLayoutResponse::SiteLayoutResponse(const SiteLayoutResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteLayoutResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : layout_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+SiteLayoutResponse::SiteLayoutResponse(
+    ::google::protobuf::Arena* arena,
+    const SiteLayoutResponse& from)
+    : ::google::protobuf::Message(arena) {
   SiteLayoutResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.layout_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  clear_has_layout();
-  switch (from.layout_case()) {
-    case kCleanWhite: {
-      _this->_internal_mutable_clean_white()->::palm::lemon::v1::CleanWhiteLayout::MergeFrom(
-          from._internal_clean_white());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  switch (layout_case()) {
+    case LAYOUT_NOT_SET:
       break;
-    }
-    case kDocsy: {
-      _this->_internal_mutable_docsy()->::palm::lemon::v1::DocsyLayout::MergeFrom(
-          from._internal_docsy());
-      break;
-    }
-    case kGantry: {
-      _this->_internal_mutable_gantry()->::palm::lemon::v1::GantryLayout::MergeFrom(
-          from._internal_gantry());
-      break;
-    }
-    case kHinode: {
-      _this->_internal_mutable_hinode()->::palm::lemon::v1::HinodeLayout::MergeFrom(
-          from._internal_hinode());
-      break;
-    }
-    case kUniversal: {
-      _this->_internal_mutable_universal()->::palm::lemon::v1::UniversalLayout::MergeFrom(
-          from._internal_universal());
-      break;
-    }
-    case kXCorporation: {
-      _this->_internal_mutable_x_corporation()->::palm::lemon::v1::XCorporationLayout::MergeFrom(
-          from._internal_x_corporation());
-      break;
-    }
-    case LAYOUT_NOT_SET: {
-      break;
-    }
+      case kCleanWhite:
+        _impl_.layout_.clean_white_ = CreateMaybeMessage<::palm::lemon::v1::CleanWhiteLayout>(arena, *from._impl_.layout_.clean_white_);
+        break;
+      case kDocsy:
+        _impl_.layout_.docsy_ = CreateMaybeMessage<::palm::lemon::v1::DocsyLayout>(arena, *from._impl_.layout_.docsy_);
+        break;
+      case kGantry:
+        _impl_.layout_.gantry_ = CreateMaybeMessage<::palm::lemon::v1::GantryLayout>(arena, *from._impl_.layout_.gantry_);
+        break;
+      case kHinode:
+        _impl_.layout_.hinode_ = CreateMaybeMessage<::palm::lemon::v1::HinodeLayout>(arena, *from._impl_.layout_.hinode_);
+        break;
+      case kUniversal:
+        _impl_.layout_.universal_ = CreateMaybeMessage<::palm::lemon::v1::UniversalLayout>(arena, *from._impl_.layout_.universal_);
+        break;
+      case kXCorporation:
+        _impl_.layout_.x_corporation_ = CreateMaybeMessage<::palm::lemon::v1::XCorporationLayout>(arena, *from._impl_.layout_.x_corporation_);
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.SiteLayoutResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteLayoutResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : layout_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
 inline void SiteLayoutResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.layout_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  clear_has_layout();
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteLayoutResponse::~SiteLayoutResponse() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.SiteLayoutResponse)
@@ -1475,50 +1467,49 @@ SiteLayoutResponse::~SiteLayoutResponse() {
   SharedDtor();
 }
 inline void SiteLayoutResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   if (has_layout()) {
     clear_layout();
   }
-}
-void SiteLayoutResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void SiteLayoutResponse::clear_layout() {
 // @@protoc_insertion_point(one_of_clear_start:palm.lemon.v1.SiteLayoutResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (layout_case()) {
     case kCleanWhite: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.layout_.clean_white_;
       }
       break;
     }
     case kDocsy: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.layout_.docsy_;
       }
       break;
     }
     case kGantry: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.layout_.gantry_;
       }
       break;
     }
     case kHinode: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.layout_.hinode_;
       }
       break;
     }
     case kUniversal: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.layout_.universal_;
       }
       break;
     }
     case kXCorporation: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.layout_.x_corporation_;
       }
       break;
@@ -1533,6 +1524,7 @@ void SiteLayoutResponse::clear_layout() {
 
 PROTOBUF_NOINLINE void SiteLayoutResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.SiteLayoutResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1605,38 +1597,38 @@ const ::_pbi::TcParseTable<0, 6, 6, 0, 2> SiteLayoutResponse::_table_ = {
 
   switch (layout_case()) {
     case kCleanWhite: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(1, _Internal::clean_white(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          1, _Internal::clean_white(this),
           _Internal::clean_white(this).GetCachedSize(), target, stream);
       break;
     }
     case kDocsy: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(2, _Internal::docsy(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          2, _Internal::docsy(this),
           _Internal::docsy(this).GetCachedSize(), target, stream);
       break;
     }
     case kGantry: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(3, _Internal::gantry(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          3, _Internal::gantry(this),
           _Internal::gantry(this).GetCachedSize(), target, stream);
       break;
     }
     case kHinode: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(4, _Internal::hinode(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          4, _Internal::hinode(this),
           _Internal::hinode(this).GetCachedSize(), target, stream);
       break;
     }
     case kUniversal: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(5, _Internal::universal(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          5, _Internal::universal(this),
           _Internal::universal(this).GetCachedSize(), target, stream);
       break;
     }
     case kXCorporation: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(6, _Internal::x_corporation(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          6, _Internal::x_corporation(this),
           _Internal::x_corporation(this).GetCachedSize(), target, stream);
       break;
     }
@@ -1663,44 +1655,38 @@ const ::_pbi::TcParseTable<0, 6, 6, 0, 2> SiteLayoutResponse::_table_ = {
   switch (layout_case()) {
     // .palm.lemon.v1.CleanWhiteLayout clean_white = 1;
     case kCleanWhite: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.layout_.clean_white_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.layout_.clean_white_);
       break;
     }
     // .palm.lemon.v1.DocsyLayout docsy = 2;
     case kDocsy: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.layout_.docsy_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.layout_.docsy_);
       break;
     }
     // .palm.lemon.v1.GantryLayout gantry = 3;
     case kGantry: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.layout_.gantry_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.layout_.gantry_);
       break;
     }
     // .palm.lemon.v1.HinodeLayout hinode = 4;
     case kHinode: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.layout_.hinode_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.layout_.hinode_);
       break;
     }
     // .palm.lemon.v1.UniversalLayout universal = 5;
     case kUniversal: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.layout_.universal_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.layout_.universal_);
       break;
     }
     // .palm.lemon.v1.XCorporationLayout x_corporation = 6;
     case kXCorporation: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.layout_.x_corporation_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.layout_.x_corporation_);
       break;
     }
     case LAYOUT_NOT_SET: {
@@ -1711,11 +1697,12 @@ const ::_pbi::TcParseTable<0, 6, 6, 0, 2> SiteLayoutResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteLayoutResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteLayoutResponse::MergeImpl
+    SiteLayoutResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteLayoutResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteLayoutResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteLayoutResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteLayoutResponse*>(&to_msg);
@@ -1774,7 +1761,10 @@ PROTOBUF_NOINLINE bool SiteLayoutResponse::IsInitialized() const {
   return true;
 }
 
-void SiteLayoutResponse::InternalSwap(SiteLayoutResponse* other) {
+::_pbi::CachedSize* SiteLayoutResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteLayoutResponse::InternalSwap(SiteLayoutResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_.layout_, other->_impl_.layout_);
@@ -1791,9 +1781,6 @@ void SiteLayoutResponse::InternalSwap(SiteLayoutResponse* other) {
 SiteRssResponse_ItemsEntry_DoNotUse::SiteRssResponse_ItemsEntry_DoNotUse() {}
 SiteRssResponse_ItemsEntry_DoNotUse::SiteRssResponse_ItemsEntry_DoNotUse(::google::protobuf::Arena* arena)
     : SuperType(arena) {}
-void SiteRssResponse_ItemsEntry_DoNotUse::MergeFrom(const SiteRssResponse_ItemsEntry_DoNotUse& other) {
-  MergeFromInternal(other);
-}
 ::google::protobuf::Metadata SiteRssResponse_ItemsEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lemon_2eproto_getter, &descriptor_table_lemon_2eproto_once,
@@ -1810,25 +1797,32 @@ SiteRssResponse::SiteRssResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.SiteRssResponse)
 }
-SiteRssResponse::SiteRssResponse(const SiteRssResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteRssResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+SiteRssResponse::SiteRssResponse(
+    ::google::protobuf::Arena* arena,
+    const SiteRssResponse& from)
+    : ::google::protobuf::Message(arena) {
   SiteRssResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      /* decltype(_impl_.items_) */ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.SiteRssResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteRssResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void SiteRssResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      /* decltype(_impl_.items_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteRssResponse::~SiteRssResponse() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.SiteRssResponse)
@@ -1836,15 +1830,13 @@ SiteRssResponse::~SiteRssResponse() {
   SharedDtor();
 }
 inline void SiteRssResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~MapField();
-}
-void SiteRssResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteRssResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.SiteRssResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1883,7 +1875,10 @@ const ::_pbi::TcParseTable<0, 1, 2, 43, 2> SiteRssResponse::_table_ = {
     {PROTOBUF_FIELD_OFFSET(SiteRssResponse, _impl_.items_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
   }}, {{
-    {::_pbi::TcParser::GetMapAuxInfo<decltype(SiteRssResponse()._impl_.items_)>(1, 0, 0)},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(SiteRssResponse()._impl_.items_)>(
+        1, 0, 0, 9,
+        11)},
     {::_pbi::TcParser::CreateInArenaStorageCb<::palm::lemon::v1::Rss>},
   }}, {{
     "\35\5\0\0\0\0\0\0"
@@ -1902,7 +1897,9 @@ const ::_pbi::TcParseTable<0, 1, 2, 43, 2> SiteRssResponse::_table_ = {
   // map<string, .palm.lemon.v1.Rss> items = 1;
   if (!_internal_items().empty()) {
     using MapType = ::google::protobuf::Map<std::string, ::palm::lemon::v1::Rss>;
-    using WireHelper = SiteRssResponse_ItemsEntry_DoNotUse::Funcs;
+    using WireHelper = _pbi::MapEntryFuncs<std::string, ::palm::lemon::v1::Rss,
+                                   _pbi::WireFormatLite::TYPE_STRING,
+                                   _pbi::WireFormatLite::TYPE_MESSAGE>;
     const auto& field = _internal_items();
 
     if (stream->IsSerializationDeterministic() && field.size() > 1) {
@@ -1944,17 +1941,20 @@ const ::_pbi::TcParseTable<0, 1, 2, 43, 2> SiteRssResponse::_table_ = {
   // map<string, .palm.lemon.v1.Rss> items = 1;
   total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_items_size());
   for (const auto& entry : _internal_items()) {
-    total_size += SiteRssResponse_ItemsEntry_DoNotUse::Funcs::ByteSizeLong(entry.first, entry.second);
+    total_size += _pbi::MapEntryFuncs<std::string, ::palm::lemon::v1::Rss,
+                                   _pbi::WireFormatLite::TYPE_STRING,
+                                   _pbi::WireFormatLite::TYPE_MESSAGE>::ByteSizeLong(entry.first, entry.second);
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData SiteRssResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteRssResponse::MergeImpl
+    SiteRssResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteRssResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteRssResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteRssResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteRssResponse*>(&to_msg);
@@ -1979,7 +1979,10 @@ PROTOBUF_NOINLINE bool SiteRssResponse::IsInitialized() const {
   return true;
 }
 
-void SiteRssResponse::InternalSwap(SiteRssResponse* other) {
+::_pbi::CachedSize* SiteRssResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteRssResponse::InternalSwap(SiteRssResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -1995,9 +1998,6 @@ void SiteRssResponse::InternalSwap(SiteRssResponse* other) {
 SiteSitemapResponse_ItemsEntry_DoNotUse::SiteSitemapResponse_ItemsEntry_DoNotUse() {}
 SiteSitemapResponse_ItemsEntry_DoNotUse::SiteSitemapResponse_ItemsEntry_DoNotUse(::google::protobuf::Arena* arena)
     : SuperType(arena) {}
-void SiteSitemapResponse_ItemsEntry_DoNotUse::MergeFrom(const SiteSitemapResponse_ItemsEntry_DoNotUse& other) {
-  MergeFromInternal(other);
-}
 ::google::protobuf::Metadata SiteSitemapResponse_ItemsEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lemon_2eproto_getter, &descriptor_table_lemon_2eproto_once,
@@ -2014,25 +2014,32 @@ SiteSitemapResponse::SiteSitemapResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.SiteSitemapResponse)
 }
-SiteSitemapResponse::SiteSitemapResponse(const SiteSitemapResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteSitemapResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+SiteSitemapResponse::SiteSitemapResponse(
+    ::google::protobuf::Arena* arena,
+    const SiteSitemapResponse& from)
+    : ::google::protobuf::Message(arena) {
   SiteSitemapResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      /* decltype(_impl_.items_) */ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _this->_impl_.items_.MergeFrom(from._impl_.items_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.SiteSitemapResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteSitemapResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void SiteSitemapResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      /* decltype(_impl_.items_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteSitemapResponse::~SiteSitemapResponse() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.SiteSitemapResponse)
@@ -2040,15 +2047,13 @@ SiteSitemapResponse::~SiteSitemapResponse() {
   SharedDtor();
 }
 inline void SiteSitemapResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~MapField();
-}
-void SiteSitemapResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteSitemapResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.SiteSitemapResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2087,7 +2092,10 @@ const ::_pbi::TcParseTable<0, 1, 2, 47, 2> SiteSitemapResponse::_table_ = {
     {PROTOBUF_FIELD_OFFSET(SiteSitemapResponse, _impl_.items_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
   }}, {{
-    {::_pbi::TcParser::GetMapAuxInfo<decltype(SiteSitemapResponse()._impl_.items_)>(1, 0, 0)},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(SiteSitemapResponse()._impl_.items_)>(
+        1, 0, 0, 9,
+        11)},
     {::_pbi::TcParser::CreateInArenaStorageCb<::palm::lemon::v1::Sitemap>},
   }}, {{
     "\41\5\0\0\0\0\0\0"
@@ -2106,7 +2114,9 @@ const ::_pbi::TcParseTable<0, 1, 2, 47, 2> SiteSitemapResponse::_table_ = {
   // map<string, .palm.lemon.v1.Sitemap> items = 1;
   if (!_internal_items().empty()) {
     using MapType = ::google::protobuf::Map<std::string, ::palm::lemon::v1::Sitemap>;
-    using WireHelper = SiteSitemapResponse_ItemsEntry_DoNotUse::Funcs;
+    using WireHelper = _pbi::MapEntryFuncs<std::string, ::palm::lemon::v1::Sitemap,
+                                   _pbi::WireFormatLite::TYPE_STRING,
+                                   _pbi::WireFormatLite::TYPE_MESSAGE>;
     const auto& field = _internal_items();
 
     if (stream->IsSerializationDeterministic() && field.size() > 1) {
@@ -2148,17 +2158,20 @@ const ::_pbi::TcParseTable<0, 1, 2, 47, 2> SiteSitemapResponse::_table_ = {
   // map<string, .palm.lemon.v1.Sitemap> items = 1;
   total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_items_size());
   for (const auto& entry : _internal_items()) {
-    total_size += SiteSitemapResponse_ItemsEntry_DoNotUse::Funcs::ByteSizeLong(entry.first, entry.second);
+    total_size += _pbi::MapEntryFuncs<std::string, ::palm::lemon::v1::Sitemap,
+                                   _pbi::WireFormatLite::TYPE_STRING,
+                                   _pbi::WireFormatLite::TYPE_MESSAGE>::ByteSizeLong(entry.first, entry.second);
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData SiteSitemapResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteSitemapResponse::MergeImpl
+    SiteSitemapResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteSitemapResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteSitemapResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteSitemapResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteSitemapResponse*>(&to_msg);
@@ -2183,7 +2196,10 @@ PROTOBUF_NOINLINE bool SiteSitemapResponse::IsInitialized() const {
   return true;
 }
 
-void SiteSitemapResponse::InternalSwap(SiteSitemapResponse* other) {
+::_pbi::CachedSize* SiteSitemapResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteSitemapResponse::InternalSwap(SiteSitemapResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -2205,35 +2221,32 @@ SiteShowPageRequest::SiteShowPageRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.SiteShowPageRequest)
 }
-SiteShowPageRequest::SiteShowPageRequest(const SiteShowPageRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteShowPageRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : slug_(arena, from.slug_),
+        _cached_size_{0} {}
+
+SiteShowPageRequest::SiteShowPageRequest(
+    ::google::protobuf::Arena* arena,
+    const SiteShowPageRequest& from)
+    : ::google::protobuf::Message(arena) {
   SiteShowPageRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.slug_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.slug_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.slug_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_slug().empty()) {
-    _this->_impl_.slug_.Set(from._internal_slug(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.SiteShowPageRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteShowPageRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : slug_(arena),
+        _cached_size_{0} {}
+
 inline void SiteShowPageRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.slug_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.slug_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.slug_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteShowPageRequest::~SiteShowPageRequest() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.SiteShowPageRequest)
@@ -2241,15 +2254,14 @@ SiteShowPageRequest::~SiteShowPageRequest() {
   SharedDtor();
 }
 inline void SiteShowPageRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.slug_.Destroy();
-}
-void SiteShowPageRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteShowPageRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.SiteShowPageRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2340,11 +2352,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 46, 2> SiteShowPageRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteShowPageRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteShowPageRequest::MergeImpl
+    SiteShowPageRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteShowPageRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteShowPageRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteShowPageRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteShowPageRequest*>(&to_msg);
@@ -2371,13 +2384,15 @@ PROTOBUF_NOINLINE bool SiteShowPageRequest::IsInitialized() const {
   return true;
 }
 
-void SiteShowPageRequest::InternalSwap(SiteShowPageRequest* other) {
+::_pbi::CachedSize* SiteShowPageRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteShowPageRequest::InternalSwap(SiteShowPageRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.slug_, lhs_arena,
-                                       &other->_impl_.slug_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.slug_, &other->_impl_.slug_, arena);
 }
 
 ::google::protobuf::Metadata SiteShowPageRequest::GetMetadata() const {
@@ -2396,48 +2411,34 @@ SiteShowPageResponse_Link::SiteShowPageResponse_Link(::google::protobuf::Arena* 
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.SiteShowPageResponse.Link)
 }
-SiteShowPageResponse_Link::SiteShowPageResponse_Link(const SiteShowPageResponse_Link& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteShowPageResponse_Link::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : slug_(arena, from.slug_),
+        title_(arena, from.title_),
+        _cached_size_{0} {}
+
+SiteShowPageResponse_Link::SiteShowPageResponse_Link(
+    ::google::protobuf::Arena* arena,
+    const SiteShowPageResponse_Link& from)
+    : ::google::protobuf::Message(arena) {
   SiteShowPageResponse_Link* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.slug_){},
-      decltype(_impl_.title_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.slug_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.slug_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_slug().empty()) {
-    _this->_impl_.slug_.Set(from._internal_slug(), _this->GetArenaForAllocation());
-  }
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.SiteShowPageResponse.Link)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteShowPageResponse_Link::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : slug_(arena),
+        title_(arena),
+        _cached_size_{0} {}
+
 inline void SiteShowPageResponse_Link::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.slug_){},
-      decltype(_impl_.title_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.slug_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.slug_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteShowPageResponse_Link::~SiteShowPageResponse_Link() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.SiteShowPageResponse.Link)
@@ -2445,16 +2446,15 @@ SiteShowPageResponse_Link::~SiteShowPageResponse_Link() {
   SharedDtor();
 }
 inline void SiteShowPageResponse_Link::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.slug_.Destroy();
   _impl_.title_.Destroy();
-}
-void SiteShowPageResponse_Link::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteShowPageResponse_Link::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.SiteShowPageResponse.Link)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2567,11 +2567,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 57, 2> SiteShowPageResponse_Link::_table_ = 
 }
 
 const ::google::protobuf::Message::ClassData SiteShowPageResponse_Link::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteShowPageResponse_Link::MergeImpl
+    SiteShowPageResponse_Link::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteShowPageResponse_Link::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteShowPageResponse_Link::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteShowPageResponse_Link::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteShowPageResponse_Link*>(&to_msg);
@@ -2601,15 +2602,16 @@ PROTOBUF_NOINLINE bool SiteShowPageResponse_Link::IsInitialized() const {
   return true;
 }
 
-void SiteShowPageResponse_Link::InternalSwap(SiteShowPageResponse_Link* other) {
+::_pbi::CachedSize* SiteShowPageResponse_Link::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteShowPageResponse_Link::InternalSwap(SiteShowPageResponse_Link* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.slug_, lhs_arena,
-                                       &other->_impl_.slug_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.slug_, &other->_impl_.slug_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, &other->_impl_.title_, arena);
 }
 
 ::google::protobuf::Metadata SiteShowPageResponse_Link::GetMetadata() const {
@@ -2638,31 +2640,38 @@ SiteShowPageResponse::SiteShowPageResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.SiteShowPageResponse)
 }
-SiteShowPageResponse::SiteShowPageResponse(const SiteShowPageResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteShowPageResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        related_{visibility, arena, from.related_} {}
+
+SiteShowPageResponse::SiteShowPageResponse(
+    ::google::protobuf::Arena* arena,
+    const SiteShowPageResponse& from)
+    : ::google::protobuf::Message(arena) {
   SiteShowPageResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.related_){from._impl_.related_},
-      decltype(_impl_.page_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.page_ = new ::palm::lemon::v1::Page(*from._impl_.page_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.page_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::lemon::v1::Page>(arena, *from._impl_.page_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.SiteShowPageResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteShowPageResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        related_{visibility, arena} {}
+
 inline void SiteShowPageResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.related_){arena},
-      decltype(_impl_.page_){nullptr},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.page_ = {};
 }
 SiteShowPageResponse::~SiteShowPageResponse() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.SiteShowPageResponse)
@@ -2670,21 +2679,19 @@ SiteShowPageResponse::~SiteShowPageResponse() {
   SharedDtor();
 }
 inline void SiteShowPageResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.related_.~RepeatedPtrField();
-  if (this != internal_default_instance()) delete _impl_.page_;
-}
-void SiteShowPageResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.page_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteShowPageResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.SiteShowPageResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_related()->Clear();
+  _impl_.related_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.page_ != nullptr);
@@ -2748,8 +2755,8 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> SiteShowPageResponse::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.lemon.v1.Page page = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::page(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::page(this),
         _Internal::page(this).GetCachedSize(), target, stream);
   }
 
@@ -2787,20 +2794,20 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> SiteShowPageResponse::_table_ = {
   // .palm.lemon.v1.Page page = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.page_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.page_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData SiteShowPageResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteShowPageResponse::MergeImpl
+    SiteShowPageResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteShowPageResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteShowPageResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteShowPageResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteShowPageResponse*>(&to_msg);
@@ -2810,7 +2817,8 @@ void SiteShowPageResponse::MergeImpl(::google::protobuf::Message& to_msg, const 
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_related()->MergeFrom(from._internal_related());
+  _this->_internal_mutable_related()->MergeFrom(
+      from._internal_related());
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_page()->::palm::lemon::v1::Page::MergeFrom(
         from._internal_page());
@@ -2829,7 +2837,10 @@ PROTOBUF_NOINLINE bool SiteShowPageResponse::IsInitialized() const {
   return true;
 }
 
-void SiteShowPageResponse::InternalSwap(SiteShowPageResponse* other) {
+::_pbi::CachedSize* SiteShowPageResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteShowPageResponse::InternalSwap(SiteShowPageResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -2853,38 +2864,34 @@ SiteHomePageRequest::SiteHomePageRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.SiteHomePageRequest)
 }
-SiteHomePageRequest::SiteHomePageRequest(const SiteHomePageRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteHomePageRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : locale_(arena, from.locale_),
+        _cached_size_{0} {}
+
+SiteHomePageRequest::SiteHomePageRequest(
+    ::google::protobuf::Arena* arena,
+    const SiteHomePageRequest& from)
+    : ::google::protobuf::Message(arena) {
   SiteHomePageRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.locale_){},
-      decltype(_impl_.theme_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.locale_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.locale_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_locale().empty()) {
-    _this->_impl_.locale_.Set(from._internal_locale(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.theme_ = from._impl_.theme_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.theme_ = from._impl_.theme_;
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.SiteHomePageRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteHomePageRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : locale_(arena),
+        _cached_size_{0} {}
+
 inline void SiteHomePageRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.locale_){},
-      decltype(_impl_.theme_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.locale_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.locale_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.theme_ = {};
 }
 SiteHomePageRequest::~SiteHomePageRequest() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.SiteHomePageRequest)
@@ -2892,15 +2899,14 @@ SiteHomePageRequest::~SiteHomePageRequest() {
   SharedDtor();
 }
 inline void SiteHomePageRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.locale_.Destroy();
-}
-void SiteHomePageRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteHomePageRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.SiteHomePageRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3011,11 +3017,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 48, 2> SiteHomePageRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteHomePageRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteHomePageRequest::MergeImpl
+    SiteHomePageRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteHomePageRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteHomePageRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteHomePageRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteHomePageRequest*>(&to_msg);
@@ -3045,13 +3052,15 @@ PROTOBUF_NOINLINE bool SiteHomePageRequest::IsInitialized() const {
   return true;
 }
 
-void SiteHomePageRequest::InternalSwap(SiteHomePageRequest* other) {
+::_pbi::CachedSize* SiteHomePageRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteHomePageRequest::InternalSwap(SiteHomePageRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.locale_, lhs_arena,
-                                       &other->_impl_.locale_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.locale_, &other->_impl_.locale_, arena);
   swap(_impl_.theme_, other->_impl_.theme_);
 }
 
@@ -3093,14 +3102,12 @@ const ::palm::lemon::v1::XCorporationHomePage& SiteHomePageResponse::_Internal::
   return *msg->_impl_.payload_.x_corporation_;
 }
 void SiteHomePageResponse::set_allocated_clean_white(::palm::lemon::v1::CleanWhiteHomePage* clean_white) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (clean_white) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(clean_white);
+    ::google::protobuf::Arena* submessage_arena = clean_white->GetArena();
     if (message_arena != submessage_arena) {
-      clean_white = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, clean_white, submessage_arena);
+      clean_white = ::google::protobuf::internal::GetOwnedMessage(message_arena, clean_white, submessage_arena);
     }
     set_has_clean_white();
     _impl_.payload_.clean_white_ = clean_white;
@@ -3108,14 +3115,12 @@ void SiteHomePageResponse::set_allocated_clean_white(::palm::lemon::v1::CleanWhi
   // @@protoc_insertion_point(field_set_allocated:palm.lemon.v1.SiteHomePageResponse.clean_white)
 }
 void SiteHomePageResponse::set_allocated_docsy(::palm::lemon::v1::DocsyHomePage* docsy) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (docsy) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(docsy);
+    ::google::protobuf::Arena* submessage_arena = docsy->GetArena();
     if (message_arena != submessage_arena) {
-      docsy = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, docsy, submessage_arena);
+      docsy = ::google::protobuf::internal::GetOwnedMessage(message_arena, docsy, submessage_arena);
     }
     set_has_docsy();
     _impl_.payload_.docsy_ = docsy;
@@ -3123,14 +3128,12 @@ void SiteHomePageResponse::set_allocated_docsy(::palm::lemon::v1::DocsyHomePage*
   // @@protoc_insertion_point(field_set_allocated:palm.lemon.v1.SiteHomePageResponse.docsy)
 }
 void SiteHomePageResponse::set_allocated_gantry(::palm::lemon::v1::GantryHomePage* gantry) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (gantry) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(gantry);
+    ::google::protobuf::Arena* submessage_arena = gantry->GetArena();
     if (message_arena != submessage_arena) {
-      gantry = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, gantry, submessage_arena);
+      gantry = ::google::protobuf::internal::GetOwnedMessage(message_arena, gantry, submessage_arena);
     }
     set_has_gantry();
     _impl_.payload_.gantry_ = gantry;
@@ -3138,14 +3141,12 @@ void SiteHomePageResponse::set_allocated_gantry(::palm::lemon::v1::GantryHomePag
   // @@protoc_insertion_point(field_set_allocated:palm.lemon.v1.SiteHomePageResponse.gantry)
 }
 void SiteHomePageResponse::set_allocated_hinode(::palm::lemon::v1::HinodeHomePage* hinode) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (hinode) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(hinode);
+    ::google::protobuf::Arena* submessage_arena = hinode->GetArena();
     if (message_arena != submessage_arena) {
-      hinode = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, hinode, submessage_arena);
+      hinode = ::google::protobuf::internal::GetOwnedMessage(message_arena, hinode, submessage_arena);
     }
     set_has_hinode();
     _impl_.payload_.hinode_ = hinode;
@@ -3153,14 +3154,12 @@ void SiteHomePageResponse::set_allocated_hinode(::palm::lemon::v1::HinodeHomePag
   // @@protoc_insertion_point(field_set_allocated:palm.lemon.v1.SiteHomePageResponse.hinode)
 }
 void SiteHomePageResponse::set_allocated_universal(::palm::lemon::v1::UniversalHomePage* universal) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (universal) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(universal);
+    ::google::protobuf::Arena* submessage_arena = universal->GetArena();
     if (message_arena != submessage_arena) {
-      universal = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, universal, submessage_arena);
+      universal = ::google::protobuf::internal::GetOwnedMessage(message_arena, universal, submessage_arena);
     }
     set_has_universal();
     _impl_.payload_.universal_ = universal;
@@ -3168,14 +3167,12 @@ void SiteHomePageResponse::set_allocated_universal(::palm::lemon::v1::UniversalH
   // @@protoc_insertion_point(field_set_allocated:palm.lemon.v1.SiteHomePageResponse.universal)
 }
 void SiteHomePageResponse::set_allocated_x_corporation(::palm::lemon::v1::XCorporationHomePage* x_corporation) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (x_corporation) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(x_corporation);
+    ::google::protobuf::Arena* submessage_arena = x_corporation->GetArena();
     if (message_arena != submessage_arena) {
-      x_corporation = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, x_corporation, submessage_arena);
+      x_corporation = ::google::protobuf::internal::GetOwnedMessage(message_arena, x_corporation, submessage_arena);
     }
     set_has_x_corporation();
     _impl_.payload_.x_corporation_ = x_corporation;
@@ -3187,63 +3184,56 @@ SiteHomePageResponse::SiteHomePageResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.SiteHomePageResponse)
 }
-SiteHomePageResponse::SiteHomePageResponse(const SiteHomePageResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteHomePageResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : payload_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+SiteHomePageResponse::SiteHomePageResponse(
+    ::google::protobuf::Arena* arena,
+    const SiteHomePageResponse& from)
+    : ::google::protobuf::Message(arena) {
   SiteHomePageResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  clear_has_payload();
-  switch (from.payload_case()) {
-    case kCleanWhite: {
-      _this->_internal_mutable_clean_white()->::palm::lemon::v1::CleanWhiteHomePage::MergeFrom(
-          from._internal_clean_white());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  switch (payload_case()) {
+    case PAYLOAD_NOT_SET:
       break;
-    }
-    case kDocsy: {
-      _this->_internal_mutable_docsy()->::palm::lemon::v1::DocsyHomePage::MergeFrom(
-          from._internal_docsy());
-      break;
-    }
-    case kGantry: {
-      _this->_internal_mutable_gantry()->::palm::lemon::v1::GantryHomePage::MergeFrom(
-          from._internal_gantry());
-      break;
-    }
-    case kHinode: {
-      _this->_internal_mutable_hinode()->::palm::lemon::v1::HinodeHomePage::MergeFrom(
-          from._internal_hinode());
-      break;
-    }
-    case kUniversal: {
-      _this->_internal_mutable_universal()->::palm::lemon::v1::UniversalHomePage::MergeFrom(
-          from._internal_universal());
-      break;
-    }
-    case kXCorporation: {
-      _this->_internal_mutable_x_corporation()->::palm::lemon::v1::XCorporationHomePage::MergeFrom(
-          from._internal_x_corporation());
-      break;
-    }
-    case PAYLOAD_NOT_SET: {
-      break;
-    }
+      case kCleanWhite:
+        _impl_.payload_.clean_white_ = CreateMaybeMessage<::palm::lemon::v1::CleanWhiteHomePage>(arena, *from._impl_.payload_.clean_white_);
+        break;
+      case kDocsy:
+        _impl_.payload_.docsy_ = CreateMaybeMessage<::palm::lemon::v1::DocsyHomePage>(arena, *from._impl_.payload_.docsy_);
+        break;
+      case kGantry:
+        _impl_.payload_.gantry_ = CreateMaybeMessage<::palm::lemon::v1::GantryHomePage>(arena, *from._impl_.payload_.gantry_);
+        break;
+      case kHinode:
+        _impl_.payload_.hinode_ = CreateMaybeMessage<::palm::lemon::v1::HinodeHomePage>(arena, *from._impl_.payload_.hinode_);
+        break;
+      case kUniversal:
+        _impl_.payload_.universal_ = CreateMaybeMessage<::palm::lemon::v1::UniversalHomePage>(arena, *from._impl_.payload_.universal_);
+        break;
+      case kXCorporation:
+        _impl_.payload_.x_corporation_ = CreateMaybeMessage<::palm::lemon::v1::XCorporationHomePage>(arena, *from._impl_.payload_.x_corporation_);
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.SiteHomePageResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteHomePageResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : payload_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
 inline void SiteHomePageResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  clear_has_payload();
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteHomePageResponse::~SiteHomePageResponse() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.SiteHomePageResponse)
@@ -3251,50 +3241,49 @@ SiteHomePageResponse::~SiteHomePageResponse() {
   SharedDtor();
 }
 inline void SiteHomePageResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   if (has_payload()) {
     clear_payload();
   }
-}
-void SiteHomePageResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void SiteHomePageResponse::clear_payload() {
 // @@protoc_insertion_point(one_of_clear_start:palm.lemon.v1.SiteHomePageResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (payload_case()) {
     case kCleanWhite: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.clean_white_;
       }
       break;
     }
     case kDocsy: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.docsy_;
       }
       break;
     }
     case kGantry: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.gantry_;
       }
       break;
     }
     case kHinode: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.hinode_;
       }
       break;
     }
     case kUniversal: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.universal_;
       }
       break;
     }
     case kXCorporation: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.x_corporation_;
       }
       break;
@@ -3309,6 +3298,7 @@ void SiteHomePageResponse::clear_payload() {
 
 PROTOBUF_NOINLINE void SiteHomePageResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.SiteHomePageResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3381,38 +3371,38 @@ const ::_pbi::TcParseTable<0, 6, 6, 0, 2> SiteHomePageResponse::_table_ = {
 
   switch (payload_case()) {
     case kCleanWhite: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(1, _Internal::clean_white(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          1, _Internal::clean_white(this),
           _Internal::clean_white(this).GetCachedSize(), target, stream);
       break;
     }
     case kDocsy: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(2, _Internal::docsy(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          2, _Internal::docsy(this),
           _Internal::docsy(this).GetCachedSize(), target, stream);
       break;
     }
     case kGantry: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(3, _Internal::gantry(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          3, _Internal::gantry(this),
           _Internal::gantry(this).GetCachedSize(), target, stream);
       break;
     }
     case kHinode: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(4, _Internal::hinode(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          4, _Internal::hinode(this),
           _Internal::hinode(this).GetCachedSize(), target, stream);
       break;
     }
     case kUniversal: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(5, _Internal::universal(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          5, _Internal::universal(this),
           _Internal::universal(this).GetCachedSize(), target, stream);
       break;
     }
     case kXCorporation: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(6, _Internal::x_corporation(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          6, _Internal::x_corporation(this),
           _Internal::x_corporation(this).GetCachedSize(), target, stream);
       break;
     }
@@ -3439,44 +3429,38 @@ const ::_pbi::TcParseTable<0, 6, 6, 0, 2> SiteHomePageResponse::_table_ = {
   switch (payload_case()) {
     // .palm.lemon.v1.CleanWhiteHomePage clean_white = 1;
     case kCleanWhite: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.clean_white_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.clean_white_);
       break;
     }
     // .palm.lemon.v1.DocsyHomePage docsy = 2;
     case kDocsy: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.docsy_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.docsy_);
       break;
     }
     // .palm.lemon.v1.GantryHomePage gantry = 3;
     case kGantry: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.gantry_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.gantry_);
       break;
     }
     // .palm.lemon.v1.HinodeHomePage hinode = 4;
     case kHinode: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.hinode_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.hinode_);
       break;
     }
     // .palm.lemon.v1.UniversalHomePage universal = 5;
     case kUniversal: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.universal_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.universal_);
       break;
     }
     // .palm.lemon.v1.XCorporationHomePage x_corporation = 6;
     case kXCorporation: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.x_corporation_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.x_corporation_);
       break;
     }
     case PAYLOAD_NOT_SET: {
@@ -3487,11 +3471,12 @@ const ::_pbi::TcParseTable<0, 6, 6, 0, 2> SiteHomePageResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteHomePageResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteHomePageResponse::MergeImpl
+    SiteHomePageResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteHomePageResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteHomePageResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteHomePageResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteHomePageResponse*>(&to_msg);
@@ -3550,7 +3535,10 @@ PROTOBUF_NOINLINE bool SiteHomePageResponse::IsInitialized() const {
   return true;
 }
 
-void SiteHomePageResponse::InternalSwap(SiteHomePageResponse* other) {
+::_pbi::CachedSize* SiteHomePageResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteHomePageResponse::InternalSwap(SiteHomePageResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_.payload_, other->_impl_.payload_);
@@ -3572,7 +3560,10 @@ CleanWhiteLayout::CleanWhiteLayout(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.CleanWhiteLayout)
 }
-CleanWhiteLayout::CleanWhiteLayout(const CleanWhiteLayout& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+CleanWhiteLayout::CleanWhiteLayout(
+    ::google::protobuf::Arena* arena,
+    const CleanWhiteLayout& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   CleanWhiteLayout* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -3582,13 +3573,6 @@ CleanWhiteLayout::CleanWhiteLayout(const CleanWhiteLayout& from) : ::google::pro
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData CleanWhiteLayout::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*CleanWhiteLayout::GetClassData() const { return &_class_data_; }
 
 
 
@@ -3611,7 +3595,10 @@ DocsyLayout::DocsyLayout(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.DocsyLayout)
 }
-DocsyLayout::DocsyLayout(const DocsyLayout& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+DocsyLayout::DocsyLayout(
+    ::google::protobuf::Arena* arena,
+    const DocsyLayout& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   DocsyLayout* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -3621,13 +3608,6 @@ DocsyLayout::DocsyLayout(const DocsyLayout& from) : ::google::protobuf::internal
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData DocsyLayout::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*DocsyLayout::GetClassData() const { return &_class_data_; }
 
 
 
@@ -3650,7 +3630,10 @@ GantryLayout::GantryLayout(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.GantryLayout)
 }
-GantryLayout::GantryLayout(const GantryLayout& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+GantryLayout::GantryLayout(
+    ::google::protobuf::Arena* arena,
+    const GantryLayout& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   GantryLayout* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -3660,13 +3643,6 @@ GantryLayout::GantryLayout(const GantryLayout& from) : ::google::protobuf::inter
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData GantryLayout::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*GantryLayout::GetClassData() const { return &_class_data_; }
 
 
 
@@ -3689,7 +3665,10 @@ HinodeLayout::HinodeLayout(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.HinodeLayout)
 }
-HinodeLayout::HinodeLayout(const HinodeLayout& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+HinodeLayout::HinodeLayout(
+    ::google::protobuf::Arena* arena,
+    const HinodeLayout& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   HinodeLayout* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -3699,13 +3678,6 @@ HinodeLayout::HinodeLayout(const HinodeLayout& from) : ::google::protobuf::inter
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData HinodeLayout::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*HinodeLayout::GetClassData() const { return &_class_data_; }
 
 
 
@@ -3728,7 +3700,10 @@ UniversalLayout::UniversalLayout(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.UniversalLayout)
 }
-UniversalLayout::UniversalLayout(const UniversalLayout& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+UniversalLayout::UniversalLayout(
+    ::google::protobuf::Arena* arena,
+    const UniversalLayout& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   UniversalLayout* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -3738,13 +3713,6 @@ UniversalLayout::UniversalLayout(const UniversalLayout& from) : ::google::protob
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData UniversalLayout::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*UniversalLayout::GetClassData() const { return &_class_data_; }
 
 
 
@@ -3767,7 +3735,10 @@ XCorporationLayout::XCorporationLayout(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.XCorporationLayout)
 }
-XCorporationLayout::XCorporationLayout(const XCorporationLayout& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+XCorporationLayout::XCorporationLayout(
+    ::google::protobuf::Arena* arena,
+    const XCorporationLayout& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   XCorporationLayout* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -3777,13 +3748,6 @@ XCorporationLayout::XCorporationLayout(const XCorporationLayout& from) : ::googl
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData XCorporationLayout::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*XCorporationLayout::GetClassData() const { return &_class_data_; }
 
 
 
@@ -3806,7 +3770,10 @@ CleanWhiteHomePage::CleanWhiteHomePage(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.CleanWhiteHomePage)
 }
-CleanWhiteHomePage::CleanWhiteHomePage(const CleanWhiteHomePage& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+CleanWhiteHomePage::CleanWhiteHomePage(
+    ::google::protobuf::Arena* arena,
+    const CleanWhiteHomePage& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   CleanWhiteHomePage* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -3816,13 +3783,6 @@ CleanWhiteHomePage::CleanWhiteHomePage(const CleanWhiteHomePage& from) : ::googl
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData CleanWhiteHomePage::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*CleanWhiteHomePage::GetClassData() const { return &_class_data_; }
 
 
 
@@ -3845,7 +3805,10 @@ DocsyHomePage::DocsyHomePage(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.DocsyHomePage)
 }
-DocsyHomePage::DocsyHomePage(const DocsyHomePage& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+DocsyHomePage::DocsyHomePage(
+    ::google::protobuf::Arena* arena,
+    const DocsyHomePage& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   DocsyHomePage* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -3855,13 +3818,6 @@ DocsyHomePage::DocsyHomePage(const DocsyHomePage& from) : ::google::protobuf::in
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData DocsyHomePage::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*DocsyHomePage::GetClassData() const { return &_class_data_; }
 
 
 
@@ -3884,7 +3840,10 @@ GantryHomePage::GantryHomePage(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.GantryHomePage)
 }
-GantryHomePage::GantryHomePage(const GantryHomePage& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+GantryHomePage::GantryHomePage(
+    ::google::protobuf::Arena* arena,
+    const GantryHomePage& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   GantryHomePage* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -3894,13 +3853,6 @@ GantryHomePage::GantryHomePage(const GantryHomePage& from) : ::google::protobuf:
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData GantryHomePage::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*GantryHomePage::GetClassData() const { return &_class_data_; }
 
 
 
@@ -3923,7 +3875,10 @@ HinodeHomePage::HinodeHomePage(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.HinodeHomePage)
 }
-HinodeHomePage::HinodeHomePage(const HinodeHomePage& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+HinodeHomePage::HinodeHomePage(
+    ::google::protobuf::Arena* arena,
+    const HinodeHomePage& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   HinodeHomePage* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -3933,13 +3888,6 @@ HinodeHomePage::HinodeHomePage(const HinodeHomePage& from) : ::google::protobuf:
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData HinodeHomePage::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*HinodeHomePage::GetClassData() const { return &_class_data_; }
 
 
 
@@ -3962,7 +3910,10 @@ UniversalHomePage::UniversalHomePage(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.UniversalHomePage)
 }
-UniversalHomePage::UniversalHomePage(const UniversalHomePage& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+UniversalHomePage::UniversalHomePage(
+    ::google::protobuf::Arena* arena,
+    const UniversalHomePage& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   UniversalHomePage* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -3972,13 +3923,6 @@ UniversalHomePage::UniversalHomePage(const UniversalHomePage& from) : ::google::
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData UniversalHomePage::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*UniversalHomePage::GetClassData() const { return &_class_data_; }
 
 
 
@@ -4001,7 +3945,10 @@ XCorporationHomePage::XCorporationHomePage(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.XCorporationHomePage)
 }
-XCorporationHomePage::XCorporationHomePage(const XCorporationHomePage& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+XCorporationHomePage::XCorporationHomePage(
+    ::google::protobuf::Arena* arena,
+    const XCorporationHomePage& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   XCorporationHomePage* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -4011,13 +3958,6 @@ XCorporationHomePage::XCorporationHomePage(const XCorporationHomePage& from) : :
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData XCorporationHomePage::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*XCorporationHomePage::GetClassData() const { return &_class_data_; }
 
 
 
@@ -4047,6 +3987,7 @@ const ::google::protobuf::Timestamp& Rss_Link::_Internal::updated_at(const Rss_L
   return *msg->_impl_.updated_at_;
 }
 void Rss_Link::clear_updated_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.updated_at_ != nullptr) _impl_.updated_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -4055,68 +3996,42 @@ Rss_Link::Rss_Link(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.Rss.Link)
 }
-Rss_Link::Rss_Link(const Rss_Link& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Rss_Link::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        path_(arena, from.path_),
+        title_(arena, from.title_),
+        description_(arena, from.description_) {}
+
+Rss_Link::Rss_Link(
+    ::google::protobuf::Arena* arena,
+    const Rss_Link& from)
+    : ::google::protobuf::Message(arena) {
   Rss_Link* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.path_){},
-      decltype(_impl_.title_){},
-      decltype(_impl_.description_){},
-      decltype(_impl_.updated_at_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.path_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.path_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_path().empty()) {
-    _this->_impl_.path_.Set(from._internal_path(), _this->GetArenaForAllocation());
-  }
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
-  }
-  _impl_.description_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.description_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_description().empty()) {
-    _this->_impl_.description_.Set(from._internal_description(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.updated_at_ = new ::google::protobuf::Timestamp(*from._impl_.updated_at_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.updated_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.updated_at_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.Rss.Link)
 }
+inline PROTOBUF_NDEBUG_INLINE Rss_Link::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        path_(arena),
+        title_(arena),
+        description_(arena) {}
+
 inline void Rss_Link::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.path_){},
-      decltype(_impl_.title_){},
-      decltype(_impl_.description_){},
-      decltype(_impl_.updated_at_){nullptr},
-  };
-  _impl_.path_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.path_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.description_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.description_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.updated_at_ = {};
 }
 Rss_Link::~Rss_Link() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.Rss.Link)
@@ -4124,18 +4039,17 @@ Rss_Link::~Rss_Link() {
   SharedDtor();
 }
 inline void Rss_Link::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.path_.Destroy();
   _impl_.title_.Destroy();
   _impl_.description_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.updated_at_;
-}
-void Rss_Link::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.updated_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Rss_Link::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.Rss.Link)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4244,8 +4158,8 @@ const ::_pbi::TcParseTable<2, 4, 1, 51, 2> Rss_Link::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp updated_at = 9;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(9, _Internal::updated_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        9, _Internal::updated_at(this),
         _Internal::updated_at(this).GetCachedSize(), target, stream);
   }
 
@@ -4287,20 +4201,20 @@ const ::_pbi::TcParseTable<2, 4, 1, 51, 2> Rss_Link::_table_ = {
   // .google.protobuf.Timestamp updated_at = 9;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.updated_at_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.updated_at_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData Rss_Link::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Rss_Link::MergeImpl
+    Rss_Link::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Rss_Link::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Rss_Link::GetClassData() const {
+  return &_class_data_;
+}
 
 void Rss_Link::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Rss_Link*>(&to_msg);
@@ -4337,18 +4251,18 @@ PROTOBUF_NOINLINE bool Rss_Link::IsInitialized() const {
   return true;
 }
 
-void Rss_Link::InternalSwap(Rss_Link* other) {
+::_pbi::CachedSize* Rss_Link::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Rss_Link::InternalSwap(Rss_Link* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.path_, lhs_arena,
-                                       &other->_impl_.path_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, lhs_arena,
-                                       &other->_impl_.description_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.path_, &other->_impl_.path_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, &other->_impl_.title_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, &other->_impl_.description_, arena);
   swap(_impl_.updated_at_, other->_impl_.updated_at_);
 }
 
@@ -4368,63 +4282,38 @@ Rss::Rss(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.Rss)
 }
-Rss::Rss(const Rss& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Rss::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : links_{visibility, arena, from.links_},
+        home_(arena, from.home_),
+        title_(arena, from.title_),
+        description_(arena, from.description_),
+        _cached_size_{0} {}
+
+Rss::Rss(
+    ::google::protobuf::Arena* arena,
+    const Rss& from)
+    : ::google::protobuf::Message(arena) {
   Rss* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.links_){from._impl_.links_},
-      decltype(_impl_.home_){},
-      decltype(_impl_.title_){},
-      decltype(_impl_.description_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.home_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_home().empty()) {
-    _this->_impl_.home_.Set(from._internal_home(), _this->GetArenaForAllocation());
-  }
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
-  }
-  _impl_.description_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.description_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_description().empty()) {
-    _this->_impl_.description_.Set(from._internal_description(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.Rss)
 }
+inline PROTOBUF_NDEBUG_INLINE Rss::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : links_{visibility, arena},
+        home_(arena),
+        title_(arena),
+        description_(arena),
+        _cached_size_{0} {}
+
 inline void Rss::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.links_){arena},
-      decltype(_impl_.home_){},
-      decltype(_impl_.title_){},
-      decltype(_impl_.description_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.home_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.description_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.description_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Rss::~Rss() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.Rss)
@@ -4432,23 +4321,21 @@ Rss::~Rss() {
   SharedDtor();
 }
 inline void Rss::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.links_.~RepeatedPtrField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.home_.Destroy();
   _impl_.title_.Destroy();
   _impl_.description_.Destroy();
-}
-void Rss::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Rss::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.Rss)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_links()->Clear();
+  _impl_.links_.Clear();
   _impl_.home_.ClearToEmpty();
   _impl_.title_.ClearToEmpty();
   _impl_.description_.ClearToEmpty();
@@ -4597,11 +4484,12 @@ const ::_pbi::TcParseTable<2, 4, 1, 46, 2> Rss::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Rss::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Rss::MergeImpl
+    Rss::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Rss::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Rss::GetClassData() const {
+  return &_class_data_;
+}
 
 void Rss::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Rss*>(&to_msg);
@@ -4611,7 +4499,8 @@ void Rss::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobu
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_links()->MergeFrom(from._internal_links());
+  _this->_internal_mutable_links()->MergeFrom(
+      from._internal_links());
   if (!from._internal_home().empty()) {
     _this->_internal_set_home(from._internal_home());
   }
@@ -4635,18 +4524,18 @@ PROTOBUF_NOINLINE bool Rss::IsInitialized() const {
   return true;
 }
 
-void Rss::InternalSwap(Rss* other) {
+::_pbi::CachedSize* Rss::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Rss::InternalSwap(Rss* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.links_.InternalSwap(&other->_impl_.links_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.home_, lhs_arena,
-                                       &other->_impl_.home_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, lhs_arena,
-                                       &other->_impl_.description_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.home_, &other->_impl_.home_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, &other->_impl_.title_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, &other->_impl_.description_, arena);
 }
 
 ::google::protobuf::Metadata Rss::GetMetadata() const {
@@ -4671,6 +4560,7 @@ const ::google::protobuf::Timestamp& Sitemap_Link::_Internal::updated_at(const S
   return *msg->_impl_.updated_at_;
 }
 void Sitemap_Link::clear_updated_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.updated_at_ != nullptr) _impl_.updated_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -4679,49 +4569,50 @@ Sitemap_Link::Sitemap_Link(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.Sitemap.Link)
 }
-Sitemap_Link::Sitemap_Link(const Sitemap_Link& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Sitemap_Link::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        path_(arena, from.path_) {}
+
+Sitemap_Link::Sitemap_Link(
+    ::google::protobuf::Arena* arena,
+    const Sitemap_Link& from)
+    : ::google::protobuf::Message(arena) {
   Sitemap_Link* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.path_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.change_freq_){},
-      decltype(_impl_.priority_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.path_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.path_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_path().empty()) {
-    _this->_impl_.path_.Set(from._internal_path(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.updated_at_ = new ::google::protobuf::Timestamp(*from._impl_.updated_at_);
-  }
-  ::memcpy(&_impl_.change_freq_, &from._impl_.change_freq_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.priority_) -
-    reinterpret_cast<char*>(&_impl_.change_freq_)) + sizeof(_impl_.priority_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.updated_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.updated_at_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, change_freq_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, change_freq_),
+           offsetof(Impl_, priority_) -
+               offsetof(Impl_, change_freq_) +
+               sizeof(Impl_::priority_));
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.Sitemap.Link)
 }
+inline PROTOBUF_NDEBUG_INLINE Sitemap_Link::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        path_(arena) {}
+
 inline void Sitemap_Link::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.path_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.change_freq_){0},
-      decltype(_impl_.priority_){0},
-  };
-  _impl_.path_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.path_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, updated_at_),
+           0,
+           offsetof(Impl_, priority_) -
+               offsetof(Impl_, updated_at_) +
+               sizeof(Impl_::priority_));
 }
 Sitemap_Link::~Sitemap_Link() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.Sitemap.Link)
@@ -4729,16 +4620,15 @@ Sitemap_Link::~Sitemap_Link() {
   SharedDtor();
 }
 inline void Sitemap_Link::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.path_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.updated_at_;
-}
-void Sitemap_Link::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.updated_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Sitemap_Link::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.Sitemap.Link)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4849,8 +4739,8 @@ const ::_pbi::TcParseTable<2, 4, 1, 39, 2> Sitemap_Link::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp updated_at = 9;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(9, _Internal::updated_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        9, _Internal::updated_at(this),
         _Internal::updated_at(this).GetCachedSize(), target, stream);
   }
 
@@ -4880,9 +4770,8 @@ const ::_pbi::TcParseTable<2, 4, 1, 39, 2> Sitemap_Link::_table_ = {
   // .google.protobuf.Timestamp updated_at = 9;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.updated_at_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.updated_at_);
   }
 
   // .palm.lemon.v1.Sitemap.Link.ChangeFreq change_freq = 2;
@@ -4905,11 +4794,12 @@ const ::_pbi::TcParseTable<2, 4, 1, 39, 2> Sitemap_Link::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Sitemap_Link::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Sitemap_Link::MergeImpl
+    Sitemap_Link::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Sitemap_Link::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Sitemap_Link::GetClassData() const {
+  return &_class_data_;
+}
 
 void Sitemap_Link::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Sitemap_Link*>(&to_msg);
@@ -4951,14 +4841,16 @@ PROTOBUF_NOINLINE bool Sitemap_Link::IsInitialized() const {
   return true;
 }
 
-void Sitemap_Link::InternalSwap(Sitemap_Link* other) {
+::_pbi::CachedSize* Sitemap_Link::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Sitemap_Link::InternalSwap(Sitemap_Link* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.path_, lhs_arena,
-                                       &other->_impl_.path_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.path_, &other->_impl_.path_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Sitemap_Link, _impl_.priority_)
       + sizeof(Sitemap_Link::_impl_.priority_)
@@ -4983,24 +4875,32 @@ Sitemap_UrlSet::Sitemap_UrlSet(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.Sitemap.UrlSet)
 }
-Sitemap_UrlSet::Sitemap_UrlSet(const Sitemap_UrlSet& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Sitemap_UrlSet::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : links_{visibility, arena, from.links_},
+        _cached_size_{0} {}
+
+Sitemap_UrlSet::Sitemap_UrlSet(
+    ::google::protobuf::Arena* arena,
+    const Sitemap_UrlSet& from)
+    : ::google::protobuf::Message(arena) {
   Sitemap_UrlSet* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.links_){from._impl_.links_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.Sitemap.UrlSet)
 }
+inline PROTOBUF_NDEBUG_INLINE Sitemap_UrlSet::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : links_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void Sitemap_UrlSet::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.links_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Sitemap_UrlSet::~Sitemap_UrlSet() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.Sitemap.UrlSet)
@@ -5008,20 +4908,18 @@ Sitemap_UrlSet::~Sitemap_UrlSet() {
   SharedDtor();
 }
 inline void Sitemap_UrlSet::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.links_.~RepeatedPtrField();
-}
-void Sitemap_UrlSet::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Sitemap_UrlSet::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.Sitemap.UrlSet)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_links()->Clear();
+  _impl_.links_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -5104,11 +5002,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> Sitemap_UrlSet::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Sitemap_UrlSet::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Sitemap_UrlSet::MergeImpl
+    Sitemap_UrlSet::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Sitemap_UrlSet::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Sitemap_UrlSet::GetClassData() const {
+  return &_class_data_;
+}
 
 void Sitemap_UrlSet::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Sitemap_UrlSet*>(&to_msg);
@@ -5118,7 +5017,8 @@ void Sitemap_UrlSet::MergeImpl(::google::protobuf::Message& to_msg, const ::goog
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_links()->MergeFrom(from._internal_links());
+  _this->_internal_mutable_links()->MergeFrom(
+      from._internal_links());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -5133,7 +5033,10 @@ PROTOBUF_NOINLINE bool Sitemap_UrlSet::IsInitialized() const {
   return true;
 }
 
-void Sitemap_UrlSet::InternalSwap(Sitemap_UrlSet* other) {
+::_pbi::CachedSize* Sitemap_UrlSet::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Sitemap_UrlSet::InternalSwap(Sitemap_UrlSet* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.links_.InternalSwap(&other->_impl_.links_);
@@ -5155,24 +5058,32 @@ Sitemap_Index::Sitemap_Index(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.Sitemap.Index)
 }
-Sitemap_Index::Sitemap_Index(const Sitemap_Index& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Sitemap_Index::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : links_{visibility, arena, from.links_},
+        _cached_size_{0} {}
+
+Sitemap_Index::Sitemap_Index(
+    ::google::protobuf::Arena* arena,
+    const Sitemap_Index& from)
+    : ::google::protobuf::Message(arena) {
   Sitemap_Index* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.links_){from._impl_.links_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.Sitemap.Index)
 }
+inline PROTOBUF_NDEBUG_INLINE Sitemap_Index::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : links_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void Sitemap_Index::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.links_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Sitemap_Index::~Sitemap_Index() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.Sitemap.Index)
@@ -5180,20 +5091,18 @@ Sitemap_Index::~Sitemap_Index() {
   SharedDtor();
 }
 inline void Sitemap_Index::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_links()->~RepeatedPtrField();
-}
-void Sitemap_Index::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Sitemap_Index::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.Sitemap.Index)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_links()->Clear();
+  _impl_.links_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -5279,11 +5188,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 41, 2> Sitemap_Index::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Sitemap_Index::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Sitemap_Index::MergeImpl
+    Sitemap_Index::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Sitemap_Index::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Sitemap_Index::GetClassData() const {
+  return &_class_data_;
+}
 
 void Sitemap_Index::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Sitemap_Index*>(&to_msg);
@@ -5308,7 +5218,10 @@ PROTOBUF_NOINLINE bool Sitemap_Index::IsInitialized() const {
   return true;
 }
 
-void Sitemap_Index::InternalSwap(Sitemap_Index* other) {
+::_pbi::CachedSize* Sitemap_Index::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Sitemap_Index::InternalSwap(Sitemap_Index* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.links_.InternalSwap(&other->_impl_.links_);
@@ -5336,14 +5249,12 @@ const ::palm::lemon::v1::Sitemap_Index& Sitemap::_Internal::index(const Sitemap*
   return *msg->_impl_.body_.index_;
 }
 void Sitemap::set_allocated_urlset(::palm::lemon::v1::Sitemap_UrlSet* urlset) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_body();
   if (urlset) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(urlset);
+    ::google::protobuf::Arena* submessage_arena = urlset->GetArena();
     if (message_arena != submessage_arena) {
-      urlset = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, urlset, submessage_arena);
+      urlset = ::google::protobuf::internal::GetOwnedMessage(message_arena, urlset, submessage_arena);
     }
     set_has_urlset();
     _impl_.body_.urlset_ = urlset;
@@ -5351,14 +5262,12 @@ void Sitemap::set_allocated_urlset(::palm::lemon::v1::Sitemap_UrlSet* urlset) {
   // @@protoc_insertion_point(field_set_allocated:palm.lemon.v1.Sitemap.urlset)
 }
 void Sitemap::set_allocated_index(::palm::lemon::v1::Sitemap_Index* index) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_body();
   if (index) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(index);
+    ::google::protobuf::Arena* submessage_arena = index->GetArena();
     if (message_arena != submessage_arena) {
-      index = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, index, submessage_arena);
+      index = ::google::protobuf::internal::GetOwnedMessage(message_arena, index, submessage_arena);
     }
     set_has_index();
     _impl_.body_.index_ = index;
@@ -5370,56 +5279,46 @@ Sitemap::Sitemap(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.Sitemap)
 }
-Sitemap::Sitemap(const Sitemap& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Sitemap::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : home_(arena, from.home_),
+        body_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+Sitemap::Sitemap(
+    ::google::protobuf::Arena* arena,
+    const Sitemap& from)
+    : ::google::protobuf::Message(arena) {
   Sitemap* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.home_){},
-      decltype(_impl_.body_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.home_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_home().empty()) {
-    _this->_impl_.home_.Set(from._internal_home(), _this->GetArenaForAllocation());
-  }
-  clear_has_body();
-  switch (from.body_case()) {
-    case kUrlset: {
-      _this->_internal_mutable_urlset()->::palm::lemon::v1::Sitemap_UrlSet::MergeFrom(
-          from._internal_urlset());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  switch (body_case()) {
+    case BODY_NOT_SET:
       break;
-    }
-    case kIndex: {
-      _this->_internal_mutable_index()->::palm::lemon::v1::Sitemap_Index::MergeFrom(
-          from._internal_index());
-      break;
-    }
-    case BODY_NOT_SET: {
-      break;
-    }
+      case kUrlset:
+        _impl_.body_.urlset_ = CreateMaybeMessage<::palm::lemon::v1::Sitemap_UrlSet>(arena, *from._impl_.body_.urlset_);
+        break;
+      case kIndex:
+        _impl_.body_.index_ = CreateMaybeMessage<::palm::lemon::v1::Sitemap_Index>(arena, *from._impl_.body_.index_);
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.Sitemap)
 }
+inline PROTOBUF_NDEBUG_INLINE Sitemap::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : home_(arena),
+        body_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
 inline void Sitemap::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.home_){},
-      decltype(_impl_.body_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.home_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  clear_has_body();
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Sitemap::~Sitemap() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.Sitemap)
@@ -5427,27 +5326,26 @@ Sitemap::~Sitemap() {
   SharedDtor();
 }
 inline void Sitemap::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.home_.Destroy();
   if (has_body()) {
     clear_body();
   }
-}
-void Sitemap::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void Sitemap::clear_body() {
 // @@protoc_insertion_point(one_of_clear_start:palm.lemon.v1.Sitemap)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (body_case()) {
     case kUrlset: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.body_.urlset_;
       }
       break;
     }
     case kIndex: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.body_.index_;
       }
       break;
@@ -5462,6 +5360,7 @@ void Sitemap::clear_body() {
 
 PROTOBUF_NOINLINE void Sitemap::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.Sitemap)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5535,14 +5434,14 @@ const ::_pbi::TcParseTable<0, 3, 2, 34, 2> Sitemap::_table_ = {
 
   switch (body_case()) {
     case kUrlset: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(11, _Internal::urlset(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          11, _Internal::urlset(this),
           _Internal::urlset(this).GetCachedSize(), target, stream);
       break;
     }
     case kIndex: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(12, _Internal::index(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          12, _Internal::index(this),
           _Internal::index(this).GetCachedSize(), target, stream);
       break;
     }
@@ -5575,16 +5474,14 @@ const ::_pbi::TcParseTable<0, 3, 2, 34, 2> Sitemap::_table_ = {
   switch (body_case()) {
     // .palm.lemon.v1.Sitemap.UrlSet urlset = 11;
     case kUrlset: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.body_.urlset_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.body_.urlset_);
       break;
     }
     // .palm.lemon.v1.Sitemap.Index index = 12;
     case kIndex: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.body_.index_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.body_.index_);
       break;
     }
     case BODY_NOT_SET: {
@@ -5595,11 +5492,12 @@ const ::_pbi::TcParseTable<0, 3, 2, 34, 2> Sitemap::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Sitemap::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Sitemap::MergeImpl
+    Sitemap::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Sitemap::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Sitemap::GetClassData() const {
+  return &_class_data_;
+}
 
 void Sitemap::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Sitemap*>(&to_msg);
@@ -5641,13 +5539,15 @@ PROTOBUF_NOINLINE bool Sitemap::IsInitialized() const {
   return true;
 }
 
-void Sitemap::InternalSwap(Sitemap* other) {
+::_pbi::CachedSize* Sitemap::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Sitemap::InternalSwap(Sitemap* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.home_, lhs_arena,
-                                       &other->_impl_.home_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.home_, &other->_impl_.home_, arena);
   swap(_impl_.body_, other->_impl_.body_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
@@ -5668,48 +5568,34 @@ Page::Page(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lemon.v1.Page)
 }
-Page::Page(const Page& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Page::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : slug_(arena, from.slug_),
+        title_(arena, from.title_),
+        _cached_size_{0} {}
+
+Page::Page(
+    ::google::protobuf::Arena* arena,
+    const Page& from)
+    : ::google::protobuf::Message(arena) {
   Page* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.slug_){},
-      decltype(_impl_.title_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.slug_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.slug_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_slug().empty()) {
-    _this->_impl_.slug_.Set(from._internal_slug(), _this->GetArenaForAllocation());
-  }
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.lemon.v1.Page)
 }
+inline PROTOBUF_NDEBUG_INLINE Page::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : slug_(arena),
+        title_(arena),
+        _cached_size_{0} {}
+
 inline void Page::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.slug_){},
-      decltype(_impl_.title_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.slug_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.slug_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Page::~Page() {
   // @@protoc_insertion_point(destructor:palm.lemon.v1.Page)
@@ -5717,16 +5603,15 @@ Page::~Page() {
   SharedDtor();
 }
 inline void Page::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.slug_.Destroy();
   _impl_.title_.Destroy();
-}
-void Page::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Page::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lemon.v1.Page)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5839,11 +5724,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 36, 2> Page::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Page::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Page::MergeImpl
+    Page::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Page::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Page::GetClassData() const {
+  return &_class_data_;
+}
 
 void Page::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Page*>(&to_msg);
@@ -5873,15 +5759,16 @@ PROTOBUF_NOINLINE bool Page::IsInitialized() const {
   return true;
 }
 
-void Page::InternalSwap(Page* other) {
+::_pbi::CachedSize* Page::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Page::InternalSwap(Page* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.slug_, lhs_arena,
-                                       &other->_impl_.slug_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.slug_, &other->_impl_.slug_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, &other->_impl_.title_, arena);
 }
 
 ::google::protobuf::Metadata Page::GetMetadata() const {

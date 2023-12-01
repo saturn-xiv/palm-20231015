@@ -77,6 +77,7 @@ namespace Palm.Orchid.V1 {
 
   }
   #region Messages
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class WechatMiniProgramLoginRequest : pb::IMessage<WechatMiniProgramLoginRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -303,6 +304,7 @@ namespace Palm.Orchid.V1 {
 
   }
 
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class WechatMiniProgramLoginResponse : pb::IMessage<WechatMiniProgramLoginResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -566,6 +568,7 @@ namespace Palm.Orchid.V1 {
 
   }
 
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class WechatMiniProgramPhoneNumberRequest : pb::IMessage<WechatMiniProgramPhoneNumberRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -792,6 +795,7 @@ namespace Palm.Orchid.V1 {
 
   }
 
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class WechatMiniProgramPhoneNumberResponse : pb::IMessage<WechatMiniProgramPhoneNumberResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1092,6 +1096,7 @@ namespace Palm.Orchid.V1 {
 
   }
 
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class WechatOauth2QrConnectRequest : pb::IMessage<WechatOauth2QrConnectRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1406,6 +1411,7 @@ namespace Palm.Orchid.V1 {
 
   }
 
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class WechatOauth2QrConnectResponse : pb::IMessage<WechatOauth2QrConnectResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1595,6 +1601,7 @@ namespace Palm.Orchid.V1 {
 
   }
 
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class WechatOauth2LoginResponse : pb::IMessage<WechatOauth2LoginResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2096,6 +2103,7 @@ namespace Palm.Orchid.V1 {
 
   }
 
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class WechatOauth2LoginRequest : pb::IMessage<WechatOauth2LoginRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage

@@ -23,35 +23,17 @@ namespace _fl = ::google::protobuf::internal::field_layout;
 namespace palm {
 namespace morus {
 namespace v1 {
-        template <typename>
-PROTOBUF_CONSTEXPR MarkdownToHtmlRequest::MarkdownToHtmlRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.payload_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.sanitize_)*/ false,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct MarkdownToHtmlRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR MarkdownToHtmlRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~MarkdownToHtmlRequestDefaultTypeInternal() {}
-  union {
-    MarkdownToHtmlRequest _instance;
-  };
-};
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MarkdownToHtmlRequestDefaultTypeInternal _MarkdownToHtmlRequest_default_instance_;
-        template <typename>
+inline constexpr MarkdownToHtmlResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : payload_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
 PROTOBUF_CONSTEXPR MarkdownToHtmlResponse::MarkdownToHtmlResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.payload_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct MarkdownToHtmlResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR MarkdownToHtmlResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~MarkdownToHtmlResponseDefaultTypeInternal() {}
@@ -62,6 +44,28 @@ struct MarkdownToHtmlResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MarkdownToHtmlResponseDefaultTypeInternal _MarkdownToHtmlResponse_default_instance_;
+
+inline constexpr MarkdownToHtmlRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : payload_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        sanitize_{false},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR MarkdownToHtmlRequest::MarkdownToHtmlRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct MarkdownToHtmlRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MarkdownToHtmlRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MarkdownToHtmlRequestDefaultTypeInternal() {}
+  union {
+    MarkdownToHtmlRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MarkdownToHtmlRequestDefaultTypeInternal _MarkdownToHtmlRequest_default_instance_;
 }  // namespace v1
 }  // namespace morus
 }  // namespace palm
@@ -164,38 +168,34 @@ MarkdownToHtmlRequest::MarkdownToHtmlRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.morus.v1.MarkdownToHtmlRequest)
 }
-MarkdownToHtmlRequest::MarkdownToHtmlRequest(const MarkdownToHtmlRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE MarkdownToHtmlRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : payload_(arena, from.payload_),
+        _cached_size_{0} {}
+
+MarkdownToHtmlRequest::MarkdownToHtmlRequest(
+    ::google::protobuf::Arena* arena,
+    const MarkdownToHtmlRequest& from)
+    : ::google::protobuf::Message(arena) {
   MarkdownToHtmlRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.payload_){},
-      decltype(_impl_.sanitize_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.payload_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.payload_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_payload().empty()) {
-    _this->_impl_.payload_.Set(from._internal_payload(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.sanitize_ = from._impl_.sanitize_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.sanitize_ = from._impl_.sanitize_;
 
   // @@protoc_insertion_point(copy_constructor:palm.morus.v1.MarkdownToHtmlRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE MarkdownToHtmlRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : payload_(arena),
+        _cached_size_{0} {}
+
 inline void MarkdownToHtmlRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.payload_){},
-      decltype(_impl_.sanitize_){false},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.payload_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.payload_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.sanitize_ = {};
 }
 MarkdownToHtmlRequest::~MarkdownToHtmlRequest() {
   // @@protoc_insertion_point(destructor:palm.morus.v1.MarkdownToHtmlRequest)
@@ -203,15 +203,14 @@ MarkdownToHtmlRequest::~MarkdownToHtmlRequest() {
   SharedDtor();
 }
 inline void MarkdownToHtmlRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.payload_.Destroy();
-}
-void MarkdownToHtmlRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void MarkdownToHtmlRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.morus.v1.MarkdownToHtmlRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -321,11 +320,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 51, 2> MarkdownToHtmlRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData MarkdownToHtmlRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    MarkdownToHtmlRequest::MergeImpl
+    MarkdownToHtmlRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*MarkdownToHtmlRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* MarkdownToHtmlRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void MarkdownToHtmlRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<MarkdownToHtmlRequest*>(&to_msg);
@@ -355,13 +355,15 @@ PROTOBUF_NOINLINE bool MarkdownToHtmlRequest::IsInitialized() const {
   return true;
 }
 
-void MarkdownToHtmlRequest::InternalSwap(MarkdownToHtmlRequest* other) {
+::_pbi::CachedSize* MarkdownToHtmlRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void MarkdownToHtmlRequest::InternalSwap(MarkdownToHtmlRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.payload_, lhs_arena,
-                                       &other->_impl_.payload_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.payload_, &other->_impl_.payload_, arena);
         swap(_impl_.sanitize_, other->_impl_.sanitize_);
 }
 
@@ -381,35 +383,32 @@ MarkdownToHtmlResponse::MarkdownToHtmlResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.morus.v1.MarkdownToHtmlResponse)
 }
-MarkdownToHtmlResponse::MarkdownToHtmlResponse(const MarkdownToHtmlResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE MarkdownToHtmlResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : payload_(arena, from.payload_),
+        _cached_size_{0} {}
+
+MarkdownToHtmlResponse::MarkdownToHtmlResponse(
+    ::google::protobuf::Arena* arena,
+    const MarkdownToHtmlResponse& from)
+    : ::google::protobuf::Message(arena) {
   MarkdownToHtmlResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.payload_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.payload_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_payload().empty()) {
-    _this->_impl_.payload_.Set(from._internal_payload(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.morus.v1.MarkdownToHtmlResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE MarkdownToHtmlResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : payload_(arena),
+        _cached_size_{0} {}
+
 inline void MarkdownToHtmlResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.payload_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.payload_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 MarkdownToHtmlResponse::~MarkdownToHtmlResponse() {
   // @@protoc_insertion_point(destructor:palm.morus.v1.MarkdownToHtmlResponse)
@@ -417,15 +416,14 @@ MarkdownToHtmlResponse::~MarkdownToHtmlResponse() {
   SharedDtor();
 }
 inline void MarkdownToHtmlResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.payload_.Destroy();
-}
-void MarkdownToHtmlResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void MarkdownToHtmlResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.morus.v1.MarkdownToHtmlResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -516,11 +514,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 52, 2> MarkdownToHtmlResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData MarkdownToHtmlResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    MarkdownToHtmlResponse::MergeImpl
+    MarkdownToHtmlResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*MarkdownToHtmlResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* MarkdownToHtmlResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void MarkdownToHtmlResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<MarkdownToHtmlResponse*>(&to_msg);
@@ -547,13 +546,15 @@ PROTOBUF_NOINLINE bool MarkdownToHtmlResponse::IsInitialized() const {
   return true;
 }
 
-void MarkdownToHtmlResponse::InternalSwap(MarkdownToHtmlResponse* other) {
+::_pbi::CachedSize* MarkdownToHtmlResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void MarkdownToHtmlResponse::InternalSwap(MarkdownToHtmlResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.payload_, lhs_arena,
-                                       &other->_impl_.payload_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.payload_, &other->_impl_.payload_, arena);
 }
 
 ::google::protobuf::Metadata MarkdownToHtmlResponse::GetMetadata() const {

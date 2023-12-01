@@ -31,14 +31,16 @@ func main() {
 	var port int
 	var http_server bool
 	var rpc_server bool
-	var worker string
+	var start_worker bool
+	var queue string
 	var config_file string
 
 	flag.BoolVar(&debug, "debug", false, "run on debug mode")
 	flag.BoolVar(&version, "version", false, "show version")
-	flag.BoolVar(&rpc_server, "rpc-server", false, "start a gRPC server")
-	flag.BoolVar(&http_server, "http-server", false, "start a HTTP server")
-	flag.StringVar(&worker, "worker", env.QueueName(metasequoia_pb.EmailTask{}), "start a RabbitMQ consumer")
+	flag.BoolVar(&rpc_server, "rpc", false, "start a gRPC server")
+	flag.BoolVar(&http_server, "http", false, "start a HTTP server")
+	flag.BoolVar(&start_worker, "worker", false, "start a RabbitMQ consumer")
+	flag.StringVar(&queue, "queue", env.QueueName(metasequoia_pb.EmailTask{}), "RabbitMQ queue to listen")
 	flag.IntVar(&port, "port", 8080, "listening port")
 	flag.StringVar(&config_file, "config", "config.toml", "configuration file")
 	flag.Parse()
@@ -98,14 +100,17 @@ func main() {
 			return
 		}
 	}
-
-	if err = start_worker(config.RabbitMq.URI(), worker); err != nil {
-		log.Fatal(err)
+	if start_worker {
+		if err = launch_worker(config.RabbitMq.URI(), queue); err != nil {
+			log.Fatal(err)
+			return
+		}
 	}
+	flag.PrintDefaults()
 
 }
 
-func start_worker(rabbitmq string, queue_name string) error {
+func launch_worker(rabbitmq string, queue_name string) error {
 	hostname, err := os.Hostname()
 	if err != nil {
 		return err

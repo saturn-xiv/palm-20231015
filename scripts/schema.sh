@@ -166,7 +166,6 @@ function generate_metasequoia() {
         "ddns"
         "mail"
         "metrics"
-        "router"
         "vpn"
     )
 

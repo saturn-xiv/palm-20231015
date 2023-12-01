@@ -23,134 +23,6 @@ namespace _fl = ::google::protobuf::internal::field_layout;
 namespace palm {
 namespace lily {
 namespace v1 {
-        template <typename>
-PROTOBUF_CONSTEXPR ExcelModel_Sheet_Cell::ExcelModel_Sheet_Cell(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.val_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.row_)*/ 0u,
-      /*decltype(_impl_.col_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct ExcelModel_Sheet_CellDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ExcelModel_Sheet_CellDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ExcelModel_Sheet_CellDefaultTypeInternal() {}
-  union {
-    ExcelModel_Sheet_Cell _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExcelModel_Sheet_CellDefaultTypeInternal _ExcelModel_Sheet_Cell_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR ExcelModel_Sheet::ExcelModel_Sheet(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.cells_)*/ {},
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct ExcelModel_SheetDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ExcelModel_SheetDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ExcelModel_SheetDefaultTypeInternal() {}
-  union {
-    ExcelModel_Sheet _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExcelModel_SheetDefaultTypeInternal _ExcelModel_Sheet_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR ExcelModel::ExcelModel(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.sheets_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct ExcelModelDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ExcelModelDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ExcelModelDefaultTypeInternal() {}
-  union {
-    ExcelModel _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExcelModelDefaultTypeInternal _ExcelModel_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR S3File::S3File(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.bucket_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.content_type_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct S3FileDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR S3FileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~S3FileDefaultTypeInternal() {}
-  union {
-    S3File _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3FileDefaultTypeInternal _S3File_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR S3GetFileRequest::S3GetFileRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.bucket_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ttl_)*/ nullptr,
-    } {}
-struct S3GetFileRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR S3GetFileRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~S3GetFileRequestDefaultTypeInternal() {}
-  union {
-    S3GetFileRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3GetFileRequestDefaultTypeInternal _S3GetFileRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR S3GetFileResponse::S3GetFileResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct S3GetFileResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR S3GetFileResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~S3GetFileResponseDefaultTypeInternal() {}
-  union {
-    S3GetFileResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3GetFileResponseDefaultTypeInternal _S3GetFileResponse_default_instance_;
       template <typename>
 PROTOBUF_CONSTEXPR TexToRequest_FilesEntry_DoNotUse::TexToRequest_FilesEntry_DoNotUse(::_pbi::ConstantInitialized) {}
 struct TexToRequest_FilesEntry_DoNotUseDefaultTypeInternal {
@@ -163,33 +35,77 @@ struct TexToRequest_FilesEntry_DoNotUseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TexToRequest_FilesEntry_DoNotUseDefaultTypeInternal _TexToRequest_FilesEntry_DoNotUse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR TexToRequest::TexToRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /* decltype(_impl_.files_) */ {},
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.owner_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ttl_)*/ nullptr,
-      /*decltype(_impl_.published_)*/ false,
-    } {}
-struct TexToRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR TexToRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~TexToRequestDefaultTypeInternal() {}
+
+inline constexpr S3GetFileResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR S3GetFileResponse::S3GetFileResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct S3GetFileResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S3GetFileResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S3GetFileResponseDefaultTypeInternal() {}
   union {
-    TexToRequest _instance;
+    S3GetFileResponse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TexToRequestDefaultTypeInternal _TexToRequest_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3GetFileResponseDefaultTypeInternal _S3GetFileResponse_default_instance_;
+
+inline constexpr S3File::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : bucket_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        content_type_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR S3File::S3File(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct S3FileDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S3FileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S3FileDefaultTypeInternal() {}
+  union {
+    S3File _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3FileDefaultTypeInternal _S3File_default_instance_;
+
+inline constexpr ExcelModel_Sheet_Cell::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : val_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        row_{0u},
+        col_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ExcelModel_Sheet_Cell::ExcelModel_Sheet_Cell(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ExcelModel_Sheet_CellDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ExcelModel_Sheet_CellDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ExcelModel_Sheet_CellDefaultTypeInternal() {}
+  union {
+    ExcelModel_Sheet_Cell _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExcelModel_Sheet_CellDefaultTypeInternal _ExcelModel_Sheet_Cell_default_instance_;
       template <typename>
 PROTOBUF_CONSTEXPR EpubBuildRequest::EpubBuildRequest(::_pbi::ConstantInitialized) {}
 struct EpubBuildRequestDefaultTypeInternal {
@@ -202,6 +118,99 @@ struct EpubBuildRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EpubBuildRequestDefaultTypeInternal _EpubBuildRequest_default_instance_;
+
+inline constexpr TexToRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        files_{},
+        title_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        owner_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ttl_{nullptr},
+        published_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR TexToRequest::TexToRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct TexToRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TexToRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TexToRequestDefaultTypeInternal() {}
+  union {
+    TexToRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TexToRequestDefaultTypeInternal _TexToRequest_default_instance_;
+
+inline constexpr S3GetFileRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        bucket_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ttl_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR S3GetFileRequest::S3GetFileRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct S3GetFileRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR S3GetFileRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~S3GetFileRequestDefaultTypeInternal() {}
+  union {
+    S3GetFileRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 S3GetFileRequestDefaultTypeInternal _S3GetFileRequest_default_instance_;
+
+inline constexpr ExcelModel_Sheet::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : cells_{},
+        name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ExcelModel_Sheet::ExcelModel_Sheet(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ExcelModel_SheetDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ExcelModel_SheetDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ExcelModel_SheetDefaultTypeInternal() {}
+  union {
+    ExcelModel_Sheet _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExcelModel_SheetDefaultTypeInternal _ExcelModel_Sheet_default_instance_;
+
+inline constexpr ExcelModel::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : sheets_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ExcelModel::ExcelModel(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ExcelModelDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ExcelModelDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ExcelModelDefaultTypeInternal() {}
+  union {
+    ExcelModel _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ExcelModelDefaultTypeInternal _ExcelModel_default_instance_;
 }  // namespace v1
 }  // namespace lily
 }  // namespace palm
@@ -426,42 +435,45 @@ ExcelModel_Sheet_Cell::ExcelModel_Sheet_Cell(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lily.v1.ExcelModel.Sheet.Cell)
 }
-ExcelModel_Sheet_Cell::ExcelModel_Sheet_Cell(const ExcelModel_Sheet_Cell& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE ExcelModel_Sheet_Cell::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : val_(arena, from.val_),
+        _cached_size_{0} {}
+
+ExcelModel_Sheet_Cell::ExcelModel_Sheet_Cell(
+    ::google::protobuf::Arena* arena,
+    const ExcelModel_Sheet_Cell& from)
+    : ::google::protobuf::Message(arena) {
   ExcelModel_Sheet_Cell* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.val_){},
-      decltype(_impl_.row_){},
-      decltype(_impl_.col_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.val_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.val_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_val().empty()) {
-    _this->_impl_.val_.Set(from._internal_val(), _this->GetArenaForAllocation());
-  }
-  ::memcpy(&_impl_.row_, &from._impl_.row_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.col_) -
-    reinterpret_cast<char*>(&_impl_.row_)) + sizeof(_impl_.col_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, row_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, row_),
+           offsetof(Impl_, col_) -
+               offsetof(Impl_, row_) +
+               sizeof(Impl_::col_));
 
   // @@protoc_insertion_point(copy_constructor:palm.lily.v1.ExcelModel.Sheet.Cell)
 }
+inline PROTOBUF_NDEBUG_INLINE ExcelModel_Sheet_Cell::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : val_(arena),
+        _cached_size_{0} {}
+
 inline void ExcelModel_Sheet_Cell::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.val_){},
-      decltype(_impl_.row_){0u},
-      decltype(_impl_.col_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.val_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.val_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, row_),
+           0,
+           offsetof(Impl_, col_) -
+               offsetof(Impl_, row_) +
+               sizeof(Impl_::col_));
 }
 ExcelModel_Sheet_Cell::~ExcelModel_Sheet_Cell() {
   // @@protoc_insertion_point(destructor:palm.lily.v1.ExcelModel.Sheet.Cell)
@@ -469,15 +481,14 @@ ExcelModel_Sheet_Cell::~ExcelModel_Sheet_Cell() {
   SharedDtor();
 }
 inline void ExcelModel_Sheet_Cell::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.val_.Destroy();
-}
-void ExcelModel_Sheet_Cell::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void ExcelModel_Sheet_Cell::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lily.v1.ExcelModel.Sheet.Cell)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -610,11 +621,12 @@ const ::_pbi::TcParseTable<2, 3, 0, 46, 2> ExcelModel_Sheet_Cell::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData ExcelModel_Sheet_Cell::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    ExcelModel_Sheet_Cell::MergeImpl
+    ExcelModel_Sheet_Cell::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*ExcelModel_Sheet_Cell::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* ExcelModel_Sheet_Cell::GetClassData() const {
+  return &_class_data_;
+}
 
 void ExcelModel_Sheet_Cell::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ExcelModel_Sheet_Cell*>(&to_msg);
@@ -647,13 +659,15 @@ PROTOBUF_NOINLINE bool ExcelModel_Sheet_Cell::IsInitialized() const {
   return true;
 }
 
-void ExcelModel_Sheet_Cell::InternalSwap(ExcelModel_Sheet_Cell* other) {
+::_pbi::CachedSize* ExcelModel_Sheet_Cell::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ExcelModel_Sheet_Cell::InternalSwap(ExcelModel_Sheet_Cell* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.val_, lhs_arena,
-                                       &other->_impl_.val_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.val_, &other->_impl_.val_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ExcelModel_Sheet_Cell, _impl_.col_)
       + sizeof(ExcelModel_Sheet_Cell::_impl_.col_)
@@ -678,37 +692,34 @@ ExcelModel_Sheet::ExcelModel_Sheet(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lily.v1.ExcelModel.Sheet)
 }
-ExcelModel_Sheet::ExcelModel_Sheet(const ExcelModel_Sheet& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE ExcelModel_Sheet::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : cells_{visibility, arena, from.cells_},
+        name_(arena, from.name_),
+        _cached_size_{0} {}
+
+ExcelModel_Sheet::ExcelModel_Sheet(
+    ::google::protobuf::Arena* arena,
+    const ExcelModel_Sheet& from)
+    : ::google::protobuf::Message(arena) {
   ExcelModel_Sheet* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.cells_){from._impl_.cells_},
-      decltype(_impl_.name_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.lily.v1.ExcelModel.Sheet)
 }
+inline PROTOBUF_NDEBUG_INLINE ExcelModel_Sheet::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : cells_{visibility, arena},
+        name_(arena),
+        _cached_size_{0} {}
+
 inline void ExcelModel_Sheet::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.cells_){arena},
-      decltype(_impl_.name_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 ExcelModel_Sheet::~ExcelModel_Sheet() {
   // @@protoc_insertion_point(destructor:palm.lily.v1.ExcelModel.Sheet)
@@ -716,21 +727,19 @@ ExcelModel_Sheet::~ExcelModel_Sheet() {
   SharedDtor();
 }
 inline void ExcelModel_Sheet::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.cells_.~RepeatedPtrField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
-}
-void ExcelModel_Sheet::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void ExcelModel_Sheet::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lily.v1.ExcelModel.Sheet)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_cells()->Clear();
+  _impl_.cells_.Clear();
   _impl_.name_.ClearToEmpty();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -837,11 +846,12 @@ const ::_pbi::TcParseTable<1, 2, 1, 42, 2> ExcelModel_Sheet::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData ExcelModel_Sheet::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    ExcelModel_Sheet::MergeImpl
+    ExcelModel_Sheet::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*ExcelModel_Sheet::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* ExcelModel_Sheet::GetClassData() const {
+  return &_class_data_;
+}
 
 void ExcelModel_Sheet::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ExcelModel_Sheet*>(&to_msg);
@@ -851,7 +861,8 @@ void ExcelModel_Sheet::MergeImpl(::google::protobuf::Message& to_msg, const ::go
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_cells()->MergeFrom(from._internal_cells());
+  _this->_internal_mutable_cells()->MergeFrom(
+      from._internal_cells());
   if (!from._internal_name().empty()) {
     _this->_internal_set_name(from._internal_name());
   }
@@ -869,14 +880,16 @@ PROTOBUF_NOINLINE bool ExcelModel_Sheet::IsInitialized() const {
   return true;
 }
 
-void ExcelModel_Sheet::InternalSwap(ExcelModel_Sheet* other) {
+::_pbi::CachedSize* ExcelModel_Sheet::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ExcelModel_Sheet::InternalSwap(ExcelModel_Sheet* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.cells_.InternalSwap(&other->_impl_.cells_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
 }
 
 ::google::protobuf::Metadata ExcelModel_Sheet::GetMetadata() const {
@@ -895,24 +908,32 @@ ExcelModel::ExcelModel(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lily.v1.ExcelModel)
 }
-ExcelModel::ExcelModel(const ExcelModel& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE ExcelModel::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : sheets_{visibility, arena, from.sheets_},
+        _cached_size_{0} {}
+
+ExcelModel::ExcelModel(
+    ::google::protobuf::Arena* arena,
+    const ExcelModel& from)
+    : ::google::protobuf::Message(arena) {
   ExcelModel* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.sheets_){from._impl_.sheets_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.lily.v1.ExcelModel)
 }
+inline PROTOBUF_NDEBUG_INLINE ExcelModel::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : sheets_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void ExcelModel::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.sheets_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 ExcelModel::~ExcelModel() {
   // @@protoc_insertion_point(destructor:palm.lily.v1.ExcelModel)
@@ -920,20 +941,18 @@ ExcelModel::~ExcelModel() {
   SharedDtor();
 }
 inline void ExcelModel::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.sheets_.~RepeatedPtrField();
-}
-void ExcelModel::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void ExcelModel::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lily.v1.ExcelModel)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_sheets()->Clear();
+  _impl_.sheets_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1016,11 +1035,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ExcelModel::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData ExcelModel::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    ExcelModel::MergeImpl
+    ExcelModel::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*ExcelModel::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* ExcelModel::GetClassData() const {
+  return &_class_data_;
+}
 
 void ExcelModel::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ExcelModel*>(&to_msg);
@@ -1030,7 +1050,8 @@ void ExcelModel::MergeImpl(::google::protobuf::Message& to_msg, const ::google::
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_sheets()->MergeFrom(from._internal_sheets());
+  _this->_internal_mutable_sheets()->MergeFrom(
+      from._internal_sheets());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1045,7 +1066,10 @@ PROTOBUF_NOINLINE bool ExcelModel::IsInitialized() const {
   return true;
 }
 
-void ExcelModel::InternalSwap(ExcelModel* other) {
+::_pbi::CachedSize* ExcelModel::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ExcelModel::InternalSwap(ExcelModel* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.sheets_.InternalSwap(&other->_impl_.sheets_);
@@ -1067,61 +1091,36 @@ S3File::S3File(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lily.v1.S3File)
 }
-S3File::S3File(const S3File& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE S3File::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : bucket_(arena, from.bucket_),
+        name_(arena, from.name_),
+        content_type_(arena, from.content_type_),
+        _cached_size_{0} {}
+
+S3File::S3File(
+    ::google::protobuf::Arena* arena,
+    const S3File& from)
+    : ::google::protobuf::Message(arena) {
   S3File* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.bucket_){},
-      decltype(_impl_.name_){},
-      decltype(_impl_.content_type_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.bucket_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.bucket_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_bucket().empty()) {
-    _this->_impl_.bucket_.Set(from._internal_bucket(), _this->GetArenaForAllocation());
-  }
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.content_type_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.content_type_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_content_type().empty()) {
-    _this->_impl_.content_type_.Set(from._internal_content_type(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.lily.v1.S3File)
 }
+inline PROTOBUF_NDEBUG_INLINE S3File::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : bucket_(arena),
+        name_(arena),
+        content_type_(arena),
+        _cached_size_{0} {}
+
 inline void S3File::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.bucket_){},
-      decltype(_impl_.name_){},
-      decltype(_impl_.content_type_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.bucket_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.bucket_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.content_type_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.content_type_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 S3File::~S3File() {
   // @@protoc_insertion_point(destructor:palm.lily.v1.S3File)
@@ -1129,17 +1128,16 @@ S3File::~S3File() {
   SharedDtor();
 }
 inline void S3File::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.bucket_.Destroy();
   _impl_.name_.Destroy();
   _impl_.content_type_.Destroy();
-}
-void S3File::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void S3File::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lily.v1.S3File)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1271,11 +1269,12 @@ const ::_pbi::TcParseTable<1, 3, 0, 50, 2> S3File::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData S3File::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    S3File::MergeImpl
+    S3File::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*S3File::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* S3File::GetClassData() const {
+  return &_class_data_;
+}
 
 void S3File::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<S3File*>(&to_msg);
@@ -1308,17 +1307,17 @@ PROTOBUF_NOINLINE bool S3File::IsInitialized() const {
   return true;
 }
 
-void S3File::InternalSwap(S3File* other) {
+::_pbi::CachedSize* S3File::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void S3File::InternalSwap(S3File* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.bucket_, lhs_arena,
-                                       &other->_impl_.bucket_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_type_, lhs_arena,
-                                       &other->_impl_.content_type_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.bucket_, &other->_impl_.bucket_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_type_, &other->_impl_.content_type_, arena);
 }
 
 ::google::protobuf::Metadata S3File::GetMetadata() const {
@@ -1343,6 +1342,7 @@ const ::google::protobuf::Duration& S3GetFileRequest::_Internal::ttl(const S3Get
   return *msg->_impl_.ttl_;
 }
 void S3GetFileRequest::clear_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.ttl_ != nullptr) _impl_.ttl_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -1351,55 +1351,40 @@ S3GetFileRequest::S3GetFileRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lily.v1.S3GetFileRequest)
 }
-S3GetFileRequest::S3GetFileRequest(const S3GetFileRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE S3GetFileRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        bucket_(arena, from.bucket_),
+        name_(arena, from.name_) {}
+
+S3GetFileRequest::S3GetFileRequest(
+    ::google::protobuf::Arena* arena,
+    const S3GetFileRequest& from)
+    : ::google::protobuf::Message(arena) {
   S3GetFileRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.bucket_){},
-      decltype(_impl_.name_){},
-      decltype(_impl_.ttl_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.bucket_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.bucket_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_bucket().empty()) {
-    _this->_impl_.bucket_.Set(from._internal_bucket(), _this->GetArenaForAllocation());
-  }
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.ttl_ = new ::google::protobuf::Duration(*from._impl_.ttl_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.ttl_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Duration>(arena, *from._impl_.ttl_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.lily.v1.S3GetFileRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE S3GetFileRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        bucket_(arena),
+        name_(arena) {}
+
 inline void S3GetFileRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.bucket_){},
-      decltype(_impl_.name_){},
-      decltype(_impl_.ttl_){nullptr},
-  };
-  _impl_.bucket_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.bucket_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.ttl_ = {};
 }
 S3GetFileRequest::~S3GetFileRequest() {
   // @@protoc_insertion_point(destructor:palm.lily.v1.S3GetFileRequest)
@@ -1407,17 +1392,16 @@ S3GetFileRequest::~S3GetFileRequest() {
   SharedDtor();
 }
 inline void S3GetFileRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.bucket_.Destroy();
   _impl_.name_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.ttl_;
-}
-void S3GetFileRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.ttl_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void S3GetFileRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lily.v1.S3GetFileRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1509,8 +1493,8 @@ const ::_pbi::TcParseTable<1, 3, 1, 48, 2> S3GetFileRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Duration ttl = 9;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(9, _Internal::ttl(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        9, _Internal::ttl(this),
         _Internal::ttl(this).GetCachedSize(), target, stream);
   }
 
@@ -1546,20 +1530,20 @@ const ::_pbi::TcParseTable<1, 3, 1, 48, 2> S3GetFileRequest::_table_ = {
   // .google.protobuf.Duration ttl = 9;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.ttl_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.ttl_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData S3GetFileRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    S3GetFileRequest::MergeImpl
+    S3GetFileRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*S3GetFileRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* S3GetFileRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void S3GetFileRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<S3GetFileRequest*>(&to_msg);
@@ -1593,16 +1577,17 @@ PROTOBUF_NOINLINE bool S3GetFileRequest::IsInitialized() const {
   return true;
 }
 
-void S3GetFileRequest::InternalSwap(S3GetFileRequest* other) {
+::_pbi::CachedSize* S3GetFileRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void S3GetFileRequest::InternalSwap(S3GetFileRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.bucket_, lhs_arena,
-                                       &other->_impl_.bucket_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.bucket_, &other->_impl_.bucket_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
   swap(_impl_.ttl_, other->_impl_.ttl_);
 }
 
@@ -1622,35 +1607,32 @@ S3GetFileResponse::S3GetFileResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lily.v1.S3GetFileResponse)
 }
-S3GetFileResponse::S3GetFileResponse(const S3GetFileResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE S3GetFileResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : url_(arena, from.url_),
+        _cached_size_{0} {}
+
+S3GetFileResponse::S3GetFileResponse(
+    ::google::protobuf::Arena* arena,
+    const S3GetFileResponse& from)
+    : ::google::protobuf::Message(arena) {
   S3GetFileResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.url_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.lily.v1.S3GetFileResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE S3GetFileResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : url_(arena),
+        _cached_size_{0} {}
+
 inline void S3GetFileResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.url_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 S3GetFileResponse::~S3GetFileResponse() {
   // @@protoc_insertion_point(destructor:palm.lily.v1.S3GetFileResponse)
@@ -1658,15 +1640,14 @@ S3GetFileResponse::~S3GetFileResponse() {
   SharedDtor();
 }
 inline void S3GetFileResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.url_.Destroy();
-}
-void S3GetFileResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void S3GetFileResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lily.v1.S3GetFileResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1757,11 +1738,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 42, 2> S3GetFileResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData S3GetFileResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    S3GetFileResponse::MergeImpl
+    S3GetFileResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*S3GetFileResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* S3GetFileResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void S3GetFileResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<S3GetFileResponse*>(&to_msg);
@@ -1788,13 +1770,15 @@ PROTOBUF_NOINLINE bool S3GetFileResponse::IsInitialized() const {
   return true;
 }
 
-void S3GetFileResponse::InternalSwap(S3GetFileResponse* other) {
+::_pbi::CachedSize* S3GetFileResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void S3GetFileResponse::InternalSwap(S3GetFileResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, &other->_impl_.url_, arena);
 }
 
 ::google::protobuf::Metadata S3GetFileResponse::GetMetadata() const {
@@ -1807,9 +1791,6 @@ void S3GetFileResponse::InternalSwap(S3GetFileResponse* other) {
 TexToRequest_FilesEntry_DoNotUse::TexToRequest_FilesEntry_DoNotUse() {}
 TexToRequest_FilesEntry_DoNotUse::TexToRequest_FilesEntry_DoNotUse(::google::protobuf::Arena* arena)
     : SuperType(arena) {}
-void TexToRequest_FilesEntry_DoNotUse::MergeFrom(const TexToRequest_FilesEntry_DoNotUse& other) {
-  MergeFromInternal(other);
-}
 ::google::protobuf::Metadata TexToRequest_FilesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_lily_2eproto_getter, &descriptor_table_lily_2eproto_once,
@@ -1835,6 +1816,7 @@ const ::google::protobuf::Duration& TexToRequest::_Internal::ttl(const TexToRequ
   return *msg->_impl_.ttl_;
 }
 void TexToRequest::clear_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.ttl_ != nullptr) _impl_.ttl_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
@@ -1843,61 +1825,48 @@ TexToRequest::TexToRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.lily.v1.TexToRequest)
 }
-TexToRequest::TexToRequest(const TexToRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE TexToRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        files_{visibility, arena, from.files_},
+        title_(arena, from.title_),
+        owner_(arena, from.owner_) {}
+
+TexToRequest::TexToRequest(
+    ::google::protobuf::Arena* arena,
+    const TexToRequest& from)
+    : ::google::protobuf::Message(arena) {
   TexToRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /* decltype(_impl_.files_) */ {},
-      decltype(_impl_.title_){},
-      decltype(_impl_.owner_){},
-      decltype(_impl_.ttl_){nullptr},
-      decltype(_impl_.published_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _this->_impl_.files_.MergeFrom(from._impl_.files_);
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
-  }
-  _impl_.owner_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.owner_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.owner_.Set(from._internal_owner(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.ttl_ = new ::google::protobuf::Duration(*from._impl_.ttl_);
-  }
-  _this->_impl_.published_ = from._impl_.published_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.ttl_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::google::protobuf::Duration>(arena, *from._impl_.ttl_)
+                : nullptr;
+  _impl_.published_ = from._impl_.published_;
 
   // @@protoc_insertion_point(copy_constructor:palm.lily.v1.TexToRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE TexToRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        files_{visibility, arena},
+        title_(arena),
+        owner_(arena) {}
+
 inline void TexToRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /* decltype(_impl_.files_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
-      decltype(_impl_.title_){},
-      decltype(_impl_.owner_){},
-      decltype(_impl_.ttl_){nullptr},
-      decltype(_impl_.published_){false},
-  };
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.owner_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.owner_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, ttl_),
+           0,
+           offsetof(Impl_, published_) -
+               offsetof(Impl_, ttl_) +
+               sizeof(Impl_::published_));
 }
 TexToRequest::~TexToRequest() {
   // @@protoc_insertion_point(destructor:palm.lily.v1.TexToRequest)
@@ -1905,18 +1874,16 @@ TexToRequest::~TexToRequest() {
   SharedDtor();
 }
 inline void TexToRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.files_.~MapField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.title_.Destroy();
   _impl_.owner_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.ttl_;
-}
-void TexToRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.ttl_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void TexToRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.lily.v1.TexToRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1989,7 +1956,10 @@ const ::_pbi::TcParseTable<2, 5, 2, 49, 2> TexToRequest::_table_ = {
     {PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.published_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }}, {{
-    {::_pbi::TcParser::GetMapAuxInfo<decltype(TexToRequest()._impl_.files_)>(1, 0, 0)},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(TexToRequest()._impl_.files_)>(
+        1, 0, 0, 9,
+        12)},
     {::_pbi::TcParser::GetTable<::google::protobuf::Duration>()},
   }}, {{
     "\31\5\5\0\5\0\0\0"
@@ -2018,7 +1988,9 @@ const ::_pbi::TcParseTable<2, 5, 2, 49, 2> TexToRequest::_table_ = {
   // map<string, bytes> files = 2;
   if (!_internal_files().empty()) {
     using MapType = ::google::protobuf::Map<std::string, std::string>;
-    using WireHelper = TexToRequest_FilesEntry_DoNotUse::Funcs;
+    using WireHelper = _pbi::MapEntryFuncs<std::string, std::string,
+                                   _pbi::WireFormatLite::TYPE_STRING,
+                                   _pbi::WireFormatLite::TYPE_BYTES>;
     const auto& field = _internal_files();
 
     if (stream->IsSerializationDeterministic() && field.size() > 1) {
@@ -2043,8 +2015,8 @@ const ::_pbi::TcParseTable<2, 5, 2, 49, 2> TexToRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // optional .google.protobuf.Duration ttl = 7;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(7, _Internal::ttl(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        7, _Internal::ttl(this),
         _Internal::ttl(this).GetCachedSize(), target, stream);
   }
 
@@ -2083,7 +2055,9 @@ const ::_pbi::TcParseTable<2, 5, 2, 49, 2> TexToRequest::_table_ = {
   // map<string, bytes> files = 2;
   total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_files_size());
   for (const auto& entry : _internal_files()) {
-    total_size += TexToRequest_FilesEntry_DoNotUse::Funcs::ByteSizeLong(entry.first, entry.second);
+    total_size += _pbi::MapEntryFuncs<std::string, std::string,
+                                   _pbi::WireFormatLite::TYPE_STRING,
+                                   _pbi::WireFormatLite::TYPE_BYTES>::ByteSizeLong(entry.first, entry.second);
   }
   // string title = 1;
   if (!this->_internal_title().empty()) {
@@ -2101,9 +2075,8 @@ const ::_pbi::TcParseTable<2, 5, 2, 49, 2> TexToRequest::_table_ = {
 
     // optional .google.protobuf.Duration ttl = 7;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.ttl_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.ttl_);
     }
 
   }
@@ -2116,11 +2089,12 @@ const ::_pbi::TcParseTable<2, 5, 2, 49, 2> TexToRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData TexToRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    TexToRequest::MergeImpl
+    TexToRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*TexToRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* TexToRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void TexToRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<TexToRequest*>(&to_msg);
@@ -2161,17 +2135,18 @@ PROTOBUF_NOINLINE bool TexToRequest::IsInitialized() const {
   return true;
 }
 
-void TexToRequest::InternalSwap(TexToRequest* other) {
+::_pbi::CachedSize* TexToRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void TexToRequest::InternalSwap(TexToRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.files_.InternalSwap(&other->_impl_.files_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.owner_, lhs_arena,
-                                       &other->_impl_.owner_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, &other->_impl_.title_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.owner_, &other->_impl_.owner_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(TexToRequest, _impl_.published_)
       + sizeof(TexToRequest::_impl_.published_)
@@ -2195,7 +2170,10 @@ EpubBuildRequest::EpubBuildRequest(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.lily.v1.EpubBuildRequest)
 }
-EpubBuildRequest::EpubBuildRequest(const EpubBuildRequest& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+EpubBuildRequest::EpubBuildRequest(
+    ::google::protobuf::Arena* arena,
+    const EpubBuildRequest& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   EpubBuildRequest* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -2205,13 +2183,6 @@ EpubBuildRequest::EpubBuildRequest(const EpubBuildRequest& from) : ::google::pro
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData EpubBuildRequest::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*EpubBuildRequest::GetClassData() const { return &_class_data_; }
 
 
 

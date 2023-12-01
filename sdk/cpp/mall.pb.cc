@@ -116,26 +116,10 @@ const ::google::protobuf::EnumDescriptor* Order_Status_descriptor() {
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_mall_2eproto);
   return file_level_enum_descriptors_mall_2eproto[0];
 }
+PROTOBUF_CONSTINIT const uint32_t Order_Status_internal_data_[] = {
+    917504u, 0u, };
 bool Order_Status_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-    case 9:
-    case 10:
-    case 11:
-    case 12:
-    case 13:
-      return true;
-    default:
-      return false;
-  }
+  return 0 <= value && value <= 13;
 }
 #if (__cplusplus < 201703) && \
   (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
@@ -170,7 +154,10 @@ Order::Order(::google::protobuf::Arena* arena)
     : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   // @@protoc_insertion_point(arena_constructor:palm.mall.v1.Order)
 }
-Order::Order(const Order& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+Order::Order(
+    ::google::protobuf::Arena* arena,
+    const Order& from)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
   Order* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -180,13 +167,6 @@ Order::Order(const Order& from) : ::google::protobuf::internal::ZeroFieldsBase()
 }
 
 
-
-
-const ::google::protobuf::Message::ClassData Order::_class_data_ = {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
-};
-const ::google::protobuf::Message::ClassData*Order::GetClassData() const { return &_class_data_; }
 
 
 

@@ -24,102 +24,18 @@ namespace palm {
 namespace ops {
 namespace router {
 namespace v1 {
-        template <typename>
-PROTOBUF_CONSTEXPR Contact::Contact(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.phone_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.wechat_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.email_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.address_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-    } {}
-struct ContactDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ContactDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ContactDefaultTypeInternal() {}
-  union {
-    Contact _instance;
-  };
-};
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ContactDefaultTypeInternal _Contact_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterSetLanRequest::RouterSetLanRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.payload_)*/ nullptr,
-      /*decltype(_impl_.enable_)*/ false,
-    } {}
-struct RouterSetLanRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterSetLanRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RouterSetLanRequestDefaultTypeInternal() {}
-  union {
-    RouterSetLanRequest _instance;
-  };
-};
+inline constexpr WanPool_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : device_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        weight_{0u},
+        _cached_size_{0} {}
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterSetLanRequestDefaultTypeInternal _RouterSetLanRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterSetDmzRequest::RouterSetDmzRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.payload_)*/ nullptr,
-      /*decltype(_impl_.enable_)*/ false,
-    } {}
-struct RouterSetDmzRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterSetDmzRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RouterSetDmzRequestDefaultTypeInternal() {}
-  union {
-    RouterSetDmzRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterSetDmzRequestDefaultTypeInternal _RouterSetDmzRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterSetWanRequest::RouterSetWanRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.payload_)*/ nullptr,
-      /*decltype(_impl_.enable_)*/ false,
-    } {}
-struct RouterSetWanRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterSetWanRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RouterSetWanRequestDefaultTypeInternal() {}
-  union {
-    RouterSetWanRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterSetWanRequestDefaultTypeInternal _RouterSetWanRequest_default_instance_;
-        template <typename>
+template <typename>
 PROTOBUF_CONSTEXPR WanPool_Item::WanPool_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.device_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.weight_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct WanPool_ItemDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WanPool_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~WanPool_ItemDefaultTypeInternal() {}
@@ -130,273 +46,110 @@ struct WanPool_ItemDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WanPool_ItemDefaultTypeInternal _WanPool_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WanPool::WanPool(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct WanPoolDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WanPoolDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WanPoolDefaultTypeInternal() {}
+
+inline constexpr UserSignInResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : token_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserSignInResponse::UserSignInResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserSignInResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserSignInResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserSignInResponseDefaultTypeInternal() {}
   union {
-    WanPool _instance;
+    UserSignInResponse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WanPoolDefaultTypeInternal _WanPool_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterCreateUserRequest::RouterCreateUserRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.contact_)*/ nullptr,
-    } {}
-struct RouterCreateUserRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterCreateUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RouterCreateUserRequestDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInResponseDefaultTypeInternal _UserSignInResponse_default_instance_;
+
+inline constexpr UserProfile::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : nickname_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        password_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserProfile::UserProfile(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserProfileDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserProfileDefaultTypeInternal() {}
   union {
-    RouterCreateUserRequest _instance;
+    UserProfile _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterCreateUserRequestDefaultTypeInternal _RouterCreateUserRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterIndexUserResponse_Item::RouterIndexUserResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.contact_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-    } {}
-struct RouterIndexUserResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterIndexUserResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RouterIndexUserResponse_ItemDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserProfileDefaultTypeInternal _UserProfile_default_instance_;
+
+inline constexpr UserLogsResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserLogsResponse::UserLogsResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserLogsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserLogsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserLogsResponseDefaultTypeInternal() {}
   union {
-    RouterIndexUserResponse_Item _instance;
+    UserLogsResponse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexUserResponse_ItemDefaultTypeInternal _RouterIndexUserResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterIndexUserResponse::RouterIndexUserResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct RouterIndexUserResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterIndexUserResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RouterIndexUserResponseDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsResponseDefaultTypeInternal _UserLogsResponse_default_instance_;
+
+inline constexpr Static::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        address_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        gateway_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        dns1_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        dns2_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()) {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Static::Static(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct StaticDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StaticDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StaticDefaultTypeInternal() {}
   union {
-    RouterIndexUserResponse _instance;
+    Static _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexUserResponseDefaultTypeInternal _RouterIndexUserResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterUpdateHostRequest::RouterUpdateHostRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.group_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ip_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.zone_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.location_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.user_)*/ 0,
-      /*decltype(_impl_.fixed_)*/ false,
-    } {}
-struct RouterUpdateHostRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterUpdateHostRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RouterUpdateHostRequestDefaultTypeInternal() {}
-  union {
-    RouterUpdateHostRequest _instance;
-  };
-};
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StaticDefaultTypeInternal _Static_default_instance_;
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterUpdateHostRequestDefaultTypeInternal _RouterUpdateHostRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterIndexRuleResponse_Item::RouterIndexRuleResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.group_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.payload_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
-struct RouterIndexRuleResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterIndexRuleResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RouterIndexRuleResponse_ItemDefaultTypeInternal() {}
-  union {
-    RouterIndexRuleResponse_Item _instance;
-  };
-};
+inline constexpr Rule_OutBound_Speed::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        up_{0u},
+        down_{0u} {}
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexRuleResponse_ItemDefaultTypeInternal _RouterIndexRuleResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterIndexRuleResponse::RouterIndexRuleResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct RouterIndexRuleResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterIndexRuleResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RouterIndexRuleResponseDefaultTypeInternal() {}
-  union {
-    RouterIndexRuleResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexRuleResponseDefaultTypeInternal _RouterIndexRuleResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Host_Owner::Host_Owner(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.contact_)*/ nullptr,
-    } {}
-struct Host_OwnerDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Host_OwnerDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Host_OwnerDefaultTypeInternal() {}
-  union {
-    Host_Owner _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Host_OwnerDefaultTypeInternal _Host_Owner_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Host::Host(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.mac_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ip_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.group_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.location_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.owner_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.fixed_)*/ false,
-    } {}
-struct HostDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR HostDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~HostDefaultTypeInternal() {}
-  union {
-    Host _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HostDefaultTypeInternal _Host_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_InBound::Rule_InBound(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.device_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.source_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.tcp_)*/ false,
-      /*decltype(_impl_.port_)*/ 0u,
-    } {}
-struct Rule_InBoundDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_InBoundDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Rule_InBoundDefaultTypeInternal() {}
-  union {
-    Rule_InBound _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_InBoundDefaultTypeInternal _Rule_InBound_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_OutBound_Host::Rule_OutBound_Host(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.to_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.protocol_)*/ 0,
-      /*decltype(_impl_.port_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct Rule_OutBound_HostDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_OutBound_HostDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Rule_OutBound_HostDefaultTypeInternal() {}
-  union {
-    Rule_OutBound_Host _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBound_HostDefaultTypeInternal _Rule_OutBound_Host_default_instance_;
-        template <typename>
+template <typename>
 PROTOBUF_CONSTEXPR Rule_OutBound_Speed::Rule_OutBound_Speed(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.up_)*/ 0u,
-      /*decltype(_impl_.down_)*/ 0u,
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct Rule_OutBound_SpeedDefaultTypeInternal {
   PROTOBUF_CONSTEXPR Rule_OutBound_SpeedDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~Rule_OutBound_SpeedDefaultTypeInternal() {}
@@ -407,58 +160,41 @@ struct Rule_OutBound_SpeedDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBound_SpeedDefaultTypeInternal _Rule_OutBound_Speed_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_OutBound_Time::Rule_OutBound_Time(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.from_)*/ nullptr,
-      /*decltype(_impl_.to_)*/ nullptr,
-      /*decltype(_impl_.monday_)*/ false,
-      /*decltype(_impl_.tuesday_)*/ false,
-      /*decltype(_impl_.wednesday_)*/ false,
-      /*decltype(_impl_.thursday_)*/ false,
-      /*decltype(_impl_.friday_)*/ false,
-      /*decltype(_impl_.saturday_)*/ false,
-      /*decltype(_impl_.sunday_)*/ false,
-    } {}
-struct Rule_OutBound_TimeDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_OutBound_TimeDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Rule_OutBound_TimeDefaultTypeInternal() {}
+
+inline constexpr Rule_OutBound_Host::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : to_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        protocol_{static_cast< ::palm::ops::router::v1::Rule_Protocol >(0)},
+        port_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Rule_OutBound_Host::Rule_OutBound_Host(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct Rule_OutBound_HostDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Rule_OutBound_HostDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Rule_OutBound_HostDefaultTypeInternal() {}
   union {
-    Rule_OutBound_Time _instance;
+    Rule_OutBound_Host _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBound_TimeDefaultTypeInternal _Rule_OutBound_Time_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_OutBound::Rule_OutBound(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.payload_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
-struct Rule_OutBoundDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_OutBoundDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Rule_OutBoundDefaultTypeInternal() {}
-  union {
-    Rule_OutBound _instance;
-  };
-};
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBound_HostDefaultTypeInternal _Rule_OutBound_Host_default_instance_;
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBoundDefaultTypeInternal _Rule_OutBound_default_instance_;
-        template <typename>
+inline constexpr Rule_Nat_Source::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : device_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        port_{0u},
+        _cached_size_{0} {}
+
+template <typename>
 PROTOBUF_CONSTEXPR Rule_Nat_Source::Rule_Nat_Source(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.device_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.port_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct Rule_Nat_SourceDefaultTypeInternal {
   PROTOBUF_CONSTEXPR Rule_Nat_SourceDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~Rule_Nat_SourceDefaultTypeInternal() {}
@@ -469,16 +205,18 @@ struct Rule_Nat_SourceDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_Nat_SourceDefaultTypeInternal _Rule_Nat_Source_default_instance_;
-        template <typename>
+
+inline constexpr Rule_Nat_Destination::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : ip_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        port_{0u},
+        _cached_size_{0} {}
+
+template <typename>
 PROTOBUF_CONSTEXPR Rule_Nat_Destination::Rule_Nat_Destination(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.ip_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.port_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct Rule_Nat_DestinationDefaultTypeInternal {
   PROTOBUF_CONSTEXPR Rule_Nat_DestinationDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~Rule_Nat_DestinationDefaultTypeInternal() {}
@@ -489,50 +227,92 @@ struct Rule_Nat_DestinationDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_Nat_DestinationDefaultTypeInternal _Rule_Nat_Destination_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule_Nat::Rule_Nat(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.source_)*/ nullptr,
-      /*decltype(_impl_.destination_)*/ nullptr,
-      /*decltype(_impl_.tcp_)*/ false,
-    } {}
-struct Rule_NatDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Rule_NatDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Rule_NatDefaultTypeInternal() {}
+
+inline constexpr Rule_InBound::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        device_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        source_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        tcp_{false},
+        port_{0u} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Rule_InBound::Rule_InBound(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct Rule_InBoundDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Rule_InBoundDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Rule_InBoundDefaultTypeInternal() {}
   union {
-    Rule_Nat _instance;
+    Rule_InBound _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_NatDefaultTypeInternal _Rule_Nat_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Rule::Rule(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.group_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.payload_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
-struct RuleDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RuleDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RuleDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_InBoundDefaultTypeInternal _Rule_InBound_default_instance_;
+
+inline constexpr RouterUpdateHostRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        group_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ip_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        zone_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        location_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        id_{0},
+        user_{0},
+        fixed_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RouterUpdateHostRequest::RouterUpdateHostRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RouterUpdateHostRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouterUpdateHostRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RouterUpdateHostRequestDefaultTypeInternal() {}
   union {
-    Rule _instance;
+    RouterUpdateHostRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RuleDefaultTypeInternal _Rule_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterUpdateHostRequestDefaultTypeInternal _RouterUpdateHostRequest_default_instance_;
+
+inline constexpr RouterStatusResponse_Ip::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : address_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        route_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        rule_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RouterStatusResponse_Ip::RouterStatusResponse_Ip(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RouterStatusResponse_IpDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouterStatusResponse_IpDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RouterStatusResponse_IpDefaultTypeInternal() {}
+  union {
+    RouterStatusResponse_Ip _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterStatusResponse_IpDefaultTypeInternal _RouterStatusResponse_Ip_default_instance_;
       template <typename>
 PROTOBUF_CONSTEXPR RouterStatusResponse_InterfacesEntry_DoNotUse::RouterStatusResponse_InterfacesEntry_DoNotUse(::_pbi::ConstantInitialized) {}
 struct RouterStatusResponse_InterfacesEntry_DoNotUseDefaultTypeInternal {
@@ -545,81 +325,24 @@ struct RouterStatusResponse_InterfacesEntry_DoNotUseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterStatusResponse_InterfacesEntry_DoNotUseDefaultTypeInternal _RouterStatusResponse_InterfacesEntry_DoNotUse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterStatusResponse_Ip::RouterStatusResponse_Ip(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.address_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.route_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.rule_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct RouterStatusResponse_IpDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterStatusResponse_IpDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RouterStatusResponse_IpDefaultTypeInternal() {}
-  union {
-    RouterStatusResponse_Ip _instance;
-  };
-};
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterStatusResponse_IpDefaultTypeInternal _RouterStatusResponse_Ip_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RouterStatusResponse::RouterStatusResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /* decltype(_impl_.interfaces_) */ {},
-      /*decltype(_impl_.wan_)*/ {},
-      /*decltype(_impl_.rules_)*/ {},
-      /*decltype(_impl_.hosts_)*/ {},
-      /*decltype(_impl_.firewall_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.lan_)*/ nullptr,
-      /*decltype(_impl_.dmz_)*/ nullptr,
-      /*decltype(_impl_.dns_)*/ nullptr,
-      /*decltype(_impl_.wan_pool_)*/ nullptr,
-      /*decltype(_impl_.ip_)*/ nullptr,
-      /*decltype(_impl_.uptime_)*/ nullptr,
-    } {}
-struct RouterStatusResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RouterStatusResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RouterStatusResponseDefaultTypeInternal() {}
-  union {
-    RouterStatusResponse _instance;
-  };
-};
+inline constexpr Lan::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : device_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        mac_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        address_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        metric_{0u},
+        _cached_size_{0} {}
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterStatusResponseDefaultTypeInternal _RouterStatusResponse_default_instance_;
-        template <typename>
+template <typename>
 PROTOBUF_CONSTEXPR Lan::Lan(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.device_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.mac_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.address_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.metric_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct LanDefaultTypeInternal {
   PROTOBUF_CONSTEXPR LanDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~LanDefaultTypeInternal() {}
@@ -630,119 +353,15 @@ struct LanDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LanDefaultTypeInternal _Lan_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Dmz::Dmz(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.device_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.mac_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.address_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.metric_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct DmzDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DmzDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DmzDefaultTypeInternal() {}
-  union {
-    Dmz _instance;
-  };
-};
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DmzDefaultTypeInternal _Dmz_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Wan::Wan(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.device_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.mac_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.metric_)*/ 0u,
-      /*decltype(_impl_.enable_)*/ false,
-      /*decltype(_impl_.ip_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
-struct WanDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WanDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WanDefaultTypeInternal() {}
-  union {
-    Wan _instance;
-  };
-};
+inline constexpr Dns::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WanDefaultTypeInternal _Wan_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Dhcp::Dhcp(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.v6_)*/ false,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct DhcpDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DhcpDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DhcpDefaultTypeInternal() {}
-  union {
-    Dhcp _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DhcpDefaultTypeInternal _Dhcp_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Static::Static(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.address_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.gateway_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.dns1_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.dns2_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-    } {}
-struct StaticDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR StaticDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~StaticDefaultTypeInternal() {}
-  union {
-    Static _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StaticDefaultTypeInternal _Static_default_instance_;
-        template <typename>
+template <typename>
 PROTOBUF_CONSTEXPR Dns::Dns(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct DnsDefaultTypeInternal {
   PROTOBUF_CONSTEXPR DnsDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~DnsDefaultTypeInternal() {}
@@ -753,74 +372,143 @@ struct DnsDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DnsDefaultTypeInternal _Dns_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserProfile::UserProfile(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.nickname_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.password_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct UserProfileDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserProfileDefaultTypeInternal() {}
+
+inline constexpr Dmz::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : device_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        mac_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        address_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        metric_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Dmz::Dmz(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct DmzDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DmzDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DmzDefaultTypeInternal() {}
   union {
-    UserProfile _instance;
+    Dmz _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserProfileDefaultTypeInternal _UserProfile_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserSignInRequest::UserSignInRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.user_)*/ nullptr,
-      /*decltype(_impl_.ttl_)*/ nullptr,
-    } {}
-struct UserSignInRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSignInRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserSignInRequestDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DmzDefaultTypeInternal _Dmz_default_instance_;
+
+inline constexpr Dhcp::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : v6_{false},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Dhcp::Dhcp(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct DhcpDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DhcpDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DhcpDefaultTypeInternal() {}
   union {
-    UserSignInRequest _instance;
+    Dhcp _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInRequestDefaultTypeInternal _UserSignInRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserSignInResponse::UserSignInResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.token_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct UserSignInResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSignInResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserSignInResponseDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DhcpDefaultTypeInternal _Dhcp_default_instance_;
+
+inline constexpr Contact::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        phone_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        wechat_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        email_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        address_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()) {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Contact::Contact(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ContactDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ContactDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ContactDefaultTypeInternal() {}
   union {
-    UserSignInResponse _instance;
+    Contact _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInResponseDefaultTypeInternal _UserSignInResponse_default_instance_;
-        template <typename>
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ContactDefaultTypeInternal _Contact_default_instance_;
+
+inline constexpr WanPool::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR WanPool::WanPool(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct WanPoolDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WanPoolDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WanPoolDefaultTypeInternal() {}
+  union {
+    WanPool _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WanPoolDefaultTypeInternal _WanPool_default_instance_;
+
+inline constexpr Wan::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : device_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        mac_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        metric_{0u},
+        enable_{false},
+        ip_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Wan::Wan(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct WanDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WanDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WanDefaultTypeInternal() {}
+  union {
+    Wan _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WanDefaultTypeInternal _Wan_default_instance_;
+
+inline constexpr UserUpdateRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        current_{nullptr},
+        new__{nullptr} {}
+
+template <typename>
 PROTOBUF_CONSTEXPR UserUpdateRequest::UserUpdateRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.current_)*/ nullptr,
-      /*decltype(_impl_.new__)*/ nullptr,
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct UserUpdateRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR UserUpdateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~UserUpdateRequestDefaultTypeInternal() {}
@@ -831,22 +519,379 @@ struct UserUpdateRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserUpdateRequestDefaultTypeInternal _UserUpdateRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserLogsResponse::UserLogsResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct UserLogsResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserLogsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserLogsResponseDefaultTypeInternal() {}
+
+inline constexpr UserSignInRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        user_{nullptr},
+        ttl_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserSignInRequest::UserSignInRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserSignInRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserSignInRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserSignInRequestDefaultTypeInternal() {}
   union {
-    UserLogsResponse _instance;
+    UserSignInRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsResponseDefaultTypeInternal _UserLogsResponse_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInRequestDefaultTypeInternal _UserSignInRequest_default_instance_;
+
+inline constexpr Rule_OutBound_Time::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        from_{nullptr},
+        to_{nullptr},
+        monday_{false},
+        tuesday_{false},
+        wednesday_{false},
+        thursday_{false},
+        friday_{false},
+        saturday_{false},
+        sunday_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Rule_OutBound_Time::Rule_OutBound_Time(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct Rule_OutBound_TimeDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Rule_OutBound_TimeDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Rule_OutBound_TimeDefaultTypeInternal() {}
+  union {
+    Rule_OutBound_Time _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBound_TimeDefaultTypeInternal _Rule_OutBound_Time_default_instance_;
+
+inline constexpr Rule_Nat::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        source_{nullptr},
+        destination_{nullptr},
+        tcp_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Rule_Nat::Rule_Nat(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct Rule_NatDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Rule_NatDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Rule_NatDefaultTypeInternal() {}
+  union {
+    Rule_Nat _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_NatDefaultTypeInternal _Rule_Nat_default_instance_;
+
+inline constexpr RouterSetLanRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        payload_{nullptr},
+        enable_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RouterSetLanRequest::RouterSetLanRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RouterSetLanRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouterSetLanRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RouterSetLanRequestDefaultTypeInternal() {}
+  union {
+    RouterSetLanRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterSetLanRequestDefaultTypeInternal _RouterSetLanRequest_default_instance_;
+
+inline constexpr RouterSetDmzRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        payload_{nullptr},
+        enable_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RouterSetDmzRequest::RouterSetDmzRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RouterSetDmzRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouterSetDmzRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RouterSetDmzRequestDefaultTypeInternal() {}
+  union {
+    RouterSetDmzRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterSetDmzRequestDefaultTypeInternal _RouterSetDmzRequest_default_instance_;
+
+inline constexpr RouterIndexUserResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        contact_{nullptr},
+        id_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RouterIndexUserResponse_Item::RouterIndexUserResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RouterIndexUserResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouterIndexUserResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RouterIndexUserResponse_ItemDefaultTypeInternal() {}
+  union {
+    RouterIndexUserResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexUserResponse_ItemDefaultTypeInternal _RouterIndexUserResponse_Item_default_instance_;
+
+inline constexpr RouterCreateUserRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        contact_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RouterCreateUserRequest::RouterCreateUserRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RouterCreateUserRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouterCreateUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RouterCreateUserRequestDefaultTypeInternal() {}
+  union {
+    RouterCreateUserRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterCreateUserRequestDefaultTypeInternal _RouterCreateUserRequest_default_instance_;
+
+inline constexpr Host_Owner::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        contact_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Host_Owner::Host_Owner(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct Host_OwnerDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Host_OwnerDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Host_OwnerDefaultTypeInternal() {}
+  union {
+    Host_Owner _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Host_OwnerDefaultTypeInternal _Host_Owner_default_instance_;
+
+inline constexpr Rule_OutBound::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : payload_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Rule_OutBound::Rule_OutBound(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct Rule_OutBoundDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Rule_OutBoundDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Rule_OutBoundDefaultTypeInternal() {}
+  union {
+    Rule_OutBound _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Rule_OutBoundDefaultTypeInternal _Rule_OutBound_default_instance_;
+
+inline constexpr RouterSetWanRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        payload_{nullptr},
+        enable_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RouterSetWanRequest::RouterSetWanRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RouterSetWanRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouterSetWanRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RouterSetWanRequestDefaultTypeInternal() {}
+  union {
+    RouterSetWanRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterSetWanRequestDefaultTypeInternal _RouterSetWanRequest_default_instance_;
+
+inline constexpr RouterIndexUserResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RouterIndexUserResponse::RouterIndexUserResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RouterIndexUserResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouterIndexUserResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RouterIndexUserResponseDefaultTypeInternal() {}
+  union {
+    RouterIndexUserResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexUserResponseDefaultTypeInternal _RouterIndexUserResponse_default_instance_;
+
+inline constexpr Host::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        mac_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ip_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        group_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        location_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        owner_{nullptr},
+        id_{0},
+        fixed_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Host::Host(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct HostDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR HostDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~HostDefaultTypeInternal() {}
+  union {
+    Host _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HostDefaultTypeInternal _Host_default_instance_;
+
+inline constexpr Rule::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        group_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        payload_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Rule::Rule(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RuleDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RuleDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RuleDefaultTypeInternal() {}
+  union {
+    Rule _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RuleDefaultTypeInternal _Rule_default_instance_;
+
+inline constexpr RouterIndexRuleResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        group_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        id_{0},
+        payload_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RouterIndexRuleResponse_Item::RouterIndexRuleResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RouterIndexRuleResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouterIndexRuleResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RouterIndexRuleResponse_ItemDefaultTypeInternal() {}
+  union {
+    RouterIndexRuleResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexRuleResponse_ItemDefaultTypeInternal _RouterIndexRuleResponse_Item_default_instance_;
+
+inline constexpr RouterStatusResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        interfaces_{},
+        wan_{},
+        rules_{},
+        hosts_{},
+        firewall_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        lan_{nullptr},
+        dmz_{nullptr},
+        dns_{nullptr},
+        wan_pool_{nullptr},
+        ip_{nullptr},
+        uptime_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RouterStatusResponse::RouterStatusResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RouterStatusResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouterStatusResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RouterStatusResponseDefaultTypeInternal() {}
+  union {
+    RouterStatusResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterStatusResponseDefaultTypeInternal _RouterStatusResponse_default_instance_;
+
+inline constexpr RouterIndexRuleResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RouterIndexRuleResponse::RouterIndexRuleResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RouterIndexRuleResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RouterIndexRuleResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RouterIndexRuleResponseDefaultTypeInternal() {}
+  union {
+    RouterIndexRuleResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RouterIndexRuleResponseDefaultTypeInternal _RouterIndexRuleResponse_default_instance_;
 }  // namespace v1
 }  // namespace router
 }  // namespace ops
@@ -1626,15 +1671,10 @@ const ::google::protobuf::EnumDescriptor* Rule_Protocol_descriptor() {
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_ops_2drouter_2eproto);
   return file_level_enum_descriptors_ops_2drouter_2eproto[0];
 }
+PROTOBUF_CONSTINIT const uint32_t Rule_Protocol_internal_data_[] = {
+    196608u, 0u, };
 bool Rule_Protocol_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-      return true;
-    default:
-      return false;
-  }
+  return 0 <= value && value <= 2;
 }
 #if (__cplusplus < 201703) && \
   (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
@@ -1674,76 +1714,39 @@ Contact::Contact(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Contact)
 }
-Contact::Contact(const Contact& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Contact::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        phone_(arena, from.phone_),
+        wechat_(arena, from.wechat_),
+        email_(arena, from.email_),
+        address_(arena, from.address_) {}
+
+Contact::Contact(
+    ::google::protobuf::Arena* arena,
+    const Contact& from)
+    : ::google::protobuf::Message(arena) {
   Contact* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.phone_){},
-      decltype(_impl_.wechat_){},
-      decltype(_impl_.email_){},
-      decltype(_impl_.address_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.phone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.phone_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.phone_.Set(from._internal_phone(), _this->GetArenaForAllocation());
-  }
-  _impl_.wechat_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.wechat_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.wechat_.Set(from._internal_wechat(), _this->GetArenaForAllocation());
-  }
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.email_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000004u) != 0) {
-    _this->_impl_.email_.Set(from._internal_email(), _this->GetArenaForAllocation());
-  }
-  _impl_.address_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000008u) != 0) {
-    _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Contact)
 }
+inline PROTOBUF_NDEBUG_INLINE Contact::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        phone_(arena),
+        wechat_(arena),
+        email_(arena),
+        address_(arena) {}
+
 inline void Contact::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.phone_){},
-      decltype(_impl_.wechat_){},
-      decltype(_impl_.email_){},
-      decltype(_impl_.address_){},
-  };
-  _impl_.phone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.phone_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.wechat_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.wechat_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.email_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.address_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Contact::~Contact() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Contact)
@@ -1751,18 +1754,17 @@ Contact::~Contact() {
   SharedDtor();
 }
 inline void Contact::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.phone_.Destroy();
   _impl_.wechat_.Destroy();
   _impl_.email_.Destroy();
   _impl_.address_.Destroy();
-}
-void Contact::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Contact::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Contact)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1935,11 +1937,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 58, 7> Contact::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Contact::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Contact::MergeImpl
+    Contact::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Contact::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Contact::GetClassData() const {
+  return &_class_data_;
+}
 
 void Contact::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Contact*>(&to_msg);
@@ -1978,20 +1981,19 @@ PROTOBUF_NOINLINE bool Contact::IsInitialized() const {
   return true;
 }
 
-void Contact::InternalSwap(Contact* other) {
+::_pbi::CachedSize* Contact::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Contact::InternalSwap(Contact* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.phone_, lhs_arena,
-                                       &other->_impl_.phone_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.wechat_, lhs_arena,
-                                       &other->_impl_.wechat_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, lhs_arena,
-                                       &other->_impl_.email_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
-                                       &other->_impl_.address_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.phone_, &other->_impl_.phone_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.wechat_, &other->_impl_.wechat_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, &other->_impl_.email_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, &other->_impl_.address_, arena);
 }
 
 ::google::protobuf::Metadata Contact::GetMetadata() const {
@@ -2020,32 +2022,42 @@ RouterSetLanRequest::RouterSetLanRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterSetLanRequest)
 }
-RouterSetLanRequest::RouterSetLanRequest(const RouterSetLanRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RouterSetLanRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+RouterSetLanRequest::RouterSetLanRequest(
+    ::google::protobuf::Arena* arena,
+    const RouterSetLanRequest& from)
+    : ::google::protobuf::Message(arena) {
   RouterSetLanRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.payload_){nullptr},
-      decltype(_impl_.enable_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.payload_ = new ::palm::ops::router::v1::Lan(*from._impl_.payload_);
-  }
-  _this->_impl_.enable_ = from._impl_.enable_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.payload_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Lan>(arena, *from._impl_.payload_)
+                : nullptr;
+  _impl_.enable_ = from._impl_.enable_;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterSetLanRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE RouterSetLanRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void RouterSetLanRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.payload_){nullptr},
-      decltype(_impl_.enable_){false},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, payload_),
+           0,
+           offsetof(Impl_, enable_) -
+               offsetof(Impl_, payload_) +
+               sizeof(Impl_::enable_));
 }
 RouterSetLanRequest::~RouterSetLanRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterSetLanRequest)
@@ -2053,15 +2065,14 @@ RouterSetLanRequest::~RouterSetLanRequest() {
   SharedDtor();
 }
 inline void RouterSetLanRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.payload_;
-}
-void RouterSetLanRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.payload_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RouterSetLanRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterSetLanRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2129,8 +2140,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetLanRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Lan payload = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::payload(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::payload(this),
         _Internal::payload(this).GetCachedSize(), target, stream);
   }
 
@@ -2161,9 +2172,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetLanRequest::_table_ = {
   // .palm.ops.router.v1.Lan payload = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.payload_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_);
   }
 
   // bool enable = 2;
@@ -2175,11 +2185,12 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetLanRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RouterSetLanRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RouterSetLanRequest::MergeImpl
+    RouterSetLanRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RouterSetLanRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RouterSetLanRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void RouterSetLanRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RouterSetLanRequest*>(&to_msg);
@@ -2210,7 +2221,10 @@ PROTOBUF_NOINLINE bool RouterSetLanRequest::IsInitialized() const {
   return true;
 }
 
-void RouterSetLanRequest::InternalSwap(RouterSetLanRequest* other) {
+::_pbi::CachedSize* RouterSetLanRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RouterSetLanRequest::InternalSwap(RouterSetLanRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -2248,32 +2262,42 @@ RouterSetDmzRequest::RouterSetDmzRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterSetDmzRequest)
 }
-RouterSetDmzRequest::RouterSetDmzRequest(const RouterSetDmzRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RouterSetDmzRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+RouterSetDmzRequest::RouterSetDmzRequest(
+    ::google::protobuf::Arena* arena,
+    const RouterSetDmzRequest& from)
+    : ::google::protobuf::Message(arena) {
   RouterSetDmzRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.payload_){nullptr},
-      decltype(_impl_.enable_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.payload_ = new ::palm::ops::router::v1::Dmz(*from._impl_.payload_);
-  }
-  _this->_impl_.enable_ = from._impl_.enable_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.payload_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Dmz>(arena, *from._impl_.payload_)
+                : nullptr;
+  _impl_.enable_ = from._impl_.enable_;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterSetDmzRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE RouterSetDmzRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void RouterSetDmzRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.payload_){nullptr},
-      decltype(_impl_.enable_){false},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, payload_),
+           0,
+           offsetof(Impl_, enable_) -
+               offsetof(Impl_, payload_) +
+               sizeof(Impl_::enable_));
 }
 RouterSetDmzRequest::~RouterSetDmzRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterSetDmzRequest)
@@ -2281,15 +2305,14 @@ RouterSetDmzRequest::~RouterSetDmzRequest() {
   SharedDtor();
 }
 inline void RouterSetDmzRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.payload_;
-}
-void RouterSetDmzRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.payload_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RouterSetDmzRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterSetDmzRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2357,8 +2380,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetDmzRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Dmz payload = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::payload(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::payload(this),
         _Internal::payload(this).GetCachedSize(), target, stream);
   }
 
@@ -2389,9 +2412,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetDmzRequest::_table_ = {
   // .palm.ops.router.v1.Dmz payload = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.payload_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_);
   }
 
   // bool enable = 2;
@@ -2403,11 +2425,12 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetDmzRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RouterSetDmzRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RouterSetDmzRequest::MergeImpl
+    RouterSetDmzRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RouterSetDmzRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RouterSetDmzRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void RouterSetDmzRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RouterSetDmzRequest*>(&to_msg);
@@ -2438,7 +2461,10 @@ PROTOBUF_NOINLINE bool RouterSetDmzRequest::IsInitialized() const {
   return true;
 }
 
-void RouterSetDmzRequest::InternalSwap(RouterSetDmzRequest* other) {
+::_pbi::CachedSize* RouterSetDmzRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RouterSetDmzRequest::InternalSwap(RouterSetDmzRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -2476,32 +2502,42 @@ RouterSetWanRequest::RouterSetWanRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterSetWanRequest)
 }
-RouterSetWanRequest::RouterSetWanRequest(const RouterSetWanRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RouterSetWanRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+RouterSetWanRequest::RouterSetWanRequest(
+    ::google::protobuf::Arena* arena,
+    const RouterSetWanRequest& from)
+    : ::google::protobuf::Message(arena) {
   RouterSetWanRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.payload_){nullptr},
-      decltype(_impl_.enable_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.payload_ = new ::palm::ops::router::v1::Wan(*from._impl_.payload_);
-  }
-  _this->_impl_.enable_ = from._impl_.enable_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.payload_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Wan>(arena, *from._impl_.payload_)
+                : nullptr;
+  _impl_.enable_ = from._impl_.enable_;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterSetWanRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE RouterSetWanRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void RouterSetWanRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.payload_){nullptr},
-      decltype(_impl_.enable_){false},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, payload_),
+           0,
+           offsetof(Impl_, enable_) -
+               offsetof(Impl_, payload_) +
+               sizeof(Impl_::enable_));
 }
 RouterSetWanRequest::~RouterSetWanRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterSetWanRequest)
@@ -2509,15 +2545,14 @@ RouterSetWanRequest::~RouterSetWanRequest() {
   SharedDtor();
 }
 inline void RouterSetWanRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.payload_;
-}
-void RouterSetWanRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.payload_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RouterSetWanRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterSetWanRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2585,8 +2620,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetWanRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Wan payload = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::payload(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::payload(this),
         _Internal::payload(this).GetCachedSize(), target, stream);
   }
 
@@ -2617,9 +2652,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetWanRequest::_table_ = {
   // .palm.ops.router.v1.Wan payload = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.payload_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_);
   }
 
   // bool enable = 2;
@@ -2631,11 +2665,12 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RouterSetWanRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RouterSetWanRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RouterSetWanRequest::MergeImpl
+    RouterSetWanRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RouterSetWanRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RouterSetWanRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void RouterSetWanRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RouterSetWanRequest*>(&to_msg);
@@ -2666,7 +2701,10 @@ PROTOBUF_NOINLINE bool RouterSetWanRequest::IsInitialized() const {
   return true;
 }
 
-void RouterSetWanRequest::InternalSwap(RouterSetWanRequest* other) {
+::_pbi::CachedSize* RouterSetWanRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RouterSetWanRequest::InternalSwap(RouterSetWanRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -2694,38 +2732,34 @@ WanPool_Item::WanPool_Item(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.WanPool.Item)
 }
-WanPool_Item::WanPool_Item(const WanPool_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE WanPool_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : device_(arena, from.device_),
+        _cached_size_{0} {}
+
+WanPool_Item::WanPool_Item(
+    ::google::protobuf::Arena* arena,
+    const WanPool_Item& from)
+    : ::google::protobuf::Message(arena) {
   WanPool_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.weight_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.device_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_device().empty()) {
-    _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.weight_ = from._impl_.weight_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.weight_ = from._impl_.weight_;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.WanPool.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE WanPool_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : device_(arena),
+        _cached_size_{0} {}
+
 inline void WanPool_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.weight_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.device_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.weight_ = {};
 }
 WanPool_Item::~WanPool_Item() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.WanPool.Item)
@@ -2733,15 +2767,14 @@ WanPool_Item::~WanPool_Item() {
   SharedDtor();
 }
 inline void WanPool_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.device_.Destroy();
-}
-void WanPool_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WanPool_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.WanPool.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2852,11 +2885,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 46, 2> WanPool_Item::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData WanPool_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WanPool_Item::MergeImpl
+    WanPool_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WanPool_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WanPool_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void WanPool_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WanPool_Item*>(&to_msg);
@@ -2886,13 +2920,15 @@ PROTOBUF_NOINLINE bool WanPool_Item::IsInitialized() const {
   return true;
 }
 
-void WanPool_Item::InternalSwap(WanPool_Item* other) {
+::_pbi::CachedSize* WanPool_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WanPool_Item::InternalSwap(WanPool_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
-                                       &other->_impl_.device_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, &other->_impl_.device_, arena);
         swap(_impl_.weight_, other->_impl_.weight_);
 }
 
@@ -2912,24 +2948,32 @@ WanPool::WanPool(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.WanPool)
 }
-WanPool::WanPool(const WanPool& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE WanPool::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+WanPool::WanPool(
+    ::google::protobuf::Arena* arena,
+    const WanPool& from)
+    : ::google::protobuf::Message(arena) {
   WanPool* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.WanPool)
 }
+inline PROTOBUF_NDEBUG_INLINE WanPool::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void WanPool::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 WanPool::~WanPool() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.WanPool)
@@ -2937,20 +2981,18 @@ WanPool::~WanPool() {
   SharedDtor();
 }
 inline void WanPool::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void WanPool::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WanPool::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.WanPool)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -3033,11 +3075,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> WanPool::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData WanPool::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WanPool::MergeImpl
+    WanPool::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WanPool::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WanPool::GetClassData() const {
+  return &_class_data_;
+}
 
 void WanPool::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WanPool*>(&to_msg);
@@ -3047,7 +3090,8 @@ void WanPool::MergeImpl(::google::protobuf::Message& to_msg, const ::google::pro
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -3062,7 +3106,10 @@ PROTOBUF_NOINLINE bool WanPool::IsInitialized() const {
   return true;
 }
 
-void WanPool::InternalSwap(WanPool* other) {
+::_pbi::CachedSize* WanPool::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WanPool::InternalSwap(WanPool* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -3094,42 +3141,38 @@ RouterCreateUserRequest::RouterCreateUserRequest(::google::protobuf::Arena* aren
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterCreateUserRequest)
 }
-RouterCreateUserRequest::RouterCreateUserRequest(const RouterCreateUserRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RouterCreateUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        name_(arena, from.name_) {}
+
+RouterCreateUserRequest::RouterCreateUserRequest(
+    ::google::protobuf::Arena* arena,
+    const RouterCreateUserRequest& from)
+    : ::google::protobuf::Message(arena) {
   RouterCreateUserRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.contact_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.contact_ = new ::palm::ops::router::v1::Contact(*from._impl_.contact_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.contact_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Contact>(arena, *from._impl_.contact_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterCreateUserRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE RouterCreateUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        name_(arena) {}
+
 inline void RouterCreateUserRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.contact_){nullptr},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.contact_ = {};
 }
 RouterCreateUserRequest::~RouterCreateUserRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterCreateUserRequest)
@@ -3137,16 +3180,15 @@ RouterCreateUserRequest::~RouterCreateUserRequest() {
   SharedDtor();
 }
 inline void RouterCreateUserRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.contact_;
-}
-void RouterCreateUserRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.contact_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RouterCreateUserRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterCreateUserRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3225,8 +3267,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 55, 2> RouterCreateUserRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Contact contact = 2;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::contact(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::contact(this),
         _Internal::contact(this).GetCachedSize(), target, stream);
   }
 
@@ -3256,20 +3298,20 @@ const ::_pbi::TcParseTable<1, 2, 1, 55, 2> RouterCreateUserRequest::_table_ = {
   // .palm.ops.router.v1.Contact contact = 2;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.contact_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.contact_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData RouterCreateUserRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RouterCreateUserRequest::MergeImpl
+    RouterCreateUserRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RouterCreateUserRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RouterCreateUserRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void RouterCreateUserRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RouterCreateUserRequest*>(&to_msg);
@@ -3300,14 +3342,16 @@ PROTOBUF_NOINLINE bool RouterCreateUserRequest::IsInitialized() const {
   return true;
 }
 
-void RouterCreateUserRequest::InternalSwap(RouterCreateUserRequest* other) {
+::_pbi::CachedSize* RouterCreateUserRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RouterCreateUserRequest::InternalSwap(RouterCreateUserRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
   swap(_impl_.contact_, other->_impl_.contact_);
 }
 
@@ -3337,45 +3381,44 @@ RouterIndexUserResponse_Item::RouterIndexUserResponse_Item(::google::protobuf::A
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterIndexUserResponse.Item)
 }
-RouterIndexUserResponse_Item::RouterIndexUserResponse_Item(const RouterIndexUserResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RouterIndexUserResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        name_(arena, from.name_) {}
+
+RouterIndexUserResponse_Item::RouterIndexUserResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const RouterIndexUserResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   RouterIndexUserResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.contact_){nullptr},
-      decltype(_impl_.id_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.contact_ = new ::palm::ops::router::v1::Contact(*from._impl_.contact_);
-  }
-  _this->_impl_.id_ = from._impl_.id_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.contact_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Contact>(arena, *from._impl_.contact_)
+                : nullptr;
+  _impl_.id_ = from._impl_.id_;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterIndexUserResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE RouterIndexUserResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        name_(arena) {}
+
 inline void RouterIndexUserResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.contact_){nullptr},
-      decltype(_impl_.id_){0},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, contact_),
+           0,
+           offsetof(Impl_, id_) -
+               offsetof(Impl_, contact_) +
+               sizeof(Impl_::id_));
 }
 RouterIndexUserResponse_Item::~RouterIndexUserResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterIndexUserResponse.Item)
@@ -3383,16 +3426,15 @@ RouterIndexUserResponse_Item::~RouterIndexUserResponse_Item() {
   SharedDtor();
 }
 inline void RouterIndexUserResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.contact_;
-}
-void RouterIndexUserResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.contact_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RouterIndexUserResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterIndexUserResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3486,8 +3528,8 @@ const ::_pbi::TcParseTable<2, 3, 1, 60, 2> RouterIndexUserResponse_Item::_table_
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Contact contact = 3;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(3, _Internal::contact(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        3, _Internal::contact(this),
         _Internal::contact(this).GetCachedSize(), target, stream);
   }
 
@@ -3517,9 +3559,8 @@ const ::_pbi::TcParseTable<2, 3, 1, 60, 2> RouterIndexUserResponse_Item::_table_
   // .palm.ops.router.v1.Contact contact = 3;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.contact_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.contact_);
   }
 
   // int32 id = 1;
@@ -3532,11 +3573,12 @@ const ::_pbi::TcParseTable<2, 3, 1, 60, 2> RouterIndexUserResponse_Item::_table_
 }
 
 const ::google::protobuf::Message::ClassData RouterIndexUserResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RouterIndexUserResponse_Item::MergeImpl
+    RouterIndexUserResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RouterIndexUserResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RouterIndexUserResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void RouterIndexUserResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RouterIndexUserResponse_Item*>(&to_msg);
@@ -3570,14 +3612,16 @@ PROTOBUF_NOINLINE bool RouterIndexUserResponse_Item::IsInitialized() const {
   return true;
 }
 
-void RouterIndexUserResponse_Item::InternalSwap(RouterIndexUserResponse_Item* other) {
+::_pbi::CachedSize* RouterIndexUserResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RouterIndexUserResponse_Item::InternalSwap(RouterIndexUserResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(RouterIndexUserResponse_Item, _impl_.id_)
       + sizeof(RouterIndexUserResponse_Item::_impl_.id_)
@@ -3602,24 +3646,32 @@ RouterIndexUserResponse::RouterIndexUserResponse(::google::protobuf::Arena* aren
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterIndexUserResponse)
 }
-RouterIndexUserResponse::RouterIndexUserResponse(const RouterIndexUserResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RouterIndexUserResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+RouterIndexUserResponse::RouterIndexUserResponse(
+    ::google::protobuf::Arena* arena,
+    const RouterIndexUserResponse& from)
+    : ::google::protobuf::Message(arena) {
   RouterIndexUserResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterIndexUserResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE RouterIndexUserResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void RouterIndexUserResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 RouterIndexUserResponse::~RouterIndexUserResponse() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterIndexUserResponse)
@@ -3627,20 +3679,18 @@ RouterIndexUserResponse::~RouterIndexUserResponse() {
   SharedDtor();
 }
 inline void RouterIndexUserResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void RouterIndexUserResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RouterIndexUserResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterIndexUserResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -3723,11 +3773,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> RouterIndexUserResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RouterIndexUserResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RouterIndexUserResponse::MergeImpl
+    RouterIndexUserResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RouterIndexUserResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RouterIndexUserResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void RouterIndexUserResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RouterIndexUserResponse*>(&to_msg);
@@ -3737,7 +3788,8 @@ void RouterIndexUserResponse::MergeImpl(::google::protobuf::Message& to_msg, con
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -3752,7 +3804,10 @@ PROTOBUF_NOINLINE bool RouterIndexUserResponse::IsInitialized() const {
   return true;
 }
 
-void RouterIndexUserResponse::InternalSwap(RouterIndexUserResponse* other) {
+::_pbi::CachedSize* RouterIndexUserResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RouterIndexUserResponse::InternalSwap(RouterIndexUserResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -3780,85 +3835,52 @@ RouterUpdateHostRequest::RouterUpdateHostRequest(::google::protobuf::Arena* aren
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterUpdateHostRequest)
 }
-RouterUpdateHostRequest::RouterUpdateHostRequest(const RouterUpdateHostRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RouterUpdateHostRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        group_(arena, from.group_),
+        ip_(arena, from.ip_),
+        zone_(arena, from.zone_),
+        location_(arena, from.location_) {}
+
+RouterUpdateHostRequest::RouterUpdateHostRequest(
+    ::google::protobuf::Arena* arena,
+    const RouterUpdateHostRequest& from)
+    : ::google::protobuf::Message(arena) {
   RouterUpdateHostRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.group_){},
-      decltype(_impl_.ip_){},
-      decltype(_impl_.zone_){},
-      decltype(_impl_.location_){},
-      decltype(_impl_.id_){},
-      decltype(_impl_.user_){},
-      decltype(_impl_.fixed_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.group_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_group().empty()) {
-    _this->_impl_.group_.Set(from._internal_group(), _this->GetArenaForAllocation());
-  }
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_ip().empty()) {
-    _this->_impl_.ip_.Set(from._internal_ip(), _this->GetArenaForAllocation());
-  }
-  _impl_.zone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.zone_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_zone().empty()) {
-    _this->_impl_.zone_.Set(from._internal_zone(), _this->GetArenaForAllocation());
-  }
-  _impl_.location_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.location_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.location_.Set(from._internal_location(), _this->GetArenaForAllocation());
-  }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.fixed_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.fixed_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, fixed_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::fixed_));
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterUpdateHostRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE RouterUpdateHostRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        group_(arena),
+        ip_(arena),
+        zone_(arena),
+        location_(arena) {}
+
 inline void RouterUpdateHostRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.group_){},
-      decltype(_impl_.ip_){},
-      decltype(_impl_.zone_){},
-      decltype(_impl_.location_){},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.user_){0},
-      decltype(_impl_.fixed_){false},
-  };
-  _impl_.group_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.zone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.zone_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.location_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.location_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           0,
+           offsetof(Impl_, fixed_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::fixed_));
 }
 RouterUpdateHostRequest::~RouterUpdateHostRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterUpdateHostRequest)
@@ -3866,18 +3888,17 @@ RouterUpdateHostRequest::~RouterUpdateHostRequest() {
   SharedDtor();
 }
 inline void RouterUpdateHostRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.group_.Destroy();
   _impl_.ip_.Destroy();
   _impl_.zone_.Destroy();
   _impl_.location_.Destroy();
-}
-void RouterUpdateHostRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RouterUpdateHostRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterUpdateHostRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4098,11 +4119,12 @@ const ::_pbi::TcParseTable<3, 7, 0, 70, 2> RouterUpdateHostRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RouterUpdateHostRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RouterUpdateHostRequest::MergeImpl
+    RouterUpdateHostRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RouterUpdateHostRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RouterUpdateHostRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void RouterUpdateHostRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RouterUpdateHostRequest*>(&to_msg);
@@ -4147,20 +4169,19 @@ PROTOBUF_NOINLINE bool RouterUpdateHostRequest::IsInitialized() const {
   return true;
 }
 
-void RouterUpdateHostRequest::InternalSwap(RouterUpdateHostRequest* other) {
+::_pbi::CachedSize* RouterUpdateHostRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RouterUpdateHostRequest::InternalSwap(RouterUpdateHostRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, lhs_arena,
-                                       &other->_impl_.group_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, lhs_arena,
-                                       &other->_impl_.ip_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.zone_, lhs_arena,
-                                       &other->_impl_.zone_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.location_, lhs_arena,
-                                       &other->_impl_.location_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, &other->_impl_.group_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, &other->_impl_.ip_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.zone_, &other->_impl_.zone_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.location_, &other->_impl_.location_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(RouterUpdateHostRequest, _impl_.fixed_)
       + sizeof(RouterUpdateHostRequest::_impl_.fixed_)
@@ -4195,14 +4216,12 @@ const ::palm::ops::router::v1::Rule_Nat& RouterIndexRuleResponse_Item::_Internal
   return *msg->_impl_.payload_.nat_;
 }
 void RouterIndexRuleResponse_Item::set_allocated_in(::palm::ops::router::v1::Rule_InBound* in) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (in) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(in);
+    ::google::protobuf::Arena* submessage_arena = in->GetArena();
     if (message_arena != submessage_arena) {
-      in = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, in, submessage_arena);
+      in = ::google::protobuf::internal::GetOwnedMessage(message_arena, in, submessage_arena);
     }
     set_has_in();
     _impl_.payload_.in_ = in;
@@ -4210,14 +4229,12 @@ void RouterIndexRuleResponse_Item::set_allocated_in(::palm::ops::router::v1::Rul
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.RouterIndexRuleResponse.Item.in)
 }
 void RouterIndexRuleResponse_Item::set_allocated_out(::palm::ops::router::v1::Rule_OutBound* out) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (out) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(out);
+    ::google::protobuf::Arena* submessage_arena = out->GetArena();
     if (message_arena != submessage_arena) {
-      out = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, out, submessage_arena);
+      out = ::google::protobuf::internal::GetOwnedMessage(message_arena, out, submessage_arena);
     }
     set_has_out();
     _impl_.payload_.out_ = out;
@@ -4225,14 +4242,12 @@ void RouterIndexRuleResponse_Item::set_allocated_out(::palm::ops::router::v1::Ru
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.RouterIndexRuleResponse.Item.out)
 }
 void RouterIndexRuleResponse_Item::set_allocated_nat(::palm::ops::router::v1::Rule_Nat* nat) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (nat) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(nat);
+    ::google::protobuf::Arena* submessage_arena = nat->GetArena();
     if (message_arena != submessage_arena) {
-      nat = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, nat, submessage_arena);
+      nat = ::google::protobuf::internal::GetOwnedMessage(message_arena, nat, submessage_arena);
     }
     set_has_nat();
     _impl_.payload_.nat_ = nat;
@@ -4244,77 +4259,53 @@ RouterIndexRuleResponse_Item::RouterIndexRuleResponse_Item(::google::protobuf::A
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterIndexRuleResponse.Item)
 }
-RouterIndexRuleResponse_Item::RouterIndexRuleResponse_Item(const RouterIndexRuleResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RouterIndexRuleResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : name_(arena, from.name_),
+        group_(arena, from.group_),
+        payload_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+RouterIndexRuleResponse_Item::RouterIndexRuleResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const RouterIndexRuleResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   RouterIndexRuleResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.id_){},
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.group_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_group().empty()) {
-    _this->_impl_.group_.Set(from._internal_group(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.id_ = from._impl_.id_;
-  clear_has_payload();
-  switch (from.payload_case()) {
-    case kIn: {
-      _this->_internal_mutable_in()->::palm::ops::router::v1::Rule_InBound::MergeFrom(
-          from._internal_in());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.id_ = from._impl_.id_;
+  switch (payload_case()) {
+    case PAYLOAD_NOT_SET:
       break;
-    }
-    case kOut: {
-      _this->_internal_mutable_out()->::palm::ops::router::v1::Rule_OutBound::MergeFrom(
-          from._internal_out());
-      break;
-    }
-    case kNat: {
-      _this->_internal_mutable_nat()->::palm::ops::router::v1::Rule_Nat::MergeFrom(
-          from._internal_nat());
-      break;
-    }
-    case PAYLOAD_NOT_SET: {
-      break;
-    }
+      case kIn:
+        _impl_.payload_.in_ = CreateMaybeMessage<::palm::ops::router::v1::Rule_InBound>(arena, *from._impl_.payload_.in_);
+        break;
+      case kOut:
+        _impl_.payload_.out_ = CreateMaybeMessage<::palm::ops::router::v1::Rule_OutBound>(arena, *from._impl_.payload_.out_);
+        break;
+      case kNat:
+        _impl_.payload_.nat_ = CreateMaybeMessage<::palm::ops::router::v1::Rule_Nat>(arena, *from._impl_.payload_.nat_);
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterIndexRuleResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE RouterIndexRuleResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : name_(arena),
+        group_(arena),
+        payload_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
 inline void RouterIndexRuleResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.group_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  clear_has_payload();
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.id_ = {};
 }
 RouterIndexRuleResponse_Item::~RouterIndexRuleResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterIndexRuleResponse.Item)
@@ -4322,34 +4313,33 @@ RouterIndexRuleResponse_Item::~RouterIndexRuleResponse_Item() {
   SharedDtor();
 }
 inline void RouterIndexRuleResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
   _impl_.group_.Destroy();
   if (has_payload()) {
     clear_payload();
   }
-}
-void RouterIndexRuleResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void RouterIndexRuleResponse_Item::clear_payload() {
 // @@protoc_insertion_point(one_of_clear_start:palm.ops.router.v1.RouterIndexRuleResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (payload_case()) {
     case kIn: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.in_;
       }
       break;
     }
     case kOut: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.out_;
       }
       break;
     }
     case kNat: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.nat_;
       }
       break;
@@ -4364,6 +4354,7 @@ void RouterIndexRuleResponse_Item::clear_payload() {
 
 PROTOBUF_NOINLINE void RouterIndexRuleResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterIndexRuleResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4472,20 +4463,20 @@ const ::_pbi::TcParseTable<2, 6, 3, 65, 2> RouterIndexRuleResponse_Item::_table_
 
   switch (payload_case()) {
     case kIn: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(11, _Internal::in(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          11, _Internal::in(this),
           _Internal::in(this).GetCachedSize(), target, stream);
       break;
     }
     case kOut: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(12, _Internal::out(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          12, _Internal::out(this),
           _Internal::out(this).GetCachedSize(), target, stream);
       break;
     }
     case kNat: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(13, _Internal::nat(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          13, _Internal::nat(this),
           _Internal::nat(this).GetCachedSize(), target, stream);
       break;
     }
@@ -4530,23 +4521,20 @@ const ::_pbi::TcParseTable<2, 6, 3, 65, 2> RouterIndexRuleResponse_Item::_table_
   switch (payload_case()) {
     // .palm.ops.router.v1.Rule.InBound in = 11;
     case kIn: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.in_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.in_);
       break;
     }
     // .palm.ops.router.v1.Rule.OutBound out = 12;
     case kOut: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.out_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.out_);
       break;
     }
     // .palm.ops.router.v1.Rule.Nat nat = 13;
     case kNat: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.nat_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.nat_);
       break;
     }
     case PAYLOAD_NOT_SET: {
@@ -4557,11 +4545,12 @@ const ::_pbi::TcParseTable<2, 6, 3, 65, 2> RouterIndexRuleResponse_Item::_table_
 }
 
 const ::google::protobuf::Message::ClassData RouterIndexRuleResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RouterIndexRuleResponse_Item::MergeImpl
+    RouterIndexRuleResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RouterIndexRuleResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RouterIndexRuleResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void RouterIndexRuleResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RouterIndexRuleResponse_Item*>(&to_msg);
@@ -4614,15 +4603,16 @@ PROTOBUF_NOINLINE bool RouterIndexRuleResponse_Item::IsInitialized() const {
   return true;
 }
 
-void RouterIndexRuleResponse_Item::InternalSwap(RouterIndexRuleResponse_Item* other) {
+::_pbi::CachedSize* RouterIndexRuleResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RouterIndexRuleResponse_Item::InternalSwap(RouterIndexRuleResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, lhs_arena,
-                                       &other->_impl_.group_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, &other->_impl_.group_, arena);
         swap(_impl_.id_, other->_impl_.id_);
   swap(_impl_.payload_, other->_impl_.payload_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
@@ -4644,24 +4634,32 @@ RouterIndexRuleResponse::RouterIndexRuleResponse(::google::protobuf::Arena* aren
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterIndexRuleResponse)
 }
-RouterIndexRuleResponse::RouterIndexRuleResponse(const RouterIndexRuleResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RouterIndexRuleResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+RouterIndexRuleResponse::RouterIndexRuleResponse(
+    ::google::protobuf::Arena* arena,
+    const RouterIndexRuleResponse& from)
+    : ::google::protobuf::Message(arena) {
   RouterIndexRuleResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterIndexRuleResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE RouterIndexRuleResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void RouterIndexRuleResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 RouterIndexRuleResponse::~RouterIndexRuleResponse() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterIndexRuleResponse)
@@ -4669,20 +4667,18 @@ RouterIndexRuleResponse::~RouterIndexRuleResponse() {
   SharedDtor();
 }
 inline void RouterIndexRuleResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void RouterIndexRuleResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RouterIndexRuleResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterIndexRuleResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -4765,11 +4761,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> RouterIndexRuleResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RouterIndexRuleResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RouterIndexRuleResponse::MergeImpl
+    RouterIndexRuleResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RouterIndexRuleResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RouterIndexRuleResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void RouterIndexRuleResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RouterIndexRuleResponse*>(&to_msg);
@@ -4779,7 +4776,8 @@ void RouterIndexRuleResponse::MergeImpl(::google::protobuf::Message& to_msg, con
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -4794,7 +4792,10 @@ PROTOBUF_NOINLINE bool RouterIndexRuleResponse::IsInitialized() const {
   return true;
 }
 
-void RouterIndexRuleResponse::InternalSwap(RouterIndexRuleResponse* other) {
+::_pbi::CachedSize* RouterIndexRuleResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RouterIndexRuleResponse::InternalSwap(RouterIndexRuleResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -4826,42 +4827,38 @@ Host_Owner::Host_Owner(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Host.Owner)
 }
-Host_Owner::Host_Owner(const Host_Owner& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Host_Owner::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        name_(arena, from.name_) {}
+
+Host_Owner::Host_Owner(
+    ::google::protobuf::Arena* arena,
+    const Host_Owner& from)
+    : ::google::protobuf::Message(arena) {
   Host_Owner* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.contact_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.contact_ = new ::palm::ops::router::v1::Contact(*from._impl_.contact_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.contact_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Contact>(arena, *from._impl_.contact_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Host.Owner)
 }
+inline PROTOBUF_NDEBUG_INLINE Host_Owner::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        name_(arena) {}
+
 inline void Host_Owner::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.contact_){nullptr},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.contact_ = {};
 }
 Host_Owner::~Host_Owner() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Host.Owner)
@@ -4869,16 +4866,15 @@ Host_Owner::~Host_Owner() {
   SharedDtor();
 }
 inline void Host_Owner::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.contact_;
-}
-void Host_Owner::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.contact_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Host_Owner::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Host.Owner)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4957,8 +4953,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 42, 2> Host_Owner::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Contact contact = 2;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::contact(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::contact(this),
         _Internal::contact(this).GetCachedSize(), target, stream);
   }
 
@@ -4988,20 +4984,20 @@ const ::_pbi::TcParseTable<1, 2, 1, 42, 2> Host_Owner::_table_ = {
   // .palm.ops.router.v1.Contact contact = 2;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.contact_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.contact_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData Host_Owner::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Host_Owner::MergeImpl
+    Host_Owner::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Host_Owner::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Host_Owner::GetClassData() const {
+  return &_class_data_;
+}
 
 void Host_Owner::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Host_Owner*>(&to_msg);
@@ -5032,14 +5028,16 @@ PROTOBUF_NOINLINE bool Host_Owner::IsInitialized() const {
   return true;
 }
 
-void Host_Owner::InternalSwap(Host_Owner* other) {
+::_pbi::CachedSize* Host_Owner::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Host_Owner::InternalSwap(Host_Owner* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
   swap(_impl_.contact_, other->_impl_.contact_);
 }
 
@@ -5072,101 +5070,58 @@ Host::Host(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Host)
 }
-Host::Host(const Host& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Host::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        name_(arena, from.name_),
+        mac_(arena, from.mac_),
+        ip_(arena, from.ip_),
+        group_(arena, from.group_),
+        location_(arena, from.location_) {}
+
+Host::Host(
+    ::google::protobuf::Arena* arena,
+    const Host& from)
+    : ::google::protobuf::Message(arena) {
   Host* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.ip_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.location_){},
-      decltype(_impl_.owner_){nullptr},
-      decltype(_impl_.id_){},
-      decltype(_impl_.fixed_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.mac_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_mac().empty()) {
-    _this->_impl_.mac_.Set(from._internal_mac(), _this->GetArenaForAllocation());
-  }
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_ip().empty()) {
-    _this->_impl_.ip_.Set(from._internal_ip(), _this->GetArenaForAllocation());
-  }
-  _impl_.group_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_group().empty()) {
-    _this->_impl_.group_.Set(from._internal_group(), _this->GetArenaForAllocation());
-  }
-  _impl_.location_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.location_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.location_.Set(from._internal_location(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.owner_ = new ::palm::ops::router::v1::Host_Owner(*from._impl_.owner_);
-  }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.fixed_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.fixed_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.owner_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Host_Owner>(arena, *from._impl_.owner_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, fixed_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::fixed_));
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Host)
 }
+inline PROTOBUF_NDEBUG_INLINE Host::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        name_(arena),
+        mac_(arena),
+        ip_(arena),
+        group_(arena),
+        location_(arena) {}
+
 inline void Host::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.name_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.ip_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.location_){},
-      decltype(_impl_.owner_){nullptr},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.fixed_){false},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.mac_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.group_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.location_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.location_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, owner_),
+           0,
+           offsetof(Impl_, fixed_) -
+               offsetof(Impl_, owner_) +
+               sizeof(Impl_::fixed_));
 }
 Host::~Host() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Host)
@@ -5174,20 +5129,19 @@ Host::~Host() {
   SharedDtor();
 }
 inline void Host::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
   _impl_.mac_.Destroy();
   _impl_.ip_.Destroy();
   _impl_.group_.Destroy();
   _impl_.location_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.owner_;
-}
-void Host::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.owner_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Host::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Host)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5371,8 +5325,8 @@ const ::_pbi::TcParseTable<4, 8, 1, 62, 2> Host::_table_ = {
 
   // .palm.ops.router.v1.Host.Owner owner = 12;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(12, _Internal::owner(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        12, _Internal::owner(this),
         _Internal::owner(this).GetCachedSize(), target, stream);
   }
 
@@ -5427,9 +5381,8 @@ const ::_pbi::TcParseTable<4, 8, 1, 62, 2> Host::_table_ = {
 
     // .palm.ops.router.v1.Host.Owner owner = 12;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.owner_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.owner_);
     }
 
   }
@@ -5448,11 +5401,12 @@ const ::_pbi::TcParseTable<4, 8, 1, 62, 2> Host::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Host::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Host::MergeImpl
+    Host::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Host::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Host::GetClassData() const {
+  return &_class_data_;
+}
 
 void Host::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Host*>(&to_msg);
@@ -5504,22 +5458,20 @@ PROTOBUF_NOINLINE bool Host::IsInitialized() const {
   return true;
 }
 
-void Host::InternalSwap(Host* other) {
+::_pbi::CachedSize* Host::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Host::InternalSwap(Host* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, lhs_arena,
-                                       &other->_impl_.mac_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, lhs_arena,
-                                       &other->_impl_.ip_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, lhs_arena,
-                                       &other->_impl_.group_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.location_, lhs_arena,
-                                       &other->_impl_.location_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, &other->_impl_.mac_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, &other->_impl_.ip_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, &other->_impl_.group_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.location_, &other->_impl_.location_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Host, _impl_.fixed_)
       + sizeof(Host::_impl_.fixed_)
@@ -5550,57 +5502,48 @@ Rule_InBound::Rule_InBound(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.InBound)
 }
-Rule_InBound::Rule_InBound(const Rule_InBound& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Rule_InBound::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        device_(arena, from.device_),
+        source_(arena, from.source_) {}
+
+Rule_InBound::Rule_InBound(
+    ::google::protobuf::Arena* arena,
+    const Rule_InBound& from)
+    : ::google::protobuf::Message(arena) {
   Rule_InBound* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.device_){},
-      decltype(_impl_.source_){},
-      decltype(_impl_.tcp_){},
-      decltype(_impl_.port_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.device_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_device().empty()) {
-    _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
-  }
-  _impl_.source_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.source_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.source_.Set(from._internal_source(), _this->GetArenaForAllocation());
-  }
-  ::memcpy(&_impl_.tcp_, &from._impl_.tcp_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.port_) -
-    reinterpret_cast<char*>(&_impl_.tcp_)) + sizeof(_impl_.port_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, tcp_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, tcp_),
+           offsetof(Impl_, port_) -
+               offsetof(Impl_, tcp_) +
+               sizeof(Impl_::port_));
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.InBound)
 }
+inline PROTOBUF_NDEBUG_INLINE Rule_InBound::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        device_(arena),
+        source_(arena) {}
+
 inline void Rule_InBound::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.device_){},
-      decltype(_impl_.source_){},
-      decltype(_impl_.tcp_){false},
-      decltype(_impl_.port_){0u},
-  };
-  _impl_.device_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.source_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.source_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, tcp_),
+           0,
+           offsetof(Impl_, port_) -
+               offsetof(Impl_, tcp_) +
+               sizeof(Impl_::port_));
 }
 Rule_InBound::~Rule_InBound() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.InBound)
@@ -5608,16 +5551,15 @@ Rule_InBound::~Rule_InBound() {
   SharedDtor();
 }
 inline void Rule_InBound::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.device_.Destroy();
   _impl_.source_.Destroy();
-}
-void Rule_InBound::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Rule_InBound::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.InBound)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5776,11 +5718,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 52, 2> Rule_InBound::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Rule_InBound::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Rule_InBound::MergeImpl
+    Rule_InBound::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Rule_InBound::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Rule_InBound::GetClassData() const {
+  return &_class_data_;
+}
 
 void Rule_InBound::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Rule_InBound*>(&to_msg);
@@ -5816,16 +5759,17 @@ PROTOBUF_NOINLINE bool Rule_InBound::IsInitialized() const {
   return true;
 }
 
-void Rule_InBound::InternalSwap(Rule_InBound* other) {
+::_pbi::CachedSize* Rule_InBound::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Rule_InBound::InternalSwap(Rule_InBound* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
-                                       &other->_impl_.device_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.source_, lhs_arena,
-                                       &other->_impl_.source_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, &other->_impl_.device_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.source_, &other->_impl_.source_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Rule_InBound, _impl_.port_)
       + sizeof(Rule_InBound::_impl_.port_)
@@ -5850,42 +5794,45 @@ Rule_OutBound_Host::Rule_OutBound_Host(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.OutBound.Host)
 }
-Rule_OutBound_Host::Rule_OutBound_Host(const Rule_OutBound_Host& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Rule_OutBound_Host::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : to_(arena, from.to_),
+        _cached_size_{0} {}
+
+Rule_OutBound_Host::Rule_OutBound_Host(
+    ::google::protobuf::Arena* arena,
+    const Rule_OutBound_Host& from)
+    : ::google::protobuf::Message(arena) {
   Rule_OutBound_Host* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.to_){},
-      decltype(_impl_.protocol_){},
-      decltype(_impl_.port_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.to_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.to_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_to().empty()) {
-    _this->_impl_.to_.Set(from._internal_to(), _this->GetArenaForAllocation());
-  }
-  ::memcpy(&_impl_.protocol_, &from._impl_.protocol_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.port_) -
-    reinterpret_cast<char*>(&_impl_.protocol_)) + sizeof(_impl_.port_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, protocol_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, protocol_),
+           offsetof(Impl_, port_) -
+               offsetof(Impl_, protocol_) +
+               sizeof(Impl_::port_));
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.OutBound.Host)
 }
+inline PROTOBUF_NDEBUG_INLINE Rule_OutBound_Host::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : to_(arena),
+        _cached_size_{0} {}
+
 inline void Rule_OutBound_Host::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.to_){},
-      decltype(_impl_.protocol_){0},
-      decltype(_impl_.port_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.to_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.to_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, protocol_),
+           0,
+           offsetof(Impl_, port_) -
+               offsetof(Impl_, protocol_) +
+               sizeof(Impl_::port_));
 }
 Rule_OutBound_Host::~Rule_OutBound_Host() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.OutBound.Host)
@@ -5893,15 +5840,14 @@ Rule_OutBound_Host::~Rule_OutBound_Host() {
   SharedDtor();
 }
 inline void Rule_OutBound_Host::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.to_.Destroy();
-}
-void Rule_OutBound_Host::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Rule_OutBound_Host::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.OutBound.Host)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -6034,11 +5980,12 @@ const ::_pbi::TcParseTable<2, 3, 0, 48, 2> Rule_OutBound_Host::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Rule_OutBound_Host::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Rule_OutBound_Host::MergeImpl
+    Rule_OutBound_Host::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Rule_OutBound_Host::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Rule_OutBound_Host::GetClassData() const {
+  return &_class_data_;
+}
 
 void Rule_OutBound_Host::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Rule_OutBound_Host*>(&to_msg);
@@ -6071,13 +6018,15 @@ PROTOBUF_NOINLINE bool Rule_OutBound_Host::IsInitialized() const {
   return true;
 }
 
-void Rule_OutBound_Host::InternalSwap(Rule_OutBound_Host* other) {
+::_pbi::CachedSize* Rule_OutBound_Host::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Rule_OutBound_Host::InternalSwap(Rule_OutBound_Host* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.to_, lhs_arena,
-                                       &other->_impl_.to_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.to_, &other->_impl_.to_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Rule_OutBound_Host, _impl_.port_)
       + sizeof(Rule_OutBound_Host::_impl_.port_)
@@ -6111,20 +6060,24 @@ Rule_OutBound_Speed::Rule_OutBound_Speed(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.OutBound.Speed)
 }
-Rule_OutBound_Speed::Rule_OutBound_Speed(const Rule_OutBound_Speed& from)
-    : ::google::protobuf::Message(), _impl_(from._impl_) {
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.OutBound.Speed)
+Rule_OutBound_Speed::Rule_OutBound_Speed(
+    ::google::protobuf::Arena* arena, const Rule_OutBound_Speed& from)
+    : Rule_OutBound_Speed(arena) {
+  MergeFrom(from);
 }
+inline PROTOBUF_NDEBUG_INLINE Rule_OutBound_Speed::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void Rule_OutBound_Speed::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.up_){0u},
-      decltype(_impl_.down_){0u},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, up_),
+           0,
+           offsetof(Impl_, down_) -
+               offsetof(Impl_, up_) +
+               sizeof(Impl_::down_));
 }
 Rule_OutBound_Speed::~Rule_OutBound_Speed() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.OutBound.Speed)
@@ -6132,14 +6085,13 @@ Rule_OutBound_Speed::~Rule_OutBound_Speed() {
   SharedDtor();
 }
 inline void Rule_OutBound_Speed::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-}
-void Rule_OutBound_Speed::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Rule_OutBound_Speed::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.OutBound.Speed)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -6255,11 +6207,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 0, 2> Rule_OutBound_Speed::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Rule_OutBound_Speed::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Rule_OutBound_Speed::MergeImpl
+    Rule_OutBound_Speed::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Rule_OutBound_Speed::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Rule_OutBound_Speed::GetClassData() const {
+  return &_class_data_;
+}
 
 void Rule_OutBound_Speed::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Rule_OutBound_Speed*>(&to_msg);
@@ -6293,7 +6246,10 @@ PROTOBUF_NOINLINE bool Rule_OutBound_Speed::IsInitialized() const {
   return true;
 }
 
-void Rule_OutBound_Speed::InternalSwap(Rule_OutBound_Speed* other) {
+::_pbi::CachedSize* Rule_OutBound_Speed::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Rule_OutBound_Speed::InternalSwap(Rule_OutBound_Speed* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -6334,10 +6290,12 @@ const ::google::protobuf::Timestamp& Rule_OutBound_Time::_Internal::to(const Rul
   return *msg->_impl_.to_;
 }
 void Rule_OutBound_Time::clear_from() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.from_ != nullptr) _impl_.from_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void Rule_OutBound_Time::clear_to() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.to_ != nullptr) _impl_.to_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
@@ -6346,51 +6304,51 @@ Rule_OutBound_Time::Rule_OutBound_Time(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.OutBound.Time)
 }
-Rule_OutBound_Time::Rule_OutBound_Time(const Rule_OutBound_Time& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Rule_OutBound_Time::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+Rule_OutBound_Time::Rule_OutBound_Time(
+    ::google::protobuf::Arena* arena,
+    const Rule_OutBound_Time& from)
+    : ::google::protobuf::Message(arena) {
   Rule_OutBound_Time* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.from_){nullptr},
-      decltype(_impl_.to_){nullptr},
-      decltype(_impl_.monday_){},
-      decltype(_impl_.tuesday_){},
-      decltype(_impl_.wednesday_){},
-      decltype(_impl_.thursday_){},
-      decltype(_impl_.friday_){},
-      decltype(_impl_.saturday_){},
-      decltype(_impl_.sunday_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.from_ = new ::google::protobuf::Timestamp(*from._impl_.from_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.to_ = new ::google::protobuf::Timestamp(*from._impl_.to_);
-  }
-  ::memcpy(&_impl_.monday_, &from._impl_.monday_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.sunday_) -
-    reinterpret_cast<char*>(&_impl_.monday_)) + sizeof(_impl_.sunday_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.from_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.from_)
+                : nullptr;
+  _impl_.to_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.to_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, monday_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, monday_),
+           offsetof(Impl_, sunday_) -
+               offsetof(Impl_, monday_) +
+               sizeof(Impl_::sunday_));
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.OutBound.Time)
 }
+inline PROTOBUF_NDEBUG_INLINE Rule_OutBound_Time::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void Rule_OutBound_Time::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.from_){nullptr},
-      decltype(_impl_.to_){nullptr},
-      decltype(_impl_.monday_){false},
-      decltype(_impl_.tuesday_){false},
-      decltype(_impl_.wednesday_){false},
-      decltype(_impl_.thursday_){false},
-      decltype(_impl_.friday_){false},
-      decltype(_impl_.saturday_){false},
-      decltype(_impl_.sunday_){false},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, from_),
+           0,
+           offsetof(Impl_, sunday_) -
+               offsetof(Impl_, from_) +
+               sizeof(Impl_::sunday_));
 }
 Rule_OutBound_Time::~Rule_OutBound_Time() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.OutBound.Time)
@@ -6398,16 +6356,15 @@ Rule_OutBound_Time::~Rule_OutBound_Time() {
   SharedDtor();
 }
 inline void Rule_OutBound_Time::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.from_;
-  if (this != internal_default_instance()) delete _impl_.to_;
-}
-void Rule_OutBound_Time::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.from_;
+  delete _impl_.to_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Rule_OutBound_Time::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.OutBound.Time)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -6523,15 +6480,15 @@ const ::_pbi::TcParseTable<3, 9, 2, 0, 2> Rule_OutBound_Time::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp from = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::from(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::from(this),
         _Internal::from(this).GetCachedSize(), target, stream);
   }
 
   // .google.protobuf.Timestamp to = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::to(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::to(this),
         _Internal::to(this).GetCachedSize(), target, stream);
   }
 
@@ -6605,16 +6562,14 @@ const ::_pbi::TcParseTable<3, 9, 2, 0, 2> Rule_OutBound_Time::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .google.protobuf.Timestamp from = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.from_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.from_);
     }
 
     // .google.protobuf.Timestamp to = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.to_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.to_);
     }
 
   }
@@ -6657,11 +6612,12 @@ const ::_pbi::TcParseTable<3, 9, 2, 0, 2> Rule_OutBound_Time::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Rule_OutBound_Time::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Rule_OutBound_Time::MergeImpl
+    Rule_OutBound_Time::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Rule_OutBound_Time::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Rule_OutBound_Time::GetClassData() const {
+  return &_class_data_;
+}
 
 void Rule_OutBound_Time::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Rule_OutBound_Time*>(&to_msg);
@@ -6717,7 +6673,10 @@ PROTOBUF_NOINLINE bool Rule_OutBound_Time::IsInitialized() const {
   return true;
 }
 
-void Rule_OutBound_Time::InternalSwap(Rule_OutBound_Time* other) {
+::_pbi::CachedSize* Rule_OutBound_Time::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Rule_OutBound_Time::InternalSwap(Rule_OutBound_Time* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -6755,14 +6714,12 @@ const ::palm::ops::router::v1::Rule_OutBound_Time& Rule_OutBound::_Internal::tim
   return *msg->_impl_.payload_.time_;
 }
 void Rule_OutBound::set_allocated_host(::palm::ops::router::v1::Rule_OutBound_Host* host) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (host) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(host);
+    ::google::protobuf::Arena* submessage_arena = host->GetArena();
     if (message_arena != submessage_arena) {
-      host = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, host, submessage_arena);
+      host = ::google::protobuf::internal::GetOwnedMessage(message_arena, host, submessage_arena);
     }
     set_has_host();
     _impl_.payload_.host_ = host;
@@ -6770,14 +6727,12 @@ void Rule_OutBound::set_allocated_host(::palm::ops::router::v1::Rule_OutBound_Ho
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Rule.OutBound.host)
 }
 void Rule_OutBound::set_allocated_speed(::palm::ops::router::v1::Rule_OutBound_Speed* speed) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (speed) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(speed);
+    ::google::protobuf::Arena* submessage_arena = speed->GetArena();
     if (message_arena != submessage_arena) {
-      speed = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, speed, submessage_arena);
+      speed = ::google::protobuf::internal::GetOwnedMessage(message_arena, speed, submessage_arena);
     }
     set_has_speed();
     _impl_.payload_.speed_ = speed;
@@ -6785,14 +6740,12 @@ void Rule_OutBound::set_allocated_speed(::palm::ops::router::v1::Rule_OutBound_S
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Rule.OutBound.speed)
 }
 void Rule_OutBound::set_allocated_time(::palm::ops::router::v1::Rule_OutBound_Time* time) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (time) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(time);
+    ::google::protobuf::Arena* submessage_arena = time->GetArena();
     if (message_arena != submessage_arena) {
-      time = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, time, submessage_arena);
+      time = ::google::protobuf::internal::GetOwnedMessage(message_arena, time, submessage_arena);
     }
     set_has_time();
     _impl_.payload_.time_ = time;
@@ -6804,48 +6757,47 @@ Rule_OutBound::Rule_OutBound(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.OutBound)
 }
-Rule_OutBound::Rule_OutBound(const Rule_OutBound& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Rule_OutBound::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : payload_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+Rule_OutBound::Rule_OutBound(
+    ::google::protobuf::Arena* arena,
+    const Rule_OutBound& from)
+    : ::google::protobuf::Message(arena) {
   Rule_OutBound* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  clear_has_payload();
-  switch (from.payload_case()) {
-    case kHost: {
-      _this->_internal_mutable_host()->::palm::ops::router::v1::Rule_OutBound_Host::MergeFrom(
-          from._internal_host());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  switch (payload_case()) {
+    case PAYLOAD_NOT_SET:
       break;
-    }
-    case kSpeed: {
-      _this->_internal_mutable_speed()->::palm::ops::router::v1::Rule_OutBound_Speed::MergeFrom(
-          from._internal_speed());
-      break;
-    }
-    case kTime: {
-      _this->_internal_mutable_time()->::palm::ops::router::v1::Rule_OutBound_Time::MergeFrom(
-          from._internal_time());
-      break;
-    }
-    case PAYLOAD_NOT_SET: {
-      break;
-    }
+      case kHost:
+        _impl_.payload_.host_ = CreateMaybeMessage<::palm::ops::router::v1::Rule_OutBound_Host>(arena, *from._impl_.payload_.host_);
+        break;
+      case kSpeed:
+        _impl_.payload_.speed_ = CreateMaybeMessage<::palm::ops::router::v1::Rule_OutBound_Speed>(arena, *from._impl_.payload_.speed_);
+        break;
+      case kTime:
+        _impl_.payload_.time_ = CreateMaybeMessage<::palm::ops::router::v1::Rule_OutBound_Time>(arena, *from._impl_.payload_.time_);
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.OutBound)
 }
+inline PROTOBUF_NDEBUG_INLINE Rule_OutBound::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : payload_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
 inline void Rule_OutBound::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  clear_has_payload();
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Rule_OutBound::~Rule_OutBound() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.OutBound)
@@ -6853,32 +6805,31 @@ Rule_OutBound::~Rule_OutBound() {
   SharedDtor();
 }
 inline void Rule_OutBound::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   if (has_payload()) {
     clear_payload();
   }
-}
-void Rule_OutBound::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void Rule_OutBound::clear_payload() {
 // @@protoc_insertion_point(one_of_clear_start:palm.ops.router.v1.Rule.OutBound)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (payload_case()) {
     case kHost: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.host_;
       }
       break;
     }
     case kSpeed: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.speed_;
       }
       break;
     }
     case kTime: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.time_;
       }
       break;
@@ -6893,6 +6844,7 @@ void Rule_OutBound::clear_payload() {
 
 PROTOBUF_NOINLINE void Rule_OutBound::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.OutBound)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -6953,20 +6905,20 @@ const ::_pbi::TcParseTable<0, 3, 3, 0, 2> Rule_OutBound::_table_ = {
 
   switch (payload_case()) {
     case kHost: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(1, _Internal::host(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          1, _Internal::host(this),
           _Internal::host(this).GetCachedSize(), target, stream);
       break;
     }
     case kSpeed: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(2, _Internal::speed(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          2, _Internal::speed(this),
           _Internal::speed(this).GetCachedSize(), target, stream);
       break;
     }
     case kTime: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(3, _Internal::time(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          3, _Internal::time(this),
           _Internal::time(this).GetCachedSize(), target, stream);
       break;
     }
@@ -6993,23 +6945,20 @@ const ::_pbi::TcParseTable<0, 3, 3, 0, 2> Rule_OutBound::_table_ = {
   switch (payload_case()) {
     // .palm.ops.router.v1.Rule.OutBound.Host host = 1;
     case kHost: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.host_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.host_);
       break;
     }
     // .palm.ops.router.v1.Rule.OutBound.Speed speed = 2;
     case kSpeed: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.speed_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.speed_);
       break;
     }
     // .palm.ops.router.v1.Rule.OutBound.Time time = 3;
     case kTime: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.time_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.time_);
       break;
     }
     case PAYLOAD_NOT_SET: {
@@ -7020,11 +6969,12 @@ const ::_pbi::TcParseTable<0, 3, 3, 0, 2> Rule_OutBound::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Rule_OutBound::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Rule_OutBound::MergeImpl
+    Rule_OutBound::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Rule_OutBound::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Rule_OutBound::GetClassData() const {
+  return &_class_data_;
+}
 
 void Rule_OutBound::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Rule_OutBound*>(&to_msg);
@@ -7068,7 +7018,10 @@ PROTOBUF_NOINLINE bool Rule_OutBound::IsInitialized() const {
   return true;
 }
 
-void Rule_OutBound::InternalSwap(Rule_OutBound* other) {
+::_pbi::CachedSize* Rule_OutBound::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Rule_OutBound::InternalSwap(Rule_OutBound* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_.payload_, other->_impl_.payload_);
@@ -7091,38 +7044,34 @@ Rule_Nat_Source::Rule_Nat_Source(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.Nat.Source)
 }
-Rule_Nat_Source::Rule_Nat_Source(const Rule_Nat_Source& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Rule_Nat_Source::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : device_(arena, from.device_),
+        _cached_size_{0} {}
+
+Rule_Nat_Source::Rule_Nat_Source(
+    ::google::protobuf::Arena* arena,
+    const Rule_Nat_Source& from)
+    : ::google::protobuf::Message(arena) {
   Rule_Nat_Source* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.port_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.device_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_device().empty()) {
-    _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.port_ = from._impl_.port_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.port_ = from._impl_.port_;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.Nat.Source)
 }
+inline PROTOBUF_NDEBUG_INLINE Rule_Nat_Source::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : device_(arena),
+        _cached_size_{0} {}
+
 inline void Rule_Nat_Source::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.port_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.device_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.port_ = {};
 }
 Rule_Nat_Source::~Rule_Nat_Source() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.Nat.Source)
@@ -7130,15 +7079,14 @@ Rule_Nat_Source::~Rule_Nat_Source() {
   SharedDtor();
 }
 inline void Rule_Nat_Source::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.device_.Destroy();
-}
-void Rule_Nat_Source::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Rule_Nat_Source::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.Nat.Source)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -7251,11 +7199,12 @@ const ::_pbi::TcParseTable<2, 2, 0, 49, 2> Rule_Nat_Source::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Rule_Nat_Source::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Rule_Nat_Source::MergeImpl
+    Rule_Nat_Source::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Rule_Nat_Source::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Rule_Nat_Source::GetClassData() const {
+  return &_class_data_;
+}
 
 void Rule_Nat_Source::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Rule_Nat_Source*>(&to_msg);
@@ -7285,13 +7234,15 @@ PROTOBUF_NOINLINE bool Rule_Nat_Source::IsInitialized() const {
   return true;
 }
 
-void Rule_Nat_Source::InternalSwap(Rule_Nat_Source* other) {
+::_pbi::CachedSize* Rule_Nat_Source::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Rule_Nat_Source::InternalSwap(Rule_Nat_Source* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
-                                       &other->_impl_.device_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, &other->_impl_.device_, arena);
         swap(_impl_.port_, other->_impl_.port_);
 }
 
@@ -7311,38 +7262,34 @@ Rule_Nat_Destination::Rule_Nat_Destination(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.Nat.Destination)
 }
-Rule_Nat_Destination::Rule_Nat_Destination(const Rule_Nat_Destination& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Rule_Nat_Destination::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : ip_(arena, from.ip_),
+        _cached_size_{0} {}
+
+Rule_Nat_Destination::Rule_Nat_Destination(
+    ::google::protobuf::Arena* arena,
+    const Rule_Nat_Destination& from)
+    : ::google::protobuf::Message(arena) {
   Rule_Nat_Destination* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.ip_){},
-      decltype(_impl_.port_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_ip().empty()) {
-    _this->_impl_.ip_.Set(from._internal_ip(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.port_ = from._impl_.port_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.port_ = from._impl_.port_;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.Nat.Destination)
 }
+inline PROTOBUF_NDEBUG_INLINE Rule_Nat_Destination::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : ip_(arena),
+        _cached_size_{0} {}
+
 inline void Rule_Nat_Destination::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.ip_){},
-      decltype(_impl_.port_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.port_ = {};
 }
 Rule_Nat_Destination::~Rule_Nat_Destination() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.Nat.Destination)
@@ -7350,15 +7297,14 @@ Rule_Nat_Destination::~Rule_Nat_Destination() {
   SharedDtor();
 }
 inline void Rule_Nat_Destination::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.ip_.Destroy();
-}
-void Rule_Nat_Destination::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Rule_Nat_Destination::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.Nat.Destination)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -7471,11 +7417,12 @@ const ::_pbi::TcParseTable<2, 2, 0, 50, 2> Rule_Nat_Destination::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Rule_Nat_Destination::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Rule_Nat_Destination::MergeImpl
+    Rule_Nat_Destination::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Rule_Nat_Destination::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Rule_Nat_Destination::GetClassData() const {
+  return &_class_data_;
+}
 
 void Rule_Nat_Destination::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Rule_Nat_Destination*>(&to_msg);
@@ -7505,13 +7452,15 @@ PROTOBUF_NOINLINE bool Rule_Nat_Destination::IsInitialized() const {
   return true;
 }
 
-void Rule_Nat_Destination::InternalSwap(Rule_Nat_Destination* other) {
+::_pbi::CachedSize* Rule_Nat_Destination::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Rule_Nat_Destination::InternalSwap(Rule_Nat_Destination* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, lhs_arena,
-                                       &other->_impl_.ip_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, &other->_impl_.ip_, arena);
         swap(_impl_.port_, other->_impl_.port_);
 }
 
@@ -7548,37 +7497,45 @@ Rule_Nat::Rule_Nat(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule.Nat)
 }
-Rule_Nat::Rule_Nat(const Rule_Nat& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Rule_Nat::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+Rule_Nat::Rule_Nat(
+    ::google::protobuf::Arena* arena,
+    const Rule_Nat& from)
+    : ::google::protobuf::Message(arena) {
   Rule_Nat* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.source_){nullptr},
-      decltype(_impl_.destination_){nullptr},
-      decltype(_impl_.tcp_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.source_ = new ::palm::ops::router::v1::Rule_Nat_Source(*from._impl_.source_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.destination_ = new ::palm::ops::router::v1::Rule_Nat_Destination(*from._impl_.destination_);
-  }
-  _this->_impl_.tcp_ = from._impl_.tcp_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.source_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Rule_Nat_Source>(arena, *from._impl_.source_)
+                : nullptr;
+  _impl_.destination_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Rule_Nat_Destination>(arena, *from._impl_.destination_)
+                : nullptr;
+  _impl_.tcp_ = from._impl_.tcp_;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule.Nat)
 }
+inline PROTOBUF_NDEBUG_INLINE Rule_Nat::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void Rule_Nat::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.source_){nullptr},
-      decltype(_impl_.destination_){nullptr},
-      decltype(_impl_.tcp_){false},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, source_),
+           0,
+           offsetof(Impl_, tcp_) -
+               offsetof(Impl_, source_) +
+               sizeof(Impl_::tcp_));
 }
 Rule_Nat::~Rule_Nat() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule.Nat)
@@ -7586,16 +7543,15 @@ Rule_Nat::~Rule_Nat() {
   SharedDtor();
 }
 inline void Rule_Nat::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.source_;
-  if (this != internal_default_instance()) delete _impl_.destination_;
-}
-void Rule_Nat::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.source_;
+  delete _impl_.destination_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Rule_Nat::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule.Nat)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -7677,8 +7633,8 @@ const ::_pbi::TcParseTable<2, 3, 2, 0, 2> Rule_Nat::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Rule.Nat.Source source = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::source(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::source(this),
         _Internal::source(this).GetCachedSize(), target, stream);
   }
 
@@ -7691,8 +7647,8 @@ const ::_pbi::TcParseTable<2, 3, 2, 0, 2> Rule_Nat::_table_ = {
 
   // .palm.ops.router.v1.Rule.Nat.Destination destination = 3;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(3, _Internal::destination(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        3, _Internal::destination(this),
         _Internal::destination(this).GetCachedSize(), target, stream);
   }
 
@@ -7717,16 +7673,14 @@ const ::_pbi::TcParseTable<2, 3, 2, 0, 2> Rule_Nat::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .palm.ops.router.v1.Rule.Nat.Source source = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.source_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.source_);
     }
 
     // .palm.ops.router.v1.Rule.Nat.Destination destination = 3;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.destination_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.destination_);
     }
 
   }
@@ -7739,11 +7693,12 @@ const ::_pbi::TcParseTable<2, 3, 2, 0, 2> Rule_Nat::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Rule_Nat::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Rule_Nat::MergeImpl
+    Rule_Nat::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Rule_Nat::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Rule_Nat::GetClassData() const {
+  return &_class_data_;
+}
 
 void Rule_Nat::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Rule_Nat*>(&to_msg);
@@ -7781,7 +7736,10 @@ PROTOBUF_NOINLINE bool Rule_Nat::IsInitialized() const {
   return true;
 }
 
-void Rule_Nat::InternalSwap(Rule_Nat* other) {
+::_pbi::CachedSize* Rule_Nat::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Rule_Nat::InternalSwap(Rule_Nat* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -7819,14 +7777,12 @@ const ::palm::ops::router::v1::Rule_Nat& Rule::_Internal::nat(const Rule* msg) {
   return *msg->_impl_.payload_.nat_;
 }
 void Rule::set_allocated_in(::palm::ops::router::v1::Rule_InBound* in) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (in) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(in);
+    ::google::protobuf::Arena* submessage_arena = in->GetArena();
     if (message_arena != submessage_arena) {
-      in = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, in, submessage_arena);
+      in = ::google::protobuf::internal::GetOwnedMessage(message_arena, in, submessage_arena);
     }
     set_has_in();
     _impl_.payload_.in_ = in;
@@ -7834,14 +7790,12 @@ void Rule::set_allocated_in(::palm::ops::router::v1::Rule_InBound* in) {
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Rule.in)
 }
 void Rule::set_allocated_out(::palm::ops::router::v1::Rule_OutBound* out) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (out) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(out);
+    ::google::protobuf::Arena* submessage_arena = out->GetArena();
     if (message_arena != submessage_arena) {
-      out = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, out, submessage_arena);
+      out = ::google::protobuf::internal::GetOwnedMessage(message_arena, out, submessage_arena);
     }
     set_has_out();
     _impl_.payload_.out_ = out;
@@ -7849,14 +7803,12 @@ void Rule::set_allocated_out(::palm::ops::router::v1::Rule_OutBound* out) {
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Rule.out)
 }
 void Rule::set_allocated_nat(::palm::ops::router::v1::Rule_Nat* nat) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (nat) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(nat);
+    ::google::protobuf::Arena* submessage_arena = nat->GetArena();
     if (message_arena != submessage_arena) {
-      nat = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, nat, submessage_arena);
+      nat = ::google::protobuf::internal::GetOwnedMessage(message_arena, nat, submessage_arena);
     }
     set_has_nat();
     _impl_.payload_.nat_ = nat;
@@ -7868,74 +7820,51 @@ Rule::Rule(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Rule)
 }
-Rule::Rule(const Rule& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Rule::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : name_(arena, from.name_),
+        group_(arena, from.group_),
+        payload_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+Rule::Rule(
+    ::google::protobuf::Arena* arena,
+    const Rule& from)
+    : ::google::protobuf::Message(arena) {
   Rule* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.group_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_group().empty()) {
-    _this->_impl_.group_.Set(from._internal_group(), _this->GetArenaForAllocation());
-  }
-  clear_has_payload();
-  switch (from.payload_case()) {
-    case kIn: {
-      _this->_internal_mutable_in()->::palm::ops::router::v1::Rule_InBound::MergeFrom(
-          from._internal_in());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  switch (payload_case()) {
+    case PAYLOAD_NOT_SET:
       break;
-    }
-    case kOut: {
-      _this->_internal_mutable_out()->::palm::ops::router::v1::Rule_OutBound::MergeFrom(
-          from._internal_out());
-      break;
-    }
-    case kNat: {
-      _this->_internal_mutable_nat()->::palm::ops::router::v1::Rule_Nat::MergeFrom(
-          from._internal_nat());
-      break;
-    }
-    case PAYLOAD_NOT_SET: {
-      break;
-    }
+      case kIn:
+        _impl_.payload_.in_ = CreateMaybeMessage<::palm::ops::router::v1::Rule_InBound>(arena, *from._impl_.payload_.in_);
+        break;
+      case kOut:
+        _impl_.payload_.out_ = CreateMaybeMessage<::palm::ops::router::v1::Rule_OutBound>(arena, *from._impl_.payload_.out_);
+        break;
+      case kNat:
+        _impl_.payload_.nat_ = CreateMaybeMessage<::palm::ops::router::v1::Rule_Nat>(arena, *from._impl_.payload_.nat_);
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Rule)
 }
+inline PROTOBUF_NDEBUG_INLINE Rule::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : name_(arena),
+        group_(arena),
+        payload_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
 inline void Rule::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.group_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  clear_has_payload();
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Rule::~Rule() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Rule)
@@ -7943,34 +7872,33 @@ Rule::~Rule() {
   SharedDtor();
 }
 inline void Rule::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
   _impl_.group_.Destroy();
   if (has_payload()) {
     clear_payload();
   }
-}
-void Rule::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void Rule::clear_payload() {
 // @@protoc_insertion_point(one_of_clear_start:palm.ops.router.v1.Rule)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (payload_case()) {
     case kIn: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.in_;
       }
       break;
     }
     case kOut: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.out_;
       }
       break;
     }
     case kNat: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.nat_;
       }
       break;
@@ -7985,6 +7913,7 @@ void Rule::clear_payload() {
 
 PROTOBUF_NOINLINE void Rule::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Rule)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -8078,20 +8007,20 @@ const ::_pbi::TcParseTable<1, 5, 3, 41, 2> Rule::_table_ = {
 
   switch (payload_case()) {
     case kIn: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(11, _Internal::in(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          11, _Internal::in(this),
           _Internal::in(this).GetCachedSize(), target, stream);
       break;
     }
     case kOut: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(12, _Internal::out(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          12, _Internal::out(this),
           _Internal::out(this).GetCachedSize(), target, stream);
       break;
     }
     case kNat: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(13, _Internal::nat(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          13, _Internal::nat(this),
           _Internal::nat(this).GetCachedSize(), target, stream);
       break;
     }
@@ -8130,23 +8059,20 @@ const ::_pbi::TcParseTable<1, 5, 3, 41, 2> Rule::_table_ = {
   switch (payload_case()) {
     // .palm.ops.router.v1.Rule.InBound in = 11;
     case kIn: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.in_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.in_);
       break;
     }
     // .palm.ops.router.v1.Rule.OutBound out = 12;
     case kOut: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.out_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.out_);
       break;
     }
     // .palm.ops.router.v1.Rule.Nat nat = 13;
     case kNat: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.nat_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.nat_);
       break;
     }
     case PAYLOAD_NOT_SET: {
@@ -8157,11 +8083,12 @@ const ::_pbi::TcParseTable<1, 5, 3, 41, 2> Rule::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Rule::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Rule::MergeImpl
+    Rule::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Rule::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Rule::GetClassData() const {
+  return &_class_data_;
+}
 
 void Rule::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Rule*>(&to_msg);
@@ -8211,15 +8138,16 @@ PROTOBUF_NOINLINE bool Rule::IsInitialized() const {
   return true;
 }
 
-void Rule::InternalSwap(Rule* other) {
+::_pbi::CachedSize* Rule::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Rule::InternalSwap(Rule* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, lhs_arena,
-                                       &other->_impl_.group_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, &other->_impl_.group_, arena);
   swap(_impl_.payload_, other->_impl_.payload_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
@@ -8234,9 +8162,6 @@ void Rule::InternalSwap(Rule* other) {
 RouterStatusResponse_InterfacesEntry_DoNotUse::RouterStatusResponse_InterfacesEntry_DoNotUse() {}
 RouterStatusResponse_InterfacesEntry_DoNotUse::RouterStatusResponse_InterfacesEntry_DoNotUse(::google::protobuf::Arena* arena)
     : SuperType(arena) {}
-void RouterStatusResponse_InterfacesEntry_DoNotUse::MergeFrom(const RouterStatusResponse_InterfacesEntry_DoNotUse& other) {
-  MergeFromInternal(other);
-}
 ::google::protobuf::Metadata RouterStatusResponse_InterfacesEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_ops_2drouter_2eproto_getter, &descriptor_table_ops_2drouter_2eproto_once,
@@ -8253,61 +8178,36 @@ RouterStatusResponse_Ip::RouterStatusResponse_Ip(::google::protobuf::Arena* aren
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterStatusResponse.Ip)
 }
-RouterStatusResponse_Ip::RouterStatusResponse_Ip(const RouterStatusResponse_Ip& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RouterStatusResponse_Ip::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : address_(arena, from.address_),
+        route_(arena, from.route_),
+        rule_(arena, from.rule_),
+        _cached_size_{0} {}
+
+RouterStatusResponse_Ip::RouterStatusResponse_Ip(
+    ::google::protobuf::Arena* arena,
+    const RouterStatusResponse_Ip& from)
+    : ::google::protobuf::Message(arena) {
   RouterStatusResponse_Ip* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.address_){},
-      decltype(_impl_.route_){},
-      decltype(_impl_.rule_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.address_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_address().empty()) {
-    _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
-  }
-  _impl_.route_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.route_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_route().empty()) {
-    _this->_impl_.route_.Set(from._internal_route(), _this->GetArenaForAllocation());
-  }
-  _impl_.rule_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.rule_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_rule().empty()) {
-    _this->_impl_.rule_.Set(from._internal_rule(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterStatusResponse.Ip)
 }
+inline PROTOBUF_NDEBUG_INLINE RouterStatusResponse_Ip::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : address_(arena),
+        route_(arena),
+        rule_(arena),
+        _cached_size_{0} {}
+
 inline void RouterStatusResponse_Ip::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.address_){},
-      decltype(_impl_.route_){},
-      decltype(_impl_.rule_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.address_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.route_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.route_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.rule_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.rule_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 RouterStatusResponse_Ip::~RouterStatusResponse_Ip() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterStatusResponse.Ip)
@@ -8315,17 +8215,16 @@ RouterStatusResponse_Ip::~RouterStatusResponse_Ip() {
   SharedDtor();
 }
 inline void RouterStatusResponse_Ip::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.address_.Destroy();
   _impl_.route_.Destroy();
   _impl_.rule_.Destroy();
-}
-void RouterStatusResponse_Ip::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RouterStatusResponse_Ip::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterStatusResponse.Ip)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -8461,11 +8360,12 @@ const ::_pbi::TcParseTable<2, 3, 0, 67, 2> RouterStatusResponse_Ip::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RouterStatusResponse_Ip::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RouterStatusResponse_Ip::MergeImpl
+    RouterStatusResponse_Ip::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RouterStatusResponse_Ip::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RouterStatusResponse_Ip::GetClassData() const {
+  return &_class_data_;
+}
 
 void RouterStatusResponse_Ip::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RouterStatusResponse_Ip*>(&to_msg);
@@ -8498,17 +8398,17 @@ PROTOBUF_NOINLINE bool RouterStatusResponse_Ip::IsInitialized() const {
   return true;
 }
 
-void RouterStatusResponse_Ip::InternalSwap(RouterStatusResponse_Ip* other) {
+::_pbi::CachedSize* RouterStatusResponse_Ip::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RouterStatusResponse_Ip::InternalSwap(RouterStatusResponse_Ip* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
-                                       &other->_impl_.address_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.route_, lhs_arena,
-                                       &other->_impl_.route_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.rule_, lhs_arena,
-                                       &other->_impl_.rule_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, &other->_impl_.address_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.route_, &other->_impl_.route_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.rule_, &other->_impl_.rule_, arena);
 }
 
 ::google::protobuf::Metadata RouterStatusResponse_Ip::GetMetadata() const {
@@ -8568,6 +8468,7 @@ const ::google::protobuf::Duration& RouterStatusResponse::_Internal::uptime(cons
   return *msg->_impl_.uptime_;
 }
 void RouterStatusResponse::clear_uptime() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.uptime_ != nullptr) _impl_.uptime_->Clear();
   _impl_._has_bits_[0] &= ~0x00000020u;
 }
@@ -8576,76 +8477,66 @@ RouterStatusResponse::RouterStatusResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.RouterStatusResponse)
 }
-RouterStatusResponse::RouterStatusResponse(const RouterStatusResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RouterStatusResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        interfaces_{visibility, arena, from.interfaces_},
+        wan_{visibility, arena, from.wan_},
+        rules_{visibility, arena, from.rules_},
+        hosts_{visibility, arena, from.hosts_},
+        firewall_(arena, from.firewall_) {}
+
+RouterStatusResponse::RouterStatusResponse(
+    ::google::protobuf::Arena* arena,
+    const RouterStatusResponse& from)
+    : ::google::protobuf::Message(arena) {
   RouterStatusResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /* decltype(_impl_.interfaces_) */ {},
-      decltype(_impl_.wan_){from._impl_.wan_},
-      decltype(_impl_.rules_){from._impl_.rules_},
-      decltype(_impl_.hosts_){from._impl_.hosts_},
-      decltype(_impl_.firewall_){},
-      decltype(_impl_.lan_){nullptr},
-      decltype(_impl_.dmz_){nullptr},
-      decltype(_impl_.dns_){nullptr},
-      decltype(_impl_.wan_pool_){nullptr},
-      decltype(_impl_.ip_){nullptr},
-      decltype(_impl_.uptime_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _this->_impl_.interfaces_.MergeFrom(from._impl_.interfaces_);
-  _impl_.firewall_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.firewall_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_firewall().empty()) {
-    _this->_impl_.firewall_.Set(from._internal_firewall(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.lan_ = new ::palm::ops::router::v1::Lan(*from._impl_.lan_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.dmz_ = new ::palm::ops::router::v1::Dmz(*from._impl_.dmz_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000004u) != 0) {
-    _this->_impl_.dns_ = new ::palm::ops::router::v1::Dns(*from._impl_.dns_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000008u) != 0) {
-    _this->_impl_.wan_pool_ = new ::palm::ops::router::v1::WanPool(*from._impl_.wan_pool_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000010u) != 0) {
-    _this->_impl_.ip_ = new ::palm::ops::router::v1::RouterStatusResponse_Ip(*from._impl_.ip_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000020u) != 0) {
-    _this->_impl_.uptime_ = new ::google::protobuf::Duration(*from._impl_.uptime_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.lan_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Lan>(arena, *from._impl_.lan_)
+                : nullptr;
+  _impl_.dmz_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Dmz>(arena, *from._impl_.dmz_)
+                : nullptr;
+  _impl_.dns_ = (cached_has_bits & 0x00000004u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Dns>(arena, *from._impl_.dns_)
+                : nullptr;
+  _impl_.wan_pool_ = (cached_has_bits & 0x00000008u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::WanPool>(arena, *from._impl_.wan_pool_)
+                : nullptr;
+  _impl_.ip_ = (cached_has_bits & 0x00000010u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::RouterStatusResponse_Ip>(arena, *from._impl_.ip_)
+                : nullptr;
+  _impl_.uptime_ = (cached_has_bits & 0x00000020u)
+                ? CreateMaybeMessage<::google::protobuf::Duration>(arena, *from._impl_.uptime_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.RouterStatusResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE RouterStatusResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        interfaces_{visibility, arena},
+        wan_{visibility, arena},
+        rules_{visibility, arena},
+        hosts_{visibility, arena},
+        firewall_(arena) {}
+
 inline void RouterStatusResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /* decltype(_impl_.interfaces_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
-      decltype(_impl_.wan_){arena},
-      decltype(_impl_.rules_){arena},
-      decltype(_impl_.hosts_){arena},
-      decltype(_impl_.firewall_){},
-      decltype(_impl_.lan_){nullptr},
-      decltype(_impl_.dmz_){nullptr},
-      decltype(_impl_.dns_){nullptr},
-      decltype(_impl_.wan_pool_){nullptr},
-      decltype(_impl_.ip_){nullptr},
-      decltype(_impl_.uptime_){nullptr},
-  };
-  _impl_.firewall_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.firewall_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, lan_),
+           0,
+           offsetof(Impl_, uptime_) -
+               offsetof(Impl_, lan_) +
+               sizeof(Impl_::uptime_));
 }
 RouterStatusResponse::~RouterStatusResponse() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.RouterStatusResponse)
@@ -8653,33 +8544,28 @@ RouterStatusResponse::~RouterStatusResponse() {
   SharedDtor();
 }
 inline void RouterStatusResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.interfaces_.~MapField();
-  _impl_.wan_.~RepeatedPtrField();
-  _impl_.rules_.~RepeatedPtrField();
-  _impl_.hosts_.~RepeatedPtrField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.firewall_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.lan_;
-  if (this != internal_default_instance()) delete _impl_.dmz_;
-  if (this != internal_default_instance()) delete _impl_.dns_;
-  if (this != internal_default_instance()) delete _impl_.wan_pool_;
-  if (this != internal_default_instance()) delete _impl_.ip_;
-  if (this != internal_default_instance()) delete _impl_.uptime_;
-}
-void RouterStatusResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.lan_;
+  delete _impl_.dmz_;
+  delete _impl_.dns_;
+  delete _impl_.wan_pool_;
+  delete _impl_.ip_;
+  delete _impl_.uptime_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RouterStatusResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.RouterStatusResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.interfaces_.Clear();
-  _internal_mutable_wan()->Clear();
-  _internal_mutable_rules()->Clear();
-  _internal_mutable_hosts()->Clear();
+  _impl_.wan_.Clear();
+  _impl_.rules_.Clear();
+  _impl_.hosts_.Clear();
   _impl_.firewall_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x0000003fu) {
@@ -8809,7 +8695,10 @@ const ::_pbi::TcParseTable<4, 11, 10, 74, 7> RouterStatusResponse::_table_ = {
     {PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.uptime_), _Internal::kHasBitsOffset + 5, 9,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
-    {::_pbi::TcParser::GetMapAuxInfo<decltype(RouterStatusResponse()._impl_.interfaces_)>(1, 0, 0)},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(RouterStatusResponse()._impl_.interfaces_)>(
+        1, 0, 0, 9,
+        9)},
     {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Lan>()},
     {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Dmz>()},
     {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Dns>()},
@@ -8837,7 +8726,9 @@ const ::_pbi::TcParseTable<4, 11, 10, 74, 7> RouterStatusResponse::_table_ = {
   // map<string, string> interfaces = 1;
   if (!_internal_interfaces().empty()) {
     using MapType = ::google::protobuf::Map<std::string, std::string>;
-    using WireHelper = RouterStatusResponse_InterfacesEntry_DoNotUse::Funcs;
+    using WireHelper = _pbi::MapEntryFuncs<std::string, std::string,
+                                   _pbi::WireFormatLite::TYPE_STRING,
+                                   _pbi::WireFormatLite::TYPE_STRING>;
     const auto& field = _internal_interfaces();
 
     if (stream->IsSerializationDeterministic() && field.size() > 1) {
@@ -8868,22 +8759,22 @@ const ::_pbi::TcParseTable<4, 11, 10, 74, 7> RouterStatusResponse::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.Lan lan = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::lan(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::lan(this),
         _Internal::lan(this).GetCachedSize(), target, stream);
   }
 
   // .palm.ops.router.v1.Dmz dmz = 12;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(12, _Internal::dmz(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        12, _Internal::dmz(this),
         _Internal::dmz(this).GetCachedSize(), target, stream);
   }
 
   // .palm.ops.router.v1.Dns dns = 13;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(13, _Internal::dns(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        13, _Internal::dns(this),
         _Internal::dns(this).GetCachedSize(), target, stream);
   }
 
@@ -8897,8 +8788,8 @@ const ::_pbi::TcParseTable<4, 11, 10, 74, 7> RouterStatusResponse::_table_ = {
 
   // .palm.ops.router.v1.WanPool wan_pool = 15;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(15, _Internal::wan_pool(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        15, _Internal::wan_pool(this),
         _Internal::wan_pool(this).GetCachedSize(), target, stream);
   }
 
@@ -8920,8 +8811,8 @@ const ::_pbi::TcParseTable<4, 11, 10, 74, 7> RouterStatusResponse::_table_ = {
 
   // .palm.ops.router.v1.RouterStatusResponse.Ip ip = 97;
   if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(97, _Internal::ip(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        97, _Internal::ip(this),
         _Internal::ip(this).GetCachedSize(), target, stream);
   }
 
@@ -8935,8 +8826,8 @@ const ::_pbi::TcParseTable<4, 11, 10, 74, 7> RouterStatusResponse::_table_ = {
 
   // .google.protobuf.Duration uptime = 99;
   if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(99, _Internal::uptime(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        99, _Internal::uptime(this),
         _Internal::uptime(this).GetCachedSize(), target, stream);
   }
 
@@ -8960,7 +8851,9 @@ const ::_pbi::TcParseTable<4, 11, 10, 74, 7> RouterStatusResponse::_table_ = {
   // map<string, string> interfaces = 1;
   total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_interfaces_size());
   for (const auto& entry : _internal_interfaces()) {
-    total_size += RouterStatusResponse_InterfacesEntry_DoNotUse::Funcs::ByteSizeLong(entry.first, entry.second);
+    total_size += _pbi::MapEntryFuncs<std::string, std::string,
+                                   _pbi::WireFormatLite::TYPE_STRING,
+                                   _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
   }
   // repeated .palm.ops.router.v1.Wan wan = 14;
   total_size += 1UL * this->_internal_wan_size();
@@ -8990,44 +8883,38 @@ const ::_pbi::TcParseTable<4, 11, 10, 74, 7> RouterStatusResponse::_table_ = {
   if (cached_has_bits & 0x0000003fu) {
     // .palm.ops.router.v1.Lan lan = 11;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.lan_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.lan_);
     }
 
     // .palm.ops.router.v1.Dmz dmz = 12;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.dmz_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.dmz_);
     }
 
     // .palm.ops.router.v1.Dns dns = 13;
     if (cached_has_bits & 0x00000004u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.dns_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.dns_);
     }
 
     // .palm.ops.router.v1.WanPool wan_pool = 15;
     if (cached_has_bits & 0x00000008u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.wan_pool_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.wan_pool_);
     }
 
     // .palm.ops.router.v1.RouterStatusResponse.Ip ip = 97;
     if (cached_has_bits & 0x00000010u) {
-      total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.ip_);
+      total_size +=
+          2 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.ip_);
     }
 
     // .google.protobuf.Duration uptime = 99;
     if (cached_has_bits & 0x00000020u) {
-      total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.uptime_);
+      total_size +=
+          2 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.uptime_);
     }
 
   }
@@ -9035,11 +8922,12 @@ const ::_pbi::TcParseTable<4, 11, 10, 74, 7> RouterStatusResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RouterStatusResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RouterStatusResponse::MergeImpl
+    RouterStatusResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RouterStatusResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RouterStatusResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void RouterStatusResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RouterStatusResponse*>(&to_msg);
@@ -9050,9 +8938,12 @@ void RouterStatusResponse::MergeImpl(::google::protobuf::Message& to_msg, const 
   (void) cached_has_bits;
 
   _this->_impl_.interfaces_.MergeFrom(from._impl_.interfaces_);
-  _this->_internal_mutable_wan()->MergeFrom(from._internal_wan());
-  _this->_internal_mutable_rules()->MergeFrom(from._internal_rules());
-  _this->_internal_mutable_hosts()->MergeFrom(from._internal_hosts());
+  _this->_internal_mutable_wan()->MergeFrom(
+      from._internal_wan());
+  _this->_internal_mutable_rules()->MergeFrom(
+      from._internal_rules());
+  _this->_internal_mutable_hosts()->MergeFrom(
+      from._internal_hosts());
   if (!from._internal_firewall().empty()) {
     _this->_internal_set_firewall(from._internal_firewall());
   }
@@ -9097,18 +8988,20 @@ PROTOBUF_NOINLINE bool RouterStatusResponse::IsInitialized() const {
   return true;
 }
 
-void RouterStatusResponse::InternalSwap(RouterStatusResponse* other) {
+::_pbi::CachedSize* RouterStatusResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RouterStatusResponse::InternalSwap(RouterStatusResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.interfaces_.InternalSwap(&other->_impl_.interfaces_);
   _impl_.wan_.InternalSwap(&other->_impl_.wan_);
   _impl_.rules_.InternalSwap(&other->_impl_.rules_);
   _impl_.hosts_.InternalSwap(&other->_impl_.hosts_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.firewall_, lhs_arena,
-                                       &other->_impl_.firewall_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.firewall_, &other->_impl_.firewall_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(RouterStatusResponse, _impl_.uptime_)
       + sizeof(RouterStatusResponse::_impl_.uptime_)
@@ -9133,64 +9026,38 @@ Lan::Lan(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Lan)
 }
-Lan::Lan(const Lan& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Lan::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : device_(arena, from.device_),
+        mac_(arena, from.mac_),
+        address_(arena, from.address_),
+        _cached_size_{0} {}
+
+Lan::Lan(
+    ::google::protobuf::Arena* arena,
+    const Lan& from)
+    : ::google::protobuf::Message(arena) {
   Lan* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.address_){},
-      decltype(_impl_.metric_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.device_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_device().empty()) {
-    _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
-  }
-  _impl_.mac_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_mac().empty()) {
-    _this->_impl_.mac_.Set(from._internal_mac(), _this->GetArenaForAllocation());
-  }
-  _impl_.address_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_address().empty()) {
-    _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.metric_ = from._impl_.metric_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.metric_ = from._impl_.metric_;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Lan)
 }
+inline PROTOBUF_NDEBUG_INLINE Lan::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : device_(arena),
+        mac_(arena),
+        address_(arena),
+        _cached_size_{0} {}
+
 inline void Lan::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.address_){},
-      decltype(_impl_.metric_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.device_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.mac_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.address_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.metric_ = {};
 }
 Lan::~Lan() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Lan)
@@ -9198,17 +9065,16 @@ Lan::~Lan() {
   SharedDtor();
 }
 inline void Lan::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.device_.Destroy();
   _impl_.mac_.Destroy();
   _impl_.address_.Destroy();
-}
-void Lan::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Lan::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Lan)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -9361,11 +9227,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 47, 2> Lan::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Lan::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Lan::MergeImpl
+    Lan::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Lan::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Lan::GetClassData() const {
+  return &_class_data_;
+}
 
 void Lan::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Lan*>(&to_msg);
@@ -9401,17 +9268,17 @@ PROTOBUF_NOINLINE bool Lan::IsInitialized() const {
   return true;
 }
 
-void Lan::InternalSwap(Lan* other) {
+::_pbi::CachedSize* Lan::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Lan::InternalSwap(Lan* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
-                                       &other->_impl_.device_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, lhs_arena,
-                                       &other->_impl_.mac_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
-                                       &other->_impl_.address_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, &other->_impl_.device_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, &other->_impl_.mac_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, &other->_impl_.address_, arena);
         swap(_impl_.metric_, other->_impl_.metric_);
 }
 
@@ -9431,64 +9298,38 @@ Dmz::Dmz(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Dmz)
 }
-Dmz::Dmz(const Dmz& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Dmz::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : device_(arena, from.device_),
+        mac_(arena, from.mac_),
+        address_(arena, from.address_),
+        _cached_size_{0} {}
+
+Dmz::Dmz(
+    ::google::protobuf::Arena* arena,
+    const Dmz& from)
+    : ::google::protobuf::Message(arena) {
   Dmz* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.address_){},
-      decltype(_impl_.metric_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.device_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_device().empty()) {
-    _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
-  }
-  _impl_.mac_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_mac().empty()) {
-    _this->_impl_.mac_.Set(from._internal_mac(), _this->GetArenaForAllocation());
-  }
-  _impl_.address_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_address().empty()) {
-    _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.metric_ = from._impl_.metric_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.metric_ = from._impl_.metric_;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Dmz)
 }
+inline PROTOBUF_NDEBUG_INLINE Dmz::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : device_(arena),
+        mac_(arena),
+        address_(arena),
+        _cached_size_{0} {}
+
 inline void Dmz::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.address_){},
-      decltype(_impl_.metric_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.device_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.mac_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.address_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.metric_ = {};
 }
 Dmz::~Dmz() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Dmz)
@@ -9496,17 +9337,16 @@ Dmz::~Dmz() {
   SharedDtor();
 }
 inline void Dmz::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.device_.Destroy();
   _impl_.mac_.Destroy();
   _impl_.address_.Destroy();
-}
-void Dmz::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Dmz::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Dmz)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -9659,11 +9499,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 47, 2> Dmz::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Dmz::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Dmz::MergeImpl
+    Dmz::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Dmz::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Dmz::GetClassData() const {
+  return &_class_data_;
+}
 
 void Dmz::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Dmz*>(&to_msg);
@@ -9699,17 +9540,17 @@ PROTOBUF_NOINLINE bool Dmz::IsInitialized() const {
   return true;
 }
 
-void Dmz::InternalSwap(Dmz* other) {
+::_pbi::CachedSize* Dmz::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Dmz::InternalSwap(Dmz* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
-                                       &other->_impl_.device_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, lhs_arena,
-                                       &other->_impl_.mac_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
-                                       &other->_impl_.address_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, &other->_impl_.device_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, &other->_impl_.mac_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, &other->_impl_.address_, arena);
         swap(_impl_.metric_, other->_impl_.metric_);
 }
 
@@ -9735,14 +9576,12 @@ const ::palm::ops::router::v1::Static& Wan::_Internal::static_(const Wan* msg) {
   return *msg->_impl_.ip_.static__;
 }
 void Wan::set_allocated_dhcp(::palm::ops::router::v1::Dhcp* dhcp) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_ip();
   if (dhcp) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(dhcp);
+    ::google::protobuf::Arena* submessage_arena = dhcp->GetArena();
     if (message_arena != submessage_arena) {
-      dhcp = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, dhcp, submessage_arena);
+      dhcp = ::google::protobuf::internal::GetOwnedMessage(message_arena, dhcp, submessage_arena);
     }
     set_has_dhcp();
     _impl_.ip_.dhcp_ = dhcp;
@@ -9750,14 +9589,12 @@ void Wan::set_allocated_dhcp(::palm::ops::router::v1::Dhcp* dhcp) {
   // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Wan.dhcp)
 }
 void Wan::set_allocated_static_(::palm::ops::router::v1::Static* static_) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_ip();
   if (static_) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(static_);
+    ::google::protobuf::Arena* submessage_arena = static_->GetArena();
     if (message_arena != submessage_arena) {
-      static_ = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, static_, submessage_arena);
+      static_ = ::google::protobuf::internal::GetOwnedMessage(message_arena, static_, submessage_arena);
     }
     set_has_static_();
     _impl_.ip_.static__ = static_;
@@ -9769,89 +9606,63 @@ Wan::Wan(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Wan)
 }
-Wan::Wan(const Wan& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Wan::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : device_(arena, from.device_),
+        name_(arena, from.name_),
+        mac_(arena, from.mac_),
+        ip_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+Wan::Wan(
+    ::google::protobuf::Arena* arena,
+    const Wan& from)
+    : ::google::protobuf::Message(arena) {
   Wan* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.name_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.metric_){},
-      decltype(_impl_.enable_){},
-      decltype(_impl_.ip_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.device_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_device().empty()) {
-    _this->_impl_.device_.Set(from._internal_device(), _this->GetArenaForAllocation());
-  }
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.mac_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_mac().empty()) {
-    _this->_impl_.mac_.Set(from._internal_mac(), _this->GetArenaForAllocation());
-  }
-  ::memcpy(&_impl_.metric_, &from._impl_.metric_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.enable_) -
-    reinterpret_cast<char*>(&_impl_.metric_)) + sizeof(_impl_.enable_));
-  clear_has_ip();
-  switch (from.ip_case()) {
-    case kDhcp: {
-      _this->_internal_mutable_dhcp()->::palm::ops::router::v1::Dhcp::MergeFrom(
-          from._internal_dhcp());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, metric_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, metric_),
+           offsetof(Impl_, enable_) -
+               offsetof(Impl_, metric_) +
+               sizeof(Impl_::enable_));
+  switch (ip_case()) {
+    case IP_NOT_SET:
       break;
-    }
-    case kStatic: {
-      _this->_internal_mutable_static_()->::palm::ops::router::v1::Static::MergeFrom(
-          from._internal_static_());
-      break;
-    }
-    case IP_NOT_SET: {
-      break;
-    }
+      case kDhcp:
+        _impl_.ip_.dhcp_ = CreateMaybeMessage<::palm::ops::router::v1::Dhcp>(arena, *from._impl_.ip_.dhcp_);
+        break;
+      case kStatic:
+        _impl_.ip_.static__ = CreateMaybeMessage<::palm::ops::router::v1::Static>(arena, *from._impl_.ip_.static__);
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Wan)
 }
+inline PROTOBUF_NDEBUG_INLINE Wan::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : device_(arena),
+        name_(arena),
+        mac_(arena),
+        ip_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
 inline void Wan::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.device_){},
-      decltype(_impl_.name_){},
-      decltype(_impl_.mac_){},
-      decltype(_impl_.metric_){0u},
-      decltype(_impl_.enable_){false},
-      decltype(_impl_.ip_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  _impl_.device_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.device_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.mac_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.mac_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  clear_has_ip();
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, metric_),
+           0,
+           offsetof(Impl_, enable_) -
+               offsetof(Impl_, metric_) +
+               sizeof(Impl_::enable_));
 }
 Wan::~Wan() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Wan)
@@ -9859,29 +9670,28 @@ Wan::~Wan() {
   SharedDtor();
 }
 inline void Wan::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.device_.Destroy();
   _impl_.name_.Destroy();
   _impl_.mac_.Destroy();
   if (has_ip()) {
     clear_ip();
   }
-}
-void Wan::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void Wan::clear_ip() {
 // @@protoc_insertion_point(one_of_clear_start:palm.ops.router.v1.Wan)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (ip_case()) {
     case kDhcp: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.ip_.dhcp_;
       }
       break;
     }
     case kStatic: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.ip_.static__;
       }
       break;
@@ -9896,6 +9706,7 @@ void Wan::clear_ip() {
 
 PROTOBUF_NOINLINE void Wan::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Wan)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -10020,14 +9831,14 @@ const ::_pbi::TcParseTable<2, 7, 2, 44, 7> Wan::_table_ = {
 
   switch (ip_case()) {
     case kDhcp: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(21, _Internal::dhcp(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          21, _Internal::dhcp(this),
           _Internal::dhcp(this).GetCachedSize(), target, stream);
       break;
     }
     case kStatic: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(22, _Internal::static_(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          22, _Internal::static_(this),
           _Internal::static_(this).GetCachedSize(), target, stream);
       break;
     }
@@ -10090,16 +9901,14 @@ const ::_pbi::TcParseTable<2, 7, 2, 44, 7> Wan::_table_ = {
   switch (ip_case()) {
     // .palm.ops.router.v1.Dhcp dhcp = 21;
     case kDhcp: {
-      total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.ip_.dhcp_);
+      total_size +=
+          2 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.ip_.dhcp_);
       break;
     }
     // .palm.ops.router.v1.Static static = 22;
     case kStatic: {
-      total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.ip_.static__);
+      total_size +=
+          2 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.ip_.static__);
       break;
     }
     case IP_NOT_SET: {
@@ -10110,11 +9919,12 @@ const ::_pbi::TcParseTable<2, 7, 2, 44, 7> Wan::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Wan::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Wan::MergeImpl
+    Wan::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Wan::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Wan::GetClassData() const {
+  return &_class_data_;
+}
 
 void Wan::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Wan*>(&to_msg);
@@ -10168,17 +9978,17 @@ PROTOBUF_NOINLINE bool Wan::IsInitialized() const {
   return true;
 }
 
-void Wan::InternalSwap(Wan* other) {
+::_pbi::CachedSize* Wan::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Wan::InternalSwap(Wan* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, lhs_arena,
-                                       &other->_impl_.device_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, lhs_arena,
-                                       &other->_impl_.mac_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_, &other->_impl_.device_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.mac_, &other->_impl_.mac_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Wan, _impl_.enable_)
       + sizeof(Wan::_impl_.enable_)
@@ -10205,18 +10015,19 @@ Dhcp::Dhcp(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Dhcp)
 }
-Dhcp::Dhcp(const Dhcp& from)
-    : ::google::protobuf::Message(), _impl_(from._impl_) {
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Dhcp)
+Dhcp::Dhcp(
+    ::google::protobuf::Arena* arena, const Dhcp& from)
+    : Dhcp(arena) {
+  MergeFrom(from);
 }
+inline PROTOBUF_NDEBUG_INLINE Dhcp::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void Dhcp::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.v6_){false},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.v6_ = {};
 }
 Dhcp::~Dhcp() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Dhcp)
@@ -10224,14 +10035,13 @@ Dhcp::~Dhcp() {
   SharedDtor();
 }
 inline void Dhcp::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-}
-void Dhcp::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Dhcp::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Dhcp)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -10317,11 +10127,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> Dhcp::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Dhcp::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Dhcp::MergeImpl
+    Dhcp::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Dhcp::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Dhcp::GetClassData() const {
+  return &_class_data_;
+}
 
 void Dhcp::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Dhcp*>(&to_msg);
@@ -10348,7 +10159,10 @@ PROTOBUF_NOINLINE bool Dhcp::IsInitialized() const {
   return true;
 }
 
-void Dhcp::InternalSwap(Dhcp* other) {
+::_pbi::CachedSize* Dhcp::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Dhcp::InternalSwap(Dhcp* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
         swap(_impl_.v6_, other->_impl_.v6_);
@@ -10376,76 +10190,39 @@ Static::Static(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Static)
 }
-Static::Static(const Static& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Static::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        address_(arena, from.address_),
+        gateway_(arena, from.gateway_),
+        dns1_(arena, from.dns1_),
+        dns2_(arena, from.dns2_) {}
+
+Static::Static(
+    ::google::protobuf::Arena* arena,
+    const Static& from)
+    : ::google::protobuf::Message(arena) {
   Static* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.address_){},
-      decltype(_impl_.gateway_){},
-      decltype(_impl_.dns1_){},
-      decltype(_impl_.dns2_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.address_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_address().empty()) {
-    _this->_impl_.address_.Set(from._internal_address(), _this->GetArenaForAllocation());
-  }
-  _impl_.gateway_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.gateway_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_gateway().empty()) {
-    _this->_impl_.gateway_.Set(from._internal_gateway(), _this->GetArenaForAllocation());
-  }
-  _impl_.dns1_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.dns1_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_dns1().empty()) {
-    _this->_impl_.dns1_.Set(from._internal_dns1(), _this->GetArenaForAllocation());
-  }
-  _impl_.dns2_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.dns2_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.dns2_.Set(from._internal_dns2(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Static)
 }
+inline PROTOBUF_NDEBUG_INLINE Static::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        address_(arena),
+        gateway_(arena),
+        dns1_(arena),
+        dns2_(arena) {}
+
 inline void Static::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.address_){},
-      decltype(_impl_.gateway_){},
-      decltype(_impl_.dns1_){},
-      decltype(_impl_.dns2_){},
-  };
-  _impl_.address_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.address_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.gateway_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.gateway_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.dns1_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.dns1_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.dns2_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.dns2_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Static::~Static() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Static)
@@ -10453,18 +10230,17 @@ Static::~Static() {
   SharedDtor();
 }
 inline void Static::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.address_.Destroy();
   _impl_.gateway_.Destroy();
   _impl_.dns1_.Destroy();
   _impl_.dns2_.Destroy();
-}
-void Static::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Static::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Static)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -10631,11 +10407,12 @@ const ::_pbi::TcParseTable<3, 4, 0, 56, 2> Static::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Static::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Static::MergeImpl
+    Static::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Static::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Static::GetClassData() const {
+  return &_class_data_;
+}
 
 void Static::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Static*>(&to_msg);
@@ -10671,20 +10448,19 @@ PROTOBUF_NOINLINE bool Static::IsInitialized() const {
   return true;
 }
 
-void Static::InternalSwap(Static* other) {
+::_pbi::CachedSize* Static::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Static::InternalSwap(Static* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, lhs_arena,
-                                       &other->_impl_.address_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.gateway_, lhs_arena,
-                                       &other->_impl_.gateway_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.dns1_, lhs_arena,
-                                       &other->_impl_.dns1_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.dns2_, lhs_arena,
-                                       &other->_impl_.dns2_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.address_, &other->_impl_.address_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.gateway_, &other->_impl_.gateway_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.dns1_, &other->_impl_.dns1_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.dns2_, &other->_impl_.dns2_, arena);
 }
 
 ::google::protobuf::Metadata Static::GetMetadata() const {
@@ -10703,24 +10479,32 @@ Dns::Dns(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.Dns)
 }
-Dns::Dns(const Dns& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Dns::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+Dns::Dns(
+    ::google::protobuf::Arena* arena,
+    const Dns& from)
+    : ::google::protobuf::Message(arena) {
   Dns* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.Dns)
 }
+inline PROTOBUF_NDEBUG_INLINE Dns::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void Dns::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Dns::~Dns() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.Dns)
@@ -10728,20 +10512,18 @@ Dns::~Dns() {
   SharedDtor();
 }
 inline void Dns::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_items()->~RepeatedPtrField();
-}
-void Dns::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Dns::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.Dns)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -10827,11 +10609,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 36, 2> Dns::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Dns::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Dns::MergeImpl
+    Dns::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Dns::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Dns::GetClassData() const {
+  return &_class_data_;
+}
 
 void Dns::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Dns*>(&to_msg);
@@ -10856,7 +10639,10 @@ PROTOBUF_NOINLINE bool Dns::IsInitialized() const {
   return true;
 }
 
-void Dns::InternalSwap(Dns* other) {
+::_pbi::CachedSize* Dns::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Dns::InternalSwap(Dns* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -10878,48 +10664,34 @@ UserProfile::UserProfile(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.UserProfile)
 }
-UserProfile::UserProfile(const UserProfile& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : nickname_(arena, from.nickname_),
+        password_(arena, from.password_),
+        _cached_size_{0} {}
+
+UserProfile::UserProfile(
+    ::google::protobuf::Arena* arena,
+    const UserProfile& from)
+    : ::google::protobuf::Message(arena) {
   UserProfile* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.password_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_nickname().empty()) {
-    _this->_impl_.nickname_.Set(from._internal_nickname(), _this->GetArenaForAllocation());
-  }
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.UserProfile)
 }
+inline PROTOBUF_NDEBUG_INLINE UserProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : nickname_(arena),
+        password_(arena),
+        _cached_size_{0} {}
+
 inline void UserProfile::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.password_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserProfile::~UserProfile() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.UserProfile)
@@ -10927,16 +10699,15 @@ UserProfile::~UserProfile() {
   SharedDtor();
 }
 inline void UserProfile::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.nickname_.Destroy();
   _impl_.password_.Destroy();
-}
-void UserProfile::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserProfile::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.UserProfile)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -11049,11 +10820,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 55, 2> UserProfile::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserProfile::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserProfile::MergeImpl
+    UserProfile::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserProfile::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserProfile::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserProfile::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserProfile*>(&to_msg);
@@ -11083,15 +10855,16 @@ PROTOBUF_NOINLINE bool UserProfile::IsInitialized() const {
   return true;
 }
 
-void UserProfile::InternalSwap(UserProfile* other) {
+::_pbi::CachedSize* UserProfile::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserProfile::InternalSwap(UserProfile* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, lhs_arena,
-                                       &other->_impl_.nickname_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, lhs_arena,
-                                       &other->_impl_.password_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, &other->_impl_.nickname_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, &other->_impl_.password_, arena);
 }
 
 ::google::protobuf::Metadata UserProfile::GetMetadata() const {
@@ -11123,6 +10896,7 @@ const ::google::protobuf::Duration& UserSignInRequest::_Internal::ttl(const User
   return *msg->_impl_.ttl_;
 }
 void UserSignInRequest::clear_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.ttl_ != nullptr) _impl_.ttl_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
@@ -11131,34 +10905,44 @@ UserSignInRequest::UserSignInRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.UserSignInRequest)
 }
-UserSignInRequest::UserSignInRequest(const UserSignInRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserSignInRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+UserSignInRequest::UserSignInRequest(
+    ::google::protobuf::Arena* arena,
+    const UserSignInRequest& from)
+    : ::google::protobuf::Message(arena) {
   UserSignInRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.user_){nullptr},
-      decltype(_impl_.ttl_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.user_ = new ::palm::ops::router::v1::UserProfile(*from._impl_.user_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.ttl_ = new ::google::protobuf::Duration(*from._impl_.ttl_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.user_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::UserProfile>(arena, *from._impl_.user_)
+                : nullptr;
+  _impl_.ttl_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::google::protobuf::Duration>(arena, *from._impl_.ttl_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.UserSignInRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE UserSignInRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void UserSignInRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.user_){nullptr},
-      decltype(_impl_.ttl_){nullptr},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, user_),
+           0,
+           offsetof(Impl_, ttl_) -
+               offsetof(Impl_, user_) +
+               sizeof(Impl_::ttl_));
 }
 UserSignInRequest::~UserSignInRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.UserSignInRequest)
@@ -11166,16 +10950,15 @@ UserSignInRequest::~UserSignInRequest() {
   SharedDtor();
 }
 inline void UserSignInRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.user_;
-  if (this != internal_default_instance()) delete _impl_.ttl_;
-}
-void UserSignInRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.user_;
+  delete _impl_.ttl_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserSignInRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.UserSignInRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -11246,15 +11029,15 @@ const ::_pbi::TcParseTable<0, 2, 2, 0, 2> UserSignInRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.UserProfile user = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::user(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::user(this),
         _Internal::user(this).GetCachedSize(), target, stream);
   }
 
   // .google.protobuf.Duration ttl = 9;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(9, _Internal::ttl(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        9, _Internal::ttl(this),
         _Internal::ttl(this).GetCachedSize(), target, stream);
   }
 
@@ -11279,16 +11062,14 @@ const ::_pbi::TcParseTable<0, 2, 2, 0, 2> UserSignInRequest::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .palm.ops.router.v1.UserProfile user = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.user_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.user_);
     }
 
     // .google.protobuf.Duration ttl = 9;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.ttl_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.ttl_);
     }
 
   }
@@ -11296,11 +11077,12 @@ const ::_pbi::TcParseTable<0, 2, 2, 0, 2> UserSignInRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserSignInRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserSignInRequest::MergeImpl
+    UserSignInRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserSignInRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserSignInRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserSignInRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserSignInRequest*>(&to_msg);
@@ -11335,7 +11117,10 @@ PROTOBUF_NOINLINE bool UserSignInRequest::IsInitialized() const {
   return true;
 }
 
-void UserSignInRequest::InternalSwap(UserSignInRequest* other) {
+::_pbi::CachedSize* UserSignInRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserSignInRequest::InternalSwap(UserSignInRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -11363,35 +11148,32 @@ UserSignInResponse::UserSignInResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.UserSignInResponse)
 }
-UserSignInResponse::UserSignInResponse(const UserSignInResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserSignInResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : token_(arena, from.token_),
+        _cached_size_{0} {}
+
+UserSignInResponse::UserSignInResponse(
+    ::google::protobuf::Arena* arena,
+    const UserSignInResponse& from)
+    : ::google::protobuf::Message(arena) {
   UserSignInResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_token().empty()) {
-    _this->_impl_.token_.Set(from._internal_token(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.UserSignInResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE UserSignInResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : token_(arena),
+        _cached_size_{0} {}
+
 inline void UserSignInResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserSignInResponse::~UserSignInResponse() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.UserSignInResponse)
@@ -11399,15 +11181,14 @@ UserSignInResponse::~UserSignInResponse() {
   SharedDtor();
 }
 inline void UserSignInResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.token_.Destroy();
-}
-void UserSignInResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserSignInResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.UserSignInResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -11498,11 +11279,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 51, 2> UserSignInResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserSignInResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserSignInResponse::MergeImpl
+    UserSignInResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserSignInResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserSignInResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserSignInResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserSignInResponse*>(&to_msg);
@@ -11529,13 +11311,15 @@ PROTOBUF_NOINLINE bool UserSignInResponse::IsInitialized() const {
   return true;
 }
 
-void UserSignInResponse::InternalSwap(UserSignInResponse* other) {
+::_pbi::CachedSize* UserSignInResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserSignInResponse::InternalSwap(UserSignInResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, lhs_arena,
-                                       &other->_impl_.token_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, &other->_impl_.token_, arena);
 }
 
 ::google::protobuf::Metadata UserSignInResponse::GetMetadata() const {
@@ -11571,34 +11355,44 @@ UserUpdateRequest::UserUpdateRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.UserUpdateRequest)
 }
-UserUpdateRequest::UserUpdateRequest(const UserUpdateRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserUpdateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+UserUpdateRequest::UserUpdateRequest(
+    ::google::protobuf::Arena* arena,
+    const UserUpdateRequest& from)
+    : ::google::protobuf::Message(arena) {
   UserUpdateRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.current_){nullptr},
-      decltype(_impl_.new__){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.current_ = new ::palm::ops::router::v1::UserProfile(*from._impl_.current_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.new__ = new ::palm::ops::router::v1::UserProfile(*from._impl_.new__);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.current_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::UserProfile>(arena, *from._impl_.current_)
+                : nullptr;
+  _impl_.new__ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::UserProfile>(arena, *from._impl_.new__)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.UserUpdateRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE UserUpdateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void UserUpdateRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.current_){nullptr},
-      decltype(_impl_.new__){nullptr},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, current_),
+           0,
+           offsetof(Impl_, new__) -
+               offsetof(Impl_, current_) +
+               sizeof(Impl_::new__));
 }
 UserUpdateRequest::~UserUpdateRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.UserUpdateRequest)
@@ -11606,16 +11400,15 @@ UserUpdateRequest::~UserUpdateRequest() {
   SharedDtor();
 }
 inline void UserUpdateRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.current_;
-  if (this != internal_default_instance()) delete _impl_.new__;
-}
-void UserUpdateRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.current_;
+  delete _impl_.new__;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserUpdateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.UserUpdateRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -11689,15 +11482,15 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> UserUpdateRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.ops.router.v1.UserProfile current = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::current(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::current(this),
         _Internal::current(this).GetCachedSize(), target, stream);
   }
 
   // .palm.ops.router.v1.UserProfile new = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::new_(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::new_(this),
         _Internal::new_(this).GetCachedSize(), target, stream);
   }
 
@@ -11722,16 +11515,14 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> UserUpdateRequest::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .palm.ops.router.v1.UserProfile current = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.current_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.current_);
     }
 
     // .palm.ops.router.v1.UserProfile new = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.new__);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.new__);
     }
 
   }
@@ -11739,11 +11530,12 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> UserUpdateRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserUpdateRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserUpdateRequest::MergeImpl
+    UserUpdateRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserUpdateRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserUpdateRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserUpdateRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserUpdateRequest*>(&to_msg);
@@ -11778,7 +11570,10 @@ PROTOBUF_NOINLINE bool UserUpdateRequest::IsInitialized() const {
   return true;
 }
 
-void UserUpdateRequest::InternalSwap(UserUpdateRequest* other) {
+::_pbi::CachedSize* UserUpdateRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserUpdateRequest::InternalSwap(UserUpdateRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -11806,24 +11601,32 @@ UserLogsResponse::UserLogsResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.router.v1.UserLogsResponse)
 }
-UserLogsResponse::UserLogsResponse(const UserLogsResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserLogsResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+UserLogsResponse::UserLogsResponse(
+    ::google::protobuf::Arena* arena,
+    const UserLogsResponse& from)
+    : ::google::protobuf::Message(arena) {
   UserLogsResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.router.v1.UserLogsResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE UserLogsResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void UserLogsResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserLogsResponse::~UserLogsResponse() {
   // @@protoc_insertion_point(destructor:palm.ops.router.v1.UserLogsResponse)
@@ -11831,20 +11634,18 @@ UserLogsResponse::~UserLogsResponse() {
   SharedDtor();
 }
 inline void UserLogsResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_items()->~RepeatedPtrField();
-}
-void UserLogsResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserLogsResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.router.v1.UserLogsResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -11930,11 +11731,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 49, 2> UserLogsResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserLogsResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserLogsResponse::MergeImpl
+    UserLogsResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserLogsResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserLogsResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserLogsResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserLogsResponse*>(&to_msg);
@@ -11959,7 +11761,10 @@ PROTOBUF_NOINLINE bool UserLogsResponse::IsInitialized() const {
   return true;
 }
 
-void UserLogsResponse::InternalSwap(UserLogsResponse* other) {
+::_pbi::CachedSize* UserLogsResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserLogsResponse::InternalSwap(UserLogsResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);

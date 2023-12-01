@@ -23,137 +23,383 @@ namespace _fl = ::google::protobuf::internal::field_layout;
 namespace palm {
 namespace metasequoia {
 namespace v1 {
-        template <typename>
-PROTOBUF_CONSTEXPR IdRequest::IdRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct IdRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR IdRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~IdRequestDefaultTypeInternal() {}
+
+inline constexpr WechatUserQueryByUnionIdRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : union_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR WechatUserQueryByUnionIdRequest::WechatUserQueryByUnionIdRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct WechatUserQueryByUnionIdRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WechatUserQueryByUnionIdRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WechatUserQueryByUnionIdRequestDefaultTypeInternal() {}
   union {
-    IdRequest _instance;
+    WechatUserQueryByUnionIdRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 IdRequestDefaultTypeInternal _IdRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Pager::Pager(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.page_)*/ ::int64_t{0},
-      /*decltype(_impl_.size_)*/ ::int64_t{0},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct PagerDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR PagerDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~PagerDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatUserQueryByUnionIdRequestDefaultTypeInternal _WechatUserQueryByUnionIdRequest_default_instance_;
+
+inline constexpr WechatUserQueryByOpenIdRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : app_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        open_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR WechatUserQueryByOpenIdRequest::WechatUserQueryByOpenIdRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct WechatUserQueryByOpenIdRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WechatUserQueryByOpenIdRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WechatUserQueryByOpenIdRequestDefaultTypeInternal() {}
   union {
-    Pager _instance;
+    WechatUserQueryByOpenIdRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PagerDefaultTypeInternal _Pager_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Pagination::Pagination(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.page_)*/ ::int64_t{0},
-      /*decltype(_impl_.size_)*/ ::int64_t{0},
-      /*decltype(_impl_.total_)*/ ::int64_t{0},
-      /*decltype(_impl_.has_next_)*/ false,
-      /*decltype(_impl_.has_previous_)*/ false,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct PaginationDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR PaginationDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~PaginationDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatUserQueryByOpenIdRequestDefaultTypeInternal _WechatUserQueryByOpenIdRequest_default_instance_;
+
+inline constexpr WechatUserBindByIdRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : user_id_{0},
+        wechat_user_id_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR WechatUserBindByIdRequest::WechatUserBindByIdRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct WechatUserBindByIdRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WechatUserBindByIdRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WechatUserBindByIdRequestDefaultTypeInternal() {}
   union {
-    Pagination _instance;
+    WechatUserBindByIdRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PaginationDefaultTypeInternal _Pagination_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR MediaContent::MediaContent(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.body_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.published_at_)*/ nullptr,
-      /*decltype(_impl_.editor_)*/ 0,
-      /*decltype(_impl_.status_)*/ 0,
-    } {}
-struct MediaContentDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR MediaContentDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~MediaContentDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatUserBindByIdRequestDefaultTypeInternal _WechatUserBindByIdRequest_default_instance_;
+
+inline constexpr WechatUserBindByAccountRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : nickname_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        password_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR WechatUserBindByAccountRequest::WechatUserBindByAccountRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct WechatUserBindByAccountRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WechatUserBindByAccountRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WechatUserBindByAccountRequestDefaultTypeInternal() {}
   union {
-    MediaContent _instance;
+    WechatUserBindByAccountRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MediaContentDefaultTypeInternal _MediaContent_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserDetail::UserDetail(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.nickname_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.real_name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct UserDetailDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserDetailDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserDetailDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatUserBindByAccountRequestDefaultTypeInternal _WechatUserBindByAccountRequest_default_instance_;
+
+inline constexpr WechatOauth2SignInUrlRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : app_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        redirect_uri_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        language_{static_cast< ::palm::orchid::v1::WechatOauth2QrConnectRequest_Language >(0)},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR WechatOauth2SignInUrlRequest::WechatOauth2SignInUrlRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct WechatOauth2SignInUrlRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WechatOauth2SignInUrlRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WechatOauth2SignInUrlRequestDefaultTypeInternal() {}
   union {
-    UserDetail _instance;
+    WechatOauth2SignInUrlRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserDetailDefaultTypeInternal _UserDetail_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Oauth2State::Oauth2State(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.goto__)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.host_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.user_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-    } {}
-struct Oauth2StateDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Oauth2StateDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Oauth2StateDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatOauth2SignInUrlRequestDefaultTypeInternal _WechatOauth2SignInUrlRequest_default_instance_;
+
+inline constexpr WechatOauth2SignInStateResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : state_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR WechatOauth2SignInStateResponse::WechatOauth2SignInStateResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct WechatOauth2SignInStateResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WechatOauth2SignInStateResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WechatOauth2SignInStateResponseDefaultTypeInternal() {}
   union {
-    Oauth2State _instance;
+    WechatOauth2SignInStateResponse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Oauth2StateDefaultTypeInternal _Oauth2State_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatOauth2SignInStateResponseDefaultTypeInternal _WechatOauth2SignInStateResponse_default_instance_;
+
+inline constexpr WechatMiniProgramUser::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        app_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        open_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        union_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        nickname_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        avatar_url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()) {}
+
+template <typename>
+PROTOBUF_CONSTEXPR WechatMiniProgramUser::WechatMiniProgramUser(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct WechatMiniProgramUserDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WechatMiniProgramUserDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WechatMiniProgramUserDefaultTypeInternal() {}
+  union {
+    WechatMiniProgramUser _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatMiniProgramUserDefaultTypeInternal _WechatMiniProgramUser_default_instance_;
+
+inline constexpr WechatAllOauth2UserResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        privilege_{},
+        union_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        app_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        open_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        nickname_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        city_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        province_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        country_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        head_img_url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        lang_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        id_{0},
+        user_id_{0},
+        sex_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR WechatAllOauth2UserResponse_Item::WechatAllOauth2UserResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct WechatAllOauth2UserResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WechatAllOauth2UserResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WechatAllOauth2UserResponse_ItemDefaultTypeInternal() {}
+  union {
+    WechatAllOauth2UserResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatAllOauth2UserResponse_ItemDefaultTypeInternal _WechatAllOauth2UserResponse_Item_default_instance_;
+
+inline constexpr WechatAllMiniProgramUserResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        union_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        app_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        open_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        nickname_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        avatar_url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        id_{0},
+        user_id_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR WechatAllMiniProgramUserResponse_Item::WechatAllMiniProgramUserResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct WechatAllMiniProgramUserResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WechatAllMiniProgramUserResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WechatAllMiniProgramUserResponse_ItemDefaultTypeInternal() {}
+  union {
+    WechatAllMiniProgramUserResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatAllMiniProgramUserResponse_ItemDefaultTypeInternal _WechatAllMiniProgramUserResponse_Item_default_instance_;
+
+inline constexpr UserTokenRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : token_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserTokenRequest::UserTokenRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserTokenRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserTokenRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserTokenRequestDefaultTypeInternal() {}
+  union {
+    UserTokenRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserTokenRequestDefaultTypeInternal _UserTokenRequest_default_instance_;
+
+inline constexpr UserSignUpByEmailRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : nickname_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        real_name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        email_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        password_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        locale_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        timezone_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        home_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserSignUpByEmailRequest::UserSignUpByEmailRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserSignUpByEmailRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserSignUpByEmailRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserSignUpByEmailRequestDefaultTypeInternal() {}
+  union {
+    UserSignUpByEmailRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignUpByEmailRequestDefaultTypeInternal _UserSignUpByEmailRequest_default_instance_;
+
+inline constexpr UserSetPasswordRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : password_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserSetPasswordRequest::UserSetPasswordRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserSetPasswordRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserSetPasswordRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserSetPasswordRequestDefaultTypeInternal() {}
+  union {
+    UserSetPasswordRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSetPasswordRequestDefaultTypeInternal _UserSetPasswordRequest_default_instance_;
+
+inline constexpr UserResetPasswordRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : token_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        password_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserResetPasswordRequest::UserResetPasswordRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserResetPasswordRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserResetPasswordRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserResetPasswordRequestDefaultTypeInternal() {}
+  union {
+    UserResetPasswordRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserResetPasswordRequestDefaultTypeInternal _UserResetPasswordRequest_default_instance_;
+
+inline constexpr UserQueryRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : by_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserQueryRequest::UserQueryRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserQueryRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserQueryRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserQueryRequestDefaultTypeInternal() {}
+  union {
+    UserQueryRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserQueryRequestDefaultTypeInternal _UserQueryRequest_default_instance_;
       template <typename>
 PROTOBUF_CONSTEXPR UserProfile_PayloadEntry_DoNotUse::UserProfile_PayloadEntry_DoNotUse(::_pbi::ConstantInitialized) {}
 struct UserProfile_PayloadEntry_DoNotUseDefaultTypeInternal {
@@ -166,114 +412,47 @@ struct UserProfile_PayloadEntry_DoNotUseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserProfile_PayloadEntry_DoNotUseDefaultTypeInternal _UserProfile_PayloadEntry_DoNotUse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserProfile::UserProfile(::_pbi::ConstantInitialized)
-    : _impl_{
-      /* decltype(_impl_.payload_) */ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct UserProfileDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserProfileDefaultTypeInternal() {}
+
+inline constexpr UserDetail::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : nickname_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        real_name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserDetail::UserDetail(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserDetailDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserDetailDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserDetailDefaultTypeInternal() {}
   union {
-    UserProfile _instance;
+    UserDetail _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserProfileDefaultTypeInternal _UserProfile_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserIndexResponse_Item::UserIndexResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.nickname_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.real_name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.email_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.locale_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.timezone_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.confirmed_at_)*/ nullptr,
-      /*decltype(_impl_.locked_at_)*/ nullptr,
-      /*decltype(_impl_.deleted_at_)*/ nullptr,
-      /*decltype(_impl_.by_)*/ 0,
-    } {}
-struct UserIndexResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserIndexResponse_ItemDefaultTypeInternal() {}
-  union {
-    UserIndexResponse_Item _instance;
-  };
-};
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserDetailDefaultTypeInternal _UserDetail_default_instance_;
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserIndexResponse_ItemDefaultTypeInternal _UserIndexResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserIndexResponse::UserIndexResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct UserIndexResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserIndexResponseDefaultTypeInternal() {}
-  union {
-    UserIndexResponse _instance;
-  };
-};
+inline constexpr UserChangePasswordRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : current_password_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        new_password_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        password_confirmation_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserIndexResponseDefaultTypeInternal _UserIndexResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserSetPasswordRequest::UserSetPasswordRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.password_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct UserSetPasswordRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSetPasswordRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserSetPasswordRequestDefaultTypeInternal() {}
-  union {
-    UserSetPasswordRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSetPasswordRequestDefaultTypeInternal _UserSetPasswordRequest_default_instance_;
-        template <typename>
+template <typename>
 PROTOBUF_CONSTEXPR UserChangePasswordRequest::UserChangePasswordRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.current_password_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.new_password_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.password_confirmation_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct UserChangePasswordRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR UserChangePasswordRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~UserChangePasswordRequestDefaultTypeInternal() {}
@@ -284,792 +463,26 @@ struct UserChangePasswordRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserChangePasswordRequestDefaultTypeInternal _UserChangePasswordRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserLogsRequest::UserLogsRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.plugin_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.from_)*/ nullptr,
-      /*decltype(_impl_.to_)*/ nullptr,
-    } {}
-struct UserLogsRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserLogsRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserLogsRequestDefaultTypeInternal() {}
-  union {
-    UserLogsRequest _instance;
-  };
-};
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsRequestDefaultTypeInternal _UserLogsRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserLogsResponse_Item::UserLogsResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.plugin_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ip_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.message_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.created_at_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.level_)*/ 0,
-    } {}
-struct UserLogsResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserLogsResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserLogsResponse_ItemDefaultTypeInternal() {}
-  union {
-    UserLogsResponse_Item _instance;
-  };
-};
+inline constexpr TwilioProfile::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        from_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        account_sid_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        auth_token_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        sms_status_callback_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()) {}
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsResponse_ItemDefaultTypeInternal _UserLogsResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserLogsResponse::UserLogsResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct UserLogsResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserLogsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserLogsResponseDefaultTypeInternal() {}
-  union {
-    UserLogsResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsResponseDefaultTypeInternal _UserLogsResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserResetPasswordRequest::UserResetPasswordRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.token_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.password_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct UserResetPasswordRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserResetPasswordRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserResetPasswordRequestDefaultTypeInternal() {}
-  union {
-    UserResetPasswordRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserResetPasswordRequestDefaultTypeInternal _UserResetPasswordRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserTokenRequest::UserTokenRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.token_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct UserTokenRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserTokenRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserTokenRequestDefaultTypeInternal() {}
-  union {
-    UserTokenRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserTokenRequestDefaultTypeInternal _UserTokenRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserQueryRequest::UserQueryRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.by_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
-struct UserQueryRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserQueryRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserQueryRequestDefaultTypeInternal() {}
-  union {
-    UserQueryRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserQueryRequestDefaultTypeInternal _UserQueryRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserSignUpByEmailRequest::UserSignUpByEmailRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.nickname_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.real_name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.email_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.password_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.locale_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.timezone_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.home_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct UserSignUpByEmailRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSignUpByEmailRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserSignUpByEmailRequestDefaultTypeInternal() {}
-  union {
-    UserSignUpByEmailRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignUpByEmailRequestDefaultTypeInternal _UserSignUpByEmailRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserSignInByPasswordRequest::UserSignInByPasswordRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.password_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ttl_)*/ nullptr,
-      /*decltype(_impl_.user_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
-struct UserSignInByPasswordRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSignInByPasswordRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserSignInByPasswordRequestDefaultTypeInternal() {}
-  union {
-    UserSignInByPasswordRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInByPasswordRequestDefaultTypeInternal _UserSignInByPasswordRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR UserSignInResponse::UserSignInResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.roles_)*/ {},
-      /*decltype(_impl_.permissions_)*/ {},
-      /*decltype(_impl_.real_name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.token_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.by_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct UserSignInResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR UserSignInResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~UserSignInResponseDefaultTypeInternal() {}
-  union {
-    UserSignInResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInResponseDefaultTypeInternal _UserSignInResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Permission::Permission(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.action_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.object_)*/ nullptr,
-      /*decltype(_impl_.subject_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
-struct PermissionDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR PermissionDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~PermissionDefaultTypeInternal() {}
-  union {
-    Permission _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PermissionDefaultTypeInternal _Permission_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Resource::Resource(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.type_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
-struct ResourceDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ResourceDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ResourceDefaultTypeInternal() {}
-  union {
-    Resource _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ResourceDefaultTypeInternal _Resource_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Role_Member::Role_Member(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct Role_MemberDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Role_MemberDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Role_MemberDefaultTypeInternal() {}
-  union {
-    Role_Member _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Role_MemberDefaultTypeInternal _Role_Member_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR Role::Role(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.by_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
-struct RoleDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RoleDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RoleDefaultTypeInternal() {}
-  union {
-    Role _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RoleDefaultTypeInternal _Role_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RbacCanRequest::RbacCanRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.action_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.object_)*/ nullptr,
-      /*decltype(_impl_.user_)*/ 0,
-    } {}
-struct RbacCanRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RbacCanRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RbacCanRequestDefaultTypeInternal() {}
-  union {
-    RbacCanRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacCanRequestDefaultTypeInternal _RbacCanRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RbacHasRequest::RbacHasRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.role_)*/ nullptr,
-      /*decltype(_impl_.user_)*/ 0,
-    } {}
-struct RbacHasRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RbacHasRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RbacHasRequestDefaultTypeInternal() {}
-  union {
-    RbacHasRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacHasRequestDefaultTypeInternal _RbacHasRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RbacPermissionItem::RbacPermissionItem(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.action_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.resource_)*/ nullptr,
-    } {}
-struct RbacPermissionItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RbacPermissionItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RbacPermissionItemDefaultTypeInternal() {}
-  union {
-    RbacPermissionItem _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacPermissionItemDefaultTypeInternal _RbacPermissionItem_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RbacPermissionsForUserRequest::RbacPermissionsForUserRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.permissions_)*/ {},
-      /*decltype(_impl_.user_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct RbacPermissionsForUserRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RbacPermissionsForUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RbacPermissionsForUserRequestDefaultTypeInternal() {}
-  union {
-    RbacPermissionsForUserRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacPermissionsForUserRequestDefaultTypeInternal _RbacPermissionsForUserRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RbacPermissionsForRoleRequest::RbacPermissionsForRoleRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.permissions_)*/ {},
-      /*decltype(_impl_.role_)*/ nullptr,
-    } {}
-struct RbacPermissionsForRoleRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RbacPermissionsForRoleRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RbacPermissionsForRoleRequestDefaultTypeInternal() {}
-  union {
-    RbacPermissionsForRoleRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacPermissionsForRoleRequestDefaultTypeInternal _RbacPermissionsForRoleRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RbacRolesForUserRequest::RbacRolesForUserRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.roles_)*/ {},
-      /*decltype(_impl_.user_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct RbacRolesForUserRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RbacRolesForUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RbacRolesForUserRequestDefaultTypeInternal() {}
-  union {
-    RbacRolesForUserRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacRolesForUserRequestDefaultTypeInternal _RbacRolesForUserRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RbacRolesResponse::RbacRolesResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct RbacRolesResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RbacRolesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RbacRolesResponseDefaultTypeInternal() {}
-  union {
-    RbacRolesResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacRolesResponseDefaultTypeInternal _RbacRolesResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR RbacPermissionsResponse::RbacPermissionsResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct RbacPermissionsResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR RbacPermissionsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~RbacPermissionsResponseDefaultTypeInternal() {}
-  union {
-    RbacPermissionsResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacPermissionsResponseDefaultTypeInternal _RbacPermissionsResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SettingSetRequest::SettingSetRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.key_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.value_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.global_)*/ false,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SettingSetRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SettingSetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SettingSetRequestDefaultTypeInternal() {}
-  union {
-    SettingSetRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SettingSetRequestDefaultTypeInternal _SettingSetRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SettingGetRequest::SettingGetRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.key_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.global_)*/ false,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SettingGetRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SettingGetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SettingGetRequestDefaultTypeInternal() {}
-  union {
-    SettingGetRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SettingGetRequestDefaultTypeInternal _SettingGetRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SettingByUserRequest::SettingByUserRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.user_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SettingByUserRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SettingByUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SettingByUserRequestDefaultTypeInternal() {}
-  union {
-    SettingByUserRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SettingByUserRequestDefaultTypeInternal _SettingByUserRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SettingsResponse_Item::SettingsResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.key_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.value_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.created_at_)*/ nullptr,
-      /*decltype(_impl_.updated_at_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.user_id_)*/ 0,
-    } {}
-struct SettingsResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SettingsResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SettingsResponse_ItemDefaultTypeInternal() {}
-  union {
-    SettingsResponse_Item _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SettingsResponse_ItemDefaultTypeInternal _SettingsResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SettingsResponse::SettingsResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SettingsResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SettingsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SettingsResponseDefaultTypeInternal() {}
-  union {
-    SettingsResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SettingsResponseDefaultTypeInternal _SettingsResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR LocaleByLangRequest::LocaleByLangRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.lang_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct LocaleByLangRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR LocaleByLangRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~LocaleByLangRequestDefaultTypeInternal() {}
-  union {
-    LocaleByLangRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocaleByLangRequestDefaultTypeInternal _LocaleByLangRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR LocaleGetRequest::LocaleGetRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.lang_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.code_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct LocaleGetRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR LocaleGetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~LocaleGetRequestDefaultTypeInternal() {}
-  union {
-    LocaleGetRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocaleGetRequestDefaultTypeInternal _LocaleGetRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR LocalesResponse_Item::LocalesResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.lang_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.code_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.message_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.created_at_)*/ nullptr,
-      /*decltype(_impl_.updated_at_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-    } {}
-struct LocalesResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR LocalesResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~LocalesResponse_ItemDefaultTypeInternal() {}
-  union {
-    LocalesResponse_Item _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocalesResponse_ItemDefaultTypeInternal _LocalesResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR LocalesResponse::LocalesResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct LocalesResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR LocalesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~LocalesResponseDefaultTypeInternal() {}
-  union {
-    LocalesResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocalesResponseDefaultTypeInternal _LocalesResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR LocaleSetRequest::LocaleSetRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.lang_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.code_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.message_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct LocaleSetRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR LocaleSetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~LocaleSetRequestDefaultTypeInternal() {}
-  union {
-    LocaleSetRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocaleSetRequestDefaultTypeInternal _LocaleSetRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR IndexNowProfile::IndexNowProfile(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.key_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct IndexNowProfileDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR IndexNowProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~IndexNowProfileDefaultTypeInternal() {}
-  union {
-    IndexNowProfile _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 IndexNowProfileDefaultTypeInternal _IndexNowProfile_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR IndexNowPingRequest::IndexNowPingRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.key_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.home_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct IndexNowPingRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR IndexNowPingRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~IndexNowPingRequestDefaultTypeInternal() {}
-  union {
-    IndexNowPingRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 IndexNowPingRequestDefaultTypeInternal _IndexNowPingRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SitemapPingRequest::SitemapPingRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.home_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SitemapPingRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SitemapPingRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SitemapPingRequestDefaultTypeInternal() {}
-  union {
-    SitemapPingRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SitemapPingRequestDefaultTypeInternal _SitemapPingRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteMaintenanceModeRequest::SiteMaintenanceModeRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.reason_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ttl_)*/ nullptr,
-    } {}
-struct SiteMaintenanceModeRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteMaintenanceModeRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteMaintenanceModeRequestDefaultTypeInternal() {}
-  union {
-    SiteMaintenanceModeRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteMaintenanceModeRequestDefaultTypeInternal _SiteMaintenanceModeRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteInstallRequest::SiteInstallRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.user_)*/ nullptr,
-    } {}
-struct SiteInstallRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteInstallRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteInstallRequestDefaultTypeInternal() {}
-  union {
-    SiteInstallRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteInstallRequestDefaultTypeInternal _SiteInstallRequest_default_instance_;
-        template <typename>
+template <typename>
 PROTOBUF_CONSTEXPR TwilioProfile::TwilioProfile(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.from_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.account_sid_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.auth_token_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.sms_status_callback_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct TwilioProfileDefaultTypeInternal {
   PROTOBUF_CONSTEXPR TwilioProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~TwilioProfileDefaultTypeInternal() {}
@@ -1080,850 +493,19 @@ struct TwilioProfileDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TwilioProfileDefaultTypeInternal _TwilioProfile_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SmtpProfile::SmtpProfile(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.cc_)*/ {},
-      /*decltype(_impl_.bcc_)*/ {},
-      /*decltype(_impl_.host_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.password_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.from_)*/ nullptr,
-      /*decltype(_impl_.port_)*/ 0u,
-      /*decltype(_impl_.auth_method_)*/ 0,
-    } {}
-struct SmtpProfileDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SmtpProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SmtpProfileDefaultTypeInternal() {}
-  union {
-    SmtpProfile _instance;
-  };
-};
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SmtpProfileDefaultTypeInternal _SmtpProfile_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR EmailTask_Address::EmailTask_Address(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.email_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct EmailTask_AddressDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR EmailTask_AddressDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~EmailTask_AddressDefaultTypeInternal() {}
-  union {
-    EmailTask_Address _instance;
-  };
-};
+inline constexpr TagUpdateRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : code_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        id_{0},
+        priority_{0},
+        _cached_size_{0} {}
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmailTask_AddressDefaultTypeInternal _EmailTask_Address_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR EmailTask_Body::EmailTask_Body(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.text_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.html_)*/ false,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct EmailTask_BodyDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR EmailTask_BodyDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~EmailTask_BodyDefaultTypeInternal() {}
-  union {
-    EmailTask_Body _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmailTask_BodyDefaultTypeInternal _EmailTask_Body_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR EmailTask_Attachment::EmailTask_Attachment(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.payload_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct EmailTask_AttachmentDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR EmailTask_AttachmentDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~EmailTask_AttachmentDefaultTypeInternal() {}
-  union {
-    EmailTask_Attachment _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmailTask_AttachmentDefaultTypeInternal _EmailTask_Attachment_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR EmailTask::EmailTask(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.cc_)*/ {},
-      /*decltype(_impl_.bcc_)*/ {},
-      /*decltype(_impl_.attachments_)*/ {},
-      /*decltype(_impl_.subject_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.to_)*/ nullptr,
-      /*decltype(_impl_.body_)*/ nullptr,
-    } {}
-struct EmailTaskDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR EmailTaskDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~EmailTaskDefaultTypeInternal() {}
-  union {
-    EmailTask _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmailTaskDefaultTypeInternal _EmailTask_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteTwilioPingRequest::SiteTwilioPingRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.to_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.message_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.profile_)*/ nullptr,
-    } {}
-struct SiteTwilioPingRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteTwilioPingRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteTwilioPingRequestDefaultTypeInternal() {}
-  union {
-    SiteTwilioPingRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteTwilioPingRequestDefaultTypeInternal _SiteTwilioPingRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteSmtpPingRequest::SiteSmtpPingRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.subject_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.content_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.to_)*/ nullptr,
-      /*decltype(_impl_.profile_)*/ nullptr,
-    } {}
-struct SiteSmtpPingRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteSmtpPingRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteSmtpPingRequestDefaultTypeInternal() {}
-  union {
-    SiteSmtpPingRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSmtpPingRequestDefaultTypeInternal _SiteSmtpPingRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteSetLogoRequest::SiteSetLogoRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteSetLogoRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteSetLogoRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteSetLogoRequestDefaultTypeInternal() {}
-  union {
-    SiteSetLogoRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSetLogoRequestDefaultTypeInternal _SiteSetLogoRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteSetCopyrightRequest::SiteSetCopyrightRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.payload_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteSetCopyrightRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteSetCopyrightRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteSetCopyrightRequestDefaultTypeInternal() {}
-  union {
-    SiteSetCopyrightRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSetCopyrightRequestDefaultTypeInternal _SiteSetCopyrightRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteSetKeywordsRequest::SiteSetKeywordsRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteSetKeywordsRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteSetKeywordsRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteSetKeywordsRequestDefaultTypeInternal() {}
-  union {
-    SiteSetKeywordsRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSetKeywordsRequestDefaultTypeInternal _SiteSetKeywordsRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteSetInfoRequest::SiteSetInfoRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.lang_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.subhead_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.description_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteSetInfoRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteSetInfoRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteSetInfoRequestDefaultTypeInternal() {}
-  union {
-    SiteSetInfoRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSetInfoRequestDefaultTypeInternal _SiteSetInfoRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteLayoutResponse_Author::SiteLayoutResponse_Author(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.email_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteLayoutResponse_AuthorDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteLayoutResponse_AuthorDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteLayoutResponse_AuthorDefaultTypeInternal() {}
-  union {
-    SiteLayoutResponse_Author _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteLayoutResponse_AuthorDefaultTypeInternal _SiteLayoutResponse_Author_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteLayoutResponse::SiteLayoutResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.keywords_)*/ {},
-      /*decltype(_impl_.languages_)*/ {},
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.subhead_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.description_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.copyright_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.logo_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.author_)*/ nullptr,
-    } {}
-struct SiteLayoutResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteLayoutResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteLayoutResponseDefaultTypeInternal() {}
-  union {
-    SiteLayoutResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteLayoutResponseDefaultTypeInternal _SiteLayoutResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR GoogleProfile_ReCaptcha::GoogleProfile_ReCaptcha(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.site_key_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.secret_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct GoogleProfile_ReCaptchaDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR GoogleProfile_ReCaptchaDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~GoogleProfile_ReCaptchaDefaultTypeInternal() {}
-  union {
-    GoogleProfile_ReCaptcha _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GoogleProfile_ReCaptchaDefaultTypeInternal _GoogleProfile_ReCaptcha_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR GoogleProfile::GoogleProfile(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.site_verify_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.re_captcha_)*/ nullptr,
-    } {}
-struct GoogleProfileDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR GoogleProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~GoogleProfileDefaultTypeInternal() {}
-  union {
-    GoogleProfile _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GoogleProfileDefaultTypeInternal _GoogleProfile_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR BaiduProfile_SiteVerify::BaiduProfile_SiteVerify(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.content_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct BaiduProfile_SiteVerifyDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR BaiduProfile_SiteVerifyDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~BaiduProfile_SiteVerifyDefaultTypeInternal() {}
-  union {
-    BaiduProfile_SiteVerify _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BaiduProfile_SiteVerifyDefaultTypeInternal _BaiduProfile_SiteVerify_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR BaiduProfile::BaiduProfile(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.site_verify_)*/ nullptr,
-    } {}
-struct BaiduProfileDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR BaiduProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~BaiduProfileDefaultTypeInternal() {}
-  union {
-    BaiduProfile _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BaiduProfileDefaultTypeInternal _BaiduProfile_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SmsTask::SmsTask(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.to_)*/ {},
-      /*decltype(_impl_.from_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.body_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SmsTaskDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SmsTaskDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SmsTaskDefaultTypeInternal() {}
-  union {
-    SmsTask _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SmsTaskDefaultTypeInternal _SmsTask_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteStatusResponse_Database::SiteStatusResponse_Database(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.size_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteStatusResponse_DatabaseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteStatusResponse_DatabaseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteStatusResponse_DatabaseDefaultTypeInternal() {}
-  union {
-    SiteStatusResponse_Database _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_DatabaseDefaultTypeInternal _SiteStatusResponse_Database_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteStatusResponse_PostgreSql::SiteStatusResponse_PostgreSql(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.databases_)*/ {},
-      /*decltype(_impl_.version_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.now_)*/ nullptr,
-    } {}
-struct SiteStatusResponse_PostgreSqlDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteStatusResponse_PostgreSqlDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteStatusResponse_PostgreSqlDefaultTypeInternal() {}
-  union {
-    SiteStatusResponse_PostgreSql _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_PostgreSqlDefaultTypeInternal _SiteStatusResponse_PostgreSql_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteStatusResponse_MySql::SiteStatusResponse_MySql(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.version_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.size_)*/ ::uint64_t{0u},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteStatusResponse_MySqlDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteStatusResponse_MySqlDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteStatusResponse_MySqlDefaultTypeInternal() {}
-  union {
-    SiteStatusResponse_MySql _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_MySqlDefaultTypeInternal _SiteStatusResponse_MySql_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteStatusResponse_Redis_Item::SiteStatusResponse_Redis_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.node_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.key_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ttl_)*/ ::int64_t{0},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteStatusResponse_Redis_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteStatusResponse_Redis_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteStatusResponse_Redis_ItemDefaultTypeInternal() {}
-  union {
-    SiteStatusResponse_Redis_Item _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_Redis_ItemDefaultTypeInternal _SiteStatusResponse_Redis_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteStatusResponse_Redis::SiteStatusResponse_Redis(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_.info_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteStatusResponse_RedisDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteStatusResponse_RedisDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteStatusResponse_RedisDefaultTypeInternal() {}
-  union {
-    SiteStatusResponse_Redis _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_RedisDefaultTypeInternal _SiteStatusResponse_Redis_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteStatusResponse_RabbitMq::SiteStatusResponse_RabbitMq(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.protocol_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.heartbeat_)*/ 0u,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteStatusResponse_RabbitMqDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteStatusResponse_RabbitMqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteStatusResponse_RabbitMqDefaultTypeInternal() {}
-  union {
-    SiteStatusResponse_RabbitMq _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_RabbitMqDefaultTypeInternal _SiteStatusResponse_RabbitMq_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteStatusResponse_OpenSearch::SiteStatusResponse_OpenSearch(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.info_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteStatusResponse_OpenSearchDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteStatusResponse_OpenSearchDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteStatusResponse_OpenSearchDefaultTypeInternal() {}
-  union {
-    SiteStatusResponse_OpenSearch _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_OpenSearchDefaultTypeInternal _SiteStatusResponse_OpenSearch_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteStatusResponse_Health::SiteStatusResponse_Health(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.status_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteStatusResponse_HealthDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteStatusResponse_HealthDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteStatusResponse_HealthDefaultTypeInternal() {}
-  union {
-    SiteStatusResponse_Health _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_HealthDefaultTypeInternal _SiteStatusResponse_Health_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteStatusResponse_System::SiteStatusResponse_System(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.version_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.cpu_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.memory_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.boot_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.disk_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.load_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.fs_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.swap_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.uptime_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.network_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct SiteStatusResponse_SystemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteStatusResponse_SystemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteStatusResponse_SystemDefaultTypeInternal() {}
-  union {
-    SiteStatusResponse_System _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_SystemDefaultTypeInternal _SiteStatusResponse_System_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SiteStatusResponse::SiteStatusResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.healthes_)*/ {},
-      /*decltype(_impl_.postgresql_)*/ nullptr,
-      /*decltype(_impl_.mysql_)*/ nullptr,
-      /*decltype(_impl_.redis_)*/ nullptr,
-      /*decltype(_impl_.rabbitmq_)*/ nullptr,
-      /*decltype(_impl_.opensearch_)*/ nullptr,
-      /*decltype(_impl_.system_)*/ nullptr,
-    } {}
-struct SiteStatusResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SiteStatusResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SiteStatusResponseDefaultTypeInternal() {}
-  union {
-    SiteStatusResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponseDefaultTypeInternal _SiteStatusResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR ShorterLinkIndexResponse_Item::ShorterLinkIndexResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.details_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.code_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.updated_at_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-    } {}
-struct ShorterLinkIndexResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ShorterLinkIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ShorterLinkIndexResponse_ItemDefaultTypeInternal() {}
-  union {
-    ShorterLinkIndexResponse_Item _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ShorterLinkIndexResponse_ItemDefaultTypeInternal _ShorterLinkIndexResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR ShorterLinkIndexResponse::ShorterLinkIndexResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_.pagination_)*/ nullptr,
-    } {}
-struct ShorterLinkIndexResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ShorterLinkIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ShorterLinkIndexResponseDefaultTypeInternal() {}
-  union {
-    ShorterLinkIndexResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ShorterLinkIndexResponseDefaultTypeInternal _ShorterLinkIndexResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR ShorterLinkCreateRequest::ShorterLinkCreateRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.details_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct ShorterLinkCreateRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ShorterLinkCreateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ShorterLinkCreateRequestDefaultTypeInternal() {}
-  union {
-    ShorterLinkCreateRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ShorterLinkCreateRequestDefaultTypeInternal _ShorterLinkCreateRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR ShorterLinkUpdateRequest::ShorterLinkUpdateRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.details_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct ShorterLinkUpdateRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ShorterLinkUpdateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ShorterLinkUpdateRequestDefaultTypeInternal() {}
-  union {
-    ShorterLinkUpdateRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ShorterLinkUpdateRequestDefaultTypeInternal _ShorterLinkUpdateRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR TagIndexResponse_Item::TagIndexResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.code_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.updated_at_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.priority_)*/ 0,
-    } {}
-struct TagIndexResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR TagIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~TagIndexResponse_ItemDefaultTypeInternal() {}
-  union {
-    TagIndexResponse_Item _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TagIndexResponse_ItemDefaultTypeInternal _TagIndexResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR TagIndexResponse::TagIndexResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct TagIndexResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR TagIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~TagIndexResponseDefaultTypeInternal() {}
-  union {
-    TagIndexResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TagIndexResponseDefaultTypeInternal _TagIndexResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR TagCreateRequest::TagCreateRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.code_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.priority_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct TagCreateRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR TagCreateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~TagCreateRequestDefaultTypeInternal() {}
-  union {
-    TagCreateRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TagCreateRequestDefaultTypeInternal _TagCreateRequest_default_instance_;
-        template <typename>
+template <typename>
 PROTOBUF_CONSTEXPR TagUpdateRequest::TagUpdateRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.code_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.priority_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct TagUpdateRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR TagUpdateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~TagUpdateRequestDefaultTypeInternal() {}
@@ -1934,179 +516,626 @@ struct TagUpdateRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TagUpdateRequestDefaultTypeInternal _TagUpdateRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR CategoryIndexResponse_Item::CategoryIndexResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.code_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.updated_at_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.left_)*/ 0,
-      /*decltype(_impl_.right_)*/ 0,
-    } {}
-struct CategoryIndexResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR CategoryIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~CategoryIndexResponse_ItemDefaultTypeInternal() {}
+
+inline constexpr TagCreateRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : code_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        priority_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR TagCreateRequest::TagCreateRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct TagCreateRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TagCreateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TagCreateRequestDefaultTypeInternal() {}
   union {
-    CategoryIndexResponse_Item _instance;
+    TagCreateRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CategoryIndexResponse_ItemDefaultTypeInternal _CategoryIndexResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR CategoryIndexResponse::CategoryIndexResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct CategoryIndexResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR CategoryIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~CategoryIndexResponseDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TagCreateRequestDefaultTypeInternal _TagCreateRequest_default_instance_;
+
+inline constexpr SmsTask::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : to_{},
+        from_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        body_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SmsTask::SmsTask(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SmsTaskDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SmsTaskDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SmsTaskDefaultTypeInternal() {}
   union {
-    CategoryIndexResponse _instance;
+    SmsTask _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CategoryIndexResponseDefaultTypeInternal _CategoryIndexResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR CategoryCreateRequest::CategoryCreateRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.code_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.by_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
-struct CategoryCreateRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR CategoryCreateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~CategoryCreateRequestDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SmsTaskDefaultTypeInternal _SmsTask_default_instance_;
+
+inline constexpr SitemapPingRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : home_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SitemapPingRequest::SitemapPingRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SitemapPingRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SitemapPingRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SitemapPingRequestDefaultTypeInternal() {}
   union {
-    CategoryCreateRequest _instance;
+    SitemapPingRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CategoryCreateRequestDefaultTypeInternal _CategoryCreateRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR CategoryUpdateRequest::CategoryUpdateRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.code_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct CategoryUpdateRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR CategoryUpdateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~CategoryUpdateRequestDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SitemapPingRequestDefaultTypeInternal _SitemapPingRequest_default_instance_;
+
+inline constexpr SiteStatusResponse_System::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : version_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        cpu_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        memory_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        boot_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        disk_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        load_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        fs_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        swap_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        uptime_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        network_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteStatusResponse_System::SiteStatusResponse_System(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteStatusResponse_SystemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteStatusResponse_SystemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteStatusResponse_SystemDefaultTypeInternal() {}
   union {
-    CategoryUpdateRequest _instance;
+    SiteStatusResponse_System _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CategoryUpdateRequestDefaultTypeInternal _CategoryUpdateRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR NotificationIndexResponse_Item::NotificationIndexResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.lang_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.updated_at_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.level_)*/ 0,
-    } {}
-struct NotificationIndexResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR NotificationIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~NotificationIndexResponse_ItemDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_SystemDefaultTypeInternal _SiteStatusResponse_System_default_instance_;
+
+inline constexpr SiteStatusResponse_Redis_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : node_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        key_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ttl_{::int64_t{0}},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteStatusResponse_Redis_Item::SiteStatusResponse_Redis_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteStatusResponse_Redis_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteStatusResponse_Redis_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteStatusResponse_Redis_ItemDefaultTypeInternal() {}
   union {
-    NotificationIndexResponse_Item _instance;
+    SiteStatusResponse_Redis_Item _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationIndexResponse_ItemDefaultTypeInternal _NotificationIndexResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR NotificationIndexResponse::NotificationIndexResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_.pagination_)*/ nullptr,
-    } {}
-struct NotificationIndexResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR NotificationIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~NotificationIndexResponseDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_Redis_ItemDefaultTypeInternal _SiteStatusResponse_Redis_Item_default_instance_;
+
+inline constexpr SiteStatusResponse_RabbitMq::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : protocol_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        heartbeat_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteStatusResponse_RabbitMq::SiteStatusResponse_RabbitMq(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteStatusResponse_RabbitMqDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteStatusResponse_RabbitMqDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteStatusResponse_RabbitMqDefaultTypeInternal() {}
   union {
-    NotificationIndexResponse _instance;
+    SiteStatusResponse_RabbitMq _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationIndexResponseDefaultTypeInternal _NotificationIndexResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR NotificationCreateRequest::NotificationCreateRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.lang_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.level_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct NotificationCreateRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR NotificationCreateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~NotificationCreateRequestDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_RabbitMqDefaultTypeInternal _SiteStatusResponse_RabbitMq_default_instance_;
+
+inline constexpr SiteStatusResponse_OpenSearch::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        info_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteStatusResponse_OpenSearch::SiteStatusResponse_OpenSearch(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteStatusResponse_OpenSearchDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteStatusResponse_OpenSearchDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteStatusResponse_OpenSearchDefaultTypeInternal() {}
   union {
-    NotificationCreateRequest _instance;
+    SiteStatusResponse_OpenSearch _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationCreateRequestDefaultTypeInternal _NotificationCreateRequest_default_instance_;
-        template <typename>
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_OpenSearchDefaultTypeInternal _SiteStatusResponse_OpenSearch_default_instance_;
+
+inline constexpr SiteStatusResponse_MySql::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : version_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        size_{::uint64_t{0u}},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteStatusResponse_MySql::SiteStatusResponse_MySql(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteStatusResponse_MySqlDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteStatusResponse_MySqlDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteStatusResponse_MySqlDefaultTypeInternal() {}
+  union {
+    SiteStatusResponse_MySql _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_MySqlDefaultTypeInternal _SiteStatusResponse_MySql_default_instance_;
+
+inline constexpr SiteStatusResponse_Health::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        status_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteStatusResponse_Health::SiteStatusResponse_Health(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteStatusResponse_HealthDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteStatusResponse_HealthDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteStatusResponse_HealthDefaultTypeInternal() {}
+  union {
+    SiteStatusResponse_Health _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_HealthDefaultTypeInternal _SiteStatusResponse_Health_default_instance_;
+
+inline constexpr SiteStatusResponse_Database::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        size_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteStatusResponse_Database::SiteStatusResponse_Database(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteStatusResponse_DatabaseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteStatusResponse_DatabaseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteStatusResponse_DatabaseDefaultTypeInternal() {}
+  union {
+    SiteStatusResponse_Database _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_DatabaseDefaultTypeInternal _SiteStatusResponse_Database_default_instance_;
+
+inline constexpr SiteSetLogoRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteSetLogoRequest::SiteSetLogoRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteSetLogoRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteSetLogoRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteSetLogoRequestDefaultTypeInternal() {}
+  union {
+    SiteSetLogoRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSetLogoRequestDefaultTypeInternal _SiteSetLogoRequest_default_instance_;
+
+inline constexpr SiteSetKeywordsRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteSetKeywordsRequest::SiteSetKeywordsRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteSetKeywordsRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteSetKeywordsRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteSetKeywordsRequestDefaultTypeInternal() {}
+  union {
+    SiteSetKeywordsRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSetKeywordsRequestDefaultTypeInternal _SiteSetKeywordsRequest_default_instance_;
+
+inline constexpr SiteSetInfoRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : lang_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        title_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        subhead_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        description_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteSetInfoRequest::SiteSetInfoRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteSetInfoRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteSetInfoRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteSetInfoRequestDefaultTypeInternal() {}
+  union {
+    SiteSetInfoRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSetInfoRequestDefaultTypeInternal _SiteSetInfoRequest_default_instance_;
+
+inline constexpr SiteSetCopyrightRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : payload_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteSetCopyrightRequest::SiteSetCopyrightRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteSetCopyrightRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteSetCopyrightRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteSetCopyrightRequestDefaultTypeInternal() {}
+  union {
+    SiteSetCopyrightRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSetCopyrightRequestDefaultTypeInternal _SiteSetCopyrightRequest_default_instance_;
+
+inline constexpr SiteLayoutResponse_Author::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        email_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteLayoutResponse_Author::SiteLayoutResponse_Author(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteLayoutResponse_AuthorDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteLayoutResponse_AuthorDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteLayoutResponse_AuthorDefaultTypeInternal() {}
+  union {
+    SiteLayoutResponse_Author _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteLayoutResponse_AuthorDefaultTypeInternal _SiteLayoutResponse_Author_default_instance_;
+
+inline constexpr ShorterLinkUpdateRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        details_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        id_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ShorterLinkUpdateRequest::ShorterLinkUpdateRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ShorterLinkUpdateRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ShorterLinkUpdateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ShorterLinkUpdateRequestDefaultTypeInternal() {}
+  union {
+    ShorterLinkUpdateRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ShorterLinkUpdateRequestDefaultTypeInternal _ShorterLinkUpdateRequest_default_instance_;
+
+inline constexpr ShorterLinkCreateRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        details_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ShorterLinkCreateRequest::ShorterLinkCreateRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ShorterLinkCreateRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ShorterLinkCreateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ShorterLinkCreateRequestDefaultTypeInternal() {}
+  union {
+    ShorterLinkCreateRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ShorterLinkCreateRequestDefaultTypeInternal _ShorterLinkCreateRequest_default_instance_;
+
+inline constexpr SettingSetRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : key_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        value_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        global_{false},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SettingSetRequest::SettingSetRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SettingSetRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SettingSetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SettingSetRequestDefaultTypeInternal() {}
+  union {
+    SettingSetRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SettingSetRequestDefaultTypeInternal _SettingSetRequest_default_instance_;
+
+inline constexpr SettingGetRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : key_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        global_{false},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SettingGetRequest::SettingGetRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SettingGetRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SettingGetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SettingGetRequestDefaultTypeInternal() {}
+  union {
+    SettingGetRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SettingGetRequestDefaultTypeInternal _SettingGetRequest_default_instance_;
+
+inline constexpr SettingByUserRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : user_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SettingByUserRequest::SettingByUserRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SettingByUserRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SettingByUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SettingByUserRequestDefaultTypeInternal() {}
+  union {
+    SettingByUserRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SettingByUserRequestDefaultTypeInternal _SettingByUserRequest_default_instance_;
+
+inline constexpr Role_Member::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Role_Member::Role_Member(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct Role_MemberDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Role_MemberDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Role_MemberDefaultTypeInternal() {}
+  union {
+    Role_Member _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Role_MemberDefaultTypeInternal _Role_Member_default_instance_;
+
+inline constexpr Resource::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : type_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        id_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Resource::Resource(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ResourceDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ResourceDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ResourceDefaultTypeInternal() {}
+  union {
+    Resource _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ResourceDefaultTypeInternal _Resource_default_instance_;
+
+inline constexpr Pagination::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : page_{::int64_t{0}},
+        size_{::int64_t{0}},
+        total_{::int64_t{0}},
+        has_next_{false},
+        has_previous_{false},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Pagination::Pagination(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct PaginationDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PaginationDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PaginationDefaultTypeInternal() {}
+  union {
+    Pagination _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PaginationDefaultTypeInternal _Pagination_default_instance_;
+
+inline constexpr Pager::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : page_{::int64_t{0}},
+        size_{::int64_t{0}},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Pager::Pager(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct PagerDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PagerDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PagerDefaultTypeInternal() {}
+  union {
+    Pager _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PagerDefaultTypeInternal _Pager_default_instance_;
+
+inline constexpr Oauth2State::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        goto__(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        host_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        user_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()) {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Oauth2State::Oauth2State(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct Oauth2StateDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR Oauth2StateDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~Oauth2StateDefaultTypeInternal() {}
+  union {
+    Oauth2State _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Oauth2StateDefaultTypeInternal _Oauth2State_default_instance_;
+
+inline constexpr NotificationUpdateRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : title_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        id_{0},
+        level_{static_cast< ::palm::metasequoia::v1::NotificationIndexResponse_Item_Level >(0)},
+        _cached_size_{0} {}
+
+template <typename>
 PROTOBUF_CONSTEXPR NotificationUpdateRequest::NotificationUpdateRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.level_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct NotificationUpdateRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR NotificationUpdateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~NotificationUpdateRequestDefaultTypeInternal() {}
@@ -2117,213 +1146,184 @@ struct NotificationUpdateRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationUpdateRequestDefaultTypeInternal _NotificationUpdateRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR AttachmentShowRequest::AttachmentShowRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.ttl_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-    } {}
-struct AttachmentShowRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR AttachmentShowRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~AttachmentShowRequestDefaultTypeInternal() {}
+
+inline constexpr NotificationCreateRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : title_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        lang_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        level_{static_cast< ::palm::metasequoia::v1::NotificationIndexResponse_Item_Level >(0)},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR NotificationCreateRequest::NotificationCreateRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct NotificationCreateRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR NotificationCreateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NotificationCreateRequestDefaultTypeInternal() {}
   union {
-    AttachmentShowRequest _instance;
+    NotificationCreateRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AttachmentShowRequestDefaultTypeInternal _AttachmentShowRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR AttachmentShowResponse::AttachmentShowResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.item_)*/ nullptr,
-    } {}
-struct AttachmentShowResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR AttachmentShowResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~AttachmentShowResponseDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationCreateRequestDefaultTypeInternal _NotificationCreateRequest_default_instance_;
+
+inline constexpr LocaleSetRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : lang_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        code_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LocaleSetRequest::LocaleSetRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct LocaleSetRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LocaleSetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LocaleSetRequestDefaultTypeInternal() {}
   union {
-    AttachmentShowResponse _instance;
+    LocaleSetRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AttachmentShowResponseDefaultTypeInternal _AttachmentShowResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR AttachmentIndexResponse_Item::AttachmentIndexResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.bucket_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.name_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.title_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.content_type_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.updated_at_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.status_)*/ 0,
-      /*decltype(_impl_.size_)*/ ::int64_t{0},
-    } {}
-struct AttachmentIndexResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR AttachmentIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~AttachmentIndexResponse_ItemDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocaleSetRequestDefaultTypeInternal _LocaleSetRequest_default_instance_;
+
+inline constexpr LocaleGetRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : lang_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        code_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LocaleGetRequest::LocaleGetRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct LocaleGetRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LocaleGetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LocaleGetRequestDefaultTypeInternal() {}
   union {
-    AttachmentIndexResponse_Item _instance;
+    LocaleGetRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AttachmentIndexResponse_ItemDefaultTypeInternal _AttachmentIndexResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR AttachmentIndexResponse::AttachmentIndexResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_.pagination_)*/ nullptr,
-    } {}
-struct AttachmentIndexResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR AttachmentIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~AttachmentIndexResponseDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocaleGetRequestDefaultTypeInternal _LocaleGetRequest_default_instance_;
+
+inline constexpr LocaleByLangRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : lang_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LocaleByLangRequest::LocaleByLangRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct LocaleByLangRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LocaleByLangRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LocaleByLangRequestDefaultTypeInternal() {}
   union {
-    AttachmentIndexResponse _instance;
+    LocaleByLangRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AttachmentIndexResponseDefaultTypeInternal _AttachmentIndexResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR LeaveWordIndexResponse_Item::LeaveWordIndexResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.lang_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ip_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.content_)*/ nullptr,
-      /*decltype(_impl_.updated_at_)*/ nullptr,
-      /*decltype(_impl_.created_at_)*/ nullptr,
-      /*decltype(_impl_.id_)*/ 0,
-    } {}
-struct LeaveWordIndexResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR LeaveWordIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~LeaveWordIndexResponse_ItemDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocaleByLangRequestDefaultTypeInternal _LocaleByLangRequest_default_instance_;
+
+inline constexpr IndexNowProfile::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : key_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR IndexNowProfile::IndexNowProfile(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct IndexNowProfileDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR IndexNowProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~IndexNowProfileDefaultTypeInternal() {}
   union {
-    LeaveWordIndexResponse_Item _instance;
+    IndexNowProfile _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LeaveWordIndexResponse_ItemDefaultTypeInternal _LeaveWordIndexResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR LeaveWordIndexResponse::LeaveWordIndexResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_.pagination_)*/ nullptr,
-    } {}
-struct LeaveWordIndexResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR LeaveWordIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~LeaveWordIndexResponseDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 IndexNowProfileDefaultTypeInternal _IndexNowProfile_default_instance_;
+
+inline constexpr IndexNowPingRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : key_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        home_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR IndexNowPingRequest::IndexNowPingRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct IndexNowPingRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR IndexNowPingRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~IndexNowPingRequestDefaultTypeInternal() {}
   union {
-    LeaveWordIndexResponse _instance;
+    IndexNowPingRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LeaveWordIndexResponseDefaultTypeInternal _LeaveWordIndexResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR SignInByGoogleRequest::SignInByGoogleRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.scopes_)*/ {},
-      /*decltype(_impl_.code_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.state_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.redirect_uri_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.nonce_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ttl_)*/ nullptr,
-    } {}
-struct SignInByGoogleRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR SignInByGoogleRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~SignInByGoogleRequestDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 IndexNowPingRequestDefaultTypeInternal _IndexNowPingRequest_default_instance_;
+
+inline constexpr IdRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : id_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR IdRequest::IdRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct IdRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR IdRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~IdRequestDefaultTypeInternal() {}
   union {
-    SignInByGoogleRequest _instance;
+    IdRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SignInByGoogleRequestDefaultTypeInternal _SignInByGoogleRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR GoogleSignInUrlRequest::GoogleSignInUrlRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.redirect_uri_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.state_)*/ nullptr,
-    } {}
-struct GoogleSignInUrlRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR GoogleSignInUrlRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~GoogleSignInUrlRequestDefaultTypeInternal() {}
-  union {
-    GoogleSignInUrlRequest _instance;
-  };
-};
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 IdRequestDefaultTypeInternal _IdRequest_default_instance_;
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GoogleSignInUrlRequestDefaultTypeInternal _GoogleSignInUrlRequest_default_instance_;
-        template <typename>
+inline constexpr GoogleSignInUrlResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        nonce_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
 PROTOBUF_CONSTEXPR GoogleSignInUrlResponse::GoogleSignInUrlResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.nonce_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct GoogleSignInUrlResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR GoogleSignInUrlResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~GoogleSignInUrlResponseDefaultTypeInternal() {}
@@ -2334,204 +1334,178 @@ struct GoogleSignInUrlResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GoogleSignInUrlResponseDefaultTypeInternal _GoogleSignInUrlResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WechatUserBindByIdRequest::WechatUserBindByIdRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.user_id_)*/ 0,
-      /*decltype(_impl_.wechat_user_id_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct WechatUserBindByIdRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WechatUserBindByIdRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WechatUserBindByIdRequestDefaultTypeInternal() {}
+
+inline constexpr GoogleProfile_ReCaptcha::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : site_key_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        secret_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GoogleProfile_ReCaptcha::GoogleProfile_ReCaptcha(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct GoogleProfile_ReCaptchaDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GoogleProfile_ReCaptchaDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GoogleProfile_ReCaptchaDefaultTypeInternal() {}
   union {
-    WechatUserBindByIdRequest _instance;
+    GoogleProfile_ReCaptcha _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatUserBindByIdRequestDefaultTypeInternal _WechatUserBindByIdRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WechatUserBindByAccountRequest::WechatUserBindByAccountRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.nickname_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.password_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct WechatUserBindByAccountRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WechatUserBindByAccountRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WechatUserBindByAccountRequestDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GoogleProfile_ReCaptchaDefaultTypeInternal _GoogleProfile_ReCaptcha_default_instance_;
+
+inline constexpr EmailTask_Body::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : text_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        html_{false},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR EmailTask_Body::EmailTask_Body(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct EmailTask_BodyDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR EmailTask_BodyDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~EmailTask_BodyDefaultTypeInternal() {}
   union {
-    WechatUserBindByAccountRequest _instance;
+    EmailTask_Body _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatUserBindByAccountRequestDefaultTypeInternal _WechatUserBindByAccountRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WechatUserQueryByOpenIdRequest::WechatUserQueryByOpenIdRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.app_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.open_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct WechatUserQueryByOpenIdRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WechatUserQueryByOpenIdRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WechatUserQueryByOpenIdRequestDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmailTask_BodyDefaultTypeInternal _EmailTask_Body_default_instance_;
+
+inline constexpr EmailTask_Attachment::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        payload_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR EmailTask_Attachment::EmailTask_Attachment(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct EmailTask_AttachmentDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR EmailTask_AttachmentDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~EmailTask_AttachmentDefaultTypeInternal() {}
   union {
-    WechatUserQueryByOpenIdRequest _instance;
+    EmailTask_Attachment _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatUserQueryByOpenIdRequestDefaultTypeInternal _WechatUserQueryByOpenIdRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WechatUserQueryByUnionIdRequest::WechatUserQueryByUnionIdRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.union_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct WechatUserQueryByUnionIdRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WechatUserQueryByUnionIdRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WechatUserQueryByUnionIdRequestDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmailTask_AttachmentDefaultTypeInternal _EmailTask_Attachment_default_instance_;
+
+inline constexpr EmailTask_Address::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        email_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR EmailTask_Address::EmailTask_Address(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct EmailTask_AddressDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR EmailTask_AddressDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~EmailTask_AddressDefaultTypeInternal() {}
   union {
-    WechatUserQueryByUnionIdRequest _instance;
+    EmailTask_Address _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatUserQueryByUnionIdRequestDefaultTypeInternal _WechatUserQueryByUnionIdRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WechatAllMiniProgramUserResponse_Item::WechatAllMiniProgramUserResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.union_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.app_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.open_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.nickname_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.avatar_url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.user_id_)*/ 0,
-    } {}
-struct WechatAllMiniProgramUserResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WechatAllMiniProgramUserResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WechatAllMiniProgramUserResponse_ItemDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmailTask_AddressDefaultTypeInternal _EmailTask_Address_default_instance_;
+
+inline constexpr CategoryUpdateRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : code_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        id_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR CategoryUpdateRequest::CategoryUpdateRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct CategoryUpdateRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CategoryUpdateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CategoryUpdateRequestDefaultTypeInternal() {}
   union {
-    WechatAllMiniProgramUserResponse_Item _instance;
+    CategoryUpdateRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatAllMiniProgramUserResponse_ItemDefaultTypeInternal _WechatAllMiniProgramUserResponse_Item_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WechatAllMiniProgramUserResponse::WechatAllMiniProgramUserResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct WechatAllMiniProgramUserResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WechatAllMiniProgramUserResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WechatAllMiniProgramUserResponseDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CategoryUpdateRequestDefaultTypeInternal _CategoryUpdateRequest_default_instance_;
+
+inline constexpr CategoryCreateRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : code_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        by_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR CategoryCreateRequest::CategoryCreateRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct CategoryCreateRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CategoryCreateRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CategoryCreateRequestDefaultTypeInternal() {}
   union {
-    WechatAllMiniProgramUserResponse _instance;
+    CategoryCreateRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatAllMiniProgramUserResponseDefaultTypeInternal _WechatAllMiniProgramUserResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WechatAllOauth2UserResponse_Item::WechatAllOauth2UserResponse_Item(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.privilege_)*/ {},
-      /*decltype(_impl_.union_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.app_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.open_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.nickname_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.city_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.province_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.country_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.head_img_url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.lang_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.id_)*/ 0,
-      /*decltype(_impl_.user_id_)*/ 0,
-      /*decltype(_impl_.sex_)*/ 0,
-    } {}
-struct WechatAllOauth2UserResponse_ItemDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WechatAllOauth2UserResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WechatAllOauth2UserResponse_ItemDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CategoryCreateRequestDefaultTypeInternal _CategoryCreateRequest_default_instance_;
+
+inline constexpr BaiduProfile_SiteVerify::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        content_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR BaiduProfile_SiteVerify::BaiduProfile_SiteVerify(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct BaiduProfile_SiteVerifyDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR BaiduProfile_SiteVerifyDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~BaiduProfile_SiteVerifyDefaultTypeInternal() {}
   union {
-    WechatAllOauth2UserResponse_Item _instance;
+    BaiduProfile_SiteVerify _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatAllOauth2UserResponse_ItemDefaultTypeInternal _WechatAllOauth2UserResponse_Item_default_instance_;
-        template <typename>
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BaiduProfile_SiteVerifyDefaultTypeInternal _BaiduProfile_SiteVerify_default_instance_;
+
+inline constexpr WechatAllOauth2UserResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
 PROTOBUF_CONSTEXPR WechatAllOauth2UserResponse::WechatAllOauth2UserResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.items_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct WechatAllOauth2UserResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WechatAllOauth2UserResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~WechatAllOauth2UserResponseDefaultTypeInternal() {}
@@ -2542,26 +1516,377 @@ struct WechatAllOauth2UserResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatAllOauth2UserResponseDefaultTypeInternal _WechatAllOauth2UserResponse_default_instance_;
-        template <typename>
+
+inline constexpr WechatAllMiniProgramUserResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR WechatAllMiniProgramUserResponse::WechatAllMiniProgramUserResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct WechatAllMiniProgramUserResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WechatAllMiniProgramUserResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WechatAllMiniProgramUserResponseDefaultTypeInternal() {}
+  union {
+    WechatAllMiniProgramUserResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatAllMiniProgramUserResponseDefaultTypeInternal _WechatAllMiniProgramUserResponse_default_instance_;
+
+inline constexpr UserSignInByPasswordRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        password_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ttl_{nullptr},
+        user_{},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserSignInByPasswordRequest::UserSignInByPasswordRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserSignInByPasswordRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserSignInByPasswordRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserSignInByPasswordRequestDefaultTypeInternal() {}
+  union {
+    UserSignInByPasswordRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInByPasswordRequestDefaultTypeInternal _UserSignInByPasswordRequest_default_instance_;
+
+inline constexpr UserProfile::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : payload_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserProfile::UserProfile(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserProfileDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserProfileDefaultTypeInternal() {}
+  union {
+    UserProfile _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserProfileDefaultTypeInternal _UserProfile_default_instance_;
+
+inline constexpr UserLogsResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        plugin_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ip_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        created_at_{nullptr},
+        id_{0},
+        level_{static_cast< ::palm::metasequoia::v1::UserLogsResponse_Item_Level >(0)} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserLogsResponse_Item::UserLogsResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserLogsResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserLogsResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserLogsResponse_ItemDefaultTypeInternal() {}
+  union {
+    UserLogsResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsResponse_ItemDefaultTypeInternal _UserLogsResponse_Item_default_instance_;
+
+inline constexpr UserLogsRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        plugin_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        from_{nullptr},
+        to_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserLogsRequest::UserLogsRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserLogsRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserLogsRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserLogsRequestDefaultTypeInternal() {}
+  union {
+    UserLogsRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsRequestDefaultTypeInternal _UserLogsRequest_default_instance_;
+
+inline constexpr UserIndexResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        nickname_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        real_name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        email_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        locale_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        timezone_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        confirmed_at_{nullptr},
+        locked_at_{nullptr},
+        deleted_at_{nullptr},
+        by_{static_cast< ::palm::metasequoia::v1::UserSignInResponse_By >(0)} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserIndexResponse_Item::UserIndexResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserIndexResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserIndexResponse_ItemDefaultTypeInternal() {}
+  union {
+    UserIndexResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserIndexResponse_ItemDefaultTypeInternal _UserIndexResponse_Item_default_instance_;
+
+inline constexpr TagIndexResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        code_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        updated_at_{nullptr},
+        id_{0},
+        priority_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR TagIndexResponse_Item::TagIndexResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct TagIndexResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TagIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TagIndexResponse_ItemDefaultTypeInternal() {}
+  union {
+    TagIndexResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TagIndexResponse_ItemDefaultTypeInternal _TagIndexResponse_Item_default_instance_;
+
+inline constexpr SmtpProfile::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        cc_{},
+        bcc_{},
+        host_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        password_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        from_{nullptr},
+        port_{0u},
+        auth_method_{static_cast< ::palm::metasequoia::v1::SmtpProfile_AuthMethod >(0)} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SmtpProfile::SmtpProfile(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SmtpProfileDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SmtpProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SmtpProfileDefaultTypeInternal() {}
+  union {
+    SmtpProfile _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SmtpProfileDefaultTypeInternal _SmtpProfile_default_instance_;
+
+inline constexpr SiteTwilioPingRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        to_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        profile_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteTwilioPingRequest::SiteTwilioPingRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteTwilioPingRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteTwilioPingRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteTwilioPingRequestDefaultTypeInternal() {}
+  union {
+    SiteTwilioPingRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteTwilioPingRequestDefaultTypeInternal _SiteTwilioPingRequest_default_instance_;
+
+inline constexpr SiteStatusResponse_Redis::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        info_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteStatusResponse_Redis::SiteStatusResponse_Redis(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteStatusResponse_RedisDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteStatusResponse_RedisDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteStatusResponse_RedisDefaultTypeInternal() {}
+  union {
+    SiteStatusResponse_Redis _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_RedisDefaultTypeInternal _SiteStatusResponse_Redis_default_instance_;
+
+inline constexpr SiteStatusResponse_PostgreSql::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        databases_{},
+        version_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        now_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteStatusResponse_PostgreSql::SiteStatusResponse_PostgreSql(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteStatusResponse_PostgreSqlDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteStatusResponse_PostgreSqlDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteStatusResponse_PostgreSqlDefaultTypeInternal() {}
+  union {
+    SiteStatusResponse_PostgreSql _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponse_PostgreSqlDefaultTypeInternal _SiteStatusResponse_PostgreSql_default_instance_;
+
+inline constexpr SiteMaintenanceModeRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        reason_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ttl_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteMaintenanceModeRequest::SiteMaintenanceModeRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteMaintenanceModeRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteMaintenanceModeRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteMaintenanceModeRequestDefaultTypeInternal() {}
+  union {
+    SiteMaintenanceModeRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteMaintenanceModeRequestDefaultTypeInternal _SiteMaintenanceModeRequest_default_instance_;
+
+inline constexpr SiteLayoutResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        keywords_{},
+        languages_{},
+        title_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        subhead_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        description_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        copyright_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        logo_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        author_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteLayoutResponse::SiteLayoutResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteLayoutResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteLayoutResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteLayoutResponseDefaultTypeInternal() {}
+  union {
+    SiteLayoutResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteLayoutResponseDefaultTypeInternal _SiteLayoutResponse_default_instance_;
+
+inline constexpr SiteInstallRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        user_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteInstallRequest::SiteInstallRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteInstallRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteInstallRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteInstallRequestDefaultTypeInternal() {}
+  union {
+    SiteInstallRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteInstallRequestDefaultTypeInternal _SiteInstallRequest_default_instance_;
+
+inline constexpr SignInByWechatOauth2Request::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        state_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        code_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        app_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ttl_{nullptr},
+        language_{static_cast< ::palm::orchid::v1::WechatOauth2QrConnectRequest_Language >(0)} {}
+
+template <typename>
 PROTOBUF_CONSTEXPR SignInByWechatOauth2Request::SignInByWechatOauth2Request(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.state_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.code_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.app_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.ttl_)*/ nullptr,
-      /*decltype(_impl_.language_)*/ 0,
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct SignInByWechatOauth2RequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SignInByWechatOauth2RequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~SignInByWechatOauth2RequestDefaultTypeInternal() {}
@@ -2572,85 +1897,876 @@ struct SignInByWechatOauth2RequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SignInByWechatOauth2RequestDefaultTypeInternal _SignInByWechatOauth2Request_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WechatOauth2SignInStateResponse::WechatOauth2SignInStateResponse(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.state_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct WechatOauth2SignInStateResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WechatOauth2SignInStateResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WechatOauth2SignInStateResponseDefaultTypeInternal() {}
+
+inline constexpr SignInByGoogleRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        scopes_{},
+        code_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        state_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        redirect_uri_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        nonce_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ttl_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SignInByGoogleRequest::SignInByGoogleRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SignInByGoogleRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SignInByGoogleRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SignInByGoogleRequestDefaultTypeInternal() {}
   union {
-    WechatOauth2SignInStateResponse _instance;
+    SignInByGoogleRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatOauth2SignInStateResponseDefaultTypeInternal _WechatOauth2SignInStateResponse_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WechatOauth2SignInUrlRequest::WechatOauth2SignInUrlRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_.app_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.redirect_uri_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.language_)*/ 0,
-      /*decltype(_impl_._cached_size_)*/ {},
-    } {}
-struct WechatOauth2SignInUrlRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WechatOauth2SignInUrlRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WechatOauth2SignInUrlRequestDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SignInByGoogleRequestDefaultTypeInternal _SignInByGoogleRequest_default_instance_;
+
+inline constexpr ShorterLinkIndexResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        details_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        code_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        updated_at_{nullptr},
+        id_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ShorterLinkIndexResponse_Item::ShorterLinkIndexResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ShorterLinkIndexResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ShorterLinkIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ShorterLinkIndexResponse_ItemDefaultTypeInternal() {}
   union {
-    WechatOauth2SignInUrlRequest _instance;
+    ShorterLinkIndexResponse_Item _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatOauth2SignInUrlRequestDefaultTypeInternal _WechatOauth2SignInUrlRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR WechatMiniProgramUser::WechatMiniProgramUser(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.app_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.open_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.union_id_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.nickname_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.avatar_url_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-    } {}
-struct WechatMiniProgramUserDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR WechatMiniProgramUserDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~WechatMiniProgramUserDefaultTypeInternal() {}
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ShorterLinkIndexResponse_ItemDefaultTypeInternal _ShorterLinkIndexResponse_Item_default_instance_;
+
+inline constexpr SettingsResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        key_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        value_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        created_at_{nullptr},
+        updated_at_{nullptr},
+        id_{0},
+        user_id_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SettingsResponse_Item::SettingsResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SettingsResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SettingsResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SettingsResponse_ItemDefaultTypeInternal() {}
   union {
-    WechatMiniProgramUser _instance;
+    SettingsResponse_Item _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WechatMiniProgramUserDefaultTypeInternal _WechatMiniProgramUser_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SettingsResponse_ItemDefaultTypeInternal _SettingsResponse_Item_default_instance_;
+
+inline constexpr Role::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : by_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Role::Role(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RoleDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RoleDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RoleDefaultTypeInternal() {}
+  union {
+    Role _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RoleDefaultTypeInternal _Role_default_instance_;
+
+inline constexpr RbacPermissionItem::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        action_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        resource_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RbacPermissionItem::RbacPermissionItem(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RbacPermissionItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RbacPermissionItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RbacPermissionItemDefaultTypeInternal() {}
+  union {
+    RbacPermissionItem _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacPermissionItemDefaultTypeInternal _RbacPermissionItem_default_instance_;
+
+inline constexpr RbacCanRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        action_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        object_{nullptr},
+        user_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RbacCanRequest::RbacCanRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RbacCanRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RbacCanRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RbacCanRequestDefaultTypeInternal() {}
+  union {
+    RbacCanRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacCanRequestDefaultTypeInternal _RbacCanRequest_default_instance_;
+
+inline constexpr NotificationIndexResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        title_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        lang_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        updated_at_{nullptr},
+        id_{0},
+        level_{static_cast< ::palm::metasequoia::v1::NotificationIndexResponse_Item_Level >(0)} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR NotificationIndexResponse_Item::NotificationIndexResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct NotificationIndexResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR NotificationIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NotificationIndexResponse_ItemDefaultTypeInternal() {}
+  union {
+    NotificationIndexResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationIndexResponse_ItemDefaultTypeInternal _NotificationIndexResponse_Item_default_instance_;
+
+inline constexpr MediaContent::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        body_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        published_at_{nullptr},
+        editor_{static_cast< ::palm::metasequoia::v1::MediaContent_Editor >(0)},
+        status_{static_cast< ::palm::metasequoia::v1::MediaContent_Status >(0)} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR MediaContent::MediaContent(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct MediaContentDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MediaContentDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MediaContentDefaultTypeInternal() {}
+  union {
+    MediaContent _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MediaContentDefaultTypeInternal _MediaContent_default_instance_;
+
+inline constexpr LocalesResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        lang_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        code_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        created_at_{nullptr},
+        updated_at_{nullptr},
+        id_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LocalesResponse_Item::LocalesResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct LocalesResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LocalesResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LocalesResponse_ItemDefaultTypeInternal() {}
+  union {
+    LocalesResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocalesResponse_ItemDefaultTypeInternal _LocalesResponse_Item_default_instance_;
+
+inline constexpr GoogleSignInUrlRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        redirect_uri_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        state_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GoogleSignInUrlRequest::GoogleSignInUrlRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct GoogleSignInUrlRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GoogleSignInUrlRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GoogleSignInUrlRequestDefaultTypeInternal() {}
+  union {
+    GoogleSignInUrlRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GoogleSignInUrlRequestDefaultTypeInternal _GoogleSignInUrlRequest_default_instance_;
+
+inline constexpr GoogleProfile::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        site_verify_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        re_captcha_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GoogleProfile::GoogleProfile(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct GoogleProfileDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GoogleProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GoogleProfileDefaultTypeInternal() {}
+  union {
+    GoogleProfile _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GoogleProfileDefaultTypeInternal _GoogleProfile_default_instance_;
+
+inline constexpr EmailTask::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        cc_{},
+        bcc_{},
+        attachments_{},
+        subject_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        to_{nullptr},
+        body_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR EmailTask::EmailTask(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct EmailTaskDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR EmailTaskDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~EmailTaskDefaultTypeInternal() {}
+  union {
+    EmailTask _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EmailTaskDefaultTypeInternal _EmailTask_default_instance_;
+
+inline constexpr CategoryIndexResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        code_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        updated_at_{nullptr},
+        id_{0},
+        left_{0},
+        right_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR CategoryIndexResponse_Item::CategoryIndexResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct CategoryIndexResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CategoryIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CategoryIndexResponse_ItemDefaultTypeInternal() {}
+  union {
+    CategoryIndexResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CategoryIndexResponse_ItemDefaultTypeInternal _CategoryIndexResponse_Item_default_instance_;
+
+inline constexpr BaiduProfile::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        site_verify_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR BaiduProfile::BaiduProfile(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct BaiduProfileDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR BaiduProfileDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~BaiduProfileDefaultTypeInternal() {}
+  union {
+    BaiduProfile _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 BaiduProfileDefaultTypeInternal _BaiduProfile_default_instance_;
+
+inline constexpr AttachmentShowRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        ttl_{nullptr},
+        id_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR AttachmentShowRequest::AttachmentShowRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct AttachmentShowRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AttachmentShowRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AttachmentShowRequestDefaultTypeInternal() {}
+  union {
+    AttachmentShowRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AttachmentShowRequestDefaultTypeInternal _AttachmentShowRequest_default_instance_;
+
+inline constexpr AttachmentIndexResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        bucket_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        title_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        content_type_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        updated_at_{nullptr},
+        id_{0},
+        status_{static_cast< ::palm::metasequoia::v1::MediaContent_Status >(0)},
+        size_{::int64_t{0}} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR AttachmentIndexResponse_Item::AttachmentIndexResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct AttachmentIndexResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AttachmentIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AttachmentIndexResponse_ItemDefaultTypeInternal() {}
+  union {
+    AttachmentIndexResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AttachmentIndexResponse_ItemDefaultTypeInternal _AttachmentIndexResponse_Item_default_instance_;
+
+inline constexpr UserLogsResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserLogsResponse::UserLogsResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserLogsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserLogsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserLogsResponseDefaultTypeInternal() {}
+  union {
+    UserLogsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserLogsResponseDefaultTypeInternal _UserLogsResponse_default_instance_;
+
+inline constexpr UserIndexResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserIndexResponse::UserIndexResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserIndexResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserIndexResponseDefaultTypeInternal() {}
+  union {
+    UserIndexResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserIndexResponseDefaultTypeInternal _UserIndexResponse_default_instance_;
+
+inline constexpr TagIndexResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR TagIndexResponse::TagIndexResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct TagIndexResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TagIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TagIndexResponseDefaultTypeInternal() {}
+  union {
+    TagIndexResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TagIndexResponseDefaultTypeInternal _TagIndexResponse_default_instance_;
+
+inline constexpr SiteStatusResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        healthes_{},
+        postgresql_{nullptr},
+        mysql_{nullptr},
+        redis_{nullptr},
+        rabbitmq_{nullptr},
+        opensearch_{nullptr},
+        system_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteStatusResponse::SiteStatusResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteStatusResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteStatusResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteStatusResponseDefaultTypeInternal() {}
+  union {
+    SiteStatusResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteStatusResponseDefaultTypeInternal _SiteStatusResponse_default_instance_;
+
+inline constexpr SiteSmtpPingRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        subject_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        content_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        to_{nullptr},
+        profile_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SiteSmtpPingRequest::SiteSmtpPingRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SiteSmtpPingRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SiteSmtpPingRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SiteSmtpPingRequestDefaultTypeInternal() {}
+  union {
+    SiteSmtpPingRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SiteSmtpPingRequestDefaultTypeInternal _SiteSmtpPingRequest_default_instance_;
+
+inline constexpr ShorterLinkIndexResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        items_{},
+        pagination_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ShorterLinkIndexResponse::ShorterLinkIndexResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ShorterLinkIndexResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ShorterLinkIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ShorterLinkIndexResponseDefaultTypeInternal() {}
+  union {
+    ShorterLinkIndexResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ShorterLinkIndexResponseDefaultTypeInternal _ShorterLinkIndexResponse_default_instance_;
+
+inline constexpr SettingsResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SettingsResponse::SettingsResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct SettingsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SettingsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SettingsResponseDefaultTypeInternal() {}
+  union {
+    SettingsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SettingsResponseDefaultTypeInternal _SettingsResponse_default_instance_;
+
+inline constexpr RbacRolesResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RbacRolesResponse::RbacRolesResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RbacRolesResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RbacRolesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RbacRolesResponseDefaultTypeInternal() {}
+  union {
+    RbacRolesResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacRolesResponseDefaultTypeInternal _RbacRolesResponse_default_instance_;
+
+inline constexpr RbacRolesForUserRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : roles_{},
+        user_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RbacRolesForUserRequest::RbacRolesForUserRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RbacRolesForUserRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RbacRolesForUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RbacRolesForUserRequestDefaultTypeInternal() {}
+  union {
+    RbacRolesForUserRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacRolesForUserRequestDefaultTypeInternal _RbacRolesForUserRequest_default_instance_;
+
+inline constexpr RbacPermissionsForUserRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : permissions_{},
+        user_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RbacPermissionsForUserRequest::RbacPermissionsForUserRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RbacPermissionsForUserRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RbacPermissionsForUserRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RbacPermissionsForUserRequestDefaultTypeInternal() {}
+  union {
+    RbacPermissionsForUserRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacPermissionsForUserRequestDefaultTypeInternal _RbacPermissionsForUserRequest_default_instance_;
+
+inline constexpr RbacPermissionsForRoleRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        permissions_{},
+        role_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RbacPermissionsForRoleRequest::RbacPermissionsForRoleRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RbacPermissionsForRoleRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RbacPermissionsForRoleRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RbacPermissionsForRoleRequestDefaultTypeInternal() {}
+  union {
+    RbacPermissionsForRoleRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacPermissionsForRoleRequestDefaultTypeInternal _RbacPermissionsForRoleRequest_default_instance_;
+
+inline constexpr RbacHasRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        role_{nullptr},
+        user_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RbacHasRequest::RbacHasRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RbacHasRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RbacHasRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RbacHasRequestDefaultTypeInternal() {}
+  union {
+    RbacHasRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacHasRequestDefaultTypeInternal _RbacHasRequest_default_instance_;
+
+inline constexpr Permission::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        action_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        object_{nullptr},
+        subject_{},
+        _oneof_case_{} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Permission::Permission(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct PermissionDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PermissionDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PermissionDefaultTypeInternal() {}
+  union {
+    Permission _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PermissionDefaultTypeInternal _Permission_default_instance_;
+
+inline constexpr NotificationIndexResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        items_{},
+        pagination_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR NotificationIndexResponse::NotificationIndexResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct NotificationIndexResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR NotificationIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NotificationIndexResponseDefaultTypeInternal() {}
+  union {
+    NotificationIndexResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NotificationIndexResponseDefaultTypeInternal _NotificationIndexResponse_default_instance_;
+
+inline constexpr LocalesResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LocalesResponse::LocalesResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct LocalesResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LocalesResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LocalesResponseDefaultTypeInternal() {}
+  union {
+    LocalesResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocalesResponseDefaultTypeInternal _LocalesResponse_default_instance_;
+
+inline constexpr LeaveWordIndexResponse_Item::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        lang_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        ip_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        content_{nullptr},
+        updated_at_{nullptr},
+        created_at_{nullptr},
+        id_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LeaveWordIndexResponse_Item::LeaveWordIndexResponse_Item(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct LeaveWordIndexResponse_ItemDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LeaveWordIndexResponse_ItemDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LeaveWordIndexResponse_ItemDefaultTypeInternal() {}
+  union {
+    LeaveWordIndexResponse_Item _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LeaveWordIndexResponse_ItemDefaultTypeInternal _LeaveWordIndexResponse_Item_default_instance_;
+
+inline constexpr CategoryIndexResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR CategoryIndexResponse::CategoryIndexResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct CategoryIndexResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CategoryIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CategoryIndexResponseDefaultTypeInternal() {}
+  union {
+    CategoryIndexResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CategoryIndexResponseDefaultTypeInternal _CategoryIndexResponse_default_instance_;
+
+inline constexpr AttachmentShowResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        item_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR AttachmentShowResponse::AttachmentShowResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct AttachmentShowResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AttachmentShowResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AttachmentShowResponseDefaultTypeInternal() {}
+  union {
+    AttachmentShowResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AttachmentShowResponseDefaultTypeInternal _AttachmentShowResponse_default_instance_;
+
+inline constexpr AttachmentIndexResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        items_{},
+        pagination_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR AttachmentIndexResponse::AttachmentIndexResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct AttachmentIndexResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AttachmentIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AttachmentIndexResponseDefaultTypeInternal() {}
+  union {
+    AttachmentIndexResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AttachmentIndexResponseDefaultTypeInternal _AttachmentIndexResponse_default_instance_;
+
+inline constexpr UserSignInResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : roles_{},
+        permissions_{},
+        real_name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        token_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        by_{static_cast< ::palm::metasequoia::v1::UserSignInResponse_By >(0)},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR UserSignInResponse::UserSignInResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct UserSignInResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserSignInResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserSignInResponseDefaultTypeInternal() {}
+  union {
+    UserSignInResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserSignInResponseDefaultTypeInternal _UserSignInResponse_default_instance_;
+
+inline constexpr RbacPermissionsResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : items_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR RbacPermissionsResponse::RbacPermissionsResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct RbacPermissionsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RbacPermissionsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RbacPermissionsResponseDefaultTypeInternal() {}
+  union {
+    RbacPermissionsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RbacPermissionsResponseDefaultTypeInternal _RbacPermissionsResponse_default_instance_;
+
+inline constexpr LeaveWordIndexResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        items_{},
+        pagination_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR LeaveWordIndexResponse::LeaveWordIndexResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct LeaveWordIndexResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LeaveWordIndexResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LeaveWordIndexResponseDefaultTypeInternal() {}
+  union {
+    LeaveWordIndexResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LeaveWordIndexResponseDefaultTypeInternal _LeaveWordIndexResponse_default_instance_;
 }  // namespace v1
 }  // namespace metasequoia
 }  // namespace palm
@@ -4956,14 +5072,10 @@ const ::google::protobuf::EnumDescriptor* MediaContent_Editor_descriptor() {
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_metasequoia_2eproto);
   return file_level_enum_descriptors_metasequoia_2eproto[0];
 }
+PROTOBUF_CONSTINIT const uint32_t MediaContent_Editor_internal_data_[] = {
+    131072u, 0u, };
 bool MediaContent_Editor_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-      return true;
-    default:
-      return false;
-  }
+  return 0 <= value && value <= 1;
 }
 #if (__cplusplus < 201703) && \
   (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
@@ -4980,18 +5092,10 @@ const ::google::protobuf::EnumDescriptor* MediaContent_Status_descriptor() {
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_metasequoia_2eproto);
   return file_level_enum_descriptors_metasequoia_2eproto[1];
 }
+PROTOBUF_CONSTINIT const uint32_t MediaContent_Status_internal_data_[] = {
+    327680u, 65536u, 99u, };
 bool MediaContent_Status_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 99:
-      return true;
-    default:
-      return false;
-  }
+  return ::_pbi::ValidateEnum(value, MediaContent_Status_internal_data_);
 }
 #if (__cplusplus < 201703) && \
   (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
@@ -5012,16 +5116,10 @@ const ::google::protobuf::EnumDescriptor* UserLogsResponse_Item_Level_descriptor
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_metasequoia_2eproto);
   return file_level_enum_descriptors_metasequoia_2eproto[2];
 }
+PROTOBUF_CONSTINIT const uint32_t UserLogsResponse_Item_Level_internal_data_[] = {
+    262144u, 0u, };
 bool UserLogsResponse_Item_Level_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-      return true;
-    default:
-      return false;
-  }
+  return 0 <= value && value <= 3;
 }
 #if (__cplusplus < 201703) && \
   (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
@@ -5040,19 +5138,10 @@ const ::google::protobuf::EnumDescriptor* UserSignInResponse_By_descriptor() {
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_metasequoia_2eproto);
   return file_level_enum_descriptors_metasequoia_2eproto[3];
 }
+PROTOBUF_CONSTINIT const uint32_t UserSignInResponse_By_internal_data_[] = {
+    196608u, 32u, 787200u, };
 bool UserSignInResponse_By_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-    case 11:
-    case 12:
-    case 21:
-    case 22:
-      return true;
-    default:
-      return false;
-  }
+  return 0 <= value && value <= 22 && ((6297607u >> value) & 1) != 0;
 }
 #if (__cplusplus < 201703) && \
   (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
@@ -5074,15 +5163,10 @@ const ::google::protobuf::EnumDescriptor* SmtpProfile_AuthMethod_descriptor() {
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_metasequoia_2eproto);
   return file_level_enum_descriptors_metasequoia_2eproto[4];
 }
+PROTOBUF_CONSTINIT const uint32_t SmtpProfile_AuthMethod_internal_data_[] = {
+    196608u, 0u, };
 bool SmtpProfile_AuthMethod_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-      return true;
-    default:
-      return false;
-  }
+  return 0 <= value && value <= 2;
 }
 #if (__cplusplus < 201703) && \
   (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
@@ -5100,14 +5184,10 @@ const ::google::protobuf::EnumDescriptor* NotificationIndexResponse_Item_Level_d
   ::google::protobuf::internal::AssignDescriptors(&descriptor_table_metasequoia_2eproto);
   return file_level_enum_descriptors_metasequoia_2eproto[5];
 }
+PROTOBUF_CONSTINIT const uint32_t NotificationIndexResponse_Item_Level_internal_data_[] = {
+    131072u, 0u, };
 bool NotificationIndexResponse_Item_Level_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-      return true;
-    default:
-      return false;
-  }
+  return 0 <= value && value <= 1;
 }
 #if (__cplusplus < 201703) && \
   (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
@@ -5131,18 +5211,19 @@ IdRequest::IdRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.IdRequest)
 }
-IdRequest::IdRequest(const IdRequest& from)
-    : ::google::protobuf::Message(), _impl_(from._impl_) {
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.IdRequest)
+IdRequest::IdRequest(
+    ::google::protobuf::Arena* arena, const IdRequest& from)
+    : IdRequest(arena) {
+  MergeFrom(from);
 }
+inline PROTOBUF_NDEBUG_INLINE IdRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void IdRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.id_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.id_ = {};
 }
 IdRequest::~IdRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.IdRequest)
@@ -5150,14 +5231,13 @@ IdRequest::~IdRequest() {
   SharedDtor();
 }
 inline void IdRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-}
-void IdRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void IdRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.IdRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5244,11 +5324,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> IdRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData IdRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    IdRequest::MergeImpl
+    IdRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*IdRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* IdRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void IdRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<IdRequest*>(&to_msg);
@@ -5275,7 +5356,10 @@ PROTOBUF_NOINLINE bool IdRequest::IsInitialized() const {
   return true;
 }
 
-void IdRequest::InternalSwap(IdRequest* other) {
+::_pbi::CachedSize* IdRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void IdRequest::InternalSwap(IdRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
         swap(_impl_.id_, other->_impl_.id_);
@@ -5297,19 +5381,24 @@ Pager::Pager(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.Pager)
 }
-Pager::Pager(const Pager& from)
-    : ::google::protobuf::Message(), _impl_(from._impl_) {
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.Pager)
+Pager::Pager(
+    ::google::protobuf::Arena* arena, const Pager& from)
+    : Pager(arena) {
+  MergeFrom(from);
 }
+inline PROTOBUF_NDEBUG_INLINE Pager::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void Pager::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.page_){::int64_t{0}},
-      decltype(_impl_.size_){::int64_t{0}},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, page_),
+           0,
+           offsetof(Impl_, size_) -
+               offsetof(Impl_, page_) +
+               sizeof(Impl_::size_));
 }
 Pager::~Pager() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.Pager)
@@ -5317,14 +5406,13 @@ Pager::~Pager() {
   SharedDtor();
 }
 inline void Pager::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-}
-void Pager::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Pager::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.Pager)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5432,11 +5520,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 0, 2> Pager::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Pager::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Pager::MergeImpl
+    Pager::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Pager::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Pager::GetClassData() const {
+  return &_class_data_;
+}
 
 void Pager::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Pager*>(&to_msg);
@@ -5466,7 +5555,10 @@ PROTOBUF_NOINLINE bool Pager::IsInitialized() const {
   return true;
 }
 
-void Pager::InternalSwap(Pager* other) {
+::_pbi::CachedSize* Pager::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Pager::InternalSwap(Pager* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::google::protobuf::internal::memswap<
@@ -5493,22 +5585,24 @@ Pagination::Pagination(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.Pagination)
 }
-Pagination::Pagination(const Pagination& from)
-    : ::google::protobuf::Message(), _impl_(from._impl_) {
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.Pagination)
+Pagination::Pagination(
+    ::google::protobuf::Arena* arena, const Pagination& from)
+    : Pagination(arena) {
+  MergeFrom(from);
 }
+inline PROTOBUF_NDEBUG_INLINE Pagination::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void Pagination::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.page_){::int64_t{0}},
-      decltype(_impl_.size_){::int64_t{0}},
-      decltype(_impl_.total_){::int64_t{0}},
-      decltype(_impl_.has_next_){false},
-      decltype(_impl_.has_previous_){false},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, page_),
+           0,
+           offsetof(Impl_, has_previous_) -
+               offsetof(Impl_, page_) +
+               sizeof(Impl_::has_previous_));
 }
 Pagination::~Pagination() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.Pagination)
@@ -5516,14 +5610,13 @@ Pagination::~Pagination() {
   SharedDtor();
 }
 inline void Pagination::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-}
-void Pagination::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Pagination::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.Pagination)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5683,11 +5776,12 @@ const ::_pbi::TcParseTable<2, 5, 0, 0, 2> Pagination::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Pagination::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Pagination::MergeImpl
+    Pagination::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Pagination::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Pagination::GetClassData() const {
+  return &_class_data_;
+}
 
 void Pagination::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Pagination*>(&to_msg);
@@ -5726,7 +5820,10 @@ PROTOBUF_NOINLINE bool Pagination::IsInitialized() const {
   return true;
 }
 
-void Pagination::InternalSwap(Pagination* other) {
+::_pbi::CachedSize* Pagination::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Pagination::InternalSwap(Pagination* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::google::protobuf::internal::memswap<
@@ -5759,6 +5856,7 @@ const ::google::protobuf::Timestamp& MediaContent::_Internal::published_at(const
   return *msg->_impl_.published_at_;
 }
 void MediaContent::clear_published_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.published_at_ != nullptr) _impl_.published_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -5767,49 +5865,50 @@ MediaContent::MediaContent(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.MediaContent)
 }
-MediaContent::MediaContent(const MediaContent& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE MediaContent::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        body_(arena, from.body_) {}
+
+MediaContent::MediaContent(
+    ::google::protobuf::Arena* arena,
+    const MediaContent& from)
+    : ::google::protobuf::Message(arena) {
   MediaContent* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.body_){},
-      decltype(_impl_.published_at_){nullptr},
-      decltype(_impl_.editor_){},
-      decltype(_impl_.status_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.body_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.body_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_body().empty()) {
-    _this->_impl_.body_.Set(from._internal_body(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.published_at_ = new ::google::protobuf::Timestamp(*from._impl_.published_at_);
-  }
-  ::memcpy(&_impl_.editor_, &from._impl_.editor_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.status_) -
-    reinterpret_cast<char*>(&_impl_.editor_)) + sizeof(_impl_.status_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.published_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.published_at_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, editor_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, editor_),
+           offsetof(Impl_, status_) -
+               offsetof(Impl_, editor_) +
+               sizeof(Impl_::status_));
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.MediaContent)
 }
+inline PROTOBUF_NDEBUG_INLINE MediaContent::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        body_(arena) {}
+
 inline void MediaContent::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.body_){},
-      decltype(_impl_.published_at_){nullptr},
-      decltype(_impl_.editor_){0},
-      decltype(_impl_.status_){0},
-  };
-  _impl_.body_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.body_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, published_at_),
+           0,
+           offsetof(Impl_, status_) -
+               offsetof(Impl_, published_at_) +
+               sizeof(Impl_::status_));
 }
 MediaContent::~MediaContent() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.MediaContent)
@@ -5817,16 +5916,15 @@ MediaContent::~MediaContent() {
   SharedDtor();
 }
 inline void MediaContent::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.body_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.published_at_;
-}
-void MediaContent::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.published_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void MediaContent::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.MediaContent)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5932,8 +6030,8 @@ const ::_pbi::TcParseTable<2, 4, 1, 45, 2> MediaContent::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // optional .google.protobuf.Timestamp published_at = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::published_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::published_at(this),
         _Internal::published_at(this).GetCachedSize(), target, stream);
   }
 
@@ -5963,9 +6061,8 @@ const ::_pbi::TcParseTable<2, 4, 1, 45, 2> MediaContent::_table_ = {
   // optional .google.protobuf.Timestamp published_at = 11;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.published_at_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.published_at_);
   }
 
   // .palm.metasequoia.v1.MediaContent.Editor editor = 1;
@@ -5984,11 +6081,12 @@ const ::_pbi::TcParseTable<2, 4, 1, 45, 2> MediaContent::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData MediaContent::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    MediaContent::MergeImpl
+    MediaContent::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*MediaContent::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* MediaContent::GetClassData() const {
+  return &_class_data_;
+}
 
 void MediaContent::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<MediaContent*>(&to_msg);
@@ -6025,14 +6123,16 @@ PROTOBUF_NOINLINE bool MediaContent::IsInitialized() const {
   return true;
 }
 
-void MediaContent::InternalSwap(MediaContent* other) {
+::_pbi::CachedSize* MediaContent::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void MediaContent::InternalSwap(MediaContent* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.body_, lhs_arena,
-                                       &other->_impl_.body_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.body_, &other->_impl_.body_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(MediaContent, _impl_.status_)
       + sizeof(MediaContent::_impl_.status_)
@@ -6057,48 +6157,34 @@ UserDetail::UserDetail(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserDetail)
 }
-UserDetail::UserDetail(const UserDetail& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserDetail::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : nickname_(arena, from.nickname_),
+        real_name_(arena, from.real_name_),
+        _cached_size_{0} {}
+
+UserDetail::UserDetail(
+    ::google::protobuf::Arena* arena,
+    const UserDetail& from)
+    : ::google::protobuf::Message(arena) {
   UserDetail* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.real_name_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_nickname().empty()) {
-    _this->_impl_.nickname_.Set(from._internal_nickname(), _this->GetArenaForAllocation());
-  }
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_real_name().empty()) {
-    _this->_impl_.real_name_.Set(from._internal_real_name(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserDetail)
 }
+inline PROTOBUF_NDEBUG_INLINE UserDetail::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : nickname_(arena),
+        real_name_(arena),
+        _cached_size_{0} {}
+
 inline void UserDetail::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.real_name_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserDetail::~UserDetail() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserDetail)
@@ -6106,16 +6192,15 @@ UserDetail::~UserDetail() {
   SharedDtor();
 }
 inline void UserDetail::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.nickname_.Destroy();
   _impl_.real_name_.Destroy();
-}
-void UserDetail::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserDetail::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserDetail)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -6228,11 +6313,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 56, 2> UserDetail::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserDetail::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserDetail::MergeImpl
+    UserDetail::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserDetail::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserDetail::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserDetail::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserDetail*>(&to_msg);
@@ -6262,15 +6348,16 @@ PROTOBUF_NOINLINE bool UserDetail::IsInitialized() const {
   return true;
 }
 
-void UserDetail::InternalSwap(UserDetail* other) {
+::_pbi::CachedSize* UserDetail::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserDetail::InternalSwap(UserDetail* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, lhs_arena,
-                                       &other->_impl_.nickname_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.real_name_, lhs_arena,
-                                       &other->_impl_.real_name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, &other->_impl_.nickname_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.real_name_, &other->_impl_.real_name_, arena);
 }
 
 ::google::protobuf::Metadata UserDetail::GetMetadata() const {
@@ -6295,76 +6382,39 @@ Oauth2State::Oauth2State(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.Oauth2State)
 }
-Oauth2State::Oauth2State(const Oauth2State& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Oauth2State::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        goto__(arena, from.goto__),
+        host_(arena, from.host_),
+        user_(arena, from.user_),
+        id_(arena, from.id_) {}
+
+Oauth2State::Oauth2State(
+    ::google::protobuf::Arena* arena,
+    const Oauth2State& from)
+    : ::google::protobuf::Message(arena) {
   Oauth2State* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.goto__){},
-      decltype(_impl_.host_){},
-      decltype(_impl_.user_){},
-      decltype(_impl_.id_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.goto__.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.goto__.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_goto_().empty()) {
-    _this->_impl_.goto__.Set(from._internal_goto_(), _this->GetArenaForAllocation());
-  }
-  _impl_.host_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.host_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_host().empty()) {
-    _this->_impl_.host_.Set(from._internal_host(), _this->GetArenaForAllocation());
-  }
-  _impl_.user_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.user_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.user_.Set(from._internal_user(), _this->GetArenaForAllocation());
-  }
-  _impl_.id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_id().empty()) {
-    _this->_impl_.id_.Set(from._internal_id(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.Oauth2State)
 }
+inline PROTOBUF_NDEBUG_INLINE Oauth2State::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        goto__(arena),
+        host_(arena),
+        user_(arena),
+        id_(arena) {}
+
 inline void Oauth2State::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.goto__){},
-      decltype(_impl_.host_){},
-      decltype(_impl_.user_){},
-      decltype(_impl_.id_){},
-  };
-  _impl_.goto__.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.goto__.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.host_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.host_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.user_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.user_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Oauth2State::~Oauth2State() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.Oauth2State)
@@ -6372,18 +6422,17 @@ Oauth2State::~Oauth2State() {
   SharedDtor();
 }
 inline void Oauth2State::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.goto__.Destroy();
   _impl_.host_.Destroy();
   _impl_.user_.Destroy();
   _impl_.id_.Destroy();
-}
-void Oauth2State::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Oauth2State::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.Oauth2State)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -6544,11 +6593,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 54, 2> Oauth2State::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Oauth2State::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Oauth2State::MergeImpl
+    Oauth2State::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Oauth2State::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Oauth2State::GetClassData() const {
+  return &_class_data_;
+}
 
 void Oauth2State::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Oauth2State*>(&to_msg);
@@ -6584,20 +6634,19 @@ PROTOBUF_NOINLINE bool Oauth2State::IsInitialized() const {
   return true;
 }
 
-void Oauth2State::InternalSwap(Oauth2State* other) {
+::_pbi::CachedSize* Oauth2State::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Oauth2State::InternalSwap(Oauth2State* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.goto__, lhs_arena,
-                                       &other->_impl_.goto__, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.host_, lhs_arena,
-                                       &other->_impl_.host_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.user_, lhs_arena,
-                                       &other->_impl_.user_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, lhs_arena,
-                                       &other->_impl_.id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.goto__, &other->_impl_.goto__, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.host_, &other->_impl_.host_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.user_, &other->_impl_.user_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, &other->_impl_.id_, arena);
 }
 
 ::google::protobuf::Metadata Oauth2State::GetMetadata() const {
@@ -6610,9 +6659,6 @@ void Oauth2State::InternalSwap(Oauth2State* other) {
 UserProfile_PayloadEntry_DoNotUse::UserProfile_PayloadEntry_DoNotUse() {}
 UserProfile_PayloadEntry_DoNotUse::UserProfile_PayloadEntry_DoNotUse(::google::protobuf::Arena* arena)
     : SuperType(arena) {}
-void UserProfile_PayloadEntry_DoNotUse::MergeFrom(const UserProfile_PayloadEntry_DoNotUse& other) {
-  MergeFromInternal(other);
-}
 ::google::protobuf::Metadata UserProfile_PayloadEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_metasequoia_2eproto_getter, &descriptor_table_metasequoia_2eproto_once,
@@ -6629,25 +6675,32 @@ UserProfile::UserProfile(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserProfile)
 }
-UserProfile::UserProfile(const UserProfile& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : payload_{visibility, arena, from.payload_},
+        _cached_size_{0} {}
+
+UserProfile::UserProfile(
+    ::google::protobuf::Arena* arena,
+    const UserProfile& from)
+    : ::google::protobuf::Message(arena) {
   UserProfile* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      /* decltype(_impl_.payload_) */ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _this->_impl_.payload_.MergeFrom(from._impl_.payload_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserProfile)
 }
+inline PROTOBUF_NDEBUG_INLINE UserProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : payload_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void UserProfile::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      /* decltype(_impl_.payload_) */ {::google::protobuf::internal::ArenaInitialized(), arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserProfile::~UserProfile() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserProfile)
@@ -6655,15 +6708,13 @@ UserProfile::~UserProfile() {
   SharedDtor();
 }
 inline void UserProfile::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.payload_.~MapField();
-}
-void UserProfile::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserProfile::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserProfile)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -6702,7 +6753,10 @@ const ::_pbi::TcParseTable<0, 1, 1, 47, 2> UserProfile::_table_ = {
     {PROTOBUF_FIELD_OFFSET(UserProfile, _impl_.payload_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
   }}, {{
-    {::_pbi::TcParser::GetMapAuxInfo<decltype(UserProfile()._impl_.payload_)>(1, 0, 0)},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(UserProfile()._impl_.payload_)>(
+        1, 0, 0, 9,
+        9)},
   }}, {{
     "\37\7\0\0\0\0\0\0"
     "palm.metasequoia.v1.UserProfile"
@@ -6720,7 +6774,9 @@ const ::_pbi::TcParseTable<0, 1, 1, 47, 2> UserProfile::_table_ = {
   // map<string, string> payload = 1;
   if (!_internal_payload().empty()) {
     using MapType = ::google::protobuf::Map<std::string, std::string>;
-    using WireHelper = UserProfile_PayloadEntry_DoNotUse::Funcs;
+    using WireHelper = _pbi::MapEntryFuncs<std::string, std::string,
+                                   _pbi::WireFormatLite::TYPE_STRING,
+                                   _pbi::WireFormatLite::TYPE_STRING>;
     const auto& field = _internal_payload();
 
     if (stream->IsSerializationDeterministic() && field.size() > 1) {
@@ -6768,17 +6824,20 @@ const ::_pbi::TcParseTable<0, 1, 1, 47, 2> UserProfile::_table_ = {
   // map<string, string> payload = 1;
   total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_payload_size());
   for (const auto& entry : _internal_payload()) {
-    total_size += UserProfile_PayloadEntry_DoNotUse::Funcs::ByteSizeLong(entry.first, entry.second);
+    total_size += _pbi::MapEntryFuncs<std::string, std::string,
+                                   _pbi::WireFormatLite::TYPE_STRING,
+                                   _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
   }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData UserProfile::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserProfile::MergeImpl
+    UserProfile::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserProfile::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserProfile::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserProfile::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserProfile*>(&to_msg);
@@ -6803,7 +6862,10 @@ PROTOBUF_NOINLINE bool UserProfile::IsInitialized() const {
   return true;
 }
 
-void UserProfile::InternalSwap(UserProfile* other) {
+::_pbi::CachedSize* UserProfile::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserProfile::InternalSwap(UserProfile* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.payload_.InternalSwap(&other->_impl_.payload_);
@@ -6845,14 +6907,17 @@ const ::google::protobuf::Timestamp& UserIndexResponse_Item::_Internal::deleted_
   return *msg->_impl_.deleted_at_;
 }
 void UserIndexResponse_Item::clear_confirmed_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.confirmed_at_ != nullptr) _impl_.confirmed_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void UserIndexResponse_Item::clear_locked_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.locked_at_ != nullptr) _impl_.locked_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
 void UserIndexResponse_Item::clear_deleted_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.deleted_at_ != nullptr) _impl_.deleted_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000004u;
 }
@@ -6861,107 +6926,58 @@ UserIndexResponse_Item::UserIndexResponse_Item(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserIndexResponse.Item)
 }
-UserIndexResponse_Item::UserIndexResponse_Item(const UserIndexResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        nickname_(arena, from.nickname_),
+        real_name_(arena, from.real_name_),
+        email_(arena, from.email_),
+        locale_(arena, from.locale_),
+        timezone_(arena, from.timezone_) {}
+
+UserIndexResponse_Item::UserIndexResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const UserIndexResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   UserIndexResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.real_name_){},
-      decltype(_impl_.email_){},
-      decltype(_impl_.locale_){},
-      decltype(_impl_.timezone_){},
-      decltype(_impl_.confirmed_at_){nullptr},
-      decltype(_impl_.locked_at_){nullptr},
-      decltype(_impl_.deleted_at_){nullptr},
-      decltype(_impl_.by_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_nickname().empty()) {
-    _this->_impl_.nickname_.Set(from._internal_nickname(), _this->GetArenaForAllocation());
-  }
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_real_name().empty()) {
-    _this->_impl_.real_name_.Set(from._internal_real_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.email_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_email().empty()) {
-    _this->_impl_.email_.Set(from._internal_email(), _this->GetArenaForAllocation());
-  }
-  _impl_.locale_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.locale_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_locale().empty()) {
-    _this->_impl_.locale_.Set(from._internal_locale(), _this->GetArenaForAllocation());
-  }
-  _impl_.timezone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.timezone_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_timezone().empty()) {
-    _this->_impl_.timezone_.Set(from._internal_timezone(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.confirmed_at_ = new ::google::protobuf::Timestamp(*from._impl_.confirmed_at_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.locked_at_ = new ::google::protobuf::Timestamp(*from._impl_.locked_at_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000004u) != 0) {
-    _this->_impl_.deleted_at_ = new ::google::protobuf::Timestamp(*from._impl_.deleted_at_);
-  }
-  _this->_impl_.by_ = from._impl_.by_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.confirmed_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.confirmed_at_)
+                : nullptr;
+  _impl_.locked_at_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.locked_at_)
+                : nullptr;
+  _impl_.deleted_at_ = (cached_has_bits & 0x00000004u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.deleted_at_)
+                : nullptr;
+  _impl_.by_ = from._impl_.by_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserIndexResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE UserIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        nickname_(arena),
+        real_name_(arena),
+        email_(arena),
+        locale_(arena),
+        timezone_(arena) {}
+
 inline void UserIndexResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.real_name_){},
-      decltype(_impl_.email_){},
-      decltype(_impl_.locale_){},
-      decltype(_impl_.timezone_){},
-      decltype(_impl_.confirmed_at_){nullptr},
-      decltype(_impl_.locked_at_){nullptr},
-      decltype(_impl_.deleted_at_){nullptr},
-      decltype(_impl_.by_){0},
-  };
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.email_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.locale_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.locale_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.timezone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.timezone_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, confirmed_at_),
+           0,
+           offsetof(Impl_, by_) -
+               offsetof(Impl_, confirmed_at_) +
+               sizeof(Impl_::by_));
 }
 UserIndexResponse_Item::~UserIndexResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserIndexResponse.Item)
@@ -6969,22 +6985,21 @@ UserIndexResponse_Item::~UserIndexResponse_Item() {
   SharedDtor();
 }
 inline void UserIndexResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.nickname_.Destroy();
   _impl_.real_name_.Destroy();
   _impl_.email_.Destroy();
   _impl_.locale_.Destroy();
   _impl_.timezone_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.confirmed_at_;
-  if (this != internal_default_instance()) delete _impl_.locked_at_;
-  if (this != internal_default_instance()) delete _impl_.deleted_at_;
-}
-void UserIndexResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.confirmed_at_;
+  delete _impl_.locked_at_;
+  delete _impl_.deleted_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserIndexResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserIndexResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -7161,22 +7176,22 @@ const ::_pbi::TcParseTable<4, 9, 3, 95, 7> UserIndexResponse_Item::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // optional .google.protobuf.Timestamp confirmed_at = 91;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(91, _Internal::confirmed_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        91, _Internal::confirmed_at(this),
         _Internal::confirmed_at(this).GetCachedSize(), target, stream);
   }
 
   // optional .google.protobuf.Timestamp locked_at = 92;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(92, _Internal::locked_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        92, _Internal::locked_at(this),
         _Internal::locked_at(this).GetCachedSize(), target, stream);
   }
 
   // optional .google.protobuf.Timestamp deleted_at = 93;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(93, _Internal::deleted_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        93, _Internal::deleted_at(this),
         _Internal::deleted_at(this).GetCachedSize(), target, stream);
   }
 
@@ -7238,23 +7253,20 @@ const ::_pbi::TcParseTable<4, 9, 3, 95, 7> UserIndexResponse_Item::_table_ = {
   if (cached_has_bits & 0x00000007u) {
     // optional .google.protobuf.Timestamp confirmed_at = 91;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.confirmed_at_);
+      total_size +=
+          2 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.confirmed_at_);
     }
 
     // optional .google.protobuf.Timestamp locked_at = 92;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.locked_at_);
+      total_size +=
+          2 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.locked_at_);
     }
 
     // optional .google.protobuf.Timestamp deleted_at = 93;
     if (cached_has_bits & 0x00000004u) {
-      total_size += 2 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.deleted_at_);
+      total_size +=
+          2 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.deleted_at_);
     }
 
   }
@@ -7268,11 +7280,12 @@ const ::_pbi::TcParseTable<4, 9, 3, 95, 7> UserIndexResponse_Item::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserIndexResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserIndexResponse_Item::MergeImpl
+    UserIndexResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserIndexResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserIndexResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserIndexResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserIndexResponse_Item*>(&to_msg);
@@ -7329,22 +7342,20 @@ PROTOBUF_NOINLINE bool UserIndexResponse_Item::IsInitialized() const {
   return true;
 }
 
-void UserIndexResponse_Item::InternalSwap(UserIndexResponse_Item* other) {
+::_pbi::CachedSize* UserIndexResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserIndexResponse_Item::InternalSwap(UserIndexResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, lhs_arena,
-                                       &other->_impl_.nickname_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.real_name_, lhs_arena,
-                                       &other->_impl_.real_name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, lhs_arena,
-                                       &other->_impl_.email_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.locale_, lhs_arena,
-                                       &other->_impl_.locale_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.timezone_, lhs_arena,
-                                       &other->_impl_.timezone_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, &other->_impl_.nickname_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.real_name_, &other->_impl_.real_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, &other->_impl_.email_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.locale_, &other->_impl_.locale_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.timezone_, &other->_impl_.timezone_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(UserIndexResponse_Item, _impl_.by_)
       + sizeof(UserIndexResponse_Item::_impl_.by_)
@@ -7369,24 +7380,32 @@ UserIndexResponse::UserIndexResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserIndexResponse)
 }
-UserIndexResponse::UserIndexResponse(const UserIndexResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+UserIndexResponse::UserIndexResponse(
+    ::google::protobuf::Arena* arena,
+    const UserIndexResponse& from)
+    : ::google::protobuf::Message(arena) {
   UserIndexResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserIndexResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE UserIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void UserIndexResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserIndexResponse::~UserIndexResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserIndexResponse)
@@ -7394,20 +7413,18 @@ UserIndexResponse::~UserIndexResponse() {
   SharedDtor();
 }
 inline void UserIndexResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void UserIndexResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserIndexResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserIndexResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -7490,11 +7507,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> UserIndexResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserIndexResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserIndexResponse::MergeImpl
+    UserIndexResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserIndexResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserIndexResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserIndexResponse*>(&to_msg);
@@ -7504,7 +7522,8 @@ void UserIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::g
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -7519,7 +7538,10 @@ PROTOBUF_NOINLINE bool UserIndexResponse::IsInitialized() const {
   return true;
 }
 
-void UserIndexResponse::InternalSwap(UserIndexResponse* other) {
+::_pbi::CachedSize* UserIndexResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserIndexResponse::InternalSwap(UserIndexResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -7541,35 +7563,32 @@ UserSetPasswordRequest::UserSetPasswordRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserSetPasswordRequest)
 }
-UserSetPasswordRequest::UserSetPasswordRequest(const UserSetPasswordRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserSetPasswordRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : password_(arena, from.password_),
+        _cached_size_{0} {}
+
+UserSetPasswordRequest::UserSetPasswordRequest(
+    ::google::protobuf::Arena* arena,
+    const UserSetPasswordRequest& from)
+    : ::google::protobuf::Message(arena) {
   UserSetPasswordRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.password_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserSetPasswordRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE UserSetPasswordRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : password_(arena),
+        _cached_size_{0} {}
+
 inline void UserSetPasswordRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.password_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserSetPasswordRequest::~UserSetPasswordRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserSetPasswordRequest)
@@ -7577,15 +7596,14 @@ UserSetPasswordRequest::~UserSetPasswordRequest() {
   SharedDtor();
 }
 inline void UserSetPasswordRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.password_.Destroy();
-}
-void UserSetPasswordRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserSetPasswordRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserSetPasswordRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -7676,11 +7694,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 59, 2> UserSetPasswordRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserSetPasswordRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserSetPasswordRequest::MergeImpl
+    UserSetPasswordRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserSetPasswordRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserSetPasswordRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserSetPasswordRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserSetPasswordRequest*>(&to_msg);
@@ -7707,13 +7726,15 @@ PROTOBUF_NOINLINE bool UserSetPasswordRequest::IsInitialized() const {
   return true;
 }
 
-void UserSetPasswordRequest::InternalSwap(UserSetPasswordRequest* other) {
+::_pbi::CachedSize* UserSetPasswordRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserSetPasswordRequest::InternalSwap(UserSetPasswordRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, lhs_arena,
-                                       &other->_impl_.password_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, &other->_impl_.password_, arena);
 }
 
 ::google::protobuf::Metadata UserSetPasswordRequest::GetMetadata() const {
@@ -7732,61 +7753,36 @@ UserChangePasswordRequest::UserChangePasswordRequest(::google::protobuf::Arena* 
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserChangePasswordRequest)
 }
-UserChangePasswordRequest::UserChangePasswordRequest(const UserChangePasswordRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserChangePasswordRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : current_password_(arena, from.current_password_),
+        new_password_(arena, from.new_password_),
+        password_confirmation_(arena, from.password_confirmation_),
+        _cached_size_{0} {}
+
+UserChangePasswordRequest::UserChangePasswordRequest(
+    ::google::protobuf::Arena* arena,
+    const UserChangePasswordRequest& from)
+    : ::google::protobuf::Message(arena) {
   UserChangePasswordRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.current_password_){},
-      decltype(_impl_.new_password_){},
-      decltype(_impl_.password_confirmation_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.current_password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.current_password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_current_password().empty()) {
-    _this->_impl_.current_password_.Set(from._internal_current_password(), _this->GetArenaForAllocation());
-  }
-  _impl_.new_password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.new_password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_new_password().empty()) {
-    _this->_impl_.new_password_.Set(from._internal_new_password(), _this->GetArenaForAllocation());
-  }
-  _impl_.password_confirmation_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_confirmation_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_password_confirmation().empty()) {
-    _this->_impl_.password_confirmation_.Set(from._internal_password_confirmation(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserChangePasswordRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE UserChangePasswordRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : current_password_(arena),
+        new_password_(arena),
+        password_confirmation_(arena),
+        _cached_size_{0} {}
+
 inline void UserChangePasswordRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.current_password_){},
-      decltype(_impl_.new_password_){},
-      decltype(_impl_.password_confirmation_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.current_password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.current_password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.new_password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.new_password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.password_confirmation_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_confirmation_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserChangePasswordRequest::~UserChangePasswordRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserChangePasswordRequest)
@@ -7794,17 +7790,16 @@ UserChangePasswordRequest::~UserChangePasswordRequest() {
   SharedDtor();
 }
 inline void UserChangePasswordRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.current_password_.Destroy();
   _impl_.new_password_.Destroy();
   _impl_.password_confirmation_.Destroy();
-}
-void UserChangePasswordRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserChangePasswordRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserChangePasswordRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -7940,11 +7935,12 @@ const ::_pbi::TcParseTable<2, 3, 0, 103, 2> UserChangePasswordRequest::_table_ =
 }
 
 const ::google::protobuf::Message::ClassData UserChangePasswordRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserChangePasswordRequest::MergeImpl
+    UserChangePasswordRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserChangePasswordRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserChangePasswordRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserChangePasswordRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserChangePasswordRequest*>(&to_msg);
@@ -7977,17 +7973,17 @@ PROTOBUF_NOINLINE bool UserChangePasswordRequest::IsInitialized() const {
   return true;
 }
 
-void UserChangePasswordRequest::InternalSwap(UserChangePasswordRequest* other) {
+::_pbi::CachedSize* UserChangePasswordRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserChangePasswordRequest::InternalSwap(UserChangePasswordRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.current_password_, lhs_arena,
-                                       &other->_impl_.current_password_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.new_password_, lhs_arena,
-                                       &other->_impl_.new_password_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_confirmation_, lhs_arena,
-                                       &other->_impl_.password_confirmation_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.current_password_, &other->_impl_.current_password_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.new_password_, &other->_impl_.new_password_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_confirmation_, &other->_impl_.password_confirmation_, arena);
 }
 
 ::google::protobuf::Metadata UserChangePasswordRequest::GetMetadata() const {
@@ -8022,10 +8018,12 @@ const ::google::protobuf::Timestamp& UserLogsRequest::_Internal::to(const UserLo
   return *msg->_impl_.to_;
 }
 void UserLogsRequest::clear_from() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.from_ != nullptr) _impl_.from_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
 void UserLogsRequest::clear_to() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.to_ != nullptr) _impl_.to_->Clear();
   _impl_._has_bits_[0] &= ~0x00000004u;
 }
@@ -8034,47 +8032,46 @@ UserLogsRequest::UserLogsRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserLogsRequest)
 }
-UserLogsRequest::UserLogsRequest(const UserLogsRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserLogsRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        plugin_(arena, from.plugin_) {}
+
+UserLogsRequest::UserLogsRequest(
+    ::google::protobuf::Arena* arena,
+    const UserLogsRequest& from)
+    : ::google::protobuf::Message(arena) {
   UserLogsRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.plugin_){},
-      decltype(_impl_.from_){nullptr},
-      decltype(_impl_.to_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.plugin_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.plugin_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.plugin_.Set(from._internal_plugin(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.from_ = new ::google::protobuf::Timestamp(*from._impl_.from_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000004u) != 0) {
-    _this->_impl_.to_ = new ::google::protobuf::Timestamp(*from._impl_.to_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.from_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.from_)
+                : nullptr;
+  _impl_.to_ = (cached_has_bits & 0x00000004u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.to_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserLogsRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE UserLogsRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        plugin_(arena) {}
+
 inline void UserLogsRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.plugin_){},
-      decltype(_impl_.from_){nullptr},
-      decltype(_impl_.to_){nullptr},
-  };
-  _impl_.plugin_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.plugin_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, from_),
+           0,
+           offsetof(Impl_, to_) -
+               offsetof(Impl_, from_) +
+               sizeof(Impl_::to_));
 }
 UserLogsRequest::~UserLogsRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserLogsRequest)
@@ -8082,17 +8079,16 @@ UserLogsRequest::~UserLogsRequest() {
   SharedDtor();
 }
 inline void UserLogsRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.plugin_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.from_;
-  if (this != internal_default_instance()) delete _impl_.to_;
-}
-void UserLogsRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.from_;
+  delete _impl_.to_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserLogsRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserLogsRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -8187,15 +8183,15 @@ const ::_pbi::TcParseTable<2, 3, 2, 50, 2> UserLogsRequest::_table_ = {
 
   // .google.protobuf.Timestamp from = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::from(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::from(this),
         _Internal::from(this).GetCachedSize(), target, stream);
   }
 
   // .google.protobuf.Timestamp to = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(3, _Internal::to(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        3, _Internal::to(this),
         _Internal::to(this).GetCachedSize(), target, stream);
   }
 
@@ -8226,16 +8222,14 @@ const ::_pbi::TcParseTable<2, 3, 2, 50, 2> UserLogsRequest::_table_ = {
 
     // .google.protobuf.Timestamp from = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.from_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.from_);
     }
 
     // .google.protobuf.Timestamp to = 3;
     if (cached_has_bits & 0x00000004u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.to_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.to_);
     }
 
   }
@@ -8243,11 +8237,12 @@ const ::_pbi::TcParseTable<2, 3, 2, 50, 2> UserLogsRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserLogsRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserLogsRequest::MergeImpl
+    UserLogsRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserLogsRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserLogsRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserLogsRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserLogsRequest*>(&to_msg);
@@ -8285,14 +8280,16 @@ PROTOBUF_NOINLINE bool UserLogsRequest::IsInitialized() const {
   return true;
 }
 
-void UserLogsRequest::InternalSwap(UserLogsRequest* other) {
+::_pbi::CachedSize* UserLogsRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserLogsRequest::InternalSwap(UserLogsRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.plugin_, lhs_arena,
-                                       &other->_impl_.plugin_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.plugin_, &other->_impl_.plugin_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(UserLogsRequest, _impl_.to_)
       + sizeof(UserLogsRequest::_impl_.to_)
@@ -8323,6 +8320,7 @@ const ::google::protobuf::Timestamp& UserLogsResponse_Item::_Internal::created_a
   return *msg->_impl_.created_at_;
 }
 void UserLogsResponse_Item::clear_created_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.created_at_ != nullptr) _impl_.created_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -8331,75 +8329,54 @@ UserLogsResponse_Item::UserLogsResponse_Item(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserLogsResponse.Item)
 }
-UserLogsResponse_Item::UserLogsResponse_Item(const UserLogsResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserLogsResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        plugin_(arena, from.plugin_),
+        ip_(arena, from.ip_),
+        message_(arena, from.message_) {}
+
+UserLogsResponse_Item::UserLogsResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const UserLogsResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   UserLogsResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.plugin_){},
-      decltype(_impl_.ip_){},
-      decltype(_impl_.message_){},
-      decltype(_impl_.created_at_){nullptr},
-      decltype(_impl_.id_){},
-      decltype(_impl_.level_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.plugin_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.plugin_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_plugin().empty()) {
-    _this->_impl_.plugin_.Set(from._internal_plugin(), _this->GetArenaForAllocation());
-  }
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_ip().empty()) {
-    _this->_impl_.ip_.Set(from._internal_ip(), _this->GetArenaForAllocation());
-  }
-  _impl_.message_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_message().empty()) {
-    _this->_impl_.message_.Set(from._internal_message(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.created_at_ = new ::google::protobuf::Timestamp(*from._impl_.created_at_);
-  }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.level_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.level_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.created_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.created_at_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, level_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::level_));
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserLogsResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE UserLogsResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        plugin_(arena),
+        ip_(arena),
+        message_(arena) {}
+
 inline void UserLogsResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.plugin_){},
-      decltype(_impl_.ip_){},
-      decltype(_impl_.message_){},
-      decltype(_impl_.created_at_){nullptr},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.level_){0},
-  };
-  _impl_.plugin_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.plugin_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.message_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, created_at_),
+           0,
+           offsetof(Impl_, level_) -
+               offsetof(Impl_, created_at_) +
+               sizeof(Impl_::level_));
 }
 UserLogsResponse_Item::~UserLogsResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserLogsResponse.Item)
@@ -8407,18 +8384,17 @@ UserLogsResponse_Item::~UserLogsResponse_Item() {
   SharedDtor();
 }
 inline void UserLogsResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.plugin_.Destroy();
   _impl_.ip_.Destroy();
   _impl_.message_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.created_at_;
-}
-void UserLogsResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.created_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserLogsResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserLogsResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -8558,8 +8534,8 @@ const ::_pbi::TcParseTable<3, 6, 1, 65, 2> UserLogsResponse_Item::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp created_at = 9;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(9, _Internal::created_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        9, _Internal::created_at(this),
         _Internal::created_at(this).GetCachedSize(), target, stream);
   }
 
@@ -8601,9 +8577,8 @@ const ::_pbi::TcParseTable<3, 6, 1, 65, 2> UserLogsResponse_Item::_table_ = {
   // .google.protobuf.Timestamp created_at = 9;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.created_at_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.created_at_);
   }
 
   // int32 id = 1;
@@ -8622,11 +8597,12 @@ const ::_pbi::TcParseTable<3, 6, 1, 65, 2> UserLogsResponse_Item::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserLogsResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserLogsResponse_Item::MergeImpl
+    UserLogsResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserLogsResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserLogsResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserLogsResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserLogsResponse_Item*>(&to_msg);
@@ -8669,18 +8645,18 @@ PROTOBUF_NOINLINE bool UserLogsResponse_Item::IsInitialized() const {
   return true;
 }
 
-void UserLogsResponse_Item::InternalSwap(UserLogsResponse_Item* other) {
+::_pbi::CachedSize* UserLogsResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserLogsResponse_Item::InternalSwap(UserLogsResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.plugin_, lhs_arena,
-                                       &other->_impl_.plugin_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, lhs_arena,
-                                       &other->_impl_.ip_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, lhs_arena,
-                                       &other->_impl_.message_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.plugin_, &other->_impl_.plugin_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, &other->_impl_.ip_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(UserLogsResponse_Item, _impl_.level_)
       + sizeof(UserLogsResponse_Item::_impl_.level_)
@@ -8705,24 +8681,32 @@ UserLogsResponse::UserLogsResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserLogsResponse)
 }
-UserLogsResponse::UserLogsResponse(const UserLogsResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserLogsResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+UserLogsResponse::UserLogsResponse(
+    ::google::protobuf::Arena* arena,
+    const UserLogsResponse& from)
+    : ::google::protobuf::Message(arena) {
   UserLogsResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserLogsResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE UserLogsResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void UserLogsResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserLogsResponse::~UserLogsResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserLogsResponse)
@@ -8730,20 +8714,18 @@ UserLogsResponse::~UserLogsResponse() {
   SharedDtor();
 }
 inline void UserLogsResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void UserLogsResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserLogsResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserLogsResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -8826,11 +8808,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> UserLogsResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserLogsResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserLogsResponse::MergeImpl
+    UserLogsResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserLogsResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserLogsResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserLogsResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserLogsResponse*>(&to_msg);
@@ -8840,7 +8823,8 @@ void UserLogsResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::go
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -8855,7 +8839,10 @@ PROTOBUF_NOINLINE bool UserLogsResponse::IsInitialized() const {
   return true;
 }
 
-void UserLogsResponse::InternalSwap(UserLogsResponse* other) {
+::_pbi::CachedSize* UserLogsResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserLogsResponse::InternalSwap(UserLogsResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -8877,48 +8864,34 @@ UserResetPasswordRequest::UserResetPasswordRequest(::google::protobuf::Arena* ar
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserResetPasswordRequest)
 }
-UserResetPasswordRequest::UserResetPasswordRequest(const UserResetPasswordRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserResetPasswordRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : token_(arena, from.token_),
+        password_(arena, from.password_),
+        _cached_size_{0} {}
+
+UserResetPasswordRequest::UserResetPasswordRequest(
+    ::google::protobuf::Arena* arena,
+    const UserResetPasswordRequest& from)
+    : ::google::protobuf::Message(arena) {
   UserResetPasswordRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_){},
-      decltype(_impl_.password_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_token().empty()) {
-    _this->_impl_.token_.Set(from._internal_token(), _this->GetArenaForAllocation());
-  }
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserResetPasswordRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE UserResetPasswordRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : token_(arena),
+        password_(arena),
+        _cached_size_{0} {}
+
 inline void UserResetPasswordRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_){},
-      decltype(_impl_.password_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserResetPasswordRequest::~UserResetPasswordRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserResetPasswordRequest)
@@ -8926,16 +8899,15 @@ UserResetPasswordRequest::~UserResetPasswordRequest() {
   SharedDtor();
 }
 inline void UserResetPasswordRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.token_.Destroy();
   _impl_.password_.Destroy();
-}
-void UserResetPasswordRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserResetPasswordRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserResetPasswordRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -9048,11 +9020,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 66, 2> UserResetPasswordRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserResetPasswordRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserResetPasswordRequest::MergeImpl
+    UserResetPasswordRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserResetPasswordRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserResetPasswordRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserResetPasswordRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserResetPasswordRequest*>(&to_msg);
@@ -9082,15 +9055,16 @@ PROTOBUF_NOINLINE bool UserResetPasswordRequest::IsInitialized() const {
   return true;
 }
 
-void UserResetPasswordRequest::InternalSwap(UserResetPasswordRequest* other) {
+::_pbi::CachedSize* UserResetPasswordRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserResetPasswordRequest::InternalSwap(UserResetPasswordRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, lhs_arena,
-                                       &other->_impl_.token_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, lhs_arena,
-                                       &other->_impl_.password_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, &other->_impl_.token_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, &other->_impl_.password_, arena);
 }
 
 ::google::protobuf::Metadata UserResetPasswordRequest::GetMetadata() const {
@@ -9109,35 +9083,32 @@ UserTokenRequest::UserTokenRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserTokenRequest)
 }
-UserTokenRequest::UserTokenRequest(const UserTokenRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserTokenRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : token_(arena, from.token_),
+        _cached_size_{0} {}
+
+UserTokenRequest::UserTokenRequest(
+    ::google::protobuf::Arena* arena,
+    const UserTokenRequest& from)
+    : ::google::protobuf::Message(arena) {
   UserTokenRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_token().empty()) {
-    _this->_impl_.token_.Set(from._internal_token(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserTokenRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE UserTokenRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : token_(arena),
+        _cached_size_{0} {}
+
 inline void UserTokenRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.token_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserTokenRequest::~UserTokenRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserTokenRequest)
@@ -9145,15 +9116,14 @@ UserTokenRequest::~UserTokenRequest() {
   SharedDtor();
 }
 inline void UserTokenRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.token_.Destroy();
-}
-void UserTokenRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserTokenRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserTokenRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -9244,11 +9214,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 50, 2> UserTokenRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserTokenRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserTokenRequest::MergeImpl
+    UserTokenRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserTokenRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserTokenRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserTokenRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserTokenRequest*>(&to_msg);
@@ -9275,13 +9246,15 @@ PROTOBUF_NOINLINE bool UserTokenRequest::IsInitialized() const {
   return true;
 }
 
-void UserTokenRequest::InternalSwap(UserTokenRequest* other) {
+::_pbi::CachedSize* UserTokenRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserTokenRequest::InternalSwap(UserTokenRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, lhs_arena,
-                                       &other->_impl_.token_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, &other->_impl_.token_, arena);
 }
 
 ::google::protobuf::Metadata UserTokenRequest::GetMetadata() const {
@@ -9302,49 +9275,50 @@ UserQueryRequest::UserQueryRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserQueryRequest)
 }
-UserQueryRequest::UserQueryRequest(const UserQueryRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserQueryRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : by_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+UserQueryRequest::UserQueryRequest(
+    ::google::protobuf::Arena* arena,
+    const UserQueryRequest& from)
+    : ::google::protobuf::Message(arena) {
   UserQueryRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.by_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  clear_has_by();
-  switch (from.by_case()) {
-    case kEmail: {
-      _this->_internal_set_email(from._internal_email());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  switch (by_case()) {
+    case BY_NOT_SET:
       break;
-    }
-    case kNickname: {
-      _this->_internal_set_nickname(from._internal_nickname());
-      break;
-    }
-    case kPhone: {
-      _this->_internal_set_phone(from._internal_phone());
-      break;
-    }
-    case kUid: {
-      _this->_internal_set_uid(from._internal_uid());
-      break;
-    }
-    case BY_NOT_SET: {
-      break;
-    }
+      case kEmail:
+        new (&_impl_.by_.email_) decltype(_impl_.by_.email_){arena, from._impl_.by_.email_};
+        break;
+      case kNickname:
+        new (&_impl_.by_.nickname_) decltype(_impl_.by_.nickname_){arena, from._impl_.by_.nickname_};
+        break;
+      case kPhone:
+        new (&_impl_.by_.phone_) decltype(_impl_.by_.phone_){arena, from._impl_.by_.phone_};
+        break;
+      case kUid:
+        new (&_impl_.by_.uid_) decltype(_impl_.by_.uid_){arena, from._impl_.by_.uid_};
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserQueryRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE UserQueryRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : by_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
 inline void UserQueryRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.by_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  clear_has_by();
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserQueryRequest::~UserQueryRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserQueryRequest)
@@ -9352,17 +9326,16 @@ UserQueryRequest::~UserQueryRequest() {
   SharedDtor();
 }
 inline void UserQueryRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   if (has_by()) {
     clear_by();
   }
-}
-void UserQueryRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void UserQueryRequest::clear_by() {
 // @@protoc_insertion_point(one_of_clear_start:palm.metasequoia.v1.UserQueryRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (by_case()) {
     case kEmail: {
       _impl_.by_.email_.Destroy();
@@ -9390,6 +9363,7 @@ void UserQueryRequest::clear_by() {
 
 PROTOBUF_NOINLINE void UserQueryRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserQueryRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -9537,11 +9511,12 @@ const ::_pbi::TcParseTable<0, 4, 0, 66, 2> UserQueryRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserQueryRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserQueryRequest::MergeImpl
+    UserQueryRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserQueryRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserQueryRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserQueryRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserQueryRequest*>(&to_msg);
@@ -9586,7 +9561,10 @@ PROTOBUF_NOINLINE bool UserQueryRequest::IsInitialized() const {
   return true;
 }
 
-void UserQueryRequest::InternalSwap(UserQueryRequest* other) {
+::_pbi::CachedSize* UserQueryRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserQueryRequest::InternalSwap(UserQueryRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_.by_, other->_impl_.by_);
@@ -9609,113 +9587,44 @@ UserSignUpByEmailRequest::UserSignUpByEmailRequest(::google::protobuf::Arena* ar
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserSignUpByEmailRequest)
 }
-UserSignUpByEmailRequest::UserSignUpByEmailRequest(const UserSignUpByEmailRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserSignUpByEmailRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : nickname_(arena, from.nickname_),
+        real_name_(arena, from.real_name_),
+        email_(arena, from.email_),
+        password_(arena, from.password_),
+        locale_(arena, from.locale_),
+        timezone_(arena, from.timezone_),
+        home_(arena, from.home_),
+        _cached_size_{0} {}
+
+UserSignUpByEmailRequest::UserSignUpByEmailRequest(
+    ::google::protobuf::Arena* arena,
+    const UserSignUpByEmailRequest& from)
+    : ::google::protobuf::Message(arena) {
   UserSignUpByEmailRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.real_name_){},
-      decltype(_impl_.email_){},
-      decltype(_impl_.password_){},
-      decltype(_impl_.locale_){},
-      decltype(_impl_.timezone_){},
-      decltype(_impl_.home_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_nickname().empty()) {
-    _this->_impl_.nickname_.Set(from._internal_nickname(), _this->GetArenaForAllocation());
-  }
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_real_name().empty()) {
-    _this->_impl_.real_name_.Set(from._internal_real_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.email_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_email().empty()) {
-    _this->_impl_.email_.Set(from._internal_email(), _this->GetArenaForAllocation());
-  }
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), _this->GetArenaForAllocation());
-  }
-  _impl_.locale_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.locale_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_locale().empty()) {
-    _this->_impl_.locale_.Set(from._internal_locale(), _this->GetArenaForAllocation());
-  }
-  _impl_.timezone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.timezone_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_timezone().empty()) {
-    _this->_impl_.timezone_.Set(from._internal_timezone(), _this->GetArenaForAllocation());
-  }
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.home_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_home().empty()) {
-    _this->_impl_.home_.Set(from._internal_home(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserSignUpByEmailRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE UserSignUpByEmailRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : nickname_(arena),
+        real_name_(arena),
+        email_(arena),
+        password_(arena),
+        locale_(arena),
+        timezone_(arena),
+        home_(arena),
+        _cached_size_{0} {}
+
 inline void UserSignUpByEmailRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.real_name_){},
-      decltype(_impl_.email_){},
-      decltype(_impl_.password_){},
-      decltype(_impl_.locale_){},
-      decltype(_impl_.timezone_){},
-      decltype(_impl_.home_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.email_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.locale_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.locale_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.timezone_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.timezone_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.home_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 UserSignUpByEmailRequest::~UserSignUpByEmailRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserSignUpByEmailRequest)
@@ -9723,7 +9632,7 @@ UserSignUpByEmailRequest::~UserSignUpByEmailRequest() {
   SharedDtor();
 }
 inline void UserSignUpByEmailRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.nickname_.Destroy();
   _impl_.real_name_.Destroy();
   _impl_.email_.Destroy();
@@ -9731,13 +9640,12 @@ inline void UserSignUpByEmailRequest::SharedDtor() {
   _impl_.locale_.Destroy();
   _impl_.timezone_.Destroy();
   _impl_.home_.Destroy();
-}
-void UserSignUpByEmailRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserSignUpByEmailRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserSignUpByEmailRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -9953,11 +9861,12 @@ const ::_pbi::TcParseTable<2, 7, 0, 101, 7> UserSignUpByEmailRequest::_table_ = 
 }
 
 const ::google::protobuf::Message::ClassData UserSignUpByEmailRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserSignUpByEmailRequest::MergeImpl
+    UserSignUpByEmailRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserSignUpByEmailRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserSignUpByEmailRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserSignUpByEmailRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserSignUpByEmailRequest*>(&to_msg);
@@ -10002,25 +9911,21 @@ PROTOBUF_NOINLINE bool UserSignUpByEmailRequest::IsInitialized() const {
   return true;
 }
 
-void UserSignUpByEmailRequest::InternalSwap(UserSignUpByEmailRequest* other) {
+::_pbi::CachedSize* UserSignUpByEmailRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserSignUpByEmailRequest::InternalSwap(UserSignUpByEmailRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, lhs_arena,
-                                       &other->_impl_.nickname_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.real_name_, lhs_arena,
-                                       &other->_impl_.real_name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, lhs_arena,
-                                       &other->_impl_.email_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, lhs_arena,
-                                       &other->_impl_.password_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.locale_, lhs_arena,
-                                       &other->_impl_.locale_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.timezone_, lhs_arena,
-                                       &other->_impl_.timezone_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.home_, lhs_arena,
-                                       &other->_impl_.home_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, &other->_impl_.nickname_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.real_name_, &other->_impl_.real_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, &other->_impl_.email_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, &other->_impl_.password_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.locale_, &other->_impl_.locale_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.timezone_, &other->_impl_.timezone_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.home_, &other->_impl_.home_, arena);
 }
 
 ::google::protobuf::Metadata UserSignUpByEmailRequest::GetMetadata() const {
@@ -10047,6 +9952,7 @@ const ::google::protobuf::Duration& UserSignInByPasswordRequest::_Internal::ttl(
   return *msg->_impl_.ttl_;
 }
 void UserSignInByPasswordRequest::clear_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.ttl_ != nullptr) _impl_.ttl_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -10055,65 +9961,55 @@ UserSignInByPasswordRequest::UserSignInByPasswordRequest(::google::protobuf::Are
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserSignInByPasswordRequest)
 }
-UserSignInByPasswordRequest::UserSignInByPasswordRequest(const UserSignInByPasswordRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserSignInByPasswordRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        password_(arena, from.password_),
+        user_{},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+UserSignInByPasswordRequest::UserSignInByPasswordRequest(
+    ::google::protobuf::Arena* arena,
+    const UserSignInByPasswordRequest& from)
+    : ::google::protobuf::Message(arena) {
   UserSignInByPasswordRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.password_){},
-      decltype(_impl_.ttl_){nullptr},
-      decltype(_impl_.user_){},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.ttl_ = new ::google::protobuf::Duration(*from._impl_.ttl_);
-  }
-  clear_has_user();
-  switch (from.user_case()) {
-    case kEmail: {
-      _this->_internal_set_email(from._internal_email());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.ttl_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Duration>(arena, *from._impl_.ttl_)
+                : nullptr;
+  switch (user_case()) {
+    case USER_NOT_SET:
       break;
-    }
-    case kNickname: {
-      _this->_internal_set_nickname(from._internal_nickname());
-      break;
-    }
-    case kPhone: {
-      _this->_internal_set_phone(from._internal_phone());
-      break;
-    }
-    case USER_NOT_SET: {
-      break;
-    }
+      case kEmail:
+        new (&_impl_.user_.email_) decltype(_impl_.user_.email_){arena, from._impl_.user_.email_};
+        break;
+      case kNickname:
+        new (&_impl_.user_.nickname_) decltype(_impl_.user_.nickname_){arena, from._impl_.user_.nickname_};
+        break;
+      case kPhone:
+        new (&_impl_.user_.phone_) decltype(_impl_.user_.phone_){arena, from._impl_.user_.phone_};
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserSignInByPasswordRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE UserSignInByPasswordRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        password_(arena),
+        user_{},
+        _oneof_case_{} {}
+
 inline void UserSignInByPasswordRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.password_){},
-      decltype(_impl_.ttl_){nullptr},
-      decltype(_impl_.user_){},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  clear_has_user();
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.ttl_ = {};
 }
 UserSignInByPasswordRequest::~UserSignInByPasswordRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserSignInByPasswordRequest)
@@ -10121,19 +10017,18 @@ UserSignInByPasswordRequest::~UserSignInByPasswordRequest() {
   SharedDtor();
 }
 inline void UserSignInByPasswordRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.password_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.ttl_;
+  delete _impl_.ttl_;
   if (has_user()) {
     clear_user();
   }
-}
-void UserSignInByPasswordRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void UserSignInByPasswordRequest::clear_user() {
 // @@protoc_insertion_point(one_of_clear_start:palm.metasequoia.v1.UserSignInByPasswordRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (user_case()) {
     case kEmail: {
       _impl_.user_.email_.Destroy();
@@ -10157,6 +10052,7 @@ void UserSignInByPasswordRequest::clear_user() {
 
 PROTOBUF_NOINLINE void UserSignInByPasswordRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserSignInByPasswordRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -10270,8 +10166,8 @@ const ::_pbi::TcParseTable<0, 5, 1, 82, 2> UserSignInByPasswordRequest::_table_ 
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Duration ttl = 19;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(19, _Internal::ttl(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        19, _Internal::ttl(this),
         _Internal::ttl(this).GetCachedSize(), target, stream);
   }
 
@@ -10301,9 +10197,8 @@ const ::_pbi::TcParseTable<0, 5, 1, 82, 2> UserSignInByPasswordRequest::_table_ 
   // .google.protobuf.Duration ttl = 19;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 2 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.ttl_);
+    total_size +=
+        2 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.ttl_);
   }
 
   switch (user_case()) {
@@ -10333,11 +10228,12 @@ const ::_pbi::TcParseTable<0, 5, 1, 82, 2> UserSignInByPasswordRequest::_table_ 
 }
 
 const ::google::protobuf::Message::ClassData UserSignInByPasswordRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserSignInByPasswordRequest::MergeImpl
+    UserSignInByPasswordRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserSignInByPasswordRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserSignInByPasswordRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserSignInByPasswordRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserSignInByPasswordRequest*>(&to_msg);
@@ -10385,14 +10281,16 @@ PROTOBUF_NOINLINE bool UserSignInByPasswordRequest::IsInitialized() const {
   return true;
 }
 
-void UserSignInByPasswordRequest::InternalSwap(UserSignInByPasswordRequest* other) {
+::_pbi::CachedSize* UserSignInByPasswordRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserSignInByPasswordRequest::InternalSwap(UserSignInByPasswordRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, lhs_arena,
-                                       &other->_impl_.password_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, &other->_impl_.password_, arena);
   swap(_impl_.ttl_, other->_impl_.ttl_);
   swap(_impl_.user_, other->_impl_.user_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
@@ -10414,55 +10312,40 @@ UserSignInResponse::UserSignInResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.UserSignInResponse)
 }
-UserSignInResponse::UserSignInResponse(const UserSignInResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE UserSignInResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : roles_{visibility, arena, from.roles_},
+        permissions_{visibility, arena, from.permissions_},
+        real_name_(arena, from.real_name_),
+        token_(arena, from.token_),
+        _cached_size_{0} {}
+
+UserSignInResponse::UserSignInResponse(
+    ::google::protobuf::Arena* arena,
+    const UserSignInResponse& from)
+    : ::google::protobuf::Message(arena) {
   UserSignInResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.roles_){from._impl_.roles_},
-      decltype(_impl_.permissions_){from._impl_.permissions_},
-      decltype(_impl_.real_name_){},
-      decltype(_impl_.token_){},
-      decltype(_impl_.by_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_real_name().empty()) {
-    _this->_impl_.real_name_.Set(from._internal_real_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_token().empty()) {
-    _this->_impl_.token_.Set(from._internal_token(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.by_ = from._impl_.by_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.by_ = from._impl_.by_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.UserSignInResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE UserSignInResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : roles_{visibility, arena},
+        permissions_{visibility, arena},
+        real_name_(arena),
+        token_(arena),
+        _cached_size_{0} {}
+
 inline void UserSignInResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.roles_){arena},
-      decltype(_impl_.permissions_){arena},
-      decltype(_impl_.real_name_){},
-      decltype(_impl_.token_){},
-      decltype(_impl_.by_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.real_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.real_name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.by_ = {};
 }
 UserSignInResponse::~UserSignInResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.UserSignInResponse)
@@ -10470,24 +10353,21 @@ UserSignInResponse::~UserSignInResponse() {
   SharedDtor();
 }
 inline void UserSignInResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.roles_.~RepeatedPtrField();
-  _impl_.permissions_.~RepeatedPtrField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.real_name_.Destroy();
   _impl_.token_.Destroy();
-}
-void UserSignInResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void UserSignInResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.UserSignInResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_roles()->Clear();
-  _internal_mutable_permissions()->Clear();
+  _impl_.roles_.Clear();
+  _impl_.permissions_.Clear();
   _impl_.real_name_.ClearToEmpty();
   _impl_.token_.ClearToEmpty();
   _impl_.by_ = 0;
@@ -10658,11 +10538,12 @@ const ::_pbi::TcParseTable<3, 5, 2, 61, 2> UserSignInResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData UserSignInResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    UserSignInResponse::MergeImpl
+    UserSignInResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*UserSignInResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* UserSignInResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void UserSignInResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<UserSignInResponse*>(&to_msg);
@@ -10672,8 +10553,10 @@ void UserSignInResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_roles()->MergeFrom(from._internal_roles());
-  _this->_internal_mutable_permissions()->MergeFrom(from._internal_permissions());
+  _this->_internal_mutable_roles()->MergeFrom(
+      from._internal_roles());
+  _this->_internal_mutable_permissions()->MergeFrom(
+      from._internal_permissions());
   if (!from._internal_real_name().empty()) {
     _this->_internal_set_real_name(from._internal_real_name());
   }
@@ -10697,17 +10580,18 @@ PROTOBUF_NOINLINE bool UserSignInResponse::IsInitialized() const {
   return true;
 }
 
-void UserSignInResponse::InternalSwap(UserSignInResponse* other) {
+::_pbi::CachedSize* UserSignInResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void UserSignInResponse::InternalSwap(UserSignInResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.roles_.InternalSwap(&other->_impl_.roles_);
   _impl_.permissions_.InternalSwap(&other->_impl_.permissions_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.real_name_, lhs_arena,
-                                       &other->_impl_.real_name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, lhs_arena,
-                                       &other->_impl_.token_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.real_name_, &other->_impl_.real_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, &other->_impl_.token_, arena);
   swap(_impl_.by_, other->_impl_.by_);
 }
 
@@ -10739,14 +10623,12 @@ const ::palm::metasequoia::v1::Resource& Permission::_Internal::object(const Per
   return *msg->_impl_.object_;
 }
 void Permission::set_allocated_role(::palm::metasequoia::v1::Role* role) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_subject();
   if (role) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(role);
+    ::google::protobuf::Arena* submessage_arena = role->GetArena();
     if (message_arena != submessage_arena) {
-      role = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, role, submessage_arena);
+      role = ::google::protobuf::internal::GetOwnedMessage(message_arena, role, submessage_arena);
     }
     set_has_role();
     _impl_.subject_.role_ = role;
@@ -10758,62 +10640,52 @@ Permission::Permission(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.Permission)
 }
-Permission::Permission(const Permission& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Permission::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        action_(arena, from.action_),
+        subject_{},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+Permission::Permission(
+    ::google::protobuf::Arena* arena,
+    const Permission& from)
+    : ::google::protobuf::Message(arena) {
   Permission* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.action_){},
-      decltype(_impl_.object_){nullptr},
-      decltype(_impl_.subject_){},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.action_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.action_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_action().empty()) {
-    _this->_impl_.action_.Set(from._internal_action(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.object_ = new ::palm::metasequoia::v1::Resource(*from._impl_.object_);
-  }
-  clear_has_subject();
-  switch (from.subject_case()) {
-    case kUser: {
-      _this->_internal_set_user(from._internal_user());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.object_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::Resource>(arena, *from._impl_.object_)
+                : nullptr;
+  switch (subject_case()) {
+    case SUBJECT_NOT_SET:
       break;
-    }
-    case kRole: {
-      _this->_internal_mutable_role()->::palm::metasequoia::v1::Role::MergeFrom(
-          from._internal_role());
-      break;
-    }
-    case SUBJECT_NOT_SET: {
-      break;
-    }
+      case kUser:
+        _impl_.subject_.user_ = from._impl_.subject_.user_;
+        break;
+      case kRole:
+        _impl_.subject_.role_ = CreateMaybeMessage<::palm::metasequoia::v1::Role>(arena, *from._impl_.subject_.role_);
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.Permission)
 }
+inline PROTOBUF_NDEBUG_INLINE Permission::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        action_(arena),
+        subject_{},
+        _oneof_case_{} {}
+
 inline void Permission::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.action_){},
-      decltype(_impl_.object_){nullptr},
-      decltype(_impl_.subject_){},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  _impl_.action_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.action_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  clear_has_subject();
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.object_ = {};
 }
 Permission::~Permission() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.Permission)
@@ -10821,26 +10693,25 @@ Permission::~Permission() {
   SharedDtor();
 }
 inline void Permission::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.action_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.object_;
+  delete _impl_.object_;
   if (has_subject()) {
     clear_subject();
   }
-}
-void Permission::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void Permission::clear_subject() {
 // @@protoc_insertion_point(one_of_clear_start:palm.metasequoia.v1.Permission)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (subject_case()) {
     case kUser: {
       // No need to clear
       break;
     }
     case kRole: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.subject_.role_;
       }
       break;
@@ -10855,6 +10726,7 @@ void Permission::clear_subject() {
 
 PROTOBUF_NOINLINE void Permission::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.Permission)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -10938,8 +10810,8 @@ const ::_pbi::TcParseTable<1, 4, 2, 45, 2> Permission::_table_ = {
       break;
     }
     case kRole: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(2, _Internal::role(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          2, _Internal::role(this),
           _Internal::role(this).GetCachedSize(), target, stream);
       break;
     }
@@ -10949,8 +10821,8 @@ const ::_pbi::TcParseTable<1, 4, 2, 45, 2> Permission::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.Resource object = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::object(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::object(this),
         _Internal::object(this).GetCachedSize(), target, stream);
   }
 
@@ -10988,9 +10860,8 @@ const ::_pbi::TcParseTable<1, 4, 2, 45, 2> Permission::_table_ = {
   // .palm.metasequoia.v1.Resource object = 11;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.object_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.object_);
   }
 
   switch (subject_case()) {
@@ -11002,9 +10873,8 @@ const ::_pbi::TcParseTable<1, 4, 2, 45, 2> Permission::_table_ = {
     }
     // .palm.metasequoia.v1.Role role = 2;
     case kRole: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.subject_.role_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.subject_.role_);
       break;
     }
     case SUBJECT_NOT_SET: {
@@ -11015,11 +10885,12 @@ const ::_pbi::TcParseTable<1, 4, 2, 45, 2> Permission::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Permission::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Permission::MergeImpl
+    Permission::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Permission::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Permission::GetClassData() const {
+  return &_class_data_;
+}
 
 void Permission::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Permission*>(&to_msg);
@@ -11064,14 +10935,16 @@ PROTOBUF_NOINLINE bool Permission::IsInitialized() const {
   return true;
 }
 
-void Permission::InternalSwap(Permission* other) {
+::_pbi::CachedSize* Permission::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Permission::InternalSwap(Permission* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.action_, lhs_arena,
-                                       &other->_impl_.action_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.action_, &other->_impl_.action_, arena);
   swap(_impl_.object_, other->_impl_.object_);
   swap(_impl_.subject_, other->_impl_.subject_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
@@ -11095,54 +10968,46 @@ Resource::Resource(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.Resource)
 }
-Resource::Resource(const Resource& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Resource::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : type_(arena, from.type_),
+        id_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+Resource::Resource(
+    ::google::protobuf::Arena* arena,
+    const Resource& from)
+    : ::google::protobuf::Message(arena) {
   Resource* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.type_){},
-      decltype(_impl_.id_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.type_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.type_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_type().empty()) {
-    _this->_impl_.type_.Set(from._internal_type(), _this->GetArenaForAllocation());
-  }
-  clear_has_id();
-  switch (from.id_case()) {
-    case kS: {
-      _this->_internal_set_s(from._internal_s());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  switch (id_case()) {
+    case ID_NOT_SET:
       break;
-    }
-    case kI: {
-      _this->_internal_set_i(from._internal_i());
-      break;
-    }
-    case ID_NOT_SET: {
-      break;
-    }
+      case kS:
+        new (&_impl_.id_.s_) decltype(_impl_.id_.s_){arena, from._impl_.id_.s_};
+        break;
+      case kI:
+        _impl_.id_.i_ = from._impl_.id_.i_;
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.Resource)
 }
+inline PROTOBUF_NDEBUG_INLINE Resource::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : type_(arena),
+        id_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
 inline void Resource::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.type_){},
-      decltype(_impl_.id_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  _impl_.type_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.type_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  clear_has_id();
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Resource::~Resource() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.Resource)
@@ -11150,18 +11015,17 @@ Resource::~Resource() {
   SharedDtor();
 }
 inline void Resource::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.type_.Destroy();
   if (has_id()) {
     clear_id();
   }
-}
-void Resource::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void Resource::clear_id() {
 // @@protoc_insertion_point(one_of_clear_start:palm.metasequoia.v1.Resource)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (id_case()) {
     case kS: {
       _impl_.id_.s_.Destroy();
@@ -11181,6 +11045,7 @@ void Resource::clear_id() {
 
 PROTOBUF_NOINLINE void Resource::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.Resource)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -11313,11 +11178,12 @@ const ::_pbi::TcParseTable<0, 3, 0, 42, 2> Resource::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Resource::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Resource::MergeImpl
+    Resource::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Resource::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Resource::GetClassData() const {
+  return &_class_data_;
+}
 
 void Resource::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Resource*>(&to_msg);
@@ -11357,13 +11223,15 @@ PROTOBUF_NOINLINE bool Resource::IsInitialized() const {
   return true;
 }
 
-void Resource::InternalSwap(Resource* other) {
+::_pbi::CachedSize* Resource::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Resource::InternalSwap(Resource* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.type_, lhs_arena,
-                                       &other->_impl_.type_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.type_, &other->_impl_.type_, arena);
   swap(_impl_.id_, other->_impl_.id_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
@@ -11384,35 +11252,32 @@ Role_Member::Role_Member(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.Role.Member)
 }
-Role_Member::Role_Member(const Role_Member& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Role_Member::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : name_(arena, from.name_),
+        _cached_size_{0} {}
+
+Role_Member::Role_Member(
+    ::google::protobuf::Arena* arena,
+    const Role_Member& from)
+    : ::google::protobuf::Message(arena) {
   Role_Member* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.Role.Member)
 }
+inline PROTOBUF_NDEBUG_INLINE Role_Member::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : name_(arena),
+        _cached_size_{0} {}
+
 inline void Role_Member::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Role_Member::~Role_Member() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.Role.Member)
@@ -11420,15 +11285,14 @@ Role_Member::~Role_Member() {
   SharedDtor();
 }
 inline void Role_Member::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
-}
-void Role_Member::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void Role_Member::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.Role.Member)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -11519,11 +11383,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 44, 2> Role_Member::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Role_Member::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Role_Member::MergeImpl
+    Role_Member::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Role_Member::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Role_Member::GetClassData() const {
+  return &_class_data_;
+}
 
 void Role_Member::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Role_Member*>(&to_msg);
@@ -11550,13 +11415,15 @@ PROTOBUF_NOINLINE bool Role_Member::IsInitialized() const {
   return true;
 }
 
-void Role_Member::InternalSwap(Role_Member* other) {
+::_pbi::CachedSize* Role_Member::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Role_Member::InternalSwap(Role_Member* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
 }
 
 ::google::protobuf::Metadata Role_Member::GetMetadata() const {
@@ -11585,15 +11452,12 @@ const ::palm::metasequoia::v1::Role_Member& Role::_Internal::member(const Role* 
   return *msg->_impl_.by_.member_;
 }
 void Role::set_allocated_administrator(::google::protobuf::Empty* administrator) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_by();
   if (administrator) {
-    ::google::protobuf::Arena* submessage_arena =
-        ::google::protobuf::Arena::InternalGetOwningArena(
-                reinterpret_cast<::google::protobuf::MessageLite*>(administrator));
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(administrator)->GetArena();
     if (message_arena != submessage_arena) {
-      administrator = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, administrator, submessage_arena);
+      administrator = ::google::protobuf::internal::GetOwnedMessage(message_arena, administrator, submessage_arena);
     }
     set_has_administrator();
     _impl_.by_.administrator_ = administrator;
@@ -11601,23 +11465,21 @@ void Role::set_allocated_administrator(::google::protobuf::Empty* administrator)
   // @@protoc_insertion_point(field_set_allocated:palm.metasequoia.v1.Role.administrator)
 }
 void Role::clear_administrator() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (by_case() == kAdministrator) {
-    if (GetArenaForAllocation() == nullptr) {
+    if (GetArena() == nullptr) {
       delete _impl_.by_.administrator_;
     }
     clear_has_by();
   }
 }
 void Role::set_allocated_root(::google::protobuf::Empty* root) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_by();
   if (root) {
-    ::google::protobuf::Arena* submessage_arena =
-        ::google::protobuf::Arena::InternalGetOwningArena(
-                reinterpret_cast<::google::protobuf::MessageLite*>(root));
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(root)->GetArena();
     if (message_arena != submessage_arena) {
-      root = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, root, submessage_arena);
+      root = ::google::protobuf::internal::GetOwnedMessage(message_arena, root, submessage_arena);
     }
     set_has_root();
     _impl_.by_.root_ = root;
@@ -11625,22 +11487,21 @@ void Role::set_allocated_root(::google::protobuf::Empty* root) {
   // @@protoc_insertion_point(field_set_allocated:palm.metasequoia.v1.Role.root)
 }
 void Role::clear_root() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (by_case() == kRoot) {
-    if (GetArenaForAllocation() == nullptr) {
+    if (GetArena() == nullptr) {
       delete _impl_.by_.root_;
     }
     clear_has_by();
   }
 }
 void Role::set_allocated_member(::palm::metasequoia::v1::Role_Member* member) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_by();
   if (member) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(member);
+    ::google::protobuf::Arena* submessage_arena = member->GetArena();
     if (message_arena != submessage_arena) {
-      member = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, member, submessage_arena);
+      member = ::google::protobuf::internal::GetOwnedMessage(message_arena, member, submessage_arena);
     }
     set_has_member();
     _impl_.by_.member_ = member;
@@ -11652,48 +11513,47 @@ Role::Role(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.Role)
 }
-Role::Role(const Role& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE Role::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : by_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+Role::Role(
+    ::google::protobuf::Arena* arena,
+    const Role& from)
+    : ::google::protobuf::Message(arena) {
   Role* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.by_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  clear_has_by();
-  switch (from.by_case()) {
-    case kAdministrator: {
-      _this->_internal_mutable_administrator()->::google::protobuf::Empty::MergeFrom(
-          from._internal_administrator());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  switch (by_case()) {
+    case BY_NOT_SET:
       break;
-    }
-    case kRoot: {
-      _this->_internal_mutable_root()->::google::protobuf::Empty::MergeFrom(
-          from._internal_root());
-      break;
-    }
-    case kMember: {
-      _this->_internal_mutable_member()->::palm::metasequoia::v1::Role_Member::MergeFrom(
-          from._internal_member());
-      break;
-    }
-    case BY_NOT_SET: {
-      break;
-    }
+      case kAdministrator:
+        _impl_.by_.administrator_ = CreateMaybeMessage<::google::protobuf::Empty>(arena, *from._impl_.by_.administrator_);
+        break;
+      case kRoot:
+        _impl_.by_.root_ = CreateMaybeMessage<::google::protobuf::Empty>(arena, *from._impl_.by_.root_);
+        break;
+      case kMember:
+        _impl_.by_.member_ = CreateMaybeMessage<::palm::metasequoia::v1::Role_Member>(arena, *from._impl_.by_.member_);
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.Role)
 }
+inline PROTOBUF_NDEBUG_INLINE Role::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : by_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
 inline void Role::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.by_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  clear_has_by();
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 Role::~Role() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.Role)
@@ -11701,32 +11561,31 @@ Role::~Role() {
   SharedDtor();
 }
 inline void Role::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   if (has_by()) {
     clear_by();
   }
-}
-void Role::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void Role::clear_by() {
 // @@protoc_insertion_point(one_of_clear_start:palm.metasequoia.v1.Role)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (by_case()) {
     case kAdministrator: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.by_.administrator_;
       }
       break;
     }
     case kRoot: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.by_.root_;
       }
       break;
     }
     case kMember: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.by_.member_;
       }
       break;
@@ -11741,6 +11600,7 @@ void Role::clear_by() {
 
 PROTOBUF_NOINLINE void Role::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.Role)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -11801,20 +11661,20 @@ const ::_pbi::TcParseTable<0, 3, 3, 0, 2> Role::_table_ = {
 
   switch (by_case()) {
     case kAdministrator: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(1, _Internal::administrator(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          1, _Internal::administrator(this),
           _Internal::administrator(this).GetCachedSize(), target, stream);
       break;
     }
     case kRoot: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(2, _Internal::root(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          2, _Internal::root(this),
           _Internal::root(this).GetCachedSize(), target, stream);
       break;
     }
     case kMember: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(3, _Internal::member(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          3, _Internal::member(this),
           _Internal::member(this).GetCachedSize(), target, stream);
       break;
     }
@@ -11841,23 +11701,20 @@ const ::_pbi::TcParseTable<0, 3, 3, 0, 2> Role::_table_ = {
   switch (by_case()) {
     // .google.protobuf.Empty administrator = 1;
     case kAdministrator: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.by_.administrator_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.by_.administrator_);
       break;
     }
     // .google.protobuf.Empty root = 2;
     case kRoot: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.by_.root_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.by_.root_);
       break;
     }
     // .palm.metasequoia.v1.Role.Member member = 3;
     case kMember: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.by_.member_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.by_.member_);
       break;
     }
     case BY_NOT_SET: {
@@ -11868,11 +11725,12 @@ const ::_pbi::TcParseTable<0, 3, 3, 0, 2> Role::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData Role::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    Role::MergeImpl
+    Role::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*Role::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* Role::GetClassData() const {
+  return &_class_data_;
+}
 
 void Role::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<Role*>(&to_msg);
@@ -11916,7 +11774,10 @@ PROTOBUF_NOINLINE bool Role::IsInitialized() const {
   return true;
 }
 
-void Role::InternalSwap(Role* other) {
+::_pbi::CachedSize* Role::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void Role::InternalSwap(Role* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_.by_, other->_impl_.by_);
@@ -11949,45 +11810,44 @@ RbacCanRequest::RbacCanRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.RbacCanRequest)
 }
-RbacCanRequest::RbacCanRequest(const RbacCanRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RbacCanRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        action_(arena, from.action_) {}
+
+RbacCanRequest::RbacCanRequest(
+    ::google::protobuf::Arena* arena,
+    const RbacCanRequest& from)
+    : ::google::protobuf::Message(arena) {
   RbacCanRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.action_){},
-      decltype(_impl_.object_){nullptr},
-      decltype(_impl_.user_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.action_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.action_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_action().empty()) {
-    _this->_impl_.action_.Set(from._internal_action(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.object_ = new ::palm::metasequoia::v1::Resource(*from._impl_.object_);
-  }
-  _this->_impl_.user_ = from._impl_.user_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.object_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::Resource>(arena, *from._impl_.object_)
+                : nullptr;
+  _impl_.user_ = from._impl_.user_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.RbacCanRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE RbacCanRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        action_(arena) {}
+
 inline void RbacCanRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.action_){},
-      decltype(_impl_.object_){nullptr},
-      decltype(_impl_.user_){0},
-  };
-  _impl_.action_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.action_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, object_),
+           0,
+           offsetof(Impl_, user_) -
+               offsetof(Impl_, object_) +
+               sizeof(Impl_::user_));
 }
 RbacCanRequest::~RbacCanRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.RbacCanRequest)
@@ -11995,16 +11855,15 @@ RbacCanRequest::~RbacCanRequest() {
   SharedDtor();
 }
 inline void RbacCanRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.action_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.object_;
-}
-void RbacCanRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.object_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RbacCanRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.RbacCanRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -12090,8 +11949,8 @@ const ::_pbi::TcParseTable<2, 3, 1, 49, 2> RbacCanRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.Resource object = 2;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::object(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::object(this),
         _Internal::object(this).GetCachedSize(), target, stream);
   }
 
@@ -12129,9 +11988,8 @@ const ::_pbi::TcParseTable<2, 3, 1, 49, 2> RbacCanRequest::_table_ = {
   // .palm.metasequoia.v1.Resource object = 2;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.object_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.object_);
   }
 
   // int32 user = 1;
@@ -12144,11 +12002,12 @@ const ::_pbi::TcParseTable<2, 3, 1, 49, 2> RbacCanRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RbacCanRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RbacCanRequest::MergeImpl
+    RbacCanRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RbacCanRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RbacCanRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void RbacCanRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RbacCanRequest*>(&to_msg);
@@ -12182,14 +12041,16 @@ PROTOBUF_NOINLINE bool RbacCanRequest::IsInitialized() const {
   return true;
 }
 
-void RbacCanRequest::InternalSwap(RbacCanRequest* other) {
+::_pbi::CachedSize* RbacCanRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RbacCanRequest::InternalSwap(RbacCanRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.action_, lhs_arena,
-                                       &other->_impl_.action_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.action_, &other->_impl_.action_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(RbacCanRequest, _impl_.user_)
       + sizeof(RbacCanRequest::_impl_.user_)
@@ -12224,32 +12085,42 @@ RbacHasRequest::RbacHasRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.RbacHasRequest)
 }
-RbacHasRequest::RbacHasRequest(const RbacHasRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RbacHasRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+RbacHasRequest::RbacHasRequest(
+    ::google::protobuf::Arena* arena,
+    const RbacHasRequest& from)
+    : ::google::protobuf::Message(arena) {
   RbacHasRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.role_){nullptr},
-      decltype(_impl_.user_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.role_ = new ::palm::metasequoia::v1::Role(*from._impl_.role_);
-  }
-  _this->_impl_.user_ = from._impl_.user_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.role_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::Role>(arena, *from._impl_.role_)
+                : nullptr;
+  _impl_.user_ = from._impl_.user_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.RbacHasRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE RbacHasRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void RbacHasRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.role_){nullptr},
-      decltype(_impl_.user_){0},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, role_),
+           0,
+           offsetof(Impl_, user_) -
+               offsetof(Impl_, role_) +
+               sizeof(Impl_::user_));
 }
 RbacHasRequest::~RbacHasRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.RbacHasRequest)
@@ -12257,15 +12128,14 @@ RbacHasRequest::~RbacHasRequest() {
   SharedDtor();
 }
 inline void RbacHasRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.role_;
-}
-void RbacHasRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.role_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RbacHasRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.RbacHasRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -12340,8 +12210,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RbacHasRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.Role role = 2;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::role(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::role(this),
         _Internal::role(this).GetCachedSize(), target, stream);
   }
 
@@ -12365,9 +12235,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RbacHasRequest::_table_ = {
   // .palm.metasequoia.v1.Role role = 2;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.role_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.role_);
   }
 
   // int32 user = 1;
@@ -12380,11 +12249,12 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RbacHasRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RbacHasRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RbacHasRequest::MergeImpl
+    RbacHasRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RbacHasRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RbacHasRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void RbacHasRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RbacHasRequest*>(&to_msg);
@@ -12415,7 +12285,10 @@ PROTOBUF_NOINLINE bool RbacHasRequest::IsInitialized() const {
   return true;
 }
 
-void RbacHasRequest::InternalSwap(RbacHasRequest* other) {
+::_pbi::CachedSize* RbacHasRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RbacHasRequest::InternalSwap(RbacHasRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -12453,42 +12326,38 @@ RbacPermissionItem::RbacPermissionItem(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.RbacPermissionItem)
 }
-RbacPermissionItem::RbacPermissionItem(const RbacPermissionItem& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RbacPermissionItem::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        action_(arena, from.action_) {}
+
+RbacPermissionItem::RbacPermissionItem(
+    ::google::protobuf::Arena* arena,
+    const RbacPermissionItem& from)
+    : ::google::protobuf::Message(arena) {
   RbacPermissionItem* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.action_){},
-      decltype(_impl_.resource_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.action_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.action_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_action().empty()) {
-    _this->_impl_.action_.Set(from._internal_action(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.resource_ = new ::palm::metasequoia::v1::Resource(*from._impl_.resource_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.resource_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::Resource>(arena, *from._impl_.resource_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.RbacPermissionItem)
 }
+inline PROTOBUF_NDEBUG_INLINE RbacPermissionItem::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        action_(arena) {}
+
 inline void RbacPermissionItem::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.action_){},
-      decltype(_impl_.resource_){nullptr},
-  };
-  _impl_.action_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.action_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.resource_ = {};
 }
 RbacPermissionItem::~RbacPermissionItem() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.RbacPermissionItem)
@@ -12496,16 +12365,15 @@ RbacPermissionItem::~RbacPermissionItem() {
   SharedDtor();
 }
 inline void RbacPermissionItem::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.action_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.resource_;
-}
-void RbacPermissionItem::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.resource_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RbacPermissionItem::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.RbacPermissionItem)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -12584,8 +12452,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 53, 2> RbacPermissionItem::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.Resource resource = 2;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::resource(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::resource(this),
         _Internal::resource(this).GetCachedSize(), target, stream);
   }
 
@@ -12615,20 +12483,20 @@ const ::_pbi::TcParseTable<1, 2, 1, 53, 2> RbacPermissionItem::_table_ = {
   // .palm.metasequoia.v1.Resource resource = 2;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.resource_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.resource_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData RbacPermissionItem::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RbacPermissionItem::MergeImpl
+    RbacPermissionItem::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RbacPermissionItem::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RbacPermissionItem::GetClassData() const {
+  return &_class_data_;
+}
 
 void RbacPermissionItem::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RbacPermissionItem*>(&to_msg);
@@ -12659,14 +12527,16 @@ PROTOBUF_NOINLINE bool RbacPermissionItem::IsInitialized() const {
   return true;
 }
 
-void RbacPermissionItem::InternalSwap(RbacPermissionItem* other) {
+::_pbi::CachedSize* RbacPermissionItem::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RbacPermissionItem::InternalSwap(RbacPermissionItem* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.action_, lhs_arena,
-                                       &other->_impl_.action_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.action_, &other->_impl_.action_, arena);
   swap(_impl_.resource_, other->_impl_.resource_);
 }
 
@@ -12686,27 +12556,34 @@ RbacPermissionsForUserRequest::RbacPermissionsForUserRequest(::google::protobuf:
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.RbacPermissionsForUserRequest)
 }
-RbacPermissionsForUserRequest::RbacPermissionsForUserRequest(const RbacPermissionsForUserRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RbacPermissionsForUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : permissions_{visibility, arena, from.permissions_},
+        _cached_size_{0} {}
+
+RbacPermissionsForUserRequest::RbacPermissionsForUserRequest(
+    ::google::protobuf::Arena* arena,
+    const RbacPermissionsForUserRequest& from)
+    : ::google::protobuf::Message(arena) {
   RbacPermissionsForUserRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.permissions_){from._impl_.permissions_},
-      decltype(_impl_.user_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _this->_impl_.user_ = from._impl_.user_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.user_ = from._impl_.user_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.RbacPermissionsForUserRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE RbacPermissionsForUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : permissions_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void RbacPermissionsForUserRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.permissions_){arena},
-      decltype(_impl_.user_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.user_ = {};
 }
 RbacPermissionsForUserRequest::~RbacPermissionsForUserRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.RbacPermissionsForUserRequest)
@@ -12714,20 +12591,18 @@ RbacPermissionsForUserRequest::~RbacPermissionsForUserRequest() {
   SharedDtor();
 }
 inline void RbacPermissionsForUserRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.permissions_.~RepeatedPtrField();
-}
-void RbacPermissionsForUserRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RbacPermissionsForUserRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.RbacPermissionsForUserRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_permissions()->Clear();
+  _impl_.permissions_.Clear();
   _impl_.user_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -12830,11 +12705,12 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RbacPermissionsForUserRequest::_table_
 }
 
 const ::google::protobuf::Message::ClassData RbacPermissionsForUserRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RbacPermissionsForUserRequest::MergeImpl
+    RbacPermissionsForUserRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RbacPermissionsForUserRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RbacPermissionsForUserRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void RbacPermissionsForUserRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RbacPermissionsForUserRequest*>(&to_msg);
@@ -12844,7 +12720,8 @@ void RbacPermissionsForUserRequest::MergeImpl(::google::protobuf::Message& to_ms
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_permissions()->MergeFrom(from._internal_permissions());
+  _this->_internal_mutable_permissions()->MergeFrom(
+      from._internal_permissions());
   if (from._internal_user() != 0) {
     _this->_internal_set_user(from._internal_user());
   }
@@ -12862,7 +12739,10 @@ PROTOBUF_NOINLINE bool RbacPermissionsForUserRequest::IsInitialized() const {
   return true;
 }
 
-void RbacPermissionsForUserRequest::InternalSwap(RbacPermissionsForUserRequest* other) {
+::_pbi::CachedSize* RbacPermissionsForUserRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RbacPermissionsForUserRequest::InternalSwap(RbacPermissionsForUserRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.permissions_.InternalSwap(&other->_impl_.permissions_);
@@ -12895,31 +12775,38 @@ RbacPermissionsForRoleRequest::RbacPermissionsForRoleRequest(::google::protobuf:
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.RbacPermissionsForRoleRequest)
 }
-RbacPermissionsForRoleRequest::RbacPermissionsForRoleRequest(const RbacPermissionsForRoleRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RbacPermissionsForRoleRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        permissions_{visibility, arena, from.permissions_} {}
+
+RbacPermissionsForRoleRequest::RbacPermissionsForRoleRequest(
+    ::google::protobuf::Arena* arena,
+    const RbacPermissionsForRoleRequest& from)
+    : ::google::protobuf::Message(arena) {
   RbacPermissionsForRoleRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.permissions_){from._impl_.permissions_},
-      decltype(_impl_.role_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.role_ = new ::palm::metasequoia::v1::Role(*from._impl_.role_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.role_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::Role>(arena, *from._impl_.role_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.RbacPermissionsForRoleRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE RbacPermissionsForRoleRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        permissions_{visibility, arena} {}
+
 inline void RbacPermissionsForRoleRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.permissions_){arena},
-      decltype(_impl_.role_){nullptr},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.role_ = {};
 }
 RbacPermissionsForRoleRequest::~RbacPermissionsForRoleRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.RbacPermissionsForRoleRequest)
@@ -12927,21 +12814,19 @@ RbacPermissionsForRoleRequest::~RbacPermissionsForRoleRequest() {
   SharedDtor();
 }
 inline void RbacPermissionsForRoleRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.permissions_.~RepeatedPtrField();
-  if (this != internal_default_instance()) delete _impl_.role_;
-}
-void RbacPermissionsForRoleRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.role_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RbacPermissionsForRoleRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.RbacPermissionsForRoleRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_permissions()->Clear();
+  _impl_.permissions_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.role_ != nullptr);
@@ -13005,8 +12890,8 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> RbacPermissionsForRoleRequest::_table_
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.Role role = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::role(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::role(this),
         _Internal::role(this).GetCachedSize(), target, stream);
   }
 
@@ -13044,20 +12929,20 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> RbacPermissionsForRoleRequest::_table_
   // .palm.metasequoia.v1.Role role = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.role_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.role_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData RbacPermissionsForRoleRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RbacPermissionsForRoleRequest::MergeImpl
+    RbacPermissionsForRoleRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RbacPermissionsForRoleRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RbacPermissionsForRoleRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void RbacPermissionsForRoleRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RbacPermissionsForRoleRequest*>(&to_msg);
@@ -13067,7 +12952,8 @@ void RbacPermissionsForRoleRequest::MergeImpl(::google::protobuf::Message& to_ms
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_permissions()->MergeFrom(from._internal_permissions());
+  _this->_internal_mutable_permissions()->MergeFrom(
+      from._internal_permissions());
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_role()->::palm::metasequoia::v1::Role::MergeFrom(
         from._internal_role());
@@ -13086,7 +12972,10 @@ PROTOBUF_NOINLINE bool RbacPermissionsForRoleRequest::IsInitialized() const {
   return true;
 }
 
-void RbacPermissionsForRoleRequest::InternalSwap(RbacPermissionsForRoleRequest* other) {
+::_pbi::CachedSize* RbacPermissionsForRoleRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RbacPermissionsForRoleRequest::InternalSwap(RbacPermissionsForRoleRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -13110,27 +12999,34 @@ RbacRolesForUserRequest::RbacRolesForUserRequest(::google::protobuf::Arena* aren
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.RbacRolesForUserRequest)
 }
-RbacRolesForUserRequest::RbacRolesForUserRequest(const RbacRolesForUserRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RbacRolesForUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : roles_{visibility, arena, from.roles_},
+        _cached_size_{0} {}
+
+RbacRolesForUserRequest::RbacRolesForUserRequest(
+    ::google::protobuf::Arena* arena,
+    const RbacRolesForUserRequest& from)
+    : ::google::protobuf::Message(arena) {
   RbacRolesForUserRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.roles_){from._impl_.roles_},
-      decltype(_impl_.user_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _this->_impl_.user_ = from._impl_.user_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.user_ = from._impl_.user_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.RbacRolesForUserRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE RbacRolesForUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : roles_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void RbacRolesForUserRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.roles_){arena},
-      decltype(_impl_.user_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.user_ = {};
 }
 RbacRolesForUserRequest::~RbacRolesForUserRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.RbacRolesForUserRequest)
@@ -13138,20 +13034,18 @@ RbacRolesForUserRequest::~RbacRolesForUserRequest() {
   SharedDtor();
 }
 inline void RbacRolesForUserRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.roles_.~RepeatedPtrField();
-}
-void RbacRolesForUserRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RbacRolesForUserRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.RbacRolesForUserRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_roles()->Clear();
+  _impl_.roles_.Clear();
   _impl_.user_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -13254,11 +13148,12 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> RbacRolesForUserRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RbacRolesForUserRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RbacRolesForUserRequest::MergeImpl
+    RbacRolesForUserRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RbacRolesForUserRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RbacRolesForUserRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void RbacRolesForUserRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RbacRolesForUserRequest*>(&to_msg);
@@ -13268,7 +13163,8 @@ void RbacRolesForUserRequest::MergeImpl(::google::protobuf::Message& to_msg, con
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_roles()->MergeFrom(from._internal_roles());
+  _this->_internal_mutable_roles()->MergeFrom(
+      from._internal_roles());
   if (from._internal_user() != 0) {
     _this->_internal_set_user(from._internal_user());
   }
@@ -13286,7 +13182,10 @@ PROTOBUF_NOINLINE bool RbacRolesForUserRequest::IsInitialized() const {
   return true;
 }
 
-void RbacRolesForUserRequest::InternalSwap(RbacRolesForUserRequest* other) {
+::_pbi::CachedSize* RbacRolesForUserRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RbacRolesForUserRequest::InternalSwap(RbacRolesForUserRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.roles_.InternalSwap(&other->_impl_.roles_);
@@ -13309,24 +13208,32 @@ RbacRolesResponse::RbacRolesResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.RbacRolesResponse)
 }
-RbacRolesResponse::RbacRolesResponse(const RbacRolesResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RbacRolesResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+RbacRolesResponse::RbacRolesResponse(
+    ::google::protobuf::Arena* arena,
+    const RbacRolesResponse& from)
+    : ::google::protobuf::Message(arena) {
   RbacRolesResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.RbacRolesResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE RbacRolesResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void RbacRolesResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 RbacRolesResponse::~RbacRolesResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.RbacRolesResponse)
@@ -13334,20 +13241,18 @@ RbacRolesResponse::~RbacRolesResponse() {
   SharedDtor();
 }
 inline void RbacRolesResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void RbacRolesResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RbacRolesResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.RbacRolesResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -13430,11 +13335,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> RbacRolesResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RbacRolesResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RbacRolesResponse::MergeImpl
+    RbacRolesResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RbacRolesResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RbacRolesResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void RbacRolesResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RbacRolesResponse*>(&to_msg);
@@ -13444,7 +13350,8 @@ void RbacRolesResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::g
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -13459,7 +13366,10 @@ PROTOBUF_NOINLINE bool RbacRolesResponse::IsInitialized() const {
   return true;
 }
 
-void RbacRolesResponse::InternalSwap(RbacRolesResponse* other) {
+::_pbi::CachedSize* RbacRolesResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RbacRolesResponse::InternalSwap(RbacRolesResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -13481,24 +13391,32 @@ RbacPermissionsResponse::RbacPermissionsResponse(::google::protobuf::Arena* aren
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.RbacPermissionsResponse)
 }
-RbacPermissionsResponse::RbacPermissionsResponse(const RbacPermissionsResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE RbacPermissionsResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+RbacPermissionsResponse::RbacPermissionsResponse(
+    ::google::protobuf::Arena* arena,
+    const RbacPermissionsResponse& from)
+    : ::google::protobuf::Message(arena) {
   RbacPermissionsResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.RbacPermissionsResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE RbacPermissionsResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void RbacPermissionsResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 RbacPermissionsResponse::~RbacPermissionsResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.RbacPermissionsResponse)
@@ -13506,20 +13424,18 @@ RbacPermissionsResponse::~RbacPermissionsResponse() {
   SharedDtor();
 }
 inline void RbacPermissionsResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void RbacPermissionsResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void RbacPermissionsResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.RbacPermissionsResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -13602,11 +13518,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> RbacPermissionsResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData RbacPermissionsResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    RbacPermissionsResponse::MergeImpl
+    RbacPermissionsResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*RbacPermissionsResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* RbacPermissionsResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void RbacPermissionsResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<RbacPermissionsResponse*>(&to_msg);
@@ -13616,7 +13533,8 @@ void RbacPermissionsResponse::MergeImpl(::google::protobuf::Message& to_msg, con
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -13631,7 +13549,10 @@ PROTOBUF_NOINLINE bool RbacPermissionsResponse::IsInitialized() const {
   return true;
 }
 
-void RbacPermissionsResponse::InternalSwap(RbacPermissionsResponse* other) {
+::_pbi::CachedSize* RbacPermissionsResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void RbacPermissionsResponse::InternalSwap(RbacPermissionsResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -13653,51 +13574,36 @@ SettingSetRequest::SettingSetRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SettingSetRequest)
 }
-SettingSetRequest::SettingSetRequest(const SettingSetRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SettingSetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : key_(arena, from.key_),
+        value_(arena, from.value_),
+        _cached_size_{0} {}
+
+SettingSetRequest::SettingSetRequest(
+    ::google::protobuf::Arena* arena,
+    const SettingSetRequest& from)
+    : ::google::protobuf::Message(arena) {
   SettingSetRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.key_){},
-      decltype(_impl_.value_){},
-      decltype(_impl_.global_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_key().empty()) {
-    _this->_impl_.key_.Set(from._internal_key(), _this->GetArenaForAllocation());
-  }
-  _impl_.value_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.value_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_value().empty()) {
-    _this->_impl_.value_.Set(from._internal_value(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.global_ = from._impl_.global_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.global_ = from._impl_.global_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SettingSetRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SettingSetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : key_(arena),
+        value_(arena),
+        _cached_size_{0} {}
+
 inline void SettingSetRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.key_){},
-      decltype(_impl_.value_){},
-      decltype(_impl_.global_){false},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.value_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.value_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.global_ = {};
 }
 SettingSetRequest::~SettingSetRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SettingSetRequest)
@@ -13705,16 +13611,15 @@ SettingSetRequest::~SettingSetRequest() {
   SharedDtor();
 }
 inline void SettingSetRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.key_.Destroy();
   _impl_.value_.Destroy();
-}
-void SettingSetRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SettingSetRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SettingSetRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -13844,11 +13749,12 @@ const ::_pbi::TcParseTable<2, 3, 0, 49, 2> SettingSetRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SettingSetRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SettingSetRequest::MergeImpl
+    SettingSetRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SettingSetRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SettingSetRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SettingSetRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SettingSetRequest*>(&to_msg);
@@ -13881,15 +13787,16 @@ PROTOBUF_NOINLINE bool SettingSetRequest::IsInitialized() const {
   return true;
 }
 
-void SettingSetRequest::InternalSwap(SettingSetRequest* other) {
+::_pbi::CachedSize* SettingSetRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SettingSetRequest::InternalSwap(SettingSetRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, lhs_arena,
-                                       &other->_impl_.key_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.value_, lhs_arena,
-                                       &other->_impl_.value_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, &other->_impl_.key_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.value_, &other->_impl_.value_, arena);
         swap(_impl_.global_, other->_impl_.global_);
 }
 
@@ -13909,38 +13816,34 @@ SettingGetRequest::SettingGetRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SettingGetRequest)
 }
-SettingGetRequest::SettingGetRequest(const SettingGetRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SettingGetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : key_(arena, from.key_),
+        _cached_size_{0} {}
+
+SettingGetRequest::SettingGetRequest(
+    ::google::protobuf::Arena* arena,
+    const SettingGetRequest& from)
+    : ::google::protobuf::Message(arena) {
   SettingGetRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.key_){},
-      decltype(_impl_.global_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_key().empty()) {
-    _this->_impl_.key_.Set(from._internal_key(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.global_ = from._impl_.global_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.global_ = from._impl_.global_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SettingGetRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SettingGetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : key_(arena),
+        _cached_size_{0} {}
+
 inline void SettingGetRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.key_){},
-      decltype(_impl_.global_){false},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.global_ = {};
 }
 SettingGetRequest::~SettingGetRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SettingGetRequest)
@@ -13948,15 +13851,14 @@ SettingGetRequest::~SettingGetRequest() {
   SharedDtor();
 }
 inline void SettingGetRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.key_.Destroy();
-}
-void SettingGetRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SettingGetRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SettingGetRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -14066,11 +13968,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 49, 2> SettingGetRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SettingGetRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SettingGetRequest::MergeImpl
+    SettingGetRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SettingGetRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SettingGetRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SettingGetRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SettingGetRequest*>(&to_msg);
@@ -14100,13 +14003,15 @@ PROTOBUF_NOINLINE bool SettingGetRequest::IsInitialized() const {
   return true;
 }
 
-void SettingGetRequest::InternalSwap(SettingGetRequest* other) {
+::_pbi::CachedSize* SettingGetRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SettingGetRequest::InternalSwap(SettingGetRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, lhs_arena,
-                                       &other->_impl_.key_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, &other->_impl_.key_, arena);
         swap(_impl_.global_, other->_impl_.global_);
 }
 
@@ -14126,18 +14031,19 @@ SettingByUserRequest::SettingByUserRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SettingByUserRequest)
 }
-SettingByUserRequest::SettingByUserRequest(const SettingByUserRequest& from)
-    : ::google::protobuf::Message(), _impl_(from._impl_) {
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SettingByUserRequest)
+SettingByUserRequest::SettingByUserRequest(
+    ::google::protobuf::Arena* arena, const SettingByUserRequest& from)
+    : SettingByUserRequest(arena) {
+  MergeFrom(from);
 }
+inline PROTOBUF_NDEBUG_INLINE SettingByUserRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void SettingByUserRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.user_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.user_ = {};
 }
 SettingByUserRequest::~SettingByUserRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SettingByUserRequest)
@@ -14145,14 +14051,13 @@ SettingByUserRequest::~SettingByUserRequest() {
   SharedDtor();
 }
 inline void SettingByUserRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-}
-void SettingByUserRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SettingByUserRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SettingByUserRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -14239,11 +14144,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 0, 2> SettingByUserRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SettingByUserRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SettingByUserRequest::MergeImpl
+    SettingByUserRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SettingByUserRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SettingByUserRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SettingByUserRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SettingByUserRequest*>(&to_msg);
@@ -14270,7 +14176,10 @@ PROTOBUF_NOINLINE bool SettingByUserRequest::IsInitialized() const {
   return true;
 }
 
-void SettingByUserRequest::InternalSwap(SettingByUserRequest* other) {
+::_pbi::CachedSize* SettingByUserRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SettingByUserRequest::InternalSwap(SettingByUserRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
         swap(_impl_.user_, other->_impl_.user_);
@@ -14308,10 +14217,12 @@ const ::google::protobuf::Timestamp& SettingsResponse_Item::_Internal::updated_a
   return *msg->_impl_.updated_at_;
 }
 void SettingsResponse_Item::clear_created_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.created_at_ != nullptr) _impl_.created_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void SettingsResponse_Item::clear_updated_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.updated_at_ != nullptr) _impl_.updated_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
@@ -14320,67 +14231,55 @@ SettingsResponse_Item::SettingsResponse_Item(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SettingsResponse.Item)
 }
-SettingsResponse_Item::SettingsResponse_Item(const SettingsResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SettingsResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        key_(arena, from.key_),
+        value_(arena, from.value_) {}
+
+SettingsResponse_Item::SettingsResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const SettingsResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   SettingsResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.key_){},
-      decltype(_impl_.value_){},
-      decltype(_impl_.created_at_){nullptr},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){},
-      decltype(_impl_.user_id_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_key().empty()) {
-    _this->_impl_.key_.Set(from._internal_key(), _this->GetArenaForAllocation());
-  }
-  _impl_.value_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.value_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_value().empty()) {
-    _this->_impl_.value_.Set(from._internal_value(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.created_at_ = new ::google::protobuf::Timestamp(*from._impl_.created_at_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.updated_at_ = new ::google::protobuf::Timestamp(*from._impl_.updated_at_);
-  }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.user_id_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.user_id_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.created_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.created_at_)
+                : nullptr;
+  _impl_.updated_at_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.updated_at_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, user_id_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::user_id_));
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SettingsResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE SettingsResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        key_(arena),
+        value_(arena) {}
+
 inline void SettingsResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.key_){},
-      decltype(_impl_.value_){},
-      decltype(_impl_.created_at_){nullptr},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.user_id_){0},
-  };
-  _impl_.key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.value_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.value_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, created_at_),
+           0,
+           offsetof(Impl_, user_id_) -
+               offsetof(Impl_, created_at_) +
+               sizeof(Impl_::user_id_));
 }
 SettingsResponse_Item::~SettingsResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SettingsResponse.Item)
@@ -14388,18 +14287,17 @@ SettingsResponse_Item::~SettingsResponse_Item() {
   SharedDtor();
 }
 inline void SettingsResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.key_.Destroy();
   _impl_.value_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.created_at_;
-  if (this != internal_default_instance()) delete _impl_.updated_at_;
-}
-void SettingsResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.created_at_;
+  delete _impl_.updated_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SettingsResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SettingsResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -14526,15 +14424,15 @@ const ::_pbi::TcParseTable<2, 6, 2, 53, 2> SettingsResponse_Item::_table_ = {
 
   // .google.protobuf.Timestamp created_at = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::created_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::created_at(this),
         _Internal::created_at(this).GetCachedSize(), target, stream);
   }
 
   // .google.protobuf.Timestamp updated_at = 12;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(12, _Internal::updated_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        12, _Internal::updated_at(this),
         _Internal::updated_at(this).GetCachedSize(), target, stream);
   }
 
@@ -14571,16 +14469,14 @@ const ::_pbi::TcParseTable<2, 6, 2, 53, 2> SettingsResponse_Item::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .google.protobuf.Timestamp created_at = 11;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.created_at_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.created_at_);
     }
 
     // .google.protobuf.Timestamp updated_at = 12;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.updated_at_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.updated_at_);
     }
 
   }
@@ -14600,11 +14496,12 @@ const ::_pbi::TcParseTable<2, 6, 2, 53, 2> SettingsResponse_Item::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SettingsResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SettingsResponse_Item::MergeImpl
+    SettingsResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SettingsResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SettingsResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void SettingsResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SettingsResponse_Item*>(&to_msg);
@@ -14651,16 +14548,17 @@ PROTOBUF_NOINLINE bool SettingsResponse_Item::IsInitialized() const {
   return true;
 }
 
-void SettingsResponse_Item::InternalSwap(SettingsResponse_Item* other) {
+::_pbi::CachedSize* SettingsResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SettingsResponse_Item::InternalSwap(SettingsResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, lhs_arena,
-                                       &other->_impl_.key_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.value_, lhs_arena,
-                                       &other->_impl_.value_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, &other->_impl_.key_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.value_, &other->_impl_.value_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SettingsResponse_Item, _impl_.user_id_)
       + sizeof(SettingsResponse_Item::_impl_.user_id_)
@@ -14685,24 +14583,32 @@ SettingsResponse::SettingsResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SettingsResponse)
 }
-SettingsResponse::SettingsResponse(const SettingsResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SettingsResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+SettingsResponse::SettingsResponse(
+    ::google::protobuf::Arena* arena,
+    const SettingsResponse& from)
+    : ::google::protobuf::Message(arena) {
   SettingsResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SettingsResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE SettingsResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void SettingsResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SettingsResponse::~SettingsResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SettingsResponse)
@@ -14710,20 +14616,18 @@ SettingsResponse::~SettingsResponse() {
   SharedDtor();
 }
 inline void SettingsResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void SettingsResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SettingsResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SettingsResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -14806,11 +14710,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SettingsResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SettingsResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SettingsResponse::MergeImpl
+    SettingsResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SettingsResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SettingsResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void SettingsResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SettingsResponse*>(&to_msg);
@@ -14820,7 +14725,8 @@ void SettingsResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::go
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -14835,7 +14741,10 @@ PROTOBUF_NOINLINE bool SettingsResponse::IsInitialized() const {
   return true;
 }
 
-void SettingsResponse::InternalSwap(SettingsResponse* other) {
+::_pbi::CachedSize* SettingsResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SettingsResponse::InternalSwap(SettingsResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -14857,35 +14766,32 @@ LocaleByLangRequest::LocaleByLangRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.LocaleByLangRequest)
 }
-LocaleByLangRequest::LocaleByLangRequest(const LocaleByLangRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE LocaleByLangRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : lang_(arena, from.lang_),
+        _cached_size_{0} {}
+
+LocaleByLangRequest::LocaleByLangRequest(
+    ::google::protobuf::Arena* arena,
+    const LocaleByLangRequest& from)
+    : ::google::protobuf::Message(arena) {
   LocaleByLangRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.lang_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.LocaleByLangRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE LocaleByLangRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : lang_(arena),
+        _cached_size_{0} {}
+
 inline void LocaleByLangRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.lang_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 LocaleByLangRequest::~LocaleByLangRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.LocaleByLangRequest)
@@ -14893,15 +14799,14 @@ LocaleByLangRequest::~LocaleByLangRequest() {
   SharedDtor();
 }
 inline void LocaleByLangRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.lang_.Destroy();
-}
-void LocaleByLangRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void LocaleByLangRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.LocaleByLangRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -14992,11 +14897,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 52, 2> LocaleByLangRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData LocaleByLangRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    LocaleByLangRequest::MergeImpl
+    LocaleByLangRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*LocaleByLangRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* LocaleByLangRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void LocaleByLangRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<LocaleByLangRequest*>(&to_msg);
@@ -15023,13 +14929,15 @@ PROTOBUF_NOINLINE bool LocaleByLangRequest::IsInitialized() const {
   return true;
 }
 
-void LocaleByLangRequest::InternalSwap(LocaleByLangRequest* other) {
+::_pbi::CachedSize* LocaleByLangRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void LocaleByLangRequest::InternalSwap(LocaleByLangRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, lhs_arena,
-                                       &other->_impl_.lang_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, &other->_impl_.lang_, arena);
 }
 
 ::google::protobuf::Metadata LocaleByLangRequest::GetMetadata() const {
@@ -15048,48 +14956,34 @@ LocaleGetRequest::LocaleGetRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.LocaleGetRequest)
 }
-LocaleGetRequest::LocaleGetRequest(const LocaleGetRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE LocaleGetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : lang_(arena, from.lang_),
+        code_(arena, from.code_),
+        _cached_size_{0} {}
+
+LocaleGetRequest::LocaleGetRequest(
+    ::google::protobuf::Arena* arena,
+    const LocaleGetRequest& from)
+    : ::google::protobuf::Message(arena) {
   LocaleGetRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.lang_){},
-      decltype(_impl_.code_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), _this->GetArenaForAllocation());
-  }
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_code().empty()) {
-    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.LocaleGetRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE LocaleGetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : lang_(arena),
+        code_(arena),
+        _cached_size_{0} {}
+
 inline void LocaleGetRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.lang_){},
-      decltype(_impl_.code_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 LocaleGetRequest::~LocaleGetRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.LocaleGetRequest)
@@ -15097,16 +14991,15 @@ LocaleGetRequest::~LocaleGetRequest() {
   SharedDtor();
 }
 inline void LocaleGetRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.lang_.Destroy();
   _impl_.code_.Destroy();
-}
-void LocaleGetRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void LocaleGetRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.LocaleGetRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -15219,11 +15112,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 53, 2> LocaleGetRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData LocaleGetRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    LocaleGetRequest::MergeImpl
+    LocaleGetRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*LocaleGetRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* LocaleGetRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void LocaleGetRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<LocaleGetRequest*>(&to_msg);
@@ -15253,15 +15147,16 @@ PROTOBUF_NOINLINE bool LocaleGetRequest::IsInitialized() const {
   return true;
 }
 
-void LocaleGetRequest::InternalSwap(LocaleGetRequest* other) {
+::_pbi::CachedSize* LocaleGetRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void LocaleGetRequest::InternalSwap(LocaleGetRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, lhs_arena,
-                                       &other->_impl_.lang_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
-                                       &other->_impl_.code_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, &other->_impl_.lang_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, &other->_impl_.code_, arena);
 }
 
 ::google::protobuf::Metadata LocaleGetRequest::GetMetadata() const {
@@ -15293,10 +15188,12 @@ const ::google::protobuf::Timestamp& LocalesResponse_Item::_Internal::updated_at
   return *msg->_impl_.updated_at_;
 }
 void LocalesResponse_Item::clear_created_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.created_at_ != nullptr) _impl_.created_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void LocalesResponse_Item::clear_updated_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.updated_at_ != nullptr) _impl_.updated_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
@@ -15305,76 +15202,51 @@ LocalesResponse_Item::LocalesResponse_Item(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.LocalesResponse.Item)
 }
-LocalesResponse_Item::LocalesResponse_Item(const LocalesResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE LocalesResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        lang_(arena, from.lang_),
+        code_(arena, from.code_),
+        message_(arena, from.message_) {}
+
+LocalesResponse_Item::LocalesResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const LocalesResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   LocalesResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.code_){},
-      decltype(_impl_.message_){},
-      decltype(_impl_.created_at_){nullptr},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), _this->GetArenaForAllocation());
-  }
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_code().empty()) {
-    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
-  }
-  _impl_.message_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_message().empty()) {
-    _this->_impl_.message_.Set(from._internal_message(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.created_at_ = new ::google::protobuf::Timestamp(*from._impl_.created_at_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.updated_at_ = new ::google::protobuf::Timestamp(*from._impl_.updated_at_);
-  }
-  _this->_impl_.id_ = from._impl_.id_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.created_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.created_at_)
+                : nullptr;
+  _impl_.updated_at_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.updated_at_)
+                : nullptr;
+  _impl_.id_ = from._impl_.id_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.LocalesResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE LocalesResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        lang_(arena),
+        code_(arena),
+        message_(arena) {}
+
 inline void LocalesResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.code_){},
-      decltype(_impl_.message_){},
-      decltype(_impl_.created_at_){nullptr},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){0},
-  };
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.message_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, created_at_),
+           0,
+           offsetof(Impl_, id_) -
+               offsetof(Impl_, created_at_) +
+               sizeof(Impl_::id_));
 }
 LocalesResponse_Item::~LocalesResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.LocalesResponse.Item)
@@ -15382,19 +15254,18 @@ LocalesResponse_Item::~LocalesResponse_Item() {
   SharedDtor();
 }
 inline void LocalesResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.lang_.Destroy();
   _impl_.code_.Destroy();
   _impl_.message_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.created_at_;
-  if (this != internal_default_instance()) delete _impl_.updated_at_;
-}
-void LocalesResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.created_at_;
+  delete _impl_.updated_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void LocalesResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.LocalesResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -15526,15 +15397,15 @@ const ::_pbi::TcParseTable<2, 6, 2, 64, 2> LocalesResponse_Item::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp created_at = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::created_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::created_at(this),
         _Internal::created_at(this).GetCachedSize(), target, stream);
   }
 
   // .google.protobuf.Timestamp updated_at = 12;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(12, _Internal::updated_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        12, _Internal::updated_at(this),
         _Internal::updated_at(this).GetCachedSize(), target, stream);
   }
 
@@ -15577,16 +15448,14 @@ const ::_pbi::TcParseTable<2, 6, 2, 64, 2> LocalesResponse_Item::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .google.protobuf.Timestamp created_at = 11;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.created_at_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.created_at_);
     }
 
     // .google.protobuf.Timestamp updated_at = 12;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.updated_at_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.updated_at_);
     }
 
   }
@@ -15600,11 +15469,12 @@ const ::_pbi::TcParseTable<2, 6, 2, 64, 2> LocalesResponse_Item::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData LocalesResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    LocalesResponse_Item::MergeImpl
+    LocalesResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*LocalesResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* LocalesResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void LocalesResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<LocalesResponse_Item*>(&to_msg);
@@ -15651,18 +15521,18 @@ PROTOBUF_NOINLINE bool LocalesResponse_Item::IsInitialized() const {
   return true;
 }
 
-void LocalesResponse_Item::InternalSwap(LocalesResponse_Item* other) {
+::_pbi::CachedSize* LocalesResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void LocalesResponse_Item::InternalSwap(LocalesResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, lhs_arena,
-                                       &other->_impl_.lang_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
-                                       &other->_impl_.code_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, lhs_arena,
-                                       &other->_impl_.message_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, &other->_impl_.lang_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, &other->_impl_.code_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(LocalesResponse_Item, _impl_.id_)
       + sizeof(LocalesResponse_Item::_impl_.id_)
@@ -15687,24 +15557,32 @@ LocalesResponse::LocalesResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.LocalesResponse)
 }
-LocalesResponse::LocalesResponse(const LocalesResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE LocalesResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+LocalesResponse::LocalesResponse(
+    ::google::protobuf::Arena* arena,
+    const LocalesResponse& from)
+    : ::google::protobuf::Message(arena) {
   LocalesResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.LocalesResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE LocalesResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void LocalesResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 LocalesResponse::~LocalesResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.LocalesResponse)
@@ -15712,20 +15590,18 @@ LocalesResponse::~LocalesResponse() {
   SharedDtor();
 }
 inline void LocalesResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void LocalesResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void LocalesResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.LocalesResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -15808,11 +15684,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> LocalesResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData LocalesResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    LocalesResponse::MergeImpl
+    LocalesResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*LocalesResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* LocalesResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void LocalesResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<LocalesResponse*>(&to_msg);
@@ -15822,7 +15699,8 @@ void LocalesResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::goo
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -15837,7 +15715,10 @@ PROTOBUF_NOINLINE bool LocalesResponse::IsInitialized() const {
   return true;
 }
 
-void LocalesResponse::InternalSwap(LocalesResponse* other) {
+::_pbi::CachedSize* LocalesResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void LocalesResponse::InternalSwap(LocalesResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -15859,61 +15740,36 @@ LocaleSetRequest::LocaleSetRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.LocaleSetRequest)
 }
-LocaleSetRequest::LocaleSetRequest(const LocaleSetRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE LocaleSetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : lang_(arena, from.lang_),
+        code_(arena, from.code_),
+        message_(arena, from.message_),
+        _cached_size_{0} {}
+
+LocaleSetRequest::LocaleSetRequest(
+    ::google::protobuf::Arena* arena,
+    const LocaleSetRequest& from)
+    : ::google::protobuf::Message(arena) {
   LocaleSetRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.lang_){},
-      decltype(_impl_.code_){},
-      decltype(_impl_.message_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), _this->GetArenaForAllocation());
-  }
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_code().empty()) {
-    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
-  }
-  _impl_.message_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_message().empty()) {
-    _this->_impl_.message_.Set(from._internal_message(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.LocaleSetRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE LocaleSetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : lang_(arena),
+        code_(arena),
+        message_(arena),
+        _cached_size_{0} {}
+
 inline void LocaleSetRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.lang_){},
-      decltype(_impl_.code_){},
-      decltype(_impl_.message_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.message_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 LocaleSetRequest::~LocaleSetRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.LocaleSetRequest)
@@ -15921,17 +15777,16 @@ LocaleSetRequest::~LocaleSetRequest() {
   SharedDtor();
 }
 inline void LocaleSetRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.lang_.Destroy();
   _impl_.code_.Destroy();
   _impl_.message_.Destroy();
-}
-void LocaleSetRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void LocaleSetRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.LocaleSetRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -16067,11 +15922,12 @@ const ::_pbi::TcParseTable<2, 3, 0, 60, 2> LocaleSetRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData LocaleSetRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    LocaleSetRequest::MergeImpl
+    LocaleSetRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*LocaleSetRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* LocaleSetRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void LocaleSetRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<LocaleSetRequest*>(&to_msg);
@@ -16104,17 +15960,17 @@ PROTOBUF_NOINLINE bool LocaleSetRequest::IsInitialized() const {
   return true;
 }
 
-void LocaleSetRequest::InternalSwap(LocaleSetRequest* other) {
+::_pbi::CachedSize* LocaleSetRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void LocaleSetRequest::InternalSwap(LocaleSetRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, lhs_arena,
-                                       &other->_impl_.lang_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
-                                       &other->_impl_.code_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, lhs_arena,
-                                       &other->_impl_.message_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, &other->_impl_.lang_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, &other->_impl_.code_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
 }
 
 ::google::protobuf::Metadata LocaleSetRequest::GetMetadata() const {
@@ -16133,35 +15989,32 @@ IndexNowProfile::IndexNowProfile(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.IndexNowProfile)
 }
-IndexNowProfile::IndexNowProfile(const IndexNowProfile& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE IndexNowProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : key_(arena, from.key_),
+        _cached_size_{0} {}
+
+IndexNowProfile::IndexNowProfile(
+    ::google::protobuf::Arena* arena,
+    const IndexNowProfile& from)
+    : ::google::protobuf::Message(arena) {
   IndexNowProfile* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.key_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_key().empty()) {
-    _this->_impl_.key_.Set(from._internal_key(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.IndexNowProfile)
 }
+inline PROTOBUF_NDEBUG_INLINE IndexNowProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : key_(arena),
+        _cached_size_{0} {}
+
 inline void IndexNowProfile::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.key_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 IndexNowProfile::~IndexNowProfile() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.IndexNowProfile)
@@ -16169,15 +16022,14 @@ IndexNowProfile::~IndexNowProfile() {
   SharedDtor();
 }
 inline void IndexNowProfile::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.key_.Destroy();
-}
-void IndexNowProfile::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void IndexNowProfile::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.IndexNowProfile)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -16268,11 +16120,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 47, 2> IndexNowProfile::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData IndexNowProfile::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    IndexNowProfile::MergeImpl
+    IndexNowProfile::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*IndexNowProfile::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* IndexNowProfile::GetClassData() const {
+  return &_class_data_;
+}
 
 void IndexNowProfile::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<IndexNowProfile*>(&to_msg);
@@ -16299,13 +16152,15 @@ PROTOBUF_NOINLINE bool IndexNowProfile::IsInitialized() const {
   return true;
 }
 
-void IndexNowProfile::InternalSwap(IndexNowProfile* other) {
+::_pbi::CachedSize* IndexNowProfile::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void IndexNowProfile::InternalSwap(IndexNowProfile* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, lhs_arena,
-                                       &other->_impl_.key_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, &other->_impl_.key_, arena);
 }
 
 ::google::protobuf::Metadata IndexNowProfile::GetMetadata() const {
@@ -16324,48 +16179,34 @@ IndexNowPingRequest::IndexNowPingRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.IndexNowPingRequest)
 }
-IndexNowPingRequest::IndexNowPingRequest(const IndexNowPingRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE IndexNowPingRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : key_(arena, from.key_),
+        home_(arena, from.home_),
+        _cached_size_{0} {}
+
+IndexNowPingRequest::IndexNowPingRequest(
+    ::google::protobuf::Arena* arena,
+    const IndexNowPingRequest& from)
+    : ::google::protobuf::Message(arena) {
   IndexNowPingRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.key_){},
-      decltype(_impl_.home_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_key().empty()) {
-    _this->_impl_.key_.Set(from._internal_key(), _this->GetArenaForAllocation());
-  }
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.home_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_home().empty()) {
-    _this->_impl_.home_.Set(from._internal_home(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.IndexNowPingRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE IndexNowPingRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : key_(arena),
+        home_(arena),
+        _cached_size_{0} {}
+
 inline void IndexNowPingRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.key_){},
-      decltype(_impl_.home_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.home_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 IndexNowPingRequest::~IndexNowPingRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.IndexNowPingRequest)
@@ -16373,16 +16214,15 @@ IndexNowPingRequest::~IndexNowPingRequest() {
   SharedDtor();
 }
 inline void IndexNowPingRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.key_.Destroy();
   _impl_.home_.Destroy();
-}
-void IndexNowPingRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void IndexNowPingRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.IndexNowPingRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -16492,11 +16332,12 @@ const ::_pbi::TcParseTable<0, 2, 0, 55, 2> IndexNowPingRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData IndexNowPingRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    IndexNowPingRequest::MergeImpl
+    IndexNowPingRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*IndexNowPingRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* IndexNowPingRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void IndexNowPingRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<IndexNowPingRequest*>(&to_msg);
@@ -16526,15 +16367,16 @@ PROTOBUF_NOINLINE bool IndexNowPingRequest::IsInitialized() const {
   return true;
 }
 
-void IndexNowPingRequest::InternalSwap(IndexNowPingRequest* other) {
+::_pbi::CachedSize* IndexNowPingRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void IndexNowPingRequest::InternalSwap(IndexNowPingRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, lhs_arena,
-                                       &other->_impl_.key_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.home_, lhs_arena,
-                                       &other->_impl_.home_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, &other->_impl_.key_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.home_, &other->_impl_.home_, arena);
 }
 
 ::google::protobuf::Metadata IndexNowPingRequest::GetMetadata() const {
@@ -16553,35 +16395,32 @@ SitemapPingRequest::SitemapPingRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SitemapPingRequest)
 }
-SitemapPingRequest::SitemapPingRequest(const SitemapPingRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SitemapPingRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : home_(arena, from.home_),
+        _cached_size_{0} {}
+
+SitemapPingRequest::SitemapPingRequest(
+    ::google::protobuf::Arena* arena,
+    const SitemapPingRequest& from)
+    : ::google::protobuf::Message(arena) {
   SitemapPingRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.home_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.home_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_home().empty()) {
-    _this->_impl_.home_.Set(from._internal_home(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SitemapPingRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SitemapPingRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : home_(arena),
+        _cached_size_{0} {}
+
 inline void SitemapPingRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.home_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.home_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.home_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SitemapPingRequest::~SitemapPingRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SitemapPingRequest)
@@ -16589,15 +16428,14 @@ SitemapPingRequest::~SitemapPingRequest() {
   SharedDtor();
 }
 inline void SitemapPingRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.home_.Destroy();
-}
-void SitemapPingRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SitemapPingRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SitemapPingRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -16688,11 +16526,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 51, 2> SitemapPingRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SitemapPingRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SitemapPingRequest::MergeImpl
+    SitemapPingRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SitemapPingRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SitemapPingRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SitemapPingRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SitemapPingRequest*>(&to_msg);
@@ -16719,13 +16558,15 @@ PROTOBUF_NOINLINE bool SitemapPingRequest::IsInitialized() const {
   return true;
 }
 
-void SitemapPingRequest::InternalSwap(SitemapPingRequest* other) {
+::_pbi::CachedSize* SitemapPingRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SitemapPingRequest::InternalSwap(SitemapPingRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.home_, lhs_arena,
-                                       &other->_impl_.home_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.home_, &other->_impl_.home_, arena);
 }
 
 ::google::protobuf::Metadata SitemapPingRequest::GetMetadata() const {
@@ -16750,6 +16591,7 @@ const ::google::protobuf::Duration& SiteMaintenanceModeRequest::_Internal::ttl(c
   return *msg->_impl_.ttl_;
 }
 void SiteMaintenanceModeRequest::clear_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.ttl_ != nullptr) _impl_.ttl_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -16758,42 +16600,38 @@ SiteMaintenanceModeRequest::SiteMaintenanceModeRequest(::google::protobuf::Arena
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteMaintenanceModeRequest)
 }
-SiteMaintenanceModeRequest::SiteMaintenanceModeRequest(const SiteMaintenanceModeRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteMaintenanceModeRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        reason_(arena, from.reason_) {}
+
+SiteMaintenanceModeRequest::SiteMaintenanceModeRequest(
+    ::google::protobuf::Arena* arena,
+    const SiteMaintenanceModeRequest& from)
+    : ::google::protobuf::Message(arena) {
   SiteMaintenanceModeRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.reason_){},
-      decltype(_impl_.ttl_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.reason_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.reason_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_reason().empty()) {
-    _this->_impl_.reason_.Set(from._internal_reason(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.ttl_ = new ::google::protobuf::Duration(*from._impl_.ttl_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.ttl_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Duration>(arena, *from._impl_.ttl_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteMaintenanceModeRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteMaintenanceModeRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        reason_(arena) {}
+
 inline void SiteMaintenanceModeRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.reason_){},
-      decltype(_impl_.ttl_){nullptr},
-  };
-  _impl_.reason_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.reason_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.ttl_ = {};
 }
 SiteMaintenanceModeRequest::~SiteMaintenanceModeRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteMaintenanceModeRequest)
@@ -16801,16 +16639,15 @@ SiteMaintenanceModeRequest::~SiteMaintenanceModeRequest() {
   SharedDtor();
 }
 inline void SiteMaintenanceModeRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.reason_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.ttl_;
-}
-void SiteMaintenanceModeRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.ttl_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteMaintenanceModeRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteMaintenanceModeRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -16881,8 +16718,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 61, 2> SiteMaintenanceModeRequest::_table_ =
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Duration ttl = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::ttl(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::ttl(this),
         _Internal::ttl(this).GetCachedSize(), target, stream);
   }
 
@@ -16920,20 +16757,20 @@ const ::_pbi::TcParseTable<1, 2, 1, 61, 2> SiteMaintenanceModeRequest::_table_ =
   // .google.protobuf.Duration ttl = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.ttl_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.ttl_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData SiteMaintenanceModeRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteMaintenanceModeRequest::MergeImpl
+    SiteMaintenanceModeRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteMaintenanceModeRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteMaintenanceModeRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteMaintenanceModeRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteMaintenanceModeRequest*>(&to_msg);
@@ -16964,14 +16801,16 @@ PROTOBUF_NOINLINE bool SiteMaintenanceModeRequest::IsInitialized() const {
   return true;
 }
 
-void SiteMaintenanceModeRequest::InternalSwap(SiteMaintenanceModeRequest* other) {
+::_pbi::CachedSize* SiteMaintenanceModeRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteMaintenanceModeRequest::InternalSwap(SiteMaintenanceModeRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.reason_, lhs_arena,
-                                       &other->_impl_.reason_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.reason_, &other->_impl_.reason_, arena);
   swap(_impl_.ttl_, other->_impl_.ttl_);
 }
 
@@ -17001,29 +16840,36 @@ SiteInstallRequest::SiteInstallRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteInstallRequest)
 }
-SiteInstallRequest::SiteInstallRequest(const SiteInstallRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteInstallRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+SiteInstallRequest::SiteInstallRequest(
+    ::google::protobuf::Arena* arena,
+    const SiteInstallRequest& from)
+    : ::google::protobuf::Message(arena) {
   SiteInstallRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.user_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.user_ = new ::palm::metasequoia::v1::UserSignUpByEmailRequest(*from._impl_.user_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.user_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::UserSignUpByEmailRequest>(arena, *from._impl_.user_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteInstallRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteInstallRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void SiteInstallRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.user_){nullptr},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.user_ = {};
 }
 SiteInstallRequest::~SiteInstallRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteInstallRequest)
@@ -17031,15 +16877,14 @@ SiteInstallRequest::~SiteInstallRequest() {
   SharedDtor();
 }
 inline void SiteInstallRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.user_;
-}
-void SiteInstallRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.user_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteInstallRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteInstallRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -17100,8 +16945,8 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SiteInstallRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.UserSignUpByEmailRequest user = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::user(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::user(this),
         _Internal::user(this).GetCachedSize(), target, stream);
   }
 
@@ -17125,20 +16970,20 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> SiteInstallRequest::_table_ = {
   // .palm.metasequoia.v1.UserSignUpByEmailRequest user = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.user_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.user_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData SiteInstallRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteInstallRequest::MergeImpl
+    SiteInstallRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteInstallRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteInstallRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteInstallRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteInstallRequest*>(&to_msg);
@@ -17166,7 +17011,10 @@ PROTOBUF_NOINLINE bool SiteInstallRequest::IsInitialized() const {
   return true;
 }
 
-void SiteInstallRequest::InternalSwap(SiteInstallRequest* other) {
+::_pbi::CachedSize* SiteInstallRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteInstallRequest::InternalSwap(SiteInstallRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -17195,76 +17043,39 @@ TwilioProfile::TwilioProfile(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.TwilioProfile)
 }
-TwilioProfile::TwilioProfile(const TwilioProfile& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE TwilioProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        from_(arena, from.from_),
+        account_sid_(arena, from.account_sid_),
+        auth_token_(arena, from.auth_token_),
+        sms_status_callback_(arena, from.sms_status_callback_) {}
+
+TwilioProfile::TwilioProfile(
+    ::google::protobuf::Arena* arena,
+    const TwilioProfile& from)
+    : ::google::protobuf::Message(arena) {
   TwilioProfile* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.from_){},
-      decltype(_impl_.account_sid_){},
-      decltype(_impl_.auth_token_){},
-      decltype(_impl_.sms_status_callback_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.from_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.from_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_from().empty()) {
-    _this->_impl_.from_.Set(from._internal_from(), _this->GetArenaForAllocation());
-  }
-  _impl_.account_sid_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.account_sid_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_account_sid().empty()) {
-    _this->_impl_.account_sid_.Set(from._internal_account_sid(), _this->GetArenaForAllocation());
-  }
-  _impl_.auth_token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.auth_token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_auth_token().empty()) {
-    _this->_impl_.auth_token_.Set(from._internal_auth_token(), _this->GetArenaForAllocation());
-  }
-  _impl_.sms_status_callback_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.sms_status_callback_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.sms_status_callback_.Set(from._internal_sms_status_callback(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.TwilioProfile)
 }
+inline PROTOBUF_NDEBUG_INLINE TwilioProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        from_(arena),
+        account_sid_(arena),
+        auth_token_(arena),
+        sms_status_callback_(arena) {}
+
 inline void TwilioProfile::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.from_){},
-      decltype(_impl_.account_sid_){},
-      decltype(_impl_.auth_token_){},
-      decltype(_impl_.sms_status_callback_){},
-  };
-  _impl_.from_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.from_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.account_sid_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.account_sid_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.auth_token_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.auth_token_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.sms_status_callback_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.sms_status_callback_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 TwilioProfile::~TwilioProfile() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.TwilioProfile)
@@ -17272,18 +17083,17 @@ TwilioProfile::~TwilioProfile() {
   SharedDtor();
 }
 inline void TwilioProfile::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.from_.Destroy();
   _impl_.account_sid_.Destroy();
   _impl_.auth_token_.Destroy();
   _impl_.sms_status_callback_.Destroy();
-}
-void TwilioProfile::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void TwilioProfile::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.TwilioProfile)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -17444,11 +17254,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 86, 2> TwilioProfile::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData TwilioProfile::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    TwilioProfile::MergeImpl
+    TwilioProfile::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*TwilioProfile::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* TwilioProfile::GetClassData() const {
+  return &_class_data_;
+}
 
 void TwilioProfile::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<TwilioProfile*>(&to_msg);
@@ -17484,20 +17295,19 @@ PROTOBUF_NOINLINE bool TwilioProfile::IsInitialized() const {
   return true;
 }
 
-void TwilioProfile::InternalSwap(TwilioProfile* other) {
+::_pbi::CachedSize* TwilioProfile::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void TwilioProfile::InternalSwap(TwilioProfile* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.from_, lhs_arena,
-                                       &other->_impl_.from_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.account_sid_, lhs_arena,
-                                       &other->_impl_.account_sid_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.auth_token_, lhs_arena,
-                                       &other->_impl_.auth_token_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.sms_status_callback_, lhs_arena,
-                                       &other->_impl_.sms_status_callback_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.from_, &other->_impl_.from_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.account_sid_, &other->_impl_.account_sid_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.auth_token_, &other->_impl_.auth_token_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.sms_status_callback_, &other->_impl_.sms_status_callback_, arena);
 }
 
 ::google::protobuf::Metadata TwilioProfile::GetMetadata() const {
@@ -17526,66 +17336,56 @@ SmtpProfile::SmtpProfile(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SmtpProfile)
 }
-SmtpProfile::SmtpProfile(const SmtpProfile& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SmtpProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        cc_{visibility, arena, from.cc_},
+        bcc_{visibility, arena, from.bcc_},
+        host_(arena, from.host_),
+        password_(arena, from.password_) {}
+
+SmtpProfile::SmtpProfile(
+    ::google::protobuf::Arena* arena,
+    const SmtpProfile& from)
+    : ::google::protobuf::Message(arena) {
   SmtpProfile* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.cc_){from._impl_.cc_},
-      decltype(_impl_.bcc_){from._impl_.bcc_},
-      decltype(_impl_.host_){},
-      decltype(_impl_.password_){},
-      decltype(_impl_.from_){nullptr},
-      decltype(_impl_.port_){},
-      decltype(_impl_.auth_method_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.host_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.host_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_host().empty()) {
-    _this->_impl_.host_.Set(from._internal_host(), _this->GetArenaForAllocation());
-  }
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.from_ = new ::palm::metasequoia::v1::EmailTask_Address(*from._impl_.from_);
-  }
-  ::memcpy(&_impl_.port_, &from._impl_.port_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.auth_method_) -
-    reinterpret_cast<char*>(&_impl_.port_)) + sizeof(_impl_.auth_method_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.from_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::EmailTask_Address>(arena, *from._impl_.from_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, port_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, port_),
+           offsetof(Impl_, auth_method_) -
+               offsetof(Impl_, port_) +
+               sizeof(Impl_::auth_method_));
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SmtpProfile)
 }
+inline PROTOBUF_NDEBUG_INLINE SmtpProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        cc_{visibility, arena},
+        bcc_{visibility, arena},
+        host_(arena),
+        password_(arena) {}
+
 inline void SmtpProfile::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.cc_){arena},
-      decltype(_impl_.bcc_){arena},
-      decltype(_impl_.host_){},
-      decltype(_impl_.password_){},
-      decltype(_impl_.from_){nullptr},
-      decltype(_impl_.port_){0u},
-      decltype(_impl_.auth_method_){0},
-  };
-  _impl_.host_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.host_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, from_),
+           0,
+           offsetof(Impl_, auth_method_) -
+               offsetof(Impl_, from_) +
+               sizeof(Impl_::auth_method_));
 }
 SmtpProfile::~SmtpProfile() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SmtpProfile)
@@ -17593,25 +17393,22 @@ SmtpProfile::~SmtpProfile() {
   SharedDtor();
 }
 inline void SmtpProfile::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.cc_.~RepeatedPtrField();
-  _impl_.bcc_.~RepeatedPtrField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.host_.Destroy();
   _impl_.password_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.from_;
-}
-void SmtpProfile::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.from_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SmtpProfile::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SmtpProfile)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_cc()->Clear();
-  _internal_mutable_bcc()->Clear();
+  _impl_.cc_.Clear();
+  _impl_.bcc_.Clear();
   _impl_.host_.ClearToEmpty();
   _impl_.password_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
@@ -17750,8 +17547,8 @@ const ::_pbi::TcParseTable<3, 7, 3, 52, 2> SmtpProfile::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.EmailTask.Address from = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::from(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::from(this),
         _Internal::from(this).GetCachedSize(), target, stream);
   }
 
@@ -17807,9 +17604,8 @@ const ::_pbi::TcParseTable<3, 7, 3, 52, 2> SmtpProfile::_table_ = {
   // .palm.metasequoia.v1.EmailTask.Address from = 11;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.from_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.from_);
   }
 
   // uint32 port = 2;
@@ -17828,11 +17624,12 @@ const ::_pbi::TcParseTable<3, 7, 3, 52, 2> SmtpProfile::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SmtpProfile::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SmtpProfile::MergeImpl
+    SmtpProfile::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SmtpProfile::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SmtpProfile::GetClassData() const {
+  return &_class_data_;
+}
 
 void SmtpProfile::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SmtpProfile*>(&to_msg);
@@ -17842,8 +17639,10 @@ void SmtpProfile::MergeImpl(::google::protobuf::Message& to_msg, const ::google:
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_cc()->MergeFrom(from._internal_cc());
-  _this->_internal_mutable_bcc()->MergeFrom(from._internal_bcc());
+  _this->_internal_mutable_cc()->MergeFrom(
+      from._internal_cc());
+  _this->_internal_mutable_bcc()->MergeFrom(
+      from._internal_bcc());
   if (!from._internal_host().empty()) {
     _this->_internal_set_host(from._internal_host());
   }
@@ -17874,18 +17673,19 @@ PROTOBUF_NOINLINE bool SmtpProfile::IsInitialized() const {
   return true;
 }
 
-void SmtpProfile::InternalSwap(SmtpProfile* other) {
+::_pbi::CachedSize* SmtpProfile::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SmtpProfile::InternalSwap(SmtpProfile* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.cc_.InternalSwap(&other->_impl_.cc_);
   _impl_.bcc_.InternalSwap(&other->_impl_.bcc_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.host_, lhs_arena,
-                                       &other->_impl_.host_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, lhs_arena,
-                                       &other->_impl_.password_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.host_, &other->_impl_.host_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, &other->_impl_.password_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SmtpProfile, _impl_.auth_method_)
       + sizeof(SmtpProfile::_impl_.auth_method_)
@@ -17910,48 +17710,34 @@ EmailTask_Address::EmailTask_Address(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.EmailTask.Address)
 }
-EmailTask_Address::EmailTask_Address(const EmailTask_Address& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE EmailTask_Address::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : name_(arena, from.name_),
+        email_(arena, from.email_),
+        _cached_size_{0} {}
+
+EmailTask_Address::EmailTask_Address(
+    ::google::protobuf::Arena* arena,
+    const EmailTask_Address& from)
+    : ::google::protobuf::Message(arena) {
   EmailTask_Address* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.email_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.email_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_email().empty()) {
-    _this->_impl_.email_.Set(from._internal_email(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.EmailTask.Address)
 }
+inline PROTOBUF_NDEBUG_INLINE EmailTask_Address::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : name_(arena),
+        email_(arena),
+        _cached_size_{0} {}
+
 inline void EmailTask_Address::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.email_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.email_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 EmailTask_Address::~EmailTask_Address() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.EmailTask.Address)
@@ -17959,16 +17745,15 @@ EmailTask_Address::~EmailTask_Address() {
   SharedDtor();
 }
 inline void EmailTask_Address::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
   _impl_.email_.Destroy();
-}
-void EmailTask_Address::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void EmailTask_Address::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.EmailTask.Address)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -18081,11 +17866,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 55, 2> EmailTask_Address::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData EmailTask_Address::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    EmailTask_Address::MergeImpl
+    EmailTask_Address::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*EmailTask_Address::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* EmailTask_Address::GetClassData() const {
+  return &_class_data_;
+}
 
 void EmailTask_Address::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<EmailTask_Address*>(&to_msg);
@@ -18115,15 +17901,16 @@ PROTOBUF_NOINLINE bool EmailTask_Address::IsInitialized() const {
   return true;
 }
 
-void EmailTask_Address::InternalSwap(EmailTask_Address* other) {
+::_pbi::CachedSize* EmailTask_Address::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void EmailTask_Address::InternalSwap(EmailTask_Address* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, lhs_arena,
-                                       &other->_impl_.email_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, &other->_impl_.email_, arena);
 }
 
 ::google::protobuf::Metadata EmailTask_Address::GetMetadata() const {
@@ -18142,38 +17929,34 @@ EmailTask_Body::EmailTask_Body(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.EmailTask.Body)
 }
-EmailTask_Body::EmailTask_Body(const EmailTask_Body& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE EmailTask_Body::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : text_(arena, from.text_),
+        _cached_size_{0} {}
+
+EmailTask_Body::EmailTask_Body(
+    ::google::protobuf::Arena* arena,
+    const EmailTask_Body& from)
+    : ::google::protobuf::Message(arena) {
   EmailTask_Body* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.text_){},
-      decltype(_impl_.html_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.text_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.text_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_text().empty()) {
-    _this->_impl_.text_.Set(from._internal_text(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.html_ = from._impl_.html_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.html_ = from._impl_.html_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.EmailTask.Body)
 }
+inline PROTOBUF_NDEBUG_INLINE EmailTask_Body::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : text_(arena),
+        _cached_size_{0} {}
+
 inline void EmailTask_Body::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.text_){},
-      decltype(_impl_.html_){false},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.text_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.text_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.html_ = {};
 }
 EmailTask_Body::~EmailTask_Body() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.EmailTask.Body)
@@ -18181,15 +17964,14 @@ EmailTask_Body::~EmailTask_Body() {
   SharedDtor();
 }
 inline void EmailTask_Body::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.text_.Destroy();
-}
-void EmailTask_Body::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void EmailTask_Body::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.EmailTask.Body)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -18299,11 +18081,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 47, 2> EmailTask_Body::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData EmailTask_Body::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    EmailTask_Body::MergeImpl
+    EmailTask_Body::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*EmailTask_Body::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* EmailTask_Body::GetClassData() const {
+  return &_class_data_;
+}
 
 void EmailTask_Body::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<EmailTask_Body*>(&to_msg);
@@ -18333,13 +18116,15 @@ PROTOBUF_NOINLINE bool EmailTask_Body::IsInitialized() const {
   return true;
 }
 
-void EmailTask_Body::InternalSwap(EmailTask_Body* other) {
+::_pbi::CachedSize* EmailTask_Body::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void EmailTask_Body::InternalSwap(EmailTask_Body* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.text_, lhs_arena,
-                                       &other->_impl_.text_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.text_, &other->_impl_.text_, arena);
         swap(_impl_.html_, other->_impl_.html_);
 }
 
@@ -18359,48 +18144,34 @@ EmailTask_Attachment::EmailTask_Attachment(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.EmailTask.Attachment)
 }
-EmailTask_Attachment::EmailTask_Attachment(const EmailTask_Attachment& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE EmailTask_Attachment::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : name_(arena, from.name_),
+        payload_(arena, from.payload_),
+        _cached_size_{0} {}
+
+EmailTask_Attachment::EmailTask_Attachment(
+    ::google::protobuf::Arena* arena,
+    const EmailTask_Attachment& from)
+    : ::google::protobuf::Message(arena) {
   EmailTask_Attachment* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.payload_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.payload_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_payload().empty()) {
-    _this->_impl_.payload_.Set(from._internal_payload(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.EmailTask.Attachment)
 }
+inline PROTOBUF_NDEBUG_INLINE EmailTask_Attachment::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : name_(arena),
+        payload_(arena),
+        _cached_size_{0} {}
+
 inline void EmailTask_Attachment::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.payload_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.payload_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 EmailTask_Attachment::~EmailTask_Attachment() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.EmailTask.Attachment)
@@ -18408,16 +18179,15 @@ EmailTask_Attachment::~EmailTask_Attachment() {
   SharedDtor();
 }
 inline void EmailTask_Attachment::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
   _impl_.payload_.Destroy();
-}
-void EmailTask_Attachment::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void EmailTask_Attachment::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.EmailTask.Attachment)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -18527,11 +18297,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 53, 2> EmailTask_Attachment::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData EmailTask_Attachment::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    EmailTask_Attachment::MergeImpl
+    EmailTask_Attachment::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*EmailTask_Attachment::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* EmailTask_Attachment::GetClassData() const {
+  return &_class_data_;
+}
 
 void EmailTask_Attachment::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<EmailTask_Attachment*>(&to_msg);
@@ -18561,15 +18332,16 @@ PROTOBUF_NOINLINE bool EmailTask_Attachment::IsInitialized() const {
   return true;
 }
 
-void EmailTask_Attachment::InternalSwap(EmailTask_Attachment* other) {
+::_pbi::CachedSize* EmailTask_Attachment::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void EmailTask_Attachment::InternalSwap(EmailTask_Attachment* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.payload_, lhs_arena,
-                                       &other->_impl_.payload_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.payload_, &other->_impl_.payload_, arena);
 }
 
 ::google::protobuf::Metadata EmailTask_Attachment::GetMetadata() const {
@@ -18605,53 +18377,52 @@ EmailTask::EmailTask(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.EmailTask)
 }
-EmailTask::EmailTask(const EmailTask& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE EmailTask::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        cc_{visibility, arena, from.cc_},
+        bcc_{visibility, arena, from.bcc_},
+        attachments_{visibility, arena, from.attachments_},
+        subject_(arena, from.subject_) {}
+
+EmailTask::EmailTask(
+    ::google::protobuf::Arena* arena,
+    const EmailTask& from)
+    : ::google::protobuf::Message(arena) {
   EmailTask* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.cc_){from._impl_.cc_},
-      decltype(_impl_.bcc_){from._impl_.bcc_},
-      decltype(_impl_.attachments_){from._impl_.attachments_},
-      decltype(_impl_.subject_){},
-      decltype(_impl_.to_){nullptr},
-      decltype(_impl_.body_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.subject_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.subject_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_subject().empty()) {
-    _this->_impl_.subject_.Set(from._internal_subject(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.to_ = new ::palm::metasequoia::v1::EmailTask_Address(*from._impl_.to_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.body_ = new ::palm::metasequoia::v1::EmailTask_Body(*from._impl_.body_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.to_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::EmailTask_Address>(arena, *from._impl_.to_)
+                : nullptr;
+  _impl_.body_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::EmailTask_Body>(arena, *from._impl_.body_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.EmailTask)
 }
+inline PROTOBUF_NDEBUG_INLINE EmailTask::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        cc_{visibility, arena},
+        bcc_{visibility, arena},
+        attachments_{visibility, arena},
+        subject_(arena) {}
+
 inline void EmailTask::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.cc_){arena},
-      decltype(_impl_.bcc_){arena},
-      decltype(_impl_.attachments_){arena},
-      decltype(_impl_.subject_){},
-      decltype(_impl_.to_){nullptr},
-      decltype(_impl_.body_){nullptr},
-  };
-  _impl_.subject_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.subject_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, to_),
+           0,
+           offsetof(Impl_, body_) -
+               offsetof(Impl_, to_) +
+               sizeof(Impl_::body_));
 }
 EmailTask::~EmailTask() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.EmailTask)
@@ -18659,27 +18430,23 @@ EmailTask::~EmailTask() {
   SharedDtor();
 }
 inline void EmailTask::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.cc_.~RepeatedPtrField();
-  _impl_.bcc_.~RepeatedPtrField();
-  _impl_.attachments_.~RepeatedPtrField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.subject_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.to_;
-  if (this != internal_default_instance()) delete _impl_.body_;
-}
-void EmailTask::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.to_;
+  delete _impl_.body_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void EmailTask::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.EmailTask)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_cc()->Clear();
-  _internal_mutable_bcc()->Clear();
-  _internal_mutable_attachments()->Clear();
+  _impl_.cc_.Clear();
+  _impl_.bcc_.Clear();
+  _impl_.attachments_.Clear();
   _impl_.subject_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
@@ -18780,8 +18547,8 @@ const ::_pbi::TcParseTable<3, 6, 5, 45, 2> EmailTask::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.EmailTask.Address to = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::to(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::to(this),
         _Internal::to(this).GetCachedSize(), target, stream);
   }
 
@@ -18811,8 +18578,8 @@ const ::_pbi::TcParseTable<3, 6, 5, 45, 2> EmailTask::_table_ = {
 
   // .palm.metasequoia.v1.EmailTask.Body body = 12;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(12, _Internal::body(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        12, _Internal::body(this),
         _Internal::body(this).GetCachedSize(), target, stream);
   }
 
@@ -18869,16 +18636,14 @@ const ::_pbi::TcParseTable<3, 6, 5, 45, 2> EmailTask::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .palm.metasequoia.v1.EmailTask.Address to = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.to_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.to_);
     }
 
     // .palm.metasequoia.v1.EmailTask.Body body = 12;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.body_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.body_);
     }
 
   }
@@ -18886,11 +18651,12 @@ const ::_pbi::TcParseTable<3, 6, 5, 45, 2> EmailTask::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData EmailTask::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    EmailTask::MergeImpl
+    EmailTask::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*EmailTask::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* EmailTask::GetClassData() const {
+  return &_class_data_;
+}
 
 void EmailTask::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<EmailTask*>(&to_msg);
@@ -18900,9 +18666,12 @@ void EmailTask::MergeImpl(::google::protobuf::Message& to_msg, const ::google::p
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_cc()->MergeFrom(from._internal_cc());
-  _this->_internal_mutable_bcc()->MergeFrom(from._internal_bcc());
-  _this->_internal_mutable_attachments()->MergeFrom(from._internal_attachments());
+  _this->_internal_mutable_cc()->MergeFrom(
+      from._internal_cc());
+  _this->_internal_mutable_bcc()->MergeFrom(
+      from._internal_bcc());
+  _this->_internal_mutable_attachments()->MergeFrom(
+      from._internal_attachments());
   if (!from._internal_subject().empty()) {
     _this->_internal_set_subject(from._internal_subject());
   }
@@ -18931,17 +18700,19 @@ PROTOBUF_NOINLINE bool EmailTask::IsInitialized() const {
   return true;
 }
 
-void EmailTask::InternalSwap(EmailTask* other) {
+::_pbi::CachedSize* EmailTask::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void EmailTask::InternalSwap(EmailTask* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.cc_.InternalSwap(&other->_impl_.cc_);
   _impl_.bcc_.InternalSwap(&other->_impl_.bcc_);
   _impl_.attachments_.InternalSwap(&other->_impl_.attachments_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.subject_, lhs_arena,
-                                       &other->_impl_.subject_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.subject_, &other->_impl_.subject_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(EmailTask, _impl_.body_)
       + sizeof(EmailTask::_impl_.body_)
@@ -18976,55 +18747,40 @@ SiteTwilioPingRequest::SiteTwilioPingRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteTwilioPingRequest)
 }
-SiteTwilioPingRequest::SiteTwilioPingRequest(const SiteTwilioPingRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteTwilioPingRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        to_(arena, from.to_),
+        message_(arena, from.message_) {}
+
+SiteTwilioPingRequest::SiteTwilioPingRequest(
+    ::google::protobuf::Arena* arena,
+    const SiteTwilioPingRequest& from)
+    : ::google::protobuf::Message(arena) {
   SiteTwilioPingRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.to_){},
-      decltype(_impl_.message_){},
-      decltype(_impl_.profile_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.to_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.to_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_to().empty()) {
-    _this->_impl_.to_.Set(from._internal_to(), _this->GetArenaForAllocation());
-  }
-  _impl_.message_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_message().empty()) {
-    _this->_impl_.message_.Set(from._internal_message(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.profile_ = new ::palm::metasequoia::v1::TwilioProfile(*from._impl_.profile_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.profile_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::TwilioProfile>(arena, *from._impl_.profile_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteTwilioPingRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteTwilioPingRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        to_(arena),
+        message_(arena) {}
+
 inline void SiteTwilioPingRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.to_){},
-      decltype(_impl_.message_){},
-      decltype(_impl_.profile_){nullptr},
-  };
-  _impl_.to_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.to_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.message_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.profile_ = {};
 }
 SiteTwilioPingRequest::~SiteTwilioPingRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteTwilioPingRequest)
@@ -19032,17 +18788,16 @@ SiteTwilioPingRequest::~SiteTwilioPingRequest() {
   SharedDtor();
 }
 inline void SiteTwilioPingRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.to_.Destroy();
   _impl_.message_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.profile_;
-}
-void SiteTwilioPingRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.profile_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteTwilioPingRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteTwilioPingRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -19134,8 +18889,8 @@ const ::_pbi::TcParseTable<1, 3, 1, 59, 2> SiteTwilioPingRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.TwilioProfile profile = 9;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(9, _Internal::profile(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        9, _Internal::profile(this),
         _Internal::profile(this).GetCachedSize(), target, stream);
   }
 
@@ -19171,20 +18926,20 @@ const ::_pbi::TcParseTable<1, 3, 1, 59, 2> SiteTwilioPingRequest::_table_ = {
   // .palm.metasequoia.v1.TwilioProfile profile = 9;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.profile_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.profile_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData SiteTwilioPingRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteTwilioPingRequest::MergeImpl
+    SiteTwilioPingRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteTwilioPingRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteTwilioPingRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteTwilioPingRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteTwilioPingRequest*>(&to_msg);
@@ -19218,16 +18973,17 @@ PROTOBUF_NOINLINE bool SiteTwilioPingRequest::IsInitialized() const {
   return true;
 }
 
-void SiteTwilioPingRequest::InternalSwap(SiteTwilioPingRequest* other) {
+::_pbi::CachedSize* SiteTwilioPingRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteTwilioPingRequest::InternalSwap(SiteTwilioPingRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.to_, lhs_arena,
-                                       &other->_impl_.to_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, lhs_arena,
-                                       &other->_impl_.message_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.to_, &other->_impl_.to_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
   swap(_impl_.profile_, other->_impl_.profile_);
 }
 
@@ -19264,60 +19020,48 @@ SiteSmtpPingRequest::SiteSmtpPingRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteSmtpPingRequest)
 }
-SiteSmtpPingRequest::SiteSmtpPingRequest(const SiteSmtpPingRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteSmtpPingRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        subject_(arena, from.subject_),
+        content_(arena, from.content_) {}
+
+SiteSmtpPingRequest::SiteSmtpPingRequest(
+    ::google::protobuf::Arena* arena,
+    const SiteSmtpPingRequest& from)
+    : ::google::protobuf::Message(arena) {
   SiteSmtpPingRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.subject_){},
-      decltype(_impl_.content_){},
-      decltype(_impl_.to_){nullptr},
-      decltype(_impl_.profile_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.subject_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.subject_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_subject().empty()) {
-    _this->_impl_.subject_.Set(from._internal_subject(), _this->GetArenaForAllocation());
-  }
-  _impl_.content_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.content_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_content().empty()) {
-    _this->_impl_.content_.Set(from._internal_content(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.to_ = new ::palm::metasequoia::v1::EmailTask_Address(*from._impl_.to_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.profile_ = new ::palm::metasequoia::v1::SmtpProfile(*from._impl_.profile_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.to_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::EmailTask_Address>(arena, *from._impl_.to_)
+                : nullptr;
+  _impl_.profile_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::SmtpProfile>(arena, *from._impl_.profile_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteSmtpPingRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteSmtpPingRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        subject_(arena),
+        content_(arena) {}
+
 inline void SiteSmtpPingRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.subject_){},
-      decltype(_impl_.content_){},
-      decltype(_impl_.to_){nullptr},
-      decltype(_impl_.profile_){nullptr},
-  };
-  _impl_.subject_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.subject_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.content_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.content_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, to_),
+           0,
+           offsetof(Impl_, profile_) -
+               offsetof(Impl_, to_) +
+               sizeof(Impl_::profile_));
 }
 SiteSmtpPingRequest::~SiteSmtpPingRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteSmtpPingRequest)
@@ -19325,18 +19069,17 @@ SiteSmtpPingRequest::~SiteSmtpPingRequest() {
   SharedDtor();
 }
 inline void SiteSmtpPingRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.subject_.Destroy();
   _impl_.content_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.to_;
-  if (this != internal_default_instance()) delete _impl_.profile_;
-}
-void SiteSmtpPingRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.to_;
+  delete _impl_.profile_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteSmtpPingRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteSmtpPingRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -19426,8 +19169,8 @@ const ::_pbi::TcParseTable<2, 4, 2, 62, 2> SiteSmtpPingRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.EmailTask.Address to = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::to(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::to(this),
         _Internal::to(this).GetCachedSize(), target, stream);
   }
 
@@ -19449,8 +19192,8 @@ const ::_pbi::TcParseTable<2, 4, 2, 62, 2> SiteSmtpPingRequest::_table_ = {
 
   // .palm.metasequoia.v1.SmtpProfile profile = 9;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(9, _Internal::profile(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        9, _Internal::profile(this),
         _Internal::profile(this).GetCachedSize(), target, stream);
   }
 
@@ -19487,16 +19230,14 @@ const ::_pbi::TcParseTable<2, 4, 2, 62, 2> SiteSmtpPingRequest::_table_ = {
   if (cached_has_bits & 0x00000003u) {
     // .palm.metasequoia.v1.EmailTask.Address to = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.to_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.to_);
     }
 
     // .palm.metasequoia.v1.SmtpProfile profile = 9;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.profile_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.profile_);
     }
 
   }
@@ -19504,11 +19245,12 @@ const ::_pbi::TcParseTable<2, 4, 2, 62, 2> SiteSmtpPingRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteSmtpPingRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteSmtpPingRequest::MergeImpl
+    SiteSmtpPingRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteSmtpPingRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteSmtpPingRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteSmtpPingRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteSmtpPingRequest*>(&to_msg);
@@ -19549,16 +19291,17 @@ PROTOBUF_NOINLINE bool SiteSmtpPingRequest::IsInitialized() const {
   return true;
 }
 
-void SiteSmtpPingRequest::InternalSwap(SiteSmtpPingRequest* other) {
+::_pbi::CachedSize* SiteSmtpPingRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteSmtpPingRequest::InternalSwap(SiteSmtpPingRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.subject_, lhs_arena,
-                                       &other->_impl_.subject_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_, lhs_arena,
-                                       &other->_impl_.content_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.subject_, &other->_impl_.subject_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_, &other->_impl_.content_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SiteSmtpPingRequest, _impl_.profile_)
       + sizeof(SiteSmtpPingRequest::_impl_.profile_)
@@ -19583,35 +19326,32 @@ SiteSetLogoRequest::SiteSetLogoRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteSetLogoRequest)
 }
-SiteSetLogoRequest::SiteSetLogoRequest(const SiteSetLogoRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteSetLogoRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : url_(arena, from.url_),
+        _cached_size_{0} {}
+
+SiteSetLogoRequest::SiteSetLogoRequest(
+    ::google::protobuf::Arena* arena,
+    const SiteSetLogoRequest& from)
+    : ::google::protobuf::Message(arena) {
   SiteSetLogoRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.url_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteSetLogoRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteSetLogoRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : url_(arena),
+        _cached_size_{0} {}
+
 inline void SiteSetLogoRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.url_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteSetLogoRequest::~SiteSetLogoRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteSetLogoRequest)
@@ -19619,15 +19359,14 @@ SiteSetLogoRequest::~SiteSetLogoRequest() {
   SharedDtor();
 }
 inline void SiteSetLogoRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.url_.Destroy();
-}
-void SiteSetLogoRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteSetLogoRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteSetLogoRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -19718,11 +19457,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 50, 2> SiteSetLogoRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteSetLogoRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteSetLogoRequest::MergeImpl
+    SiteSetLogoRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteSetLogoRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteSetLogoRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteSetLogoRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteSetLogoRequest*>(&to_msg);
@@ -19749,13 +19489,15 @@ PROTOBUF_NOINLINE bool SiteSetLogoRequest::IsInitialized() const {
   return true;
 }
 
-void SiteSetLogoRequest::InternalSwap(SiteSetLogoRequest* other) {
+::_pbi::CachedSize* SiteSetLogoRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteSetLogoRequest::InternalSwap(SiteSetLogoRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, &other->_impl_.url_, arena);
 }
 
 ::google::protobuf::Metadata SiteSetLogoRequest::GetMetadata() const {
@@ -19774,35 +19516,32 @@ SiteSetCopyrightRequest::SiteSetCopyrightRequest(::google::protobuf::Arena* aren
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteSetCopyrightRequest)
 }
-SiteSetCopyrightRequest::SiteSetCopyrightRequest(const SiteSetCopyrightRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteSetCopyrightRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : payload_(arena, from.payload_),
+        _cached_size_{0} {}
+
+SiteSetCopyrightRequest::SiteSetCopyrightRequest(
+    ::google::protobuf::Arena* arena,
+    const SiteSetCopyrightRequest& from)
+    : ::google::protobuf::Message(arena) {
   SiteSetCopyrightRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.payload_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.payload_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_payload().empty()) {
-    _this->_impl_.payload_.Set(from._internal_payload(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteSetCopyrightRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteSetCopyrightRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : payload_(arena),
+        _cached_size_{0} {}
+
 inline void SiteSetCopyrightRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.payload_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.payload_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteSetCopyrightRequest::~SiteSetCopyrightRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteSetCopyrightRequest)
@@ -19810,15 +19549,14 @@ SiteSetCopyrightRequest::~SiteSetCopyrightRequest() {
   SharedDtor();
 }
 inline void SiteSetCopyrightRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.payload_.Destroy();
-}
-void SiteSetCopyrightRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteSetCopyrightRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteSetCopyrightRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -19909,11 +19647,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 59, 2> SiteSetCopyrightRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteSetCopyrightRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteSetCopyrightRequest::MergeImpl
+    SiteSetCopyrightRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteSetCopyrightRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteSetCopyrightRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteSetCopyrightRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteSetCopyrightRequest*>(&to_msg);
@@ -19940,13 +19679,15 @@ PROTOBUF_NOINLINE bool SiteSetCopyrightRequest::IsInitialized() const {
   return true;
 }
 
-void SiteSetCopyrightRequest::InternalSwap(SiteSetCopyrightRequest* other) {
+::_pbi::CachedSize* SiteSetCopyrightRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteSetCopyrightRequest::InternalSwap(SiteSetCopyrightRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.payload_, lhs_arena,
-                                       &other->_impl_.payload_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.payload_, &other->_impl_.payload_, arena);
 }
 
 ::google::protobuf::Metadata SiteSetCopyrightRequest::GetMetadata() const {
@@ -19965,24 +19706,32 @@ SiteSetKeywordsRequest::SiteSetKeywordsRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteSetKeywordsRequest)
 }
-SiteSetKeywordsRequest::SiteSetKeywordsRequest(const SiteSetKeywordsRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteSetKeywordsRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+SiteSetKeywordsRequest::SiteSetKeywordsRequest(
+    ::google::protobuf::Arena* arena,
+    const SiteSetKeywordsRequest& from)
+    : ::google::protobuf::Message(arena) {
   SiteSetKeywordsRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteSetKeywordsRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteSetKeywordsRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void SiteSetKeywordsRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteSetKeywordsRequest::~SiteSetKeywordsRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteSetKeywordsRequest)
@@ -19990,20 +19739,18 @@ SiteSetKeywordsRequest::~SiteSetKeywordsRequest() {
   SharedDtor();
 }
 inline void SiteSetKeywordsRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_items()->~RepeatedPtrField();
-}
-void SiteSetKeywordsRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteSetKeywordsRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteSetKeywordsRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -20089,11 +19836,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 56, 2> SiteSetKeywordsRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteSetKeywordsRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteSetKeywordsRequest::MergeImpl
+    SiteSetKeywordsRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteSetKeywordsRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteSetKeywordsRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteSetKeywordsRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteSetKeywordsRequest*>(&to_msg);
@@ -20118,7 +19866,10 @@ PROTOBUF_NOINLINE bool SiteSetKeywordsRequest::IsInitialized() const {
   return true;
 }
 
-void SiteSetKeywordsRequest::InternalSwap(SiteSetKeywordsRequest* other) {
+::_pbi::CachedSize* SiteSetKeywordsRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteSetKeywordsRequest::InternalSwap(SiteSetKeywordsRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -20140,74 +19891,38 @@ SiteSetInfoRequest::SiteSetInfoRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteSetInfoRequest)
 }
-SiteSetInfoRequest::SiteSetInfoRequest(const SiteSetInfoRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteSetInfoRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : lang_(arena, from.lang_),
+        title_(arena, from.title_),
+        subhead_(arena, from.subhead_),
+        description_(arena, from.description_),
+        _cached_size_{0} {}
+
+SiteSetInfoRequest::SiteSetInfoRequest(
+    ::google::protobuf::Arena* arena,
+    const SiteSetInfoRequest& from)
+    : ::google::protobuf::Message(arena) {
   SiteSetInfoRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.lang_){},
-      decltype(_impl_.title_){},
-      decltype(_impl_.subhead_){},
-      decltype(_impl_.description_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), _this->GetArenaForAllocation());
-  }
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
-  }
-  _impl_.subhead_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.subhead_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_subhead().empty()) {
-    _this->_impl_.subhead_.Set(from._internal_subhead(), _this->GetArenaForAllocation());
-  }
-  _impl_.description_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.description_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_description().empty()) {
-    _this->_impl_.description_.Set(from._internal_description(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteSetInfoRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteSetInfoRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : lang_(arena),
+        title_(arena),
+        subhead_(arena),
+        description_(arena),
+        _cached_size_{0} {}
+
 inline void SiteSetInfoRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.lang_){},
-      decltype(_impl_.title_){},
-      decltype(_impl_.subhead_){},
-      decltype(_impl_.description_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.subhead_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.subhead_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.description_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.description_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteSetInfoRequest::~SiteSetInfoRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteSetInfoRequest)
@@ -20215,18 +19930,17 @@ SiteSetInfoRequest::~SiteSetInfoRequest() {
   SharedDtor();
 }
 inline void SiteSetInfoRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.lang_.Destroy();
   _impl_.title_.Destroy();
   _impl_.subhead_.Destroy();
   _impl_.description_.Destroy();
-}
-void SiteSetInfoRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteSetInfoRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteSetInfoRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -20387,11 +20101,12 @@ const ::_pbi::TcParseTable<3, 4, 0, 74, 2> SiteSetInfoRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteSetInfoRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteSetInfoRequest::MergeImpl
+    SiteSetInfoRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteSetInfoRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteSetInfoRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteSetInfoRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteSetInfoRequest*>(&to_msg);
@@ -20427,19 +20142,18 @@ PROTOBUF_NOINLINE bool SiteSetInfoRequest::IsInitialized() const {
   return true;
 }
 
-void SiteSetInfoRequest::InternalSwap(SiteSetInfoRequest* other) {
+::_pbi::CachedSize* SiteSetInfoRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteSetInfoRequest::InternalSwap(SiteSetInfoRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, lhs_arena,
-                                       &other->_impl_.lang_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.subhead_, lhs_arena,
-                                       &other->_impl_.subhead_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, lhs_arena,
-                                       &other->_impl_.description_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, &other->_impl_.lang_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, &other->_impl_.title_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.subhead_, &other->_impl_.subhead_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, &other->_impl_.description_, arena);
 }
 
 ::google::protobuf::Metadata SiteSetInfoRequest::GetMetadata() const {
@@ -20458,48 +20172,34 @@ SiteLayoutResponse_Author::SiteLayoutResponse_Author(::google::protobuf::Arena* 
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteLayoutResponse.Author)
 }
-SiteLayoutResponse_Author::SiteLayoutResponse_Author(const SiteLayoutResponse_Author& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteLayoutResponse_Author::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : name_(arena, from.name_),
+        email_(arena, from.email_),
+        _cached_size_{0} {}
+
+SiteLayoutResponse_Author::SiteLayoutResponse_Author(
+    ::google::protobuf::Arena* arena,
+    const SiteLayoutResponse_Author& from)
+    : ::google::protobuf::Message(arena) {
   SiteLayoutResponse_Author* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.email_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.email_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_email().empty()) {
-    _this->_impl_.email_.Set(from._internal_email(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteLayoutResponse.Author)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteLayoutResponse_Author::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : name_(arena),
+        email_(arena),
+        _cached_size_{0} {}
+
 inline void SiteLayoutResponse_Author::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.email_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.email_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.email_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteLayoutResponse_Author::~SiteLayoutResponse_Author() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteLayoutResponse.Author)
@@ -20507,16 +20207,15 @@ SiteLayoutResponse_Author::~SiteLayoutResponse_Author() {
   SharedDtor();
 }
 inline void SiteLayoutResponse_Author::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
   _impl_.email_.Destroy();
-}
-void SiteLayoutResponse_Author::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteLayoutResponse_Author::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteLayoutResponse.Author)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -20629,11 +20328,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 63, 2> SiteLayoutResponse_Author::_table_ = 
 }
 
 const ::google::protobuf::Message::ClassData SiteLayoutResponse_Author::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteLayoutResponse_Author::MergeImpl
+    SiteLayoutResponse_Author::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteLayoutResponse_Author::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteLayoutResponse_Author::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteLayoutResponse_Author::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteLayoutResponse_Author*>(&to_msg);
@@ -20663,15 +20363,16 @@ PROTOBUF_NOINLINE bool SiteLayoutResponse_Author::IsInitialized() const {
   return true;
 }
 
-void SiteLayoutResponse_Author::InternalSwap(SiteLayoutResponse_Author* other) {
+::_pbi::CachedSize* SiteLayoutResponse_Author::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteLayoutResponse_Author::InternalSwap(SiteLayoutResponse_Author* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, lhs_arena,
-                                       &other->_impl_.email_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.email_, &other->_impl_.email_, arena);
 }
 
 ::google::protobuf::Metadata SiteLayoutResponse_Author::GetMetadata() const {
@@ -20700,98 +20401,50 @@ SiteLayoutResponse::SiteLayoutResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteLayoutResponse)
 }
-SiteLayoutResponse::SiteLayoutResponse(const SiteLayoutResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteLayoutResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        keywords_{visibility, arena, from.keywords_},
+        languages_{visibility, arena, from.languages_},
+        title_(arena, from.title_),
+        subhead_(arena, from.subhead_),
+        description_(arena, from.description_),
+        copyright_(arena, from.copyright_),
+        logo_(arena, from.logo_) {}
+
+SiteLayoutResponse::SiteLayoutResponse(
+    ::google::protobuf::Arena* arena,
+    const SiteLayoutResponse& from)
+    : ::google::protobuf::Message(arena) {
   SiteLayoutResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.keywords_){from._impl_.keywords_},
-      decltype(_impl_.languages_){from._impl_.languages_},
-      decltype(_impl_.title_){},
-      decltype(_impl_.subhead_){},
-      decltype(_impl_.description_){},
-      decltype(_impl_.copyright_){},
-      decltype(_impl_.logo_){},
-      decltype(_impl_.author_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
-  }
-  _impl_.subhead_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.subhead_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_subhead().empty()) {
-    _this->_impl_.subhead_.Set(from._internal_subhead(), _this->GetArenaForAllocation());
-  }
-  _impl_.description_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.description_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_description().empty()) {
-    _this->_impl_.description_.Set(from._internal_description(), _this->GetArenaForAllocation());
-  }
-  _impl_.copyright_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.copyright_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_copyright().empty()) {
-    _this->_impl_.copyright_.Set(from._internal_copyright(), _this->GetArenaForAllocation());
-  }
-  _impl_.logo_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.logo_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_logo().empty()) {
-    _this->_impl_.logo_.Set(from._internal_logo(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.author_ = new ::palm::metasequoia::v1::SiteLayoutResponse_Author(*from._impl_.author_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.author_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::SiteLayoutResponse_Author>(arena, *from._impl_.author_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteLayoutResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteLayoutResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        keywords_{visibility, arena},
+        languages_{visibility, arena},
+        title_(arena),
+        subhead_(arena),
+        description_(arena),
+        copyright_(arena),
+        logo_(arena) {}
+
 inline void SiteLayoutResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.keywords_){arena},
-      decltype(_impl_.languages_){arena},
-      decltype(_impl_.title_){},
-      decltype(_impl_.subhead_){},
-      decltype(_impl_.description_){},
-      decltype(_impl_.copyright_){},
-      decltype(_impl_.logo_){},
-      decltype(_impl_.author_){nullptr},
-  };
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.subhead_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.subhead_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.description_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.description_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.copyright_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.copyright_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.logo_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.logo_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.author_ = {};
 }
 SiteLayoutResponse::~SiteLayoutResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteLayoutResponse)
@@ -20799,28 +20452,25 @@ SiteLayoutResponse::~SiteLayoutResponse() {
   SharedDtor();
 }
 inline void SiteLayoutResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_keywords()->~RepeatedPtrField();
-  _internal_mutable_languages()->~RepeatedPtrField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.title_.Destroy();
   _impl_.subhead_.Destroy();
   _impl_.description_.Destroy();
   _impl_.copyright_.Destroy();
   _impl_.logo_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.author_;
-}
-void SiteLayoutResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.author_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteLayoutResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteLayoutResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_keywords()->Clear();
-  _internal_mutable_languages()->Clear();
+  _impl_.keywords_.Clear();
+  _impl_.languages_.Clear();
   _impl_.title_.ClearToEmpty();
   _impl_.subhead_.ClearToEmpty();
   _impl_.description_.ClearToEmpty();
@@ -20973,8 +20623,8 @@ const ::_pbi::TcParseTable<4, 8, 1, 108, 2> SiteLayoutResponse::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.SiteLayoutResponse.Author author = 5;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(5, _Internal::author(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        5, _Internal::author(this),
         _Internal::author(this).GetCachedSize(), target, stream);
   }
 
@@ -21064,20 +20714,20 @@ const ::_pbi::TcParseTable<4, 8, 1, 108, 2> SiteLayoutResponse::_table_ = {
   // .palm.metasequoia.v1.SiteLayoutResponse.Author author = 5;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.author_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.author_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData SiteLayoutResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteLayoutResponse::MergeImpl
+    SiteLayoutResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteLayoutResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteLayoutResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteLayoutResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteLayoutResponse*>(&to_msg);
@@ -21122,24 +20772,22 @@ PROTOBUF_NOINLINE bool SiteLayoutResponse::IsInitialized() const {
   return true;
 }
 
-void SiteLayoutResponse::InternalSwap(SiteLayoutResponse* other) {
+::_pbi::CachedSize* SiteLayoutResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteLayoutResponse::InternalSwap(SiteLayoutResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.keywords_.InternalSwap(&other->_impl_.keywords_);
   _impl_.languages_.InternalSwap(&other->_impl_.languages_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.subhead_, lhs_arena,
-                                       &other->_impl_.subhead_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, lhs_arena,
-                                       &other->_impl_.description_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.copyright_, lhs_arena,
-                                       &other->_impl_.copyright_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.logo_, lhs_arena,
-                                       &other->_impl_.logo_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, &other->_impl_.title_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.subhead_, &other->_impl_.subhead_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, &other->_impl_.description_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.copyright_, &other->_impl_.copyright_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.logo_, &other->_impl_.logo_, arena);
   swap(_impl_.author_, other->_impl_.author_);
 }
 
@@ -21159,48 +20807,34 @@ GoogleProfile_ReCaptcha::GoogleProfile_ReCaptcha(::google::protobuf::Arena* aren
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.GoogleProfile.ReCaptcha)
 }
-GoogleProfile_ReCaptcha::GoogleProfile_ReCaptcha(const GoogleProfile_ReCaptcha& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE GoogleProfile_ReCaptcha::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : site_key_(arena, from.site_key_),
+        secret_(arena, from.secret_),
+        _cached_size_{0} {}
+
+GoogleProfile_ReCaptcha::GoogleProfile_ReCaptcha(
+    ::google::protobuf::Arena* arena,
+    const GoogleProfile_ReCaptcha& from)
+    : ::google::protobuf::Message(arena) {
   GoogleProfile_ReCaptcha* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.site_key_){},
-      decltype(_impl_.secret_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.site_key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.site_key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_site_key().empty()) {
-    _this->_impl_.site_key_.Set(from._internal_site_key(), _this->GetArenaForAllocation());
-  }
-  _impl_.secret_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.secret_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_secret().empty()) {
-    _this->_impl_.secret_.Set(from._internal_secret(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.GoogleProfile.ReCaptcha)
 }
+inline PROTOBUF_NDEBUG_INLINE GoogleProfile_ReCaptcha::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : site_key_(arena),
+        secret_(arena),
+        _cached_size_{0} {}
+
 inline void GoogleProfile_ReCaptcha::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.site_key_){},
-      decltype(_impl_.secret_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.site_key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.site_key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.secret_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.secret_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 GoogleProfile_ReCaptcha::~GoogleProfile_ReCaptcha() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.GoogleProfile.ReCaptcha)
@@ -21208,16 +20842,15 @@ GoogleProfile_ReCaptcha::~GoogleProfile_ReCaptcha() {
   SharedDtor();
 }
 inline void GoogleProfile_ReCaptcha::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.site_key_.Destroy();
   _impl_.secret_.Destroy();
-}
-void GoogleProfile_ReCaptcha::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void GoogleProfile_ReCaptcha::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.GoogleProfile.ReCaptcha)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -21330,11 +20963,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 66, 2> GoogleProfile_ReCaptcha::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData GoogleProfile_ReCaptcha::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    GoogleProfile_ReCaptcha::MergeImpl
+    GoogleProfile_ReCaptcha::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*GoogleProfile_ReCaptcha::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* GoogleProfile_ReCaptcha::GetClassData() const {
+  return &_class_data_;
+}
 
 void GoogleProfile_ReCaptcha::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<GoogleProfile_ReCaptcha*>(&to_msg);
@@ -21364,15 +20998,16 @@ PROTOBUF_NOINLINE bool GoogleProfile_ReCaptcha::IsInitialized() const {
   return true;
 }
 
-void GoogleProfile_ReCaptcha::InternalSwap(GoogleProfile_ReCaptcha* other) {
+::_pbi::CachedSize* GoogleProfile_ReCaptcha::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void GoogleProfile_ReCaptcha::InternalSwap(GoogleProfile_ReCaptcha* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.site_key_, lhs_arena,
-                                       &other->_impl_.site_key_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.secret_, lhs_arena,
-                                       &other->_impl_.secret_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.site_key_, &other->_impl_.site_key_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.secret_, &other->_impl_.secret_, arena);
 }
 
 ::google::protobuf::Metadata GoogleProfile_ReCaptcha::GetMetadata() const {
@@ -21404,42 +21039,38 @@ GoogleProfile::GoogleProfile(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.GoogleProfile)
 }
-GoogleProfile::GoogleProfile(const GoogleProfile& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE GoogleProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        site_verify_id_(arena, from.site_verify_id_) {}
+
+GoogleProfile::GoogleProfile(
+    ::google::protobuf::Arena* arena,
+    const GoogleProfile& from)
+    : ::google::protobuf::Message(arena) {
   GoogleProfile* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.site_verify_id_){},
-      decltype(_impl_.re_captcha_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.site_verify_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.site_verify_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.site_verify_id_.Set(from._internal_site_verify_id(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.re_captcha_ = new ::palm::metasequoia::v1::GoogleProfile_ReCaptcha(*from._impl_.re_captcha_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.re_captcha_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::GoogleProfile_ReCaptcha>(arena, *from._impl_.re_captcha_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.GoogleProfile)
 }
+inline PROTOBUF_NDEBUG_INLINE GoogleProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        site_verify_id_(arena) {}
+
 inline void GoogleProfile::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.site_verify_id_){},
-      decltype(_impl_.re_captcha_){nullptr},
-  };
-  _impl_.site_verify_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.site_verify_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.re_captcha_ = {};
 }
 GoogleProfile::~GoogleProfile() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.GoogleProfile)
@@ -21447,16 +21078,15 @@ GoogleProfile::~GoogleProfile() {
   SharedDtor();
 }
 inline void GoogleProfile::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.site_verify_id_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.re_captcha_;
-}
-void GoogleProfile::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.re_captcha_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void GoogleProfile::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.GoogleProfile)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -21539,8 +21169,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 56, 2> GoogleProfile::_table_ = {
 
   // optional .palm.metasequoia.v1.GoogleProfile.ReCaptcha re_captcha = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::re_captcha(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::re_captcha(this),
         _Internal::re_captcha(this).GetCachedSize(), target, stream);
   }
 
@@ -21571,9 +21201,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 56, 2> GoogleProfile::_table_ = {
 
     // optional .palm.metasequoia.v1.GoogleProfile.ReCaptcha re_captcha = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.re_captcha_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.re_captcha_);
     }
 
   }
@@ -21581,11 +21210,12 @@ const ::_pbi::TcParseTable<1, 2, 1, 56, 2> GoogleProfile::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData GoogleProfile::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    GoogleProfile::MergeImpl
+    GoogleProfile::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*GoogleProfile::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* GoogleProfile::GetClassData() const {
+  return &_class_data_;
+}
 
 void GoogleProfile::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<GoogleProfile*>(&to_msg);
@@ -21619,14 +21249,16 @@ PROTOBUF_NOINLINE bool GoogleProfile::IsInitialized() const {
   return true;
 }
 
-void GoogleProfile::InternalSwap(GoogleProfile* other) {
+::_pbi::CachedSize* GoogleProfile::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void GoogleProfile::InternalSwap(GoogleProfile* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.site_verify_id_, lhs_arena,
-                                       &other->_impl_.site_verify_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.site_verify_id_, &other->_impl_.site_verify_id_, arena);
   swap(_impl_.re_captcha_, other->_impl_.re_captcha_);
 }
 
@@ -21646,48 +21278,34 @@ BaiduProfile_SiteVerify::BaiduProfile_SiteVerify(::google::protobuf::Arena* aren
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.BaiduProfile.SiteVerify)
 }
-BaiduProfile_SiteVerify::BaiduProfile_SiteVerify(const BaiduProfile_SiteVerify& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE BaiduProfile_SiteVerify::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : id_(arena, from.id_),
+        content_(arena, from.content_),
+        _cached_size_{0} {}
+
+BaiduProfile_SiteVerify::BaiduProfile_SiteVerify(
+    ::google::protobuf::Arena* arena,
+    const BaiduProfile_SiteVerify& from)
+    : ::google::protobuf::Message(arena) {
   BaiduProfile_SiteVerify* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.id_){},
-      decltype(_impl_.content_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_id().empty()) {
-    _this->_impl_.id_.Set(from._internal_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.content_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.content_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_content().empty()) {
-    _this->_impl_.content_.Set(from._internal_content(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.BaiduProfile.SiteVerify)
 }
+inline PROTOBUF_NDEBUG_INLINE BaiduProfile_SiteVerify::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : id_(arena),
+        content_(arena),
+        _cached_size_{0} {}
+
 inline void BaiduProfile_SiteVerify::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.id_){},
-      decltype(_impl_.content_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.content_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.content_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 BaiduProfile_SiteVerify::~BaiduProfile_SiteVerify() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.BaiduProfile.SiteVerify)
@@ -21695,16 +21313,15 @@ BaiduProfile_SiteVerify::~BaiduProfile_SiteVerify() {
   SharedDtor();
 }
 inline void BaiduProfile_SiteVerify::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.id_.Destroy();
   _impl_.content_.Destroy();
-}
-void BaiduProfile_SiteVerify::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void BaiduProfile_SiteVerify::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.BaiduProfile.SiteVerify)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -21817,11 +21434,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 61, 2> BaiduProfile_SiteVerify::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData BaiduProfile_SiteVerify::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    BaiduProfile_SiteVerify::MergeImpl
+    BaiduProfile_SiteVerify::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*BaiduProfile_SiteVerify::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* BaiduProfile_SiteVerify::GetClassData() const {
+  return &_class_data_;
+}
 
 void BaiduProfile_SiteVerify::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<BaiduProfile_SiteVerify*>(&to_msg);
@@ -21851,15 +21469,16 @@ PROTOBUF_NOINLINE bool BaiduProfile_SiteVerify::IsInitialized() const {
   return true;
 }
 
-void BaiduProfile_SiteVerify::InternalSwap(BaiduProfile_SiteVerify* other) {
+::_pbi::CachedSize* BaiduProfile_SiteVerify::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void BaiduProfile_SiteVerify::InternalSwap(BaiduProfile_SiteVerify* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, lhs_arena,
-                                       &other->_impl_.id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_, lhs_arena,
-                                       &other->_impl_.content_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, &other->_impl_.id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_, &other->_impl_.content_, arena);
 }
 
 ::google::protobuf::Metadata BaiduProfile_SiteVerify::GetMetadata() const {
@@ -21888,29 +21507,36 @@ BaiduProfile::BaiduProfile(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.BaiduProfile)
 }
-BaiduProfile::BaiduProfile(const BaiduProfile& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE BaiduProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+BaiduProfile::BaiduProfile(
+    ::google::protobuf::Arena* arena,
+    const BaiduProfile& from)
+    : ::google::protobuf::Message(arena) {
   BaiduProfile* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.site_verify_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.site_verify_ = new ::palm::metasequoia::v1::BaiduProfile_SiteVerify(*from._impl_.site_verify_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.site_verify_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::BaiduProfile_SiteVerify>(arena, *from._impl_.site_verify_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.BaiduProfile)
 }
+inline PROTOBUF_NDEBUG_INLINE BaiduProfile::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void BaiduProfile::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.site_verify_){nullptr},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.site_verify_ = {};
 }
 BaiduProfile::~BaiduProfile() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.BaiduProfile)
@@ -21918,15 +21544,14 @@ BaiduProfile::~BaiduProfile() {
   SharedDtor();
 }
 inline void BaiduProfile::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.site_verify_;
-}
-void BaiduProfile::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.site_verify_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void BaiduProfile::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.BaiduProfile)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -21987,8 +21612,8 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> BaiduProfile::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // optional .palm.metasequoia.v1.BaiduProfile.SiteVerify site_verify = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::site_verify(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::site_verify(this),
         _Internal::site_verify(this).GetCachedSize(), target, stream);
   }
 
@@ -22012,20 +21637,20 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> BaiduProfile::_table_ = {
   // optional .palm.metasequoia.v1.BaiduProfile.SiteVerify site_verify = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.site_verify_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.site_verify_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData BaiduProfile::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    BaiduProfile::MergeImpl
+    BaiduProfile::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*BaiduProfile::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* BaiduProfile::GetClassData() const {
+  return &_class_data_;
+}
 
 void BaiduProfile::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<BaiduProfile*>(&to_msg);
@@ -22053,7 +21678,10 @@ PROTOBUF_NOINLINE bool BaiduProfile::IsInitialized() const {
   return true;
 }
 
-void BaiduProfile::InternalSwap(BaiduProfile* other) {
+::_pbi::CachedSize* BaiduProfile::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void BaiduProfile::InternalSwap(BaiduProfile* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -22076,50 +21704,36 @@ SmsTask::SmsTask(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SmsTask)
 }
-SmsTask::SmsTask(const SmsTask& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SmsTask::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : to_{visibility, arena, from.to_},
+        from_(arena, from.from_),
+        body_(arena, from.body_),
+        _cached_size_{0} {}
+
+SmsTask::SmsTask(
+    ::google::protobuf::Arena* arena,
+    const SmsTask& from)
+    : ::google::protobuf::Message(arena) {
   SmsTask* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.to_){from._impl_.to_},
-      decltype(_impl_.from_){},
-      decltype(_impl_.body_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.from_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.from_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_from().empty()) {
-    _this->_impl_.from_.Set(from._internal_from(), _this->GetArenaForAllocation());
-  }
-  _impl_.body_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.body_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_body().empty()) {
-    _this->_impl_.body_.Set(from._internal_body(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SmsTask)
 }
+inline PROTOBUF_NDEBUG_INLINE SmsTask::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : to_{visibility, arena},
+        from_(arena),
+        body_(arena),
+        _cached_size_{0} {}
+
 inline void SmsTask::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.to_){arena},
-      decltype(_impl_.from_){},
-      decltype(_impl_.body_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.from_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.from_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.body_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.body_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SmsTask::~SmsTask() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SmsTask)
@@ -22127,22 +21741,20 @@ SmsTask::~SmsTask() {
   SharedDtor();
 }
 inline void SmsTask::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_to()->~RepeatedPtrField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.from_.Destroy();
   _impl_.body_.Destroy();
-}
-void SmsTask::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SmsTask::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SmsTask)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_to()->Clear();
+  _impl_.to_.Clear();
   _impl_.from_.ClearToEmpty();
   _impl_.body_.ClearToEmpty();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
@@ -22273,11 +21885,12 @@ const ::_pbi::TcParseTable<2, 3, 0, 46, 2> SmsTask::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SmsTask::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SmsTask::MergeImpl
+    SmsTask::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SmsTask::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SmsTask::GetClassData() const {
+  return &_class_data_;
+}
 
 void SmsTask::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SmsTask*>(&to_msg);
@@ -22308,16 +21921,17 @@ PROTOBUF_NOINLINE bool SmsTask::IsInitialized() const {
   return true;
 }
 
-void SmsTask::InternalSwap(SmsTask* other) {
+::_pbi::CachedSize* SmsTask::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SmsTask::InternalSwap(SmsTask* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.to_.InternalSwap(&other->_impl_.to_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.from_, lhs_arena,
-                                       &other->_impl_.from_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.body_, lhs_arena,
-                                       &other->_impl_.body_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.from_, &other->_impl_.from_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.body_, &other->_impl_.body_, arena);
 }
 
 ::google::protobuf::Metadata SmsTask::GetMetadata() const {
@@ -22336,48 +21950,34 @@ SiteStatusResponse_Database::SiteStatusResponse_Database(::google::protobuf::Are
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteStatusResponse.Database)
 }
-SiteStatusResponse_Database::SiteStatusResponse_Database(const SiteStatusResponse_Database& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_Database::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : name_(arena, from.name_),
+        size_(arena, from.size_),
+        _cached_size_{0} {}
+
+SiteStatusResponse_Database::SiteStatusResponse_Database(
+    ::google::protobuf::Arena* arena,
+    const SiteStatusResponse_Database& from)
+    : ::google::protobuf::Message(arena) {
   SiteStatusResponse_Database* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.size_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.size_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.size_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_size().empty()) {
-    _this->_impl_.size_.Set(from._internal_size(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteStatusResponse.Database)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_Database::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : name_(arena),
+        size_(arena),
+        _cached_size_{0} {}
+
 inline void SiteStatusResponse_Database::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.size_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.size_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.size_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteStatusResponse_Database::~SiteStatusResponse_Database() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteStatusResponse.Database)
@@ -22385,16 +21985,15 @@ SiteStatusResponse_Database::~SiteStatusResponse_Database() {
   SharedDtor();
 }
 inline void SiteStatusResponse_Database::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
   _impl_.size_.Destroy();
-}
-void SiteStatusResponse_Database::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteStatusResponse_Database::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteStatusResponse.Database)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -22507,11 +22106,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 64, 2> SiteStatusResponse_Database::_table_ 
 }
 
 const ::google::protobuf::Message::ClassData SiteStatusResponse_Database::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteStatusResponse_Database::MergeImpl
+    SiteStatusResponse_Database::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteStatusResponse_Database::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteStatusResponse_Database::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteStatusResponse_Database::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteStatusResponse_Database*>(&to_msg);
@@ -22541,15 +22141,16 @@ PROTOBUF_NOINLINE bool SiteStatusResponse_Database::IsInitialized() const {
   return true;
 }
 
-void SiteStatusResponse_Database::InternalSwap(SiteStatusResponse_Database* other) {
+::_pbi::CachedSize* SiteStatusResponse_Database::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteStatusResponse_Database::InternalSwap(SiteStatusResponse_Database* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.size_, lhs_arena,
-                                       &other->_impl_.size_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.size_, &other->_impl_.size_, arena);
 }
 
 ::google::protobuf::Metadata SiteStatusResponse_Database::GetMetadata() const {
@@ -22574,6 +22175,7 @@ const ::google::protobuf::Timestamp& SiteStatusResponse_PostgreSql::_Internal::n
   return *msg->_impl_.now_;
 }
 void SiteStatusResponse_PostgreSql::clear_now() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.now_ != nullptr) _impl_.now_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -22582,44 +22184,40 @@ SiteStatusResponse_PostgreSql::SiteStatusResponse_PostgreSql(::google::protobuf:
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteStatusResponse.PostgreSql)
 }
-SiteStatusResponse_PostgreSql::SiteStatusResponse_PostgreSql(const SiteStatusResponse_PostgreSql& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_PostgreSql::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        databases_{visibility, arena, from.databases_},
+        version_(arena, from.version_) {}
+
+SiteStatusResponse_PostgreSql::SiteStatusResponse_PostgreSql(
+    ::google::protobuf::Arena* arena,
+    const SiteStatusResponse_PostgreSql& from)
+    : ::google::protobuf::Message(arena) {
   SiteStatusResponse_PostgreSql* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.databases_){from._impl_.databases_},
-      decltype(_impl_.version_){},
-      decltype(_impl_.now_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.version_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.version_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_version().empty()) {
-    _this->_impl_.version_.Set(from._internal_version(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.now_ = new ::google::protobuf::Timestamp(*from._impl_.now_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.now_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.now_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteStatusResponse.PostgreSql)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_PostgreSql::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        databases_{visibility, arena},
+        version_(arena) {}
+
 inline void SiteStatusResponse_PostgreSql::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.databases_){arena},
-      decltype(_impl_.version_){},
-      decltype(_impl_.now_){nullptr},
-  };
-  _impl_.version_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.version_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.now_ = {};
 }
 SiteStatusResponse_PostgreSql::~SiteStatusResponse_PostgreSql() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteStatusResponse.PostgreSql)
@@ -22627,22 +22225,20 @@ SiteStatusResponse_PostgreSql::~SiteStatusResponse_PostgreSql() {
   SharedDtor();
 }
 inline void SiteStatusResponse_PostgreSql::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.databases_.~RepeatedPtrField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.version_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.now_;
-}
-void SiteStatusResponse_PostgreSql::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.now_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteStatusResponse_PostgreSql::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteStatusResponse.PostgreSql)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_databases()->Clear();
+  _impl_.databases_.Clear();
   _impl_.version_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
@@ -22721,8 +22317,8 @@ const ::_pbi::TcParseTable<1, 3, 2, 65, 2> SiteStatusResponse_PostgreSql::_table
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp now = 2;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::now(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::now(this),
         _Internal::now(this).GetCachedSize(), target, stream);
   }
 
@@ -22766,20 +22362,20 @@ const ::_pbi::TcParseTable<1, 3, 2, 65, 2> SiteStatusResponse_PostgreSql::_table
   // .google.protobuf.Timestamp now = 2;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.now_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.now_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData SiteStatusResponse_PostgreSql::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteStatusResponse_PostgreSql::MergeImpl
+    SiteStatusResponse_PostgreSql::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteStatusResponse_PostgreSql::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteStatusResponse_PostgreSql::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteStatusResponse_PostgreSql::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteStatusResponse_PostgreSql*>(&to_msg);
@@ -22789,7 +22385,8 @@ void SiteStatusResponse_PostgreSql::MergeImpl(::google::protobuf::Message& to_ms
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_databases()->MergeFrom(from._internal_databases());
+  _this->_internal_mutable_databases()->MergeFrom(
+      from._internal_databases());
   if (!from._internal_version().empty()) {
     _this->_internal_set_version(from._internal_version());
   }
@@ -22811,15 +22408,17 @@ PROTOBUF_NOINLINE bool SiteStatusResponse_PostgreSql::IsInitialized() const {
   return true;
 }
 
-void SiteStatusResponse_PostgreSql::InternalSwap(SiteStatusResponse_PostgreSql* other) {
+::_pbi::CachedSize* SiteStatusResponse_PostgreSql::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteStatusResponse_PostgreSql::InternalSwap(SiteStatusResponse_PostgreSql* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.databases_.InternalSwap(&other->_impl_.databases_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.version_, lhs_arena,
-                                       &other->_impl_.version_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.version_, &other->_impl_.version_, arena);
   swap(_impl_.now_, other->_impl_.now_);
 }
 
@@ -22839,38 +22438,34 @@ SiteStatusResponse_MySql::SiteStatusResponse_MySql(::google::protobuf::Arena* ar
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteStatusResponse.MySql)
 }
-SiteStatusResponse_MySql::SiteStatusResponse_MySql(const SiteStatusResponse_MySql& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_MySql::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : version_(arena, from.version_),
+        _cached_size_{0} {}
+
+SiteStatusResponse_MySql::SiteStatusResponse_MySql(
+    ::google::protobuf::Arena* arena,
+    const SiteStatusResponse_MySql& from)
+    : ::google::protobuf::Message(arena) {
   SiteStatusResponse_MySql* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.version_){},
-      decltype(_impl_.size_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.version_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.version_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_version().empty()) {
-    _this->_impl_.version_.Set(from._internal_version(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.size_ = from._impl_.size_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.size_ = from._impl_.size_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteStatusResponse.MySql)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_MySql::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : version_(arena),
+        _cached_size_{0} {}
+
 inline void SiteStatusResponse_MySql::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.version_){},
-      decltype(_impl_.size_){::uint64_t{0u}},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.version_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.version_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.size_ = {};
 }
 SiteStatusResponse_MySql::~SiteStatusResponse_MySql() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteStatusResponse.MySql)
@@ -22878,15 +22473,14 @@ SiteStatusResponse_MySql::~SiteStatusResponse_MySql() {
   SharedDtor();
 }
 inline void SiteStatusResponse_MySql::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.version_.Destroy();
-}
-void SiteStatusResponse_MySql::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteStatusResponse_MySql::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteStatusResponse.MySql)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -22997,11 +22591,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 60, 2> SiteStatusResponse_MySql::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteStatusResponse_MySql::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteStatusResponse_MySql::MergeImpl
+    SiteStatusResponse_MySql::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteStatusResponse_MySql::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteStatusResponse_MySql::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteStatusResponse_MySql::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteStatusResponse_MySql*>(&to_msg);
@@ -23031,13 +22626,15 @@ PROTOBUF_NOINLINE bool SiteStatusResponse_MySql::IsInitialized() const {
   return true;
 }
 
-void SiteStatusResponse_MySql::InternalSwap(SiteStatusResponse_MySql* other) {
+::_pbi::CachedSize* SiteStatusResponse_MySql::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteStatusResponse_MySql::InternalSwap(SiteStatusResponse_MySql* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.version_, lhs_arena,
-                                       &other->_impl_.version_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.version_, &other->_impl_.version_, arena);
         swap(_impl_.size_, other->_impl_.size_);
 }
 
@@ -23057,51 +22654,36 @@ SiteStatusResponse_Redis_Item::SiteStatusResponse_Redis_Item(::google::protobuf:
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteStatusResponse.Redis.Item)
 }
-SiteStatusResponse_Redis_Item::SiteStatusResponse_Redis_Item(const SiteStatusResponse_Redis_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_Redis_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : node_(arena, from.node_),
+        key_(arena, from.key_),
+        _cached_size_{0} {}
+
+SiteStatusResponse_Redis_Item::SiteStatusResponse_Redis_Item(
+    ::google::protobuf::Arena* arena,
+    const SiteStatusResponse_Redis_Item& from)
+    : ::google::protobuf::Message(arena) {
   SiteStatusResponse_Redis_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.node_){},
-      decltype(_impl_.key_){},
-      decltype(_impl_.ttl_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.node_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.node_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_node().empty()) {
-    _this->_impl_.node_.Set(from._internal_node(), _this->GetArenaForAllocation());
-  }
-  _impl_.key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_key().empty()) {
-    _this->_impl_.key_.Set(from._internal_key(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.ttl_ = from._impl_.ttl_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.ttl_ = from._impl_.ttl_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteStatusResponse.Redis.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_Redis_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : node_(arena),
+        key_(arena),
+        _cached_size_{0} {}
+
 inline void SiteStatusResponse_Redis_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.node_){},
-      decltype(_impl_.key_){},
-      decltype(_impl_.ttl_){::int64_t{0}},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.node_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.node_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.key_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.key_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.ttl_ = {};
 }
 SiteStatusResponse_Redis_Item::~SiteStatusResponse_Redis_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteStatusResponse.Redis.Item)
@@ -23109,16 +22691,15 @@ SiteStatusResponse_Redis_Item::~SiteStatusResponse_Redis_Item() {
   SharedDtor();
 }
 inline void SiteStatusResponse_Redis_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.node_.Destroy();
   _impl_.key_.Destroy();
-}
-void SiteStatusResponse_Redis_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteStatusResponse_Redis_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteStatusResponse.Redis.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -23252,11 +22833,12 @@ const ::_pbi::TcParseTable<2, 3, 0, 65, 2> SiteStatusResponse_Redis_Item::_table
 }
 
 const ::google::protobuf::Message::ClassData SiteStatusResponse_Redis_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteStatusResponse_Redis_Item::MergeImpl
+    SiteStatusResponse_Redis_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteStatusResponse_Redis_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteStatusResponse_Redis_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteStatusResponse_Redis_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteStatusResponse_Redis_Item*>(&to_msg);
@@ -23289,15 +22871,16 @@ PROTOBUF_NOINLINE bool SiteStatusResponse_Redis_Item::IsInitialized() const {
   return true;
 }
 
-void SiteStatusResponse_Redis_Item::InternalSwap(SiteStatusResponse_Redis_Item* other) {
+::_pbi::CachedSize* SiteStatusResponse_Redis_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteStatusResponse_Redis_Item::InternalSwap(SiteStatusResponse_Redis_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.node_, lhs_arena,
-                                       &other->_impl_.node_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, lhs_arena,
-                                       &other->_impl_.key_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.node_, &other->_impl_.node_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, &other->_impl_.key_, arena);
         swap(_impl_.ttl_, other->_impl_.ttl_);
 }
 
@@ -23317,37 +22900,34 @@ SiteStatusResponse_Redis::SiteStatusResponse_Redis(::google::protobuf::Arena* ar
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteStatusResponse.Redis)
 }
-SiteStatusResponse_Redis::SiteStatusResponse_Redis(const SiteStatusResponse_Redis& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_Redis::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        info_(arena, from.info_),
+        _cached_size_{0} {}
+
+SiteStatusResponse_Redis::SiteStatusResponse_Redis(
+    ::google::protobuf::Arena* arena,
+    const SiteStatusResponse_Redis& from)
+    : ::google::protobuf::Message(arena) {
   SiteStatusResponse_Redis* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      decltype(_impl_.info_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.info_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.info_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_info().empty()) {
-    _this->_impl_.info_.Set(from._internal_info(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteStatusResponse.Redis)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_Redis::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        info_(arena),
+        _cached_size_{0} {}
+
 inline void SiteStatusResponse_Redis::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      decltype(_impl_.info_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.info_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.info_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteStatusResponse_Redis::~SiteStatusResponse_Redis() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteStatusResponse.Redis)
@@ -23355,21 +22935,19 @@ SiteStatusResponse_Redis::~SiteStatusResponse_Redis() {
   SharedDtor();
 }
 inline void SiteStatusResponse_Redis::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.info_.Destroy();
-}
-void SiteStatusResponse_Redis::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteStatusResponse_Redis::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteStatusResponse.Redis)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _impl_.info_.ClearToEmpty();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -23476,11 +23054,12 @@ const ::_pbi::TcParseTable<1, 2, 1, 57, 2> SiteStatusResponse_Redis::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteStatusResponse_Redis::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteStatusResponse_Redis::MergeImpl
+    SiteStatusResponse_Redis::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteStatusResponse_Redis::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteStatusResponse_Redis::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteStatusResponse_Redis::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteStatusResponse_Redis*>(&to_msg);
@@ -23490,7 +23069,8 @@ void SiteStatusResponse_Redis::MergeImpl(::google::protobuf::Message& to_msg, co
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   if (!from._internal_info().empty()) {
     _this->_internal_set_info(from._internal_info());
   }
@@ -23508,14 +23088,16 @@ PROTOBUF_NOINLINE bool SiteStatusResponse_Redis::IsInitialized() const {
   return true;
 }
 
-void SiteStatusResponse_Redis::InternalSwap(SiteStatusResponse_Redis* other) {
+::_pbi::CachedSize* SiteStatusResponse_Redis::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteStatusResponse_Redis::InternalSwap(SiteStatusResponse_Redis* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.info_, lhs_arena,
-                                       &other->_impl_.info_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.info_, &other->_impl_.info_, arena);
 }
 
 ::google::protobuf::Metadata SiteStatusResponse_Redis::GetMetadata() const {
@@ -23534,38 +23116,34 @@ SiteStatusResponse_RabbitMq::SiteStatusResponse_RabbitMq(::google::protobuf::Are
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteStatusResponse.RabbitMq)
 }
-SiteStatusResponse_RabbitMq::SiteStatusResponse_RabbitMq(const SiteStatusResponse_RabbitMq& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_RabbitMq::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : protocol_(arena, from.protocol_),
+        _cached_size_{0} {}
+
+SiteStatusResponse_RabbitMq::SiteStatusResponse_RabbitMq(
+    ::google::protobuf::Arena* arena,
+    const SiteStatusResponse_RabbitMq& from)
+    : ::google::protobuf::Message(arena) {
   SiteStatusResponse_RabbitMq* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.protocol_){},
-      decltype(_impl_.heartbeat_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.protocol_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.protocol_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_protocol().empty()) {
-    _this->_impl_.protocol_.Set(from._internal_protocol(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.heartbeat_ = from._impl_.heartbeat_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.heartbeat_ = from._impl_.heartbeat_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteStatusResponse.RabbitMq)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_RabbitMq::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : protocol_(arena),
+        _cached_size_{0} {}
+
 inline void SiteStatusResponse_RabbitMq::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.protocol_){},
-      decltype(_impl_.heartbeat_){0u},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.protocol_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.protocol_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.heartbeat_ = {};
 }
 SiteStatusResponse_RabbitMq::~SiteStatusResponse_RabbitMq() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteStatusResponse.RabbitMq)
@@ -23573,15 +23151,14 @@ SiteStatusResponse_RabbitMq::~SiteStatusResponse_RabbitMq() {
   SharedDtor();
 }
 inline void SiteStatusResponse_RabbitMq::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.protocol_.Destroy();
-}
-void SiteStatusResponse_RabbitMq::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteStatusResponse_RabbitMq::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteStatusResponse.RabbitMq)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -23692,11 +23269,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 64, 2> SiteStatusResponse_RabbitMq::_table_ 
 }
 
 const ::google::protobuf::Message::ClassData SiteStatusResponse_RabbitMq::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteStatusResponse_RabbitMq::MergeImpl
+    SiteStatusResponse_RabbitMq::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteStatusResponse_RabbitMq::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteStatusResponse_RabbitMq::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteStatusResponse_RabbitMq::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteStatusResponse_RabbitMq*>(&to_msg);
@@ -23726,13 +23304,15 @@ PROTOBUF_NOINLINE bool SiteStatusResponse_RabbitMq::IsInitialized() const {
   return true;
 }
 
-void SiteStatusResponse_RabbitMq::InternalSwap(SiteStatusResponse_RabbitMq* other) {
+::_pbi::CachedSize* SiteStatusResponse_RabbitMq::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteStatusResponse_RabbitMq::InternalSwap(SiteStatusResponse_RabbitMq* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.protocol_, lhs_arena,
-                                       &other->_impl_.protocol_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.protocol_, &other->_impl_.protocol_, arena);
         swap(_impl_.heartbeat_, other->_impl_.heartbeat_);
 }
 
@@ -23752,48 +23332,34 @@ SiteStatusResponse_OpenSearch::SiteStatusResponse_OpenSearch(::google::protobuf:
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteStatusResponse.OpenSearch)
 }
-SiteStatusResponse_OpenSearch::SiteStatusResponse_OpenSearch(const SiteStatusResponse_OpenSearch& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_OpenSearch::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : url_(arena, from.url_),
+        info_(arena, from.info_),
+        _cached_size_{0} {}
+
+SiteStatusResponse_OpenSearch::SiteStatusResponse_OpenSearch(
+    ::google::protobuf::Arena* arena,
+    const SiteStatusResponse_OpenSearch& from)
+    : ::google::protobuf::Message(arena) {
   SiteStatusResponse_OpenSearch* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.url_){},
-      decltype(_impl_.info_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
-  }
-  _impl_.info_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.info_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_info().empty()) {
-    _this->_impl_.info_.Set(from._internal_info(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteStatusResponse.OpenSearch)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_OpenSearch::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : url_(arena),
+        info_(arena),
+        _cached_size_{0} {}
+
 inline void SiteStatusResponse_OpenSearch::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.url_){},
-      decltype(_impl_.info_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.info_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.info_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteStatusResponse_OpenSearch::~SiteStatusResponse_OpenSearch() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteStatusResponse.OpenSearch)
@@ -23801,16 +23367,15 @@ SiteStatusResponse_OpenSearch::~SiteStatusResponse_OpenSearch() {
   SharedDtor();
 }
 inline void SiteStatusResponse_OpenSearch::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.url_.Destroy();
   _impl_.info_.Destroy();
-}
-void SiteStatusResponse_OpenSearch::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteStatusResponse_OpenSearch::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteStatusResponse.OpenSearch)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -23923,11 +23488,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 65, 2> SiteStatusResponse_OpenSearch::_table
 }
 
 const ::google::protobuf::Message::ClassData SiteStatusResponse_OpenSearch::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteStatusResponse_OpenSearch::MergeImpl
+    SiteStatusResponse_OpenSearch::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteStatusResponse_OpenSearch::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteStatusResponse_OpenSearch::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteStatusResponse_OpenSearch::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteStatusResponse_OpenSearch*>(&to_msg);
@@ -23957,15 +23523,16 @@ PROTOBUF_NOINLINE bool SiteStatusResponse_OpenSearch::IsInitialized() const {
   return true;
 }
 
-void SiteStatusResponse_OpenSearch::InternalSwap(SiteStatusResponse_OpenSearch* other) {
+::_pbi::CachedSize* SiteStatusResponse_OpenSearch::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteStatusResponse_OpenSearch::InternalSwap(SiteStatusResponse_OpenSearch* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.info_, lhs_arena,
-                                       &other->_impl_.info_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, &other->_impl_.url_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.info_, &other->_impl_.info_, arena);
 }
 
 ::google::protobuf::Metadata SiteStatusResponse_OpenSearch::GetMetadata() const {
@@ -23984,48 +23551,34 @@ SiteStatusResponse_Health::SiteStatusResponse_Health(::google::protobuf::Arena* 
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteStatusResponse.Health)
 }
-SiteStatusResponse_Health::SiteStatusResponse_Health(const SiteStatusResponse_Health& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_Health::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : name_(arena, from.name_),
+        status_(arena, from.status_),
+        _cached_size_{0} {}
+
+SiteStatusResponse_Health::SiteStatusResponse_Health(
+    ::google::protobuf::Arena* arena,
+    const SiteStatusResponse_Health& from)
+    : ::google::protobuf::Message(arena) {
   SiteStatusResponse_Health* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.status_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.status_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.status_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_status().empty()) {
-    _this->_impl_.status_.Set(from._internal_status(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteStatusResponse.Health)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_Health::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : name_(arena),
+        status_(arena),
+        _cached_size_{0} {}
+
 inline void SiteStatusResponse_Health::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.name_){},
-      decltype(_impl_.status_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.status_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.status_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteStatusResponse_Health::~SiteStatusResponse_Health() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteStatusResponse.Health)
@@ -24033,16 +23586,15 @@ SiteStatusResponse_Health::~SiteStatusResponse_Health() {
   SharedDtor();
 }
 inline void SiteStatusResponse_Health::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.name_.Destroy();
   _impl_.status_.Destroy();
-}
-void SiteStatusResponse_Health::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteStatusResponse_Health::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteStatusResponse.Health)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -24155,11 +23707,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 64, 2> SiteStatusResponse_Health::_table_ = 
 }
 
 const ::google::protobuf::Message::ClassData SiteStatusResponse_Health::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteStatusResponse_Health::MergeImpl
+    SiteStatusResponse_Health::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteStatusResponse_Health::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteStatusResponse_Health::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteStatusResponse_Health::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteStatusResponse_Health*>(&to_msg);
@@ -24189,15 +23742,16 @@ PROTOBUF_NOINLINE bool SiteStatusResponse_Health::IsInitialized() const {
   return true;
 }
 
-void SiteStatusResponse_Health::InternalSwap(SiteStatusResponse_Health* other) {
+::_pbi::CachedSize* SiteStatusResponse_Health::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteStatusResponse_Health::InternalSwap(SiteStatusResponse_Health* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.status_, lhs_arena,
-                                       &other->_impl_.status_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.status_, &other->_impl_.status_, arena);
 }
 
 ::google::protobuf::Metadata SiteStatusResponse_Health::GetMetadata() const {
@@ -24216,152 +23770,50 @@ SiteStatusResponse_System::SiteStatusResponse_System(::google::protobuf::Arena* 
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteStatusResponse.System)
 }
-SiteStatusResponse_System::SiteStatusResponse_System(const SiteStatusResponse_System& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_System::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : version_(arena, from.version_),
+        cpu_(arena, from.cpu_),
+        memory_(arena, from.memory_),
+        boot_(arena, from.boot_),
+        disk_(arena, from.disk_),
+        load_(arena, from.load_),
+        fs_(arena, from.fs_),
+        swap_(arena, from.swap_),
+        uptime_(arena, from.uptime_),
+        network_(arena, from.network_),
+        _cached_size_{0} {}
+
+SiteStatusResponse_System::SiteStatusResponse_System(
+    ::google::protobuf::Arena* arena,
+    const SiteStatusResponse_System& from)
+    : ::google::protobuf::Message(arena) {
   SiteStatusResponse_System* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.version_){},
-      decltype(_impl_.cpu_){},
-      decltype(_impl_.memory_){},
-      decltype(_impl_.boot_){},
-      decltype(_impl_.disk_){},
-      decltype(_impl_.load_){},
-      decltype(_impl_.fs_){},
-      decltype(_impl_.swap_){},
-      decltype(_impl_.uptime_){},
-      decltype(_impl_.network_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.version_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.version_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_version().empty()) {
-    _this->_impl_.version_.Set(from._internal_version(), _this->GetArenaForAllocation());
-  }
-  _impl_.cpu_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.cpu_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_cpu().empty()) {
-    _this->_impl_.cpu_.Set(from._internal_cpu(), _this->GetArenaForAllocation());
-  }
-  _impl_.memory_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.memory_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_memory().empty()) {
-    _this->_impl_.memory_.Set(from._internal_memory(), _this->GetArenaForAllocation());
-  }
-  _impl_.boot_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.boot_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_boot().empty()) {
-    _this->_impl_.boot_.Set(from._internal_boot(), _this->GetArenaForAllocation());
-  }
-  _impl_.disk_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.disk_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_disk().empty()) {
-    _this->_impl_.disk_.Set(from._internal_disk(), _this->GetArenaForAllocation());
-  }
-  _impl_.load_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.load_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_load().empty()) {
-    _this->_impl_.load_.Set(from._internal_load(), _this->GetArenaForAllocation());
-  }
-  _impl_.fs_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.fs_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_fs().empty()) {
-    _this->_impl_.fs_.Set(from._internal_fs(), _this->GetArenaForAllocation());
-  }
-  _impl_.swap_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.swap_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_swap().empty()) {
-    _this->_impl_.swap_.Set(from._internal_swap(), _this->GetArenaForAllocation());
-  }
-  _impl_.uptime_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.uptime_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_uptime().empty()) {
-    _this->_impl_.uptime_.Set(from._internal_uptime(), _this->GetArenaForAllocation());
-  }
-  _impl_.network_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.network_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_network().empty()) {
-    _this->_impl_.network_.Set(from._internal_network(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteStatusResponse.System)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse_System::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : version_(arena),
+        cpu_(arena),
+        memory_(arena),
+        boot_(arena),
+        disk_(arena),
+        load_(arena),
+        fs_(arena),
+        swap_(arena),
+        uptime_(arena),
+        network_(arena),
+        _cached_size_{0} {}
+
 inline void SiteStatusResponse_System::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.version_){},
-      decltype(_impl_.cpu_){},
-      decltype(_impl_.memory_){},
-      decltype(_impl_.boot_){},
-      decltype(_impl_.disk_){},
-      decltype(_impl_.load_){},
-      decltype(_impl_.fs_){},
-      decltype(_impl_.swap_){},
-      decltype(_impl_.uptime_){},
-      decltype(_impl_.network_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.version_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.version_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.cpu_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.cpu_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.memory_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.memory_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.boot_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.boot_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.disk_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.disk_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.load_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.load_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.fs_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.fs_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.swap_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.swap_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.uptime_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.uptime_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.network_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.network_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 SiteStatusResponse_System::~SiteStatusResponse_System() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteStatusResponse.System)
@@ -24369,7 +23821,7 @@ SiteStatusResponse_System::~SiteStatusResponse_System() {
   SharedDtor();
 }
 inline void SiteStatusResponse_System::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.version_.Destroy();
   _impl_.cpu_.Destroy();
   _impl_.memory_.Destroy();
@@ -24380,13 +23832,12 @@ inline void SiteStatusResponse_System::SharedDtor() {
   _impl_.swap_.Destroy();
   _impl_.uptime_.Destroy();
   _impl_.network_.Destroy();
-}
-void SiteStatusResponse_System::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteStatusResponse_System::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteStatusResponse.System)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -24681,11 +24132,12 @@ const ::_pbi::TcParseTable<4, 10, 0, 109, 2> SiteStatusResponse_System::_table_ 
 }
 
 const ::google::protobuf::Message::ClassData SiteStatusResponse_System::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteStatusResponse_System::MergeImpl
+    SiteStatusResponse_System::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteStatusResponse_System::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteStatusResponse_System::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteStatusResponse_System::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteStatusResponse_System*>(&to_msg);
@@ -24739,31 +24191,24 @@ PROTOBUF_NOINLINE bool SiteStatusResponse_System::IsInitialized() const {
   return true;
 }
 
-void SiteStatusResponse_System::InternalSwap(SiteStatusResponse_System* other) {
+::_pbi::CachedSize* SiteStatusResponse_System::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteStatusResponse_System::InternalSwap(SiteStatusResponse_System* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.version_, lhs_arena,
-                                       &other->_impl_.version_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.cpu_, lhs_arena,
-                                       &other->_impl_.cpu_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.memory_, lhs_arena,
-                                       &other->_impl_.memory_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.boot_, lhs_arena,
-                                       &other->_impl_.boot_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.disk_, lhs_arena,
-                                       &other->_impl_.disk_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.load_, lhs_arena,
-                                       &other->_impl_.load_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.fs_, lhs_arena,
-                                       &other->_impl_.fs_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.swap_, lhs_arena,
-                                       &other->_impl_.swap_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.uptime_, lhs_arena,
-                                       &other->_impl_.uptime_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.network_, lhs_arena,
-                                       &other->_impl_.network_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.version_, &other->_impl_.version_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.cpu_, &other->_impl_.cpu_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.memory_, &other->_impl_.memory_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.boot_, &other->_impl_.boot_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.disk_, &other->_impl_.disk_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.load_, &other->_impl_.load_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.fs_, &other->_impl_.fs_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.swap_, &other->_impl_.swap_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.uptime_, &other->_impl_.uptime_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.network_, &other->_impl_.network_, arena);
 }
 
 ::google::protobuf::Metadata SiteStatusResponse_System::GetMetadata() const {
@@ -24827,56 +24272,58 @@ SiteStatusResponse::SiteStatusResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SiteStatusResponse)
 }
-SiteStatusResponse::SiteStatusResponse(const SiteStatusResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        healthes_{visibility, arena, from.healthes_} {}
+
+SiteStatusResponse::SiteStatusResponse(
+    ::google::protobuf::Arena* arena,
+    const SiteStatusResponse& from)
+    : ::google::protobuf::Message(arena) {
   SiteStatusResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.healthes_){from._impl_.healthes_},
-      decltype(_impl_.postgresql_){nullptr},
-      decltype(_impl_.mysql_){nullptr},
-      decltype(_impl_.redis_){nullptr},
-      decltype(_impl_.rabbitmq_){nullptr},
-      decltype(_impl_.opensearch_){nullptr},
-      decltype(_impl_.system_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.postgresql_ = new ::palm::metasequoia::v1::SiteStatusResponse_PostgreSql(*from._impl_.postgresql_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.mysql_ = new ::palm::metasequoia::v1::SiteStatusResponse_MySql(*from._impl_.mysql_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000004u) != 0) {
-    _this->_impl_.redis_ = new ::palm::metasequoia::v1::SiteStatusResponse_Redis(*from._impl_.redis_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000008u) != 0) {
-    _this->_impl_.rabbitmq_ = new ::palm::metasequoia::v1::SiteStatusResponse_RabbitMq(*from._impl_.rabbitmq_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000010u) != 0) {
-    _this->_impl_.opensearch_ = new ::palm::metasequoia::v1::SiteStatusResponse_OpenSearch(*from._impl_.opensearch_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000020u) != 0) {
-    _this->_impl_.system_ = new ::palm::metasequoia::v1::SiteStatusResponse_System(*from._impl_.system_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.postgresql_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::SiteStatusResponse_PostgreSql>(arena, *from._impl_.postgresql_)
+                : nullptr;
+  _impl_.mysql_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::SiteStatusResponse_MySql>(arena, *from._impl_.mysql_)
+                : nullptr;
+  _impl_.redis_ = (cached_has_bits & 0x00000004u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::SiteStatusResponse_Redis>(arena, *from._impl_.redis_)
+                : nullptr;
+  _impl_.rabbitmq_ = (cached_has_bits & 0x00000008u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::SiteStatusResponse_RabbitMq>(arena, *from._impl_.rabbitmq_)
+                : nullptr;
+  _impl_.opensearch_ = (cached_has_bits & 0x00000010u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::SiteStatusResponse_OpenSearch>(arena, *from._impl_.opensearch_)
+                : nullptr;
+  _impl_.system_ = (cached_has_bits & 0x00000020u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::SiteStatusResponse_System>(arena, *from._impl_.system_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SiteStatusResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE SiteStatusResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        healthes_{visibility, arena} {}
+
 inline void SiteStatusResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.healthes_){arena},
-      decltype(_impl_.postgresql_){nullptr},
-      decltype(_impl_.mysql_){nullptr},
-      decltype(_impl_.redis_){nullptr},
-      decltype(_impl_.rabbitmq_){nullptr},
-      decltype(_impl_.opensearch_){nullptr},
-      decltype(_impl_.system_){nullptr},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, postgresql_),
+           0,
+           offsetof(Impl_, system_) -
+               offsetof(Impl_, postgresql_) +
+               sizeof(Impl_::system_));
 }
 SiteStatusResponse::~SiteStatusResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SiteStatusResponse)
@@ -24884,26 +24331,24 @@ SiteStatusResponse::~SiteStatusResponse() {
   SharedDtor();
 }
 inline void SiteStatusResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.healthes_.~RepeatedPtrField();
-  if (this != internal_default_instance()) delete _impl_.postgresql_;
-  if (this != internal_default_instance()) delete _impl_.mysql_;
-  if (this != internal_default_instance()) delete _impl_.redis_;
-  if (this != internal_default_instance()) delete _impl_.rabbitmq_;
-  if (this != internal_default_instance()) delete _impl_.opensearch_;
-  if (this != internal_default_instance()) delete _impl_.system_;
-}
-void SiteStatusResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.postgresql_;
+  delete _impl_.mysql_;
+  delete _impl_.redis_;
+  delete _impl_.rabbitmq_;
+  delete _impl_.opensearch_;
+  delete _impl_.system_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SiteStatusResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SiteStatusResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_healthes()->Clear();
+  _impl_.healthes_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
@@ -25021,43 +24466,43 @@ const ::_pbi::TcParseTable<3, 7, 7, 0, 2> SiteStatusResponse::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.SiteStatusResponse.PostgreSql postgresql = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::postgresql(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::postgresql(this),
         _Internal::postgresql(this).GetCachedSize(), target, stream);
   }
 
   // .palm.metasequoia.v1.SiteStatusResponse.MySql mysql = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::mysql(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::mysql(this),
         _Internal::mysql(this).GetCachedSize(), target, stream);
   }
 
   // .palm.metasequoia.v1.SiteStatusResponse.Redis redis = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(3, _Internal::redis(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        3, _Internal::redis(this),
         _Internal::redis(this).GetCachedSize(), target, stream);
   }
 
   // .palm.metasequoia.v1.SiteStatusResponse.RabbitMq rabbitmq = 4;
   if (cached_has_bits & 0x00000008u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(4, _Internal::rabbitmq(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        4, _Internal::rabbitmq(this),
         _Internal::rabbitmq(this).GetCachedSize(), target, stream);
   }
 
   // .palm.metasequoia.v1.SiteStatusResponse.OpenSearch opensearch = 5;
   if (cached_has_bits & 0x00000010u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(5, _Internal::opensearch(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        5, _Internal::opensearch(this),
         _Internal::opensearch(this).GetCachedSize(), target, stream);
   }
 
   // .palm.metasequoia.v1.SiteStatusResponse.System system = 11;
   if (cached_has_bits & 0x00000020u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::system(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::system(this),
         _Internal::system(this).GetCachedSize(), target, stream);
   }
 
@@ -25096,44 +24541,38 @@ const ::_pbi::TcParseTable<3, 7, 7, 0, 2> SiteStatusResponse::_table_ = {
   if (cached_has_bits & 0x0000003fu) {
     // .palm.metasequoia.v1.SiteStatusResponse.PostgreSql postgresql = 1;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.postgresql_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.postgresql_);
     }
 
     // .palm.metasequoia.v1.SiteStatusResponse.MySql mysql = 2;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.mysql_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.mysql_);
     }
 
     // .palm.metasequoia.v1.SiteStatusResponse.Redis redis = 3;
     if (cached_has_bits & 0x00000004u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.redis_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.redis_);
     }
 
     // .palm.metasequoia.v1.SiteStatusResponse.RabbitMq rabbitmq = 4;
     if (cached_has_bits & 0x00000008u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.rabbitmq_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.rabbitmq_);
     }
 
     // .palm.metasequoia.v1.SiteStatusResponse.OpenSearch opensearch = 5;
     if (cached_has_bits & 0x00000010u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.opensearch_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.opensearch_);
     }
 
     // .palm.metasequoia.v1.SiteStatusResponse.System system = 11;
     if (cached_has_bits & 0x00000020u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.system_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.system_);
     }
 
   }
@@ -25141,11 +24580,12 @@ const ::_pbi::TcParseTable<3, 7, 7, 0, 2> SiteStatusResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData SiteStatusResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SiteStatusResponse::MergeImpl
+    SiteStatusResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SiteStatusResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SiteStatusResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void SiteStatusResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SiteStatusResponse*>(&to_msg);
@@ -25155,7 +24595,8 @@ void SiteStatusResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_healthes()->MergeFrom(from._internal_healthes());
+  _this->_internal_mutable_healthes()->MergeFrom(
+      from._internal_healthes());
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
@@ -25197,7 +24638,10 @@ PROTOBUF_NOINLINE bool SiteStatusResponse::IsInitialized() const {
   return true;
 }
 
-void SiteStatusResponse::InternalSwap(SiteStatusResponse* other) {
+::_pbi::CachedSize* SiteStatusResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SiteStatusResponse::InternalSwap(SiteStatusResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -25232,6 +24676,7 @@ const ::google::protobuf::Timestamp& ShorterLinkIndexResponse_Item::_Internal::u
   return *msg->_impl_.updated_at_;
 }
 void ShorterLinkIndexResponse_Item::clear_updated_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.updated_at_ != nullptr) _impl_.updated_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -25240,71 +24685,48 @@ ShorterLinkIndexResponse_Item::ShorterLinkIndexResponse_Item(::google::protobuf:
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.ShorterLinkIndexResponse.Item)
 }
-ShorterLinkIndexResponse_Item::ShorterLinkIndexResponse_Item(const ShorterLinkIndexResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE ShorterLinkIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        url_(arena, from.url_),
+        details_(arena, from.details_),
+        code_(arena, from.code_) {}
+
+ShorterLinkIndexResponse_Item::ShorterLinkIndexResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const ShorterLinkIndexResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   ShorterLinkIndexResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.url_){},
-      decltype(_impl_.details_){},
-      decltype(_impl_.code_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
-  }
-  _impl_.details_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.details_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_details().empty()) {
-    _this->_impl_.details_.Set(from._internal_details(), _this->GetArenaForAllocation());
-  }
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_code().empty()) {
-    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.updated_at_ = new ::google::protobuf::Timestamp(*from._impl_.updated_at_);
-  }
-  _this->_impl_.id_ = from._impl_.id_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.updated_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.updated_at_)
+                : nullptr;
+  _impl_.id_ = from._impl_.id_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.ShorterLinkIndexResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE ShorterLinkIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        url_(arena),
+        details_(arena),
+        code_(arena) {}
+
 inline void ShorterLinkIndexResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.url_){},
-      decltype(_impl_.details_){},
-      decltype(_impl_.code_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){0},
-  };
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.details_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.details_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, updated_at_),
+           0,
+           offsetof(Impl_, id_) -
+               offsetof(Impl_, updated_at_) +
+               sizeof(Impl_::id_));
 }
 ShorterLinkIndexResponse_Item::~ShorterLinkIndexResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.ShorterLinkIndexResponse.Item)
@@ -25312,18 +24734,17 @@ ShorterLinkIndexResponse_Item::~ShorterLinkIndexResponse_Item() {
   SharedDtor();
 }
 inline void ShorterLinkIndexResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.url_.Destroy();
   _impl_.details_.Destroy();
   _impl_.code_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.updated_at_;
-}
-void ShorterLinkIndexResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.updated_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void ShorterLinkIndexResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.ShorterLinkIndexResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -25443,8 +24864,8 @@ const ::_pbi::TcParseTable<2, 5, 1, 72, 2> ShorterLinkIndexResponse_Item::_table
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp updated_at = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::updated_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::updated_at(this),
         _Internal::updated_at(this).GetCachedSize(), target, stream);
   }
 
@@ -25486,9 +24907,8 @@ const ::_pbi::TcParseTable<2, 5, 1, 72, 2> ShorterLinkIndexResponse_Item::_table
   // .google.protobuf.Timestamp updated_at = 11;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.updated_at_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.updated_at_);
   }
 
   // int32 id = 1;
@@ -25501,11 +24921,12 @@ const ::_pbi::TcParseTable<2, 5, 1, 72, 2> ShorterLinkIndexResponse_Item::_table
 }
 
 const ::google::protobuf::Message::ClassData ShorterLinkIndexResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    ShorterLinkIndexResponse_Item::MergeImpl
+    ShorterLinkIndexResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*ShorterLinkIndexResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* ShorterLinkIndexResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void ShorterLinkIndexResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ShorterLinkIndexResponse_Item*>(&to_msg);
@@ -25545,18 +24966,18 @@ PROTOBUF_NOINLINE bool ShorterLinkIndexResponse_Item::IsInitialized() const {
   return true;
 }
 
-void ShorterLinkIndexResponse_Item::InternalSwap(ShorterLinkIndexResponse_Item* other) {
+::_pbi::CachedSize* ShorterLinkIndexResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ShorterLinkIndexResponse_Item::InternalSwap(ShorterLinkIndexResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.details_, lhs_arena,
-                                       &other->_impl_.details_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
-                                       &other->_impl_.code_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, &other->_impl_.url_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.details_, &other->_impl_.details_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, &other->_impl_.code_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ShorterLinkIndexResponse_Item, _impl_.id_)
       + sizeof(ShorterLinkIndexResponse_Item::_impl_.id_)
@@ -25591,31 +25012,38 @@ ShorterLinkIndexResponse::ShorterLinkIndexResponse(::google::protobuf::Arena* ar
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.ShorterLinkIndexResponse)
 }
-ShorterLinkIndexResponse::ShorterLinkIndexResponse(const ShorterLinkIndexResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE ShorterLinkIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        items_{visibility, arena, from.items_} {}
+
+ShorterLinkIndexResponse::ShorterLinkIndexResponse(
+    ::google::protobuf::Arena* arena,
+    const ShorterLinkIndexResponse& from)
+    : ::google::protobuf::Message(arena) {
   ShorterLinkIndexResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.items_){from._impl_.items_},
-      decltype(_impl_.pagination_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.pagination_ = new ::palm::metasequoia::v1::Pagination(*from._impl_.pagination_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.pagination_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::Pagination>(arena, *from._impl_.pagination_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.ShorterLinkIndexResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE ShorterLinkIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        items_{visibility, arena} {}
+
 inline void ShorterLinkIndexResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.items_){arena},
-      decltype(_impl_.pagination_){nullptr},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.pagination_ = {};
 }
 ShorterLinkIndexResponse::~ShorterLinkIndexResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.ShorterLinkIndexResponse)
@@ -25623,21 +25051,19 @@ ShorterLinkIndexResponse::~ShorterLinkIndexResponse() {
   SharedDtor();
 }
 inline void ShorterLinkIndexResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-  if (this != internal_default_instance()) delete _impl_.pagination_;
-}
-void ShorterLinkIndexResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.pagination_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void ShorterLinkIndexResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.ShorterLinkIndexResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.pagination_ != nullptr);
@@ -25703,8 +25129,8 @@ const ::_pbi::TcParseTable<2, 2, 2, 0, 2> ShorterLinkIndexResponse::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.Pagination pagination = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::pagination(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::pagination(this),
         _Internal::pagination(this).GetCachedSize(), target, stream);
   }
 
@@ -25742,20 +25168,20 @@ const ::_pbi::TcParseTable<2, 2, 2, 0, 2> ShorterLinkIndexResponse::_table_ = {
   // .palm.metasequoia.v1.Pagination pagination = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.pagination_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.pagination_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData ShorterLinkIndexResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    ShorterLinkIndexResponse::MergeImpl
+    ShorterLinkIndexResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*ShorterLinkIndexResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* ShorterLinkIndexResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void ShorterLinkIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ShorterLinkIndexResponse*>(&to_msg);
@@ -25765,7 +25191,8 @@ void ShorterLinkIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, co
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_pagination()->::palm::metasequoia::v1::Pagination::MergeFrom(
         from._internal_pagination());
@@ -25784,7 +25211,10 @@ PROTOBUF_NOINLINE bool ShorterLinkIndexResponse::IsInitialized() const {
   return true;
 }
 
-void ShorterLinkIndexResponse::InternalSwap(ShorterLinkIndexResponse* other) {
+::_pbi::CachedSize* ShorterLinkIndexResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ShorterLinkIndexResponse::InternalSwap(ShorterLinkIndexResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -25808,48 +25238,34 @@ ShorterLinkCreateRequest::ShorterLinkCreateRequest(::google::protobuf::Arena* ar
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.ShorterLinkCreateRequest)
 }
-ShorterLinkCreateRequest::ShorterLinkCreateRequest(const ShorterLinkCreateRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE ShorterLinkCreateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : url_(arena, from.url_),
+        details_(arena, from.details_),
+        _cached_size_{0} {}
+
+ShorterLinkCreateRequest::ShorterLinkCreateRequest(
+    ::google::protobuf::Arena* arena,
+    const ShorterLinkCreateRequest& from)
+    : ::google::protobuf::Message(arena) {
   ShorterLinkCreateRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.url_){},
-      decltype(_impl_.details_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
-  }
-  _impl_.details_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.details_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_details().empty()) {
-    _this->_impl_.details_.Set(from._internal_details(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.ShorterLinkCreateRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE ShorterLinkCreateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : url_(arena),
+        details_(arena),
+        _cached_size_{0} {}
+
 inline void ShorterLinkCreateRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.url_){},
-      decltype(_impl_.details_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.details_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.details_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 ShorterLinkCreateRequest::~ShorterLinkCreateRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.ShorterLinkCreateRequest)
@@ -25857,16 +25273,15 @@ ShorterLinkCreateRequest::~ShorterLinkCreateRequest() {
   SharedDtor();
 }
 inline void ShorterLinkCreateRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.url_.Destroy();
   _impl_.details_.Destroy();
-}
-void ShorterLinkCreateRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void ShorterLinkCreateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.ShorterLinkCreateRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -25979,11 +25394,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 63, 2> ShorterLinkCreateRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData ShorterLinkCreateRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    ShorterLinkCreateRequest::MergeImpl
+    ShorterLinkCreateRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*ShorterLinkCreateRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* ShorterLinkCreateRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void ShorterLinkCreateRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ShorterLinkCreateRequest*>(&to_msg);
@@ -26013,15 +25429,16 @@ PROTOBUF_NOINLINE bool ShorterLinkCreateRequest::IsInitialized() const {
   return true;
 }
 
-void ShorterLinkCreateRequest::InternalSwap(ShorterLinkCreateRequest* other) {
+::_pbi::CachedSize* ShorterLinkCreateRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ShorterLinkCreateRequest::InternalSwap(ShorterLinkCreateRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.details_, lhs_arena,
-                                       &other->_impl_.details_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, &other->_impl_.url_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.details_, &other->_impl_.details_, arena);
 }
 
 ::google::protobuf::Metadata ShorterLinkCreateRequest::GetMetadata() const {
@@ -26040,51 +25457,36 @@ ShorterLinkUpdateRequest::ShorterLinkUpdateRequest(::google::protobuf::Arena* ar
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.ShorterLinkUpdateRequest)
 }
-ShorterLinkUpdateRequest::ShorterLinkUpdateRequest(const ShorterLinkUpdateRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE ShorterLinkUpdateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : url_(arena, from.url_),
+        details_(arena, from.details_),
+        _cached_size_{0} {}
+
+ShorterLinkUpdateRequest::ShorterLinkUpdateRequest(
+    ::google::protobuf::Arena* arena,
+    const ShorterLinkUpdateRequest& from)
+    : ::google::protobuf::Message(arena) {
   ShorterLinkUpdateRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.url_){},
-      decltype(_impl_.details_){},
-      decltype(_impl_.id_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
-  }
-  _impl_.details_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.details_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_details().empty()) {
-    _this->_impl_.details_.Set(from._internal_details(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.id_ = from._impl_.id_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.id_ = from._impl_.id_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.ShorterLinkUpdateRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE ShorterLinkUpdateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : url_(arena),
+        details_(arena),
+        _cached_size_{0} {}
+
 inline void ShorterLinkUpdateRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.url_){},
-      decltype(_impl_.details_){},
-      decltype(_impl_.id_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.details_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.details_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.id_ = {};
 }
 ShorterLinkUpdateRequest::~ShorterLinkUpdateRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.ShorterLinkUpdateRequest)
@@ -26092,16 +25494,15 @@ ShorterLinkUpdateRequest::~ShorterLinkUpdateRequest() {
   SharedDtor();
 }
 inline void ShorterLinkUpdateRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.url_.Destroy();
   _impl_.details_.Destroy();
-}
-void ShorterLinkUpdateRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void ShorterLinkUpdateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.ShorterLinkUpdateRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -26235,11 +25636,12 @@ const ::_pbi::TcParseTable<2, 3, 0, 63, 2> ShorterLinkUpdateRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData ShorterLinkUpdateRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    ShorterLinkUpdateRequest::MergeImpl
+    ShorterLinkUpdateRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*ShorterLinkUpdateRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* ShorterLinkUpdateRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void ShorterLinkUpdateRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ShorterLinkUpdateRequest*>(&to_msg);
@@ -26272,15 +25674,16 @@ PROTOBUF_NOINLINE bool ShorterLinkUpdateRequest::IsInitialized() const {
   return true;
 }
 
-void ShorterLinkUpdateRequest::InternalSwap(ShorterLinkUpdateRequest* other) {
+::_pbi::CachedSize* ShorterLinkUpdateRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ShorterLinkUpdateRequest::InternalSwap(ShorterLinkUpdateRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.details_, lhs_arena,
-                                       &other->_impl_.details_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, &other->_impl_.url_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.details_, &other->_impl_.details_, arena);
         swap(_impl_.id_, other->_impl_.id_);
 }
 
@@ -26306,6 +25709,7 @@ const ::google::protobuf::Timestamp& TagIndexResponse_Item::_Internal::updated_a
   return *msg->_impl_.updated_at_;
 }
 void TagIndexResponse_Item::clear_updated_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.updated_at_ != nullptr) _impl_.updated_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -26314,49 +25718,50 @@ TagIndexResponse_Item::TagIndexResponse_Item(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.TagIndexResponse.Item)
 }
-TagIndexResponse_Item::TagIndexResponse_Item(const TagIndexResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE TagIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        code_(arena, from.code_) {}
+
+TagIndexResponse_Item::TagIndexResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const TagIndexResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   TagIndexResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.code_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){},
-      decltype(_impl_.priority_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_code().empty()) {
-    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.updated_at_ = new ::google::protobuf::Timestamp(*from._impl_.updated_at_);
-  }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.priority_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.priority_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.updated_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.updated_at_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, priority_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::priority_));
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.TagIndexResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE TagIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        code_(arena) {}
+
 inline void TagIndexResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.code_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.priority_){0},
-  };
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, updated_at_),
+           0,
+           offsetof(Impl_, priority_) -
+               offsetof(Impl_, updated_at_) +
+               sizeof(Impl_::priority_));
 }
 TagIndexResponse_Item::~TagIndexResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.TagIndexResponse.Item)
@@ -26364,16 +25769,15 @@ TagIndexResponse_Item::~TagIndexResponse_Item() {
   SharedDtor();
 }
 inline void TagIndexResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.code_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.updated_at_;
-}
-void TagIndexResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.updated_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void TagIndexResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.TagIndexResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -26479,8 +25883,8 @@ const ::_pbi::TcParseTable<2, 4, 1, 54, 2> TagIndexResponse_Item::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp updated_at = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::updated_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::updated_at(this),
         _Internal::updated_at(this).GetCachedSize(), target, stream);
   }
 
@@ -26510,9 +25914,8 @@ const ::_pbi::TcParseTable<2, 4, 1, 54, 2> TagIndexResponse_Item::_table_ = {
   // .google.protobuf.Timestamp updated_at = 11;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.updated_at_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.updated_at_);
   }
 
   // int32 id = 1;
@@ -26531,11 +25934,12 @@ const ::_pbi::TcParseTable<2, 4, 1, 54, 2> TagIndexResponse_Item::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData TagIndexResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    TagIndexResponse_Item::MergeImpl
+    TagIndexResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*TagIndexResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* TagIndexResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void TagIndexResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<TagIndexResponse_Item*>(&to_msg);
@@ -26572,14 +25976,16 @@ PROTOBUF_NOINLINE bool TagIndexResponse_Item::IsInitialized() const {
   return true;
 }
 
-void TagIndexResponse_Item::InternalSwap(TagIndexResponse_Item* other) {
+::_pbi::CachedSize* TagIndexResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void TagIndexResponse_Item::InternalSwap(TagIndexResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
-                                       &other->_impl_.code_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, &other->_impl_.code_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(TagIndexResponse_Item, _impl_.priority_)
       + sizeof(TagIndexResponse_Item::_impl_.priority_)
@@ -26604,24 +26010,32 @@ TagIndexResponse::TagIndexResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.TagIndexResponse)
 }
-TagIndexResponse::TagIndexResponse(const TagIndexResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE TagIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+TagIndexResponse::TagIndexResponse(
+    ::google::protobuf::Arena* arena,
+    const TagIndexResponse& from)
+    : ::google::protobuf::Message(arena) {
   TagIndexResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.TagIndexResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE TagIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void TagIndexResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 TagIndexResponse::~TagIndexResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.TagIndexResponse)
@@ -26629,20 +26043,18 @@ TagIndexResponse::~TagIndexResponse() {
   SharedDtor();
 }
 inline void TagIndexResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void TagIndexResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void TagIndexResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.TagIndexResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -26725,11 +26137,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> TagIndexResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData TagIndexResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    TagIndexResponse::MergeImpl
+    TagIndexResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*TagIndexResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* TagIndexResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void TagIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<TagIndexResponse*>(&to_msg);
@@ -26739,7 +26152,8 @@ void TagIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::go
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -26754,7 +26168,10 @@ PROTOBUF_NOINLINE bool TagIndexResponse::IsInitialized() const {
   return true;
 }
 
-void TagIndexResponse::InternalSwap(TagIndexResponse* other) {
+::_pbi::CachedSize* TagIndexResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void TagIndexResponse::InternalSwap(TagIndexResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -26776,38 +26193,34 @@ TagCreateRequest::TagCreateRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.TagCreateRequest)
 }
-TagCreateRequest::TagCreateRequest(const TagCreateRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE TagCreateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : code_(arena, from.code_),
+        _cached_size_{0} {}
+
+TagCreateRequest::TagCreateRequest(
+    ::google::protobuf::Arena* arena,
+    const TagCreateRequest& from)
+    : ::google::protobuf::Message(arena) {
   TagCreateRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.code_){},
-      decltype(_impl_.priority_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_code().empty()) {
-    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.priority_ = from._impl_.priority_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.priority_ = from._impl_.priority_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.TagCreateRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE TagCreateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : code_(arena),
+        _cached_size_{0} {}
+
 inline void TagCreateRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.code_){},
-      decltype(_impl_.priority_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.priority_ = {};
 }
 TagCreateRequest::~TagCreateRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.TagCreateRequest)
@@ -26815,15 +26228,14 @@ TagCreateRequest::~TagCreateRequest() {
   SharedDtor();
 }
 inline void TagCreateRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.code_.Destroy();
-}
-void TagCreateRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void TagCreateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.TagCreateRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -26936,11 +26348,12 @@ const ::_pbi::TcParseTable<2, 2, 0, 49, 2> TagCreateRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData TagCreateRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    TagCreateRequest::MergeImpl
+    TagCreateRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*TagCreateRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* TagCreateRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void TagCreateRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<TagCreateRequest*>(&to_msg);
@@ -26970,13 +26383,15 @@ PROTOBUF_NOINLINE bool TagCreateRequest::IsInitialized() const {
   return true;
 }
 
-void TagCreateRequest::InternalSwap(TagCreateRequest* other) {
+::_pbi::CachedSize* TagCreateRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void TagCreateRequest::InternalSwap(TagCreateRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
-                                       &other->_impl_.code_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, &other->_impl_.code_, arena);
         swap(_impl_.priority_, other->_impl_.priority_);
 }
 
@@ -26996,42 +26411,45 @@ TagUpdateRequest::TagUpdateRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.TagUpdateRequest)
 }
-TagUpdateRequest::TagUpdateRequest(const TagUpdateRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE TagUpdateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : code_(arena, from.code_),
+        _cached_size_{0} {}
+
+TagUpdateRequest::TagUpdateRequest(
+    ::google::protobuf::Arena* arena,
+    const TagUpdateRequest& from)
+    : ::google::protobuf::Message(arena) {
   TagUpdateRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.code_){},
-      decltype(_impl_.id_){},
-      decltype(_impl_.priority_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_code().empty()) {
-    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
-  }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.priority_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.priority_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, priority_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::priority_));
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.TagUpdateRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE TagUpdateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : code_(arena),
+        _cached_size_{0} {}
+
 inline void TagUpdateRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.code_){},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.priority_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           0,
+           offsetof(Impl_, priority_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::priority_));
 }
 TagUpdateRequest::~TagUpdateRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.TagUpdateRequest)
@@ -27039,15 +26457,14 @@ TagUpdateRequest::~TagUpdateRequest() {
   SharedDtor();
 }
 inline void TagUpdateRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.code_.Destroy();
-}
-void TagUpdateRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void TagUpdateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.TagUpdateRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -27180,11 +26597,12 @@ const ::_pbi::TcParseTable<2, 3, 0, 49, 2> TagUpdateRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData TagUpdateRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    TagUpdateRequest::MergeImpl
+    TagUpdateRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*TagUpdateRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* TagUpdateRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void TagUpdateRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<TagUpdateRequest*>(&to_msg);
@@ -27217,13 +26635,15 @@ PROTOBUF_NOINLINE bool TagUpdateRequest::IsInitialized() const {
   return true;
 }
 
-void TagUpdateRequest::InternalSwap(TagUpdateRequest* other) {
+::_pbi::CachedSize* TagUpdateRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void TagUpdateRequest::InternalSwap(TagUpdateRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
-                                       &other->_impl_.code_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, &other->_impl_.code_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(TagUpdateRequest, _impl_.priority_)
       + sizeof(TagUpdateRequest::_impl_.priority_)
@@ -27254,6 +26674,7 @@ const ::google::protobuf::Timestamp& CategoryIndexResponse_Item::_Internal::upda
   return *msg->_impl_.updated_at_;
 }
 void CategoryIndexResponse_Item::clear_updated_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.updated_at_ != nullptr) _impl_.updated_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -27262,51 +26683,50 @@ CategoryIndexResponse_Item::CategoryIndexResponse_Item(::google::protobuf::Arena
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.CategoryIndexResponse.Item)
 }
-CategoryIndexResponse_Item::CategoryIndexResponse_Item(const CategoryIndexResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE CategoryIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        code_(arena, from.code_) {}
+
+CategoryIndexResponse_Item::CategoryIndexResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const CategoryIndexResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   CategoryIndexResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.code_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){},
-      decltype(_impl_.left_){},
-      decltype(_impl_.right_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_code().empty()) {
-    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.updated_at_ = new ::google::protobuf::Timestamp(*from._impl_.updated_at_);
-  }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.right_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.right_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.updated_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.updated_at_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, right_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::right_));
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.CategoryIndexResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE CategoryIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        code_(arena) {}
+
 inline void CategoryIndexResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.code_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.left_){0},
-      decltype(_impl_.right_){0},
-  };
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, updated_at_),
+           0,
+           offsetof(Impl_, right_) -
+               offsetof(Impl_, updated_at_) +
+               sizeof(Impl_::right_));
 }
 CategoryIndexResponse_Item::~CategoryIndexResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.CategoryIndexResponse.Item)
@@ -27314,16 +26734,15 @@ CategoryIndexResponse_Item::~CategoryIndexResponse_Item() {
   SharedDtor();
 }
 inline void CategoryIndexResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.code_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.updated_at_;
-}
-void CategoryIndexResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.updated_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void CategoryIndexResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.CategoryIndexResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -27441,8 +26860,8 @@ const ::_pbi::TcParseTable<2, 5, 1, 59, 2> CategoryIndexResponse_Item::_table_ =
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp updated_at = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::updated_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::updated_at(this),
         _Internal::updated_at(this).GetCachedSize(), target, stream);
   }
 
@@ -27472,9 +26891,8 @@ const ::_pbi::TcParseTable<2, 5, 1, 59, 2> CategoryIndexResponse_Item::_table_ =
   // .google.protobuf.Timestamp updated_at = 11;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.updated_at_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.updated_at_);
   }
 
   // int32 id = 1;
@@ -27499,11 +26917,12 @@ const ::_pbi::TcParseTable<2, 5, 1, 59, 2> CategoryIndexResponse_Item::_table_ =
 }
 
 const ::google::protobuf::Message::ClassData CategoryIndexResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    CategoryIndexResponse_Item::MergeImpl
+    CategoryIndexResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*CategoryIndexResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* CategoryIndexResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void CategoryIndexResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<CategoryIndexResponse_Item*>(&to_msg);
@@ -27543,14 +26962,16 @@ PROTOBUF_NOINLINE bool CategoryIndexResponse_Item::IsInitialized() const {
   return true;
 }
 
-void CategoryIndexResponse_Item::InternalSwap(CategoryIndexResponse_Item* other) {
+::_pbi::CachedSize* CategoryIndexResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void CategoryIndexResponse_Item::InternalSwap(CategoryIndexResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
-                                       &other->_impl_.code_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, &other->_impl_.code_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(CategoryIndexResponse_Item, _impl_.right_)
       + sizeof(CategoryIndexResponse_Item::_impl_.right_)
@@ -27575,24 +26996,32 @@ CategoryIndexResponse::CategoryIndexResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.CategoryIndexResponse)
 }
-CategoryIndexResponse::CategoryIndexResponse(const CategoryIndexResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE CategoryIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+CategoryIndexResponse::CategoryIndexResponse(
+    ::google::protobuf::Arena* arena,
+    const CategoryIndexResponse& from)
+    : ::google::protobuf::Message(arena) {
   CategoryIndexResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.CategoryIndexResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE CategoryIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void CategoryIndexResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 CategoryIndexResponse::~CategoryIndexResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.CategoryIndexResponse)
@@ -27600,20 +27029,18 @@ CategoryIndexResponse::~CategoryIndexResponse() {
   SharedDtor();
 }
 inline void CategoryIndexResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void CategoryIndexResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void CategoryIndexResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.CategoryIndexResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -27696,11 +27123,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> CategoryIndexResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData CategoryIndexResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    CategoryIndexResponse::MergeImpl
+    CategoryIndexResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*CategoryIndexResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* CategoryIndexResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void CategoryIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<CategoryIndexResponse*>(&to_msg);
@@ -27710,7 +27138,8 @@ void CategoryIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, const
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -27725,7 +27154,10 @@ PROTOBUF_NOINLINE bool CategoryIndexResponse::IsInitialized() const {
   return true;
 }
 
-void CategoryIndexResponse::InternalSwap(CategoryIndexResponse* other) {
+::_pbi::CachedSize* CategoryIndexResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void CategoryIndexResponse::InternalSwap(CategoryIndexResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -27749,54 +27181,46 @@ CategoryCreateRequest::CategoryCreateRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.CategoryCreateRequest)
 }
-CategoryCreateRequest::CategoryCreateRequest(const CategoryCreateRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE CategoryCreateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : code_(arena, from.code_),
+        by_{},
+        _cached_size_{0},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+CategoryCreateRequest::CategoryCreateRequest(
+    ::google::protobuf::Arena* arena,
+    const CategoryCreateRequest& from)
+    : ::google::protobuf::Message(arena) {
   CategoryCreateRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.code_){},
-      decltype(_impl_.by_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_code().empty()) {
-    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
-  }
-  clear_has_by();
-  switch (from.by_case()) {
-    case kLeft: {
-      _this->_internal_set_left(from._internal_left());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  switch (by_case()) {
+    case BY_NOT_SET:
       break;
-    }
-    case kParent: {
-      _this->_internal_set_parent(from._internal_parent());
-      break;
-    }
-    case BY_NOT_SET: {
-      break;
-    }
+      case kLeft:
+        _impl_.by_.left_ = from._impl_.by_.left_;
+        break;
+      case kParent:
+        _impl_.by_.parent_ = from._impl_.by_.parent_;
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.CategoryCreateRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE CategoryCreateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : code_(arena),
+        by_{},
+        _cached_size_{0},
+        _oneof_case_{} {}
+
 inline void CategoryCreateRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.code_){},
-      decltype(_impl_.by_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  clear_has_by();
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 CategoryCreateRequest::~CategoryCreateRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.CategoryCreateRequest)
@@ -27804,18 +27228,17 @@ CategoryCreateRequest::~CategoryCreateRequest() {
   SharedDtor();
 }
 inline void CategoryCreateRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.code_.Destroy();
   if (has_by()) {
     clear_by();
   }
-}
-void CategoryCreateRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void CategoryCreateRequest::clear_by() {
 // @@protoc_insertion_point(one_of_clear_start:palm.metasequoia.v1.CategoryCreateRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (by_case()) {
     case kLeft: {
       // No need to clear
@@ -27835,6 +27258,7 @@ void CategoryCreateRequest::clear_by() {
 
 PROTOBUF_NOINLINE void CategoryCreateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.CategoryCreateRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -27965,11 +27389,12 @@ const ::_pbi::TcParseTable<0, 3, 0, 54, 2> CategoryCreateRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData CategoryCreateRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    CategoryCreateRequest::MergeImpl
+    CategoryCreateRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*CategoryCreateRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* CategoryCreateRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void CategoryCreateRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<CategoryCreateRequest*>(&to_msg);
@@ -28009,13 +27434,15 @@ PROTOBUF_NOINLINE bool CategoryCreateRequest::IsInitialized() const {
   return true;
 }
 
-void CategoryCreateRequest::InternalSwap(CategoryCreateRequest* other) {
+::_pbi::CachedSize* CategoryCreateRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void CategoryCreateRequest::InternalSwap(CategoryCreateRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
-                                       &other->_impl_.code_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, &other->_impl_.code_, arena);
   swap(_impl_.by_, other->_impl_.by_);
   swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
 }
@@ -28036,38 +27463,34 @@ CategoryUpdateRequest::CategoryUpdateRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.CategoryUpdateRequest)
 }
-CategoryUpdateRequest::CategoryUpdateRequest(const CategoryUpdateRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE CategoryUpdateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : code_(arena, from.code_),
+        _cached_size_{0} {}
+
+CategoryUpdateRequest::CategoryUpdateRequest(
+    ::google::protobuf::Arena* arena,
+    const CategoryUpdateRequest& from)
+    : ::google::protobuf::Message(arena) {
   CategoryUpdateRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.code_){},
-      decltype(_impl_.id_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_code().empty()) {
-    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.id_ = from._impl_.id_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.id_ = from._impl_.id_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.CategoryUpdateRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE CategoryUpdateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : code_(arena),
+        _cached_size_{0} {}
+
 inline void CategoryUpdateRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.code_){},
-      decltype(_impl_.id_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.id_ = {};
 }
 CategoryUpdateRequest::~CategoryUpdateRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.CategoryUpdateRequest)
@@ -28075,15 +27498,14 @@ CategoryUpdateRequest::~CategoryUpdateRequest() {
   SharedDtor();
 }
 inline void CategoryUpdateRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.code_.Destroy();
-}
-void CategoryUpdateRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void CategoryUpdateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.CategoryUpdateRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -28194,11 +27616,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 54, 2> CategoryUpdateRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData CategoryUpdateRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    CategoryUpdateRequest::MergeImpl
+    CategoryUpdateRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*CategoryUpdateRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* CategoryUpdateRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void CategoryUpdateRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<CategoryUpdateRequest*>(&to_msg);
@@ -28228,13 +27651,15 @@ PROTOBUF_NOINLINE bool CategoryUpdateRequest::IsInitialized() const {
   return true;
 }
 
-void CategoryUpdateRequest::InternalSwap(CategoryUpdateRequest* other) {
+::_pbi::CachedSize* CategoryUpdateRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void CategoryUpdateRequest::InternalSwap(CategoryUpdateRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
-                                       &other->_impl_.code_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, &other->_impl_.code_, arena);
         swap(_impl_.id_, other->_impl_.id_);
 }
 
@@ -28260,6 +27685,7 @@ const ::google::protobuf::Timestamp& NotificationIndexResponse_Item::_Internal::
   return *msg->_impl_.updated_at_;
 }
 void NotificationIndexResponse_Item::clear_updated_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.updated_at_ != nullptr) _impl_.updated_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -28268,75 +27694,54 @@ NotificationIndexResponse_Item::NotificationIndexResponse_Item(::google::protobu
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.NotificationIndexResponse.Item)
 }
-NotificationIndexResponse_Item::NotificationIndexResponse_Item(const NotificationIndexResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE NotificationIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        title_(arena, from.title_),
+        url_(arena, from.url_),
+        lang_(arena, from.lang_) {}
+
+NotificationIndexResponse_Item::NotificationIndexResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const NotificationIndexResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   NotificationIndexResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.title_){},
-      decltype(_impl_.url_){},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){},
-      decltype(_impl_.level_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
-  }
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
-  }
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.updated_at_ = new ::google::protobuf::Timestamp(*from._impl_.updated_at_);
-  }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.level_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.level_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.updated_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.updated_at_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, level_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::level_));
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.NotificationIndexResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE NotificationIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        title_(arena),
+        url_(arena),
+        lang_(arena) {}
+
 inline void NotificationIndexResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.title_){},
-      decltype(_impl_.url_){},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.level_){0},
-  };
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, updated_at_),
+           0,
+           offsetof(Impl_, level_) -
+               offsetof(Impl_, updated_at_) +
+               sizeof(Impl_::level_));
 }
 NotificationIndexResponse_Item::~NotificationIndexResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.NotificationIndexResponse.Item)
@@ -28344,18 +27749,17 @@ NotificationIndexResponse_Item::~NotificationIndexResponse_Item() {
   SharedDtor();
 }
 inline void NotificationIndexResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.title_.Destroy();
   _impl_.url_.Destroy();
   _impl_.lang_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.updated_at_;
-}
-void NotificationIndexResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.updated_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void NotificationIndexResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.NotificationIndexResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -28495,8 +27899,8 @@ const ::_pbi::TcParseTable<3, 6, 1, 71, 2> NotificationIndexResponse_Item::_tabl
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp updated_at = 9;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(9, _Internal::updated_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        9, _Internal::updated_at(this),
         _Internal::updated_at(this).GetCachedSize(), target, stream);
   }
 
@@ -28538,9 +27942,8 @@ const ::_pbi::TcParseTable<3, 6, 1, 71, 2> NotificationIndexResponse_Item::_tabl
   // .google.protobuf.Timestamp updated_at = 9;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.updated_at_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.updated_at_);
   }
 
   // int32 id = 1;
@@ -28559,11 +27962,12 @@ const ::_pbi::TcParseTable<3, 6, 1, 71, 2> NotificationIndexResponse_Item::_tabl
 }
 
 const ::google::protobuf::Message::ClassData NotificationIndexResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    NotificationIndexResponse_Item::MergeImpl
+    NotificationIndexResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*NotificationIndexResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* NotificationIndexResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void NotificationIndexResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<NotificationIndexResponse_Item*>(&to_msg);
@@ -28606,18 +28010,18 @@ PROTOBUF_NOINLINE bool NotificationIndexResponse_Item::IsInitialized() const {
   return true;
 }
 
-void NotificationIndexResponse_Item::InternalSwap(NotificationIndexResponse_Item* other) {
+::_pbi::CachedSize* NotificationIndexResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void NotificationIndexResponse_Item::InternalSwap(NotificationIndexResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, lhs_arena,
-                                       &other->_impl_.lang_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, &other->_impl_.title_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, &other->_impl_.url_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, &other->_impl_.lang_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(NotificationIndexResponse_Item, _impl_.level_)
       + sizeof(NotificationIndexResponse_Item::_impl_.level_)
@@ -28652,31 +28056,38 @@ NotificationIndexResponse::NotificationIndexResponse(::google::protobuf::Arena* 
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.NotificationIndexResponse)
 }
-NotificationIndexResponse::NotificationIndexResponse(const NotificationIndexResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE NotificationIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        items_{visibility, arena, from.items_} {}
+
+NotificationIndexResponse::NotificationIndexResponse(
+    ::google::protobuf::Arena* arena,
+    const NotificationIndexResponse& from)
+    : ::google::protobuf::Message(arena) {
   NotificationIndexResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.items_){from._impl_.items_},
-      decltype(_impl_.pagination_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.pagination_ = new ::palm::metasequoia::v1::Pagination(*from._impl_.pagination_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.pagination_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::Pagination>(arena, *from._impl_.pagination_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.NotificationIndexResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE NotificationIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        items_{visibility, arena} {}
+
 inline void NotificationIndexResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.items_){arena},
-      decltype(_impl_.pagination_){nullptr},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.pagination_ = {};
 }
 NotificationIndexResponse::~NotificationIndexResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.NotificationIndexResponse)
@@ -28684,21 +28095,19 @@ NotificationIndexResponse::~NotificationIndexResponse() {
   SharedDtor();
 }
 inline void NotificationIndexResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-  if (this != internal_default_instance()) delete _impl_.pagination_;
-}
-void NotificationIndexResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.pagination_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void NotificationIndexResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.NotificationIndexResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.pagination_ != nullptr);
@@ -28767,8 +28176,8 @@ const ::_pbi::TcParseTable<0, 2, 2, 0, 2> NotificationIndexResponse::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.Pagination pagination = 9;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(9, _Internal::pagination(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        9, _Internal::pagination(this),
         _Internal::pagination(this).GetCachedSize(), target, stream);
   }
 
@@ -28798,20 +28207,20 @@ const ::_pbi::TcParseTable<0, 2, 2, 0, 2> NotificationIndexResponse::_table_ = {
   // .palm.metasequoia.v1.Pagination pagination = 9;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.pagination_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.pagination_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData NotificationIndexResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    NotificationIndexResponse::MergeImpl
+    NotificationIndexResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*NotificationIndexResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* NotificationIndexResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void NotificationIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<NotificationIndexResponse*>(&to_msg);
@@ -28821,7 +28230,8 @@ void NotificationIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, c
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_pagination()->::palm::metasequoia::v1::Pagination::MergeFrom(
         from._internal_pagination());
@@ -28840,7 +28250,10 @@ PROTOBUF_NOINLINE bool NotificationIndexResponse::IsInitialized() const {
   return true;
 }
 
-void NotificationIndexResponse::InternalSwap(NotificationIndexResponse* other) {
+::_pbi::CachedSize* NotificationIndexResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void NotificationIndexResponse::InternalSwap(NotificationIndexResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -28864,64 +28277,38 @@ NotificationCreateRequest::NotificationCreateRequest(::google::protobuf::Arena* 
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.NotificationCreateRequest)
 }
-NotificationCreateRequest::NotificationCreateRequest(const NotificationCreateRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE NotificationCreateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : title_(arena, from.title_),
+        url_(arena, from.url_),
+        lang_(arena, from.lang_),
+        _cached_size_{0} {}
+
+NotificationCreateRequest::NotificationCreateRequest(
+    ::google::protobuf::Arena* arena,
+    const NotificationCreateRequest& from)
+    : ::google::protobuf::Message(arena) {
   NotificationCreateRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.title_){},
-      decltype(_impl_.url_){},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.level_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
-  }
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
-  }
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.level_ = from._impl_.level_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.level_ = from._impl_.level_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.NotificationCreateRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE NotificationCreateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : title_(arena),
+        url_(arena),
+        lang_(arena),
+        _cached_size_{0} {}
+
 inline void NotificationCreateRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.title_){},
-      decltype(_impl_.url_){},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.level_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.level_ = {};
 }
 NotificationCreateRequest::~NotificationCreateRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.NotificationCreateRequest)
@@ -28929,17 +28316,16 @@ NotificationCreateRequest::~NotificationCreateRequest() {
   SharedDtor();
 }
 inline void NotificationCreateRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.title_.Destroy();
   _impl_.url_.Destroy();
   _impl_.lang_.Destroy();
-}
-void NotificationCreateRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void NotificationCreateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.NotificationCreateRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -29092,11 +28478,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 66, 2> NotificationCreateRequest::_table_ = 
 }
 
 const ::google::protobuf::Message::ClassData NotificationCreateRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    NotificationCreateRequest::MergeImpl
+    NotificationCreateRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*NotificationCreateRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* NotificationCreateRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void NotificationCreateRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<NotificationCreateRequest*>(&to_msg);
@@ -29132,17 +28519,17 @@ PROTOBUF_NOINLINE bool NotificationCreateRequest::IsInitialized() const {
   return true;
 }
 
-void NotificationCreateRequest::InternalSwap(NotificationCreateRequest* other) {
+::_pbi::CachedSize* NotificationCreateRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void NotificationCreateRequest::InternalSwap(NotificationCreateRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, lhs_arena,
-                                       &other->_impl_.lang_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, &other->_impl_.title_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, &other->_impl_.url_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, &other->_impl_.lang_, arena);
   swap(_impl_.level_, other->_impl_.level_);
 }
 
@@ -29162,55 +28549,47 @@ NotificationUpdateRequest::NotificationUpdateRequest(::google::protobuf::Arena* 
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.NotificationUpdateRequest)
 }
-NotificationUpdateRequest::NotificationUpdateRequest(const NotificationUpdateRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE NotificationUpdateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : title_(arena, from.title_),
+        url_(arena, from.url_),
+        _cached_size_{0} {}
+
+NotificationUpdateRequest::NotificationUpdateRequest(
+    ::google::protobuf::Arena* arena,
+    const NotificationUpdateRequest& from)
+    : ::google::protobuf::Message(arena) {
   NotificationUpdateRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.title_){},
-      decltype(_impl_.url_){},
-      decltype(_impl_.id_){},
-      decltype(_impl_.level_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
-  }
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
-  }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.level_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.level_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, level_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::level_));
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.NotificationUpdateRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE NotificationUpdateRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : title_(arena),
+        url_(arena),
+        _cached_size_{0} {}
+
 inline void NotificationUpdateRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.title_){},
-      decltype(_impl_.url_){},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.level_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           0,
+           offsetof(Impl_, level_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::level_));
 }
 NotificationUpdateRequest::~NotificationUpdateRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.NotificationUpdateRequest)
@@ -29218,16 +28597,15 @@ NotificationUpdateRequest::~NotificationUpdateRequest() {
   SharedDtor();
 }
 inline void NotificationUpdateRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.title_.Destroy();
   _impl_.url_.Destroy();
-}
-void NotificationUpdateRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void NotificationUpdateRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.NotificationUpdateRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -29381,11 +28759,12 @@ const ::_pbi::TcParseTable<2, 4, 0, 62, 2> NotificationUpdateRequest::_table_ = 
 }
 
 const ::google::protobuf::Message::ClassData NotificationUpdateRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    NotificationUpdateRequest::MergeImpl
+    NotificationUpdateRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*NotificationUpdateRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* NotificationUpdateRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void NotificationUpdateRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<NotificationUpdateRequest*>(&to_msg);
@@ -29421,15 +28800,16 @@ PROTOBUF_NOINLINE bool NotificationUpdateRequest::IsInitialized() const {
   return true;
 }
 
-void NotificationUpdateRequest::InternalSwap(NotificationUpdateRequest* other) {
+::_pbi::CachedSize* NotificationUpdateRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void NotificationUpdateRequest::InternalSwap(NotificationUpdateRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, &other->_impl_.title_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, &other->_impl_.url_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(NotificationUpdateRequest, _impl_.level_)
       + sizeof(NotificationUpdateRequest::_impl_.level_)
@@ -29460,6 +28840,7 @@ const ::google::protobuf::Duration& AttachmentShowRequest::_Internal::ttl(const 
   return *msg->_impl_.ttl_;
 }
 void AttachmentShowRequest::clear_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.ttl_ != nullptr) _impl_.ttl_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -29468,32 +28849,42 @@ AttachmentShowRequest::AttachmentShowRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.AttachmentShowRequest)
 }
-AttachmentShowRequest::AttachmentShowRequest(const AttachmentShowRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE AttachmentShowRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+AttachmentShowRequest::AttachmentShowRequest(
+    ::google::protobuf::Arena* arena,
+    const AttachmentShowRequest& from)
+    : ::google::protobuf::Message(arena) {
   AttachmentShowRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.ttl_){nullptr},
-      decltype(_impl_.id_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.ttl_ = new ::google::protobuf::Duration(*from._impl_.ttl_);
-  }
-  _this->_impl_.id_ = from._impl_.id_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.ttl_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Duration>(arena, *from._impl_.ttl_)
+                : nullptr;
+  _impl_.id_ = from._impl_.id_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.AttachmentShowRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE AttachmentShowRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void AttachmentShowRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.ttl_){nullptr},
-      decltype(_impl_.id_){0},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, ttl_),
+           0,
+           offsetof(Impl_, id_) -
+               offsetof(Impl_, ttl_) +
+               sizeof(Impl_::id_));
 }
 AttachmentShowRequest::~AttachmentShowRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.AttachmentShowRequest)
@@ -29501,15 +28892,14 @@ AttachmentShowRequest::~AttachmentShowRequest() {
   SharedDtor();
 }
 inline void AttachmentShowRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.ttl_;
-}
-void AttachmentShowRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.ttl_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void AttachmentShowRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.AttachmentShowRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -29584,8 +28974,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> AttachmentShowRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Duration ttl = 2;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::ttl(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::ttl(this),
         _Internal::ttl(this).GetCachedSize(), target, stream);
   }
 
@@ -29609,9 +28999,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> AttachmentShowRequest::_table_ = {
   // .google.protobuf.Duration ttl = 2;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.ttl_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.ttl_);
   }
 
   // int32 id = 1;
@@ -29624,11 +29013,12 @@ const ::_pbi::TcParseTable<1, 2, 1, 0, 2> AttachmentShowRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData AttachmentShowRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    AttachmentShowRequest::MergeImpl
+    AttachmentShowRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*AttachmentShowRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* AttachmentShowRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void AttachmentShowRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<AttachmentShowRequest*>(&to_msg);
@@ -29659,7 +29049,10 @@ PROTOBUF_NOINLINE bool AttachmentShowRequest::IsInitialized() const {
   return true;
 }
 
-void AttachmentShowRequest::InternalSwap(AttachmentShowRequest* other) {
+::_pbi::CachedSize* AttachmentShowRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void AttachmentShowRequest::InternalSwap(AttachmentShowRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -29697,42 +29090,38 @@ AttachmentShowResponse::AttachmentShowResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.AttachmentShowResponse)
 }
-AttachmentShowResponse::AttachmentShowResponse(const AttachmentShowResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE AttachmentShowResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        url_(arena, from.url_) {}
+
+AttachmentShowResponse::AttachmentShowResponse(
+    ::google::protobuf::Arena* arena,
+    const AttachmentShowResponse& from)
+    : ::google::protobuf::Message(arena) {
   AttachmentShowResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.url_){},
-      decltype(_impl_.item_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.item_ = new ::palm::metasequoia::v1::AttachmentIndexResponse_Item(*from._impl_.item_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.item_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::AttachmentIndexResponse_Item>(arena, *from._impl_.item_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.AttachmentShowResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE AttachmentShowResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        url_(arena) {}
+
 inline void AttachmentShowResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.url_){},
-      decltype(_impl_.item_){nullptr},
-  };
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.item_ = {};
 }
 AttachmentShowResponse::~AttachmentShowResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.AttachmentShowResponse)
@@ -29740,16 +29129,15 @@ AttachmentShowResponse::~AttachmentShowResponse() {
   SharedDtor();
 }
 inline void AttachmentShowResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.url_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.item_;
-}
-void AttachmentShowResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.item_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void AttachmentShowResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.AttachmentShowResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -29820,8 +29208,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 54, 2> AttachmentShowResponse::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.AttachmentIndexResponse.Item item = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::item(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::item(this),
         _Internal::item(this).GetCachedSize(), target, stream);
   }
 
@@ -29859,20 +29247,20 @@ const ::_pbi::TcParseTable<1, 2, 1, 54, 2> AttachmentShowResponse::_table_ = {
   // .palm.metasequoia.v1.AttachmentIndexResponse.Item item = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.item_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.item_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData AttachmentShowResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    AttachmentShowResponse::MergeImpl
+    AttachmentShowResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*AttachmentShowResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* AttachmentShowResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void AttachmentShowResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<AttachmentShowResponse*>(&to_msg);
@@ -29903,14 +29291,16 @@ PROTOBUF_NOINLINE bool AttachmentShowResponse::IsInitialized() const {
   return true;
 }
 
-void AttachmentShowResponse::InternalSwap(AttachmentShowResponse* other) {
+::_pbi::CachedSize* AttachmentShowResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void AttachmentShowResponse::InternalSwap(AttachmentShowResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, &other->_impl_.url_, arena);
   swap(_impl_.item_, other->_impl_.item_);
 }
 
@@ -29936,6 +29326,7 @@ const ::google::protobuf::Timestamp& AttachmentIndexResponse_Item::_Internal::up
   return *msg->_impl_.updated_at_;
 }
 void AttachmentIndexResponse_Item::clear_updated_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.updated_at_ != nullptr) _impl_.updated_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -29944,90 +29335,56 @@ AttachmentIndexResponse_Item::AttachmentIndexResponse_Item(::google::protobuf::A
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.AttachmentIndexResponse.Item)
 }
-AttachmentIndexResponse_Item::AttachmentIndexResponse_Item(const AttachmentIndexResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE AttachmentIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        bucket_(arena, from.bucket_),
+        name_(arena, from.name_),
+        title_(arena, from.title_),
+        content_type_(arena, from.content_type_) {}
+
+AttachmentIndexResponse_Item::AttachmentIndexResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const AttachmentIndexResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   AttachmentIndexResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.bucket_){},
-      decltype(_impl_.name_){},
-      decltype(_impl_.title_){},
-      decltype(_impl_.content_type_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){},
-      decltype(_impl_.status_){},
-      decltype(_impl_.size_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.bucket_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.bucket_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_bucket().empty()) {
-    _this->_impl_.bucket_.Set(from._internal_bucket(), _this->GetArenaForAllocation());
-  }
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_name().empty()) {
-    _this->_impl_.name_.Set(from._internal_name(), _this->GetArenaForAllocation());
-  }
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_title().empty()) {
-    _this->_impl_.title_.Set(from._internal_title(), _this->GetArenaForAllocation());
-  }
-  _impl_.content_type_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.content_type_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_content_type().empty()) {
-    _this->_impl_.content_type_.Set(from._internal_content_type(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.updated_at_ = new ::google::protobuf::Timestamp(*from._impl_.updated_at_);
-  }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.size_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.size_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.updated_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.updated_at_)
+                : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, size_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::size_));
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.AttachmentIndexResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE AttachmentIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        bucket_(arena),
+        name_(arena),
+        title_(arena),
+        content_type_(arena) {}
+
 inline void AttachmentIndexResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.bucket_){},
-      decltype(_impl_.name_){},
-      decltype(_impl_.title_){},
-      decltype(_impl_.content_type_){},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.status_){0},
-      decltype(_impl_.size_){::int64_t{0}},
-  };
-  _impl_.bucket_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.bucket_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.name_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.title_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.title_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.content_type_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.content_type_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, updated_at_),
+           0,
+           offsetof(Impl_, size_) -
+               offsetof(Impl_, updated_at_) +
+               sizeof(Impl_::size_));
 }
 AttachmentIndexResponse_Item::~AttachmentIndexResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.AttachmentIndexResponse.Item)
@@ -30035,19 +29392,18 @@ AttachmentIndexResponse_Item::~AttachmentIndexResponse_Item() {
   SharedDtor();
 }
 inline void AttachmentIndexResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.bucket_.Destroy();
   _impl_.name_.Destroy();
   _impl_.title_.Destroy();
   _impl_.content_type_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.updated_at_;
-}
-void AttachmentIndexResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.updated_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void AttachmentIndexResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.AttachmentIndexResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -30224,8 +29580,8 @@ const ::_pbi::TcParseTable<4, 8, 1, 92, 2> AttachmentIndexResponse_Item::_table_
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp updated_at = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::updated_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::updated_at(this),
         _Internal::updated_at(this).GetCachedSize(), target, stream);
   }
 
@@ -30273,9 +29629,8 @@ const ::_pbi::TcParseTable<4, 8, 1, 92, 2> AttachmentIndexResponse_Item::_table_
   // .google.protobuf.Timestamp updated_at = 11;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.updated_at_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.updated_at_);
   }
 
   // int32 id = 1;
@@ -30300,11 +29655,12 @@ const ::_pbi::TcParseTable<4, 8, 1, 92, 2> AttachmentIndexResponse_Item::_table_
 }
 
 const ::google::protobuf::Message::ClassData AttachmentIndexResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    AttachmentIndexResponse_Item::MergeImpl
+    AttachmentIndexResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*AttachmentIndexResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* AttachmentIndexResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void AttachmentIndexResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<AttachmentIndexResponse_Item*>(&to_msg);
@@ -30353,20 +29709,19 @@ PROTOBUF_NOINLINE bool AttachmentIndexResponse_Item::IsInitialized() const {
   return true;
 }
 
-void AttachmentIndexResponse_Item::InternalSwap(AttachmentIndexResponse_Item* other) {
+::_pbi::CachedSize* AttachmentIndexResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void AttachmentIndexResponse_Item::InternalSwap(AttachmentIndexResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.bucket_, lhs_arena,
-                                       &other->_impl_.bucket_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, lhs_arena,
-                                       &other->_impl_.name_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, lhs_arena,
-                                       &other->_impl_.title_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_type_, lhs_arena,
-                                       &other->_impl_.content_type_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.bucket_, &other->_impl_.bucket_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.title_, &other->_impl_.title_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.content_type_, &other->_impl_.content_type_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(AttachmentIndexResponse_Item, _impl_.size_)
       + sizeof(AttachmentIndexResponse_Item::_impl_.size_)
@@ -30401,31 +29756,38 @@ AttachmentIndexResponse::AttachmentIndexResponse(::google::protobuf::Arena* aren
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.AttachmentIndexResponse)
 }
-AttachmentIndexResponse::AttachmentIndexResponse(const AttachmentIndexResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE AttachmentIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        items_{visibility, arena, from.items_} {}
+
+AttachmentIndexResponse::AttachmentIndexResponse(
+    ::google::protobuf::Arena* arena,
+    const AttachmentIndexResponse& from)
+    : ::google::protobuf::Message(arena) {
   AttachmentIndexResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.items_){from._impl_.items_},
-      decltype(_impl_.pagination_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.pagination_ = new ::palm::metasequoia::v1::Pagination(*from._impl_.pagination_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.pagination_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::Pagination>(arena, *from._impl_.pagination_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.AttachmentIndexResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE AttachmentIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        items_{visibility, arena} {}
+
 inline void AttachmentIndexResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.items_){arena},
-      decltype(_impl_.pagination_){nullptr},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.pagination_ = {};
 }
 AttachmentIndexResponse::~AttachmentIndexResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.AttachmentIndexResponse)
@@ -30433,21 +29795,19 @@ AttachmentIndexResponse::~AttachmentIndexResponse() {
   SharedDtor();
 }
 inline void AttachmentIndexResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-  if (this != internal_default_instance()) delete _impl_.pagination_;
-}
-void AttachmentIndexResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.pagination_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void AttachmentIndexResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.AttachmentIndexResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.pagination_ != nullptr);
@@ -30513,8 +29873,8 @@ const ::_pbi::TcParseTable<2, 2, 2, 0, 2> AttachmentIndexResponse::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.Pagination pagination = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(1, _Internal::pagination(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        1, _Internal::pagination(this),
         _Internal::pagination(this).GetCachedSize(), target, stream);
   }
 
@@ -30552,20 +29912,20 @@ const ::_pbi::TcParseTable<2, 2, 2, 0, 2> AttachmentIndexResponse::_table_ = {
   // .palm.metasequoia.v1.Pagination pagination = 1;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.pagination_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.pagination_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData AttachmentIndexResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    AttachmentIndexResponse::MergeImpl
+    AttachmentIndexResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*AttachmentIndexResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* AttachmentIndexResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void AttachmentIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<AttachmentIndexResponse*>(&to_msg);
@@ -30575,7 +29935,8 @@ void AttachmentIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, con
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_pagination()->::palm::metasequoia::v1::Pagination::MergeFrom(
         from._internal_pagination());
@@ -30594,7 +29955,10 @@ PROTOBUF_NOINLINE bool AttachmentIndexResponse::IsInitialized() const {
   return true;
 }
 
-void AttachmentIndexResponse::InternalSwap(AttachmentIndexResponse* other) {
+::_pbi::CachedSize* AttachmentIndexResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void AttachmentIndexResponse::InternalSwap(AttachmentIndexResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -30638,10 +30002,12 @@ const ::google::protobuf::Timestamp& LeaveWordIndexResponse_Item::_Internal::cre
   return *msg->_impl_.created_at_;
 }
 void LeaveWordIndexResponse_Item::clear_updated_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.updated_at_ != nullptr) _impl_.updated_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
 void LeaveWordIndexResponse_Item::clear_created_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.created_at_ != nullptr) _impl_.created_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000004u;
 }
@@ -30650,68 +30016,52 @@ LeaveWordIndexResponse_Item::LeaveWordIndexResponse_Item(::google::protobuf::Are
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.LeaveWordIndexResponse.Item)
 }
-LeaveWordIndexResponse_Item::LeaveWordIndexResponse_Item(const LeaveWordIndexResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE LeaveWordIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        lang_(arena, from.lang_),
+        ip_(arena, from.ip_) {}
+
+LeaveWordIndexResponse_Item::LeaveWordIndexResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const LeaveWordIndexResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   LeaveWordIndexResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.ip_){},
-      decltype(_impl_.content_){nullptr},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.created_at_){nullptr},
-      decltype(_impl_.id_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), _this->GetArenaForAllocation());
-  }
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_ip().empty()) {
-    _this->_impl_.ip_.Set(from._internal_ip(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.content_ = new ::palm::metasequoia::v1::MediaContent(*from._impl_.content_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.updated_at_ = new ::google::protobuf::Timestamp(*from._impl_.updated_at_);
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000004u) != 0) {
-    _this->_impl_.created_at_ = new ::google::protobuf::Timestamp(*from._impl_.created_at_);
-  }
-  _this->_impl_.id_ = from._impl_.id_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.content_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::MediaContent>(arena, *from._impl_.content_)
+                : nullptr;
+  _impl_.updated_at_ = (cached_has_bits & 0x00000002u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.updated_at_)
+                : nullptr;
+  _impl_.created_at_ = (cached_has_bits & 0x00000004u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.created_at_)
+                : nullptr;
+  _impl_.id_ = from._impl_.id_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.LeaveWordIndexResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE LeaveWordIndexResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        lang_(arena),
+        ip_(arena) {}
+
 inline void LeaveWordIndexResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.ip_){},
-      decltype(_impl_.content_){nullptr},
-      decltype(_impl_.updated_at_){nullptr},
-      decltype(_impl_.created_at_){nullptr},
-      decltype(_impl_.id_){0},
-  };
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, content_),
+           0,
+           offsetof(Impl_, id_) -
+               offsetof(Impl_, content_) +
+               sizeof(Impl_::id_));
 }
 LeaveWordIndexResponse_Item::~LeaveWordIndexResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.LeaveWordIndexResponse.Item)
@@ -30719,19 +30069,18 @@ LeaveWordIndexResponse_Item::~LeaveWordIndexResponse_Item() {
   SharedDtor();
 }
 inline void LeaveWordIndexResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.lang_.Destroy();
   _impl_.ip_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.content_;
-  if (this != internal_default_instance()) delete _impl_.updated_at_;
-  if (this != internal_default_instance()) delete _impl_.created_at_;
-}
-void LeaveWordIndexResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.content_;
+  delete _impl_.updated_at_;
+  delete _impl_.created_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void LeaveWordIndexResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.LeaveWordIndexResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -30864,22 +30213,22 @@ const ::_pbi::TcParseTable<3, 6, 3, 62, 2> LeaveWordIndexResponse_Item::_table_ 
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.MediaContent content = 8;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(8, _Internal::content(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        8, _Internal::content(this),
         _Internal::content(this).GetCachedSize(), target, stream);
   }
 
   // .google.protobuf.Timestamp updated_at = 11;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::updated_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::updated_at(this),
         _Internal::updated_at(this).GetCachedSize(), target, stream);
   }
 
   // .google.protobuf.Timestamp created_at = 12;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(12, _Internal::created_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        12, _Internal::created_at(this),
         _Internal::created_at(this).GetCachedSize(), target, stream);
   }
 
@@ -30916,23 +30265,20 @@ const ::_pbi::TcParseTable<3, 6, 3, 62, 2> LeaveWordIndexResponse_Item::_table_ 
   if (cached_has_bits & 0x00000007u) {
     // .palm.metasequoia.v1.MediaContent content = 8;
     if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.content_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.content_);
     }
 
     // .google.protobuf.Timestamp updated_at = 11;
     if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.updated_at_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.updated_at_);
     }
 
     // .google.protobuf.Timestamp created_at = 12;
     if (cached_has_bits & 0x00000004u) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.created_at_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.created_at_);
     }
 
   }
@@ -30946,11 +30292,12 @@ const ::_pbi::TcParseTable<3, 6, 3, 62, 2> LeaveWordIndexResponse_Item::_table_ 
 }
 
 const ::google::protobuf::Message::ClassData LeaveWordIndexResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    LeaveWordIndexResponse_Item::MergeImpl
+    LeaveWordIndexResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*LeaveWordIndexResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* LeaveWordIndexResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void LeaveWordIndexResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<LeaveWordIndexResponse_Item*>(&to_msg);
@@ -30998,16 +30345,17 @@ PROTOBUF_NOINLINE bool LeaveWordIndexResponse_Item::IsInitialized() const {
   return true;
 }
 
-void LeaveWordIndexResponse_Item::InternalSwap(LeaveWordIndexResponse_Item* other) {
+::_pbi::CachedSize* LeaveWordIndexResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void LeaveWordIndexResponse_Item::InternalSwap(LeaveWordIndexResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, lhs_arena,
-                                       &other->_impl_.lang_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, lhs_arena,
-                                       &other->_impl_.ip_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, &other->_impl_.lang_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.ip_, &other->_impl_.ip_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(LeaveWordIndexResponse_Item, _impl_.id_)
       + sizeof(LeaveWordIndexResponse_Item::_impl_.id_)
@@ -31042,31 +30390,38 @@ LeaveWordIndexResponse::LeaveWordIndexResponse(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.LeaveWordIndexResponse)
 }
-LeaveWordIndexResponse::LeaveWordIndexResponse(const LeaveWordIndexResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE LeaveWordIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        items_{visibility, arena, from.items_} {}
+
+LeaveWordIndexResponse::LeaveWordIndexResponse(
+    ::google::protobuf::Arena* arena,
+    const LeaveWordIndexResponse& from)
+    : ::google::protobuf::Message(arena) {
   LeaveWordIndexResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.items_){from._impl_.items_},
-      decltype(_impl_.pagination_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.pagination_ = new ::palm::metasequoia::v1::Pagination(*from._impl_.pagination_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.pagination_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::Pagination>(arena, *from._impl_.pagination_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.LeaveWordIndexResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE LeaveWordIndexResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        items_{visibility, arena} {}
+
 inline void LeaveWordIndexResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.items_){arena},
-      decltype(_impl_.pagination_){nullptr},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.pagination_ = {};
 }
 LeaveWordIndexResponse::~LeaveWordIndexResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.LeaveWordIndexResponse)
@@ -31074,21 +30429,19 @@ LeaveWordIndexResponse::~LeaveWordIndexResponse() {
   SharedDtor();
 }
 inline void LeaveWordIndexResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-  if (this != internal_default_instance()) delete _impl_.pagination_;
-}
-void LeaveWordIndexResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.pagination_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void LeaveWordIndexResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.LeaveWordIndexResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     ABSL_DCHECK(_impl_.pagination_ != nullptr);
@@ -31157,8 +30510,8 @@ const ::_pbi::TcParseTable<0, 2, 2, 0, 2> LeaveWordIndexResponse::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.Pagination pagination = 9;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(9, _Internal::pagination(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        9, _Internal::pagination(this),
         _Internal::pagination(this).GetCachedSize(), target, stream);
   }
 
@@ -31188,20 +30541,20 @@ const ::_pbi::TcParseTable<0, 2, 2, 0, 2> LeaveWordIndexResponse::_table_ = {
   // .palm.metasequoia.v1.Pagination pagination = 9;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.pagination_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.pagination_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData LeaveWordIndexResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    LeaveWordIndexResponse::MergeImpl
+    LeaveWordIndexResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*LeaveWordIndexResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* LeaveWordIndexResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void LeaveWordIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<LeaveWordIndexResponse*>(&to_msg);
@@ -31211,7 +30564,8 @@ void LeaveWordIndexResponse::MergeImpl(::google::protobuf::Message& to_msg, cons
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
     _this->_internal_mutable_pagination()->::palm::metasequoia::v1::Pagination::MergeFrom(
         from._internal_pagination());
@@ -31230,7 +30584,10 @@ PROTOBUF_NOINLINE bool LeaveWordIndexResponse::IsInitialized() const {
   return true;
 }
 
-void LeaveWordIndexResponse::InternalSwap(LeaveWordIndexResponse* other) {
+::_pbi::CachedSize* LeaveWordIndexResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void LeaveWordIndexResponse::InternalSwap(LeaveWordIndexResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -31260,6 +30617,7 @@ const ::google::protobuf::Duration& SignInByGoogleRequest::_Internal::ttl(const 
   return *msg->_impl_.ttl_;
 }
 void SignInByGoogleRequest::clear_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.ttl_ != nullptr) _impl_.ttl_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -31268,83 +30626,46 @@ SignInByGoogleRequest::SignInByGoogleRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SignInByGoogleRequest)
 }
-SignInByGoogleRequest::SignInByGoogleRequest(const SignInByGoogleRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SignInByGoogleRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        scopes_{visibility, arena, from.scopes_},
+        code_(arena, from.code_),
+        state_(arena, from.state_),
+        redirect_uri_(arena, from.redirect_uri_),
+        nonce_(arena, from.nonce_) {}
+
+SignInByGoogleRequest::SignInByGoogleRequest(
+    ::google::protobuf::Arena* arena,
+    const SignInByGoogleRequest& from)
+    : ::google::protobuf::Message(arena) {
   SignInByGoogleRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.scopes_){from._impl_.scopes_},
-      decltype(_impl_.code_){},
-      decltype(_impl_.state_){},
-      decltype(_impl_.redirect_uri_){},
-      decltype(_impl_.nonce_){},
-      decltype(_impl_.ttl_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_code().empty()) {
-    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
-  }
-  _impl_.state_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.state_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_state().empty()) {
-    _this->_impl_.state_.Set(from._internal_state(), _this->GetArenaForAllocation());
-  }
-  _impl_.redirect_uri_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.redirect_uri_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_redirect_uri().empty()) {
-    _this->_impl_.redirect_uri_.Set(from._internal_redirect_uri(), _this->GetArenaForAllocation());
-  }
-  _impl_.nonce_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nonce_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_nonce().empty()) {
-    _this->_impl_.nonce_.Set(from._internal_nonce(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.ttl_ = new ::google::protobuf::Duration(*from._impl_.ttl_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.ttl_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Duration>(arena, *from._impl_.ttl_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SignInByGoogleRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE SignInByGoogleRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        scopes_{visibility, arena},
+        code_(arena),
+        state_(arena),
+        redirect_uri_(arena),
+        nonce_(arena) {}
+
 inline void SignInByGoogleRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.scopes_){arena},
-      decltype(_impl_.code_){},
-      decltype(_impl_.state_){},
-      decltype(_impl_.redirect_uri_){},
-      decltype(_impl_.nonce_){},
-      decltype(_impl_.ttl_){nullptr},
-  };
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.state_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.state_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.redirect_uri_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.redirect_uri_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.nonce_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nonce_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.ttl_ = {};
 }
 SignInByGoogleRequest::~SignInByGoogleRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SignInByGoogleRequest)
@@ -31352,25 +30673,23 @@ SignInByGoogleRequest::~SignInByGoogleRequest() {
   SharedDtor();
 }
 inline void SignInByGoogleRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_scopes()->~RepeatedPtrField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.code_.Destroy();
   _impl_.state_.Destroy();
   _impl_.redirect_uri_.Destroy();
   _impl_.nonce_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.ttl_;
-}
-void SignInByGoogleRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.ttl_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SignInByGoogleRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SignInByGoogleRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_scopes()->Clear();
+  _impl_.scopes_.Clear();
   _impl_.code_.ClearToEmpty();
   _impl_.state_.ClearToEmpty();
   _impl_.redirect_uri_.ClearToEmpty();
@@ -31502,8 +30821,8 @@ const ::_pbi::TcParseTable<2, 6, 1, 82, 2> SignInByGoogleRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Duration ttl = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::ttl(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::ttl(this),
         _Internal::ttl(this).GetCachedSize(), target, stream);
   }
 
@@ -31557,20 +30876,20 @@ const ::_pbi::TcParseTable<2, 6, 1, 82, 2> SignInByGoogleRequest::_table_ = {
   // .google.protobuf.Duration ttl = 11;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.ttl_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.ttl_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData SignInByGoogleRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SignInByGoogleRequest::MergeImpl
+    SignInByGoogleRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SignInByGoogleRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SignInByGoogleRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void SignInByGoogleRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SignInByGoogleRequest*>(&to_msg);
@@ -31611,21 +30930,20 @@ PROTOBUF_NOINLINE bool SignInByGoogleRequest::IsInitialized() const {
   return true;
 }
 
-void SignInByGoogleRequest::InternalSwap(SignInByGoogleRequest* other) {
+::_pbi::CachedSize* SignInByGoogleRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SignInByGoogleRequest::InternalSwap(SignInByGoogleRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.scopes_.InternalSwap(&other->_impl_.scopes_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
-                                       &other->_impl_.code_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.state_, lhs_arena,
-                                       &other->_impl_.state_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.redirect_uri_, lhs_arena,
-                                       &other->_impl_.redirect_uri_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nonce_, lhs_arena,
-                                       &other->_impl_.nonce_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, &other->_impl_.code_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.state_, &other->_impl_.state_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.redirect_uri_, &other->_impl_.redirect_uri_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nonce_, &other->_impl_.nonce_, arena);
   swap(_impl_.ttl_, other->_impl_.ttl_);
 }
 
@@ -31655,42 +30973,38 @@ GoogleSignInUrlRequest::GoogleSignInUrlRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.GoogleSignInUrlRequest)
 }
-GoogleSignInUrlRequest::GoogleSignInUrlRequest(const GoogleSignInUrlRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE GoogleSignInUrlRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        redirect_uri_(arena, from.redirect_uri_) {}
+
+GoogleSignInUrlRequest::GoogleSignInUrlRequest(
+    ::google::protobuf::Arena* arena,
+    const GoogleSignInUrlRequest& from)
+    : ::google::protobuf::Message(arena) {
   GoogleSignInUrlRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.redirect_uri_){},
-      decltype(_impl_.state_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.redirect_uri_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.redirect_uri_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_redirect_uri().empty()) {
-    _this->_impl_.redirect_uri_.Set(from._internal_redirect_uri(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.state_ = new ::palm::metasequoia::v1::Oauth2State(*from._impl_.state_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.state_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::metasequoia::v1::Oauth2State>(arena, *from._impl_.state_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.GoogleSignInUrlRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE GoogleSignInUrlRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        redirect_uri_(arena) {}
+
 inline void GoogleSignInUrlRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.redirect_uri_){},
-      decltype(_impl_.state_){nullptr},
-  };
-  _impl_.redirect_uri_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.redirect_uri_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.state_ = {};
 }
 GoogleSignInUrlRequest::~GoogleSignInUrlRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.GoogleSignInUrlRequest)
@@ -31698,16 +31012,15 @@ GoogleSignInUrlRequest::~GoogleSignInUrlRequest() {
   SharedDtor();
 }
 inline void GoogleSignInUrlRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.redirect_uri_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.state_;
-}
-void GoogleSignInUrlRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.state_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void GoogleSignInUrlRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.GoogleSignInUrlRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -31786,8 +31099,8 @@ const ::_pbi::TcParseTable<1, 2, 1, 63, 2> GoogleSignInUrlRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .palm.metasequoia.v1.Oauth2State state = 2;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::state(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        2, _Internal::state(this),
         _Internal::state(this).GetCachedSize(), target, stream);
   }
 
@@ -31817,20 +31130,20 @@ const ::_pbi::TcParseTable<1, 2, 1, 63, 2> GoogleSignInUrlRequest::_table_ = {
   // .palm.metasequoia.v1.Oauth2State state = 2;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.state_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.state_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData GoogleSignInUrlRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    GoogleSignInUrlRequest::MergeImpl
+    GoogleSignInUrlRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*GoogleSignInUrlRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* GoogleSignInUrlRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void GoogleSignInUrlRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<GoogleSignInUrlRequest*>(&to_msg);
@@ -31861,14 +31174,16 @@ PROTOBUF_NOINLINE bool GoogleSignInUrlRequest::IsInitialized() const {
   return true;
 }
 
-void GoogleSignInUrlRequest::InternalSwap(GoogleSignInUrlRequest* other) {
+::_pbi::CachedSize* GoogleSignInUrlRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void GoogleSignInUrlRequest::InternalSwap(GoogleSignInUrlRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.redirect_uri_, lhs_arena,
-                                       &other->_impl_.redirect_uri_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.redirect_uri_, &other->_impl_.redirect_uri_, arena);
   swap(_impl_.state_, other->_impl_.state_);
 }
 
@@ -31888,48 +31203,34 @@ GoogleSignInUrlResponse::GoogleSignInUrlResponse(::google::protobuf::Arena* aren
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.GoogleSignInUrlResponse)
 }
-GoogleSignInUrlResponse::GoogleSignInUrlResponse(const GoogleSignInUrlResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE GoogleSignInUrlResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : url_(arena, from.url_),
+        nonce_(arena, from.nonce_),
+        _cached_size_{0} {}
+
+GoogleSignInUrlResponse::GoogleSignInUrlResponse(
+    ::google::protobuf::Arena* arena,
+    const GoogleSignInUrlResponse& from)
+    : ::google::protobuf::Message(arena) {
   GoogleSignInUrlResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.url_){},
-      decltype(_impl_.nonce_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_url().empty()) {
-    _this->_impl_.url_.Set(from._internal_url(), _this->GetArenaForAllocation());
-  }
-  _impl_.nonce_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nonce_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_nonce().empty()) {
-    _this->_impl_.nonce_.Set(from._internal_nonce(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.GoogleSignInUrlResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE GoogleSignInUrlResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : url_(arena),
+        nonce_(arena),
+        _cached_size_{0} {}
+
 inline void GoogleSignInUrlResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.url_){},
-      decltype(_impl_.nonce_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.nonce_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nonce_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 GoogleSignInUrlResponse::~GoogleSignInUrlResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.GoogleSignInUrlResponse)
@@ -31937,16 +31238,15 @@ GoogleSignInUrlResponse::~GoogleSignInUrlResponse() {
   SharedDtor();
 }
 inline void GoogleSignInUrlResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.url_.Destroy();
   _impl_.nonce_.Destroy();
-}
-void GoogleSignInUrlResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void GoogleSignInUrlResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.GoogleSignInUrlResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -32059,11 +31359,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 60, 2> GoogleSignInUrlResponse::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData GoogleSignInUrlResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    GoogleSignInUrlResponse::MergeImpl
+    GoogleSignInUrlResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*GoogleSignInUrlResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* GoogleSignInUrlResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void GoogleSignInUrlResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<GoogleSignInUrlResponse*>(&to_msg);
@@ -32093,15 +31394,16 @@ PROTOBUF_NOINLINE bool GoogleSignInUrlResponse::IsInitialized() const {
   return true;
 }
 
-void GoogleSignInUrlResponse::InternalSwap(GoogleSignInUrlResponse* other) {
+::_pbi::CachedSize* GoogleSignInUrlResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void GoogleSignInUrlResponse::InternalSwap(GoogleSignInUrlResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, lhs_arena,
-                                       &other->_impl_.url_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nonce_, lhs_arena,
-                                       &other->_impl_.nonce_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.url_, &other->_impl_.url_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nonce_, &other->_impl_.nonce_, arena);
 }
 
 ::google::protobuf::Metadata GoogleSignInUrlResponse::GetMetadata() const {
@@ -32120,19 +31422,24 @@ WechatUserBindByIdRequest::WechatUserBindByIdRequest(::google::protobuf::Arena* 
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.WechatUserBindByIdRequest)
 }
-WechatUserBindByIdRequest::WechatUserBindByIdRequest(const WechatUserBindByIdRequest& from)
-    : ::google::protobuf::Message(), _impl_(from._impl_) {
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.WechatUserBindByIdRequest)
+WechatUserBindByIdRequest::WechatUserBindByIdRequest(
+    ::google::protobuf::Arena* arena, const WechatUserBindByIdRequest& from)
+    : WechatUserBindByIdRequest(arena) {
+  MergeFrom(from);
 }
+inline PROTOBUF_NDEBUG_INLINE WechatUserBindByIdRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void WechatUserBindByIdRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.user_id_){0},
-      decltype(_impl_.wechat_user_id_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, user_id_),
+           0,
+           offsetof(Impl_, wechat_user_id_) -
+               offsetof(Impl_, user_id_) +
+               sizeof(Impl_::wechat_user_id_));
 }
 WechatUserBindByIdRequest::~WechatUserBindByIdRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.WechatUserBindByIdRequest)
@@ -32140,14 +31447,13 @@ WechatUserBindByIdRequest::~WechatUserBindByIdRequest() {
   SharedDtor();
 }
 inline void WechatUserBindByIdRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-}
-void WechatUserBindByIdRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WechatUserBindByIdRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.WechatUserBindByIdRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -32255,11 +31561,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 0, 2> WechatUserBindByIdRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData WechatUserBindByIdRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WechatUserBindByIdRequest::MergeImpl
+    WechatUserBindByIdRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WechatUserBindByIdRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WechatUserBindByIdRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void WechatUserBindByIdRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatUserBindByIdRequest*>(&to_msg);
@@ -32289,7 +31596,10 @@ PROTOBUF_NOINLINE bool WechatUserBindByIdRequest::IsInitialized() const {
   return true;
 }
 
-void WechatUserBindByIdRequest::InternalSwap(WechatUserBindByIdRequest* other) {
+::_pbi::CachedSize* WechatUserBindByIdRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WechatUserBindByIdRequest::InternalSwap(WechatUserBindByIdRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::google::protobuf::internal::memswap<
@@ -32316,48 +31626,34 @@ WechatUserBindByAccountRequest::WechatUserBindByAccountRequest(::google::protobu
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.WechatUserBindByAccountRequest)
 }
-WechatUserBindByAccountRequest::WechatUserBindByAccountRequest(const WechatUserBindByAccountRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE WechatUserBindByAccountRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : nickname_(arena, from.nickname_),
+        password_(arena, from.password_),
+        _cached_size_{0} {}
+
+WechatUserBindByAccountRequest::WechatUserBindByAccountRequest(
+    ::google::protobuf::Arena* arena,
+    const WechatUserBindByAccountRequest& from)
+    : ::google::protobuf::Message(arena) {
   WechatUserBindByAccountRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.password_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_nickname().empty()) {
-    _this->_impl_.nickname_.Set(from._internal_nickname(), _this->GetArenaForAllocation());
-  }
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_password().empty()) {
-    _this->_impl_.password_.Set(from._internal_password(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.WechatUserBindByAccountRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE WechatUserBindByAccountRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : nickname_(arena),
+        password_(arena),
+        _cached_size_{0} {}
+
 inline void WechatUserBindByAccountRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.password_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.password_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.password_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 WechatUserBindByAccountRequest::~WechatUserBindByAccountRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.WechatUserBindByAccountRequest)
@@ -32365,16 +31661,15 @@ WechatUserBindByAccountRequest::~WechatUserBindByAccountRequest() {
   SharedDtor();
 }
 inline void WechatUserBindByAccountRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.nickname_.Destroy();
   _impl_.password_.Destroy();
-}
-void WechatUserBindByAccountRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WechatUserBindByAccountRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.WechatUserBindByAccountRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -32487,11 +31782,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 75, 2> WechatUserBindByAccountRequest::_tabl
 }
 
 const ::google::protobuf::Message::ClassData WechatUserBindByAccountRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WechatUserBindByAccountRequest::MergeImpl
+    WechatUserBindByAccountRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WechatUserBindByAccountRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WechatUserBindByAccountRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void WechatUserBindByAccountRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatUserBindByAccountRequest*>(&to_msg);
@@ -32521,15 +31817,16 @@ PROTOBUF_NOINLINE bool WechatUserBindByAccountRequest::IsInitialized() const {
   return true;
 }
 
-void WechatUserBindByAccountRequest::InternalSwap(WechatUserBindByAccountRequest* other) {
+::_pbi::CachedSize* WechatUserBindByAccountRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WechatUserBindByAccountRequest::InternalSwap(WechatUserBindByAccountRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, lhs_arena,
-                                       &other->_impl_.nickname_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, lhs_arena,
-                                       &other->_impl_.password_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, &other->_impl_.nickname_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.password_, &other->_impl_.password_, arena);
 }
 
 ::google::protobuf::Metadata WechatUserBindByAccountRequest::GetMetadata() const {
@@ -32548,48 +31845,34 @@ WechatUserQueryByOpenIdRequest::WechatUserQueryByOpenIdRequest(::google::protobu
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.WechatUserQueryByOpenIdRequest)
 }
-WechatUserQueryByOpenIdRequest::WechatUserQueryByOpenIdRequest(const WechatUserQueryByOpenIdRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE WechatUserQueryByOpenIdRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : app_id_(arena, from.app_id_),
+        open_id_(arena, from.open_id_),
+        _cached_size_{0} {}
+
+WechatUserQueryByOpenIdRequest::WechatUserQueryByOpenIdRequest(
+    ::google::protobuf::Arena* arena,
+    const WechatUserQueryByOpenIdRequest& from)
+    : ::google::protobuf::Message(arena) {
   WechatUserQueryByOpenIdRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.app_id_){},
-      decltype(_impl_.open_id_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.app_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.app_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_app_id().empty()) {
-    _this->_impl_.app_id_.Set(from._internal_app_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.open_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.open_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_open_id().empty()) {
-    _this->_impl_.open_id_.Set(from._internal_open_id(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.WechatUserQueryByOpenIdRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE WechatUserQueryByOpenIdRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : app_id_(arena),
+        open_id_(arena),
+        _cached_size_{0} {}
+
 inline void WechatUserQueryByOpenIdRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.app_id_){},
-      decltype(_impl_.open_id_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.app_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.app_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.open_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.open_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 WechatUserQueryByOpenIdRequest::~WechatUserQueryByOpenIdRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.WechatUserQueryByOpenIdRequest)
@@ -32597,16 +31880,15 @@ WechatUserQueryByOpenIdRequest::~WechatUserQueryByOpenIdRequest() {
   SharedDtor();
 }
 inline void WechatUserQueryByOpenIdRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.app_id_.Destroy();
   _impl_.open_id_.Destroy();
-}
-void WechatUserQueryByOpenIdRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WechatUserQueryByOpenIdRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.WechatUserQueryByOpenIdRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -32719,11 +32001,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 72, 2> WechatUserQueryByOpenIdRequest::_tabl
 }
 
 const ::google::protobuf::Message::ClassData WechatUserQueryByOpenIdRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WechatUserQueryByOpenIdRequest::MergeImpl
+    WechatUserQueryByOpenIdRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WechatUserQueryByOpenIdRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WechatUserQueryByOpenIdRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void WechatUserQueryByOpenIdRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatUserQueryByOpenIdRequest*>(&to_msg);
@@ -32753,15 +32036,16 @@ PROTOBUF_NOINLINE bool WechatUserQueryByOpenIdRequest::IsInitialized() const {
   return true;
 }
 
-void WechatUserQueryByOpenIdRequest::InternalSwap(WechatUserQueryByOpenIdRequest* other) {
+::_pbi::CachedSize* WechatUserQueryByOpenIdRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WechatUserQueryByOpenIdRequest::InternalSwap(WechatUserQueryByOpenIdRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, lhs_arena,
-                                       &other->_impl_.app_id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.open_id_, lhs_arena,
-                                       &other->_impl_.open_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, &other->_impl_.app_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.open_id_, &other->_impl_.open_id_, arena);
 }
 
 ::google::protobuf::Metadata WechatUserQueryByOpenIdRequest::GetMetadata() const {
@@ -32780,35 +32064,32 @@ WechatUserQueryByUnionIdRequest::WechatUserQueryByUnionIdRequest(::google::proto
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.WechatUserQueryByUnionIdRequest)
 }
-WechatUserQueryByUnionIdRequest::WechatUserQueryByUnionIdRequest(const WechatUserQueryByUnionIdRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE WechatUserQueryByUnionIdRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : union_id_(arena, from.union_id_),
+        _cached_size_{0} {}
+
+WechatUserQueryByUnionIdRequest::WechatUserQueryByUnionIdRequest(
+    ::google::protobuf::Arena* arena,
+    const WechatUserQueryByUnionIdRequest& from)
+    : ::google::protobuf::Message(arena) {
   WechatUserQueryByUnionIdRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.union_id_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.union_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.union_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_union_id().empty()) {
-    _this->_impl_.union_id_.Set(from._internal_union_id(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.WechatUserQueryByUnionIdRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE WechatUserQueryByUnionIdRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : union_id_(arena),
+        _cached_size_{0} {}
+
 inline void WechatUserQueryByUnionIdRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.union_id_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.union_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.union_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 WechatUserQueryByUnionIdRequest::~WechatUserQueryByUnionIdRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.WechatUserQueryByUnionIdRequest)
@@ -32816,15 +32097,14 @@ WechatUserQueryByUnionIdRequest::~WechatUserQueryByUnionIdRequest() {
   SharedDtor();
 }
 inline void WechatUserQueryByUnionIdRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.union_id_.Destroy();
-}
-void WechatUserQueryByUnionIdRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WechatUserQueryByUnionIdRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.WechatUserQueryByUnionIdRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -32915,11 +32195,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 68, 2> WechatUserQueryByUnionIdRequest::_tab
 }
 
 const ::google::protobuf::Message::ClassData WechatUserQueryByUnionIdRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WechatUserQueryByUnionIdRequest::MergeImpl
+    WechatUserQueryByUnionIdRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WechatUserQueryByUnionIdRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WechatUserQueryByUnionIdRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void WechatUserQueryByUnionIdRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatUserQueryByUnionIdRequest*>(&to_msg);
@@ -32946,13 +32227,15 @@ PROTOBUF_NOINLINE bool WechatUserQueryByUnionIdRequest::IsInitialized() const {
   return true;
 }
 
-void WechatUserQueryByUnionIdRequest::InternalSwap(WechatUserQueryByUnionIdRequest* other) {
+::_pbi::CachedSize* WechatUserQueryByUnionIdRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WechatUserQueryByUnionIdRequest::InternalSwap(WechatUserQueryByUnionIdRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.union_id_, lhs_arena,
-                                       &other->_impl_.union_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.union_id_, &other->_impl_.union_id_, arena);
 }
 
 ::google::protobuf::Metadata WechatUserQueryByUnionIdRequest::GetMetadata() const {
@@ -32980,96 +32263,54 @@ WechatAllMiniProgramUserResponse_Item::WechatAllMiniProgramUserResponse_Item(::g
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.WechatAllMiniProgramUserResponse.Item)
 }
-WechatAllMiniProgramUserResponse_Item::WechatAllMiniProgramUserResponse_Item(const WechatAllMiniProgramUserResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE WechatAllMiniProgramUserResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        union_id_(arena, from.union_id_),
+        app_id_(arena, from.app_id_),
+        open_id_(arena, from.open_id_),
+        nickname_(arena, from.nickname_),
+        avatar_url_(arena, from.avatar_url_) {}
+
+WechatAllMiniProgramUserResponse_Item::WechatAllMiniProgramUserResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const WechatAllMiniProgramUserResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   WechatAllMiniProgramUserResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.union_id_){},
-      decltype(_impl_.app_id_){},
-      decltype(_impl_.open_id_){},
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.avatar_url_){},
-      decltype(_impl_.id_){},
-      decltype(_impl_.user_id_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.union_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.union_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_union_id().empty()) {
-    _this->_impl_.union_id_.Set(from._internal_union_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.app_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.app_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_app_id().empty()) {
-    _this->_impl_.app_id_.Set(from._internal_app_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.open_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.open_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_open_id().empty()) {
-    _this->_impl_.open_id_.Set(from._internal_open_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.nickname_.Set(from._internal_nickname(), _this->GetArenaForAllocation());
-  }
-  _impl_.avatar_url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.avatar_url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.avatar_url_.Set(from._internal_avatar_url(), _this->GetArenaForAllocation());
-  }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.user_id_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.user_id_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, user_id_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::user_id_));
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.WechatAllMiniProgramUserResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE WechatAllMiniProgramUserResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        union_id_(arena),
+        app_id_(arena),
+        open_id_(arena),
+        nickname_(arena),
+        avatar_url_(arena) {}
+
 inline void WechatAllMiniProgramUserResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.union_id_){},
-      decltype(_impl_.app_id_){},
-      decltype(_impl_.open_id_){},
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.avatar_url_){},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.user_id_){0},
-  };
-  _impl_.union_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.union_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.app_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.app_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.open_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.open_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.avatar_url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.avatar_url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           0,
+           offsetof(Impl_, user_id_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::user_id_));
 }
 WechatAllMiniProgramUserResponse_Item::~WechatAllMiniProgramUserResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.WechatAllMiniProgramUserResponse.Item)
@@ -33077,19 +32318,18 @@ WechatAllMiniProgramUserResponse_Item::~WechatAllMiniProgramUserResponse_Item() 
   SharedDtor();
 }
 inline void WechatAllMiniProgramUserResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.union_id_.Destroy();
   _impl_.app_id_.Destroy();
   _impl_.open_id_.Destroy();
   _impl_.nickname_.Destroy();
   _impl_.avatar_url_.Destroy();
-}
-void WechatAllMiniProgramUserResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WechatAllMiniProgramUserResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.WechatAllMiniProgramUserResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -33318,11 +32558,12 @@ const ::_pbi::TcParseTable<3, 7, 0, 105, 2> WechatAllMiniProgramUserResponse_Ite
 }
 
 const ::google::protobuf::Message::ClassData WechatAllMiniProgramUserResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WechatAllMiniProgramUserResponse_Item::MergeImpl
+    WechatAllMiniProgramUserResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WechatAllMiniProgramUserResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WechatAllMiniProgramUserResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void WechatAllMiniProgramUserResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatAllMiniProgramUserResponse_Item*>(&to_msg);
@@ -33370,22 +32611,20 @@ PROTOBUF_NOINLINE bool WechatAllMiniProgramUserResponse_Item::IsInitialized() co
   return true;
 }
 
-void WechatAllMiniProgramUserResponse_Item::InternalSwap(WechatAllMiniProgramUserResponse_Item* other) {
+::_pbi::CachedSize* WechatAllMiniProgramUserResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WechatAllMiniProgramUserResponse_Item::InternalSwap(WechatAllMiniProgramUserResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.union_id_, lhs_arena,
-                                       &other->_impl_.union_id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, lhs_arena,
-                                       &other->_impl_.app_id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.open_id_, lhs_arena,
-                                       &other->_impl_.open_id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, lhs_arena,
-                                       &other->_impl_.nickname_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.avatar_url_, lhs_arena,
-                                       &other->_impl_.avatar_url_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.union_id_, &other->_impl_.union_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, &other->_impl_.app_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.open_id_, &other->_impl_.open_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, &other->_impl_.nickname_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.avatar_url_, &other->_impl_.avatar_url_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(WechatAllMiniProgramUserResponse_Item, _impl_.user_id_)
       + sizeof(WechatAllMiniProgramUserResponse_Item::_impl_.user_id_)
@@ -33410,24 +32649,32 @@ WechatAllMiniProgramUserResponse::WechatAllMiniProgramUserResponse(::google::pro
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.WechatAllMiniProgramUserResponse)
 }
-WechatAllMiniProgramUserResponse::WechatAllMiniProgramUserResponse(const WechatAllMiniProgramUserResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE WechatAllMiniProgramUserResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+WechatAllMiniProgramUserResponse::WechatAllMiniProgramUserResponse(
+    ::google::protobuf::Arena* arena,
+    const WechatAllMiniProgramUserResponse& from)
+    : ::google::protobuf::Message(arena) {
   WechatAllMiniProgramUserResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.WechatAllMiniProgramUserResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE WechatAllMiniProgramUserResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void WechatAllMiniProgramUserResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 WechatAllMiniProgramUserResponse::~WechatAllMiniProgramUserResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.WechatAllMiniProgramUserResponse)
@@ -33435,20 +32682,18 @@ WechatAllMiniProgramUserResponse::~WechatAllMiniProgramUserResponse() {
   SharedDtor();
 }
 inline void WechatAllMiniProgramUserResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void WechatAllMiniProgramUserResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WechatAllMiniProgramUserResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.WechatAllMiniProgramUserResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -33531,11 +32776,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> WechatAllMiniProgramUserResponse::_tab
 }
 
 const ::google::protobuf::Message::ClassData WechatAllMiniProgramUserResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WechatAllMiniProgramUserResponse::MergeImpl
+    WechatAllMiniProgramUserResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WechatAllMiniProgramUserResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WechatAllMiniProgramUserResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void WechatAllMiniProgramUserResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatAllMiniProgramUserResponse*>(&to_msg);
@@ -33545,7 +32791,8 @@ void WechatAllMiniProgramUserResponse::MergeImpl(::google::protobuf::Message& to
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -33560,7 +32807,10 @@ PROTOBUF_NOINLINE bool WechatAllMiniProgramUserResponse::IsInitialized() const {
   return true;
 }
 
-void WechatAllMiniProgramUserResponse::InternalSwap(WechatAllMiniProgramUserResponse* other) {
+::_pbi::CachedSize* WechatAllMiniProgramUserResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WechatAllMiniProgramUserResponse::InternalSwap(WechatAllMiniProgramUserResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -33588,152 +32838,64 @@ WechatAllOauth2UserResponse_Item::WechatAllOauth2UserResponse_Item(::google::pro
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.WechatAllOauth2UserResponse.Item)
 }
-WechatAllOauth2UserResponse_Item::WechatAllOauth2UserResponse_Item(const WechatAllOauth2UserResponse_Item& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE WechatAllOauth2UserResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        privilege_{visibility, arena, from.privilege_},
+        union_id_(arena, from.union_id_),
+        app_id_(arena, from.app_id_),
+        open_id_(arena, from.open_id_),
+        nickname_(arena, from.nickname_),
+        city_(arena, from.city_),
+        province_(arena, from.province_),
+        country_(arena, from.country_),
+        head_img_url_(arena, from.head_img_url_),
+        lang_(arena, from.lang_) {}
+
+WechatAllOauth2UserResponse_Item::WechatAllOauth2UserResponse_Item(
+    ::google::protobuf::Arena* arena,
+    const WechatAllOauth2UserResponse_Item& from)
+    : ::google::protobuf::Message(arena) {
   WechatAllOauth2UserResponse_Item* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.privilege_){from._impl_.privilege_},
-      decltype(_impl_.union_id_){},
-      decltype(_impl_.app_id_){},
-      decltype(_impl_.open_id_){},
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.city_){},
-      decltype(_impl_.province_){},
-      decltype(_impl_.country_){},
-      decltype(_impl_.head_img_url_){},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.id_){},
-      decltype(_impl_.user_id_){},
-      decltype(_impl_.sex_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.union_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.union_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_union_id().empty()) {
-    _this->_impl_.union_id_.Set(from._internal_union_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.app_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.app_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_app_id().empty()) {
-    _this->_impl_.app_id_.Set(from._internal_app_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.open_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.open_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_open_id().empty()) {
-    _this->_impl_.open_id_.Set(from._internal_open_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_nickname().empty()) {
-    _this->_impl_.nickname_.Set(from._internal_nickname(), _this->GetArenaForAllocation());
-  }
-  _impl_.city_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.city_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_city().empty()) {
-    _this->_impl_.city_.Set(from._internal_city(), _this->GetArenaForAllocation());
-  }
-  _impl_.province_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.province_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_province().empty()) {
-    _this->_impl_.province_.Set(from._internal_province(), _this->GetArenaForAllocation());
-  }
-  _impl_.country_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.country_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_country().empty()) {
-    _this->_impl_.country_.Set(from._internal_country(), _this->GetArenaForAllocation());
-  }
-  _impl_.head_img_url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.head_img_url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.head_img_url_.Set(from._internal_head_img_url(), _this->GetArenaForAllocation());
-  }
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_lang().empty()) {
-    _this->_impl_.lang_.Set(from._internal_lang(), _this->GetArenaForAllocation());
-  }
-  ::memcpy(&_impl_.id_, &from._impl_.id_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.sex_) -
-    reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.sex_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, sex_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::sex_));
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.WechatAllOauth2UserResponse.Item)
 }
+inline PROTOBUF_NDEBUG_INLINE WechatAllOauth2UserResponse_Item::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        privilege_{visibility, arena},
+        union_id_(arena),
+        app_id_(arena),
+        open_id_(arena),
+        nickname_(arena),
+        city_(arena),
+        province_(arena),
+        country_(arena),
+        head_img_url_(arena),
+        lang_(arena) {}
+
 inline void WechatAllOauth2UserResponse_Item::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.privilege_){arena},
-      decltype(_impl_.union_id_){},
-      decltype(_impl_.app_id_){},
-      decltype(_impl_.open_id_){},
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.city_){},
-      decltype(_impl_.province_){},
-      decltype(_impl_.country_){},
-      decltype(_impl_.head_img_url_){},
-      decltype(_impl_.lang_){},
-      decltype(_impl_.id_){0},
-      decltype(_impl_.user_id_){0},
-      decltype(_impl_.sex_){0},
-  };
-  _impl_.union_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.union_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.app_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.app_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.open_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.open_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.city_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.city_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.province_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.province_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.country_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.country_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.head_img_url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.head_img_url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.lang_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.lang_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           0,
+           offsetof(Impl_, sex_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::sex_));
 }
 WechatAllOauth2UserResponse_Item::~WechatAllOauth2UserResponse_Item() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.WechatAllOauth2UserResponse.Item)
@@ -33741,8 +32903,7 @@ WechatAllOauth2UserResponse_Item::~WechatAllOauth2UserResponse_Item() {
   SharedDtor();
 }
 inline void WechatAllOauth2UserResponse_Item::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _internal_mutable_privilege()->~RepeatedPtrField();
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.union_id_.Destroy();
   _impl_.app_id_.Destroy();
   _impl_.open_id_.Destroy();
@@ -33752,18 +32913,17 @@ inline void WechatAllOauth2UserResponse_Item::SharedDtor() {
   _impl_.country_.Destroy();
   _impl_.head_img_url_.Destroy();
   _impl_.lang_.Destroy();
-}
-void WechatAllOauth2UserResponse_Item::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WechatAllOauth2UserResponse_Item::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.WechatAllOauth2UserResponse.Item)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_privilege()->Clear();
+  _impl_.privilege_.Clear();
   _impl_.union_id_.ClearToEmpty();
   _impl_.app_id_.ClearToEmpty();
   _impl_.open_id_.ClearToEmpty();
@@ -34112,11 +33272,12 @@ const ::_pbi::TcParseTable<4, 13, 0, 142, 2> WechatAllOauth2UserResponse_Item::_
 }
 
 const ::google::protobuf::Message::ClassData WechatAllOauth2UserResponse_Item::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WechatAllOauth2UserResponse_Item::MergeImpl
+    WechatAllOauth2UserResponse_Item::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WechatAllOauth2UserResponse_Item::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WechatAllOauth2UserResponse_Item::GetClassData() const {
+  return &_class_data_;
+}
 
 void WechatAllOauth2UserResponse_Item::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatAllOauth2UserResponse_Item*>(&to_msg);
@@ -34177,31 +33338,25 @@ PROTOBUF_NOINLINE bool WechatAllOauth2UserResponse_Item::IsInitialized() const {
   return true;
 }
 
-void WechatAllOauth2UserResponse_Item::InternalSwap(WechatAllOauth2UserResponse_Item* other) {
+::_pbi::CachedSize* WechatAllOauth2UserResponse_Item::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WechatAllOauth2UserResponse_Item::InternalSwap(WechatAllOauth2UserResponse_Item* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   _impl_.privilege_.InternalSwap(&other->_impl_.privilege_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.union_id_, lhs_arena,
-                                       &other->_impl_.union_id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, lhs_arena,
-                                       &other->_impl_.app_id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.open_id_, lhs_arena,
-                                       &other->_impl_.open_id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, lhs_arena,
-                                       &other->_impl_.nickname_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.city_, lhs_arena,
-                                       &other->_impl_.city_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.province_, lhs_arena,
-                                       &other->_impl_.province_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.country_, lhs_arena,
-                                       &other->_impl_.country_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.head_img_url_, lhs_arena,
-                                       &other->_impl_.head_img_url_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, lhs_arena,
-                                       &other->_impl_.lang_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.union_id_, &other->_impl_.union_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, &other->_impl_.app_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.open_id_, &other->_impl_.open_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, &other->_impl_.nickname_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.city_, &other->_impl_.city_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.province_, &other->_impl_.province_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.country_, &other->_impl_.country_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.head_img_url_, &other->_impl_.head_img_url_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.lang_, &other->_impl_.lang_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(WechatAllOauth2UserResponse_Item, _impl_.sex_)
       + sizeof(WechatAllOauth2UserResponse_Item::_impl_.sex_)
@@ -34226,24 +33381,32 @@ WechatAllOauth2UserResponse::WechatAllOauth2UserResponse(::google::protobuf::Are
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.WechatAllOauth2UserResponse)
 }
-WechatAllOauth2UserResponse::WechatAllOauth2UserResponse(const WechatAllOauth2UserResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE WechatAllOauth2UserResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : items_{visibility, arena, from.items_},
+        _cached_size_{0} {}
+
+WechatAllOauth2UserResponse::WechatAllOauth2UserResponse(
+    ::google::protobuf::Arena* arena,
+    const WechatAllOauth2UserResponse& from)
+    : ::google::protobuf::Message(arena) {
   WechatAllOauth2UserResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){from._impl_.items_},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.WechatAllOauth2UserResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE WechatAllOauth2UserResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : items_{visibility, arena},
+        _cached_size_{0} {}
+
 inline void WechatAllOauth2UserResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.items_){arena},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 WechatAllOauth2UserResponse::~WechatAllOauth2UserResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.WechatAllOauth2UserResponse)
@@ -34251,20 +33414,18 @@ WechatAllOauth2UserResponse::~WechatAllOauth2UserResponse() {
   SharedDtor();
 }
 inline void WechatAllOauth2UserResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.items_.~RepeatedPtrField();
-}
-void WechatAllOauth2UserResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WechatAllOauth2UserResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.WechatAllOauth2UserResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _internal_mutable_items()->Clear();
+  _impl_.items_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -34347,11 +33508,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> WechatAllOauth2UserResponse::_table_ =
 }
 
 const ::google::protobuf::Message::ClassData WechatAllOauth2UserResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WechatAllOauth2UserResponse::MergeImpl
+    WechatAllOauth2UserResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WechatAllOauth2UserResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WechatAllOauth2UserResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void WechatAllOauth2UserResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatAllOauth2UserResponse*>(&to_msg);
@@ -34361,7 +33523,8 @@ void WechatAllOauth2UserResponse::MergeImpl(::google::protobuf::Message& to_msg,
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  _this->_internal_mutable_items()->MergeFrom(
+      from._internal_items());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -34376,7 +33539,10 @@ PROTOBUF_NOINLINE bool WechatAllOauth2UserResponse::IsInitialized() const {
   return true;
 }
 
-void WechatAllOauth2UserResponse::InternalSwap(WechatAllOauth2UserResponse* other) {
+::_pbi::CachedSize* WechatAllOauth2UserResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WechatAllOauth2UserResponse::InternalSwap(WechatAllOauth2UserResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.items_.InternalSwap(&other->_impl_.items_);
@@ -34404,6 +33570,7 @@ const ::google::protobuf::Duration& SignInByWechatOauth2Request::_Internal::ttl(
   return *msg->_impl_.ttl_;
 }
 void SignInByWechatOauth2Request::clear_ttl() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.ttl_ != nullptr) _impl_.ttl_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -34412,71 +33579,48 @@ SignInByWechatOauth2Request::SignInByWechatOauth2Request(::google::protobuf::Are
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.SignInByWechatOauth2Request)
 }
-SignInByWechatOauth2Request::SignInByWechatOauth2Request(const SignInByWechatOauth2Request& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE SignInByWechatOauth2Request::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        state_(arena, from.state_),
+        code_(arena, from.code_),
+        app_id_(arena, from.app_id_) {}
+
+SignInByWechatOauth2Request::SignInByWechatOauth2Request(
+    ::google::protobuf::Arena* arena,
+    const SignInByWechatOauth2Request& from)
+    : ::google::protobuf::Message(arena) {
   SignInByWechatOauth2Request* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.state_){},
-      decltype(_impl_.code_){},
-      decltype(_impl_.app_id_){},
-      decltype(_impl_.ttl_){nullptr},
-      decltype(_impl_.language_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.state_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.state_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_state().empty()) {
-    _this->_impl_.state_.Set(from._internal_state(), _this->GetArenaForAllocation());
-  }
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_code().empty()) {
-    _this->_impl_.code_.Set(from._internal_code(), _this->GetArenaForAllocation());
-  }
-  _impl_.app_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.app_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_app_id().empty()) {
-    _this->_impl_.app_id_.Set(from._internal_app_id(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.ttl_ = new ::google::protobuf::Duration(*from._impl_.ttl_);
-  }
-  _this->_impl_.language_ = from._impl_.language_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.ttl_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Duration>(arena, *from._impl_.ttl_)
+                : nullptr;
+  _impl_.language_ = from._impl_.language_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.SignInByWechatOauth2Request)
 }
+inline PROTOBUF_NDEBUG_INLINE SignInByWechatOauth2Request::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        state_(arena),
+        code_(arena),
+        app_id_(arena) {}
+
 inline void SignInByWechatOauth2Request::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.state_){},
-      decltype(_impl_.code_){},
-      decltype(_impl_.app_id_){},
-      decltype(_impl_.ttl_){nullptr},
-      decltype(_impl_.language_){0},
-  };
-  _impl_.state_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.state_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.code_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.code_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.app_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.app_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, ttl_),
+           0,
+           offsetof(Impl_, language_) -
+               offsetof(Impl_, ttl_) +
+               sizeof(Impl_::language_));
 }
 SignInByWechatOauth2Request::~SignInByWechatOauth2Request() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.SignInByWechatOauth2Request)
@@ -34484,18 +33628,17 @@ SignInByWechatOauth2Request::~SignInByWechatOauth2Request() {
   SharedDtor();
 }
 inline void SignInByWechatOauth2Request::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.state_.Destroy();
   _impl_.code_.Destroy();
   _impl_.app_id_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.ttl_;
-}
-void SignInByWechatOauth2Request::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.ttl_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void SignInByWechatOauth2Request::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.SignInByWechatOauth2Request)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -34617,8 +33760,8 @@ const ::_pbi::TcParseTable<2, 5, 1, 71, 2> SignInByWechatOauth2Request::_table_ 
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Duration ttl = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::ttl(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::ttl(this),
         _Internal::ttl(this).GetCachedSize(), target, stream);
   }
 
@@ -34660,9 +33803,8 @@ const ::_pbi::TcParseTable<2, 5, 1, 71, 2> SignInByWechatOauth2Request::_table_ 
   // .google.protobuf.Duration ttl = 11;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.ttl_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.ttl_);
   }
 
   // .palm.orchid.v1.WechatOauth2QrConnectRequest.Language language = 8;
@@ -34675,11 +33817,12 @@ const ::_pbi::TcParseTable<2, 5, 1, 71, 2> SignInByWechatOauth2Request::_table_ 
 }
 
 const ::google::protobuf::Message::ClassData SignInByWechatOauth2Request::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    SignInByWechatOauth2Request::MergeImpl
+    SignInByWechatOauth2Request::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*SignInByWechatOauth2Request::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* SignInByWechatOauth2Request::GetClassData() const {
+  return &_class_data_;
+}
 
 void SignInByWechatOauth2Request::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<SignInByWechatOauth2Request*>(&to_msg);
@@ -34719,18 +33862,18 @@ PROTOBUF_NOINLINE bool SignInByWechatOauth2Request::IsInitialized() const {
   return true;
 }
 
-void SignInByWechatOauth2Request::InternalSwap(SignInByWechatOauth2Request* other) {
+::_pbi::CachedSize* SignInByWechatOauth2Request::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void SignInByWechatOauth2Request::InternalSwap(SignInByWechatOauth2Request* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.state_, lhs_arena,
-                                       &other->_impl_.state_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, lhs_arena,
-                                       &other->_impl_.code_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, lhs_arena,
-                                       &other->_impl_.app_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.state_, &other->_impl_.state_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.code_, &other->_impl_.code_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, &other->_impl_.app_id_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SignInByWechatOauth2Request, _impl_.language_)
       + sizeof(SignInByWechatOauth2Request::_impl_.language_)
@@ -34755,35 +33898,32 @@ WechatOauth2SignInStateResponse::WechatOauth2SignInStateResponse(::google::proto
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.WechatOauth2SignInStateResponse)
 }
-WechatOauth2SignInStateResponse::WechatOauth2SignInStateResponse(const WechatOauth2SignInStateResponse& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE WechatOauth2SignInStateResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : state_(arena, from.state_),
+        _cached_size_{0} {}
+
+WechatOauth2SignInStateResponse::WechatOauth2SignInStateResponse(
+    ::google::protobuf::Arena* arena,
+    const WechatOauth2SignInStateResponse& from)
+    : ::google::protobuf::Message(arena) {
   WechatOauth2SignInStateResponse* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.state_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.state_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.state_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_state().empty()) {
-    _this->_impl_.state_.Set(from._internal_state(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.WechatOauth2SignInStateResponse)
 }
+inline PROTOBUF_NDEBUG_INLINE WechatOauth2SignInStateResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : state_(arena),
+        _cached_size_{0} {}
+
 inline void WechatOauth2SignInStateResponse::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.state_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.state_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.state_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 WechatOauth2SignInStateResponse::~WechatOauth2SignInStateResponse() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.WechatOauth2SignInStateResponse)
@@ -34791,15 +33931,14 @@ WechatOauth2SignInStateResponse::~WechatOauth2SignInStateResponse() {
   SharedDtor();
 }
 inline void WechatOauth2SignInStateResponse::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.state_.Destroy();
-}
-void WechatOauth2SignInStateResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WechatOauth2SignInStateResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.WechatOauth2SignInStateResponse)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -34890,11 +34029,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 65, 2> WechatOauth2SignInStateResponse::_tab
 }
 
 const ::google::protobuf::Message::ClassData WechatOauth2SignInStateResponse::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WechatOauth2SignInStateResponse::MergeImpl
+    WechatOauth2SignInStateResponse::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WechatOauth2SignInStateResponse::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WechatOauth2SignInStateResponse::GetClassData() const {
+  return &_class_data_;
+}
 
 void WechatOauth2SignInStateResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatOauth2SignInStateResponse*>(&to_msg);
@@ -34921,13 +34061,15 @@ PROTOBUF_NOINLINE bool WechatOauth2SignInStateResponse::IsInitialized() const {
   return true;
 }
 
-void WechatOauth2SignInStateResponse::InternalSwap(WechatOauth2SignInStateResponse* other) {
+::_pbi::CachedSize* WechatOauth2SignInStateResponse::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WechatOauth2SignInStateResponse::InternalSwap(WechatOauth2SignInStateResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.state_, lhs_arena,
-                                       &other->_impl_.state_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.state_, &other->_impl_.state_, arena);
 }
 
 ::google::protobuf::Metadata WechatOauth2SignInStateResponse::GetMetadata() const {
@@ -34946,51 +34088,36 @@ WechatOauth2SignInUrlRequest::WechatOauth2SignInUrlRequest(::google::protobuf::A
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.WechatOauth2SignInUrlRequest)
 }
-WechatOauth2SignInUrlRequest::WechatOauth2SignInUrlRequest(const WechatOauth2SignInUrlRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE WechatOauth2SignInUrlRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : app_id_(arena, from.app_id_),
+        redirect_uri_(arena, from.redirect_uri_),
+        _cached_size_{0} {}
+
+WechatOauth2SignInUrlRequest::WechatOauth2SignInUrlRequest(
+    ::google::protobuf::Arena* arena,
+    const WechatOauth2SignInUrlRequest& from)
+    : ::google::protobuf::Message(arena) {
   WechatOauth2SignInUrlRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.app_id_){},
-      decltype(_impl_.redirect_uri_){},
-      decltype(_impl_.language_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.app_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.app_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_app_id().empty()) {
-    _this->_impl_.app_id_.Set(from._internal_app_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.redirect_uri_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.redirect_uri_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_redirect_uri().empty()) {
-    _this->_impl_.redirect_uri_.Set(from._internal_redirect_uri(), _this->GetArenaForAllocation());
-  }
-  _this->_impl_.language_ = from._impl_.language_;
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.language_ = from._impl_.language_;
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.WechatOauth2SignInUrlRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE WechatOauth2SignInUrlRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : app_id_(arena),
+        redirect_uri_(arena),
+        _cached_size_{0} {}
+
 inline void WechatOauth2SignInUrlRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_.app_id_){},
-      decltype(_impl_.redirect_uri_){},
-      decltype(_impl_.language_){0},
-      /*decltype(_impl_._cached_size_)*/ {},
-  };
-  _impl_.app_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.app_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.redirect_uri_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.redirect_uri_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.language_ = {};
 }
 WechatOauth2SignInUrlRequest::~WechatOauth2SignInUrlRequest() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.WechatOauth2SignInUrlRequest)
@@ -34998,16 +34125,15 @@ WechatOauth2SignInUrlRequest::~WechatOauth2SignInUrlRequest() {
   SharedDtor();
 }
 inline void WechatOauth2SignInUrlRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.app_id_.Destroy();
   _impl_.redirect_uri_.Destroy();
-}
-void WechatOauth2SignInUrlRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WechatOauth2SignInUrlRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.WechatOauth2SignInUrlRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -35141,11 +34267,12 @@ const ::_pbi::TcParseTable<2, 3, 0, 75, 2> WechatOauth2SignInUrlRequest::_table_
 }
 
 const ::google::protobuf::Message::ClassData WechatOauth2SignInUrlRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WechatOauth2SignInUrlRequest::MergeImpl
+    WechatOauth2SignInUrlRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WechatOauth2SignInUrlRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WechatOauth2SignInUrlRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void WechatOauth2SignInUrlRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatOauth2SignInUrlRequest*>(&to_msg);
@@ -35178,15 +34305,16 @@ PROTOBUF_NOINLINE bool WechatOauth2SignInUrlRequest::IsInitialized() const {
   return true;
 }
 
-void WechatOauth2SignInUrlRequest::InternalSwap(WechatOauth2SignInUrlRequest* other) {
+::_pbi::CachedSize* WechatOauth2SignInUrlRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WechatOauth2SignInUrlRequest::InternalSwap(WechatOauth2SignInUrlRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, lhs_arena,
-                                       &other->_impl_.app_id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.redirect_uri_, lhs_arena,
-                                       &other->_impl_.redirect_uri_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, &other->_impl_.app_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.redirect_uri_, &other->_impl_.redirect_uri_, arena);
   swap(_impl_.language_, other->_impl_.language_);
 }
 
@@ -35215,89 +34343,41 @@ WechatMiniProgramUser::WechatMiniProgramUser(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.metasequoia.v1.WechatMiniProgramUser)
 }
-WechatMiniProgramUser::WechatMiniProgramUser(const WechatMiniProgramUser& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE WechatMiniProgramUser::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        app_id_(arena, from.app_id_),
+        open_id_(arena, from.open_id_),
+        union_id_(arena, from.union_id_),
+        nickname_(arena, from.nickname_),
+        avatar_url_(arena, from.avatar_url_) {}
+
+WechatMiniProgramUser::WechatMiniProgramUser(
+    ::google::protobuf::Arena* arena,
+    const WechatMiniProgramUser& from)
+    : ::google::protobuf::Message(arena) {
   WechatMiniProgramUser* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.app_id_){},
-      decltype(_impl_.open_id_){},
-      decltype(_impl_.union_id_){},
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.avatar_url_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.app_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.app_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_app_id().empty()) {
-    _this->_impl_.app_id_.Set(from._internal_app_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.open_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.open_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_open_id().empty()) {
-    _this->_impl_.open_id_.Set(from._internal_open_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.union_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.union_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_union_id().empty()) {
-    _this->_impl_.union_id_.Set(from._internal_union_id(), _this->GetArenaForAllocation());
-  }
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.nickname_.Set(from._internal_nickname(), _this->GetArenaForAllocation());
-  }
-  _impl_.avatar_url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.avatar_url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
-    _this->_impl_.avatar_url_.Set(from._internal_avatar_url(), _this->GetArenaForAllocation());
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
   // @@protoc_insertion_point(copy_constructor:palm.metasequoia.v1.WechatMiniProgramUser)
 }
+inline PROTOBUF_NDEBUG_INLINE WechatMiniProgramUser::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        app_id_(arena),
+        open_id_(arena),
+        union_id_(arena),
+        nickname_(arena),
+        avatar_url_(arena) {}
+
 inline void WechatMiniProgramUser::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.app_id_){},
-      decltype(_impl_.open_id_){},
-      decltype(_impl_.union_id_){},
-      decltype(_impl_.nickname_){},
-      decltype(_impl_.avatar_url_){},
-  };
-  _impl_.app_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.app_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.open_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.open_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.union_id_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.union_id_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.nickname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.nickname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.avatar_url_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.avatar_url_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
 }
 WechatMiniProgramUser::~WechatMiniProgramUser() {
   // @@protoc_insertion_point(destructor:palm.metasequoia.v1.WechatMiniProgramUser)
@@ -35305,19 +34385,18 @@ WechatMiniProgramUser::~WechatMiniProgramUser() {
   SharedDtor();
 }
 inline void WechatMiniProgramUser::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.app_id_.Destroy();
   _impl_.open_id_.Destroy();
   _impl_.union_id_.Destroy();
   _impl_.nickname_.Destroy();
   _impl_.avatar_url_.Destroy();
-}
-void WechatMiniProgramUser::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void WechatMiniProgramUser::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.metasequoia.v1.WechatMiniProgramUser)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -35505,11 +34584,12 @@ const ::_pbi::TcParseTable<2, 5, 0, 89, 2> WechatMiniProgramUser::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData WechatMiniProgramUser::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    WechatMiniProgramUser::MergeImpl
+    WechatMiniProgramUser::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*WechatMiniProgramUser::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* WechatMiniProgramUser::GetClassData() const {
+  return &_class_data_;
+}
 
 void WechatMiniProgramUser::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<WechatMiniProgramUser*>(&to_msg);
@@ -35551,22 +34631,20 @@ PROTOBUF_NOINLINE bool WechatMiniProgramUser::IsInitialized() const {
   return true;
 }
 
-void WechatMiniProgramUser::InternalSwap(WechatMiniProgramUser* other) {
+::_pbi::CachedSize* WechatMiniProgramUser::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void WechatMiniProgramUser::InternalSwap(WechatMiniProgramUser* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, lhs_arena,
-                                       &other->_impl_.app_id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.open_id_, lhs_arena,
-                                       &other->_impl_.open_id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.union_id_, lhs_arena,
-                                       &other->_impl_.union_id_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, lhs_arena,
-                                       &other->_impl_.nickname_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.avatar_url_, lhs_arena,
-                                       &other->_impl_.avatar_url_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, &other->_impl_.app_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.open_id_, &other->_impl_.open_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.union_id_, &other->_impl_.union_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.nickname_, &other->_impl_.nickname_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.avatar_url_, &other->_impl_.avatar_url_, arena);
 }
 
 ::google::protobuf::Metadata WechatMiniProgramUser::GetMetadata() const {

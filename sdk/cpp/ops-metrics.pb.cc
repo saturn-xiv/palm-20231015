@@ -24,86 +24,30 @@ namespace palm {
 namespace ops {
 namespace metrics {
 namespace v1 {
-        template <typename>
-PROTOBUF_CONSTEXPR ReportHeartbeatRequest::ReportHeartbeatRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.created_at_)*/ nullptr,
-    } {}
-struct ReportHeartbeatRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ReportHeartbeatRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ReportHeartbeatRequestDefaultTypeInternal() {}
-  union {
-    ReportHeartbeatRequest _instance;
-  };
-};
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReportHeartbeatRequestDefaultTypeInternal _ReportHeartbeatRequest_default_instance_;
-        template <typename>
-PROTOBUF_CONSTEXPR ReportJournalRequest::ReportJournalRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.hostname_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.user_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.group_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.command_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.message_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.created_at_)*/ nullptr,
-    } {}
-struct ReportJournalRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ReportJournalRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ReportJournalRequestDefaultTypeInternal() {}
-  union {
-    ReportJournalRequest _instance;
-  };
-};
+inline constexpr ReportNginxRequest_Access::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        client_ip_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        method_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        path_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        http_referer_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        version_{0},
+        status_{0u},
+        body_bytes_sent_{::uint64_t{0u}},
+        request_time_{0} {}
 
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReportJournalRequestDefaultTypeInternal _ReportJournalRequest_default_instance_;
-        template <typename>
+template <typename>
 PROTOBUF_CONSTEXPR ReportNginxRequest_Access::ReportNginxRequest_Access(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.client_ip_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.method_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.path_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.http_referer_)*/ {
-          &::_pbi::fixed_address_empty_string,
-          ::_pbi::ConstantInitialized{},
-      },
-      /*decltype(_impl_.version_)*/ 0,
-      /*decltype(_impl_.status_)*/ 0u,
-      /*decltype(_impl_.body_bytes_sent_)*/ ::uint64_t{0u},
-      /*decltype(_impl_.request_time_)*/ 0,
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct ReportNginxRequest_AccessDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ReportNginxRequest_AccessDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ReportNginxRequest_AccessDefaultTypeInternal() {}
@@ -114,15 +58,17 @@ struct ReportNginxRequest_AccessDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReportNginxRequest_AccessDefaultTypeInternal _ReportNginxRequest_Access_default_instance_;
-        template <typename>
+
+inline constexpr ReportNginxRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        created_at_{nullptr},
+        payload_{},
+        _oneof_case_{} {}
+
+template <typename>
 PROTOBUF_CONSTEXPR ReportNginxRequest::ReportNginxRequest(::_pbi::ConstantInitialized)
-    : _impl_{
-      /*decltype(_impl_._has_bits_)*/ {},
-      /*decltype(_impl_._cached_size_)*/ {},
-      /*decltype(_impl_.created_at_)*/ nullptr,
-      /*decltype(_impl_.payload_)*/ {},
-      /*decltype(_impl_._oneof_case_)*/ {},
-    } {}
+    : _impl_(::_pbi::ConstantInitialized()) {}
 struct ReportNginxRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ReportNginxRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ReportNginxRequestDefaultTypeInternal() {}
@@ -133,6 +79,59 @@ struct ReportNginxRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReportNginxRequestDefaultTypeInternal _ReportNginxRequest_default_instance_;
+
+inline constexpr ReportJournalRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        hostname_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        user_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        group_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        command_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        created_at_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ReportJournalRequest::ReportJournalRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ReportJournalRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ReportJournalRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ReportJournalRequestDefaultTypeInternal() {}
+  union {
+    ReportJournalRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReportJournalRequestDefaultTypeInternal _ReportJournalRequest_default_instance_;
+
+inline constexpr ReportHeartbeatRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        created_at_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ReportHeartbeatRequest::ReportHeartbeatRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct ReportHeartbeatRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ReportHeartbeatRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ReportHeartbeatRequestDefaultTypeInternal() {}
+  union {
+    ReportHeartbeatRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReportHeartbeatRequestDefaultTypeInternal _ReportHeartbeatRequest_default_instance_;
 }  // namespace v1
 }  // namespace metrics
 }  // namespace ops
@@ -319,6 +318,7 @@ const ::google::protobuf::Timestamp& ReportHeartbeatRequest::_Internal::created_
   return *msg->_impl_.created_at_;
 }
 void ReportHeartbeatRequest::clear_created_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.created_at_ != nullptr) _impl_.created_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -327,29 +327,36 @@ ReportHeartbeatRequest::ReportHeartbeatRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.metrics.v1.ReportHeartbeatRequest)
 }
-ReportHeartbeatRequest::ReportHeartbeatRequest(const ReportHeartbeatRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE ReportHeartbeatRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0} {}
+
+ReportHeartbeatRequest::ReportHeartbeatRequest(
+    ::google::protobuf::Arena* arena,
+    const ReportHeartbeatRequest& from)
+    : ::google::protobuf::Message(arena) {
   ReportHeartbeatRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.created_at_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.created_at_ = new ::google::protobuf::Timestamp(*from._impl_.created_at_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.created_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.created_at_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.metrics.v1.ReportHeartbeatRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE ReportHeartbeatRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
 inline void ReportHeartbeatRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.created_at_){nullptr},
-  };
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.created_at_ = {};
 }
 ReportHeartbeatRequest::~ReportHeartbeatRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.metrics.v1.ReportHeartbeatRequest)
@@ -357,15 +364,14 @@ ReportHeartbeatRequest::~ReportHeartbeatRequest() {
   SharedDtor();
 }
 inline void ReportHeartbeatRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.created_at_;
-}
-void ReportHeartbeatRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.created_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void ReportHeartbeatRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.metrics.v1.ReportHeartbeatRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -426,8 +432,8 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ReportHeartbeatRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp created_at = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::created_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::created_at(this),
         _Internal::created_at(this).GetCachedSize(), target, stream);
   }
 
@@ -451,20 +457,20 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ReportHeartbeatRequest::_table_ = {
   // .google.protobuf.Timestamp created_at = 11;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.created_at_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.created_at_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData ReportHeartbeatRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    ReportHeartbeatRequest::MergeImpl
+    ReportHeartbeatRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*ReportHeartbeatRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* ReportHeartbeatRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void ReportHeartbeatRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ReportHeartbeatRequest*>(&to_msg);
@@ -492,7 +498,10 @@ PROTOBUF_NOINLINE bool ReportHeartbeatRequest::IsInitialized() const {
   return true;
 }
 
-void ReportHeartbeatRequest::InternalSwap(ReportHeartbeatRequest* other) {
+::_pbi::CachedSize* ReportHeartbeatRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ReportHeartbeatRequest::InternalSwap(ReportHeartbeatRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
@@ -521,6 +530,7 @@ const ::google::protobuf::Timestamp& ReportJournalRequest::_Internal::created_at
   return *msg->_impl_.created_at_;
 }
 void ReportJournalRequest::clear_created_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.created_at_ != nullptr) _impl_.created_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -529,94 +539,46 @@ ReportJournalRequest::ReportJournalRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.metrics.v1.ReportJournalRequest)
 }
-ReportJournalRequest::ReportJournalRequest(const ReportJournalRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE ReportJournalRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        hostname_(arena, from.hostname_),
+        user_(arena, from.user_),
+        group_(arena, from.group_),
+        command_(arena, from.command_),
+        message_(arena, from.message_) {}
+
+ReportJournalRequest::ReportJournalRequest(
+    ::google::protobuf::Arena* arena,
+    const ReportJournalRequest& from)
+    : ::google::protobuf::Message(arena) {
   ReportJournalRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.hostname_){},
-      decltype(_impl_.user_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.command_){},
-      decltype(_impl_.message_){},
-      decltype(_impl_.created_at_){nullptr},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.hostname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.hostname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_hostname().empty()) {
-    _this->_impl_.hostname_.Set(from._internal_hostname(), _this->GetArenaForAllocation());
-  }
-  _impl_.user_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.user_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_user().empty()) {
-    _this->_impl_.user_.Set(from._internal_user(), _this->GetArenaForAllocation());
-  }
-  _impl_.group_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_group().empty()) {
-    _this->_impl_.group_.Set(from._internal_group(), _this->GetArenaForAllocation());
-  }
-  _impl_.command_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.command_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_command().empty()) {
-    _this->_impl_.command_.Set(from._internal_command(), _this->GetArenaForAllocation());
-  }
-  _impl_.message_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_message().empty()) {
-    _this->_impl_.message_.Set(from._internal_message(), _this->GetArenaForAllocation());
-  }
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.created_at_ = new ::google::protobuf::Timestamp(*from._impl_.created_at_);
-  }
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.created_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.created_at_)
+                : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.metrics.v1.ReportJournalRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE ReportJournalRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        hostname_(arena),
+        user_(arena),
+        group_(arena),
+        command_(arena),
+        message_(arena) {}
+
 inline void ReportJournalRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.hostname_){},
-      decltype(_impl_.user_){},
-      decltype(_impl_.group_){},
-      decltype(_impl_.command_){},
-      decltype(_impl_.message_){},
-      decltype(_impl_.created_at_){nullptr},
-  };
-  _impl_.hostname_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.hostname_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.user_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.user_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.group_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.group_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.command_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.command_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.message_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.message_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.created_at_ = {};
 }
 ReportJournalRequest::~ReportJournalRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.metrics.v1.ReportJournalRequest)
@@ -624,20 +586,19 @@ ReportJournalRequest::~ReportJournalRequest() {
   SharedDtor();
 }
 inline void ReportJournalRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.hostname_.Destroy();
   _impl_.user_.Destroy();
   _impl_.group_.Destroy();
   _impl_.command_.Destroy();
   _impl_.message_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.created_at_;
-}
-void ReportJournalRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  delete _impl_.created_at_;
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void ReportJournalRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.metrics.v1.ReportJournalRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -774,8 +735,8 @@ const ::_pbi::TcParseTable<2, 6, 1, 80, 2> ReportJournalRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp created_at = 11;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(11, _Internal::created_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        11, _Internal::created_at(this),
         _Internal::created_at(this).GetCachedSize(), target, stream);
   }
 
@@ -829,20 +790,20 @@ const ::_pbi::TcParseTable<2, 6, 1, 80, 2> ReportJournalRequest::_table_ = {
   // .google.protobuf.Timestamp created_at = 11;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.created_at_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.created_at_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
 const ::google::protobuf::Message::ClassData ReportJournalRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    ReportJournalRequest::MergeImpl
+    ReportJournalRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*ReportJournalRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* ReportJournalRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void ReportJournalRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ReportJournalRequest*>(&to_msg);
@@ -885,22 +846,20 @@ PROTOBUF_NOINLINE bool ReportJournalRequest::IsInitialized() const {
   return true;
 }
 
-void ReportJournalRequest::InternalSwap(ReportJournalRequest* other) {
+::_pbi::CachedSize* ReportJournalRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ReportJournalRequest::InternalSwap(ReportJournalRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.hostname_, lhs_arena,
-                                       &other->_impl_.hostname_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.user_, lhs_arena,
-                                       &other->_impl_.user_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, lhs_arena,
-                                       &other->_impl_.group_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.command_, lhs_arena,
-                                       &other->_impl_.command_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, lhs_arena,
-                                       &other->_impl_.message_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.hostname_, &other->_impl_.hostname_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.user_, &other->_impl_.user_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.group_, &other->_impl_.group_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.command_, &other->_impl_.command_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
   swap(_impl_.created_at_, other->_impl_.created_at_);
 }
 
@@ -926,87 +885,52 @@ ReportNginxRequest_Access::ReportNginxRequest_Access(::google::protobuf::Arena* 
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.metrics.v1.ReportNginxRequest.Access)
 }
-ReportNginxRequest_Access::ReportNginxRequest_Access(const ReportNginxRequest_Access& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE ReportNginxRequest_Access::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        client_ip_(arena, from.client_ip_),
+        method_(arena, from.method_),
+        path_(arena, from.path_),
+        http_referer_(arena, from.http_referer_) {}
+
+ReportNginxRequest_Access::ReportNginxRequest_Access(
+    ::google::protobuf::Arena* arena,
+    const ReportNginxRequest_Access& from)
+    : ::google::protobuf::Message(arena) {
   ReportNginxRequest_Access* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.client_ip_){},
-      decltype(_impl_.method_){},
-      decltype(_impl_.path_){},
-      decltype(_impl_.http_referer_){},
-      decltype(_impl_.version_){},
-      decltype(_impl_.status_){},
-      decltype(_impl_.body_bytes_sent_){},
-      decltype(_impl_.request_time_){},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  _impl_.client_ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.client_ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_client_ip().empty()) {
-    _this->_impl_.client_ip_.Set(from._internal_client_ip(), _this->GetArenaForAllocation());
-  }
-  _impl_.method_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.method_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_method().empty()) {
-    _this->_impl_.method_.Set(from._internal_method(), _this->GetArenaForAllocation());
-  }
-  _impl_.path_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.path_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_path().empty()) {
-    _this->_impl_.path_.Set(from._internal_path(), _this->GetArenaForAllocation());
-  }
-  _impl_.http_referer_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.http_referer_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.http_referer_.Set(from._internal_http_referer(), _this->GetArenaForAllocation());
-  }
-  ::memcpy(&_impl_.version_, &from._impl_.version_,
-    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.request_time_) -
-    reinterpret_cast<char*>(&_impl_.version_)) + sizeof(_impl_.request_time_));
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, version_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, version_),
+           offsetof(Impl_, request_time_) -
+               offsetof(Impl_, version_) +
+               sizeof(Impl_::request_time_));
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.metrics.v1.ReportNginxRequest.Access)
 }
+inline PROTOBUF_NDEBUG_INLINE ReportNginxRequest_Access::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        client_ip_(arena),
+        method_(arena),
+        path_(arena),
+        http_referer_(arena) {}
+
 inline void ReportNginxRequest_Access::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.client_ip_){},
-      decltype(_impl_.method_){},
-      decltype(_impl_.path_){},
-      decltype(_impl_.http_referer_){},
-      decltype(_impl_.version_){0},
-      decltype(_impl_.status_){0u},
-      decltype(_impl_.body_bytes_sent_){::uint64_t{0u}},
-      decltype(_impl_.request_time_){0},
-  };
-  _impl_.client_ip_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.client_ip_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.method_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.method_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.path_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.path_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.http_referer_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        _impl_.http_referer_.Set("", GetArenaForAllocation());
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, version_),
+           0,
+           offsetof(Impl_, request_time_) -
+               offsetof(Impl_, version_) +
+               sizeof(Impl_::request_time_));
 }
 ReportNginxRequest_Access::~ReportNginxRequest_Access() {
   // @@protoc_insertion_point(destructor:palm.ops.metrics.v1.ReportNginxRequest.Access)
@@ -1014,18 +938,17 @@ ReportNginxRequest_Access::~ReportNginxRequest_Access() {
   SharedDtor();
 }
 inline void ReportNginxRequest_Access::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  ABSL_DCHECK(GetArena() == nullptr);
   _impl_.client_ip_.Destroy();
   _impl_.method_.Destroy();
   _impl_.path_.Destroy();
   _impl_.http_referer_.Destroy();
-}
-void ReportNginxRequest_Access::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 PROTOBUF_NOINLINE void ReportNginxRequest_Access::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.metrics.v1.ReportNginxRequest.Access)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1285,11 +1208,12 @@ const ::_pbi::TcParseTable<3, 8, 0, 93, 2> ReportNginxRequest_Access::_table_ = 
 }
 
 const ::google::protobuf::Message::ClassData ReportNginxRequest_Access::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    ReportNginxRequest_Access::MergeImpl
+    ReportNginxRequest_Access::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*ReportNginxRequest_Access::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* ReportNginxRequest_Access::GetClassData() const {
+  return &_class_data_;
+}
 
 void ReportNginxRequest_Access::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ReportNginxRequest_Access*>(&to_msg);
@@ -1347,20 +1271,19 @@ PROTOBUF_NOINLINE bool ReportNginxRequest_Access::IsInitialized() const {
   return true;
 }
 
-void ReportNginxRequest_Access::InternalSwap(ReportNginxRequest_Access* other) {
+::_pbi::CachedSize* ReportNginxRequest_Access::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ReportNginxRequest_Access::InternalSwap(ReportNginxRequest_Access* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.client_ip_, lhs_arena,
-                                       &other->_impl_.client_ip_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.method_, lhs_arena,
-                                       &other->_impl_.method_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.path_, lhs_arena,
-                                       &other->_impl_.path_, rhs_arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.http_referer_, lhs_arena,
-                                       &other->_impl_.http_referer_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.client_ip_, &other->_impl_.client_ip_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.method_, &other->_impl_.method_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.path_, &other->_impl_.path_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.http_referer_, &other->_impl_.http_referer_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ReportNginxRequest_Access, _impl_.request_time_)
       + sizeof(ReportNginxRequest_Access::_impl_.request_time_)
@@ -1397,14 +1320,12 @@ const ::google::protobuf::Timestamp& ReportNginxRequest::_Internal::created_at(c
   return *msg->_impl_.created_at_;
 }
 void ReportNginxRequest::set_allocated_access(::palm::ops::metrics::v1::ReportNginxRequest_Access* access) {
-  ::google::protobuf::Arena* message_arena = GetArenaForAllocation();
+  ::google::protobuf::Arena* message_arena = GetArena();
   clear_payload();
   if (access) {
-    ::google::protobuf::Arena* submessage_arena =
-      ::google::protobuf::Arena::InternalGetOwningArena(access);
+    ::google::protobuf::Arena* submessage_arena = access->GetArena();
     if (message_arena != submessage_arena) {
-      access = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, access, submessage_arena);
+      access = ::google::protobuf::internal::GetOwnedMessage(message_arena, access, submessage_arena);
     }
     set_has_access();
     _impl_.payload_.access_ = access;
@@ -1412,6 +1333,7 @@ void ReportNginxRequest::set_allocated_access(::palm::ops::metrics::v1::ReportNg
   // @@protoc_insertion_point(field_set_allocated:palm.ops.metrics.v1.ReportNginxRequest.access)
 }
 void ReportNginxRequest::clear_created_at() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (_impl_.created_at_ != nullptr) _impl_.created_at_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
@@ -1420,49 +1342,50 @@ ReportNginxRequest::ReportNginxRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:palm.ops.metrics.v1.ReportNginxRequest)
 }
-ReportNginxRequest::ReportNginxRequest(const ReportNginxRequest& from) : ::google::protobuf::Message() {
+inline PROTOBUF_NDEBUG_INLINE ReportNginxRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        payload_{},
+        _oneof_case_{from._oneof_case_[0]} {}
+
+ReportNginxRequest::ReportNginxRequest(
+    ::google::protobuf::Arena* arena,
+    const ReportNginxRequest& from)
+    : ::google::protobuf::Message(arena) {
   ReportNginxRequest* const _this = this;
   (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.created_at_){nullptr},
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
-  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
-    _this->_impl_.created_at_ = new ::google::protobuf::Timestamp(*from._impl_.created_at_);
-  }
-  clear_has_payload();
-  switch (from.payload_case()) {
-    case kAccess: {
-      _this->_internal_mutable_access()->::palm::ops::metrics::v1::ReportNginxRequest_Access::MergeFrom(
-          from._internal_access());
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.created_at_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::google::protobuf::Timestamp>(arena, *from._impl_.created_at_)
+                : nullptr;
+  switch (payload_case()) {
+    case PAYLOAD_NOT_SET:
       break;
-    }
-    case kError: {
-      _this->_internal_set_error(from._internal_error());
-      break;
-    }
-    case PAYLOAD_NOT_SET: {
-      break;
-    }
+      case kAccess:
+        _impl_.payload_.access_ = CreateMaybeMessage<::palm::ops::metrics::v1::ReportNginxRequest_Access>(arena, *from._impl_.payload_.access_);
+        break;
+      case kError:
+        new (&_impl_.payload_.error_) decltype(_impl_.payload_.error_){arena, from._impl_.payload_.error_};
+        break;
   }
 
   // @@protoc_insertion_point(copy_constructor:palm.ops.metrics.v1.ReportNginxRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE ReportNginxRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        payload_{},
+        _oneof_case_{} {}
+
 inline void ReportNginxRequest::SharedCtor(::_pb::Arena* arena) {
-  (void)arena;
-  new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){},
-      /*decltype(_impl_._cached_size_)*/ {},
-      decltype(_impl_.created_at_){nullptr},
-      decltype(_impl_.payload_){},
-      /*decltype(_impl_._oneof_case_)*/ {},
-  };
-  clear_has_payload();
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.created_at_ = {};
 }
 ReportNginxRequest::~ReportNginxRequest() {
   // @@protoc_insertion_point(destructor:palm.ops.metrics.v1.ReportNginxRequest)
@@ -1470,21 +1393,20 @@ ReportNginxRequest::~ReportNginxRequest() {
   SharedDtor();
 }
 inline void ReportNginxRequest::SharedDtor() {
-  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete _impl_.created_at_;
+  ABSL_DCHECK(GetArena() == nullptr);
+  delete _impl_.created_at_;
   if (has_payload()) {
     clear_payload();
   }
-}
-void ReportNginxRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _impl_.~Impl_();
 }
 
 void ReportNginxRequest::clear_payload() {
 // @@protoc_insertion_point(one_of_clear_start:palm.ops.metrics.v1.ReportNginxRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   switch (payload_case()) {
     case kAccess: {
-      if (GetArenaForAllocation() == nullptr) {
+      if (GetArena() == nullptr) {
         delete _impl_.payload_.access_;
       }
       break;
@@ -1503,6 +1425,7 @@ void ReportNginxRequest::clear_payload() {
 
 PROTOBUF_NOINLINE void ReportNginxRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:palm.ops.metrics.v1.ReportNginxRequest)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1573,8 +1496,8 @@ const ::_pbi::TcParseTable<0, 3, 2, 52, 2> ReportNginxRequest::_table_ = {
 
   switch (payload_case()) {
     case kAccess: {
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessage(1, _Internal::access(this),
+      target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+          1, _Internal::access(this),
           _Internal::access(this).GetCachedSize(), target, stream);
       break;
     }
@@ -1591,8 +1514,8 @@ const ::_pbi::TcParseTable<0, 3, 2, 52, 2> ReportNginxRequest::_table_ = {
   cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp created_at = 9;
   if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessage(9, _Internal::created_at(this),
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        9, _Internal::created_at(this),
         _Internal::created_at(this).GetCachedSize(), target, stream);
   }
 
@@ -1616,17 +1539,15 @@ const ::_pbi::TcParseTable<0, 3, 2, 52, 2> ReportNginxRequest::_table_ = {
   // .google.protobuf.Timestamp created_at = 9;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *_impl_.created_at_);
+    total_size +=
+        1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.created_at_);
   }
 
   switch (payload_case()) {
     // .palm.ops.metrics.v1.ReportNginxRequest.Access access = 1;
     case kAccess: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *_impl_.payload_.access_);
+      total_size +=
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.payload_.access_);
       break;
     }
     // string error = 2;
@@ -1643,11 +1564,12 @@ const ::_pbi::TcParseTable<0, 3, 2, 52, 2> ReportNginxRequest::_table_ = {
 }
 
 const ::google::protobuf::Message::ClassData ReportNginxRequest::_class_data_ = {
-    ::google::protobuf::Message::CopyWithSourceCheck,
-    ReportNginxRequest::MergeImpl
+    ReportNginxRequest::MergeImpl,
+    nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData*ReportNginxRequest::GetClassData() const { return &_class_data_; }
-
+const ::google::protobuf::Message::ClassData* ReportNginxRequest::GetClassData() const {
+  return &_class_data_;
+}
 
 void ReportNginxRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
   auto* const _this = static_cast<ReportNginxRequest*>(&to_msg);
@@ -1689,7 +1611,10 @@ PROTOBUF_NOINLINE bool ReportNginxRequest::IsInitialized() const {
   return true;
 }
 
-void ReportNginxRequest::InternalSwap(ReportNginxRequest* other) {
+::_pbi::CachedSize* ReportNginxRequest::AccessCachedSize() const {
+  return &_impl_._cached_size_;
+}
+void ReportNginxRequest::InternalSwap(ReportNginxRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
