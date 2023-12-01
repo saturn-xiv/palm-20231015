@@ -1,15 +1,19 @@
 package main
 
 import (
+	"embed"
 	"flag"
 	"fmt"
+	"html/template"
 	"net"
+	"net/http"
 	"os"
 
 	"github.com/BurntSushi/toml"
 	"github.com/casbin/casbin/v2"
 	gormadapter "github.com/casbin/gorm-adapter/v3"
 	rediswatcher "github.com/casbin/redis-watcher/v2"
+	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
@@ -18,6 +22,7 @@ import (
 	"gorm.io/gorm"
 
 	"github.com/saturn_xiv/palm/env"
+	metasequoia_controllers "github.com/saturn_xiv/palm/metasequoia/controllers"
 	metasequoia_services "github.com/saturn_xiv/palm/metasequoia/services"
 	metasequoia_pb "github.com/saturn_xiv/palm/metasequoia/v2"
 )
@@ -30,10 +35,14 @@ func main() {
 	var debug bool
 	var version bool
 	var port int
+	var http_server bool
+	var rpc_server bool
 	var config_file string
 
 	flag.BoolVar(&debug, "debug", false, "run on debug mode")
 	flag.BoolVar(&version, "version", false, "show version")
+	flag.BoolVar(&rpc_server, "rpc-server", false, "start a gRPC server")
+	flag.BoolVar(&http_server, "http-server", false, "start a HTTP server")
 	flag.IntVar(&port, "port", 8080, "listening port")
 	flag.StringVar(&config_file, "config", "config.toml", "configuration file")
 	flag.Parse()
@@ -47,6 +56,7 @@ func main() {
 		log.SetLevel(log.DebugLevel)
 	} else {
 		log.SetLevel(log.InfoLevel)
+		gin.SetMode(gin.ReleaseMode)
 	}
 
 	if _, err := os.Stat(".stop"); err == nil {
@@ -100,9 +110,45 @@ func main() {
 		log.Fatal("load casbin policy", err)
 	}
 
+	if http_server {
+		if err = start_http(port); err != nil {
+			log.Fatal(err)
+			return
+		}
+	}
+	if rpc_server {
+		if err = start_rpc(port, aes, hmac, jwt); err != nil {
+			log.Fatal(err)
+			return
+		}
+	}
+}
+
+//go:embed assets/*
+var gl_assets_fs embed.FS
+
+//go:embed templates/*
+var gl_templates_fs embed.FS
+
+func start_http(port int) error {
 	address := fmt.Sprintf("0.0.0.0:%d", port)
-	log.Infof("start gRPC on http://%s", address)
-	socket, err := net.Listen("tcp", address)
+	router := gin.Default()
+
+	tpl := template.Must(template.New("").ParseFS(gl_templates_fs, "templates/*/*.html"))
+	router.SetHTMLTemplate(tpl)
+	router.StaticFS("/public", http.FS(gl_assets_fs))
+
+	router.GET("/", metasequoia_controllers.Home())
+
+	log.Infof("listen on http://%s", address)
+	return router.Run(address)
+}
+
+func start_rpc(port int, aes *env.Aes, hmac *env.HMac, jwt *env.Jwt) error {
+	network := "tcp"
+	address := fmt.Sprintf("0.0.0.0:%d", port)
+	log.Infof("start gRPC on %s://%s", network, address)
+	socket, err := net.Listen(network, address)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -115,5 +161,5 @@ func main() {
 	metasequoia_pb.RegisterLocaleServer(server, metasequoia_services.LocaleService{})
 
 	grpc_health_v1.RegisterHealthServer(server, health.NewServer())
-	server.Serve(socket)
+	return server.Serve(socket)
 }
