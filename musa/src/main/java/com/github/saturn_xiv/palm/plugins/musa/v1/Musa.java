@@ -338,8 +338,9 @@ public final class Musa {
       "ronicReceipt\022:.palm.musa.v1.WechatPayTra" +
       "nsferGetElectronicReceiptRequest\0321.palm." +
       "musa.v1.WechatPayTransferGetReceiptRespo" +
-      "nse\"\000B.\n*com.github.saturn_xiv.palm.plug" +
-      "ins.musa.v1P\001b\006proto3"
+      "nse\"\000BR\n*com.github.saturn_xiv.palm.plug" +
+      "ins.musa.v1P\001Z\"github.com/saturn_xiv/pal" +
+      "m/musa/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

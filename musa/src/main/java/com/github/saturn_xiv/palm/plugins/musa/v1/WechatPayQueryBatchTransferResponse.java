@@ -26,11 +26,6 @@ private static final long serialVersionUID = 0L;
     return new WechatPayQueryBatchTransferResponse();
   }
 
-  @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
-    return this.unknownFields;
-  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayQueryBatchTransferResponse_descriptor;
@@ -109,11 +104,6 @@ private static final long serialVersionUID = 0L;
       return new Detail();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayQueryBatchTransferResponse_Detail_descriptor;
@@ -372,11 +362,13 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Detail parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Detail parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1148,11 +1140,6 @@ private static final long serialVersionUID = 0L;
       return new Batch();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayQueryBatchTransferResponse_Batch_descriptor;
@@ -2079,11 +2066,13 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Batch parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Batch parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3272,7 +3261,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setTotalAmount(long value) {
-        
+
         totalAmount_ = value;
         bitField0_ |= 0x00000400;
         onChanged();
@@ -3304,7 +3293,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setTotalNum(int value) {
-        
+
         totalNum_ = value;
         bitField0_ |= 0x00000800;
         onChanged();
@@ -3502,7 +3491,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setSuccessAmount(long value) {
-        
+
         successAmount_ = value;
         bitField0_ |= 0x00004000;
         onChanged();
@@ -3542,7 +3531,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setSuccessNum(int value) {
-        
+
         successNum_ = value;
         bitField0_ |= 0x00008000;
         onChanged();
@@ -3582,7 +3571,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setFailAmount(long value) {
-        
+
         failAmount_ = value;
         bitField0_ |= 0x00010000;
         onChanged();
@@ -3622,7 +3611,7 @@ private static final long serialVersionUID = 0L;
        * @return This builder for chaining.
        */
       public Builder setFailNum(int value) {
-        
+
         failNum_ = value;
         bitField0_ |= 0x00020000;
         onChanged();
@@ -3702,6 +3691,7 @@ private static final long serialVersionUID = 0L;
 
   }
 
+  private int bitField0_;
   public static final int BATCH_FIELD_NUMBER = 1;
   private com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.Batch batch_;
   /**
@@ -3710,7 +3700,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public boolean hasBatch() {
-    return batch_ != null;
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
    * <code>.palm.musa.v1.WechatPayQueryBatchTransferResponse.Batch batch = 1;</code>
@@ -3783,7 +3773,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (batch_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(1, getBatch());
     }
     for (int i = 0; i < details_.size(); i++) {
@@ -3798,7 +3788,7 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (batch_ != null) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getBatch());
     }
@@ -3896,11 +3886,13 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
+
   public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
+
   public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3964,13 +3956,20 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse.newBuilder()
     private Builder() {
-
+      maybeForceBuilderInitialization();
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getBatchFieldBuilder();
+        getDetailsFieldBuilder();
+      }
     }
     @java.lang.Override
     public Builder clear() {
@@ -4034,11 +4033,14 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayQueryBatchTransferResponse result) {
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.batch_ = batchBuilder_ == null
             ? batch_
             : batchBuilder_.build();
+        to_bitField0_ |= 0x00000001;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -4243,8 +4245,10 @@ private static final long serialVersionUID = 0L;
       } else {
         batchBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000001;
-      onChanged();
+      if (batch_ != null) {
+        bitField0_ |= 0x00000001;
+        onChanged();
+      }
       return this;
     }
     /**

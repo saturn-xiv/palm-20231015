@@ -27,11 +27,6 @@ private static final long serialVersionUID = 0L;
     return new WechatPayExecuteBatchTransferResponse();
   }
 
-  @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
-    return this.unknownFields;
-  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteBatchTransferResponse_descriptor;
@@ -97,11 +92,6 @@ private static final long serialVersionUID = 0L;
       return new Detail();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteBatchTransferResponse_Detail_descriptor;
@@ -311,11 +301,13 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferResponse.Detail parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferResponse.Detail parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -800,11 +792,6 @@ private static final long serialVersionUID = 0L;
       return new Succeeded();
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.github.saturn_xiv.palm.plugins.musa.v1.Musa.internal_static_palm_musa_v1_WechatPayExecuteBatchTransferResponse_Succeeded_descriptor;
@@ -1014,11 +1001,13 @@ private static final long serialVersionUID = 0L;
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
+
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferResponse.Succeeded parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
+
     public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferResponse.Succeeded parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1452,6 +1441,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private int payloadCase_ = 0;
+  @SuppressWarnings("serial")
   private java.lang.Object payload_;
   public enum PayloadCase
       implements com.google.protobuf.Internal.EnumLite,
@@ -1794,11 +1784,13 @@ private static final long serialVersionUID = 0L;
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
+
   public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
+
   public static com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)

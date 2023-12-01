@@ -73,5 +73,5 @@ public interface WechatPayExecuteBatchTransferResponseOrBuilder extends
    */
   com.github.saturn_xiv.palm.plugins.musa.v1.ErrorOrBuilder getErrorOrBuilder();
 
-  public com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferResponse.PayloadCase getPayloadCase();
+  com.github.saturn_xiv.palm.plugins.musa.v1.WechatPayExecuteBatchTransferResponse.PayloadCase getPayloadCase();
 }
