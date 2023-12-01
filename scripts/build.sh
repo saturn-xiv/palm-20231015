@@ -56,27 +56,35 @@ function build_lily() {
     cp -r README.md __main__.py palm $TARGET/lily/
 }
 
+copy_node() {
+    cd $TARGET
+    local node_version="v20.10.0"
+    local node_file="node-${node_version}-linux-$1.tar.xz"
+
+    if [ ! -f $HOME/downloads/$node_file ]
+    then
+        wget -q -P $HOME/downloads https://nodejs.org/dist/${node_version}/$node_file
+    fi
+    tar xf $HOME/downloads/$node_file
+    mv node-${node_version}-linux-$1 node-$1    
+}
+
 copy_jdk() {
     cd $TARGET
     local jdk_version="21.0.1"
+    local jdk_hask="415e3f918a1f4062a0074a2794853d0d"
+    local jdk_file="openjdk-${jdk_version}_linux-$1_bin.tar.gz"
 
-    if [ ! -f $HOME/downloads/openjdk-${jdk_version}_linux-x64_bin.tar.gz ]
+    if [ ! -f $HOME/downloads/$jdk_file ]
     then
-        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
+        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk21.0.1/${jdk_hash}/12/GPL/$jdk_file
     fi
-    tar xf $HOME/downloads/openjdk-${jdk_version}_linux-x64_bin.tar.gz
-    mv jdk-${jdk_version} jdk-${jdk_version}-x64
-
-    if [ ! -f $HOME/downloads/openjdk-${jdk_version}_linux-aarch64_bin.tar.gz ]
-    then
-        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-aarch64_bin.tar.gz
-    fi
-    tar xf $HOME/downloads/openjdk-${jdk_version}_linux-aarch64_bin.tar.gz
-    mv jdk-${jdk_version} jdk-${jdk_version}-aarch64
+    tar xf $HOME/downloads/$jdk_file
+    mv jdk-${jdk_version} jdk-${jdk_version}-$1
 }
 
-copy_assets() {
-    cd $WORKSPACE
+copy_metasequoia_assets() {
+    cd $WORKSPACE/metasequoia/
 
     if [ ! -d node_modules ]
     then
@@ -109,15 +117,11 @@ copy_assets() {
     for i in "${packages[@]}"
     do
         local p=node_modules/$i
-        local t=$(dirname "$TARGET/$p")
+        local t=$(dirname "$TARGET/metasequoia/$p")
         mkdir -p $t
         cp -a $p $t/
     done
 
-    cp -r README.md LICENSE protocols $TARGET/
-
-    echo "$GIT_VERSION" > $TARGET/VERSION
-    echo "$(date -R)" >> $TARGET/VERSION
 }
 
 # -----------------------------------------------------------------------------
@@ -127,9 +131,16 @@ build_morus
 build_musa
 build_gardenia
 build_metasequoia
+copy_metasequoia_assets
+copy_jdk x64
+copy_jdk aarch64
+copy_node x64
+copy_node arm64
 
-copy_jdk
-copy_assets
+cd $WORKSPACE
+cp -r README.md LICENSE protocols $TARGET/
+echo "$GIT_VERSION" > $TARGET/VERSION
+echo "$(date -R)" >> $TARGET/VERSION
 
 cd $WORKSPACE/tmp
 echo "compressing $PACKAGE_NAME..."
