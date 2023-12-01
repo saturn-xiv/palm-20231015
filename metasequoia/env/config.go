@@ -118,11 +118,3 @@ func (p *PostgreSql) Url() string {
 		p.Host, p.Port, p.User, p.Password, p.DbName,
 	)
 }
-
-type RabbitMq struct {
-	Host        string `toml:"host"`
-	Port        uint16 `toml:"port"`
-	User        string `toml:"user"`
-	Password    string `toml:"password"`
-	VirtualHost string `toml:"virtual-host"`
-}
