@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="20230414091954" author="Jeremy Zheng" labels="create refunds">
+
+        <createTable tableName="wechat_pay_refunds">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="out_trade_no" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="out_refund_no" type="varchar(64)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="amount_refund" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount_total" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount_currency" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reason" type="varchar(80)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="datetime" defaultValueComputed="current_timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex tableName="wechat_pay_refunds" indexName="idx_wechat_pay_refunds_out_trade_no">
+            <column name="out_trade_no"/>
+        </createIndex>
+        <createIndex tableName="wechat_pay_refunds" indexName="idx_wechat_pay_refunds_reason">
+            <column name="reason"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>

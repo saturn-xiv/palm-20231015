@@ -1,0 +1,10 @@
+/.idea/
+/target/
+/*.log
+
+/wechatpay/
+/application.properties
+/*.conf
+
+/tmp/
+
