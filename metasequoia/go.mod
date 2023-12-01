@@ -8,6 +8,7 @@ require (
 	github.com/casbin/gorm-adapter/v3 v3.20.0
 	github.com/casbin/redis-watcher/v2 v2.5.0
 	github.com/redis/go-redis/v9 v9.3.0
+	github.com/sirupsen/logrus v1.4.2
 	github.com/tink-crypto/tink-go/v2 v2.0.0
 	google.golang.org/grpc v1.59.0
 	google.golang.org/protobuf v1.31.0
@@ -37,6 +38,7 @@ require (
 	github.com/jackc/pgx/v4 v4.17.2 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
+	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
 	github.com/lib/pq v1.10.9 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
 	github.com/microsoft/go-mssqldb v0.17.0 // indirect

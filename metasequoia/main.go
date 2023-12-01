@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"net"
 	"os"
 
@@ -11,6 +10,7 @@ import (
 	"github.com/casbin/casbin/v2"
 	gormadapter "github.com/casbin/gorm-adapter/v3"
 	rediswatcher "github.com/casbin/redis-watcher/v2"
+	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
@@ -23,14 +23,16 @@ import (
 )
 
 func updateCallback(msg string) {
-	log.Println(msg)
+	log.Info(msg)
 }
 
 func main() {
+	var debug bool
 	var version bool
 	var port int
 	var config_file string
 
+	flag.BoolVar(&debug, "debug", false, "run on debug mode")
 	flag.BoolVar(&version, "version", false, "show version")
 	flag.IntVar(&port, "port", 8080, "listening port")
 	flag.StringVar(&config_file, "config", "config.toml", "configuration file")
@@ -41,21 +43,26 @@ func main() {
 		os.Exit(0)
 	}
 
-	logger := log.Default()
+	if debug {
+		log.SetLevel(log.DebugLevel)
+	} else {
+		log.SetLevel(log.InfoLevel)
+	}
+
 	if _, err := os.Stat(".stop"); err == nil {
-		logger.Println(".stop file exists, exiting...")
+		log.Warn(".stop file exists, exiting...")
 		os.Exit(0)
 	}
 
-	logger.Println("load configuration from", config_file)
+	log.Debugf("load configuration from %s", config_file)
 
 	var config env.Config
 	if _, err := toml.DecodeFile(config_file, &config); err != nil {
-		logger.Fatalln("parse file", err)
+		log.Fatal("parse file", err)
 	}
 	aes, hmac, jwt, err := config.OpenSecrets()
 	if err != nil {
-		logger.Fatalln(err)
+		log.Fatal(err)
 	}
 
 	watcher, err := rediswatcher.NewWatcher(config.Redis.Addr(), rediswatcher.WatcherOptions{
@@ -64,37 +71,37 @@ func main() {
 		IgnoreSelf: false,
 	})
 	if err != nil {
-		logger.Fatalln("create casbin watcher", err)
+		log.Fatal("create casbin watcher", err)
 	}
 
 	pg_db, err := gorm.Open(postgres.Open(config.Postgresql.Url()), &gorm.Config{})
 	if err != nil {
-		logger.Fatalln("open database", err)
+		log.Fatal("open database", err)
 	}
 	adapter, err := gormadapter.NewAdapterByDB(pg_db)
 	if err != nil {
-		logger.Fatalln("create casbin adapter", err)
+		log.Fatal("create casbin adapter", err)
 	}
 	enforcer, err := casbin.NewEnforcer("rbac_model.conf", adapter)
 	if err != nil {
-		logger.Fatalln("create casbin enforcer", err)
+		log.Fatal("create casbin enforcer", err)
 	}
 	err = enforcer.SetWatcher(watcher)
 	if err != nil {
-		logger.Fatalln("set casbin watcher", err)
+		log.Fatal("set casbin watcher", err)
 	}
 	err = watcher.SetUpdateCallback(updateCallback)
 	if err != nil {
-		logger.Fatalln("set casbin update callback", err)
+		log.Fatal("set casbin update callback", err)
 	}
 
 	err = enforcer.LoadPolicy()
 	if err != nil {
-		logger.Fatalln("load casbin policy", err)
+		log.Fatal("load casbin policy", err)
 	}
 
 	address := fmt.Sprintf("0.0.0.0:%d", port)
-	logger.Printf("start gRPC on http://%s", address)
+	log.Infof("start gRPC on http://%s", address)
 	socket, err := net.Listen("tcp", address)
 	if err != nil {
 		log.Fatalln(err)
