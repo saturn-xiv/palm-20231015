@@ -1,0 +1,37 @@
+{
+  "name": "palm",
+  "version": "2023.12.1",
+  "private": true,
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fontsource/roboto": "^5.0.8",
+    "@fortawesome/fontawesome-free": "^6.5.1",
+    "@popperjs/core": "^2.11.8",
+    "@tabler/core": "^1.0.0-beta20",
+    "bootstrap": "^5.3.2",
+    "bulma": "^0.9.4",
+    "d3": "^7.8.5",
+    "epubjs": "^0.3.93",
+    "famfamfam-flags": "^1.0.0",
+    "famfamfam-mini": "^1.0.0",
+    "famfamfam-silk": "^1.0.0",
+    "marked": "^10.0.0",
+    "material-components-web": "^14.0.0",
+    "material-design-icons": "^3.0.1",
+    "mdb-ui-kit": "^7.0.0",
+    "mermaid": "^10.6.1",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
+    "qrcodejs": "^1.0.0",
+    "swagger-ui-dist": "^5.10.3",
+    "tailwindcss": "^3.3.5"
+  }
+}
