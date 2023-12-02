@@ -14,14 +14,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0b\x62\x61\x62\x65l.proto\x12\rpalm.babel.v12\x06\n\x04Pali2\t\n\x07Tibetan2\n\n\x08SanskritBT\n+com.github.saturn_xiv.palm.plugins.babel.v1P\x01Z#github.com/saturn_xiv/palm/babel/v2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0b\x62\x61\x62\x65l.proto\x12\rpalm.babel.v12\x06\n\x04Pali2\t\n\x07Tibetan2\n\n\x08SanskritBS\n+com.github.saturn_xiv.palm.plugins.babel.v1P\x01Z\"github.com/saturn_xiv/fig/babel/v2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'babel_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n+com.github.saturn_xiv.palm.plugins.babel.v1P\001Z#github.com/saturn_xiv/palm/babel/v2'
+  _globals['DESCRIPTOR']._serialized_options = b'\n+com.github.saturn_xiv.palm.plugins.babel.v1P\001Z\"github.com/saturn_xiv/fig/babel/v2'
   _globals['_PALI']._serialized_start=30
   _globals['_PALI']._serialized_end=36
   _globals['_TIBETAN']._serialized_start=38

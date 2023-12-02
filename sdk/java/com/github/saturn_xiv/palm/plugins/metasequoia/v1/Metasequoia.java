@@ -1146,10 +1146,10 @@ public final class Metasequoia {
       ".Item\"\000\022\214\001\n\033GetMiniProgramUserByUnionId\022" +
       "4.palm.metasequoia.v1.WechatUserQueryByU" +
       "nionIdRequest\0325.palm.metasequoia.v1.Wech" +
-      "atAllMiniProgramUserResponse\"\000B`\n1com.gi" +
+      "atAllMiniProgramUserResponse\"\000B_\n1com.gi" +
       "thub.saturn_xiv.palm.plugins.metasequoia" +
-      ".v1P\001Z)github.com/saturn_xiv/palm/metase" +
-      "quoia/v2b\006proto3"
+      ".v1P\001Z(github.com/saturn_xiv/fig/metaseq" +
+      "uoia/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

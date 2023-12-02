@@ -1,7 +1,7 @@
 syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.metasequoia.v1";
-option go_package = "github.com/saturn_xiv/palm/metasequoia/v2";
+option go_package = "github.com/saturn_xiv/fig/metasequoia/v2";
 package palm.metasequoia.v1;
 
 import "google/protobuf/empty.proto";

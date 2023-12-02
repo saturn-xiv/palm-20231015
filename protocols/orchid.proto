@@ -1,7 +1,7 @@
 syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.orchid.v1";
-option go_package = "github.com/saturn_xiv/palm/orchid/v2";
+option go_package = "github.com/saturn_xiv/fig/orchid/v2";
 package palm.orchid.v1;
 
 // ----------------------------------------------------------------------------

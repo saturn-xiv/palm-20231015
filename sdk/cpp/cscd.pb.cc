@@ -34,16 +34,16 @@ const ::uint32_t TableStruct_cscd_2eproto::offsets[1] = {};
 static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
 static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 const char descriptor_table_protodef_cscd_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\ncscd.proto\022\014palm.cscd.v12\t\n\007SectionBR\n"
+    "\n\ncscd.proto\022\014palm.cscd.v12\t\n\007SectionBQ\n"
     "*com.github.saturn_xiv.palm.plugins.cscd"
-    ".v1P\001Z\"github.com/saturn_xiv/palm/cscd/v"
-    "2b\006proto3"
+    ".v1P\001Z!github.com/saturn_xiv/fig/cscd/v2"
+    "b\006proto3"
 };
 static ::absl::once_flag descriptor_table_cscd_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_cscd_2eproto = {
     false,
     false,
-    129,
+    128,
     descriptor_table_protodef_cscd_2eproto,
     "cscd.proto",
     &descriptor_table_cscd_2eproto_once,

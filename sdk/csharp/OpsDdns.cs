@@ -25,9 +25,9 @@ namespace Palm.Ops.Ddns.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5vcHMtZGRucy5wcm90bxIQcGFsbS5vcHMuZGRucy52MTIFCgNWcG4yCQoH",
-            "TWV0cmljczIGCgRNYWlsQloKLmNvbS5naXRodWIuc2F0dXJuX3hpdi5wYWxt",
-            "LnBsdWdpbnMub3BzLmRkbnMudjFQAVomZ2l0aHViLmNvbS9zYXR1cm5feGl2",
-            "L3BhbG0vb3BzL2RkbnMvdjJiBnByb3RvMw=="));
+            "TWV0cmljczIGCgRNYWlsQlkKLmNvbS5naXRodWIuc2F0dXJuX3hpdi5wYWxt",
+            "LnBsdWdpbnMub3BzLmRkbnMudjFQAVolZ2l0aHViLmNvbS9zYXR1cm5feGl2",
+            "L2ZpZy9vcHMvZGRucy92MmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, null));

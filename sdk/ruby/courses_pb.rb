@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\rcourses.proto\x12\x0fpalm.courses.v12\t\n\x07\x41rticle2\t\n\x07\x43ommentBX\n-com.github.saturn_xiv.palm.plugins.courses.v1P\x01Z%github.com/saturn_xiv/palm/courses/v2b\x06proto3"
+descriptor_data = "\n\rcourses.proto\x12\x0fpalm.courses.v12\t\n\x07\x41rticle2\t\n\x07\x43ommentBW\n-com.github.saturn_xiv.palm.plugins.courses.v1P\x01Z$github.com/saturn_xiv/fig/courses/v2b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

@@ -25,9 +25,9 @@ public final class Forum {
   static {
     java.lang.String[] descriptorData = {
       "\n\013forum.proto\022\rpalm.forum.v12\007\n\005Topic2\006\n" +
-      "\004PostBT\n+com.github.saturn_xiv.palm.plug" +
-      "ins.forum.v1P\001Z#github.com/saturn_xiv/pa" +
-      "lm/forum/v2b\006proto3"
+      "\004PostBS\n+com.github.saturn_xiv.palm.plug" +
+      "ins.forum.v1P\001Z\"github.com/saturn_xiv/fi" +
+      "g/forum/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

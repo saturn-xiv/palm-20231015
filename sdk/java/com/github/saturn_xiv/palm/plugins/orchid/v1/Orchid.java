@@ -102,9 +102,9 @@ public final class Orchid {
       "Oauth2QrConnectResponse\"\000\022^\n\005Login\022(.pal" +
       "m.orchid.v1.WechatOauth2LoginRequest\032).p" +
       "alm.orchid.v1.WechatOauth2LoginResponse\"" +
-      "\000BV\n,com.github.saturn_xiv.palm.plugins." +
-      "orchid.v1P\001Z$github.com/saturn_xiv/palm/" +
-      "orchid/v2b\006proto3"
+      "\000BU\n,com.github.saturn_xiv.palm.plugins." +
+      "orchid.v1P\001Z#github.com/saturn_xiv/fig/o" +
+      "rchid/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -14,14 +14,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ncscd.proto\x12\x0cpalm.cscd.v12\t\n\x07SectionBR\n*com.github.saturn_xiv.palm.plugins.cscd.v1P\x01Z\"github.com/saturn_xiv/palm/cscd/v2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ncscd.proto\x12\x0cpalm.cscd.v12\t\n\x07SectionBQ\n*com.github.saturn_xiv.palm.plugins.cscd.v1P\x01Z!github.com/saturn_xiv/fig/cscd/v2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'cscd_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n*com.github.saturn_xiv.palm.plugins.cscd.v1P\001Z\"github.com/saturn_xiv/palm/cscd/v2'
+  _globals['DESCRIPTOR']._serialized_options = b'\n*com.github.saturn_xiv.palm.plugins.cscd.v1P\001Z!github.com/saturn_xiv/fig/cscd/v2'
   _globals['_SECTION']._serialized_start=28
   _globals['_SECTION']._serialized_end=37
 # @@protoc_insertion_point(module_scope)

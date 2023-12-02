@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\x0egardenia.proto\x12\x10palm.gardenia.v12\n\n\x08OpenFireBZ\n.com.github.saturn_xiv.palm.plugins.gardenia.v1P\x01Z&github.com/saturn_xiv/palm/gardenia/v2b\x06proto3"
+descriptor_data = "\n\x0egardenia.proto\x12\x10palm.gardenia.v12\n\n\x08OpenFireBY\n.com.github.saturn_xiv.palm.plugins.gardenia.v1P\x01Z%github.com/saturn_xiv/fig/gardenia/v2b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

@@ -1,7 +1,7 @@
 syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.cms.v1";
-option go_package = "github.com/saturn_xiv/palm/cms/v2";
+option go_package = "github.com/saturn_xiv/fig/cms/v2";
 package palm.cms.v1;
 
 import "google/protobuf/empty.proto";

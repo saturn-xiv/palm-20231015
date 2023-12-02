@@ -5017,10 +5017,10 @@ const char descriptor_table_protodef_metasequoia_2eproto[] PROTOBUF_SECTION_VARI
     ".Item\"\000\022\214\001\n\033GetMiniProgramUserByUnionId\022"
     "4.palm.metasequoia.v1.WechatUserQueryByU"
     "nionIdRequest\0325.palm.metasequoia.v1.Wech"
-    "atAllMiniProgramUserResponse\"\000B`\n1com.gi"
+    "atAllMiniProgramUserResponse\"\000B_\n1com.gi"
     "thub.saturn_xiv.palm.plugins.metasequoia"
-    ".v1P\001Z)github.com/saturn_xiv/palm/metase"
-    "quoia/v2b\006proto3"
+    ".v1P\001Z(github.com/saturn_xiv/fig/metaseq"
+    "uoia/v2b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_metasequoia_2eproto_deps[4] =
     {
@@ -5033,7 +5033,7 @@ static ::absl::once_flag descriptor_table_metasequoia_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_metasequoia_2eproto = {
     false,
     false,
-    22216,
+    22215,
     descriptor_table_protodef_metasequoia_2eproto,
     "metasequoia.proto",
     &descriptor_table_metasequoia_2eproto_once,

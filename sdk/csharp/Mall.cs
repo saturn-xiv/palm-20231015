@@ -29,9 +29,9 @@ namespace Palm.Mall.V1 {
             "CgZTaGlwZWQQAxIMCghDb21wbGV0ZRAEEgwKCENhbmNlbGVkEAUSCgoGRGVu",
             "aWVkEAYSFAoQQ2FuY2VsZWRSZXZlcnNhbBAHEgoKBkZhaWxlZBAIEgwKCFJl",
             "ZnVuZGVkEAkSDAoIUmV2ZXJzZWQQChIOCgpDaGFyZ2ViYWNrEAsSCwoHRXhw",
-            "aXJlZBAMEg0KCVByb2Nlc3NlZBANMgUKA1NrdTIFCgNTcHVCUgoqY29tLmdp",
-            "dGh1Yi5zYXR1cm5feGl2LnBhbG0ucGx1Z2lucy5tYWxsLnYxUAFaImdpdGh1",
-            "Yi5jb20vc2F0dXJuX3hpdi9wYWxtL21hbGwvdjJiBnByb3RvMw=="));
+            "aXJlZBAMEg0KCVByb2Nlc3NlZBANMgUKA1NrdTIFCgNTcHVCUQoqY29tLmdp",
+            "dGh1Yi5zYXR1cm5feGl2LnBhbG0ucGx1Z2lucy5tYWxsLnYxUAFaIWdpdGh1",
+            "Yi5jb20vc2F0dXJuX3hpdi9maWcvbWFsbC92MmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

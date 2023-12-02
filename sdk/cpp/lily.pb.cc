@@ -377,9 +377,9 @@ const char descriptor_table_protodef_lily_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
     "3File\"\000\022<\n\006ToWord\022\032.palm.lily.v1.TexToRe"
     "quest\032\024.palm.lily.v1.S3File\"\0002G\n\004Epub\022\?\n"
     "\005Build\022\036.palm.lily.v1.EpubBuildRequest\032\024"
-    ".palm.lily.v1.S3File\"\000BR\n*com.github.sat"
-    "urn_xiv.palm.plugins.lily.v1P\001Z\"github.c"
-    "om/saturn_xiv/palm/lily/v2b\006proto3"
+    ".palm.lily.v1.S3File\"\000BQ\n*com.github.sat"
+    "urn_xiv.palm.plugins.lily.v1P\001Z!github.c"
+    "om/saturn_xiv/fig/lily/v2b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_lily_2eproto_deps[1] =
     {
@@ -389,7 +389,7 @@ static ::absl::once_flag descriptor_table_lily_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_lily_2eproto = {
     false,
     false,
-    1194,
+    1193,
     descriptor_table_protodef_lily_2eproto,
     "lily.proto",
     &descriptor_table_lily_2eproto_once,

@@ -25,9 +25,9 @@ namespace Palm.Courses.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg1jb3Vyc2VzLnByb3RvEg9wYWxtLmNvdXJzZXMudjEyCQoHQXJ0aWNsZTIJ",
-            "CgdDb21tZW50QlgKLWNvbS5naXRodWIuc2F0dXJuX3hpdi5wYWxtLnBsdWdp",
-            "bnMuY291cnNlcy52MVABWiVnaXRodWIuY29tL3NhdHVybl94aXYvcGFsbS9j",
-            "b3Vyc2VzL3YyYgZwcm90bzM="));
+            "CgdDb21tZW50QlcKLWNvbS5naXRodWIuc2F0dXJuX3hpdi5wYWxtLnBsdWdp",
+            "bnMuY291cnNlcy52MVABWiRnaXRodWIuY29tL3NhdHVybl94aXYvZmlnL2Nv",
+            "dXJzZXMvdjJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, null));

@@ -452,9 +452,9 @@ const char descriptor_table_protodef_cms_2eproto[] PROTOBUF_SECTION_VARIABLE(pro
     "ty\"\000\022H\n\005Index\022\032.palm.metasequoia.v1.Page"
     "r\032!.palm.cms.v1.CommentIndexResponse\"\000\022C"
     "\n\007Destory\022\036.palm.metasequoia.v1.IdReques"
-    "t\032\026.google.protobuf.Empty\"\000BP\n)com.githu"
-    "b.saturn_xiv.palm.plugins.cms.v1P\001Z!gith"
-    "ub.com/saturn_xiv/palm/cms/v2b\006proto3"
+    "t\032\026.google.protobuf.Empty\"\000BO\n)com.githu"
+    "b.saturn_xiv.palm.plugins.cms.v1P\001Z gith"
+    "ub.com/saturn_xiv/fig/cms/v2b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_cms_2eproto_deps[3] =
     {
@@ -466,7 +466,7 @@ static ::absl::once_flag descriptor_table_cms_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_cms_2eproto = {
     false,
     false,
-    2077,
+    2076,
     descriptor_table_protodef_cms_2eproto,
     "cms.proto",
     &descriptor_table_cms_2eproto_once,

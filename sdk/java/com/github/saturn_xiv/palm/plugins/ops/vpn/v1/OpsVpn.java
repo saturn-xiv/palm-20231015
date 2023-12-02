@@ -25,9 +25,9 @@ public final class OpsVpn {
   static {
     java.lang.String[] descriptorData = {
       "\n\rops-vpn.proto\022\017palm.ops.vpn.v12\007\n\005Topi" +
-      "c2\006\n\004PostBX\n-com.github.saturn_xiv.palm." +
-      "plugins.ops.vpn.v1P\001Z%github.com/saturn_" +
-      "xiv/palm/ops/vpn/v2b\006proto3"
+      "c2\006\n\004PostBW\n-com.github.saturn_xiv.palm." +
+      "plugins.ops.vpn.v1P\001Z$github.com/saturn_" +
+      "xiv/fig/ops/vpn/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

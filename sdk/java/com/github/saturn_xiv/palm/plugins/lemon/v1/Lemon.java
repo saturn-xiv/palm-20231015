@@ -246,9 +246,9 @@ public final class Lemon {
       ".palm.lemon.v1.SiteShowPageResponse\"\000\022U\n" +
       "\010HomePage\022\".palm.lemon.v1.SiteHomePageRe" +
       "quest\032#.palm.lemon.v1.SiteHomePageRespon" +
-      "se\"\000BT\n+com.github.saturn_xiv.palm.plugi" +
-      "ns.lemon.v1P\001Z#github.com/saturn_xiv/pal" +
-      "m/lemon/v2b\006proto3"
+      "se\"\000BS\n+com.github.saturn_xiv.palm.plugi" +
+      "ns.lemon.v1P\001Z\"github.com/saturn_xiv/fig" +
+      "/lemon/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

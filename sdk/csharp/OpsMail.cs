@@ -25,9 +25,9 @@ namespace Palm.Ops.Mail.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5vcHMtbWFpbC5wcm90bxIQcGFsbS5vcHMubWFpbC52MTIFCgNWcG4yCQoH",
-            "TWV0cmljczIGCgRNYWlsQloKLmNvbS5naXRodWIuc2F0dXJuX3hpdi5wYWxt",
-            "LnBsdWdpbnMub3BzLm1haWwudjFQAVomZ2l0aHViLmNvbS9zYXR1cm5feGl2",
-            "L3BhbG0vb3BzL21haWwvdjJiBnByb3RvMw=="));
+            "TWV0cmljczIGCgRNYWlsQlkKLmNvbS5naXRodWIuc2F0dXJuX3hpdi5wYWxt",
+            "LnBsdWdpbnMub3BzLm1haWwudjFQAVolZ2l0aHViLmNvbS9zYXR1cm5feGl2",
+            "L2ZpZy9vcHMvbWFpbC92MmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, null));

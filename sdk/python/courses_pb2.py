@@ -14,14 +14,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rcourses.proto\x12\x0fpalm.courses.v12\t\n\x07\x41rticle2\t\n\x07\x43ommentBX\n-com.github.saturn_xiv.palm.plugins.courses.v1P\x01Z%github.com/saturn_xiv/palm/courses/v2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rcourses.proto\x12\x0fpalm.courses.v12\t\n\x07\x41rticle2\t\n\x07\x43ommentBW\n-com.github.saturn_xiv.palm.plugins.courses.v1P\x01Z$github.com/saturn_xiv/fig/courses/v2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'courses_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n-com.github.saturn_xiv.palm.plugins.courses.v1P\001Z%github.com/saturn_xiv/palm/courses/v2'
+  _globals['DESCRIPTOR']._serialized_options = b'\n-com.github.saturn_xiv.palm.plugins.courses.v1P\001Z$github.com/saturn_xiv/fig/courses/v2'
   _globals['_ARTICLE']._serialized_start=34
   _globals['_ARTICLE']._serialized_end=43
   _globals['_COMMENT']._serialized_start=45

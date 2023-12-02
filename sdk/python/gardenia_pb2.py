@@ -14,14 +14,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0egardenia.proto\x12\x10palm.gardenia.v12\n\n\x08OpenFireBZ\n.com.github.saturn_xiv.palm.plugins.gardenia.v1P\x01Z&github.com/saturn_xiv/palm/gardenia/v2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0egardenia.proto\x12\x10palm.gardenia.v12\n\n\x08OpenFireBY\n.com.github.saturn_xiv.palm.plugins.gardenia.v1P\x01Z%github.com/saturn_xiv/fig/gardenia/v2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'gardenia_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n.com.github.saturn_xiv.palm.plugins.gardenia.v1P\001Z&github.com/saturn_xiv/palm/gardenia/v2'
+  _globals['DESCRIPTOR']._serialized_options = b'\n.com.github.saturn_xiv.palm.plugins.gardenia.v1P\001Z%github.com/saturn_xiv/fig/gardenia/v2'
   _globals['_OPENFIRE']._serialized_start=36
   _globals['_OPENFIRE']._serialized_end=46
 # @@protoc_insertion_point(module_scope)

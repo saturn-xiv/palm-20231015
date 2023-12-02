@@ -35,15 +35,15 @@ static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
 static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 const char descriptor_table_protodef_courses_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\rcourses.proto\022\017palm.courses.v12\t\n\007Arti"
-    "cle2\t\n\007CommentBX\n-com.github.saturn_xiv."
-    "palm.plugins.courses.v1P\001Z%github.com/sa"
-    "turn_xiv/palm/courses/v2b\006proto3"
+    "cle2\t\n\007CommentBW\n-com.github.saturn_xiv."
+    "palm.plugins.courses.v1P\001Z$github.com/sa"
+    "turn_xiv/fig/courses/v2b\006proto3"
 };
 static ::absl::once_flag descriptor_table_courses_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_courses_2eproto = {
     false,
     false,
-    152,
+    151,
     descriptor_table_protodef_courses_2eproto,
     "courses.proto",
     &descriptor_table_courses_2eproto_once,

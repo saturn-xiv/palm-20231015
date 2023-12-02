@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 
-	metasequoia_controllers "github.com/saturn_xiv/palm/metasequoia/controllers"
+	metasequoia_controllers "github.com/saturn_xiv/fig/metasequoia/controllers"
 )
 
 //go:embed assets/*

@@ -1,7 +1,7 @@
 syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.ops.router.v1";
-option go_package = "github.com/saturn_xiv/palm/ops/router/v2";
+option go_package = "github.com/saturn_xiv/aloe/ops/router/v2";
 package palm.ops.router.v1;
 
 import "google/protobuf/empty.proto";

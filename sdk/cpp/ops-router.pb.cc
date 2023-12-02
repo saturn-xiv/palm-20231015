@@ -1618,7 +1618,7 @@ const char descriptor_table_protodef_ops_2drouter_2eproto[] PROTOBUF_SECTION_VAR
     "\022\026.google.protobuf.Empty\032$.palm.ops.rout"
     "er.v1.UserLogsResponse\"\000B^\n0com.github.s"
     "aturn_xiv.palm.plugins.ops.router.v1P\001Z("
-    "github.com/saturn_xiv/palm/ops/router/v2"
+    "github.com/saturn_xiv/aloe/ops/router/v2"
     "b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ops_2drouter_2eproto_deps[3] =

@@ -6,10 +6,10 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/saturn_xiv/palm/env"
-	metasequoia_tasks "github.com/saturn_xiv/palm/metasequoia/tasks"
-	metasequoia_pb "github.com/saturn_xiv/palm/metasequoia/v2"
-	"github.com/saturn_xiv/palm/queue"
+	"github.com/saturn_xiv/fig/env"
+	metasequoia_tasks "github.com/saturn_xiv/fig/metasequoia/tasks"
+	metasequoia_pb "github.com/saturn_xiv/fig/metasequoia/v2"
+	"github.com/saturn_xiv/fig/queue"
 )
 
 func launch_worker(rabbitmq string, queue_name string) error {

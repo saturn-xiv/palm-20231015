@@ -25,9 +25,9 @@ public final class Babel {
   static {
     java.lang.String[] descriptorData = {
       "\n\013babel.proto\022\rpalm.babel.v12\006\n\004Pali2\t\n\007" +
-      "Tibetan2\n\n\010SanskritBT\n+com.github.saturn" +
-      "_xiv.palm.plugins.babel.v1P\001Z#github.com" +
-      "/saturn_xiv/palm/babel/v2b\006proto3"
+      "Tibetan2\n\n\010SanskritBS\n+com.github.saturn" +
+      "_xiv.palm.plugins.babel.v1P\001Z\"github.com" +
+      "/saturn_xiv/fig/babel/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

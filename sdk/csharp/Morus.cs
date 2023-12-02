@@ -29,9 +29,9 @@ namespace Palm.Morus.V1 {
             "ChZNYXJrZG93blRvSHRtbFJlc3BvbnNlEg8KB3BheWxvYWQYASABKAkyYwoI",
             "TWFya2Rvd24SVwoGVG9IdG1sEiQucGFsbS5tb3J1cy52MS5NYXJrZG93blRv",
             "SHRtbFJlcXVlc3QaJS5wYWxtLm1vcnVzLnYxLk1hcmtkb3duVG9IdG1sUmVz",
-            "cG9uc2UiAEJUCitjb20uZ2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5z",
-            "Lm1vcnVzLnYxUAFaI2dpdGh1Yi5jb20vc2F0dXJuX3hpdi9wYWxtL21vcnVz",
-            "L3YyYgZwcm90bzM="));
+            "cG9uc2UiAEJTCitjb20uZ2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5z",
+            "Lm1vcnVzLnYxUAFaImdpdGh1Yi5jb20vc2F0dXJuX3hpdi9maWcvbW9ydXMv",
+            "djJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

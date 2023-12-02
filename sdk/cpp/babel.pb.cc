@@ -35,15 +35,15 @@ static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
 static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 const char descriptor_table_protodef_babel_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\013babel.proto\022\rpalm.babel.v12\006\n\004Pali2\t\n\007"
-    "Tibetan2\n\n\010SanskritBT\n+com.github.saturn"
-    "_xiv.palm.plugins.babel.v1P\001Z#github.com"
-    "/saturn_xiv/palm/babel/v2b\006proto3"
+    "Tibetan2\n\n\010SanskritBS\n+com.github.saturn"
+    "_xiv.palm.plugins.babel.v1P\001Z\"github.com"
+    "/saturn_xiv/fig/babel/v2b\006proto3"
 };
 static ::absl::once_flag descriptor_table_babel_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_babel_2eproto = {
     false,
     false,
-    153,
+    152,
     descriptor_table_protodef_babel_2eproto,
     "babel.proto",
     &descriptor_table_babel_2eproto_once,

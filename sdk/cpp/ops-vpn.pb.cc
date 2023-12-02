@@ -37,15 +37,15 @@ static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
 static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 const char descriptor_table_protodef_ops_2dvpn_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\rops-vpn.proto\022\017palm.ops.vpn.v12\007\n\005Topi"
-    "c2\006\n\004PostBX\n-com.github.saturn_xiv.palm."
-    "plugins.ops.vpn.v1P\001Z%github.com/saturn_"
-    "xiv/palm/ops/vpn/v2b\006proto3"
+    "c2\006\n\004PostBW\n-com.github.saturn_xiv.palm."
+    "plugins.ops.vpn.v1P\001Z$github.com/saturn_"
+    "xiv/fig/ops/vpn/v2b\006proto3"
 };
 static ::absl::once_flag descriptor_table_ops_2dvpn_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ops_2dvpn_2eproto = {
     false,
     false,
-    147,
+    146,
     descriptor_table_protodef_ops_2dvpn_2eproto,
     "ops-vpn.proto",
     &descriptor_table_ops_2dvpn_2eproto_once,

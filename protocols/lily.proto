@@ -1,7 +1,7 @@
 syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.github.saturn_xiv.palm.plugins.lily.v1";
-option go_package = "github.com/saturn_xiv/palm/lily/v2";
+option go_package = "github.com/saturn_xiv/fig/lily/v2";
 package palm.lily.v1;
 
 import "google/protobuf/duration.proto";

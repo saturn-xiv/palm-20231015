@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\x0eops-ddns.proto\x12\x10palm.ops.ddns.v12\x05\n\x03Vpn2\t\n\x07Metrics2\x06\n\x04MailBZ\n.com.github.saturn_xiv.palm.plugins.ops.ddns.v1P\x01Z&github.com/saturn_xiv/palm/ops/ddns/v2b\x06proto3"
+descriptor_data = "\n\x0eops-ddns.proto\x12\x10palm.ops.ddns.v12\x05\n\x03Vpn2\t\n\x07Metrics2\x06\n\x04MailBY\n.com.github.saturn_xiv.palm.plugins.ops.ddns.v1P\x01Z%github.com/saturn_xiv/fig/ops/ddns/v2b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

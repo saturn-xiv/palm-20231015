@@ -10,9 +10,9 @@ import (
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
 
-	"github.com/saturn_xiv/palm/env"
-	metasequoia_services "github.com/saturn_xiv/palm/metasequoia/services"
-	metasequoia_pb "github.com/saturn_xiv/palm/metasequoia/v2"
+	"github.com/saturn_xiv/fig/env"
+	metasequoia_services "github.com/saturn_xiv/fig/metasequoia/services"
+	metasequoia_pb "github.com/saturn_xiv/fig/metasequoia/v2"
 )
 
 func launch_rpc_server(port int, aes *env.Aes, hmac *env.HMac, jwt *env.Jwt, enforcer *casbin.Enforcer) error {

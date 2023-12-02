@@ -16,11 +16,11 @@ class Cscd
         }
         $pool->internalAddGeneratedFile(
             '
-Å
+Ä
 
 cscd.protopalm.cscd.v12	
-SectionBR
-*com.github.saturn_xiv.palm.plugins.cscd.v1PZ"github.com/saturn_xiv/palm/cscd/v2bproto3'
+SectionBQ
+*com.github.saturn_xiv.palm.plugins.cscd.v1PZ!github.com/saturn_xiv/fig/cscd/v2bproto3'
         , true);
 
         static::$is_initialized = true;

@@ -25,9 +25,9 @@ namespace Palm.Ops.Vpn.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg1vcHMtdnBuLnByb3RvEg9wYWxtLm9wcy52cG4udjEyBwoFVG9waWMyBgoE",
-            "UG9zdEJYCi1jb20uZ2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5zLm9w",
-            "cy52cG4udjFQAVolZ2l0aHViLmNvbS9zYXR1cm5feGl2L3BhbG0vb3BzL3Zw",
-            "bi92MmIGcHJvdG8z"));
+            "UG9zdEJXCi1jb20uZ2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5zLm9w",
+            "cy52cG4udjFQAVokZ2l0aHViLmNvbS9zYXR1cm5feGl2L2ZpZy9vcHMvdnBu",
+            "L3YyYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, null));

@@ -24,9 +24,9 @@ namespace Palm.Cscd.V1 {
     static CscdReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cgpjc2NkLnByb3RvEgxwYWxtLmNzY2QudjEyCQoHU2VjdGlvbkJSCipjb20u",
-            "Z2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5zLmNzY2QudjFQAVoiZ2l0",
-            "aHViLmNvbS9zYXR1cm5feGl2L3BhbG0vY3NjZC92MmIGcHJvdG8z"));
+            "Cgpjc2NkLnByb3RvEgxwYWxtLmNzY2QudjEyCQoHU2VjdGlvbkJRCipjb20u",
+            "Z2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5zLmNzY2QudjFQAVohZ2l0",
+            "aHViLmNvbS9zYXR1cm5feGl2L2ZpZy9jc2NkL3YyYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, null));

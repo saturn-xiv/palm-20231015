@@ -16,12 +16,12 @@ class OpsMail
         }
         $pool->internalAddGeneratedFile(
             '
- 
+Ÿ
 ops-mail.protopalm.ops.mail.v12
 Vpn2	
 Metrics2
-MailBZ
-.com.github.saturn_xiv.palm.plugins.ops.mail.v1PZ&github.com/saturn_xiv/palm/ops/mail/v2bproto3'
+MailBY
+.com.github.saturn_xiv.palm.plugins.ops.mail.v1PZ%github.com/saturn_xiv/fig/ops/mail/v2bproto3'
         , true);
 
         static::$is_initialized = true;

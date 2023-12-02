@@ -118,9 +118,9 @@ public final class Cms {
       "ty\"\000\022H\n\005Index\022\032.palm.metasequoia.v1.Page" +
       "r\032!.palm.cms.v1.CommentIndexResponse\"\000\022C" +
       "\n\007Destory\022\036.palm.metasequoia.v1.IdReques" +
-      "t\032\026.google.protobuf.Empty\"\000BP\n)com.githu" +
-      "b.saturn_xiv.palm.plugins.cms.v1P\001Z!gith" +
-      "ub.com/saturn_xiv/palm/cms/v2b\006proto3"
+      "t\032\026.google.protobuf.Empty\"\000BO\n)com.githu" +
+      "b.saturn_xiv.palm.plugins.cms.v1P\001Z gith" +
+      "ub.com/saturn_xiv/fig/cms/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

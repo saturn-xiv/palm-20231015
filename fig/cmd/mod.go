@@ -9,8 +9,8 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
-	"github.com/saturn_xiv/palm/env"
-	metasequoia_pb "github.com/saturn_xiv/palm/metasequoia/v2"
+	"github.com/saturn_xiv/fig/env"
+	metasequoia_pb "github.com/saturn_xiv/fig/metasequoia/v2"
 )
 
 var (

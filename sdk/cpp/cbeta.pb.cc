@@ -35,15 +35,15 @@ static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
 static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 const char descriptor_table_protodef_cbeta_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\013cbeta.proto\022\rpalm.cbeta.v12\t\n\007Section2"
-    "\006\n\004BookBT\n+com.github.saturn_xiv.palm.pl"
-    "ugins.cbeta.v1P\001Z#github.com/saturn_xiv/"
-    "palm/cbeta/v2b\006proto3"
+    "\006\n\004BookBS\n+com.github.saturn_xiv.palm.pl"
+    "ugins.cbeta.v1P\001Z\"github.com/saturn_xiv/"
+    "fig/cbeta/v2b\006proto3"
 };
 static ::absl::once_flag descriptor_table_cbeta_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_cbeta_2eproto = {
     false,
     false,
-    141,
+    140,
     descriptor_table_protodef_cbeta_2eproto,
     "cbeta.proto",
     &descriptor_table_cbeta_2eproto_once,

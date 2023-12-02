@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\x0bmorus.proto\x12\rpalm.morus.v1\":\n\x15MarkdownToHtmlRequest\x12\x0f\n\x07payload\x18\x01 \x01(\t\x12\x10\n\x08sanitize\x18\x02 \x01(\x08\")\n\x16MarkdownToHtmlResponse\x12\x0f\n\x07payload\x18\x01 \x01(\t2c\n\x08Markdown\x12W\n\x06ToHtml\x12$.palm.morus.v1.MarkdownToHtmlRequest\x1a%.palm.morus.v1.MarkdownToHtmlResponse\"\x00\x42T\n+com.github.saturn_xiv.palm.plugins.morus.v1P\x01Z#github.com/saturn_xiv/palm/morus/v2b\x06proto3"
+descriptor_data = "\n\x0bmorus.proto\x12\rpalm.morus.v1\":\n\x15MarkdownToHtmlRequest\x12\x0f\n\x07payload\x18\x01 \x01(\t\x12\x10\n\x08sanitize\x18\x02 \x01(\x08\")\n\x16MarkdownToHtmlResponse\x12\x0f\n\x07payload\x18\x01 \x01(\t2c\n\x08Markdown\x12W\n\x06ToHtml\x12$.palm.morus.v1.MarkdownToHtmlRequest\x1a%.palm.morus.v1.MarkdownToHtmlResponse\"\x00\x42S\n+com.github.saturn_xiv.palm.plugins.morus.v1P\x01Z\"github.com/saturn_xiv/fig/morus/v2b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

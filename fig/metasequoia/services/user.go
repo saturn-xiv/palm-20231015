@@ -4,10 +4,11 @@ import (
 	"context"
 
 	"github.com/casbin/casbin/v2"
-	"github.com/saturn_xiv/palm/env"
-	pb "github.com/saturn_xiv/palm/metasequoia/v2"
 	"google.golang.org/protobuf/types/known/durationpb"
 	"google.golang.org/protobuf/types/known/emptypb"
+
+	"github.com/saturn_xiv/fig/env"
+	pb "github.com/saturn_xiv/fig/metasequoia/v2"
 )
 
 type UserService struct {

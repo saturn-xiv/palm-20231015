@@ -25,9 +25,9 @@ public final class Cbeta {
   static {
     java.lang.String[] descriptorData = {
       "\n\013cbeta.proto\022\rpalm.cbeta.v12\t\n\007Section2" +
-      "\006\n\004BookBT\n+com.github.saturn_xiv.palm.pl" +
-      "ugins.cbeta.v1P\001Z#github.com/saturn_xiv/" +
-      "palm/cbeta/v2b\006proto3"
+      "\006\n\004BookBS\n+com.github.saturn_xiv.palm.pl" +
+      "ugins.cbeta.v1P\001Z\"github.com/saturn_xiv/" +
+      "fig/cbeta/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

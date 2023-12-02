@@ -48,9 +48,9 @@ namespace Palm.Lily.V1 {
             "LnBhbG0ubGlseS52MS5TM0ZpbGUiABI8CgZUb1dvcmQSGi5wYWxtLmxpbHku",
             "djEuVGV4VG9SZXF1ZXN0GhQucGFsbS5saWx5LnYxLlMzRmlsZSIAMkcKBEVw",
             "dWISPwoFQnVpbGQSHi5wYWxtLmxpbHkudjEuRXB1YkJ1aWxkUmVxdWVzdBoU",
-            "LnBhbG0ubGlseS52MS5TM0ZpbGUiAEJSCipjb20uZ2l0aHViLnNhdHVybl94",
-            "aXYucGFsbS5wbHVnaW5zLmxpbHkudjFQAVoiZ2l0aHViLmNvbS9zYXR1cm5f",
-            "eGl2L3BhbG0vbGlseS92MmIGcHJvdG8z"));
+            "LnBhbG0ubGlseS52MS5TM0ZpbGUiAEJRCipjb20uZ2l0aHViLnNhdHVybl94",
+            "aXYucGFsbS5wbHVnaW5zLmxpbHkudjFQAVohZ2l0aHViLmNvbS9zYXR1cm5f",
+            "eGl2L2ZpZy9saWx5L3YyYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

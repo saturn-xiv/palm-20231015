@@ -16,13 +16,13 @@ class Babel
         }
         $pool->internalAddGeneratedFile(
             '
-™
+˜
 babel.protopalm.babel.v12
 Pali2	
 Tibetan2
 
-SanskritBT
-+com.github.saturn_xiv.palm.plugins.babel.v1PZ#github.com/saturn_xiv/palm/babel/v2bproto3'
+SanskritBS
++com.github.saturn_xiv.palm.plugins.babel.v1PZ"github.com/saturn_xiv/fig/babel/v2bproto3'
         , true);
 
         static::$is_initialized = true;

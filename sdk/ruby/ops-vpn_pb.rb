@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\rops-vpn.proto\x12\x0fpalm.ops.vpn.v12\x07\n\x05Topic2\x06\n\x04PostBX\n-com.github.saturn_xiv.palm.plugins.ops.vpn.v1P\x01Z%github.com/saturn_xiv/palm/ops/vpn/v2b\x06proto3"
+descriptor_data = "\n\rops-vpn.proto\x12\x0fpalm.ops.vpn.v12\x07\n\x05Topic2\x06\n\x04PostBW\n-com.github.saturn_xiv.palm.plugins.ops.vpn.v1P\x01Z$github.com/saturn_xiv/fig/ops/vpn/v2b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

@@ -16,11 +16,11 @@ class Gardenia
         }
         $pool->internalAddGeneratedFile(
             '
-’
+‘
 gardenia.protopalm.gardenia.v12
 
-OpenFireBZ
-.com.github.saturn_xiv.palm.plugins.gardenia.v1PZ&github.com/saturn_xiv/palm/gardenia/v2bproto3'
+OpenFireBY
+.com.github.saturn_xiv.palm.plugins.gardenia.v1PZ%github.com/saturn_xiv/fig/gardenia/v2bproto3'
         , true);
 
         static::$is_initialized = true;

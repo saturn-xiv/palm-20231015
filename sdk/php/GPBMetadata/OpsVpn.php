@@ -16,11 +16,11 @@ class OpsVpn
         }
         $pool->internalAddGeneratedFile(
             '
-“
+’
 ops-vpn.protopalm.ops.vpn.v12
 Topic2
-PostBX
--com.github.saturn_xiv.palm.plugins.ops.vpn.v1PZ%github.com/saturn_xiv/palm/ops/vpn/v2bproto3'
+PostBW
+-com.github.saturn_xiv.palm.plugins.ops.vpn.v1PZ$github.com/saturn_xiv/fig/ops/vpn/v2bproto3'
         , true);
 
         static::$is_initialized = true;

@@ -1537,9 +1537,9 @@ const char descriptor_table_protodef_musa_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
     "ronicReceipt\022:.palm.musa.v1.WechatPayTra"
     "nsferGetElectronicReceiptRequest\0321.palm."
     "musa.v1.WechatPayTransferGetReceiptRespo"
-    "nse\"\000BR\n*com.github.saturn_xiv.palm.plug"
-    "ins.musa.v1P\001Z\"github.com/saturn_xiv/pal"
-    "m/musa/v2b\006proto3"
+    "nse\"\000BQ\n*com.github.saturn_xiv.palm.plug"
+    "ins.musa.v1P\001Z!github.com/saturn_xiv/fig"
+    "/musa/v2b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_musa_2eproto_deps[1] =
     {
@@ -1549,7 +1549,7 @@ static ::absl::once_flag descriptor_table_musa_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_musa_2eproto = {
     false,
     false,
-    6297,
+    6296,
     descriptor_table_protodef_musa_2eproto,
     "musa.proto",
     &descriptor_table_musa_2eproto_once,

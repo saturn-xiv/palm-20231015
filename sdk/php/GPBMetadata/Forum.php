@@ -16,11 +16,11 @@ class Forum
         }
         $pool->internalAddGeneratedFile(
             '
-‹
+Š
 forum.protopalm.forum.v12
 Topic2
-PostBT
-+com.github.saturn_xiv.palm.plugins.forum.v1PZ#github.com/saturn_xiv/palm/forum/v2bproto3'
+PostBS
++com.github.saturn_xiv.palm.plugins.forum.v1PZ"github.com/saturn_xiv/fig/forum/v2bproto3'
         , true);
 
         static::$is_initialized = true;

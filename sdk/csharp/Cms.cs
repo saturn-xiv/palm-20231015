@@ -68,9 +68,9 @@ namespace Palm.Cms.V1 {
             "SAoFSW5kZXgSGi5wYWxtLm1ldGFzZXF1b2lhLnYxLlBhZ2VyGiEucGFsbS5j",
             "bXMudjEuQ29tbWVudEluZGV4UmVzcG9uc2UiABJDCgdEZXN0b3J5Eh4ucGFs",
             "bS5tZXRhc2VxdW9pYS52MS5JZFJlcXVlc3QaFi5nb29nbGUucHJvdG9idWYu",
-            "RW1wdHkiAEJQCiljb20uZ2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5z",
-            "LmNtcy52MVABWiFnaXRodWIuY29tL3NhdHVybl94aXYvcGFsbS9jbXMvdjJi",
-            "BnByb3RvMw=="));
+            "RW1wdHkiAEJPCiljb20uZ2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5z",
+            "LmNtcy52MVABWiBnaXRodWIuY29tL3NhdHVybl94aXYvZmlnL2Ntcy92MmIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Palm.Metasequoia.V1.MetasequoiaReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

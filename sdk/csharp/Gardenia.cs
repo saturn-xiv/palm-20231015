@@ -25,9 +25,9 @@ namespace Palm.Gardenia.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5nYXJkZW5pYS5wcm90bxIQcGFsbS5nYXJkZW5pYS52MTIKCghPcGVuRmly",
-            "ZUJaCi5jb20uZ2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5zLmdhcmRl",
-            "bmlhLnYxUAFaJmdpdGh1Yi5jb20vc2F0dXJuX3hpdi9wYWxtL2dhcmRlbmlh",
-            "L3YyYgZwcm90bzM="));
+            "ZUJZCi5jb20uZ2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5zLmdhcmRl",
+            "bmlhLnYxUAFaJWdpdGh1Yi5jb20vc2F0dXJuX3hpdi9maWcvZ2FyZGVuaWEv",
+            "djJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, null));

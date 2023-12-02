@@ -39,10 +39,10 @@ public final class Morus {
       "ze\030\002 \001(\010\")\n\026MarkdownToHtmlResponse\022\017\n\007pa" +
       "yload\030\001 \001(\t2c\n\010Markdown\022W\n\006ToHtml\022$.palm" +
       ".morus.v1.MarkdownToHtmlRequest\032%.palm.m" +
-      "orus.v1.MarkdownToHtmlResponse\"\000BT\n+com." +
+      "orus.v1.MarkdownToHtmlResponse\"\000BS\n+com." +
       "github.saturn_xiv.palm.plugins.morus.v1P" +
-      "\001Z#github.com/saturn_xiv/palm/morus/v2b\006" +
-      "proto3"
+      "\001Z\"github.com/saturn_xiv/fig/morus/v2b\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

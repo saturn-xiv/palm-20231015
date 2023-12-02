@@ -25,9 +25,9 @@ public final class Courses {
   static {
     java.lang.String[] descriptorData = {
       "\n\rcourses.proto\022\017palm.courses.v12\t\n\007Arti" +
-      "cle2\t\n\007CommentBX\n-com.github.saturn_xiv." +
-      "palm.plugins.courses.v1P\001Z%github.com/sa" +
-      "turn_xiv/palm/courses/v2b\006proto3"
+      "cle2\t\n\007CommentBW\n-com.github.saturn_xiv." +
+      "palm.plugins.courses.v1P\001Z$github.com/sa" +
+      "turn_xiv/fig/courses/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

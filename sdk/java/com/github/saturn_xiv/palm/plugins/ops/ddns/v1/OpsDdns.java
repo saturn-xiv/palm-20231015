@@ -25,9 +25,9 @@ public final class OpsDdns {
   static {
     java.lang.String[] descriptorData = {
       "\n\016ops-ddns.proto\022\020palm.ops.ddns.v12\005\n\003Vp" +
-      "n2\t\n\007Metrics2\006\n\004MailBZ\n.com.github.satur" +
-      "n_xiv.palm.plugins.ops.ddns.v1P\001Z&github" +
-      ".com/saturn_xiv/palm/ops/ddns/v2b\006proto3"
+      "n2\t\n\007Metrics2\006\n\004MailBY\n.com.github.satur" +
+      "n_xiv.palm.plugins.ops.ddns.v1P\001Z%github" +
+      ".com/saturn_xiv/fig/ops/ddns/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

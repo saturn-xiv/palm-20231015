@@ -3,8 +3,9 @@ package services
 import (
 	"context"
 
-	pb "github.com/saturn_xiv/palm/metasequoia/v2"
 	"google.golang.org/protobuf/types/known/emptypb"
+
+	pb "github.com/saturn_xiv/fig/metasequoia/v2"
 )
 
 type SettingService struct {

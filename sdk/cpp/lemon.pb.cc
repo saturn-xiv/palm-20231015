@@ -996,9 +996,9 @@ const char descriptor_table_protodef_lemon_2eproto[] PROTOBUF_SECTION_VARIABLE(p
     ".palm.lemon.v1.SiteShowPageResponse\"\000\022U\n"
     "\010HomePage\022\".palm.lemon.v1.SiteHomePageRe"
     "quest\032#.palm.lemon.v1.SiteHomePageRespon"
-    "se\"\000BT\n+com.github.saturn_xiv.palm.plugi"
-    "ns.lemon.v1P\001Z#github.com/saturn_xiv/pal"
-    "m/lemon/v2b\006proto3"
+    "se\"\000BS\n+com.github.saturn_xiv.palm.plugi"
+    "ns.lemon.v1P\001Z\"github.com/saturn_xiv/fig"
+    "/lemon/v2b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_lemon_2eproto_deps[3] =
     {
@@ -1010,7 +1010,7 @@ static ::absl::once_flag descriptor_table_lemon_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_lemon_2eproto = {
     false,
     false,
-    2978,
+    2977,
     descriptor_table_protodef_lemon_2eproto,
     "lemon.proto",
     &descriptor_table_lemon_2eproto_once,

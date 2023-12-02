@@ -16,11 +16,11 @@ class Cbeta
         }
         $pool->internalAddGeneratedFile(
             '
-ç
+å
 cbeta.protopalm.cbeta.v12	
 Section2
-BookBT
-+com.github.saturn_xiv.palm.plugins.cbeta.v1PZ#github.com/saturn_xiv/palm/cbeta/v2bproto3'
+BookBS
++com.github.saturn_xiv.palm.plugins.cbeta.v1PZ"github.com/saturn_xiv/fig/cbeta/v2bproto3'
         , true);
 
         static::$is_initialized = true;

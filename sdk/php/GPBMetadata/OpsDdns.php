@@ -16,12 +16,12 @@ class OpsDdns
         }
         $pool->internalAddGeneratedFile(
             '
- 
+Ÿ
 ops-ddns.protopalm.ops.ddns.v12
 Vpn2	
 Metrics2
-MailBZ
-.com.github.saturn_xiv.palm.plugins.ops.ddns.v1PZ&github.com/saturn_xiv/palm/ops/ddns/v2bproto3'
+MailBY
+.com.github.saturn_xiv.palm.plugins.ops.ddns.v1PZ%github.com/saturn_xiv/fig/ops/ddns/v2bproto3'
         , true);
 
         static::$is_initialized = true;

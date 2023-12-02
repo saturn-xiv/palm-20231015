@@ -5,7 +5,7 @@
 require 'google/protobuf'
 
 
-descriptor_data = "\n\ncscd.proto\x12\x0cpalm.cscd.v12\t\n\x07SectionBR\n*com.github.saturn_xiv.palm.plugins.cscd.v1P\x01Z\"github.com/saturn_xiv/palm/cscd/v2b\x06proto3"
+descriptor_data = "\n\ncscd.proto\x12\x0cpalm.cscd.v12\t\n\x07SectionBQ\n*com.github.saturn_xiv.palm.plugins.cscd.v1P\x01Z!github.com/saturn_xiv/fig/cscd/v2b\x06proto3"
 
 pool = Google::Protobuf::DescriptorPool.generated_pool
 

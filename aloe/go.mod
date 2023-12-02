@@ -1,4 +1,4 @@
-module github.com/saturn_xiv/palm
+module github.com/saturn_xiv/aloe
 
 go 1.21.4
 

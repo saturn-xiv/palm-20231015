@@ -67,9 +67,9 @@ public final class OpsMetrics {
       "rics.v1.ReportJournalRequest\032\026.google.pr" +
       "otobuf.Empty\"\000\022J\n\005Nginx\022\'.palm.ops.metri" +
       "cs.v1.ReportNginxRequest\032\026.google.protob" +
-      "uf.Empty\"\000B`\n1com.github.saturn_xiv.palm" +
-      ".plugins.ops.metrics.v1P\001Z)github.com/sa" +
-      "turn_xiv/palm/ops/metrics/v2b\006proto3"
+      "uf.Empty\"\000B_\n1com.github.saturn_xiv.palm" +
+      ".plugins.ops.metrics.v1P\001Z(github.com/sa" +
+      "turn_xiv/fig/ops/metrics/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

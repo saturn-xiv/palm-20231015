@@ -161,9 +161,9 @@ namespace Palm.Musa.V1 {
             "V2VjaGF0UGF5VHJhbnNmZXJHZXRSZWNlaXB0UmVzcG9uc2UiABKHAQoUR2V0",
             "RWxlY3Ryb25pY1JlY2VpcHQSOi5wYWxtLm11c2EudjEuV2VjaGF0UGF5VHJh",
             "bnNmZXJHZXRFbGVjdHJvbmljUmVjZWlwdFJlcXVlc3QaMS5wYWxtLm11c2Eu",
-            "djEuV2VjaGF0UGF5VHJhbnNmZXJHZXRSZWNlaXB0UmVzcG9uc2UiAEJSCipj",
-            "b20uZ2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5zLm11c2EudjFQAVoi",
-            "Z2l0aHViLmNvbS9zYXR1cm5feGl2L3BhbG0vbXVzYS92MmIGcHJvdG8z"));
+            "djEuV2VjaGF0UGF5VHJhbnNmZXJHZXRSZWNlaXB0UmVzcG9uc2UiAEJRCipj",
+            "b20uZ2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5zLm11c2EudjFQAVoh",
+            "Z2l0aHViLmNvbS9zYXR1cm5feGl2L2ZpZy9tdXNhL3YyYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Palm.Musa.V1.WechatPayCurrency), typeof(global::Palm.Musa.V1.WechatPayNotifyAction), typeof(global::Palm.Musa.V1.WechatPayTarType), }, null, new pbr::GeneratedClrTypeInfo[] {

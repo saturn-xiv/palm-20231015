@@ -16,11 +16,11 @@ class Courses
         }
         $pool->internalAddGeneratedFile(
             '
-˜
+—
 courses.protopalm.courses.v12	
 Article2	
-CommentBX
--com.github.saturn_xiv.palm.plugins.courses.v1PZ%github.com/saturn_xiv/palm/courses/v2bproto3'
+CommentBW
+-com.github.saturn_xiv.palm.plugins.courses.v1PZ$github.com/saturn_xiv/fig/courses/v2bproto3'
         , true);
 
         static::$is_initialized = true;

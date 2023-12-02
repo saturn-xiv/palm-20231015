@@ -418,15 +418,15 @@ const char descriptor_table_protodef_orchid_2eproto[] PROTOBUF_SECTION_VARIABLE(
     "Oauth2QrConnectResponse\"\000\022^\n\005Login\022(.pal"
     "m.orchid.v1.WechatOauth2LoginRequest\032).p"
     "alm.orchid.v1.WechatOauth2LoginResponse\""
-    "\000BV\n,com.github.saturn_xiv.palm.plugins."
-    "orchid.v1P\001Z$github.com/saturn_xiv/palm/"
-    "orchid/v2b\006proto3"
+    "\000BU\n,com.github.saturn_xiv.palm.plugins."
+    "orchid.v1P\001Z#github.com/saturn_xiv/fig/o"
+    "rchid/v2b\006proto3"
 };
 static ::absl::once_flag descriptor_table_orchid_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_orchid_2eproto = {
     false,
     false,
-    1617,
+    1616,
     descriptor_table_protodef_orchid_2eproto,
     "orchid.proto",
     &descriptor_table_orchid_2eproto_once,

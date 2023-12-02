@@ -35,15 +35,15 @@ static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
 static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 const char descriptor_table_protodef_gardenia_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\016gardenia.proto\022\020palm.gardenia.v12\n\n\010Op"
-    "enFireBZ\n.com.github.saturn_xiv.palm.plu"
-    "gins.gardenia.v1P\001Z&github.com/saturn_xi"
-    "v/palm/gardenia/v2b\006proto3"
+    "enFireBY\n.com.github.saturn_xiv.palm.plu"
+    "gins.gardenia.v1P\001Z%github.com/saturn_xi"
+    "v/fig/gardenia/v2b\006proto3"
 };
 static ::absl::once_flag descriptor_table_gardenia_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_gardenia_2eproto = {
     false,
     false,
-    146,
+    145,
     descriptor_table_protodef_gardenia_2eproto,
     "gardenia.proto",
     &descriptor_table_gardenia_2eproto_once,

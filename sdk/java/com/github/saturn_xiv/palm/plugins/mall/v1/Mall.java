@@ -35,9 +35,9 @@ public final class Mall {
       "nceled\020\005\022\n\n\006Denied\020\006\022\024\n\020CanceledReversal" +
       "\020\007\022\n\n\006Failed\020\010\022\014\n\010Refunded\020\t\022\014\n\010Reversed" +
       "\020\n\022\016\n\nChargeback\020\013\022\013\n\007Expired\020\014\022\r\n\tProce" +
-      "ssed\020\r2\005\n\003Sku2\005\n\003SpuBR\n*com.github.satur" +
-      "n_xiv.palm.plugins.mall.v1P\001Z\"github.com" +
-      "/saturn_xiv/palm/mall/v2b\006proto3"
+      "ssed\020\r2\005\n\003Sku2\005\n\003SpuBQ\n*com.github.satur" +
+      "n_xiv.palm.plugins.mall.v1P\001Z!github.com" +
+      "/saturn_xiv/fig/mall/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

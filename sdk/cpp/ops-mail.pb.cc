@@ -37,15 +37,15 @@ static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
 static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 const char descriptor_table_protodef_ops_2dmail_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n\016ops-mail.proto\022\020palm.ops.mail.v12\005\n\003Vp"
-    "n2\t\n\007Metrics2\006\n\004MailBZ\n.com.github.satur"
-    "n_xiv.palm.plugins.ops.mail.v1P\001Z&github"
-    ".com/saturn_xiv/palm/ops/mail/v2b\006proto3"
+    "n2\t\n\007Metrics2\006\n\004MailBY\n.com.github.satur"
+    "n_xiv.palm.plugins.ops.mail.v1P\001Z%github"
+    ".com/saturn_xiv/fig/ops/mail/v2b\006proto3"
 };
 static ::absl::once_flag descriptor_table_ops_2dmail_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ops_2dmail_2eproto = {
     false,
     false,
-    160,
+    159,
     descriptor_table_protodef_ops_2dmail_2eproto,
     "ops-mail.proto",
     &descriptor_table_ops_2dmail_2eproto_once,

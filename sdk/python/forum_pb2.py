@@ -14,14 +14,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0b\x66orum.proto\x12\rpalm.forum.v12\x07\n\x05Topic2\x06\n\x04PostBT\n+com.github.saturn_xiv.palm.plugins.forum.v1P\x01Z#github.com/saturn_xiv/palm/forum/v2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0b\x66orum.proto\x12\rpalm.forum.v12\x07\n\x05Topic2\x06\n\x04PostBS\n+com.github.saturn_xiv.palm.plugins.forum.v1P\x01Z\"github.com/saturn_xiv/fig/forum/v2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'forum_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n+com.github.saturn_xiv.palm.plugins.forum.v1P\001Z#github.com/saturn_xiv/palm/forum/v2'
+  _globals['DESCRIPTOR']._serialized_options = b'\n+com.github.saturn_xiv.palm.plugins.forum.v1P\001Z\"github.com/saturn_xiv/fig/forum/v2'
   _globals['_TOPIC']._serialized_start=30
   _globals['_TOPIC']._serialized_end=37
   _globals['_POST']._serialized_start=39

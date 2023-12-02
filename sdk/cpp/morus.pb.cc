@@ -113,16 +113,16 @@ const char descriptor_table_protodef_morus_2eproto[] PROTOBUF_SECTION_VARIABLE(p
     "ze\030\002 \001(\010\")\n\026MarkdownToHtmlResponse\022\017\n\007pa"
     "yload\030\001 \001(\t2c\n\010Markdown\022W\n\006ToHtml\022$.palm"
     ".morus.v1.MarkdownToHtmlRequest\032%.palm.m"
-    "orus.v1.MarkdownToHtmlResponse\"\000BT\n+com."
+    "orus.v1.MarkdownToHtmlResponse\"\000BS\n+com."
     "github.saturn_xiv.palm.plugins.morus.v1P"
-    "\001Z#github.com/saturn_xiv/palm/morus/v2b\006"
-    "proto3"
+    "\001Z\"github.com/saturn_xiv/fig/morus/v2b\006p"
+    "roto3"
 };
 static ::absl::once_flag descriptor_table_morus_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_morus_2eproto = {
     false,
     false,
-    326,
+    325,
     descriptor_table_protodef_morus_2eproto,
     "morus.proto",
     &descriptor_table_morus_2eproto_once,
