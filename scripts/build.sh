@@ -7,19 +7,19 @@ export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export PACKAGE_NAME=palm-$GIT_VERSION
 export TARGET=$WORKSPACE/tmp/$PACKAGE_NAME
 
-function build_go_project() {
+function build_go() {
     cd $WORKSPACE/$1
 
     local pkg="github.com/saturn_xiv/palm/cmd"
     local ldflags="-s -w -X $pkg.repo_url=$(git remote get-url origin) -X $pkg.author_email=$(git config --get user.email) -X $pkg.version=$(git describe --tags --always --dirty --first-parent)"
     
     go build -ldflags "$ldflags"
-    mkdir -p $TARGET/$1/x86_64
-    mv palm $TARGET/$1/x86_64/
+    mkdir -p $TARGET/bin/x86_64
+    mv palm $TARGET/bin/x86_64/$1
 
     GOOS=linux GOARCH=arm64 go build -ldflags "$ldflags"
-    mkdir -p $TARGET/$1/aarch64
-    mv palm $TARGET/$1/aarch64/
+    mkdir -p $TARGET/bin/aarch64
+    mv palm $TARGET/bin/aarch64/$1
 }
 
 function build_morus() {
