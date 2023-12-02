@@ -10,11 +10,14 @@ export TARGET=$WORKSPACE/tmp/$PACKAGE_NAME
 function build_metasequoia() {
     cd $WORKSPACE/metasequoia
 
-    go build -ldflags "-s -w"
+    local pkg="github.com/saturn_xiv/palm/cmd"
+    local ldflags="-s -w -X $pkg.repo_url=$(git remote get-url origin) -X $pkg.author_email=$(git config --get user.email) -X $pkg.version='$(git describe --tags --always --dirty --first-parent)'"
+    
+    go build -ldflags "$ldflags"
     mkdir -p $TARGET/metasequoia/x86_64
     mv palm $TARGET/metasequoia/x86_64/
 
-    GOOS=linux GOARCH=arm64 go build -ldflags "-s -w"
+    GOOS=linux GOARCH=arm64 go build -ldflags "$ldflags"
     mkdir -p $TARGET/metasequoia/aarch64
     mv palm $TARGET/metasequoia/aarch64/
 }
@@ -80,7 +83,7 @@ copy_jdk() {
         wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk21.0.1/${jdk_hash}/12/GPL/$jdk_file
     fi
     tar xf $HOME/downloads/$jdk_file
-    mv jdk-${jdk_version} jdk-${jdk_version}-$1
+    mv jdk-${jdk_version} jdk-$1
 }
 
 copy_metasequoia_assets() {

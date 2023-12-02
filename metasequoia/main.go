@@ -17,6 +17,7 @@ import (
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
 
+	"github.com/saturn_xiv/palm/cmd"
 	"github.com/saturn_xiv/palm/env"
 	metasequoia_controllers "github.com/saturn_xiv/palm/metasequoia/controllers"
 	metasequoia_services "github.com/saturn_xiv/palm/metasequoia/services"
@@ -26,6 +27,10 @@ import (
 )
 
 func main() {
+	cmd.Execute()
+}
+
+func main1() {
 	var debug bool
 	var version bool
 	var port int
