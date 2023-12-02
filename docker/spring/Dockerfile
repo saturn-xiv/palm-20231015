@@ -18,7 +18,9 @@ RUN pacman -S --needed --noconfirm base-devel aarch64-linux-gnu-gcc risc-v \
     ttf-dejavu nerd-fonts ttf-ubuntu-font-family \
     ttf-arphic-ukai ttf-arphic-uming \
     texlive texlive-lang pandoc \
-    php-fpm php-pgsql php-sqlite php-redis php-mongodb php-imagick php-gd php-intl \
+    php-cgi php-fpm php-pgsql php-sqlite php-redis php-mongodb php-odbc \
+    php-sodium php-imagick php-gd php-intl php-xsl php-snmp php-geoip php-grpc \
+    php-tidy php-pspell php-phpdbg xdebug \
     dart haxe lua \
     erlang rebar \
     jdk-openjdk libxcrypt-compat \
@@ -261,8 +263,7 @@ RUN zsh -c "source $HOME/.zshrc \
 # https://grpc.io/docs/languages/go/quickstart/
 RUN zsh -c "source $HOME/.zshrc \
     && go install google.golang.org/protobuf/cmd/protoc-gen-go@latest \
-    && go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest \
-    && go get -u google.golang.org/grpc"
+    && go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest"
 
 
 # https://github.com/google/flatbuffers
