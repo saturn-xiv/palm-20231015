@@ -15,11 +15,11 @@ function build_go() {
     
     go build -ldflags "$ldflags"
     mkdir -p $TARGET/bin/x86_64
-    mv palm $TARGET/bin/x86_64/$1
+    mv $1 $TARGET/bin/x86_64/$1
 
     GOOS=linux GOARCH=arm64 go build -ldflags "$ldflags"
     mkdir -p $TARGET/bin/aarch64
-    mv palm $TARGET/bin/aarch64/$1
+    mv $1 $TARGET/bin/aarch64/$1
 }
 
 function build_morus() {
@@ -135,6 +135,7 @@ build_musa
 build_gardenia
 build_go fig
 build_go aloe
+build_go coconut
 
 copy_jdk x64
 copy_jdk aarch64
