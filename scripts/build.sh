@@ -10,8 +10,8 @@ export TARGET=$WORKSPACE/tmp/$PACKAGE_NAME
 function build_go() {
     cd $WORKSPACE/$1
 
-    local pkg="github.com/saturn_xiv/palm/cmd"
-    local ldflags="-s -w -X $pkg.repo_url=$(git remote get-url origin) -X $pkg.author_email=$(git config --get user.email) -X $pkg.version=$(git describe --tags --always --dirty --first-parent)"
+    local pkg="github.com/saturn_xiv/$1/cmd"
+    local ldflags="-s -w -X '$pkg.repo_url=$(git remote get-url origin)' -X '$pkg.author_name=$(git config --get user.name)' -X '$pkg.author_email=$(git config --get user.email)' -X '$pkg.build_time=$(date -R)' -X '$pkg.git_version=$(git describe --tags --always --dirty --first-parent)'"
     
     go build -ldflags "$ldflags"
     mkdir -p $TARGET/bin/x86_64

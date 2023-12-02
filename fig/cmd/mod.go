@@ -14,16 +14,18 @@ import (
 )
 
 var (
-	version      string
+	git_version  string
 	author_email string
+	author_name  string
 	repo_url     string
+	build_time   string
 )
 
 var root_cmd = &cobra.Command{
 	Use:     "fig",
 	Short:   "Fig",
 	Long:    fmt.Sprintf("A total free education & translation & ops solution(%s).", repo_url),
-	Version: fmt.Sprintf("%s(%s)", version, author_email),
+	Version: fmt.Sprintf("%s(%s) by %s<%s>", git_version, build_time, author_name, author_email),
 	Run: func(cmd *cobra.Command, args []string) {
 		if err := cmd.Help(); err != nil {
 			log.Fatal(err)
