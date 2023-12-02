@@ -14,8 +14,8 @@ var (
 )
 
 var root_cmd = &cobra.Command{
-	Use:     "metasequoia",
-	Short:   "Metasequoia",
+	Use:     "fig",
+	Short:   "Fig",
 	Long:    fmt.Sprintf("A total free education & translation & ops solution(%s).", repo_url),
 	Version: fmt.Sprintf("%s(%s)", version, author_email),
 	Run: func(cmd *cobra.Command, args []string) {
