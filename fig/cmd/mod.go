@@ -25,16 +25,9 @@ var root_cmd = &cobra.Command{
 	Long:    fmt.Sprintf("A total free education & translation & ops solution(%s).", repo_url),
 	Version: fmt.Sprintf("%s(%s)", version, author_email),
 	Run: func(cmd *cobra.Command, args []string) {
-		if gl_debug {
-			log.SetLevel(log.DebugLevel)
-		} else {
-			log.SetLevel(log.InfoLevel)
-			gin.SetMode(gin.ReleaseMode)
+		if err := cmd.Help(); err != nil {
+			log.Fatal(err)
 		}
-		is_stopped()
-
-		log.Debugf("run on debug mode")
-		log.Debugf("load configuration from %s", gl_config)
 	},
 }
 
@@ -136,6 +129,7 @@ func init() {
 				log.SetLevel(log.DebugLevel)
 			} else {
 				log.SetLevel(log.InfoLevel)
+				gin.SetMode(gin.ReleaseMode)
 			}
 			is_stopped()
 
