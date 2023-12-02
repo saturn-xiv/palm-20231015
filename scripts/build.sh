@@ -7,19 +7,19 @@ export GIT_VERSION=$(git describe --tags --always --dirty --first-parent)
 export PACKAGE_NAME=palm-$GIT_VERSION
 export TARGET=$WORKSPACE/tmp/$PACKAGE_NAME
 
-function build_metasequoia() {
-    cd $WORKSPACE/metasequoia
+function build_go_project() {
+    cd $WORKSPACE/$1
 
     local pkg="github.com/saturn_xiv/palm/cmd"
-    local ldflags="-s -w -X $pkg.repo_url=$(git remote get-url origin) -X $pkg.author_email=$(git config --get user.email) -X $pkg.version='$(git describe --tags --always --dirty --first-parent)'"
+    local ldflags="-s -w -X $pkg.repo_url=$(git remote get-url origin) -X $pkg.author_email=$(git config --get user.email) -X $pkg.version=$(git describe --tags --always --dirty --first-parent)"
     
     go build -ldflags "$ldflags"
-    mkdir -p $TARGET/metasequoia/x86_64
-    mv palm $TARGET/metasequoia/x86_64/
+    mkdir -p $TARGET/$1/x86_64
+    mv palm $TARGET/$1/x86_64/
 
     GOOS=linux GOARCH=arm64 go build -ldflags "$ldflags"
-    mkdir -p $TARGET/metasequoia/aarch64
-    mv palm $TARGET/metasequoia/aarch64/
+    mkdir -p $TARGET/$1/aarch64
+    mv palm $TARGET/$1/aarch64/
 }
 
 function build_morus() {
@@ -86,46 +86,46 @@ copy_jdk() {
     mv jdk-${jdk_version} jdk-$1
 }
 
-copy_metasequoia_assets() {
-    cd $WORKSPACE/metasequoia/
+# copy_metasequoia_assets() {
+#     cd $WORKSPACE/metasequoia/
 
-    if [ ! -d node_modules ]
-    then
-        yarn install
-    fi
+#     if [ ! -d node_modules ]
+#     then
+#         yarn install
+#     fi
 
-    local -a packages=(
-        "bootstrap/dist"
-        "bulma/css"
-        "marked/marked.min.js"
-        "material-design-icons/iconfont"
-        "d3/dist"
-        "@fontsource/roboto"
-        "moment/dist"
-        "moment-timezone/builds/moment-timezone-with-data.min.js"
-        "@popperjs/core/dist"
-        "mdb-ui-kit/css"
-        "mdb-ui-kit/js"
-        "mdb-ui-kit/img"
-        "qrcodejs/qrcode.min.js"
-        "@fortawesome/fontawesome-free/js"
-        "@fortawesome/fontawesome-free/css"
-        "@fortawesome/fontawesome-free/svgs"
-        "@fortawesome/fontawesome-free/webfonts"
-        "@fortawesome/fontawesome-free/sprites"
-        "famfamfam-flags/dist"
-        "famfamfam-silk/dist"
-        "famfamfam-mini/dist"
-    )
-    for i in "${packages[@]}"
-    do
-        local p=node_modules/$i
-        local t=$(dirname "$TARGET/metasequoia/$p")
-        mkdir -p $t
-        cp -a $p $t/
-    done
+#     local -a packages=(
+#         "bootstrap/dist"
+#         "bulma/css"
+#         "marked/marked.min.js"
+#         "material-design-icons/iconfont"
+#         "d3/dist"
+#         "@fontsource/roboto"
+#         "moment/dist"
+#         "moment-timezone/builds/moment-timezone-with-data.min.js"
+#         "@popperjs/core/dist"
+#         "mdb-ui-kit/css"
+#         "mdb-ui-kit/js"
+#         "mdb-ui-kit/img"
+#         "qrcodejs/qrcode.min.js"
+#         "@fortawesome/fontawesome-free/js"
+#         "@fortawesome/fontawesome-free/css"
+#         "@fortawesome/fontawesome-free/svgs"
+#         "@fortawesome/fontawesome-free/webfonts"
+#         "@fortawesome/fontawesome-free/sprites"
+#         "famfamfam-flags/dist"
+#         "famfamfam-silk/dist"
+#         "famfamfam-mini/dist"
+#     )
+#     for i in "${packages[@]}"
+#     do
+#         local p=node_modules/$i
+#         local t=$(dirname "$TARGET/metasequoia/$p")
+#         mkdir -p $t
+#         cp -a $p $t/
+#     done
 
-}
+# }
 
 # -----------------------------------------------------------------------------
 
@@ -133,8 +133,9 @@ build_lily
 build_morus
 build_musa
 build_gardenia
-build_metasequoia
-copy_metasequoia_assets
+build_go fig
+build_go aloe
+
 copy_jdk x64
 copy_jdk aarch64
 copy_node x64

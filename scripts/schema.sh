@@ -141,8 +141,9 @@ function generate_grpc_for_go() {
         $PALM_PROTOCOLS/$1.proto
 }
 
-function generate_metasequoia() {
-    echo "generate code for metasequoia"
+function generate_fig() {
+    echo "generate code for fig"
+    local target=$WORKSPACE/fig
     local -a plugins=(
         "metasequoia"
         "orchid"
@@ -159,7 +160,7 @@ function generate_metasequoia() {
     )
     for p in "${plugins[@]}"
     do
-        generate_grpc_for_go $p $WORKSPACE/metasequoia/$p/v2
+        generate_grpc_for_go $p $target/$p/v2
     done
 
     local -a ops_plugins=(
@@ -171,7 +172,7 @@ function generate_metasequoia() {
 
     for p in "${ops_plugins[@]}"
     do
-        generate_grpc_for_go ops-$p $WORKSPACE/metasequoia/ops/$p/v2
+        generate_grpc_for_go ops-$p $target/ops/$p/v2
     done
 }
 
@@ -201,7 +202,7 @@ generate_musa
 generate_morus
 generate_lily
 generate_gardenia
-generate_metasequoia
+generate_fig
 
 # ----------------------------------------------------------
 
