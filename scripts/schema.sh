@@ -189,6 +189,14 @@ declare -a languages=(
     # "objective_c"
 )
 
+
+function generate_aloe() {
+    echo "generate code for aloe"    
+    generate_grpc_for_go ops-router $WORKSPACE/aloe/ops/router/v2    
+}
+
+# ----------------------------------------------------------
+
 for l in "${languages[@]}"
 do
     generate_grpc_by_lang $l
@@ -203,6 +211,7 @@ generate_morus
 generate_lily
 generate_gardenia
 generate_fig
+generate_aloe
 
 # ----------------------------------------------------------
 
