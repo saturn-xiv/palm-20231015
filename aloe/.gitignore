@@ -1,3 +1,5 @@
 /*.toml
 /.stop
+/go.sum
+
 /palm
