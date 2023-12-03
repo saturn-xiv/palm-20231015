@@ -103,7 +103,15 @@ RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $HOME/.zshrc
 RUN echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> $HOME/.zshrc
 RUN zsh -c "source $HOME/.zshrc \
     && nvm install --lts"
-    
+
+# https://go.dev/doc/install
+ENV GO_VERSION "1.21.4"
+RUN wget -q -P $HOME/downloads https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
+RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
+RUN echo 'export PATH=$HOME/local/go/bin:$PATH' >> $HOME/.zshrc \
+    && echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc \
+    && echo 'export PATH="$(go env GOPATH)/bin:$PATH"' >> $HOME/.zshrc
+        
 ENV JDK_VERSION "21.0.1-open"
 # https://docs.gradle.org/current/userguide/compatibility.html
 ENV GRADLE_VERSION "8.4"
