@@ -12,11 +12,13 @@ function build_go() {
 
     local pkg="github.com/saturn_xiv/$1/cmd"
     local ldflags="-s -w -X '$pkg.repo_url=$(git remote get-url origin)' -X '$pkg.author_name=$(git config --get user.name)' -X '$pkg.author_email=$(git config --get user.email)' -X '$pkg.build_time=$(date -R)' -X '$pkg.git_version=$(git describe --tags --always --dirty --first-parent)'"
-    
+
+    echo "build $1@x86_64"    
     go build -ldflags "$ldflags"
     mkdir -p $TARGET/bin/x86_64
     mv $1 $TARGET/bin/x86_64/$1
 
+    echo "build $1@aarch64"
     GOOS=linux GOARCH=arm64 go build -ldflags "$ldflags"
     mkdir -p $TARGET/bin/aarch64
     mv $1 $TARGET/bin/aarch64/$1
@@ -54,6 +56,7 @@ function build_gardenia() {
 }
 
 function build_lily() {
+    echo "build lily"
     cd $WORKSPACE/lily
     mkdir -p $TARGET/lily
     cp -r README.md __main__.py palm $TARGET/lily/
@@ -66,7 +69,7 @@ copy_node() {
 
     if [ ! -f $HOME/downloads/$node_file ]
     then
-        wget -q -P $HOME/downloads https://nodejs.org/dist/${node_version}/$node_file
+        wget -P $HOME/downloads https://nodejs.org/dist/${node_version}/$node_file
     fi
     tar xf $HOME/downloads/$node_file
     mv node-${node_version}-linux-$1 node-$1    
@@ -75,12 +78,12 @@ copy_node() {
 copy_jdk() {
     cd $TARGET
     local jdk_version="21.0.1"
-    local jdk_hask="415e3f918a1f4062a0074a2794853d0d"
+    local jdk_hash="415e3f918a1f4062a0074a2794853d0d"
     local jdk_file="openjdk-${jdk_version}_linux-$1_bin.tar.gz"
 
     if [ ! -f $HOME/downloads/$jdk_file ]
     then
-        wget -q -P $HOME/downloads https://download.java.net/java/GA/jdk21.0.1/${jdk_hash}/12/GPL/$jdk_file
+        wget -P $HOME/downloads https://download.java.net/java/GA/jdk21.0.1/${jdk_hash}/12/GPL/$jdk_file
     fi
     tar xf $HOME/downloads/$jdk_file
     mv jdk-${jdk_version} jdk-$1
