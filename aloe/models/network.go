@@ -1,5 +1,7 @@
 package models
 
+// https://wiki.archlinux.org/title/Systemd-networkd
+
 import _ "embed"
 
 type Wan struct{}
