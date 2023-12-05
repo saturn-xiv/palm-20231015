@@ -25,10 +25,15 @@ function build_go() {
 }
 
 function build_morus() {
+    echo "build morus"
     cd $WORKSPACE/morus
     if [ ! -d node_modules ]
     then
         npm install
+    fi
+    if [ -d dist ]
+    then
+        rm -r dist
     fi
     npx webpack --mode=production    
     cp -r dist $TARGET/morus

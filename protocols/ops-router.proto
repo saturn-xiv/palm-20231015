@@ -8,6 +8,42 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 
+message Config {
+  message Dhcp {}
+  message StaticIp {
+    string address = 1;
+    string gateway = 2;
+    string dns = 3;
+  }
+  message Wan {
+    message Ethernet {
+      string name = 1;
+      string device = 2;
+      oneof ip {
+        Dhcp dhcp = 11;
+        StaticIp static_ip = 12;
+      }
+      uint32 metric = 99;
+    }
+    repeated Ethernet interfaces = 1;
+  }
+  message Dmz {
+    string name = 1;
+    string device = 2;
+    string address = 3;
+  }
+  message Lan {
+    string name = 1;
+    string device = 2;
+    string address = 3;
+  }
+  message Guest {
+    string name = 1;
+    string device = 2;
+    string address = 3;
+  }
+}
+
 message Contact {
   optional string phone = 1;
   optional string wechat = 2;
