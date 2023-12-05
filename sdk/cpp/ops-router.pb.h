@@ -67,30 +67,6 @@ namespace palm {
 namespace ops {
 namespace router {
 namespace v1 {
-class Config;
-struct ConfigDefaultTypeInternal;
-extern ConfigDefaultTypeInternal _Config_default_instance_;
-class Config_Dhcp;
-struct Config_DhcpDefaultTypeInternal;
-extern Config_DhcpDefaultTypeInternal _Config_Dhcp_default_instance_;
-class Config_Dmz;
-struct Config_DmzDefaultTypeInternal;
-extern Config_DmzDefaultTypeInternal _Config_Dmz_default_instance_;
-class Config_Guest;
-struct Config_GuestDefaultTypeInternal;
-extern Config_GuestDefaultTypeInternal _Config_Guest_default_instance_;
-class Config_Lan;
-struct Config_LanDefaultTypeInternal;
-extern Config_LanDefaultTypeInternal _Config_Lan_default_instance_;
-class Config_StaticIp;
-struct Config_StaticIpDefaultTypeInternal;
-extern Config_StaticIpDefaultTypeInternal _Config_StaticIp_default_instance_;
-class Config_Wan;
-struct Config_WanDefaultTypeInternal;
-extern Config_WanDefaultTypeInternal _Config_Wan_default_instance_;
-class Config_Wan_Ethernet;
-struct Config_Wan_EthernetDefaultTypeInternal;
-extern Config_Wan_EthernetDefaultTypeInternal _Config_Wan_Ethernet_default_instance_;
 class Contact;
 struct ContactDefaultTypeInternal;
 extern ContactDefaultTypeInternal _Contact_default_instance_;
@@ -112,6 +88,48 @@ extern Host_OwnerDefaultTypeInternal _Host_Owner_default_instance_;
 class Lan;
 struct LanDefaultTypeInternal;
 extern LanDefaultTypeInternal _Lan_default_instance_;
+class Profile;
+struct ProfileDefaultTypeInternal;
+extern ProfileDefaultTypeInternal _Profile_default_instance_;
+class Profile_Dnsmasq;
+struct Profile_DnsmasqDefaultTypeInternal;
+extern Profile_DnsmasqDefaultTypeInternal _Profile_Dnsmasq_default_instance_;
+class Profile_Dnsmasq_Item;
+struct Profile_Dnsmasq_ItemDefaultTypeInternal;
+extern Profile_Dnsmasq_ItemDefaultTypeInternal _Profile_Dnsmasq_Item_default_instance_;
+class Profile_Dnsmasq_Item_DhcpRange;
+struct Profile_Dnsmasq_Item_DhcpRangeDefaultTypeInternal;
+extern Profile_Dnsmasq_Item_DhcpRangeDefaultTypeInternal _Profile_Dnsmasq_Item_DhcpRange_default_instance_;
+class Profile_Dnsmasq_Item_StaticIp;
+struct Profile_Dnsmasq_Item_StaticIpDefaultTypeInternal;
+extern Profile_Dnsmasq_Item_StaticIpDefaultTypeInternal _Profile_Dnsmasq_Item_StaticIp_default_instance_;
+class Profile_Network;
+struct Profile_NetworkDefaultTypeInternal;
+extern Profile_NetworkDefaultTypeInternal _Profile_Network_default_instance_;
+class Profile_Network_Dmz;
+struct Profile_Network_DmzDefaultTypeInternal;
+extern Profile_Network_DmzDefaultTypeInternal _Profile_Network_Dmz_default_instance_;
+class Profile_Network_Guest;
+struct Profile_Network_GuestDefaultTypeInternal;
+extern Profile_Network_GuestDefaultTypeInternal _Profile_Network_Guest_default_instance_;
+class Profile_Network_Lan;
+struct Profile_Network_LanDefaultTypeInternal;
+extern Profile_Network_LanDefaultTypeInternal _Profile_Network_Lan_default_instance_;
+class Profile_Network_Lan_Client;
+struct Profile_Network_Lan_ClientDefaultTypeInternal;
+extern Profile_Network_Lan_ClientDefaultTypeInternal _Profile_Network_Lan_Client_default_instance_;
+class Profile_Network_Wan;
+struct Profile_Network_WanDefaultTypeInternal;
+extern Profile_Network_WanDefaultTypeInternal _Profile_Network_Wan_default_instance_;
+class Profile_Network_Wan_Dhcp;
+struct Profile_Network_Wan_DhcpDefaultTypeInternal;
+extern Profile_Network_Wan_DhcpDefaultTypeInternal _Profile_Network_Wan_Dhcp_default_instance_;
+class Profile_Network_Wan_Ethernet;
+struct Profile_Network_Wan_EthernetDefaultTypeInternal;
+extern Profile_Network_Wan_EthernetDefaultTypeInternal _Profile_Network_Wan_Ethernet_default_instance_;
+class Profile_Network_Wan_StaticIp;
+struct Profile_Network_Wan_StaticIpDefaultTypeInternal;
+extern Profile_Network_Wan_StaticIpDefaultTypeInternal _Profile_Network_Wan_StaticIp_default_instance_;
 class RouterCreateUserRequest;
 struct RouterCreateUserRequestDefaultTypeInternal;
 extern RouterCreateUserRequestDefaultTypeInternal _RouterCreateUserRequest_default_instance_;
@@ -314,7 +332,7 @@ class WanPool_Item final :
                &_WanPool_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    18;
 
   friend void swap(WanPool_Item& a, WanPool_Item& b) {
     a.Swap(&b);
@@ -507,7 +525,7 @@ class UserSignInResponse final :
                &_UserSignInResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    42;
+    48;
 
   friend void swap(UserSignInResponse& a, UserSignInResponse& b) {
     a.Swap(&b);
@@ -688,7 +706,7 @@ class UserProfile final :
                &_UserProfile_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    40;
+    46;
 
   friend void swap(UserProfile& a, UserProfile& b) {
     a.Swap(&b);
@@ -887,7 +905,7 @@ class UserLogsResponse final :
                &_UserLogsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    44;
+    50;
 
   friend void swap(UserLogsResponse& a, UserLogsResponse& b) {
     a.Swap(&b);
@@ -1080,7 +1098,7 @@ class Static final :
                &_Static_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    38;
+    44;
 
   friend void swap(Static& a, Static& b) {
     a.Swap(&b);
@@ -1317,7 +1335,7 @@ class Rule_OutBound_Speed final :
                &_Rule_OutBound_Speed_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    30;
 
   friend void swap(Rule_OutBound_Speed& a, Rule_OutBound_Speed& b) {
     a.Swap(&b);
@@ -1507,7 +1525,7 @@ class Rule_OutBound_Host final :
                &_Rule_OutBound_Host_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    29;
 
   friend void swap(Rule_OutBound_Host& a, Rule_OutBound_Host& b) {
     a.Swap(&b);
@@ -1712,7 +1730,7 @@ class Rule_Nat_Source final :
                &_Rule_Nat_Source_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    33;
 
   friend void swap(Rule_Nat_Source& a, Rule_Nat_Source& b) {
     a.Swap(&b);
@@ -1905,7 +1923,7 @@ class Rule_Nat_Destination final :
                &_Rule_Nat_Destination_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    34;
 
   friend void swap(Rule_Nat_Destination& a, Rule_Nat_Destination& b) {
     a.Swap(&b);
@@ -2098,7 +2116,7 @@ class Rule_InBound final :
                &_Rule_InBound_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    28;
 
   friend void swap(Rule_InBound& a, Rule_InBound& b) {
     a.Swap(&b);
@@ -2323,7 +2341,7 @@ class RouterUpdateHostRequest final :
                &_RouterUpdateHostRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    23;
 
   friend void swap(RouterUpdateHostRequest& a, RouterUpdateHostRequest& b) {
     a.Swap(&b);
@@ -2596,7 +2614,7 @@ class RouterStatusResponse_Ip final :
                &_RouterStatusResponse_Ip_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    38;
 
   friend void swap(RouterStatusResponse_Ip& a, RouterStatusResponse_Ip& b) {
     a.Swap(&b);
@@ -2784,6 +2802,1450 @@ class RouterStatusResponse_InterfacesEntry_DoNotUse final
 };
 // -------------------------------------------------------------------
 
+class Profile_Network_Wan_StaticIp final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Network.Wan.StaticIp) */ {
+ public:
+  inline Profile_Network_Wan_StaticIp() : Profile_Network_Wan_StaticIp(nullptr) {}
+  ~Profile_Network_Wan_StaticIp() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Network_Wan_StaticIp(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Network_Wan_StaticIp(const Profile_Network_Wan_StaticIp& from)
+      : Profile_Network_Wan_StaticIp(nullptr, from) {}
+  Profile_Network_Wan_StaticIp(Profile_Network_Wan_StaticIp&& from) noexcept
+    : Profile_Network_Wan_StaticIp() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Network_Wan_StaticIp& operator=(const Profile_Network_Wan_StaticIp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Network_Wan_StaticIp& operator=(Profile_Network_Wan_StaticIp&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Network_Wan_StaticIp& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile_Network_Wan_StaticIp* internal_default_instance() {
+    return reinterpret_cast<const Profile_Network_Wan_StaticIp*>(
+               &_Profile_Network_Wan_StaticIp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(Profile_Network_Wan_StaticIp& a, Profile_Network_Wan_StaticIp& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Network_Wan_StaticIp* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Network_Wan_StaticIp* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Network_Wan_StaticIp* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Network_Wan_StaticIp>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile_Network_Wan_StaticIp& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile_Network_Wan_StaticIp& from) {
+    Profile_Network_Wan_StaticIp::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile_Network_Wan_StaticIp* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Network.Wan.StaticIp";
+  }
+  protected:
+  explicit Profile_Network_Wan_StaticIp(::google::protobuf::Arena* arena);
+  Profile_Network_Wan_StaticIp(::google::protobuf::Arena* arena, const Profile_Network_Wan_StaticIp& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAddressFieldNumber = 1,
+    kGatewayFieldNumber = 2,
+    kDnsFieldNumber = 3,
+  };
+  // string address = 1;
+  void clear_address() ;
+  const std::string& address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_address(Arg_&& arg, Args_... args);
+  std::string* mutable_address();
+  PROTOBUF_NODISCARD std::string* release_address();
+  void set_allocated_address(std::string* value);
+
+  private:
+  const std::string& _internal_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(
+      const std::string& value);
+  std::string* _internal_mutable_address();
+
+  public:
+  // string gateway = 2;
+  void clear_gateway() ;
+  const std::string& gateway() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_gateway(Arg_&& arg, Args_... args);
+  std::string* mutable_gateway();
+  PROTOBUF_NODISCARD std::string* release_gateway();
+  void set_allocated_gateway(std::string* value);
+
+  private:
+  const std::string& _internal_gateway() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_gateway(
+      const std::string& value);
+  std::string* _internal_mutable_gateway();
+
+  public:
+  // string dns = 3;
+  void clear_dns() ;
+  const std::string& dns() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_dns(Arg_&& arg, Args_... args);
+  std::string* mutable_dns();
+  PROTOBUF_NODISCARD std::string* release_dns();
+  void set_allocated_dns(std::string* value);
+
+  private:
+  const std::string& _internal_dns() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dns(
+      const std::string& value);
+  std::string* _internal_mutable_dns();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Network.Wan.StaticIp)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 3, 0,
+      73, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::ArenaStringPtr address_;
+    ::google::protobuf::internal::ArenaStringPtr gateway_;
+    ::google::protobuf::internal::ArenaStringPtr dns_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
+class Profile_Network_Wan_Dhcp final :
+    public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Network.Wan.Dhcp) */ {
+ public:
+  inline Profile_Network_Wan_Dhcp() : Profile_Network_Wan_Dhcp(nullptr) {}
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Network_Wan_Dhcp(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Network_Wan_Dhcp(const Profile_Network_Wan_Dhcp& from)
+      : Profile_Network_Wan_Dhcp(nullptr, from) {}
+  Profile_Network_Wan_Dhcp(Profile_Network_Wan_Dhcp&& from) noexcept
+    : Profile_Network_Wan_Dhcp() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Network_Wan_Dhcp& operator=(const Profile_Network_Wan_Dhcp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Network_Wan_Dhcp& operator=(Profile_Network_Wan_Dhcp&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Network_Wan_Dhcp& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile_Network_Wan_Dhcp* internal_default_instance() {
+    return reinterpret_cast<const Profile_Network_Wan_Dhcp*>(
+               &_Profile_Network_Wan_Dhcp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(Profile_Network_Wan_Dhcp& a, Profile_Network_Wan_Dhcp& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Network_Wan_Dhcp* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Network_Wan_Dhcp* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Network_Wan_Dhcp* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Network_Wan_Dhcp>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const Profile_Network_Wan_Dhcp& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const Profile_Network_Wan_Dhcp& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Network.Wan.Dhcp";
+  }
+  protected:
+  explicit Profile_Network_Wan_Dhcp(::google::protobuf::Arena* arena);
+  Profile_Network_Wan_Dhcp(::google::protobuf::Arena* arena, const Profile_Network_Wan_Dhcp& from);
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Network.Wan.Dhcp)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
+class Profile_Network_Lan_Client final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Network.Lan.Client) */ {
+ public:
+  inline Profile_Network_Lan_Client() : Profile_Network_Lan_Client(nullptr) {}
+  ~Profile_Network_Lan_Client() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Network_Lan_Client(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Network_Lan_Client(const Profile_Network_Lan_Client& from)
+      : Profile_Network_Lan_Client(nullptr, from) {}
+  Profile_Network_Lan_Client(Profile_Network_Lan_Client&& from) noexcept
+    : Profile_Network_Lan_Client() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Network_Lan_Client& operator=(const Profile_Network_Lan_Client& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Network_Lan_Client& operator=(Profile_Network_Lan_Client&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Network_Lan_Client& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile_Network_Lan_Client* internal_default_instance() {
+    return reinterpret_cast<const Profile_Network_Lan_Client*>(
+               &_Profile_Network_Lan_Client_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(Profile_Network_Lan_Client& a, Profile_Network_Lan_Client& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Network_Lan_Client* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Network_Lan_Client* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Network_Lan_Client* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Network_Lan_Client>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile_Network_Lan_Client& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile_Network_Lan_Client& from) {
+    Profile_Network_Lan_Client::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile_Network_Lan_Client* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Network.Lan.Client";
+  }
+  protected:
+  explicit Profile_Network_Lan_Client(::google::protobuf::Arena* arena);
+  Profile_Network_Lan_Client(::google::protobuf::Arena* arena, const Profile_Network_Lan_Client& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kUserFieldNumber = 1,
+    kPasswordFieldNumber = 2,
+  };
+  // string user = 1;
+  void clear_user() ;
+  const std::string& user() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_user(Arg_&& arg, Args_... args);
+  std::string* mutable_user();
+  PROTOBUF_NODISCARD std::string* release_user();
+  void set_allocated_user(std::string* value);
+
+  private:
+  const std::string& _internal_user() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user(
+      const std::string& value);
+  std::string* _internal_mutable_user();
+
+  public:
+  // string password = 2;
+  void clear_password() ;
+  const std::string& password() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_password(Arg_&& arg, Args_... args);
+  std::string* mutable_password();
+  PROTOBUF_NODISCARD std::string* release_password();
+  void set_allocated_password(std::string* value);
+
+  private:
+  const std::string& _internal_password() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_password(
+      const std::string& value);
+  std::string* _internal_mutable_password();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Network.Lan.Client)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      66, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::ArenaStringPtr user_;
+    ::google::protobuf::internal::ArenaStringPtr password_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
+class Profile_Network_Guest final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Network.Guest) */ {
+ public:
+  inline Profile_Network_Guest() : Profile_Network_Guest(nullptr) {}
+  ~Profile_Network_Guest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Network_Guest(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Network_Guest(const Profile_Network_Guest& from)
+      : Profile_Network_Guest(nullptr, from) {}
+  Profile_Network_Guest(Profile_Network_Guest&& from) noexcept
+    : Profile_Network_Guest() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Network_Guest& operator=(const Profile_Network_Guest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Network_Guest& operator=(Profile_Network_Guest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Network_Guest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile_Network_Guest* internal_default_instance() {
+    return reinterpret_cast<const Profile_Network_Guest*>(
+               &_Profile_Network_Guest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(Profile_Network_Guest& a, Profile_Network_Guest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Network_Guest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Network_Guest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Network_Guest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Network_Guest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile_Network_Guest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile_Network_Guest& from) {
+    Profile_Network_Guest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile_Network_Guest* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Network.Guest";
+  }
+  protected:
+  explicit Profile_Network_Guest(::google::protobuf::Arena* arena);
+  Profile_Network_Guest(::google::protobuf::Arena* arena, const Profile_Network_Guest& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kBlockHostsFieldNumber = 9,
+    kNameFieldNumber = 1,
+    kDeviceFieldNumber = 2,
+    kAddressFieldNumber = 3,
+  };
+  // repeated string block_hosts = 9;
+  int block_hosts_size() const;
+  private:
+  int _internal_block_hosts_size() const;
+
+  public:
+  void clear_block_hosts() ;
+  const std::string& block_hosts(int index) const;
+  std::string* mutable_block_hosts(int index);
+  void set_block_hosts(int index, const std::string& value);
+  void set_block_hosts(int index, std::string&& value);
+  void set_block_hosts(int index, const char* value);
+  void set_block_hosts(int index, const char* value, std::size_t size);
+  void set_block_hosts(int index, absl::string_view value);
+  std::string* add_block_hosts();
+  void add_block_hosts(const std::string& value);
+  void add_block_hosts(std::string&& value);
+  void add_block_hosts(const char* value);
+  void add_block_hosts(const char* value, std::size_t size);
+  void add_block_hosts(absl::string_view value);
+  const ::google::protobuf::RepeatedPtrField<std::string>& block_hosts() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_block_hosts();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_block_hosts() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_block_hosts();
+
+  public:
+  // string name = 1;
+  void clear_name() ;
+  const std::string& name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* value);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
+
+  public:
+  // string device = 2;
+  void clear_device() ;
+  const std::string& device() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device(Arg_&& arg, Args_... args);
+  std::string* mutable_device();
+  PROTOBUF_NODISCARD std::string* release_device();
+  void set_allocated_device(std::string* value);
+
+  private:
+  const std::string& _internal_device() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device(
+      const std::string& value);
+  std::string* _internal_mutable_device();
+
+  public:
+  // string address = 3;
+  void clear_address() ;
+  const std::string& address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_address(Arg_&& arg, Args_... args);
+  std::string* mutable_address();
+  PROTOBUF_NODISCARD std::string* release_address();
+  void set_allocated_address(std::string* value);
+
+  private:
+  const std::string& _internal_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(
+      const std::string& value);
+  std::string* _internal_mutable_address();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Network.Guest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 4, 0,
+      77, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::RepeatedPtrField<std::string> block_hosts_;
+    ::google::protobuf::internal::ArenaStringPtr name_;
+    ::google::protobuf::internal::ArenaStringPtr device_;
+    ::google::protobuf::internal::ArenaStringPtr address_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
+class Profile_Network_Dmz final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Network.Dmz) */ {
+ public:
+  inline Profile_Network_Dmz() : Profile_Network_Dmz(nullptr) {}
+  ~Profile_Network_Dmz() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Network_Dmz(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Network_Dmz(const Profile_Network_Dmz& from)
+      : Profile_Network_Dmz(nullptr, from) {}
+  Profile_Network_Dmz(Profile_Network_Dmz&& from) noexcept
+    : Profile_Network_Dmz() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Network_Dmz& operator=(const Profile_Network_Dmz& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Network_Dmz& operator=(Profile_Network_Dmz&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Network_Dmz& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile_Network_Dmz* internal_default_instance() {
+    return reinterpret_cast<const Profile_Network_Dmz*>(
+               &_Profile_Network_Dmz_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(Profile_Network_Dmz& a, Profile_Network_Dmz& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Network_Dmz* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Network_Dmz* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Network_Dmz* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Network_Dmz>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile_Network_Dmz& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile_Network_Dmz& from) {
+    Profile_Network_Dmz::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile_Network_Dmz* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Network.Dmz";
+  }
+  protected:
+  explicit Profile_Network_Dmz(::google::protobuf::Arena* arena);
+  Profile_Network_Dmz(::google::protobuf::Arena* arena, const Profile_Network_Dmz& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAllowHostsFieldNumber = 9,
+    kNameFieldNumber = 1,
+    kDeviceFieldNumber = 2,
+    kAddressFieldNumber = 3,
+  };
+  // repeated string allow_hosts = 9;
+  int allow_hosts_size() const;
+  private:
+  int _internal_allow_hosts_size() const;
+
+  public:
+  void clear_allow_hosts() ;
+  const std::string& allow_hosts(int index) const;
+  std::string* mutable_allow_hosts(int index);
+  void set_allow_hosts(int index, const std::string& value);
+  void set_allow_hosts(int index, std::string&& value);
+  void set_allow_hosts(int index, const char* value);
+  void set_allow_hosts(int index, const char* value, std::size_t size);
+  void set_allow_hosts(int index, absl::string_view value);
+  std::string* add_allow_hosts();
+  void add_allow_hosts(const std::string& value);
+  void add_allow_hosts(std::string&& value);
+  void add_allow_hosts(const char* value);
+  void add_allow_hosts(const char* value, std::size_t size);
+  void add_allow_hosts(absl::string_view value);
+  const ::google::protobuf::RepeatedPtrField<std::string>& allow_hosts() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_allow_hosts();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_allow_hosts() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_allow_hosts();
+
+  public:
+  // string name = 1;
+  void clear_name() ;
+  const std::string& name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* value);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
+
+  public:
+  // string device = 2;
+  void clear_device() ;
+  const std::string& device() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device(Arg_&& arg, Args_... args);
+  std::string* mutable_device();
+  PROTOBUF_NODISCARD std::string* release_device();
+  void set_allocated_device(std::string* value);
+
+  private:
+  const std::string& _internal_device() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device(
+      const std::string& value);
+  std::string* _internal_mutable_device();
+
+  public:
+  // string address = 3;
+  void clear_address() ;
+  const std::string& address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_address(Arg_&& arg, Args_... args);
+  std::string* mutable_address();
+  PROTOBUF_NODISCARD std::string* release_address();
+  void set_allocated_address(std::string* value);
+
+  private:
+  const std::string& _internal_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(
+      const std::string& value);
+  std::string* _internal_mutable_address();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Network.Dmz)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 4, 0,
+      75, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::RepeatedPtrField<std::string> allow_hosts_;
+    ::google::protobuf::internal::ArenaStringPtr name_;
+    ::google::protobuf::internal::ArenaStringPtr device_;
+    ::google::protobuf::internal::ArenaStringPtr address_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
+class Profile_Dnsmasq_Item_StaticIp final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp) */ {
+ public:
+  inline Profile_Dnsmasq_Item_StaticIp() : Profile_Dnsmasq_Item_StaticIp(nullptr) {}
+  ~Profile_Dnsmasq_Item_StaticIp() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Dnsmasq_Item_StaticIp(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Dnsmasq_Item_StaticIp(const Profile_Dnsmasq_Item_StaticIp& from)
+      : Profile_Dnsmasq_Item_StaticIp(nullptr, from) {}
+  Profile_Dnsmasq_Item_StaticIp(Profile_Dnsmasq_Item_StaticIp&& from) noexcept
+    : Profile_Dnsmasq_Item_StaticIp() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Dnsmasq_Item_StaticIp& operator=(const Profile_Dnsmasq_Item_StaticIp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Dnsmasq_Item_StaticIp& operator=(Profile_Dnsmasq_Item_StaticIp&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Dnsmasq_Item_StaticIp& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile_Dnsmasq_Item_StaticIp* internal_default_instance() {
+    return reinterpret_cast<const Profile_Dnsmasq_Item_StaticIp*>(
+               &_Profile_Dnsmasq_Item_StaticIp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(Profile_Dnsmasq_Item_StaticIp& a, Profile_Dnsmasq_Item_StaticIp& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Dnsmasq_Item_StaticIp* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Dnsmasq_Item_StaticIp* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Dnsmasq_Item_StaticIp* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Dnsmasq_Item_StaticIp>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile_Dnsmasq_Item_StaticIp& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile_Dnsmasq_Item_StaticIp& from) {
+    Profile_Dnsmasq_Item_StaticIp::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile_Dnsmasq_Item_StaticIp* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp";
+  }
+  protected:
+  explicit Profile_Dnsmasq_Item_StaticIp(::google::protobuf::Arena* arena);
+  Profile_Dnsmasq_Item_StaticIp(::google::protobuf::Arena* arena, const Profile_Dnsmasq_Item_StaticIp& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMacFieldNumber = 1,
+    kIpFieldNumber = 2,
+  };
+  // string mac = 1;
+  void clear_mac() ;
+  const std::string& mac() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_mac(Arg_&& arg, Args_... args);
+  std::string* mutable_mac();
+  PROTOBUF_NODISCARD std::string* release_mac();
+  void set_allocated_mac(std::string* value);
+
+  private:
+  const std::string& _internal_mac() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_mac(
+      const std::string& value);
+  std::string* _internal_mutable_mac();
+
+  public:
+  // string ip = 2;
+  void clear_ip() ;
+  const std::string& ip() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_ip(Arg_&& arg, Args_... args);
+  std::string* mutable_ip();
+  PROTOBUF_NODISCARD std::string* release_ip();
+  void set_allocated_ip(std::string* value);
+
+  private:
+  const std::string& _internal_ip() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_ip(
+      const std::string& value);
+  std::string* _internal_mutable_ip();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      62, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::ArenaStringPtr mac_;
+    ::google::protobuf::internal::ArenaStringPtr ip_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
+class Profile_Dnsmasq_Item_DhcpRange final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange) */ {
+ public:
+  inline Profile_Dnsmasq_Item_DhcpRange() : Profile_Dnsmasq_Item_DhcpRange(nullptr) {}
+  ~Profile_Dnsmasq_Item_DhcpRange() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Dnsmasq_Item_DhcpRange(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Dnsmasq_Item_DhcpRange(const Profile_Dnsmasq_Item_DhcpRange& from)
+      : Profile_Dnsmasq_Item_DhcpRange(nullptr, from) {}
+  Profile_Dnsmasq_Item_DhcpRange(Profile_Dnsmasq_Item_DhcpRange&& from) noexcept
+    : Profile_Dnsmasq_Item_DhcpRange() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Dnsmasq_Item_DhcpRange& operator=(const Profile_Dnsmasq_Item_DhcpRange& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Dnsmasq_Item_DhcpRange& operator=(Profile_Dnsmasq_Item_DhcpRange&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Dnsmasq_Item_DhcpRange& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile_Dnsmasq_Item_DhcpRange* internal_default_instance() {
+    return reinterpret_cast<const Profile_Dnsmasq_Item_DhcpRange*>(
+               &_Profile_Dnsmasq_Item_DhcpRange_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(Profile_Dnsmasq_Item_DhcpRange& a, Profile_Dnsmasq_Item_DhcpRange& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Dnsmasq_Item_DhcpRange* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Dnsmasq_Item_DhcpRange* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Dnsmasq_Item_DhcpRange* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Dnsmasq_Item_DhcpRange>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile_Dnsmasq_Item_DhcpRange& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile_Dnsmasq_Item_DhcpRange& from) {
+    Profile_Dnsmasq_Item_DhcpRange::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile_Dnsmasq_Item_DhcpRange* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange";
+  }
+  protected:
+  explicit Profile_Dnsmasq_Item_DhcpRange(::google::protobuf::Arena* arena);
+  Profile_Dnsmasq_Item_DhcpRange(::google::protobuf::Arena* arena, const Profile_Dnsmasq_Item_DhcpRange& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kBeginFieldNumber = 1,
+    kEndFieldNumber = 2,
+  };
+  // string begin = 1;
+  void clear_begin() ;
+  const std::string& begin() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_begin(Arg_&& arg, Args_... args);
+  std::string* mutable_begin();
+  PROTOBUF_NODISCARD std::string* release_begin();
+  void set_allocated_begin(std::string* value);
+
+  private:
+  const std::string& _internal_begin() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_begin(
+      const std::string& value);
+  std::string* _internal_mutable_begin();
+
+  public:
+  // string end = 2;
+  void clear_end() ;
+  const std::string& end() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_end(Arg_&& arg, Args_... args);
+  std::string* mutable_end();
+  PROTOBUF_NODISCARD std::string* release_end();
+  void set_allocated_end(std::string* value);
+
+  private:
+  const std::string& _internal_end() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_end(
+      const std::string& value);
+  std::string* _internal_mutable_end();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      66, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::ArenaStringPtr begin_;
+    ::google::protobuf::internal::ArenaStringPtr end_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
 class Lan final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Lan) */ {
  public:
@@ -2843,7 +4305,7 @@ class Lan final :
                &_Lan_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    40;
 
   friend void swap(Lan& a, Lan& b) {
     a.Swap(&b);
@@ -3072,7 +4534,7 @@ class Dns final :
                &_Dns_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    39;
+    45;
 
   friend void swap(Dns& a, Dns& b) {
     a.Swap(&b);
@@ -3265,7 +4727,7 @@ class Dmz final :
                &_Dmz_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    41;
 
   friend void swap(Dmz& a, Dmz& b) {
     a.Swap(&b);
@@ -3494,7 +4956,7 @@ class Dhcp final :
                &_Dhcp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    43;
 
   friend void swap(Dhcp& a, Dhcp& b) {
     a.Swap(&b);
@@ -3669,7 +5131,7 @@ class Contact final :
                &_Contact_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    14;
 
   friend void swap(Contact& a, Contact& b) {
     a.Swap(&b);
@@ -3850,1153 +5312,6 @@ class Contact final :
   friend struct ::TableStruct_ops_2drouter_2eproto;
 };// -------------------------------------------------------------------
 
-class Config_StaticIp final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Config.StaticIp) */ {
- public:
-  inline Config_StaticIp() : Config_StaticIp(nullptr) {}
-  ~Config_StaticIp() override;
-  template<typename = void>
-  explicit PROTOBUF_CONSTEXPR Config_StaticIp(::google::protobuf::internal::ConstantInitialized);
-
-  inline Config_StaticIp(const Config_StaticIp& from)
-      : Config_StaticIp(nullptr, from) {}
-  Config_StaticIp(Config_StaticIp&& from) noexcept
-    : Config_StaticIp() {
-    *this = ::std::move(from);
-  }
-
-  inline Config_StaticIp& operator=(const Config_StaticIp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Config_StaticIp& operator=(Config_StaticIp&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetArena() == from.GetArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Config_StaticIp& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Config_StaticIp* internal_default_instance() {
-    return reinterpret_cast<const Config_StaticIp*>(
-               &_Config_StaticIp_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    1;
-
-  friend void swap(Config_StaticIp& a, Config_StaticIp& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Config_StaticIp* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() != nullptr &&
-        GetArena() == other->GetArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() == other->GetArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Config_StaticIp* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Config_StaticIp* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Config_StaticIp>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const Config_StaticIp& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const Config_StaticIp& from) {
-    Config_StaticIp::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  ::size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
-  void SharedCtor(::google::protobuf::Arena* arena);
-  void SharedDtor();
-  void InternalSwap(Config_StaticIp* other);
-
-  private:
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() {
-    return "palm.ops.router.v1.Config.StaticIp";
-  }
-  protected:
-  explicit Config_StaticIp(::google::protobuf::Arena* arena);
-  Config_StaticIp(::google::protobuf::Arena* arena, const Config_StaticIp& from);
-  public:
-
-  static const ClassData _class_data_;
-  const ::google::protobuf::Message::ClassData*GetClassData() const final;
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kAddressFieldNumber = 1,
-    kGatewayFieldNumber = 2,
-    kDnsFieldNumber = 3,
-  };
-  // string address = 1;
-  void clear_address() ;
-  const std::string& address() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_address(Arg_&& arg, Args_... args);
-  std::string* mutable_address();
-  PROTOBUF_NODISCARD std::string* release_address();
-  void set_allocated_address(std::string* value);
-
-  private:
-  const std::string& _internal_address() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(
-      const std::string& value);
-  std::string* _internal_mutable_address();
-
-  public:
-  // string gateway = 2;
-  void clear_gateway() ;
-  const std::string& gateway() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_gateway(Arg_&& arg, Args_... args);
-  std::string* mutable_gateway();
-  PROTOBUF_NODISCARD std::string* release_gateway();
-  void set_allocated_gateway(std::string* value);
-
-  private:
-  const std::string& _internal_gateway() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_gateway(
-      const std::string& value);
-  std::string* _internal_mutable_gateway();
-
-  public:
-  // string dns = 3;
-  void clear_dns() ;
-  const std::string& dns() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_dns(Arg_&& arg, Args_... args);
-  std::string* mutable_dns();
-  PROTOBUF_NODISCARD std::string* release_dns();
-  void set_allocated_dns(std::string* value);
-
-  private:
-  const std::string& _internal_dns() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dns(
-      const std::string& value);
-  std::string* _internal_mutable_dns();
-
-  public:
-  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Config.StaticIp)
- private:
-  class _Internal;
-
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 0,
-      60, 2>
-      _table_;
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-
-        inline explicit constexpr Impl_(
-            ::google::protobuf::internal::ConstantInitialized) noexcept;
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena);
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::internal::ArenaStringPtr address_;
-    ::google::protobuf::internal::ArenaStringPtr gateway_;
-    ::google::protobuf::internal::ArenaStringPtr dns_;
-    mutable ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_ops_2drouter_2eproto;
-};// -------------------------------------------------------------------
-
-class Config_Lan final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Config.Lan) */ {
- public:
-  inline Config_Lan() : Config_Lan(nullptr) {}
-  ~Config_Lan() override;
-  template<typename = void>
-  explicit PROTOBUF_CONSTEXPR Config_Lan(::google::protobuf::internal::ConstantInitialized);
-
-  inline Config_Lan(const Config_Lan& from)
-      : Config_Lan(nullptr, from) {}
-  Config_Lan(Config_Lan&& from) noexcept
-    : Config_Lan() {
-    *this = ::std::move(from);
-  }
-
-  inline Config_Lan& operator=(const Config_Lan& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Config_Lan& operator=(Config_Lan&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetArena() == from.GetArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Config_Lan& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Config_Lan* internal_default_instance() {
-    return reinterpret_cast<const Config_Lan*>(
-               &_Config_Lan_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    5;
-
-  friend void swap(Config_Lan& a, Config_Lan& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Config_Lan* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() != nullptr &&
-        GetArena() == other->GetArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() == other->GetArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Config_Lan* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Config_Lan* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Config_Lan>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const Config_Lan& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const Config_Lan& from) {
-    Config_Lan::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  ::size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
-  void SharedCtor(::google::protobuf::Arena* arena);
-  void SharedDtor();
-  void InternalSwap(Config_Lan* other);
-
-  private:
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() {
-    return "palm.ops.router.v1.Config.Lan";
-  }
-  protected:
-  explicit Config_Lan(::google::protobuf::Arena* arena);
-  Config_Lan(::google::protobuf::Arena* arena, const Config_Lan& from);
-  public:
-
-  static const ClassData _class_data_;
-  const ::google::protobuf::Message::ClassData*GetClassData() const final;
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kNameFieldNumber = 1,
-    kDeviceFieldNumber = 2,
-    kAddressFieldNumber = 3,
-  };
-  // string name = 1;
-  void clear_name() ;
-  const std::string& name() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_name(Arg_&& arg, Args_... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* value);
-
-  private:
-  const std::string& _internal_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
-      const std::string& value);
-  std::string* _internal_mutable_name();
-
-  public:
-  // string device = 2;
-  void clear_device() ;
-  const std::string& device() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_device(Arg_&& arg, Args_... args);
-  std::string* mutable_device();
-  PROTOBUF_NODISCARD std::string* release_device();
-  void set_allocated_device(std::string* value);
-
-  private:
-  const std::string& _internal_device() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device(
-      const std::string& value);
-  std::string* _internal_mutable_device();
-
-  public:
-  // string address = 3;
-  void clear_address() ;
-  const std::string& address() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_address(Arg_&& arg, Args_... args);
-  std::string* mutable_address();
-  PROTOBUF_NODISCARD std::string* release_address();
-  void set_allocated_address(std::string* value);
-
-  private:
-  const std::string& _internal_address() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(
-      const std::string& value);
-  std::string* _internal_mutable_address();
-
-  public:
-  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Config.Lan)
- private:
-  class _Internal;
-
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 0,
-      55, 2>
-      _table_;
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-
-        inline explicit constexpr Impl_(
-            ::google::protobuf::internal::ConstantInitialized) noexcept;
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena);
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::internal::ArenaStringPtr name_;
-    ::google::protobuf::internal::ArenaStringPtr device_;
-    ::google::protobuf::internal::ArenaStringPtr address_;
-    mutable ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_ops_2drouter_2eproto;
-};// -------------------------------------------------------------------
-
-class Config_Guest final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Config.Guest) */ {
- public:
-  inline Config_Guest() : Config_Guest(nullptr) {}
-  ~Config_Guest() override;
-  template<typename = void>
-  explicit PROTOBUF_CONSTEXPR Config_Guest(::google::protobuf::internal::ConstantInitialized);
-
-  inline Config_Guest(const Config_Guest& from)
-      : Config_Guest(nullptr, from) {}
-  Config_Guest(Config_Guest&& from) noexcept
-    : Config_Guest() {
-    *this = ::std::move(from);
-  }
-
-  inline Config_Guest& operator=(const Config_Guest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Config_Guest& operator=(Config_Guest&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetArena() == from.GetArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Config_Guest& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Config_Guest* internal_default_instance() {
-    return reinterpret_cast<const Config_Guest*>(
-               &_Config_Guest_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    6;
-
-  friend void swap(Config_Guest& a, Config_Guest& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Config_Guest* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() != nullptr &&
-        GetArena() == other->GetArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() == other->GetArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Config_Guest* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Config_Guest* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Config_Guest>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const Config_Guest& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const Config_Guest& from) {
-    Config_Guest::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  ::size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
-  void SharedCtor(::google::protobuf::Arena* arena);
-  void SharedDtor();
-  void InternalSwap(Config_Guest* other);
-
-  private:
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() {
-    return "palm.ops.router.v1.Config.Guest";
-  }
-  protected:
-  explicit Config_Guest(::google::protobuf::Arena* arena);
-  Config_Guest(::google::protobuf::Arena* arena, const Config_Guest& from);
-  public:
-
-  static const ClassData _class_data_;
-  const ::google::protobuf::Message::ClassData*GetClassData() const final;
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kNameFieldNumber = 1,
-    kDeviceFieldNumber = 2,
-    kAddressFieldNumber = 3,
-  };
-  // string name = 1;
-  void clear_name() ;
-  const std::string& name() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_name(Arg_&& arg, Args_... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* value);
-
-  private:
-  const std::string& _internal_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
-      const std::string& value);
-  std::string* _internal_mutable_name();
-
-  public:
-  // string device = 2;
-  void clear_device() ;
-  const std::string& device() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_device(Arg_&& arg, Args_... args);
-  std::string* mutable_device();
-  PROTOBUF_NODISCARD std::string* release_device();
-  void set_allocated_device(std::string* value);
-
-  private:
-  const std::string& _internal_device() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device(
-      const std::string& value);
-  std::string* _internal_mutable_device();
-
-  public:
-  // string address = 3;
-  void clear_address() ;
-  const std::string& address() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_address(Arg_&& arg, Args_... args);
-  std::string* mutable_address();
-  PROTOBUF_NODISCARD std::string* release_address();
-  void set_allocated_address(std::string* value);
-
-  private:
-  const std::string& _internal_address() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(
-      const std::string& value);
-  std::string* _internal_mutable_address();
-
-  public:
-  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Config.Guest)
- private:
-  class _Internal;
-
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 0,
-      57, 2>
-      _table_;
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-
-        inline explicit constexpr Impl_(
-            ::google::protobuf::internal::ConstantInitialized) noexcept;
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena);
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::internal::ArenaStringPtr name_;
-    ::google::protobuf::internal::ArenaStringPtr device_;
-    ::google::protobuf::internal::ArenaStringPtr address_;
-    mutable ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_ops_2drouter_2eproto;
-};// -------------------------------------------------------------------
-
-class Config_Dmz final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Config.Dmz) */ {
- public:
-  inline Config_Dmz() : Config_Dmz(nullptr) {}
-  ~Config_Dmz() override;
-  template<typename = void>
-  explicit PROTOBUF_CONSTEXPR Config_Dmz(::google::protobuf::internal::ConstantInitialized);
-
-  inline Config_Dmz(const Config_Dmz& from)
-      : Config_Dmz(nullptr, from) {}
-  Config_Dmz(Config_Dmz&& from) noexcept
-    : Config_Dmz() {
-    *this = ::std::move(from);
-  }
-
-  inline Config_Dmz& operator=(const Config_Dmz& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Config_Dmz& operator=(Config_Dmz&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetArena() == from.GetArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Config_Dmz& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Config_Dmz* internal_default_instance() {
-    return reinterpret_cast<const Config_Dmz*>(
-               &_Config_Dmz_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    4;
-
-  friend void swap(Config_Dmz& a, Config_Dmz& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Config_Dmz* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() != nullptr &&
-        GetArena() == other->GetArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() == other->GetArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Config_Dmz* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Config_Dmz* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Config_Dmz>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const Config_Dmz& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const Config_Dmz& from) {
-    Config_Dmz::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  ::size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
-  void SharedCtor(::google::protobuf::Arena* arena);
-  void SharedDtor();
-  void InternalSwap(Config_Dmz* other);
-
-  private:
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() {
-    return "palm.ops.router.v1.Config.Dmz";
-  }
-  protected:
-  explicit Config_Dmz(::google::protobuf::Arena* arena);
-  Config_Dmz(::google::protobuf::Arena* arena, const Config_Dmz& from);
-  public:
-
-  static const ClassData _class_data_;
-  const ::google::protobuf::Message::ClassData*GetClassData() const final;
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kNameFieldNumber = 1,
-    kDeviceFieldNumber = 2,
-    kAddressFieldNumber = 3,
-  };
-  // string name = 1;
-  void clear_name() ;
-  const std::string& name() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_name(Arg_&& arg, Args_... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* value);
-
-  private:
-  const std::string& _internal_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
-      const std::string& value);
-  std::string* _internal_mutable_name();
-
-  public:
-  // string device = 2;
-  void clear_device() ;
-  const std::string& device() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_device(Arg_&& arg, Args_... args);
-  std::string* mutable_device();
-  PROTOBUF_NODISCARD std::string* release_device();
-  void set_allocated_device(std::string* value);
-
-  private:
-  const std::string& _internal_device() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device(
-      const std::string& value);
-  std::string* _internal_mutable_device();
-
-  public:
-  // string address = 3;
-  void clear_address() ;
-  const std::string& address() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_address(Arg_&& arg, Args_... args);
-  std::string* mutable_address();
-  PROTOBUF_NODISCARD std::string* release_address();
-  void set_allocated_address(std::string* value);
-
-  private:
-  const std::string& _internal_address() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(
-      const std::string& value);
-  std::string* _internal_mutable_address();
-
-  public:
-  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Config.Dmz)
- private:
-  class _Internal;
-
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 0,
-      55, 2>
-      _table_;
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-
-        inline explicit constexpr Impl_(
-            ::google::protobuf::internal::ConstantInitialized) noexcept;
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena);
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::internal::ArenaStringPtr name_;
-    ::google::protobuf::internal::ArenaStringPtr device_;
-    ::google::protobuf::internal::ArenaStringPtr address_;
-    mutable ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_ops_2drouter_2eproto;
-};// -------------------------------------------------------------------
-
-class Config_Dhcp final :
-    public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Config.Dhcp) */ {
- public:
-  inline Config_Dhcp() : Config_Dhcp(nullptr) {}
-  template<typename = void>
-  explicit PROTOBUF_CONSTEXPR Config_Dhcp(::google::protobuf::internal::ConstantInitialized);
-
-  inline Config_Dhcp(const Config_Dhcp& from)
-      : Config_Dhcp(nullptr, from) {}
-  Config_Dhcp(Config_Dhcp&& from) noexcept
-    : Config_Dhcp() {
-    *this = ::std::move(from);
-  }
-
-  inline Config_Dhcp& operator=(const Config_Dhcp& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Config_Dhcp& operator=(Config_Dhcp&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetArena() == from.GetArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Config_Dhcp& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Config_Dhcp* internal_default_instance() {
-    return reinterpret_cast<const Config_Dhcp*>(
-               &_Config_Dhcp_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    0;
-
-  friend void swap(Config_Dhcp& a, Config_Dhcp& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Config_Dhcp* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() != nullptr &&
-        GetArena() == other->GetArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() == other->GetArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Config_Dhcp* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Config_Dhcp* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Config_Dhcp>(arena);
-  }
-  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const Config_Dhcp& from) {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
-  }
-  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const Config_Dhcp& from) {
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
-  }
-  public:
-
-  private:
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() {
-    return "palm.ops.router.v1.Config.Dhcp";
-  }
-  protected:
-  explicit Config_Dhcp(::google::protobuf::Arena* arena);
-  Config_Dhcp(::google::protobuf::Arena* arena, const Config_Dhcp& from);
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Config.Dhcp)
- private:
-  class _Internal;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-
-        inline explicit constexpr Impl_(
-            ::google::protobuf::internal::ConstantInitialized) noexcept;
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena);
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena, const Impl_& from);
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  friend struct ::TableStruct_ops_2drouter_2eproto;
-};// -------------------------------------------------------------------
-
-class Config final :
-    public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Config) */ {
- public:
-  inline Config() : Config(nullptr) {}
-  template<typename = void>
-  explicit PROTOBUF_CONSTEXPR Config(::google::protobuf::internal::ConstantInitialized);
-
-  inline Config(const Config& from)
-      : Config(nullptr, from) {}
-  Config(Config&& from) noexcept
-    : Config() {
-    *this = ::std::move(from);
-  }
-
-  inline Config& operator=(const Config& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Config& operator=(Config&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetArena() == from.GetArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Config& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Config* internal_default_instance() {
-    return reinterpret_cast<const Config*>(
-               &_Config_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    7;
-
-  friend void swap(Config& a, Config& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Config* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() != nullptr &&
-        GetArena() == other->GetArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() == other->GetArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Config* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Config* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Config>(arena);
-  }
-  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const Config& from) {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
-  }
-  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const Config& from) {
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
-  }
-  public:
-
-  private:
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() {
-    return "palm.ops.router.v1.Config";
-  }
-  protected:
-  explicit Config(::google::protobuf::Arena* arena);
-  Config(::google::protobuf::Arena* arena, const Config& from);
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  using Dhcp = Config_Dhcp;
-  using StaticIp = Config_StaticIp;
-  using Wan = Config_Wan;
-  using Dmz = Config_Dmz;
-  using Lan = Config_Lan;
-  using Guest = Config_Guest;
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Config)
- private:
-  class _Internal;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-
-        inline explicit constexpr Impl_(
-            ::google::protobuf::internal::ConstantInitialized) noexcept;
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena);
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena, const Impl_& from);
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  friend struct ::TableStruct_ops_2drouter_2eproto;
-};// -------------------------------------------------------------------
-
 class WanPool final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.WanPool) */ {
  public:
@@ -5056,7 +5371,7 @@ class WanPool final :
                &_WanPool_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    19;
 
   friend void swap(WanPool& a, WanPool& b) {
     a.Swap(&b);
@@ -5247,7 +5562,7 @@ class Wan final :
                &_Wan_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    36;
+    42;
 
   friend void swap(Wan& a, Wan& b) {
     a.Swap(&b);
@@ -5543,7 +5858,7 @@ class UserUpdateRequest final :
                &_UserUpdateRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    43;
+    49;
 
   friend void swap(UserUpdateRequest& a, UserUpdateRequest& b) {
     a.Swap(&b);
@@ -5741,7 +6056,7 @@ class UserSignInRequest final :
                &_UserSignInRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    41;
+    47;
 
   friend void swap(UserSignInRequest& a, UserSignInRequest& b) {
     a.Swap(&b);
@@ -5939,7 +6254,7 @@ class Rule_OutBound_Time final :
                &_Rule_OutBound_Time_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    31;
 
   friend void swap(Rule_OutBound_Time& a, Rule_OutBound_Time& b) {
     a.Swap(&b);
@@ -6221,7 +6536,7 @@ class Rule_Nat final :
                &_Rule_Nat_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    35;
 
   friend void swap(Rule_Nat& a, Rule_Nat& b) {
     a.Swap(&b);
@@ -6434,7 +6749,7 @@ class RouterSetLanRequest final :
                &_RouterSetLanRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    15;
 
   friend void swap(RouterSetLanRequest& a, RouterSetLanRequest& b) {
     a.Swap(&b);
@@ -6627,7 +6942,7 @@ class RouterSetDmzRequest final :
                &_RouterSetDmzRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    16;
 
   friend void swap(RouterSetDmzRequest& a, RouterSetDmzRequest& b) {
     a.Swap(&b);
@@ -6820,7 +7135,7 @@ class RouterIndexUserResponse_Item final :
                &_RouterIndexUserResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    21;
 
   friend void swap(RouterIndexUserResponse_Item& a, RouterIndexUserResponse_Item& b) {
     a.Swap(&b);
@@ -7031,7 +7346,7 @@ class RouterCreateUserRequest final :
                &_RouterCreateUserRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    20;
 
   friend void swap(RouterCreateUserRequest& a, RouterCreateUserRequest& b) {
     a.Swap(&b);
@@ -7171,6 +7486,787 @@ class RouterCreateUserRequest final :
   friend struct ::TableStruct_ops_2drouter_2eproto;
 };// -------------------------------------------------------------------
 
+class Profile_Network_Wan_Ethernet final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Network.Wan.Ethernet) */ {
+ public:
+  inline Profile_Network_Wan_Ethernet() : Profile_Network_Wan_Ethernet(nullptr) {}
+  ~Profile_Network_Wan_Ethernet() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Network_Wan_Ethernet(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Network_Wan_Ethernet(const Profile_Network_Wan_Ethernet& from)
+      : Profile_Network_Wan_Ethernet(nullptr, from) {}
+  Profile_Network_Wan_Ethernet(Profile_Network_Wan_Ethernet&& from) noexcept
+    : Profile_Network_Wan_Ethernet() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Network_Wan_Ethernet& operator=(const Profile_Network_Wan_Ethernet& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Network_Wan_Ethernet& operator=(Profile_Network_Wan_Ethernet&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Network_Wan_Ethernet& default_instance() {
+    return *internal_default_instance();
+  }
+  enum IpCase {
+    kDhcp = 11,
+    kStaticIp = 12,
+    IP_NOT_SET = 0,
+  };
+
+  static inline const Profile_Network_Wan_Ethernet* internal_default_instance() {
+    return reinterpret_cast<const Profile_Network_Wan_Ethernet*>(
+               &_Profile_Network_Wan_Ethernet_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(Profile_Network_Wan_Ethernet& a, Profile_Network_Wan_Ethernet& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Network_Wan_Ethernet* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Network_Wan_Ethernet* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Network_Wan_Ethernet* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Network_Wan_Ethernet>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile_Network_Wan_Ethernet& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile_Network_Wan_Ethernet& from) {
+    Profile_Network_Wan_Ethernet::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile_Network_Wan_Ethernet* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Network.Wan.Ethernet";
+  }
+  protected:
+  explicit Profile_Network_Wan_Ethernet(::google::protobuf::Arena* arena);
+  Profile_Network_Wan_Ethernet(::google::protobuf::Arena* arena, const Profile_Network_Wan_Ethernet& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNameFieldNumber = 1,
+    kDeviceFieldNumber = 2,
+    kMetricFieldNumber = 99,
+    kDhcpFieldNumber = 11,
+    kStaticIpFieldNumber = 12,
+  };
+  // string name = 1;
+  void clear_name() ;
+  const std::string& name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* value);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
+
+  public:
+  // string device = 2;
+  void clear_device() ;
+  const std::string& device() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device(Arg_&& arg, Args_... args);
+  std::string* mutable_device();
+  PROTOBUF_NODISCARD std::string* release_device();
+  void set_allocated_device(std::string* value);
+
+  private:
+  const std::string& _internal_device() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device(
+      const std::string& value);
+  std::string* _internal_mutable_device();
+
+  public:
+  // uint32 metric = 99;
+  void clear_metric() ;
+  ::uint32_t metric() const;
+  void set_metric(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_metric() const;
+  void _internal_set_metric(::uint32_t value);
+
+  public:
+  // .palm.ops.router.v1.Profile.Network.Wan.Dhcp dhcp = 11;
+  bool has_dhcp() const;
+  private:
+  bool _internal_has_dhcp() const;
+
+  public:
+  void clear_dhcp() ;
+  const ::palm::ops::router::v1::Profile_Network_Wan_Dhcp& dhcp() const;
+  PROTOBUF_NODISCARD ::palm::ops::router::v1::Profile_Network_Wan_Dhcp* release_dhcp();
+  ::palm::ops::router::v1::Profile_Network_Wan_Dhcp* mutable_dhcp();
+  void set_allocated_dhcp(::palm::ops::router::v1::Profile_Network_Wan_Dhcp* value);
+  void unsafe_arena_set_allocated_dhcp(::palm::ops::router::v1::Profile_Network_Wan_Dhcp* value);
+  ::palm::ops::router::v1::Profile_Network_Wan_Dhcp* unsafe_arena_release_dhcp();
+
+  private:
+  const ::palm::ops::router::v1::Profile_Network_Wan_Dhcp& _internal_dhcp() const;
+  ::palm::ops::router::v1::Profile_Network_Wan_Dhcp* _internal_mutable_dhcp();
+
+  public:
+  // .palm.ops.router.v1.Profile.Network.Wan.StaticIp static_ip = 12;
+  bool has_static_ip() const;
+  private:
+  bool _internal_has_static_ip() const;
+
+  public:
+  void clear_static_ip() ;
+  const ::palm::ops::router::v1::Profile_Network_Wan_StaticIp& static_ip() const;
+  PROTOBUF_NODISCARD ::palm::ops::router::v1::Profile_Network_Wan_StaticIp* release_static_ip();
+  ::palm::ops::router::v1::Profile_Network_Wan_StaticIp* mutable_static_ip();
+  void set_allocated_static_ip(::palm::ops::router::v1::Profile_Network_Wan_StaticIp* value);
+  void unsafe_arena_set_allocated_static_ip(::palm::ops::router::v1::Profile_Network_Wan_StaticIp* value);
+  ::palm::ops::router::v1::Profile_Network_Wan_StaticIp* unsafe_arena_release_static_ip();
+
+  private:
+  const ::palm::ops::router::v1::Profile_Network_Wan_StaticIp& _internal_static_ip() const;
+  ::palm::ops::router::v1::Profile_Network_Wan_StaticIp* _internal_mutable_static_ip();
+
+  public:
+  void clear_ip();
+  IpCase ip_case() const;
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Network.Wan.Ethernet)
+ private:
+  class _Internal;
+  void set_has_dhcp();
+  void set_has_static_ip();
+
+  inline bool has_ip() const;
+  inline void clear_has_ip();
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 5, 2,
+      66, 7>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::ArenaStringPtr name_;
+    ::google::protobuf::internal::ArenaStringPtr device_;
+    ::uint32_t metric_;
+    union IpUnion {
+      constexpr IpUnion() : _constinit_{} {}
+        ::google::protobuf::internal::ConstantInitialized _constinit_;
+      ::palm::ops::router::v1::Profile_Network_Wan_Dhcp* dhcp_;
+      ::palm::ops::router::v1::Profile_Network_Wan_StaticIp* static_ip_;
+    } ip_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::uint32_t _oneof_case_[1];
+
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
+class Profile_Network_Lan final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Network.Lan) */ {
+ public:
+  inline Profile_Network_Lan() : Profile_Network_Lan(nullptr) {}
+  ~Profile_Network_Lan() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Network_Lan(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Network_Lan(const Profile_Network_Lan& from)
+      : Profile_Network_Lan(nullptr, from) {}
+  Profile_Network_Lan(Profile_Network_Lan&& from) noexcept
+    : Profile_Network_Lan() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Network_Lan& operator=(const Profile_Network_Lan& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Network_Lan& operator=(Profile_Network_Lan&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Network_Lan& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile_Network_Lan* internal_default_instance() {
+    return reinterpret_cast<const Profile_Network_Lan*>(
+               &_Profile_Network_Lan_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(Profile_Network_Lan& a, Profile_Network_Lan& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Network_Lan* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Network_Lan* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Network_Lan* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Network_Lan>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile_Network_Lan& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile_Network_Lan& from) {
+    Profile_Network_Lan::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile_Network_Lan* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Network.Lan";
+  }
+  protected:
+  explicit Profile_Network_Lan(::google::protobuf::Arena* arena);
+  Profile_Network_Lan(::google::protobuf::Arena* arena, const Profile_Network_Lan& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  using Client = Profile_Network_Lan_Client;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kClientsFieldNumber = 9,
+    kNameFieldNumber = 1,
+    kDeviceFieldNumber = 2,
+    kAddressFieldNumber = 3,
+  };
+  // repeated .palm.ops.router.v1.Profile.Network.Lan.Client clients = 9;
+  int clients_size() const;
+  private:
+  int _internal_clients_size() const;
+
+  public:
+  void clear_clients() ;
+  ::palm::ops::router::v1::Profile_Network_Lan_Client* mutable_clients(int index);
+  ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Profile_Network_Lan_Client >*
+      mutable_clients();
+  private:
+  const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Network_Lan_Client>& _internal_clients() const;
+  ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Network_Lan_Client>* _internal_mutable_clients();
+  public:
+  const ::palm::ops::router::v1::Profile_Network_Lan_Client& clients(int index) const;
+  ::palm::ops::router::v1::Profile_Network_Lan_Client* add_clients();
+  const ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Profile_Network_Lan_Client >&
+      clients() const;
+  // string name = 1;
+  void clear_name() ;
+  const std::string& name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* value);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
+
+  public:
+  // string device = 2;
+  void clear_device() ;
+  const std::string& device() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device(Arg_&& arg, Args_... args);
+  std::string* mutable_device();
+  PROTOBUF_NODISCARD std::string* release_device();
+  void set_allocated_device(std::string* value);
+
+  private:
+  const std::string& _internal_device() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device(
+      const std::string& value);
+  std::string* _internal_mutable_device();
+
+  public:
+  // string address = 3;
+  void clear_address() ;
+  const std::string& address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_address(Arg_&& arg, Args_... args);
+  std::string* mutable_address();
+  PROTOBUF_NODISCARD std::string* release_address();
+  void set_allocated_address(std::string* value);
+
+  private:
+  const std::string& _internal_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(
+      const std::string& value);
+  std::string* _internal_mutable_address();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Network.Lan)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 4, 1,
+      64, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Profile_Network_Lan_Client > clients_;
+    ::google::protobuf::internal::ArenaStringPtr name_;
+    ::google::protobuf::internal::ArenaStringPtr device_;
+    ::google::protobuf::internal::ArenaStringPtr address_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
+class Profile_Dnsmasq_Item final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Dnsmasq.Item) */ {
+ public:
+  inline Profile_Dnsmasq_Item() : Profile_Dnsmasq_Item(nullptr) {}
+  ~Profile_Dnsmasq_Item() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Dnsmasq_Item(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Dnsmasq_Item(const Profile_Dnsmasq_Item& from)
+      : Profile_Dnsmasq_Item(nullptr, from) {}
+  Profile_Dnsmasq_Item(Profile_Dnsmasq_Item&& from) noexcept
+    : Profile_Dnsmasq_Item() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Dnsmasq_Item& operator=(const Profile_Dnsmasq_Item& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Dnsmasq_Item& operator=(Profile_Dnsmasq_Item&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Dnsmasq_Item& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile_Dnsmasq_Item* internal_default_instance() {
+    return reinterpret_cast<const Profile_Dnsmasq_Item*>(
+               &_Profile_Dnsmasq_Item_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(Profile_Dnsmasq_Item& a, Profile_Dnsmasq_Item& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Dnsmasq_Item* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Dnsmasq_Item* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Dnsmasq_Item* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Dnsmasq_Item>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile_Dnsmasq_Item& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile_Dnsmasq_Item& from) {
+    Profile_Dnsmasq_Item::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile_Dnsmasq_Item* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Dnsmasq.Item";
+  }
+  protected:
+  explicit Profile_Dnsmasq_Item(::google::protobuf::Arena* arena);
+  Profile_Dnsmasq_Item(::google::protobuf::Arena* arena, const Profile_Dnsmasq_Item& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  using DhcpRange = Profile_Dnsmasq_Item_DhcpRange;
+  using StaticIp = Profile_Dnsmasq_Item_StaticIp;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kStaticIpsFieldNumber = 4,
+    kDnsServersFieldNumber = 99,
+    kDeviceFieldNumber = 1,
+    kAddressFieldNumber = 2,
+    kDhcpRangeFieldNumber = 3,
+  };
+  // repeated .palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp static_ips = 4;
+  int static_ips_size() const;
+  private:
+  int _internal_static_ips_size() const;
+
+  public:
+  void clear_static_ips() ;
+  ::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp* mutable_static_ips(int index);
+  ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp >*
+      mutable_static_ips();
+  private:
+  const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp>& _internal_static_ips() const;
+  ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp>* _internal_mutable_static_ips();
+  public:
+  const ::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp& static_ips(int index) const;
+  ::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp* add_static_ips();
+  const ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp >&
+      static_ips() const;
+  // repeated string dns_servers = 99;
+  int dns_servers_size() const;
+  private:
+  int _internal_dns_servers_size() const;
+
+  public:
+  void clear_dns_servers() ;
+  const std::string& dns_servers(int index) const;
+  std::string* mutable_dns_servers(int index);
+  void set_dns_servers(int index, const std::string& value);
+  void set_dns_servers(int index, std::string&& value);
+  void set_dns_servers(int index, const char* value);
+  void set_dns_servers(int index, const char* value, std::size_t size);
+  void set_dns_servers(int index, absl::string_view value);
+  std::string* add_dns_servers();
+  void add_dns_servers(const std::string& value);
+  void add_dns_servers(std::string&& value);
+  void add_dns_servers(const char* value);
+  void add_dns_servers(const char* value, std::size_t size);
+  void add_dns_servers(absl::string_view value);
+  const ::google::protobuf::RepeatedPtrField<std::string>& dns_servers() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_dns_servers();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_dns_servers() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_dns_servers();
+
+  public:
+  // string device = 1;
+  void clear_device() ;
+  const std::string& device() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_device(Arg_&& arg, Args_... args);
+  std::string* mutable_device();
+  PROTOBUF_NODISCARD std::string* release_device();
+  void set_allocated_device(std::string* value);
+
+  private:
+  const std::string& _internal_device() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device(
+      const std::string& value);
+  std::string* _internal_mutable_device();
+
+  public:
+  // string address = 2;
+  void clear_address() ;
+  const std::string& address() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_address(Arg_&& arg, Args_... args);
+  std::string* mutable_address();
+  PROTOBUF_NODISCARD std::string* release_address();
+  void set_allocated_address(std::string* value);
+
+  private:
+  const std::string& _internal_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(
+      const std::string& value);
+  std::string* _internal_mutable_address();
+
+  public:
+  // .palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange dhcp_range = 3;
+  bool has_dhcp_range() const;
+  void clear_dhcp_range() ;
+  const ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange& dhcp_range() const;
+  PROTOBUF_NODISCARD ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* release_dhcp_range();
+  ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* mutable_dhcp_range();
+  void set_allocated_dhcp_range(::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* value);
+  void unsafe_arena_set_allocated_dhcp_range(::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* value);
+  ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* unsafe_arena_release_dhcp_range();
+
+  private:
+  const ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange& _internal_dhcp_range() const;
+  ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* _internal_mutable_dhcp_range();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Dnsmasq.Item)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 5, 2,
+      72, 7>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp > static_ips_;
+    ::google::protobuf::RepeatedPtrField<std::string> dns_servers_;
+    ::google::protobuf::internal::ArenaStringPtr device_;
+    ::google::protobuf::internal::ArenaStringPtr address_;
+    ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* dhcp_range_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
 class Host_Owner final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Host.Owner) */ {
  public:
@@ -7230,7 +8326,7 @@ class Host_Owner final :
                &_Host_Owner_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    26;
 
   friend void swap(Host_Owner& a, Host_Owner& b) {
     a.Swap(&b);
@@ -7370,278 +8466,6 @@ class Host_Owner final :
   friend struct ::TableStruct_ops_2drouter_2eproto;
 };// -------------------------------------------------------------------
 
-class Config_Wan_Ethernet final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Config.Wan.Ethernet) */ {
- public:
-  inline Config_Wan_Ethernet() : Config_Wan_Ethernet(nullptr) {}
-  ~Config_Wan_Ethernet() override;
-  template<typename = void>
-  explicit PROTOBUF_CONSTEXPR Config_Wan_Ethernet(::google::protobuf::internal::ConstantInitialized);
-
-  inline Config_Wan_Ethernet(const Config_Wan_Ethernet& from)
-      : Config_Wan_Ethernet(nullptr, from) {}
-  Config_Wan_Ethernet(Config_Wan_Ethernet&& from) noexcept
-    : Config_Wan_Ethernet() {
-    *this = ::std::move(from);
-  }
-
-  inline Config_Wan_Ethernet& operator=(const Config_Wan_Ethernet& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Config_Wan_Ethernet& operator=(Config_Wan_Ethernet&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetArena() == from.GetArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Config_Wan_Ethernet& default_instance() {
-    return *internal_default_instance();
-  }
-  enum IpCase {
-    kDhcp = 11,
-    kStaticIp = 12,
-    IP_NOT_SET = 0,
-  };
-
-  static inline const Config_Wan_Ethernet* internal_default_instance() {
-    return reinterpret_cast<const Config_Wan_Ethernet*>(
-               &_Config_Wan_Ethernet_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    2;
-
-  friend void swap(Config_Wan_Ethernet& a, Config_Wan_Ethernet& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Config_Wan_Ethernet* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() != nullptr &&
-        GetArena() == other->GetArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() == other->GetArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Config_Wan_Ethernet* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Config_Wan_Ethernet* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Config_Wan_Ethernet>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const Config_Wan_Ethernet& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const Config_Wan_Ethernet& from) {
-    Config_Wan_Ethernet::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  ::size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
-  void SharedCtor(::google::protobuf::Arena* arena);
-  void SharedDtor();
-  void InternalSwap(Config_Wan_Ethernet* other);
-
-  private:
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() {
-    return "palm.ops.router.v1.Config.Wan.Ethernet";
-  }
-  protected:
-  explicit Config_Wan_Ethernet(::google::protobuf::Arena* arena);
-  Config_Wan_Ethernet(::google::protobuf::Arena* arena, const Config_Wan_Ethernet& from);
-  public:
-
-  static const ClassData _class_data_;
-  const ::google::protobuf::Message::ClassData*GetClassData() const final;
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kNameFieldNumber = 1,
-    kDeviceFieldNumber = 2,
-    kMetricFieldNumber = 99,
-    kDhcpFieldNumber = 11,
-    kStaticIpFieldNumber = 12,
-  };
-  // string name = 1;
-  void clear_name() ;
-  const std::string& name() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_name(Arg_&& arg, Args_... args);
-  std::string* mutable_name();
-  PROTOBUF_NODISCARD std::string* release_name();
-  void set_allocated_name(std::string* value);
-
-  private:
-  const std::string& _internal_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
-      const std::string& value);
-  std::string* _internal_mutable_name();
-
-  public:
-  // string device = 2;
-  void clear_device() ;
-  const std::string& device() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_device(Arg_&& arg, Args_... args);
-  std::string* mutable_device();
-  PROTOBUF_NODISCARD std::string* release_device();
-  void set_allocated_device(std::string* value);
-
-  private:
-  const std::string& _internal_device() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device(
-      const std::string& value);
-  std::string* _internal_mutable_device();
-
-  public:
-  // uint32 metric = 99;
-  void clear_metric() ;
-  ::uint32_t metric() const;
-  void set_metric(::uint32_t value);
-
-  private:
-  ::uint32_t _internal_metric() const;
-  void _internal_set_metric(::uint32_t value);
-
-  public:
-  // .palm.ops.router.v1.Config.Dhcp dhcp = 11;
-  bool has_dhcp() const;
-  private:
-  bool _internal_has_dhcp() const;
-
-  public:
-  void clear_dhcp() ;
-  const ::palm::ops::router::v1::Config_Dhcp& dhcp() const;
-  PROTOBUF_NODISCARD ::palm::ops::router::v1::Config_Dhcp* release_dhcp();
-  ::palm::ops::router::v1::Config_Dhcp* mutable_dhcp();
-  void set_allocated_dhcp(::palm::ops::router::v1::Config_Dhcp* value);
-  void unsafe_arena_set_allocated_dhcp(::palm::ops::router::v1::Config_Dhcp* value);
-  ::palm::ops::router::v1::Config_Dhcp* unsafe_arena_release_dhcp();
-
-  private:
-  const ::palm::ops::router::v1::Config_Dhcp& _internal_dhcp() const;
-  ::palm::ops::router::v1::Config_Dhcp* _internal_mutable_dhcp();
-
-  public:
-  // .palm.ops.router.v1.Config.StaticIp static_ip = 12;
-  bool has_static_ip() const;
-  private:
-  bool _internal_has_static_ip() const;
-
-  public:
-  void clear_static_ip() ;
-  const ::palm::ops::router::v1::Config_StaticIp& static_ip() const;
-  PROTOBUF_NODISCARD ::palm::ops::router::v1::Config_StaticIp* release_static_ip();
-  ::palm::ops::router::v1::Config_StaticIp* mutable_static_ip();
-  void set_allocated_static_ip(::palm::ops::router::v1::Config_StaticIp* value);
-  void unsafe_arena_set_allocated_static_ip(::palm::ops::router::v1::Config_StaticIp* value);
-  ::palm::ops::router::v1::Config_StaticIp* unsafe_arena_release_static_ip();
-
-  private:
-  const ::palm::ops::router::v1::Config_StaticIp& _internal_static_ip() const;
-  ::palm::ops::router::v1::Config_StaticIp* _internal_mutable_static_ip();
-
-  public:
-  void clear_ip();
-  IpCase ip_case() const;
-  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Config.Wan.Ethernet)
- private:
-  class _Internal;
-  void set_has_dhcp();
-  void set_has_static_ip();
-
-  inline bool has_ip() const;
-  inline void clear_has_ip();
-
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      2, 5, 2,
-      57, 7>
-      _table_;
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-
-        inline explicit constexpr Impl_(
-            ::google::protobuf::internal::ConstantInitialized) noexcept;
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena);
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::internal::ArenaStringPtr name_;
-    ::google::protobuf::internal::ArenaStringPtr device_;
-    ::uint32_t metric_;
-    union IpUnion {
-      constexpr IpUnion() : _constinit_{} {}
-        ::google::protobuf::internal::ConstantInitialized _constinit_;
-      ::palm::ops::router::v1::Config_Dhcp* dhcp_;
-      ::palm::ops::router::v1::Config_StaticIp* static_ip_;
-    } ip_;
-    mutable ::google::protobuf::internal::CachedSize _cached_size_;
-    ::uint32_t _oneof_case_[1];
-
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_ops_2drouter_2eproto;
-};// -------------------------------------------------------------------
-
 class Rule_OutBound final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Rule.OutBound) */ {
  public:
@@ -7708,7 +8532,7 @@ class Rule_OutBound final :
                &_Rule_OutBound_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    32;
 
   friend void swap(Rule_OutBound& a, Rule_OutBound& b) {
     a.Swap(&b);
@@ -7952,7 +8776,7 @@ class RouterSetWanRequest final :
                &_RouterSetWanRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    17;
 
   friend void swap(RouterSetWanRequest& a, RouterSetWanRequest& b) {
     a.Swap(&b);
@@ -8145,7 +8969,7 @@ class RouterIndexUserResponse final :
                &_RouterIndexUserResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    22;
 
   friend void swap(RouterIndexUserResponse& a, RouterIndexUserResponse& b) {
     a.Swap(&b);
@@ -8271,6 +9095,378 @@ class RouterIndexUserResponse final :
   friend struct ::TableStruct_ops_2drouter_2eproto;
 };// -------------------------------------------------------------------
 
+class Profile_Network_Wan final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Network.Wan) */ {
+ public:
+  inline Profile_Network_Wan() : Profile_Network_Wan(nullptr) {}
+  ~Profile_Network_Wan() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Network_Wan(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Network_Wan(const Profile_Network_Wan& from)
+      : Profile_Network_Wan(nullptr, from) {}
+  Profile_Network_Wan(Profile_Network_Wan&& from) noexcept
+    : Profile_Network_Wan() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Network_Wan& operator=(const Profile_Network_Wan& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Network_Wan& operator=(Profile_Network_Wan&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Network_Wan& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile_Network_Wan* internal_default_instance() {
+    return reinterpret_cast<const Profile_Network_Wan*>(
+               &_Profile_Network_Wan_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(Profile_Network_Wan& a, Profile_Network_Wan& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Network_Wan* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Network_Wan* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Network_Wan* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Network_Wan>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile_Network_Wan& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile_Network_Wan& from) {
+    Profile_Network_Wan::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile_Network_Wan* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Network.Wan";
+  }
+  protected:
+  explicit Profile_Network_Wan(::google::protobuf::Arena* arena);
+  Profile_Network_Wan(::google::protobuf::Arena* arena, const Profile_Network_Wan& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  using Dhcp = Profile_Network_Wan_Dhcp;
+  using StaticIp = Profile_Network_Wan_StaticIp;
+  using Ethernet = Profile_Network_Wan_Ethernet;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kInterfacesFieldNumber = 1,
+  };
+  // repeated .palm.ops.router.v1.Profile.Network.Wan.Ethernet interfaces = 1;
+  int interfaces_size() const;
+  private:
+  int _internal_interfaces_size() const;
+
+  public:
+  void clear_interfaces() ;
+  ::palm::ops::router::v1::Profile_Network_Wan_Ethernet* mutable_interfaces(int index);
+  ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Profile_Network_Wan_Ethernet >*
+      mutable_interfaces();
+  private:
+  const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Network_Wan_Ethernet>& _internal_interfaces() const;
+  ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Network_Wan_Ethernet>* _internal_mutable_interfaces();
+  public:
+  const ::palm::ops::router::v1::Profile_Network_Wan_Ethernet& interfaces(int index) const;
+  ::palm::ops::router::v1::Profile_Network_Wan_Ethernet* add_interfaces();
+  const ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Profile_Network_Wan_Ethernet >&
+      interfaces() const;
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Network.Wan)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Profile_Network_Wan_Ethernet > interfaces_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
+class Profile_Dnsmasq final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Dnsmasq) */ {
+ public:
+  inline Profile_Dnsmasq() : Profile_Dnsmasq(nullptr) {}
+  ~Profile_Dnsmasq() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Dnsmasq(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Dnsmasq(const Profile_Dnsmasq& from)
+      : Profile_Dnsmasq(nullptr, from) {}
+  Profile_Dnsmasq(Profile_Dnsmasq&& from) noexcept
+    : Profile_Dnsmasq() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Dnsmasq& operator=(const Profile_Dnsmasq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Dnsmasq& operator=(Profile_Dnsmasq&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Dnsmasq& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile_Dnsmasq* internal_default_instance() {
+    return reinterpret_cast<const Profile_Dnsmasq*>(
+               &_Profile_Dnsmasq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(Profile_Dnsmasq& a, Profile_Dnsmasq& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Dnsmasq* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Dnsmasq* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Dnsmasq* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Dnsmasq>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile_Dnsmasq& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile_Dnsmasq& from) {
+    Profile_Dnsmasq::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile_Dnsmasq* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Dnsmasq";
+  }
+  protected:
+  explicit Profile_Dnsmasq(::google::protobuf::Arena* arena);
+  Profile_Dnsmasq(::google::protobuf::Arena* arena, const Profile_Dnsmasq& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  using Item = Profile_Dnsmasq_Item;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kItemsFieldNumber = 1,
+  };
+  // repeated .palm.ops.router.v1.Profile.Dnsmasq.Item items = 1;
+  int items_size() const;
+  private:
+  int _internal_items_size() const;
+
+  public:
+  void clear_items() ;
+  ::palm::ops::router::v1::Profile_Dnsmasq_Item* mutable_items(int index);
+  ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Profile_Dnsmasq_Item >*
+      mutable_items();
+  private:
+  const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Dnsmasq_Item>& _internal_items() const;
+  ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Dnsmasq_Item>* _internal_mutable_items();
+  public:
+  const ::palm::ops::router::v1::Profile_Dnsmasq_Item& items(int index) const;
+  ::palm::ops::router::v1::Profile_Dnsmasq_Item* add_items();
+  const ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Profile_Dnsmasq_Item >&
+      items() const;
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Dnsmasq)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Profile_Dnsmasq_Item > items_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
 class Host final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Host) */ {
  public:
@@ -8330,7 +9526,7 @@ class Host final :
                &_Host_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    27;
 
   friend void swap(Host& a, Host& b) {
     a.Swap(&b);
@@ -8569,191 +9765,6 @@ class Host final :
   friend struct ::TableStruct_ops_2drouter_2eproto;
 };// -------------------------------------------------------------------
 
-class Config_Wan final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Config.Wan) */ {
- public:
-  inline Config_Wan() : Config_Wan(nullptr) {}
-  ~Config_Wan() override;
-  template<typename = void>
-  explicit PROTOBUF_CONSTEXPR Config_Wan(::google::protobuf::internal::ConstantInitialized);
-
-  inline Config_Wan(const Config_Wan& from)
-      : Config_Wan(nullptr, from) {}
-  Config_Wan(Config_Wan&& from) noexcept
-    : Config_Wan() {
-    *this = ::std::move(from);
-  }
-
-  inline Config_Wan& operator=(const Config_Wan& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Config_Wan& operator=(Config_Wan&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetArena() == from.GetArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Config_Wan& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Config_Wan* internal_default_instance() {
-    return reinterpret_cast<const Config_Wan*>(
-               &_Config_Wan_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    3;
-
-  friend void swap(Config_Wan& a, Config_Wan& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Config_Wan* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() != nullptr &&
-        GetArena() == other->GetArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() == other->GetArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Config_Wan* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Config_Wan* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Config_Wan>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const Config_Wan& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom( const Config_Wan& from) {
-    Config_Wan::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  ::size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
-  void SharedCtor(::google::protobuf::Arena* arena);
-  void SharedDtor();
-  void InternalSwap(Config_Wan* other);
-
-  private:
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() {
-    return "palm.ops.router.v1.Config.Wan";
-  }
-  protected:
-  explicit Config_Wan(::google::protobuf::Arena* arena);
-  Config_Wan(::google::protobuf::Arena* arena, const Config_Wan& from);
-  public:
-
-  static const ClassData _class_data_;
-  const ::google::protobuf::Message::ClassData*GetClassData() const final;
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  using Ethernet = Config_Wan_Ethernet;
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kInterfacesFieldNumber = 1,
-  };
-  // repeated .palm.ops.router.v1.Config.Wan.Ethernet interfaces = 1;
-  int interfaces_size() const;
-  private:
-  int _internal_interfaces_size() const;
-
-  public:
-  void clear_interfaces() ;
-  ::palm::ops::router::v1::Config_Wan_Ethernet* mutable_interfaces(int index);
-  ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Config_Wan_Ethernet >*
-      mutable_interfaces();
-  private:
-  const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Config_Wan_Ethernet>& _internal_interfaces() const;
-  ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Config_Wan_Ethernet>* _internal_mutable_interfaces();
-  public:
-  const ::palm::ops::router::v1::Config_Wan_Ethernet& interfaces(int index) const;
-  ::palm::ops::router::v1::Config_Wan_Ethernet* add_interfaces();
-  const ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Config_Wan_Ethernet >&
-      interfaces() const;
-  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Config.Wan)
- private:
-  class _Internal;
-
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 1,
-      0, 2>
-      _table_;
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-
-        inline explicit constexpr Impl_(
-            ::google::protobuf::internal::ConstantInitialized) noexcept;
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena);
-        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                              ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::RepeatedPtrField< ::palm::ops::router::v1::Config_Wan_Ethernet > interfaces_;
-    mutable ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_ops_2drouter_2eproto;
-};// -------------------------------------------------------------------
-
 class Rule final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Rule) */ {
  public:
@@ -8820,7 +9831,7 @@ class Rule final :
                &_Rule_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    30;
+    36;
 
   friend void swap(Rule& a, Rule& b) {
     a.Swap(&b);
@@ -9128,7 +10139,7 @@ class RouterIndexRuleResponse_Item final :
                &_RouterIndexRuleResponse_Item_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    24;
 
   friend void swap(RouterIndexRuleResponse_Item& a, RouterIndexRuleResponse_Item& b) {
     a.Swap(&b);
@@ -9357,6 +10368,261 @@ class RouterIndexRuleResponse_Item final :
   friend struct ::TableStruct_ops_2drouter_2eproto;
 };// -------------------------------------------------------------------
 
+class Profile_Network final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile.Network) */ {
+ public:
+  inline Profile_Network() : Profile_Network(nullptr) {}
+  ~Profile_Network() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile_Network(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile_Network(const Profile_Network& from)
+      : Profile_Network(nullptr, from) {}
+  Profile_Network(Profile_Network&& from) noexcept
+    : Profile_Network() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile_Network& operator=(const Profile_Network& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile_Network& operator=(Profile_Network&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile_Network& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile_Network* internal_default_instance() {
+    return reinterpret_cast<const Profile_Network*>(
+               &_Profile_Network_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(Profile_Network& a, Profile_Network& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile_Network* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile_Network* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile_Network* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile_Network>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile_Network& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile_Network& from) {
+    Profile_Network::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile_Network* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile.Network";
+  }
+  protected:
+  explicit Profile_Network(::google::protobuf::Arena* arena);
+  Profile_Network(::google::protobuf::Arena* arena, const Profile_Network& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  using Wan = Profile_Network_Wan;
+  using Dmz = Profile_Network_Dmz;
+  using Lan = Profile_Network_Lan;
+  using Guest = Profile_Network_Guest;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNameFieldNumber = 1,
+    kWanFieldNumber = 11,
+    kLanFieldNumber = 12,
+    kDmzFieldNumber = 13,
+    kGuestFieldNumber = 14,
+  };
+  // string name = 1;
+  void clear_name() ;
+  const std::string& name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* value);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
+
+  public:
+  // .palm.ops.router.v1.Profile.Network.Wan wan = 11;
+  bool has_wan() const;
+  void clear_wan() ;
+  const ::palm::ops::router::v1::Profile_Network_Wan& wan() const;
+  PROTOBUF_NODISCARD ::palm::ops::router::v1::Profile_Network_Wan* release_wan();
+  ::palm::ops::router::v1::Profile_Network_Wan* mutable_wan();
+  void set_allocated_wan(::palm::ops::router::v1::Profile_Network_Wan* value);
+  void unsafe_arena_set_allocated_wan(::palm::ops::router::v1::Profile_Network_Wan* value);
+  ::palm::ops::router::v1::Profile_Network_Wan* unsafe_arena_release_wan();
+
+  private:
+  const ::palm::ops::router::v1::Profile_Network_Wan& _internal_wan() const;
+  ::palm::ops::router::v1::Profile_Network_Wan* _internal_mutable_wan();
+
+  public:
+  // .palm.ops.router.v1.Profile.Network.Lan lan = 12;
+  bool has_lan() const;
+  void clear_lan() ;
+  const ::palm::ops::router::v1::Profile_Network_Lan& lan() const;
+  PROTOBUF_NODISCARD ::palm::ops::router::v1::Profile_Network_Lan* release_lan();
+  ::palm::ops::router::v1::Profile_Network_Lan* mutable_lan();
+  void set_allocated_lan(::palm::ops::router::v1::Profile_Network_Lan* value);
+  void unsafe_arena_set_allocated_lan(::palm::ops::router::v1::Profile_Network_Lan* value);
+  ::palm::ops::router::v1::Profile_Network_Lan* unsafe_arena_release_lan();
+
+  private:
+  const ::palm::ops::router::v1::Profile_Network_Lan& _internal_lan() const;
+  ::palm::ops::router::v1::Profile_Network_Lan* _internal_mutable_lan();
+
+  public:
+  // .palm.ops.router.v1.Profile.Network.Dmz dmz = 13;
+  bool has_dmz() const;
+  void clear_dmz() ;
+  const ::palm::ops::router::v1::Profile_Network_Dmz& dmz() const;
+  PROTOBUF_NODISCARD ::palm::ops::router::v1::Profile_Network_Dmz* release_dmz();
+  ::palm::ops::router::v1::Profile_Network_Dmz* mutable_dmz();
+  void set_allocated_dmz(::palm::ops::router::v1::Profile_Network_Dmz* value);
+  void unsafe_arena_set_allocated_dmz(::palm::ops::router::v1::Profile_Network_Dmz* value);
+  ::palm::ops::router::v1::Profile_Network_Dmz* unsafe_arena_release_dmz();
+
+  private:
+  const ::palm::ops::router::v1::Profile_Network_Dmz& _internal_dmz() const;
+  ::palm::ops::router::v1::Profile_Network_Dmz* _internal_mutable_dmz();
+
+  public:
+  // .palm.ops.router.v1.Profile.Network.Guest guest = 14;
+  bool has_guest() const;
+  void clear_guest() ;
+  const ::palm::ops::router::v1::Profile_Network_Guest& guest() const;
+  PROTOBUF_NODISCARD ::palm::ops::router::v1::Profile_Network_Guest* release_guest();
+  ::palm::ops::router::v1::Profile_Network_Guest* mutable_guest();
+  void set_allocated_guest(::palm::ops::router::v1::Profile_Network_Guest* value);
+  void unsafe_arena_set_allocated_guest(::palm::ops::router::v1::Profile_Network_Guest* value);
+  ::palm::ops::router::v1::Profile_Network_Guest* unsafe_arena_release_guest();
+
+  private:
+  const ::palm::ops::router::v1::Profile_Network_Guest& _internal_guest() const;
+  ::palm::ops::router::v1::Profile_Network_Guest* _internal_mutable_guest();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile.Network)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      3, 5, 4,
+      47, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr name_;
+    ::palm::ops::router::v1::Profile_Network_Wan* wan_;
+    ::palm::ops::router::v1::Profile_Network_Lan* lan_;
+    ::palm::ops::router::v1::Profile_Network_Dmz* dmz_;
+    ::palm::ops::router::v1::Profile_Network_Guest* guest_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
 class RouterStatusResponse final :
     public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.RouterStatusResponse) */ {
  public:
@@ -9416,7 +10682,7 @@ class RouterStatusResponse final :
                &_RouterStatusResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    39;
 
   friend void swap(RouterStatusResponse& a, RouterStatusResponse& b) {
     a.Swap(&b);
@@ -9782,7 +11048,7 @@ class RouterIndexRuleResponse final :
                &_RouterIndexRuleResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    25;
 
   friend void swap(RouterIndexRuleResponse& a, RouterIndexRuleResponse& b) {
     a.Swap(&b);
@@ -9906,6 +11172,207 @@ class RouterIndexRuleResponse final :
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_ops_2drouter_2eproto;
+};// -------------------------------------------------------------------
+
+class Profile final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:palm.ops.router.v1.Profile) */ {
+ public:
+  inline Profile() : Profile(nullptr) {}
+  ~Profile() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR Profile(::google::protobuf::internal::ConstantInitialized);
+
+  inline Profile(const Profile& from)
+      : Profile(nullptr, from) {}
+  Profile(Profile&& from) noexcept
+    : Profile() {
+    *this = ::std::move(from);
+  }
+
+  inline Profile& operator=(const Profile& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Profile& operator=(Profile&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetArena() == from.GetArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Profile& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Profile* internal_default_instance() {
+    return reinterpret_cast<const Profile*>(
+               &_Profile_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  friend void swap(Profile& a, Profile& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Profile* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() != nullptr &&
+        GetArena() == other->GetArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetArena() == other->GetArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Profile* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Profile* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Profile>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Profile& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const Profile& from) {
+    Profile::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  ::google::protobuf::internal::CachedSize* AccessCachedSize() const final;
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void InternalSwap(Profile* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "palm.ops.router.v1.Profile";
+  }
+  protected:
+  explicit Profile(::google::protobuf::Arena* arena);
+  Profile(::google::protobuf::Arena* arena, const Profile& from);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  using Network = Profile_Network;
+  using Dnsmasq = Profile_Dnsmasq;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNetworkFieldNumber = 1,
+    kDnsmasqFieldNumber = 2,
+  };
+  // .palm.ops.router.v1.Profile.Network network = 1;
+  bool has_network() const;
+  void clear_network() ;
+  const ::palm::ops::router::v1::Profile_Network& network() const;
+  PROTOBUF_NODISCARD ::palm::ops::router::v1::Profile_Network* release_network();
+  ::palm::ops::router::v1::Profile_Network* mutable_network();
+  void set_allocated_network(::palm::ops::router::v1::Profile_Network* value);
+  void unsafe_arena_set_allocated_network(::palm::ops::router::v1::Profile_Network* value);
+  ::palm::ops::router::v1::Profile_Network* unsafe_arena_release_network();
+
+  private:
+  const ::palm::ops::router::v1::Profile_Network& _internal_network() const;
+  ::palm::ops::router::v1::Profile_Network* _internal_mutable_network();
+
+  public:
+  // .palm.ops.router.v1.Profile.Dnsmasq dnsmasq = 2;
+  bool has_dnsmasq() const;
+  void clear_dnsmasq() ;
+  const ::palm::ops::router::v1::Profile_Dnsmasq& dnsmasq() const;
+  PROTOBUF_NODISCARD ::palm::ops::router::v1::Profile_Dnsmasq* release_dnsmasq();
+  ::palm::ops::router::v1::Profile_Dnsmasq* mutable_dnsmasq();
+  void set_allocated_dnsmasq(::palm::ops::router::v1::Profile_Dnsmasq* value);
+  void unsafe_arena_set_allocated_dnsmasq(::palm::ops::router::v1::Profile_Dnsmasq* value);
+  ::palm::ops::router::v1::Profile_Dnsmasq* unsafe_arena_release_dnsmasq();
+
+  private:
+  const ::palm::ops::router::v1::Profile_Dnsmasq& _internal_dnsmasq() const;
+  ::palm::ops::router::v1::Profile_Dnsmasq* _internal_mutable_dnsmasq();
+
+  public:
+  // @@protoc_insertion_point(class_scope:palm.ops.router.v1.Profile)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 2,
+      0, 2>
+      _table_;
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+
+        inline explicit constexpr Impl_(
+            ::google::protobuf::internal::ConstantInitialized) noexcept;
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena);
+        inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                              ::google::protobuf::Arena* arena, const Impl_& from);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    ::palm::ops::router::v1::Profile_Network* network_;
+    ::palm::ops::router::v1::Profile_Dnsmasq* dnsmasq_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ops_2drouter_2eproto;
 };
 
 // ===================================================================
@@ -9922,55 +11389,55 @@ class RouterIndexRuleResponse final :
 #endif  // __GNUC__
 // -------------------------------------------------------------------
 
-// Config_Dhcp
+// Profile_Network_Wan_Dhcp
 
 // -------------------------------------------------------------------
 
-// Config_StaticIp
+// Profile_Network_Wan_StaticIp
 
 // string address = 1;
-inline void Config_StaticIp::clear_address() {
+inline void Profile_Network_Wan_StaticIp::clear_address() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.address_.ClearToEmpty();
 }
-inline const std::string& Config_StaticIp::address() const
+inline const std::string& Profile_Network_Wan_StaticIp::address() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.StaticIp.address)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Wan.StaticIp.address)
   return _internal_address();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_StaticIp::set_address(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Wan_StaticIp::set_address(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.address_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.StaticIp.address)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Wan.StaticIp.address)
 }
-inline std::string* Config_StaticIp::mutable_address() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Wan_StaticIp::mutable_address() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_address();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.StaticIp.address)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Wan.StaticIp.address)
   return _s;
 }
-inline const std::string& Config_StaticIp::_internal_address() const {
+inline const std::string& Profile_Network_Wan_StaticIp::_internal_address() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.address_.Get();
 }
-inline void Config_StaticIp::_internal_set_address(const std::string& value) {
+inline void Profile_Network_Wan_StaticIp::_internal_set_address(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.address_.Set(value, GetArena());
 }
-inline std::string* Config_StaticIp::_internal_mutable_address() {
+inline std::string* Profile_Network_Wan_StaticIp::_internal_mutable_address() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.address_.Mutable( GetArena());
 }
-inline std::string* Config_StaticIp::release_address() {
+inline std::string* Profile_Network_Wan_StaticIp::release_address() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.StaticIp.address)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Wan.StaticIp.address)
   return _impl_.address_.Release();
 }
-inline void Config_StaticIp::set_allocated_address(std::string* value) {
+inline void Profile_Network_Wan_StaticIp::set_allocated_address(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.address_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -9978,52 +11445,52 @@ inline void Config_StaticIp::set_allocated_address(std::string* value) {
           _impl_.address_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.StaticIp.address)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Wan.StaticIp.address)
 }
 
 // string gateway = 2;
-inline void Config_StaticIp::clear_gateway() {
+inline void Profile_Network_Wan_StaticIp::clear_gateway() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.gateway_.ClearToEmpty();
 }
-inline const std::string& Config_StaticIp::gateway() const
+inline const std::string& Profile_Network_Wan_StaticIp::gateway() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.StaticIp.gateway)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Wan.StaticIp.gateway)
   return _internal_gateway();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_StaticIp::set_gateway(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Wan_StaticIp::set_gateway(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.gateway_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.StaticIp.gateway)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Wan.StaticIp.gateway)
 }
-inline std::string* Config_StaticIp::mutable_gateway() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Wan_StaticIp::mutable_gateway() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_gateway();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.StaticIp.gateway)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Wan.StaticIp.gateway)
   return _s;
 }
-inline const std::string& Config_StaticIp::_internal_gateway() const {
+inline const std::string& Profile_Network_Wan_StaticIp::_internal_gateway() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.gateway_.Get();
 }
-inline void Config_StaticIp::_internal_set_gateway(const std::string& value) {
+inline void Profile_Network_Wan_StaticIp::_internal_set_gateway(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.gateway_.Set(value, GetArena());
 }
-inline std::string* Config_StaticIp::_internal_mutable_gateway() {
+inline std::string* Profile_Network_Wan_StaticIp::_internal_mutable_gateway() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.gateway_.Mutable( GetArena());
 }
-inline std::string* Config_StaticIp::release_gateway() {
+inline std::string* Profile_Network_Wan_StaticIp::release_gateway() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.StaticIp.gateway)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Wan.StaticIp.gateway)
   return _impl_.gateway_.Release();
 }
-inline void Config_StaticIp::set_allocated_gateway(std::string* value) {
+inline void Profile_Network_Wan_StaticIp::set_allocated_gateway(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.gateway_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10031,52 +11498,52 @@ inline void Config_StaticIp::set_allocated_gateway(std::string* value) {
           _impl_.gateway_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.StaticIp.gateway)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Wan.StaticIp.gateway)
 }
 
 // string dns = 3;
-inline void Config_StaticIp::clear_dns() {
+inline void Profile_Network_Wan_StaticIp::clear_dns() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.dns_.ClearToEmpty();
 }
-inline const std::string& Config_StaticIp::dns() const
+inline const std::string& Profile_Network_Wan_StaticIp::dns() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.StaticIp.dns)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Wan.StaticIp.dns)
   return _internal_dns();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_StaticIp::set_dns(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Wan_StaticIp::set_dns(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.dns_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.StaticIp.dns)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Wan.StaticIp.dns)
 }
-inline std::string* Config_StaticIp::mutable_dns() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Wan_StaticIp::mutable_dns() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_dns();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.StaticIp.dns)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Wan.StaticIp.dns)
   return _s;
 }
-inline const std::string& Config_StaticIp::_internal_dns() const {
+inline const std::string& Profile_Network_Wan_StaticIp::_internal_dns() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.dns_.Get();
 }
-inline void Config_StaticIp::_internal_set_dns(const std::string& value) {
+inline void Profile_Network_Wan_StaticIp::_internal_set_dns(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.dns_.Set(value, GetArena());
 }
-inline std::string* Config_StaticIp::_internal_mutable_dns() {
+inline std::string* Profile_Network_Wan_StaticIp::_internal_mutable_dns() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.dns_.Mutable( GetArena());
 }
-inline std::string* Config_StaticIp::release_dns() {
+inline std::string* Profile_Network_Wan_StaticIp::release_dns() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.StaticIp.dns)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Wan.StaticIp.dns)
   return _impl_.dns_.Release();
 }
-inline void Config_StaticIp::set_allocated_dns(std::string* value) {
+inline void Profile_Network_Wan_StaticIp::set_allocated_dns(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.dns_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10084,56 +11551,56 @@ inline void Config_StaticIp::set_allocated_dns(std::string* value) {
           _impl_.dns_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.StaticIp.dns)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Wan.StaticIp.dns)
 }
 
 // -------------------------------------------------------------------
 
-// Config_Wan_Ethernet
+// Profile_Network_Wan_Ethernet
 
 // string name = 1;
-inline void Config_Wan_Ethernet::clear_name() {
+inline void Profile_Network_Wan_Ethernet::clear_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.name_.ClearToEmpty();
 }
-inline const std::string& Config_Wan_Ethernet::name() const
+inline const std::string& Profile_Network_Wan_Ethernet::name() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Wan.Ethernet.name)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Wan.Ethernet.name)
   return _internal_name();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_Wan_Ethernet::set_name(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Wan_Ethernet::set_name(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.Wan.Ethernet.name)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Wan.Ethernet.name)
 }
-inline std::string* Config_Wan_Ethernet::mutable_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Wan_Ethernet::mutable_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Wan.Ethernet.name)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Wan.Ethernet.name)
   return _s;
 }
-inline const std::string& Config_Wan_Ethernet::_internal_name() const {
+inline const std::string& Profile_Network_Wan_Ethernet::_internal_name() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.name_.Get();
 }
-inline void Config_Wan_Ethernet::_internal_set_name(const std::string& value) {
+inline void Profile_Network_Wan_Ethernet::_internal_set_name(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.name_.Set(value, GetArena());
 }
-inline std::string* Config_Wan_Ethernet::_internal_mutable_name() {
+inline std::string* Profile_Network_Wan_Ethernet::_internal_mutable_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.name_.Mutable( GetArena());
 }
-inline std::string* Config_Wan_Ethernet::release_name() {
+inline std::string* Profile_Network_Wan_Ethernet::release_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Wan.Ethernet.name)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Wan.Ethernet.name)
   return _impl_.name_.Release();
 }
-inline void Config_Wan_Ethernet::set_allocated_name(std::string* value) {
+inline void Profile_Network_Wan_Ethernet::set_allocated_name(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.name_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10141,52 +11608,52 @@ inline void Config_Wan_Ethernet::set_allocated_name(std::string* value) {
           _impl_.name_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.Wan.Ethernet.name)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Wan.Ethernet.name)
 }
 
 // string device = 2;
-inline void Config_Wan_Ethernet::clear_device() {
+inline void Profile_Network_Wan_Ethernet::clear_device() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.device_.ClearToEmpty();
 }
-inline const std::string& Config_Wan_Ethernet::device() const
+inline const std::string& Profile_Network_Wan_Ethernet::device() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Wan.Ethernet.device)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Wan.Ethernet.device)
   return _internal_device();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_Wan_Ethernet::set_device(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Wan_Ethernet::set_device(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.device_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.Wan.Ethernet.device)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Wan.Ethernet.device)
 }
-inline std::string* Config_Wan_Ethernet::mutable_device() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Wan_Ethernet::mutable_device() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_device();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Wan.Ethernet.device)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Wan.Ethernet.device)
   return _s;
 }
-inline const std::string& Config_Wan_Ethernet::_internal_device() const {
+inline const std::string& Profile_Network_Wan_Ethernet::_internal_device() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.device_.Get();
 }
-inline void Config_Wan_Ethernet::_internal_set_device(const std::string& value) {
+inline void Profile_Network_Wan_Ethernet::_internal_set_device(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.device_.Set(value, GetArena());
 }
-inline std::string* Config_Wan_Ethernet::_internal_mutable_device() {
+inline std::string* Profile_Network_Wan_Ethernet::_internal_mutable_device() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.device_.Mutable( GetArena());
 }
-inline std::string* Config_Wan_Ethernet::release_device() {
+inline std::string* Profile_Network_Wan_Ethernet::release_device() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Wan.Ethernet.device)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Wan.Ethernet.device)
   return _impl_.device_.Release();
 }
-inline void Config_Wan_Ethernet::set_allocated_device(std::string* value) {
+inline void Profile_Network_Wan_Ethernet::set_allocated_device(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.device_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10194,20 +11661,20 @@ inline void Config_Wan_Ethernet::set_allocated_device(std::string* value) {
           _impl_.device_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.Wan.Ethernet.device)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Wan.Ethernet.device)
 }
 
-// .palm.ops.router.v1.Config.Dhcp dhcp = 11;
-inline bool Config_Wan_Ethernet::has_dhcp() const {
+// .palm.ops.router.v1.Profile.Network.Wan.Dhcp dhcp = 11;
+inline bool Profile_Network_Wan_Ethernet::has_dhcp() const {
   return ip_case() == kDhcp;
 }
-inline bool Config_Wan_Ethernet::_internal_has_dhcp() const {
+inline bool Profile_Network_Wan_Ethernet::_internal_has_dhcp() const {
   return ip_case() == kDhcp;
 }
-inline void Config_Wan_Ethernet::set_has_dhcp() {
+inline void Profile_Network_Wan_Ethernet::set_has_dhcp() {
   _impl_._oneof_case_[0] = kDhcp;
 }
-inline void Config_Wan_Ethernet::clear_dhcp() {
+inline void Profile_Network_Wan_Ethernet::clear_dhcp() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (ip_case() == kDhcp) {
     if (GetArena() == nullptr) {
@@ -10216,8 +11683,8 @@ inline void Config_Wan_Ethernet::clear_dhcp() {
     clear_has_ip();
   }
 }
-inline ::palm::ops::router::v1::Config_Dhcp* Config_Wan_Ethernet::release_dhcp() {
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Wan.Ethernet.dhcp)
+inline ::palm::ops::router::v1::Profile_Network_Wan_Dhcp* Profile_Network_Wan_Ethernet::release_dhcp() {
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Wan.Ethernet.dhcp)
   if (ip_case() == kDhcp) {
     clear_has_ip();
     auto* temp = _impl_.ip_.dhcp_;
@@ -10230,15 +11697,15 @@ inline ::palm::ops::router::v1::Config_Dhcp* Config_Wan_Ethernet::release_dhcp()
     return nullptr;
   }
 }
-inline const ::palm::ops::router::v1::Config_Dhcp& Config_Wan_Ethernet::_internal_dhcp() const {
-  return ip_case() == kDhcp ? *_impl_.ip_.dhcp_ : reinterpret_cast<::palm::ops::router::v1::Config_Dhcp&>(::palm::ops::router::v1::_Config_Dhcp_default_instance_);
+inline const ::palm::ops::router::v1::Profile_Network_Wan_Dhcp& Profile_Network_Wan_Ethernet::_internal_dhcp() const {
+  return ip_case() == kDhcp ? *_impl_.ip_.dhcp_ : reinterpret_cast<::palm::ops::router::v1::Profile_Network_Wan_Dhcp&>(::palm::ops::router::v1::_Profile_Network_Wan_Dhcp_default_instance_);
 }
-inline const ::palm::ops::router::v1::Config_Dhcp& Config_Wan_Ethernet::dhcp() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Wan.Ethernet.dhcp)
+inline const ::palm::ops::router::v1::Profile_Network_Wan_Dhcp& Profile_Network_Wan_Ethernet::dhcp() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Wan.Ethernet.dhcp)
   return _internal_dhcp();
 }
-inline ::palm::ops::router::v1::Config_Dhcp* Config_Wan_Ethernet::unsafe_arena_release_dhcp() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:palm.ops.router.v1.Config.Wan.Ethernet.dhcp)
+inline ::palm::ops::router::v1::Profile_Network_Wan_Dhcp* Profile_Network_Wan_Ethernet::unsafe_arena_release_dhcp() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:palm.ops.router.v1.Profile.Network.Wan.Ethernet.dhcp)
   if (ip_case() == kDhcp) {
     clear_has_ip();
     auto* temp = _impl_.ip_.dhcp_;
@@ -10248,7 +11715,7 @@ inline ::palm::ops::router::v1::Config_Dhcp* Config_Wan_Ethernet::unsafe_arena_r
     return nullptr;
   }
 }
-inline void Config_Wan_Ethernet::unsafe_arena_set_allocated_dhcp(::palm::ops::router::v1::Config_Dhcp* value) {
+inline void Profile_Network_Wan_Ethernet::unsafe_arena_set_allocated_dhcp(::palm::ops::router::v1::Profile_Network_Wan_Dhcp* value) {
   // We rely on the oneof clear method to free the earlier contents
   // of this oneof. We can directly use the pointer we're given to
   // set the new value.
@@ -10257,33 +11724,33 @@ inline void Config_Wan_Ethernet::unsafe_arena_set_allocated_dhcp(::palm::ops::ro
     set_has_dhcp();
     _impl_.ip_.dhcp_ = value;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.ops.router.v1.Config.Wan.Ethernet.dhcp)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.ops.router.v1.Profile.Network.Wan.Ethernet.dhcp)
 }
-inline ::palm::ops::router::v1::Config_Dhcp* Config_Wan_Ethernet::_internal_mutable_dhcp() {
+inline ::palm::ops::router::v1::Profile_Network_Wan_Dhcp* Profile_Network_Wan_Ethernet::_internal_mutable_dhcp() {
   if (ip_case() != kDhcp) {
     clear_ip();
     set_has_dhcp();
-    _impl_.ip_.dhcp_ = CreateMaybeMessage<::palm::ops::router::v1::Config_Dhcp>(GetArena());
+    _impl_.ip_.dhcp_ = CreateMaybeMessage<::palm::ops::router::v1::Profile_Network_Wan_Dhcp>(GetArena());
   }
   return _impl_.ip_.dhcp_;
 }
-inline ::palm::ops::router::v1::Config_Dhcp* Config_Wan_Ethernet::mutable_dhcp() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::palm::ops::router::v1::Config_Dhcp* _msg = _internal_mutable_dhcp();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Wan.Ethernet.dhcp)
+inline ::palm::ops::router::v1::Profile_Network_Wan_Dhcp* Profile_Network_Wan_Ethernet::mutable_dhcp() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::palm::ops::router::v1::Profile_Network_Wan_Dhcp* _msg = _internal_mutable_dhcp();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Wan.Ethernet.dhcp)
   return _msg;
 }
 
-// .palm.ops.router.v1.Config.StaticIp static_ip = 12;
-inline bool Config_Wan_Ethernet::has_static_ip() const {
+// .palm.ops.router.v1.Profile.Network.Wan.StaticIp static_ip = 12;
+inline bool Profile_Network_Wan_Ethernet::has_static_ip() const {
   return ip_case() == kStaticIp;
 }
-inline bool Config_Wan_Ethernet::_internal_has_static_ip() const {
+inline bool Profile_Network_Wan_Ethernet::_internal_has_static_ip() const {
   return ip_case() == kStaticIp;
 }
-inline void Config_Wan_Ethernet::set_has_static_ip() {
+inline void Profile_Network_Wan_Ethernet::set_has_static_ip() {
   _impl_._oneof_case_[0] = kStaticIp;
 }
-inline void Config_Wan_Ethernet::clear_static_ip() {
+inline void Profile_Network_Wan_Ethernet::clear_static_ip() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   if (ip_case() == kStaticIp) {
     if (GetArena() == nullptr) {
@@ -10292,8 +11759,8 @@ inline void Config_Wan_Ethernet::clear_static_ip() {
     clear_has_ip();
   }
 }
-inline ::palm::ops::router::v1::Config_StaticIp* Config_Wan_Ethernet::release_static_ip() {
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Wan.Ethernet.static_ip)
+inline ::palm::ops::router::v1::Profile_Network_Wan_StaticIp* Profile_Network_Wan_Ethernet::release_static_ip() {
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Wan.Ethernet.static_ip)
   if (ip_case() == kStaticIp) {
     clear_has_ip();
     auto* temp = _impl_.ip_.static_ip_;
@@ -10306,15 +11773,15 @@ inline ::palm::ops::router::v1::Config_StaticIp* Config_Wan_Ethernet::release_st
     return nullptr;
   }
 }
-inline const ::palm::ops::router::v1::Config_StaticIp& Config_Wan_Ethernet::_internal_static_ip() const {
-  return ip_case() == kStaticIp ? *_impl_.ip_.static_ip_ : reinterpret_cast<::palm::ops::router::v1::Config_StaticIp&>(::palm::ops::router::v1::_Config_StaticIp_default_instance_);
+inline const ::palm::ops::router::v1::Profile_Network_Wan_StaticIp& Profile_Network_Wan_Ethernet::_internal_static_ip() const {
+  return ip_case() == kStaticIp ? *_impl_.ip_.static_ip_ : reinterpret_cast<::palm::ops::router::v1::Profile_Network_Wan_StaticIp&>(::palm::ops::router::v1::_Profile_Network_Wan_StaticIp_default_instance_);
 }
-inline const ::palm::ops::router::v1::Config_StaticIp& Config_Wan_Ethernet::static_ip() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Wan.Ethernet.static_ip)
+inline const ::palm::ops::router::v1::Profile_Network_Wan_StaticIp& Profile_Network_Wan_Ethernet::static_ip() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Wan.Ethernet.static_ip)
   return _internal_static_ip();
 }
-inline ::palm::ops::router::v1::Config_StaticIp* Config_Wan_Ethernet::unsafe_arena_release_static_ip() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:palm.ops.router.v1.Config.Wan.Ethernet.static_ip)
+inline ::palm::ops::router::v1::Profile_Network_Wan_StaticIp* Profile_Network_Wan_Ethernet::unsafe_arena_release_static_ip() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:palm.ops.router.v1.Profile.Network.Wan.Ethernet.static_ip)
   if (ip_case() == kStaticIp) {
     clear_has_ip();
     auto* temp = _impl_.ip_.static_ip_;
@@ -10324,7 +11791,7 @@ inline ::palm::ops::router::v1::Config_StaticIp* Config_Wan_Ethernet::unsafe_are
     return nullptr;
   }
 }
-inline void Config_Wan_Ethernet::unsafe_arena_set_allocated_static_ip(::palm::ops::router::v1::Config_StaticIp* value) {
+inline void Profile_Network_Wan_Ethernet::unsafe_arena_set_allocated_static_ip(::palm::ops::router::v1::Profile_Network_Wan_StaticIp* value) {
   // We rely on the oneof clear method to free the earlier contents
   // of this oneof. We can directly use the pointer we're given to
   // set the new value.
@@ -10333,154 +11800,154 @@ inline void Config_Wan_Ethernet::unsafe_arena_set_allocated_static_ip(::palm::op
     set_has_static_ip();
     _impl_.ip_.static_ip_ = value;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.ops.router.v1.Config.Wan.Ethernet.static_ip)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.ops.router.v1.Profile.Network.Wan.Ethernet.static_ip)
 }
-inline ::palm::ops::router::v1::Config_StaticIp* Config_Wan_Ethernet::_internal_mutable_static_ip() {
+inline ::palm::ops::router::v1::Profile_Network_Wan_StaticIp* Profile_Network_Wan_Ethernet::_internal_mutable_static_ip() {
   if (ip_case() != kStaticIp) {
     clear_ip();
     set_has_static_ip();
-    _impl_.ip_.static_ip_ = CreateMaybeMessage<::palm::ops::router::v1::Config_StaticIp>(GetArena());
+    _impl_.ip_.static_ip_ = CreateMaybeMessage<::palm::ops::router::v1::Profile_Network_Wan_StaticIp>(GetArena());
   }
   return _impl_.ip_.static_ip_;
 }
-inline ::palm::ops::router::v1::Config_StaticIp* Config_Wan_Ethernet::mutable_static_ip() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::palm::ops::router::v1::Config_StaticIp* _msg = _internal_mutable_static_ip();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Wan.Ethernet.static_ip)
+inline ::palm::ops::router::v1::Profile_Network_Wan_StaticIp* Profile_Network_Wan_Ethernet::mutable_static_ip() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::palm::ops::router::v1::Profile_Network_Wan_StaticIp* _msg = _internal_mutable_static_ip();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Wan.Ethernet.static_ip)
   return _msg;
 }
 
 // uint32 metric = 99;
-inline void Config_Wan_Ethernet::clear_metric() {
+inline void Profile_Network_Wan_Ethernet::clear_metric() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.metric_ = 0u;
 }
-inline ::uint32_t Config_Wan_Ethernet::metric() const {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Wan.Ethernet.metric)
+inline ::uint32_t Profile_Network_Wan_Ethernet::metric() const {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Wan.Ethernet.metric)
   return _internal_metric();
 }
-inline void Config_Wan_Ethernet::set_metric(::uint32_t value) {
+inline void Profile_Network_Wan_Ethernet::set_metric(::uint32_t value) {
   _internal_set_metric(value);
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.Wan.Ethernet.metric)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Wan.Ethernet.metric)
 }
-inline ::uint32_t Config_Wan_Ethernet::_internal_metric() const {
+inline ::uint32_t Profile_Network_Wan_Ethernet::_internal_metric() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.metric_;
 }
-inline void Config_Wan_Ethernet::_internal_set_metric(::uint32_t value) {
+inline void Profile_Network_Wan_Ethernet::_internal_set_metric(::uint32_t value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.metric_ = value;
 }
 
-inline bool Config_Wan_Ethernet::has_ip() const {
+inline bool Profile_Network_Wan_Ethernet::has_ip() const {
   return ip_case() != IP_NOT_SET;
 }
-inline void Config_Wan_Ethernet::clear_has_ip() {
+inline void Profile_Network_Wan_Ethernet::clear_has_ip() {
   _impl_._oneof_case_[0] = IP_NOT_SET;
 }
-inline Config_Wan_Ethernet::IpCase Config_Wan_Ethernet::ip_case() const {
-  return Config_Wan_Ethernet::IpCase(_impl_._oneof_case_[0]);
+inline Profile_Network_Wan_Ethernet::IpCase Profile_Network_Wan_Ethernet::ip_case() const {
+  return Profile_Network_Wan_Ethernet::IpCase(_impl_._oneof_case_[0]);
 }
 // -------------------------------------------------------------------
 
-// Config_Wan
+// Profile_Network_Wan
 
-// repeated .palm.ops.router.v1.Config.Wan.Ethernet interfaces = 1;
-inline int Config_Wan::_internal_interfaces_size() const {
+// repeated .palm.ops.router.v1.Profile.Network.Wan.Ethernet interfaces = 1;
+inline int Profile_Network_Wan::_internal_interfaces_size() const {
   return _internal_interfaces().size();
 }
-inline int Config_Wan::interfaces_size() const {
+inline int Profile_Network_Wan::interfaces_size() const {
   return _internal_interfaces_size();
 }
-inline void Config_Wan::clear_interfaces() {
+inline void Profile_Network_Wan::clear_interfaces() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.interfaces_.Clear();
 }
-inline ::palm::ops::router::v1::Config_Wan_Ethernet* Config_Wan::mutable_interfaces(int index)
+inline ::palm::ops::router::v1::Profile_Network_Wan_Ethernet* Profile_Network_Wan::mutable_interfaces(int index)
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Wan.interfaces)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Wan.interfaces)
   return _internal_mutable_interfaces()->Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Config_Wan_Ethernet>* Config_Wan::mutable_interfaces()
+inline ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Network_Wan_Ethernet>* Profile_Network_Wan::mutable_interfaces()
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable_list:palm.ops.router.v1.Config.Wan.interfaces)
+  // @@protoc_insertion_point(field_mutable_list:palm.ops.router.v1.Profile.Network.Wan.interfaces)
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   return _internal_mutable_interfaces();
 }
-inline const ::palm::ops::router::v1::Config_Wan_Ethernet& Config_Wan::interfaces(int index) const
+inline const ::palm::ops::router::v1::Profile_Network_Wan_Ethernet& Profile_Network_Wan::interfaces(int index) const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Wan.interfaces)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Wan.interfaces)
   return _internal_interfaces().Get(index);
 }
-inline ::palm::ops::router::v1::Config_Wan_Ethernet* Config_Wan::add_interfaces() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline ::palm::ops::router::v1::Profile_Network_Wan_Ethernet* Profile_Network_Wan::add_interfaces() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ::palm::ops::router::v1::Config_Wan_Ethernet* _add = _internal_mutable_interfaces()->Add();
-  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Config.Wan.interfaces)
+  ::palm::ops::router::v1::Profile_Network_Wan_Ethernet* _add = _internal_mutable_interfaces()->Add();
+  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Profile.Network.Wan.interfaces)
   return _add;
 }
-inline const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Config_Wan_Ethernet>& Config_Wan::interfaces() const
+inline const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Network_Wan_Ethernet>& Profile_Network_Wan::interfaces() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:palm.ops.router.v1.Config.Wan.interfaces)
+  // @@protoc_insertion_point(field_list:palm.ops.router.v1.Profile.Network.Wan.interfaces)
   return _internal_interfaces();
 }
-inline const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Config_Wan_Ethernet>&
-Config_Wan::_internal_interfaces() const {
+inline const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Network_Wan_Ethernet>&
+Profile_Network_Wan::_internal_interfaces() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.interfaces_;
 }
-inline ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Config_Wan_Ethernet>*
-Config_Wan::_internal_mutable_interfaces() {
+inline ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Network_Wan_Ethernet>*
+Profile_Network_Wan::_internal_mutable_interfaces() {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return &_impl_.interfaces_;
 }
 
 // -------------------------------------------------------------------
 
-// Config_Dmz
+// Profile_Network_Dmz
 
 // string name = 1;
-inline void Config_Dmz::clear_name() {
+inline void Profile_Network_Dmz::clear_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.name_.ClearToEmpty();
 }
-inline const std::string& Config_Dmz::name() const
+inline const std::string& Profile_Network_Dmz::name() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Dmz.name)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Dmz.name)
   return _internal_name();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_Dmz::set_name(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Dmz::set_name(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.Dmz.name)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Dmz.name)
 }
-inline std::string* Config_Dmz::mutable_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Dmz::mutable_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Dmz.name)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Dmz.name)
   return _s;
 }
-inline const std::string& Config_Dmz::_internal_name() const {
+inline const std::string& Profile_Network_Dmz::_internal_name() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.name_.Get();
 }
-inline void Config_Dmz::_internal_set_name(const std::string& value) {
+inline void Profile_Network_Dmz::_internal_set_name(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.name_.Set(value, GetArena());
 }
-inline std::string* Config_Dmz::_internal_mutable_name() {
+inline std::string* Profile_Network_Dmz::_internal_mutable_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.name_.Mutable( GetArena());
 }
-inline std::string* Config_Dmz::release_name() {
+inline std::string* Profile_Network_Dmz::release_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Dmz.name)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Dmz.name)
   return _impl_.name_.Release();
 }
-inline void Config_Dmz::set_allocated_name(std::string* value) {
+inline void Profile_Network_Dmz::set_allocated_name(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.name_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10488,52 +11955,52 @@ inline void Config_Dmz::set_allocated_name(std::string* value) {
           _impl_.name_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.Dmz.name)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Dmz.name)
 }
 
 // string device = 2;
-inline void Config_Dmz::clear_device() {
+inline void Profile_Network_Dmz::clear_device() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.device_.ClearToEmpty();
 }
-inline const std::string& Config_Dmz::device() const
+inline const std::string& Profile_Network_Dmz::device() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Dmz.device)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Dmz.device)
   return _internal_device();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_Dmz::set_device(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Dmz::set_device(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.device_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.Dmz.device)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Dmz.device)
 }
-inline std::string* Config_Dmz::mutable_device() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Dmz::mutable_device() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_device();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Dmz.device)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Dmz.device)
   return _s;
 }
-inline const std::string& Config_Dmz::_internal_device() const {
+inline const std::string& Profile_Network_Dmz::_internal_device() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.device_.Get();
 }
-inline void Config_Dmz::_internal_set_device(const std::string& value) {
+inline void Profile_Network_Dmz::_internal_set_device(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.device_.Set(value, GetArena());
 }
-inline std::string* Config_Dmz::_internal_mutable_device() {
+inline std::string* Profile_Network_Dmz::_internal_mutable_device() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.device_.Mutable( GetArena());
 }
-inline std::string* Config_Dmz::release_device() {
+inline std::string* Profile_Network_Dmz::release_device() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Dmz.device)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Dmz.device)
   return _impl_.device_.Release();
 }
-inline void Config_Dmz::set_allocated_device(std::string* value) {
+inline void Profile_Network_Dmz::set_allocated_device(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.device_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10541,52 +12008,52 @@ inline void Config_Dmz::set_allocated_device(std::string* value) {
           _impl_.device_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.Dmz.device)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Dmz.device)
 }
 
 // string address = 3;
-inline void Config_Dmz::clear_address() {
+inline void Profile_Network_Dmz::clear_address() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.address_.ClearToEmpty();
 }
-inline const std::string& Config_Dmz::address() const
+inline const std::string& Profile_Network_Dmz::address() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Dmz.address)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Dmz.address)
   return _internal_address();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_Dmz::set_address(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Dmz::set_address(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.address_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.Dmz.address)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Dmz.address)
 }
-inline std::string* Config_Dmz::mutable_address() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Dmz::mutable_address() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_address();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Dmz.address)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Dmz.address)
   return _s;
 }
-inline const std::string& Config_Dmz::_internal_address() const {
+inline const std::string& Profile_Network_Dmz::_internal_address() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.address_.Get();
 }
-inline void Config_Dmz::_internal_set_address(const std::string& value) {
+inline void Profile_Network_Dmz::_internal_set_address(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.address_.Set(value, GetArena());
 }
-inline std::string* Config_Dmz::_internal_mutable_address() {
+inline std::string* Profile_Network_Dmz::_internal_mutable_address() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.address_.Mutable( GetArena());
 }
-inline std::string* Config_Dmz::release_address() {
+inline std::string* Profile_Network_Dmz::release_address() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Dmz.address)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Dmz.address)
   return _impl_.address_.Release();
 }
-inline void Config_Dmz::set_allocated_address(std::string* value) {
+inline void Profile_Network_Dmz::set_allocated_address(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.address_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10594,56 +12061,267 @@ inline void Config_Dmz::set_allocated_address(std::string* value) {
           _impl_.address_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.Dmz.address)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Dmz.address)
+}
+
+// repeated string allow_hosts = 9;
+inline int Profile_Network_Dmz::_internal_allow_hosts_size() const {
+  return _internal_allow_hosts().size();
+}
+inline int Profile_Network_Dmz::allow_hosts_size() const {
+  return _internal_allow_hosts_size();
+}
+inline void Profile_Network_Dmz::clear_allow_hosts() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.allow_hosts_.Clear();
+}
+inline std::string* Profile_Network_Dmz::add_allow_hosts()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  std::string* _s = _internal_mutable_allow_hosts()->Add();
+  // @@protoc_insertion_point(field_add_mutable:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+  return _s;
+}
+inline const std::string& Profile_Network_Dmz::allow_hosts(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+  return _internal_allow_hosts().Get(index);
+}
+inline std::string* Profile_Network_Dmz::mutable_allow_hosts(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+  return _internal_mutable_allow_hosts()->Mutable(index);
+}
+inline void Profile_Network_Dmz::set_allow_hosts(int index, const std::string& value) {
+  _internal_mutable_allow_hosts()->Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+}
+inline void Profile_Network_Dmz::set_allow_hosts(int index, std::string&& value) {
+  _internal_mutable_allow_hosts()->Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+}
+inline void Profile_Network_Dmz::set_allow_hosts(int index, const char* value) {
+  ABSL_DCHECK(value != nullptr);
+  _internal_mutable_allow_hosts()->Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+}
+inline void Profile_Network_Dmz::set_allow_hosts(int index, const char* value,
+                              std::size_t size) {
+  _internal_mutable_allow_hosts()->Mutable(index)->assign(
+      reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+}
+inline void Profile_Network_Dmz::set_allow_hosts(int index, absl::string_view value) {
+  _internal_mutable_allow_hosts()->Mutable(index)->assign(value.data(),
+                                                     value.size());
+  // @@protoc_insertion_point(field_set_string_piece:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+}
+inline void Profile_Network_Dmz::add_allow_hosts(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_allow_hosts()->Add()->assign(value);
+  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+}
+inline void Profile_Network_Dmz::add_allow_hosts(std::string&& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_allow_hosts()->Add(std::move(value));
+  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+}
+inline void Profile_Network_Dmz::add_allow_hosts(const char* value) {
+  ABSL_DCHECK(value != nullptr);
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_allow_hosts()->Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+}
+inline void Profile_Network_Dmz::add_allow_hosts(const char* value, std::size_t size) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_allow_hosts()->Add()->assign(
+      reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+}
+inline void Profile_Network_Dmz::add_allow_hosts(absl::string_view value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_allow_hosts()->Add()->assign(value.data(), value.size());
+  // @@protoc_insertion_point(field_add_string_piece:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+Profile_Network_Dmz::allow_hosts() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+  return _internal_allow_hosts();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+Profile_Network_Dmz::mutable_allow_hosts() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:palm.ops.router.v1.Profile.Network.Dmz.allow_hosts)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_allow_hosts();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+Profile_Network_Dmz::_internal_allow_hosts() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.allow_hosts_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+Profile_Network_Dmz::_internal_mutable_allow_hosts() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.allow_hosts_;
 }
 
 // -------------------------------------------------------------------
 
-// Config_Lan
+// Profile_Network_Lan_Client
+
+// string user = 1;
+inline void Profile_Network_Lan_Client::clear_user() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.user_.ClearToEmpty();
+}
+inline const std::string& Profile_Network_Lan_Client::user() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Lan.Client.user)
+  return _internal_user();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Lan_Client::set_user(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.user_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Lan.Client.user)
+}
+inline std::string* Profile_Network_Lan_Client::mutable_user() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_user();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Lan.Client.user)
+  return _s;
+}
+inline const std::string& Profile_Network_Lan_Client::_internal_user() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.user_.Get();
+}
+inline void Profile_Network_Lan_Client::_internal_set_user(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.user_.Set(value, GetArena());
+}
+inline std::string* Profile_Network_Lan_Client::_internal_mutable_user() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.user_.Mutable( GetArena());
+}
+inline std::string* Profile_Network_Lan_Client::release_user() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Lan.Client.user)
+  return _impl_.user_.Release();
+}
+inline void Profile_Network_Lan_Client::set_allocated_user(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.user_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.user_.IsDefault()) {
+          _impl_.user_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Lan.Client.user)
+}
+
+// string password = 2;
+inline void Profile_Network_Lan_Client::clear_password() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.password_.ClearToEmpty();
+}
+inline const std::string& Profile_Network_Lan_Client::password() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Lan.Client.password)
+  return _internal_password();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Lan_Client::set_password(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.password_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Lan.Client.password)
+}
+inline std::string* Profile_Network_Lan_Client::mutable_password() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_password();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Lan.Client.password)
+  return _s;
+}
+inline const std::string& Profile_Network_Lan_Client::_internal_password() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.password_.Get();
+}
+inline void Profile_Network_Lan_Client::_internal_set_password(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.password_.Set(value, GetArena());
+}
+inline std::string* Profile_Network_Lan_Client::_internal_mutable_password() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.password_.Mutable( GetArena());
+}
+inline std::string* Profile_Network_Lan_Client::release_password() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Lan.Client.password)
+  return _impl_.password_.Release();
+}
+inline void Profile_Network_Lan_Client::set_allocated_password(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.password_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.password_.IsDefault()) {
+          _impl_.password_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Lan.Client.password)
+}
+
+// -------------------------------------------------------------------
+
+// Profile_Network_Lan
 
 // string name = 1;
-inline void Config_Lan::clear_name() {
+inline void Profile_Network_Lan::clear_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.name_.ClearToEmpty();
 }
-inline const std::string& Config_Lan::name() const
+inline const std::string& Profile_Network_Lan::name() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Lan.name)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Lan.name)
   return _internal_name();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_Lan::set_name(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Lan::set_name(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.Lan.name)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Lan.name)
 }
-inline std::string* Config_Lan::mutable_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Lan::mutable_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Lan.name)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Lan.name)
   return _s;
 }
-inline const std::string& Config_Lan::_internal_name() const {
+inline const std::string& Profile_Network_Lan::_internal_name() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.name_.Get();
 }
-inline void Config_Lan::_internal_set_name(const std::string& value) {
+inline void Profile_Network_Lan::_internal_set_name(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.name_.Set(value, GetArena());
 }
-inline std::string* Config_Lan::_internal_mutable_name() {
+inline std::string* Profile_Network_Lan::_internal_mutable_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.name_.Mutable( GetArena());
 }
-inline std::string* Config_Lan::release_name() {
+inline std::string* Profile_Network_Lan::release_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Lan.name)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Lan.name)
   return _impl_.name_.Release();
 }
-inline void Config_Lan::set_allocated_name(std::string* value) {
+inline void Profile_Network_Lan::set_allocated_name(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.name_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10651,52 +12329,52 @@ inline void Config_Lan::set_allocated_name(std::string* value) {
           _impl_.name_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.Lan.name)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Lan.name)
 }
 
 // string device = 2;
-inline void Config_Lan::clear_device() {
+inline void Profile_Network_Lan::clear_device() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.device_.ClearToEmpty();
 }
-inline const std::string& Config_Lan::device() const
+inline const std::string& Profile_Network_Lan::device() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Lan.device)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Lan.device)
   return _internal_device();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_Lan::set_device(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Lan::set_device(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.device_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.Lan.device)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Lan.device)
 }
-inline std::string* Config_Lan::mutable_device() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Lan::mutable_device() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_device();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Lan.device)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Lan.device)
   return _s;
 }
-inline const std::string& Config_Lan::_internal_device() const {
+inline const std::string& Profile_Network_Lan::_internal_device() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.device_.Get();
 }
-inline void Config_Lan::_internal_set_device(const std::string& value) {
+inline void Profile_Network_Lan::_internal_set_device(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.device_.Set(value, GetArena());
 }
-inline std::string* Config_Lan::_internal_mutable_device() {
+inline std::string* Profile_Network_Lan::_internal_mutable_device() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.device_.Mutable( GetArena());
 }
-inline std::string* Config_Lan::release_device() {
+inline std::string* Profile_Network_Lan::release_device() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Lan.device)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Lan.device)
   return _impl_.device_.Release();
 }
-inline void Config_Lan::set_allocated_device(std::string* value) {
+inline void Profile_Network_Lan::set_allocated_device(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.device_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10704,52 +12382,52 @@ inline void Config_Lan::set_allocated_device(std::string* value) {
           _impl_.device_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.Lan.device)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Lan.device)
 }
 
 // string address = 3;
-inline void Config_Lan::clear_address() {
+inline void Profile_Network_Lan::clear_address() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.address_.ClearToEmpty();
 }
-inline const std::string& Config_Lan::address() const
+inline const std::string& Profile_Network_Lan::address() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Lan.address)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Lan.address)
   return _internal_address();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_Lan::set_address(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Lan::set_address(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.address_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.Lan.address)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Lan.address)
 }
-inline std::string* Config_Lan::mutable_address() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Lan::mutable_address() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_address();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Lan.address)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Lan.address)
   return _s;
 }
-inline const std::string& Config_Lan::_internal_address() const {
+inline const std::string& Profile_Network_Lan::_internal_address() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.address_.Get();
 }
-inline void Config_Lan::_internal_set_address(const std::string& value) {
+inline void Profile_Network_Lan::_internal_set_address(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.address_.Set(value, GetArena());
 }
-inline std::string* Config_Lan::_internal_mutable_address() {
+inline std::string* Profile_Network_Lan::_internal_mutable_address() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.address_.Mutable( GetArena());
 }
-inline std::string* Config_Lan::release_address() {
+inline std::string* Profile_Network_Lan::release_address() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Lan.address)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Lan.address)
   return _impl_.address_.Release();
 }
-inline void Config_Lan::set_allocated_address(std::string* value) {
+inline void Profile_Network_Lan::set_allocated_address(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.address_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10757,56 +12435,105 @@ inline void Config_Lan::set_allocated_address(std::string* value) {
           _impl_.address_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.Lan.address)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Lan.address)
+}
+
+// repeated .palm.ops.router.v1.Profile.Network.Lan.Client clients = 9;
+inline int Profile_Network_Lan::_internal_clients_size() const {
+  return _internal_clients().size();
+}
+inline int Profile_Network_Lan::clients_size() const {
+  return _internal_clients_size();
+}
+inline void Profile_Network_Lan::clear_clients() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.clients_.Clear();
+}
+inline ::palm::ops::router::v1::Profile_Network_Lan_Client* Profile_Network_Lan::mutable_clients(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Lan.clients)
+  return _internal_mutable_clients()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Network_Lan_Client>* Profile_Network_Lan::mutable_clients()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:palm.ops.router.v1.Profile.Network.Lan.clients)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_clients();
+}
+inline const ::palm::ops::router::v1::Profile_Network_Lan_Client& Profile_Network_Lan::clients(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Lan.clients)
+  return _internal_clients().Get(index);
+}
+inline ::palm::ops::router::v1::Profile_Network_Lan_Client* Profile_Network_Lan::add_clients() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::palm::ops::router::v1::Profile_Network_Lan_Client* _add = _internal_mutable_clients()->Add();
+  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Profile.Network.Lan.clients)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Network_Lan_Client>& Profile_Network_Lan::clients() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:palm.ops.router.v1.Profile.Network.Lan.clients)
+  return _internal_clients();
+}
+inline const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Network_Lan_Client>&
+Profile_Network_Lan::_internal_clients() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.clients_;
+}
+inline ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Network_Lan_Client>*
+Profile_Network_Lan::_internal_mutable_clients() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.clients_;
 }
 
 // -------------------------------------------------------------------
 
-// Config_Guest
+// Profile_Network_Guest
 
 // string name = 1;
-inline void Config_Guest::clear_name() {
+inline void Profile_Network_Guest::clear_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.name_.ClearToEmpty();
 }
-inline const std::string& Config_Guest::name() const
+inline const std::string& Profile_Network_Guest::name() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Guest.name)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Guest.name)
   return _internal_name();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_Guest::set_name(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Guest::set_name(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.Guest.name)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Guest.name)
 }
-inline std::string* Config_Guest::mutable_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Guest::mutable_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Guest.name)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Guest.name)
   return _s;
 }
-inline const std::string& Config_Guest::_internal_name() const {
+inline const std::string& Profile_Network_Guest::_internal_name() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.name_.Get();
 }
-inline void Config_Guest::_internal_set_name(const std::string& value) {
+inline void Profile_Network_Guest::_internal_set_name(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.name_.Set(value, GetArena());
 }
-inline std::string* Config_Guest::_internal_mutable_name() {
+inline std::string* Profile_Network_Guest::_internal_mutable_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.name_.Mutable( GetArena());
 }
-inline std::string* Config_Guest::release_name() {
+inline std::string* Profile_Network_Guest::release_name() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Guest.name)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Guest.name)
   return _impl_.name_.Release();
 }
-inline void Config_Guest::set_allocated_name(std::string* value) {
+inline void Profile_Network_Guest::set_allocated_name(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.name_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10814,52 +12541,52 @@ inline void Config_Guest::set_allocated_name(std::string* value) {
           _impl_.name_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.Guest.name)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Guest.name)
 }
 
 // string device = 2;
-inline void Config_Guest::clear_device() {
+inline void Profile_Network_Guest::clear_device() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.device_.ClearToEmpty();
 }
-inline const std::string& Config_Guest::device() const
+inline const std::string& Profile_Network_Guest::device() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Guest.device)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Guest.device)
   return _internal_device();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_Guest::set_device(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Guest::set_device(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.device_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.Guest.device)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Guest.device)
 }
-inline std::string* Config_Guest::mutable_device() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Guest::mutable_device() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_device();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Guest.device)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Guest.device)
   return _s;
 }
-inline const std::string& Config_Guest::_internal_device() const {
+inline const std::string& Profile_Network_Guest::_internal_device() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.device_.Get();
 }
-inline void Config_Guest::_internal_set_device(const std::string& value) {
+inline void Profile_Network_Guest::_internal_set_device(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.device_.Set(value, GetArena());
 }
-inline std::string* Config_Guest::_internal_mutable_device() {
+inline std::string* Profile_Network_Guest::_internal_mutable_device() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.device_.Mutable( GetArena());
 }
-inline std::string* Config_Guest::release_device() {
+inline std::string* Profile_Network_Guest::release_device() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Guest.device)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Guest.device)
   return _impl_.device_.Release();
 }
-inline void Config_Guest::set_allocated_device(std::string* value) {
+inline void Profile_Network_Guest::set_allocated_device(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.device_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10867,52 +12594,52 @@ inline void Config_Guest::set_allocated_device(std::string* value) {
           _impl_.device_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.Guest.device)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Guest.device)
 }
 
 // string address = 3;
-inline void Config_Guest::clear_address() {
+inline void Profile_Network_Guest::clear_address() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.address_.ClearToEmpty();
 }
-inline const std::string& Config_Guest::address() const
+inline const std::string& Profile_Network_Guest::address() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Config.Guest.address)
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Guest.address)
   return _internal_address();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void Config_Guest::set_address(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network_Guest::set_address(Arg_&& arg,
                                                      Args_... args) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.address_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Config.Guest.address)
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Guest.address)
 }
-inline std::string* Config_Guest::mutable_address() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline std::string* Profile_Network_Guest::mutable_address() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   std::string* _s = _internal_mutable_address();
-  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Config.Guest.address)
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Guest.address)
   return _s;
 }
-inline const std::string& Config_Guest::_internal_address() const {
+inline const std::string& Profile_Network_Guest::_internal_address() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return _impl_.address_.Get();
 }
-inline void Config_Guest::_internal_set_address(const std::string& value) {
+inline void Profile_Network_Guest::_internal_set_address(const std::string& value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   _impl_.address_.Set(value, GetArena());
 }
-inline std::string* Config_Guest::_internal_mutable_address() {
+inline std::string* Profile_Network_Guest::_internal_mutable_address() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
   return _impl_.address_.Mutable( GetArena());
 }
-inline std::string* Config_Guest::release_address() {
+inline std::string* Profile_Network_Guest::release_address() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Config.Guest.address)
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.Guest.address)
   return _impl_.address_.Release();
 }
-inline void Config_Guest::set_allocated_address(std::string* value) {
+inline void Profile_Network_Guest::set_allocated_address(std::string* value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   _impl_.address_.SetAllocated(value, GetArena());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -10920,12 +12647,1375 @@ inline void Config_Guest::set_allocated_address(std::string* value) {
           _impl_.address_.Set("", GetArena());
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Config.Guest.address)
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.Guest.address)
+}
+
+// repeated string block_hosts = 9;
+inline int Profile_Network_Guest::_internal_block_hosts_size() const {
+  return _internal_block_hosts().size();
+}
+inline int Profile_Network_Guest::block_hosts_size() const {
+  return _internal_block_hosts_size();
+}
+inline void Profile_Network_Guest::clear_block_hosts() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.block_hosts_.Clear();
+}
+inline std::string* Profile_Network_Guest::add_block_hosts()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  std::string* _s = _internal_mutable_block_hosts()->Add();
+  // @@protoc_insertion_point(field_add_mutable:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+  return _s;
+}
+inline const std::string& Profile_Network_Guest::block_hosts(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+  return _internal_block_hosts().Get(index);
+}
+inline std::string* Profile_Network_Guest::mutable_block_hosts(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+  return _internal_mutable_block_hosts()->Mutable(index);
+}
+inline void Profile_Network_Guest::set_block_hosts(int index, const std::string& value) {
+  _internal_mutable_block_hosts()->Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+}
+inline void Profile_Network_Guest::set_block_hosts(int index, std::string&& value) {
+  _internal_mutable_block_hosts()->Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+}
+inline void Profile_Network_Guest::set_block_hosts(int index, const char* value) {
+  ABSL_DCHECK(value != nullptr);
+  _internal_mutable_block_hosts()->Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+}
+inline void Profile_Network_Guest::set_block_hosts(int index, const char* value,
+                              std::size_t size) {
+  _internal_mutable_block_hosts()->Mutable(index)->assign(
+      reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+}
+inline void Profile_Network_Guest::set_block_hosts(int index, absl::string_view value) {
+  _internal_mutable_block_hosts()->Mutable(index)->assign(value.data(),
+                                                     value.size());
+  // @@protoc_insertion_point(field_set_string_piece:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+}
+inline void Profile_Network_Guest::add_block_hosts(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_block_hosts()->Add()->assign(value);
+  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+}
+inline void Profile_Network_Guest::add_block_hosts(std::string&& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_block_hosts()->Add(std::move(value));
+  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+}
+inline void Profile_Network_Guest::add_block_hosts(const char* value) {
+  ABSL_DCHECK(value != nullptr);
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_block_hosts()->Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+}
+inline void Profile_Network_Guest::add_block_hosts(const char* value, std::size_t size) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_block_hosts()->Add()->assign(
+      reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+}
+inline void Profile_Network_Guest::add_block_hosts(absl::string_view value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_block_hosts()->Add()->assign(value.data(), value.size());
+  // @@protoc_insertion_point(field_add_string_piece:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+Profile_Network_Guest::block_hosts() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+  return _internal_block_hosts();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+Profile_Network_Guest::mutable_block_hosts() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:palm.ops.router.v1.Profile.Network.Guest.block_hosts)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_block_hosts();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+Profile_Network_Guest::_internal_block_hosts() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.block_hosts_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+Profile_Network_Guest::_internal_mutable_block_hosts() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.block_hosts_;
 }
 
 // -------------------------------------------------------------------
 
-// Config
+// Profile_Network
+
+// string name = 1;
+inline void Profile_Network::clear_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.name_.ClearToEmpty();
+}
+inline const std::string& Profile_Network::name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.name)
+  return _internal_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Profile_Network::set_name(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Network.name)
+}
+inline std::string* Profile_Network::mutable_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.name)
+  return _s;
+}
+inline const std::string& Profile_Network::_internal_name() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.name_.Get();
+}
+inline void Profile_Network::_internal_set_name(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.name_.Set(value, GetArena());
+}
+inline std::string* Profile_Network::_internal_mutable_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.name_.Mutable( GetArena());
+}
+inline std::string* Profile_Network::release_name() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.name)
+  return _impl_.name_.Release();
+}
+inline void Profile_Network::set_allocated_name(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.name_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.name_.IsDefault()) {
+          _impl_.name_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.name)
+}
+
+// .palm.ops.router.v1.Profile.Network.Wan wan = 11;
+inline bool Profile_Network::has_wan() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.wan_ != nullptr);
+  return value;
+}
+inline void Profile_Network::clear_wan() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (_impl_.wan_ != nullptr) _impl_.wan_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::palm::ops::router::v1::Profile_Network_Wan& Profile_Network::_internal_wan() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::palm::ops::router::v1::Profile_Network_Wan* p = _impl_.wan_;
+  return p != nullptr ? *p : reinterpret_cast<const ::palm::ops::router::v1::Profile_Network_Wan&>(::palm::ops::router::v1::_Profile_Network_Wan_default_instance_);
+}
+inline const ::palm::ops::router::v1::Profile_Network_Wan& Profile_Network::wan() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.wan)
+  return _internal_wan();
+}
+inline void Profile_Network::unsafe_arena_set_allocated_wan(::palm::ops::router::v1::Profile_Network_Wan* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.wan_);
+  }
+  _impl_.wan_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Wan*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.ops.router.v1.Profile.Network.wan)
+}
+inline ::palm::ops::router::v1::Profile_Network_Wan* Profile_Network::release_wan() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::palm::ops::router::v1::Profile_Network_Wan* released = _impl_.wan_;
+  _impl_.wan_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArena() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArena() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::palm::ops::router::v1::Profile_Network_Wan* Profile_Network::unsafe_arena_release_wan() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.wan)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::palm::ops::router::v1::Profile_Network_Wan* temp = _impl_.wan_;
+  _impl_.wan_ = nullptr;
+  return temp;
+}
+inline ::palm::ops::router::v1::Profile_Network_Wan* Profile_Network::_internal_mutable_wan() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.wan_ == nullptr) {
+    auto* p = CreateMaybeMessage<::palm::ops::router::v1::Profile_Network_Wan>(GetArena());
+    _impl_.wan_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Wan*>(p);
+  }
+  return _impl_.wan_;
+}
+inline ::palm::ops::router::v1::Profile_Network_Wan* Profile_Network::mutable_wan() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::palm::ops::router::v1::Profile_Network_Wan* _msg = _internal_mutable_wan();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.wan)
+  return _msg;
+}
+inline void Profile_Network::set_allocated_wan(::palm::ops::router::v1::Profile_Network_Wan* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::palm::ops::router::v1::Profile_Network_Wan*>(_impl_.wan_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Wan*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.wan_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Wan*>(value);
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.wan)
+}
+
+// .palm.ops.router.v1.Profile.Network.Lan lan = 12;
+inline bool Profile_Network::has_lan() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.lan_ != nullptr);
+  return value;
+}
+inline void Profile_Network::clear_lan() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (_impl_.lan_ != nullptr) _impl_.lan_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const ::palm::ops::router::v1::Profile_Network_Lan& Profile_Network::_internal_lan() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::palm::ops::router::v1::Profile_Network_Lan* p = _impl_.lan_;
+  return p != nullptr ? *p : reinterpret_cast<const ::palm::ops::router::v1::Profile_Network_Lan&>(::palm::ops::router::v1::_Profile_Network_Lan_default_instance_);
+}
+inline const ::palm::ops::router::v1::Profile_Network_Lan& Profile_Network::lan() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.lan)
+  return _internal_lan();
+}
+inline void Profile_Network::unsafe_arena_set_allocated_lan(::palm::ops::router::v1::Profile_Network_Lan* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.lan_);
+  }
+  _impl_.lan_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Lan*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.ops.router.v1.Profile.Network.lan)
+}
+inline ::palm::ops::router::v1::Profile_Network_Lan* Profile_Network::release_lan() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::palm::ops::router::v1::Profile_Network_Lan* released = _impl_.lan_;
+  _impl_.lan_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArena() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArena() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::palm::ops::router::v1::Profile_Network_Lan* Profile_Network::unsafe_arena_release_lan() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.lan)
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::palm::ops::router::v1::Profile_Network_Lan* temp = _impl_.lan_;
+  _impl_.lan_ = nullptr;
+  return temp;
+}
+inline ::palm::ops::router::v1::Profile_Network_Lan* Profile_Network::_internal_mutable_lan() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  if (_impl_.lan_ == nullptr) {
+    auto* p = CreateMaybeMessage<::palm::ops::router::v1::Profile_Network_Lan>(GetArena());
+    _impl_.lan_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Lan*>(p);
+  }
+  return _impl_.lan_;
+}
+inline ::palm::ops::router::v1::Profile_Network_Lan* Profile_Network::mutable_lan() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::palm::ops::router::v1::Profile_Network_Lan* _msg = _internal_mutable_lan();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.lan)
+  return _msg;
+}
+inline void Profile_Network::set_allocated_lan(::palm::ops::router::v1::Profile_Network_Lan* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::palm::ops::router::v1::Profile_Network_Lan*>(_impl_.lan_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Lan*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+
+  _impl_.lan_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Lan*>(value);
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.lan)
+}
+
+// .palm.ops.router.v1.Profile.Network.Dmz dmz = 13;
+inline bool Profile_Network::has_dmz() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.dmz_ != nullptr);
+  return value;
+}
+inline void Profile_Network::clear_dmz() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (_impl_.dmz_ != nullptr) _impl_.dmz_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline const ::palm::ops::router::v1::Profile_Network_Dmz& Profile_Network::_internal_dmz() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::palm::ops::router::v1::Profile_Network_Dmz* p = _impl_.dmz_;
+  return p != nullptr ? *p : reinterpret_cast<const ::palm::ops::router::v1::Profile_Network_Dmz&>(::palm::ops::router::v1::_Profile_Network_Dmz_default_instance_);
+}
+inline const ::palm::ops::router::v1::Profile_Network_Dmz& Profile_Network::dmz() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.dmz)
+  return _internal_dmz();
+}
+inline void Profile_Network::unsafe_arena_set_allocated_dmz(::palm::ops::router::v1::Profile_Network_Dmz* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.dmz_);
+  }
+  _impl_.dmz_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Dmz*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.ops.router.v1.Profile.Network.dmz)
+}
+inline ::palm::ops::router::v1::Profile_Network_Dmz* Profile_Network::release_dmz() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  ::palm::ops::router::v1::Profile_Network_Dmz* released = _impl_.dmz_;
+  _impl_.dmz_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArena() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArena() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::palm::ops::router::v1::Profile_Network_Dmz* Profile_Network::unsafe_arena_release_dmz() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.dmz)
+
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  ::palm::ops::router::v1::Profile_Network_Dmz* temp = _impl_.dmz_;
+  _impl_.dmz_ = nullptr;
+  return temp;
+}
+inline ::palm::ops::router::v1::Profile_Network_Dmz* Profile_Network::_internal_mutable_dmz() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000004u;
+  if (_impl_.dmz_ == nullptr) {
+    auto* p = CreateMaybeMessage<::palm::ops::router::v1::Profile_Network_Dmz>(GetArena());
+    _impl_.dmz_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Dmz*>(p);
+  }
+  return _impl_.dmz_;
+}
+inline ::palm::ops::router::v1::Profile_Network_Dmz* Profile_Network::mutable_dmz() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::palm::ops::router::v1::Profile_Network_Dmz* _msg = _internal_mutable_dmz();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.dmz)
+  return _msg;
+}
+inline void Profile_Network::set_allocated_dmz(::palm::ops::router::v1::Profile_Network_Dmz* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::palm::ops::router::v1::Profile_Network_Dmz*>(_impl_.dmz_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Dmz*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+
+  _impl_.dmz_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Dmz*>(value);
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.dmz)
+}
+
+// .palm.ops.router.v1.Profile.Network.Guest guest = 14;
+inline bool Profile_Network::has_guest() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.guest_ != nullptr);
+  return value;
+}
+inline void Profile_Network::clear_guest() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (_impl_.guest_ != nullptr) _impl_.guest_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline const ::palm::ops::router::v1::Profile_Network_Guest& Profile_Network::_internal_guest() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::palm::ops::router::v1::Profile_Network_Guest* p = _impl_.guest_;
+  return p != nullptr ? *p : reinterpret_cast<const ::palm::ops::router::v1::Profile_Network_Guest&>(::palm::ops::router::v1::_Profile_Network_Guest_default_instance_);
+}
+inline const ::palm::ops::router::v1::Profile_Network_Guest& Profile_Network::guest() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Network.guest)
+  return _internal_guest();
+}
+inline void Profile_Network::unsafe_arena_set_allocated_guest(::palm::ops::router::v1::Profile_Network_Guest* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.guest_);
+  }
+  _impl_.guest_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Guest*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.ops.router.v1.Profile.Network.guest)
+}
+inline ::palm::ops::router::v1::Profile_Network_Guest* Profile_Network::release_guest() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  ::palm::ops::router::v1::Profile_Network_Guest* released = _impl_.guest_;
+  _impl_.guest_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArena() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArena() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::palm::ops::router::v1::Profile_Network_Guest* Profile_Network::unsafe_arena_release_guest() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Network.guest)
+
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  ::palm::ops::router::v1::Profile_Network_Guest* temp = _impl_.guest_;
+  _impl_.guest_ = nullptr;
+  return temp;
+}
+inline ::palm::ops::router::v1::Profile_Network_Guest* Profile_Network::_internal_mutable_guest() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000008u;
+  if (_impl_.guest_ == nullptr) {
+    auto* p = CreateMaybeMessage<::palm::ops::router::v1::Profile_Network_Guest>(GetArena());
+    _impl_.guest_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Guest*>(p);
+  }
+  return _impl_.guest_;
+}
+inline ::palm::ops::router::v1::Profile_Network_Guest* Profile_Network::mutable_guest() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::palm::ops::router::v1::Profile_Network_Guest* _msg = _internal_mutable_guest();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Network.guest)
+  return _msg;
+}
+inline void Profile_Network::set_allocated_guest(::palm::ops::router::v1::Profile_Network_Guest* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::palm::ops::router::v1::Profile_Network_Guest*>(_impl_.guest_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Guest*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
+
+  _impl_.guest_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network_Guest*>(value);
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Network.guest)
+}
+
+// -------------------------------------------------------------------
+
+// Profile_Dnsmasq_Item_DhcpRange
+
+// string begin = 1;
+inline void Profile_Dnsmasq_Item_DhcpRange::clear_begin() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.begin_.ClearToEmpty();
+}
+inline const std::string& Profile_Dnsmasq_Item_DhcpRange::begin() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange.begin)
+  return _internal_begin();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Profile_Dnsmasq_Item_DhcpRange::set_begin(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.begin_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange.begin)
+}
+inline std::string* Profile_Dnsmasq_Item_DhcpRange::mutable_begin() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_begin();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange.begin)
+  return _s;
+}
+inline const std::string& Profile_Dnsmasq_Item_DhcpRange::_internal_begin() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.begin_.Get();
+}
+inline void Profile_Dnsmasq_Item_DhcpRange::_internal_set_begin(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.begin_.Set(value, GetArena());
+}
+inline std::string* Profile_Dnsmasq_Item_DhcpRange::_internal_mutable_begin() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.begin_.Mutable( GetArena());
+}
+inline std::string* Profile_Dnsmasq_Item_DhcpRange::release_begin() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange.begin)
+  return _impl_.begin_.Release();
+}
+inline void Profile_Dnsmasq_Item_DhcpRange::set_allocated_begin(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.begin_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.begin_.IsDefault()) {
+          _impl_.begin_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange.begin)
+}
+
+// string end = 2;
+inline void Profile_Dnsmasq_Item_DhcpRange::clear_end() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.end_.ClearToEmpty();
+}
+inline const std::string& Profile_Dnsmasq_Item_DhcpRange::end() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange.end)
+  return _internal_end();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Profile_Dnsmasq_Item_DhcpRange::set_end(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.end_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange.end)
+}
+inline std::string* Profile_Dnsmasq_Item_DhcpRange::mutable_end() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_end();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange.end)
+  return _s;
+}
+inline const std::string& Profile_Dnsmasq_Item_DhcpRange::_internal_end() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.end_.Get();
+}
+inline void Profile_Dnsmasq_Item_DhcpRange::_internal_set_end(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.end_.Set(value, GetArena());
+}
+inline std::string* Profile_Dnsmasq_Item_DhcpRange::_internal_mutable_end() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.end_.Mutable( GetArena());
+}
+inline std::string* Profile_Dnsmasq_Item_DhcpRange::release_end() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange.end)
+  return _impl_.end_.Release();
+}
+inline void Profile_Dnsmasq_Item_DhcpRange::set_allocated_end(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.end_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.end_.IsDefault()) {
+          _impl_.end_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange.end)
+}
+
+// -------------------------------------------------------------------
+
+// Profile_Dnsmasq_Item_StaticIp
+
+// string mac = 1;
+inline void Profile_Dnsmasq_Item_StaticIp::clear_mac() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.mac_.ClearToEmpty();
+}
+inline const std::string& Profile_Dnsmasq_Item_StaticIp::mac() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp.mac)
+  return _internal_mac();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Profile_Dnsmasq_Item_StaticIp::set_mac(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.mac_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp.mac)
+}
+inline std::string* Profile_Dnsmasq_Item_StaticIp::mutable_mac() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_mac();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp.mac)
+  return _s;
+}
+inline const std::string& Profile_Dnsmasq_Item_StaticIp::_internal_mac() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.mac_.Get();
+}
+inline void Profile_Dnsmasq_Item_StaticIp::_internal_set_mac(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.mac_.Set(value, GetArena());
+}
+inline std::string* Profile_Dnsmasq_Item_StaticIp::_internal_mutable_mac() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.mac_.Mutable( GetArena());
+}
+inline std::string* Profile_Dnsmasq_Item_StaticIp::release_mac() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp.mac)
+  return _impl_.mac_.Release();
+}
+inline void Profile_Dnsmasq_Item_StaticIp::set_allocated_mac(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.mac_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.mac_.IsDefault()) {
+          _impl_.mac_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp.mac)
+}
+
+// string ip = 2;
+inline void Profile_Dnsmasq_Item_StaticIp::clear_ip() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.ip_.ClearToEmpty();
+}
+inline const std::string& Profile_Dnsmasq_Item_StaticIp::ip() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp.ip)
+  return _internal_ip();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Profile_Dnsmasq_Item_StaticIp::set_ip(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.ip_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp.ip)
+}
+inline std::string* Profile_Dnsmasq_Item_StaticIp::mutable_ip() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_ip();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp.ip)
+  return _s;
+}
+inline const std::string& Profile_Dnsmasq_Item_StaticIp::_internal_ip() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.ip_.Get();
+}
+inline void Profile_Dnsmasq_Item_StaticIp::_internal_set_ip(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.ip_.Set(value, GetArena());
+}
+inline std::string* Profile_Dnsmasq_Item_StaticIp::_internal_mutable_ip() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.ip_.Mutable( GetArena());
+}
+inline std::string* Profile_Dnsmasq_Item_StaticIp::release_ip() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp.ip)
+  return _impl_.ip_.Release();
+}
+inline void Profile_Dnsmasq_Item_StaticIp::set_allocated_ip(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.ip_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.ip_.IsDefault()) {
+          _impl_.ip_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp.ip)
+}
+
+// -------------------------------------------------------------------
+
+// Profile_Dnsmasq_Item
+
+// string device = 1;
+inline void Profile_Dnsmasq_Item::clear_device() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.device_.ClearToEmpty();
+}
+inline const std::string& Profile_Dnsmasq_Item::device() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Dnsmasq.Item.device)
+  return _internal_device();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Profile_Dnsmasq_Item::set_device(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.device_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Dnsmasq.Item.device)
+}
+inline std::string* Profile_Dnsmasq_Item::mutable_device() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_device();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Dnsmasq.Item.device)
+  return _s;
+}
+inline const std::string& Profile_Dnsmasq_Item::_internal_device() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.device_.Get();
+}
+inline void Profile_Dnsmasq_Item::_internal_set_device(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.device_.Set(value, GetArena());
+}
+inline std::string* Profile_Dnsmasq_Item::_internal_mutable_device() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.device_.Mutable( GetArena());
+}
+inline std::string* Profile_Dnsmasq_Item::release_device() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Dnsmasq.Item.device)
+  return _impl_.device_.Release();
+}
+inline void Profile_Dnsmasq_Item::set_allocated_device(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.device_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.device_.IsDefault()) {
+          _impl_.device_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Dnsmasq.Item.device)
+}
+
+// string address = 2;
+inline void Profile_Dnsmasq_Item::clear_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.address_.ClearToEmpty();
+}
+inline const std::string& Profile_Dnsmasq_Item::address() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Dnsmasq.Item.address)
+  return _internal_address();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Profile_Dnsmasq_Item::set_address(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.address_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Dnsmasq.Item.address)
+}
+inline std::string* Profile_Dnsmasq_Item::mutable_address() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_address();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Dnsmasq.Item.address)
+  return _s;
+}
+inline const std::string& Profile_Dnsmasq_Item::_internal_address() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.address_.Get();
+}
+inline void Profile_Dnsmasq_Item::_internal_set_address(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.address_.Set(value, GetArena());
+}
+inline std::string* Profile_Dnsmasq_Item::_internal_mutable_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.address_.Mutable( GetArena());
+}
+inline std::string* Profile_Dnsmasq_Item::release_address() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Dnsmasq.Item.address)
+  return _impl_.address_.Release();
+}
+inline void Profile_Dnsmasq_Item::set_allocated_address(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.address_.SetAllocated(value, GetArena());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.address_.IsDefault()) {
+          _impl_.address_.Set("", GetArena());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Dnsmasq.Item.address)
+}
+
+// .palm.ops.router.v1.Profile.Dnsmasq.Item.DhcpRange dhcp_range = 3;
+inline bool Profile_Dnsmasq_Item::has_dhcp_range() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.dhcp_range_ != nullptr);
+  return value;
+}
+inline void Profile_Dnsmasq_Item::clear_dhcp_range() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (_impl_.dhcp_range_ != nullptr) _impl_.dhcp_range_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange& Profile_Dnsmasq_Item::_internal_dhcp_range() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* p = _impl_.dhcp_range_;
+  return p != nullptr ? *p : reinterpret_cast<const ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange&>(::palm::ops::router::v1::_Profile_Dnsmasq_Item_DhcpRange_default_instance_);
+}
+inline const ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange& Profile_Dnsmasq_Item::dhcp_range() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Dnsmasq.Item.dhcp_range)
+  return _internal_dhcp_range();
+}
+inline void Profile_Dnsmasq_Item::unsafe_arena_set_allocated_dhcp_range(::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.dhcp_range_);
+  }
+  _impl_.dhcp_range_ = reinterpret_cast<::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.ops.router.v1.Profile.Dnsmasq.Item.dhcp_range)
+}
+inline ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* Profile_Dnsmasq_Item::release_dhcp_range() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* released = _impl_.dhcp_range_;
+  _impl_.dhcp_range_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArena() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArena() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* Profile_Dnsmasq_Item::unsafe_arena_release_dhcp_range() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.Dnsmasq.Item.dhcp_range)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* temp = _impl_.dhcp_range_;
+  _impl_.dhcp_range_ = nullptr;
+  return temp;
+}
+inline ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* Profile_Dnsmasq_Item::_internal_mutable_dhcp_range() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.dhcp_range_ == nullptr) {
+    auto* p = CreateMaybeMessage<::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange>(GetArena());
+    _impl_.dhcp_range_ = reinterpret_cast<::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange*>(p);
+  }
+  return _impl_.dhcp_range_;
+}
+inline ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* Profile_Dnsmasq_Item::mutable_dhcp_range() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* _msg = _internal_mutable_dhcp_range();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Dnsmasq.Item.dhcp_range)
+  return _msg;
+}
+inline void Profile_Dnsmasq_Item::set_allocated_dhcp_range(::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange*>(_impl_.dhcp_range_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.dhcp_range_ = reinterpret_cast<::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange*>(value);
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.Dnsmasq.Item.dhcp_range)
+}
+
+// repeated .palm.ops.router.v1.Profile.Dnsmasq.Item.StaticIp static_ips = 4;
+inline int Profile_Dnsmasq_Item::_internal_static_ips_size() const {
+  return _internal_static_ips().size();
+}
+inline int Profile_Dnsmasq_Item::static_ips_size() const {
+  return _internal_static_ips_size();
+}
+inline void Profile_Dnsmasq_Item::clear_static_ips() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.static_ips_.Clear();
+}
+inline ::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp* Profile_Dnsmasq_Item::mutable_static_ips(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Dnsmasq.Item.static_ips)
+  return _internal_mutable_static_ips()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp>* Profile_Dnsmasq_Item::mutable_static_ips()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:palm.ops.router.v1.Profile.Dnsmasq.Item.static_ips)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_static_ips();
+}
+inline const ::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp& Profile_Dnsmasq_Item::static_ips(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Dnsmasq.Item.static_ips)
+  return _internal_static_ips().Get(index);
+}
+inline ::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp* Profile_Dnsmasq_Item::add_static_ips() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp* _add = _internal_mutable_static_ips()->Add();
+  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Profile.Dnsmasq.Item.static_ips)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp>& Profile_Dnsmasq_Item::static_ips() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:palm.ops.router.v1.Profile.Dnsmasq.Item.static_ips)
+  return _internal_static_ips();
+}
+inline const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp>&
+Profile_Dnsmasq_Item::_internal_static_ips() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.static_ips_;
+}
+inline ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp>*
+Profile_Dnsmasq_Item::_internal_mutable_static_ips() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.static_ips_;
+}
+
+// repeated string dns_servers = 99;
+inline int Profile_Dnsmasq_Item::_internal_dns_servers_size() const {
+  return _internal_dns_servers().size();
+}
+inline int Profile_Dnsmasq_Item::dns_servers_size() const {
+  return _internal_dns_servers_size();
+}
+inline void Profile_Dnsmasq_Item::clear_dns_servers() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.dns_servers_.Clear();
+}
+inline std::string* Profile_Dnsmasq_Item::add_dns_servers()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  std::string* _s = _internal_mutable_dns_servers()->Add();
+  // @@protoc_insertion_point(field_add_mutable:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+  return _s;
+}
+inline const std::string& Profile_Dnsmasq_Item::dns_servers(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+  return _internal_dns_servers().Get(index);
+}
+inline std::string* Profile_Dnsmasq_Item::mutable_dns_servers(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+  return _internal_mutable_dns_servers()->Mutable(index);
+}
+inline void Profile_Dnsmasq_Item::set_dns_servers(int index, const std::string& value) {
+  _internal_mutable_dns_servers()->Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+}
+inline void Profile_Dnsmasq_Item::set_dns_servers(int index, std::string&& value) {
+  _internal_mutable_dns_servers()->Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+}
+inline void Profile_Dnsmasq_Item::set_dns_servers(int index, const char* value) {
+  ABSL_DCHECK(value != nullptr);
+  _internal_mutable_dns_servers()->Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+}
+inline void Profile_Dnsmasq_Item::set_dns_servers(int index, const char* value,
+                              std::size_t size) {
+  _internal_mutable_dns_servers()->Mutable(index)->assign(
+      reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+}
+inline void Profile_Dnsmasq_Item::set_dns_servers(int index, absl::string_view value) {
+  _internal_mutable_dns_servers()->Mutable(index)->assign(value.data(),
+                                                     value.size());
+  // @@protoc_insertion_point(field_set_string_piece:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+}
+inline void Profile_Dnsmasq_Item::add_dns_servers(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_dns_servers()->Add()->assign(value);
+  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+}
+inline void Profile_Dnsmasq_Item::add_dns_servers(std::string&& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_dns_servers()->Add(std::move(value));
+  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+}
+inline void Profile_Dnsmasq_Item::add_dns_servers(const char* value) {
+  ABSL_DCHECK(value != nullptr);
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_dns_servers()->Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+}
+inline void Profile_Dnsmasq_Item::add_dns_servers(const char* value, std::size_t size) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_dns_servers()->Add()->assign(
+      reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+}
+inline void Profile_Dnsmasq_Item::add_dns_servers(absl::string_view value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _internal_mutable_dns_servers()->Add()->assign(value.data(), value.size());
+  // @@protoc_insertion_point(field_add_string_piece:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+Profile_Dnsmasq_Item::dns_servers() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+  return _internal_dns_servers();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+Profile_Dnsmasq_Item::mutable_dns_servers() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:palm.ops.router.v1.Profile.Dnsmasq.Item.dns_servers)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_dns_servers();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+Profile_Dnsmasq_Item::_internal_dns_servers() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.dns_servers_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+Profile_Dnsmasq_Item::_internal_mutable_dns_servers() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.dns_servers_;
+}
+
+// -------------------------------------------------------------------
+
+// Profile_Dnsmasq
+
+// repeated .palm.ops.router.v1.Profile.Dnsmasq.Item items = 1;
+inline int Profile_Dnsmasq::_internal_items_size() const {
+  return _internal_items().size();
+}
+inline int Profile_Dnsmasq::items_size() const {
+  return _internal_items_size();
+}
+inline void Profile_Dnsmasq::clear_items() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.items_.Clear();
+}
+inline ::palm::ops::router::v1::Profile_Dnsmasq_Item* Profile_Dnsmasq::mutable_items(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.Dnsmasq.items)
+  return _internal_mutable_items()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Dnsmasq_Item>* Profile_Dnsmasq::mutable_items()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:palm.ops.router.v1.Profile.Dnsmasq.items)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_items();
+}
+inline const ::palm::ops::router::v1::Profile_Dnsmasq_Item& Profile_Dnsmasq::items(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.Dnsmasq.items)
+  return _internal_items().Get(index);
+}
+inline ::palm::ops::router::v1::Profile_Dnsmasq_Item* Profile_Dnsmasq::add_items() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::palm::ops::router::v1::Profile_Dnsmasq_Item* _add = _internal_mutable_items()->Add();
+  // @@protoc_insertion_point(field_add:palm.ops.router.v1.Profile.Dnsmasq.items)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Dnsmasq_Item>& Profile_Dnsmasq::items() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:palm.ops.router.v1.Profile.Dnsmasq.items)
+  return _internal_items();
+}
+inline const ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Dnsmasq_Item>&
+Profile_Dnsmasq::_internal_items() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.items_;
+}
+inline ::google::protobuf::RepeatedPtrField<::palm::ops::router::v1::Profile_Dnsmasq_Item>*
+Profile_Dnsmasq::_internal_mutable_items() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.items_;
+}
+
+// -------------------------------------------------------------------
+
+// Profile
+
+// .palm.ops.router.v1.Profile.Network network = 1;
+inline bool Profile::has_network() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.network_ != nullptr);
+  return value;
+}
+inline void Profile::clear_network() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (_impl_.network_ != nullptr) _impl_.network_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::palm::ops::router::v1::Profile_Network& Profile::_internal_network() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::palm::ops::router::v1::Profile_Network* p = _impl_.network_;
+  return p != nullptr ? *p : reinterpret_cast<const ::palm::ops::router::v1::Profile_Network&>(::palm::ops::router::v1::_Profile_Network_default_instance_);
+}
+inline const ::palm::ops::router::v1::Profile_Network& Profile::network() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.network)
+  return _internal_network();
+}
+inline void Profile::unsafe_arena_set_allocated_network(::palm::ops::router::v1::Profile_Network* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.network_);
+  }
+  _impl_.network_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.ops.router.v1.Profile.network)
+}
+inline ::palm::ops::router::v1::Profile_Network* Profile::release_network() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::palm::ops::router::v1::Profile_Network* released = _impl_.network_;
+  _impl_.network_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArena() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArena() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::palm::ops::router::v1::Profile_Network* Profile::unsafe_arena_release_network() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.network)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::palm::ops::router::v1::Profile_Network* temp = _impl_.network_;
+  _impl_.network_ = nullptr;
+  return temp;
+}
+inline ::palm::ops::router::v1::Profile_Network* Profile::_internal_mutable_network() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  if (_impl_.network_ == nullptr) {
+    auto* p = CreateMaybeMessage<::palm::ops::router::v1::Profile_Network>(GetArena());
+    _impl_.network_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network*>(p);
+  }
+  return _impl_.network_;
+}
+inline ::palm::ops::router::v1::Profile_Network* Profile::mutable_network() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::palm::ops::router::v1::Profile_Network* _msg = _internal_mutable_network();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.network)
+  return _msg;
+}
+inline void Profile::set_allocated_network(::palm::ops::router::v1::Profile_Network* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::palm::ops::router::v1::Profile_Network*>(_impl_.network_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::palm::ops::router::v1::Profile_Network*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.network_ = reinterpret_cast<::palm::ops::router::v1::Profile_Network*>(value);
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.network)
+}
+
+// .palm.ops.router.v1.Profile.Dnsmasq dnsmasq = 2;
+inline bool Profile::has_dnsmasq() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.dnsmasq_ != nullptr);
+  return value;
+}
+inline void Profile::clear_dnsmasq() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (_impl_.dnsmasq_ != nullptr) _impl_.dnsmasq_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const ::palm::ops::router::v1::Profile_Dnsmasq& Profile::_internal_dnsmasq() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  const ::palm::ops::router::v1::Profile_Dnsmasq* p = _impl_.dnsmasq_;
+  return p != nullptr ? *p : reinterpret_cast<const ::palm::ops::router::v1::Profile_Dnsmasq&>(::palm::ops::router::v1::_Profile_Dnsmasq_default_instance_);
+}
+inline const ::palm::ops::router::v1::Profile_Dnsmasq& Profile::dnsmasq() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:palm.ops.router.v1.Profile.dnsmasq)
+  return _internal_dnsmasq();
+}
+inline void Profile::unsafe_arena_set_allocated_dnsmasq(::palm::ops::router::v1::Profile_Dnsmasq* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.dnsmasq_);
+  }
+  _impl_.dnsmasq_ = reinterpret_cast<::palm::ops::router::v1::Profile_Dnsmasq*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:palm.ops.router.v1.Profile.dnsmasq)
+}
+inline ::palm::ops::router::v1::Profile_Dnsmasq* Profile::release_dnsmasq() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::palm::ops::router::v1::Profile_Dnsmasq* released = _impl_.dnsmasq_;
+  _impl_.dnsmasq_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  if (GetArena() == nullptr) {
+    delete old;
+  }
+#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArena() != nullptr) {
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return released;
+}
+inline ::palm::ops::router::v1::Profile_Dnsmasq* Profile::unsafe_arena_release_dnsmasq() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:palm.ops.router.v1.Profile.dnsmasq)
+
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::palm::ops::router::v1::Profile_Dnsmasq* temp = _impl_.dnsmasq_;
+  _impl_.dnsmasq_ = nullptr;
+  return temp;
+}
+inline ::palm::ops::router::v1::Profile_Dnsmasq* Profile::_internal_mutable_dnsmasq() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_._has_bits_[0] |= 0x00000002u;
+  if (_impl_.dnsmasq_ == nullptr) {
+    auto* p = CreateMaybeMessage<::palm::ops::router::v1::Profile_Dnsmasq>(GetArena());
+    _impl_.dnsmasq_ = reinterpret_cast<::palm::ops::router::v1::Profile_Dnsmasq*>(p);
+  }
+  return _impl_.dnsmasq_;
+}
+inline ::palm::ops::router::v1::Profile_Dnsmasq* Profile::mutable_dnsmasq() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::palm::ops::router::v1::Profile_Dnsmasq* _msg = _internal_mutable_dnsmasq();
+  // @@protoc_insertion_point(field_mutable:palm.ops.router.v1.Profile.dnsmasq)
+  return _msg;
+}
+inline void Profile::set_allocated_dnsmasq(::palm::ops::router::v1::Profile_Dnsmasq* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::palm::ops::router::v1::Profile_Dnsmasq*>(_impl_.dnsmasq_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::palm::ops::router::v1::Profile_Dnsmasq*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+
+  _impl_.dnsmasq_ = reinterpret_cast<::palm::ops::router::v1::Profile_Dnsmasq*>(value);
+  // @@protoc_insertion_point(field_set_allocated:palm.ops.router.v1.Profile.dnsmasq)
+}
 
 // -------------------------------------------------------------------
 

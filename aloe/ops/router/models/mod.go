@@ -14,15 +14,15 @@ var tpl_flush_sh string
 //go:embed apply.sh
 var tpl_apply_sh string
 
-func Apply(config *ops_router_v2.Config) (string, error) {
+func Apply(config *ops_router_v2.Profile) (string, error) {
 	return generate_script(tpl_apply_sh, config)
 }
 
-func Flush(config *ops_router_v2.Config) (string, error) {
+func Flush(config *ops_router_v2.Profile) (string, error) {
 	return generate_script(tpl_flush_sh, config)
 }
 
-func generate_script(text string, config *ops_router_v2.Config) (string, error) {
+func generate_script(text string, config *ops_router_v2.Profile) (string, error) {
 	tpl, err := template.New("").Parse(text)
 	if err != nil {
 		return "", err

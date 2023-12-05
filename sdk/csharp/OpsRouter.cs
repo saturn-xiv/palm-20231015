@@ -26,151 +26,172 @@ namespace Palm.Ops.Router.V1 {
           string.Concat(
             "ChBvcHMtcm91dGVyLnByb3RvEhJwYWxtLm9wcy5yb3V0ZXIudjEaG2dvb2ds",
             "ZS9wcm90b2J1Zi9lbXB0eS5wcm90bxofZ29vZ2xlL3Byb3RvYnVmL3RpbWVz",
-            "dGFtcC5wcm90bxoeZ29vZ2xlL3Byb3RvYnVmL2R1cmF0aW9uLnByb3RvIuAD",
-            "CgZDb25maWcaBgoERGhjcBo5CghTdGF0aWNJcBIPCgdhZGRyZXNzGAEgASgJ",
-            "Eg8KB2dhdGV3YXkYAiABKAkSCwoDZG5zGAMgASgJGu4BCgNXYW4SOwoKaW50",
-            "ZXJmYWNlcxgBIAMoCzInLnBhbG0ub3BzLnJvdXRlci52MS5Db25maWcuV2Fu",
-            "LkV0aGVybmV0GqkBCghFdGhlcm5ldBIMCgRuYW1lGAEgASgJEg4KBmRldmlj",
-            "ZRgCIAEoCRIvCgRkaGNwGAsgASgLMh8ucGFsbS5vcHMucm91dGVyLnYxLkNv",
-            "bmZpZy5EaGNwSAASOAoJc3RhdGljX2lwGAwgASgLMiMucGFsbS5vcHMucm91",
-            "dGVyLnYxLkNvbmZpZy5TdGF0aWNJcEgAEg4KBm1ldHJpYxhjIAEoDUIECgJp",
-            "cBo0CgNEbXoSDAoEbmFtZRgBIAEoCRIOCgZkZXZpY2UYAiABKAkSDwoHYWRk",
-            "cmVzcxgDIAEoCRo0CgNMYW4SDAoEbmFtZRgBIAEoCRIOCgZkZXZpY2UYAiAB",
-            "KAkSDwoHYWRkcmVzcxgDIAEoCRo2CgVHdWVzdBIMCgRuYW1lGAEgASgJEg4K",
-            "BmRldmljZRgCIAEoCRIPCgdhZGRyZXNzGAMgASgJIocBCgdDb250YWN0EhIK",
-            "BXBob25lGAEgASgJSACIAQESEwoGd2VjaGF0GAIgASgJSAGIAQESEgoFZW1h",
-            "aWwYAyABKAlIAogBARIUCgdhZGRyZXNzGGMgASgJSAOIAQFCCAoGX3Bob25l",
-            "QgkKB193ZWNoYXRCCAoGX2VtYWlsQgoKCF9hZGRyZXNzIk8KE1JvdXRlclNl",
-            "dExhblJlcXVlc3QSKAoHcGF5bG9hZBgBIAEoCzIXLnBhbG0ub3BzLnJvdXRl",
-            "ci52MS5MYW4SDgoGZW5hYmxlGAIgASgIIk8KE1JvdXRlclNldERtelJlcXVl",
-            "c3QSKAoHcGF5bG9hZBgBIAEoCzIXLnBhbG0ub3BzLnJvdXRlci52MS5EbXoS",
-            "DgoGZW5hYmxlGAIgASgIIk8KE1JvdXRlclNldFdhblJlcXVlc3QSKAoHcGF5",
-            "bG9hZBgBIAEoCzIXLnBhbG0ub3BzLnJvdXRlci52MS5XYW4SDgoGZW5hYmxl",
-            "GAIgASgIImIKB1dhblBvb2wSLwoFaXRlbXMYASADKAsyIC5wYWxtLm9wcy5y",
-            "b3V0ZXIudjEuV2FuUG9vbC5JdGVtGiYKBEl0ZW0SDgoGZGV2aWNlGAEgASgJ",
-            "Eg4KBndlaWdodBgCIAEoDSJVChdSb3V0ZXJDcmVhdGVVc2VyUmVxdWVzdBIM",
-            "CgRuYW1lGAEgASgJEiwKB2NvbnRhY3QYAiABKAsyGy5wYWxtLm9wcy5yb3V0",
-            "ZXIudjEuQ29udGFjdCKqAQoXUm91dGVySW5kZXhVc2VyUmVzcG9uc2USPwoF",
-            "aXRlbXMYASADKAsyMC5wYWxtLm9wcy5yb3V0ZXIudjEuUm91dGVySW5kZXhV",
-            "c2VyUmVzcG9uc2UuSXRlbRpOCgRJdGVtEgoKAmlkGAEgASgFEgwKBG5hbWUY",
-            "AiABKAkSLAoHY29udGFjdBgDIAEoCzIbLnBhbG0ub3BzLnJvdXRlci52MS5D",
-            "b250YWN0Io8BChdSb3V0ZXJVcGRhdGVIb3N0UmVxdWVzdBIKCgJpZBgBIAEo",
-            "BRIMCgR1c2VyGAIgASgFEg0KBWdyb3VwGAMgASgJEgoKAmlwGAQgASgJEg0K",
-            "BWZpeGVkGAUgASgIEgwKBHpvbmUYCCABKAkSFQoIbG9jYXRpb24YCSABKAlI",
-            "AIgBAUILCglfbG9jYXRpb24ipgIKF1JvdXRlckluZGV4UnVsZVJlc3BvbnNl",
-            "Ej8KBWl0ZW1zGAEgAygLMjAucGFsbS5vcHMucm91dGVyLnYxLlJvdXRlcklu",
-            "ZGV4UnVsZVJlc3BvbnNlLkl0ZW0ayQEKBEl0ZW0SCgoCaWQYASABKAUSDAoE",
-            "bmFtZRgCIAEoCRINCgVncm91cBgDIAEoCRIuCgJpbhgLIAEoCzIgLnBhbG0u",
-            "b3BzLnJvdXRlci52MS5SdWxlLkluQm91bmRIABIwCgNvdXQYDCABKAsyIS5w",
-            "YWxtLm9wcy5yb3V0ZXIudjEuUnVsZS5PdXRCb3VuZEgAEisKA25hdBgNIAEo",
-            "CzIcLnBhbG0ub3BzLnJvdXRlci52MS5SdWxlLk5hdEgAQgkKB3BheWxvYWQi",
-            "7wEKBEhvc3QSCgoCaWQYASABKAUSDAoEbmFtZRgCIAEoCRILCgNtYWMYAyAB",
-            "KAkSCgoCaXAYBCABKAkSDQoFZml4ZWQYBSABKAgSDQoFZ3JvdXAYCSABKAkS",
-            "FQoIbG9jYXRpb24YCyABKAlIAIgBARItCgVvd25lchgMIAEoCzIeLnBhbG0u",
-            "b3BzLnJvdXRlci52MS5Ib3N0Lk93bmVyGkMKBU93bmVyEgwKBG5hbWUYASAB",
-            "KAkSLAoHY29udGFjdBgCIAEoCzIbLnBhbG0ub3BzLnJvdXRlci52MS5Db250",
-            "YWN0QgsKCV9sb2NhdGlvbiK+CAoEUnVsZRIMCgRuYW1lGAEgASgJEg0KBWdy",
-            "b3VwGAIgASgJEi4KAmluGAsgASgLMiAucGFsbS5vcHMucm91dGVyLnYxLlJ1",
-            "bGUuSW5Cb3VuZEgAEjAKA291dBgMIAEoCzIhLnBhbG0ub3BzLnJvdXRlci52",
-            "MS5SdWxlLk91dEJvdW5kSAASKwoDbmF0GA0gASgLMhwucGFsbS5vcHMucm91",
-            "dGVyLnYxLlJ1bGUuTmF0SAAaVAoHSW5Cb3VuZBIOCgZkZXZpY2UYASABKAkS",
-            "CwoDdGNwGAIgASgIEgwKBHBvcnQYAyABKA0SEwoGc291cmNlGAQgASgJSACI",
-            "AQFCCQoHX3NvdXJjZRqmBAoIT3V0Qm91bmQSNgoEaG9zdBgBIAEoCzImLnBh",
-            "bG0ub3BzLnJvdXRlci52MS5SdWxlLk91dEJvdW5kLkhvc3RIABI4CgVzcGVl",
-            "ZBgCIAEoCzInLnBhbG0ub3BzLnJvdXRlci52MS5SdWxlLk91dEJvdW5kLlNw",
-            "ZWVkSAASNgoEdGltZRgDIAEoCzImLnBhbG0ub3BzLnJvdXRlci52MS5SdWxl",
-            "Lk91dEJvdW5kLlRpbWVIABpVCgRIb3N0EgoKAnRvGAEgASgJEjMKCHByb3Rv",
-            "Y29sGAIgASgOMiEucGFsbS5vcHMucm91dGVyLnYxLlJ1bGUuUHJvdG9jb2wS",
-            "DAoEcG9ydBgDIAEoDRo7CgVTcGVlZBIPCgJ1cBgBIAEoDUgAiAEBEhEKBGRv",
-            "d24YAiABKA1IAYgBAUIFCgNfdXBCBwoFX2Rvd24a0AEKBFRpbWUSKAoEZnJv",
-            "bRgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASJgoCdG8YAiAB",
-            "KAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEg4KBm1vbmRheRgLIAEo",
-            "CBIPCgd0dWVzZGF5GAwgASgIEhEKCXdlZG5lc2RheRgNIAEoCBIQCgh0aHVy",
-            "c2RheRgOIAEoCBIOCgZmcmlkYXkYDyABKAgSEAoIc2F0dXJkYXkYECABKAgS",
-            "DgoGc3VuZGF5GBEgASgIQgkKB3BheWxvYWQa1wEKA05hdBIzCgZzb3VyY2UY",
-            "ASABKAsyIy5wYWxtLm9wcy5yb3V0ZXIudjEuUnVsZS5OYXQuU291cmNlEgsK",
-            "A3RjcBgCIAEoCBI9CgtkZXN0aW5hdGlvbhgDIAEoCzIoLnBhbG0ub3BzLnJv",
-            "dXRlci52MS5SdWxlLk5hdC5EZXN0aW5hdGlvbhomCgZTb3VyY2USDgoGZGV2",
-            "aWNlGAEgASgJEgwKBHBvcnQYAyABKA0aJwoLRGVzdGluYXRpb24SCgoCaXAY",
-            "ASABKAkSDAoEcG9ydBgDIAEoDSImCghQcm90b2NvbBIICgRJY21wEAASBwoD",
-            "VGNwEAESBwoDVWRwEAJCCQoHcGF5bG9hZCLaBAoUUm91dGVyU3RhdHVzUmVz",
-            "cG9uc2USTAoKaW50ZXJmYWNlcxgBIAMoCzI4LnBhbG0ub3BzLnJvdXRlci52",
-            "MS5Sb3V0ZXJTdGF0dXNSZXNwb25zZS5JbnRlcmZhY2VzRW50cnkSJAoDbGFu",
-            "GAsgASgLMhcucGFsbS5vcHMucm91dGVyLnYxLkxhbhIkCgNkbXoYDCABKAsy",
-            "Fy5wYWxtLm9wcy5yb3V0ZXIudjEuRG16EiQKA2RucxgNIAEoCzIXLnBhbG0u",
-            "b3BzLnJvdXRlci52MS5EbnMSJAoDd2FuGA4gAygLMhcucGFsbS5vcHMucm91",
-            "dGVyLnYxLldhbhItCgh3YW5fcG9vbBgPIAEoCzIbLnBhbG0ub3BzLnJvdXRl",
-            "ci52MS5XYW5Qb29sEicKBXJ1bGVzGBUgAygLMhgucGFsbS5vcHMucm91dGVy",
-            "LnYxLlJ1bGUSJwoFaG9zdHMYFiADKAsyGC5wYWxtLm9wcy5yb3V0ZXIudjEu",
-            "SG9zdBI3CgJpcBhhIAEoCzIrLnBhbG0ub3BzLnJvdXRlci52MS5Sb3V0ZXJT",
-            "dGF0dXNSZXNwb25zZS5JcBIQCghmaXJld2FsbBhiIAEoCRIpCgZ1cHRpbWUY",
-            "YyABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb24aMQoPSW50ZXJmYWNl",
-            "c0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEaMgoCSXAS",
-            "DwoHYWRkcmVzcxgBIAEoCRINCgVyb3V0ZRgCIAEoCRIMCgRydWxlGAMgASgJ",
-            "IkMKA0xhbhIOCgZkZXZpY2UYASABKAkSCwoDbWFjGAIgASgJEg4KBm1ldHJp",
-            "YxgDIAEoDRIPCgdhZGRyZXNzGAsgASgJIkMKA0RtehIOCgZkZXZpY2UYASAB",
-            "KAkSCwoDbWFjGAIgASgJEg4KBm1ldHJpYxgDIAEoDRIPCgdhZGRyZXNzGAsg",
-            "ASgJIq4BCgNXYW4SDgoGZGV2aWNlGAEgASgJEg4KBm1ldHJpYxgCIAEoDRIM",
-            "CgRuYW1lGAkgASgJEgsKA21hYxgLIAEoCRIoCgRkaGNwGBUgASgLMhgucGFs",
-            "bS5vcHMucm91dGVyLnYxLkRoY3BIABIsCgZzdGF0aWMYFiABKAsyGi5wYWxt",
-            "Lm9wcy5yb3V0ZXIudjEuU3RhdGljSAASDgoGZW5hYmxlGGMgASgIQgQKAmlw",
-            "IhIKBERoY3ASCgoCdjYYASABKAgiVAoGU3RhdGljEg8KB2FkZHJlc3MYASAB",
-            "KAkSDwoHZ2F0ZXdheRgDIAEoCRIMCgRkbnMxGAQgASgJEhEKBGRuczIYBSAB",
-            "KAlIAIgBAUIHCgVfZG5zMiIUCgNEbnMSDQoFaXRlbXMYASADKAkiMQoLVXNl",
-            "clByb2ZpbGUSEAoIbmlja25hbWUYASABKAkSEAoIcGFzc3dvcmQYAiABKAki",
-            "agoRVXNlclNpZ25JblJlcXVlc3QSLQoEdXNlchgBIAEoCzIfLnBhbG0ub3Bz",
-            "LnJvdXRlci52MS5Vc2VyUHJvZmlsZRImCgN0dGwYCSABKAsyGS5nb29nbGUu",
-            "cHJvdG9idWYuRHVyYXRpb24iIwoSVXNlclNpZ25JblJlc3BvbnNlEg0KBXRv",
-            "a2VuGAEgASgJInMKEVVzZXJVcGRhdGVSZXF1ZXN0EjAKB2N1cnJlbnQYASAB",
-            "KAsyHy5wYWxtLm9wcy5yb3V0ZXIudjEuVXNlclByb2ZpbGUSLAoDbmV3GAIg",
-            "ASgLMh8ucGFsbS5vcHMucm91dGVyLnYxLlVzZXJQcm9maWxlIiEKEFVzZXJM",
-            "b2dzUmVzcG9uc2USDQoFaXRlbXMYASADKAky/ggKBlJvdXRlchI6CgZSZWJv",
-            "b3QSFi5nb29nbGUucHJvdG9idWYuRW1wdHkaFi5nb29nbGUucHJvdG9idWYu",
-            "RW1wdHkiABI5CgVBcHBseRIWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eRoWLmdv",
-            "b2dsZS5wcm90b2J1Zi5FbXB0eSIAEkwKBlN0YXR1cxIWLmdvb2dsZS5wcm90",
-            "b2J1Zi5FbXB0eRooLnBhbG0ub3BzLnJvdXRlci52MS5Sb3V0ZXJTdGF0dXNS",
-            "ZXNwb25zZSIAEjsKBlNldERucxIXLnBhbG0ub3BzLnJvdXRlci52MS5EbnMa",
-            "Fi5nb29nbGUucHJvdG9idWYuRW1wdHkiABJLCgZTZXRXYW4SJy5wYWxtLm9w",
-            "cy5yb3V0ZXIudjEuUm91dGVyU2V0V2FuUmVxdWVzdBoWLmdvb2dsZS5wcm90",
-            "b2J1Zi5FbXB0eSIAEkMKClNldFdhblBvb2wSGy5wYWxtLm9wcy5yb3V0ZXIu",
-            "djEuV2FuUG9vbBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIAEksKBlNldExh",
-            "bhInLnBhbG0ub3BzLnJvdXRlci52MS5Sb3V0ZXJTZXRMYW5SZXF1ZXN0GhYu",
-            "Z29vZ2xlLnByb3RvYnVmLkVtcHR5IgASSwoGU2V0RG16EicucGFsbS5vcHMu",
-            "cm91dGVyLnYxLlJvdXRlclNldERtelJlcXVlc3QaFi5nb29nbGUucHJvdG9i",
-            "dWYuRW1wdHkiABJACgpDcmVhdGVSdWxlEhgucGFsbS5vcHMucm91dGVyLnYx",
-            "LlJ1bGUaFi5nb29nbGUucHJvdG9idWYuRW1wdHkiABJYCgpVcGRhdGVSdWxl",
-            "EjAucGFsbS5vcHMucm91dGVyLnYxLlJvdXRlckluZGV4UnVsZVJlc3BvbnNl",
-            "Lkl0ZW0aFi5nb29nbGUucHJvdG9idWYuRW1wdHkiABJSCglJbmRleFJ1bGUS",
-            "Fi5nb29nbGUucHJvdG9idWYuRW1wdHkaKy5wYWxtLm9wcy5yb3V0ZXIudjEu",
-            "Um91dGVySW5kZXhSdWxlUmVzcG9uc2UiABJTCgpVcGRhdGVIb3N0EisucGFs",
-            "bS5vcHMucm91dGVyLnYxLlJvdXRlclVwZGF0ZUhvc3RSZXF1ZXN0GhYuZ29v",
-            "Z2xlLnByb3RvYnVmLkVtcHR5IgASUgoJSW5kZXhVc2VyEhYuZ29vZ2xlLnBy",
-            "b3RvYnVmLkVtcHR5GisucGFsbS5vcHMucm91dGVyLnYxLlJvdXRlckluZGV4",
-            "VXNlclJlc3BvbnNlIgASWAoKVXBkYXRlVXNlchIwLnBhbG0ub3BzLnJvdXRl",
-            "ci52MS5Sb3V0ZXJJbmRleFVzZXJSZXNwb25zZS5JdGVtGhYuZ29vZ2xlLnBy",
-            "b3RvYnVmLkVtcHR5IgASUwoKQ3JlYXRlVXNlchIrLnBhbG0ub3BzLnJvdXRl",
-            "ci52MS5Sb3V0ZXJDcmVhdGVVc2VyUmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1",
-            "Zi5FbXB0eSIAMoEDCgRVc2VyElkKBlNpZ25JbhIlLnBhbG0ub3BzLnJvdXRl",
-            "ci52MS5Vc2VyU2lnbkluUmVxdWVzdBomLnBhbG0ub3BzLnJvdXRlci52MS5V",
-            "c2VyU2lnbkluUmVzcG9uc2UiABJOCgdSZWZyZXNoEhkuZ29vZ2xlLnByb3Rv",
-            "YnVmLkR1cmF0aW9uGiYucGFsbS5vcHMucm91dGVyLnYxLlVzZXJTaWduSW5S",
-            "ZXNwb25zZSIAEkkKBlVwZGF0ZRIlLnBhbG0ub3BzLnJvdXRlci52MS5Vc2Vy",
-            "VXBkYXRlUmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIAEjsKB1Np",
-            "Z25PdXQSFi5nb29nbGUucHJvdG9idWYuRW1wdHkaFi5nb29nbGUucHJvdG9i",
-            "dWYuRW1wdHkiABJGCgRMb2dzEhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5GiQu",
-            "cGFsbS5vcHMucm91dGVyLnYxLlVzZXJMb2dzUmVzcG9uc2UiAEJeCjBjb20u",
-            "Z2l0aHViLnNhdHVybl94aXYucGFsbS5wbHVnaW5zLm9wcy5yb3V0ZXIudjFQ",
-            "AVooZ2l0aHViLmNvbS9zYXR1cm5feGl2L2Fsb2Uvb3BzL3JvdXRlci92MmIG",
-            "cHJvdG8z"));
+            "dGFtcC5wcm90bxoeZ29vZ2xlL3Byb3RvYnVmL2R1cmF0aW9uLnByb3RvIt0K",
+            "CgdQcm9maWxlEjQKB25ldHdvcmsYASABKAsyIy5wYWxtLm9wcy5yb3V0ZXIu",
+            "djEuUHJvZmlsZS5OZXR3b3JrEjQKB2Ruc21hc3EYAiABKAsyIy5wYWxtLm9w",
+            "cy5yb3V0ZXIudjEuUHJvZmlsZS5EbnNtYXNxGoQHCgdOZXR3b3JrEgwKBG5h",
+            "bWUYASABKAkSNAoDd2FuGAsgASgLMicucGFsbS5vcHMucm91dGVyLnYxLlBy",
+            "b2ZpbGUuTmV0d29yay5XYW4SNAoDbGFuGAwgASgLMicucGFsbS5vcHMucm91",
+            "dGVyLnYxLlByb2ZpbGUuTmV0d29yay5MYW4SNAoDZG16GA0gASgLMicucGFs",
+            "bS5vcHMucm91dGVyLnYxLlByb2ZpbGUuTmV0d29yay5EbXoSOAoFZ3Vlc3QY",
+            "DiABKAsyKS5wYWxtLm9wcy5yb3V0ZXIudjEuUHJvZmlsZS5OZXR3b3JrLkd1",
+            "ZXN0GtQCCgNXYW4SRAoKaW50ZXJmYWNlcxgBIAMoCzIwLnBhbG0ub3BzLnJv",
+            "dXRlci52MS5Qcm9maWxlLk5ldHdvcmsuV2FuLkV0aGVybmV0GgYKBERoY3Aa",
+            "OQoIU3RhdGljSXASDwoHYWRkcmVzcxgBIAEoCRIPCgdnYXRld2F5GAIgASgJ",
+            "EgsKA2RucxgDIAEoCRrDAQoIRXRoZXJuZXQSDAoEbmFtZRgBIAEoCRIOCgZk",
+            "ZXZpY2UYAiABKAkSPAoEZGhjcBgLIAEoCzIsLnBhbG0ub3BzLnJvdXRlci52",
+            "MS5Qcm9maWxlLk5ldHdvcmsuV2FuLkRoY3BIABJFCglzdGF0aWNfaXAYDCAB",
+            "KAsyMC5wYWxtLm9wcy5yb3V0ZXIudjEuUHJvZmlsZS5OZXR3b3JrLldhbi5T",
+            "dGF0aWNJcEgAEg4KBm1ldHJpYxhjIAEoDUIECgJpcBpJCgNEbXoSDAoEbmFt",
+            "ZRgBIAEoCRIOCgZkZXZpY2UYAiABKAkSDwoHYWRkcmVzcxgDIAEoCRITCgth",
+            "bGxvd19ob3N0cxgJIAMoCRqfAQoDTGFuEgwKBG5hbWUYASABKAkSDgoGZGV2",
+            "aWNlGAIgASgJEg8KB2FkZHJlc3MYAyABKAkSPwoHY2xpZW50cxgJIAMoCzIu",
+            "LnBhbG0ub3BzLnJvdXRlci52MS5Qcm9maWxlLk5ldHdvcmsuTGFuLkNsaWVu",
+            "dBooCgZDbGllbnQSDAoEdXNlchgBIAEoCRIQCghwYXNzd29yZBgCIAEoCRpL",
+            "CgVHdWVzdBIMCgRuYW1lGAEgASgJEg4KBmRldmljZRgCIAEoCRIPCgdhZGRy",
+            "ZXNzGAMgASgJEhMKC2Jsb2NrX2hvc3RzGAkgAygJGt4CCgdEbnNtYXNxEjcK",
+            "BWl0ZW1zGAEgAygLMigucGFsbS5vcHMucm91dGVyLnYxLlByb2ZpbGUuRG5z",
+            "bWFzcS5JdGVtGpkCCgRJdGVtEg4KBmRldmljZRgBIAEoCRIPCgdhZGRyZXNz",
+            "GAIgASgJEkYKCmRoY3BfcmFuZ2UYAyABKAsyMi5wYWxtLm9wcy5yb3V0ZXIu",
+            "djEuUHJvZmlsZS5EbnNtYXNxLkl0ZW0uRGhjcFJhbmdlEkUKCnN0YXRpY19p",
+            "cHMYBCADKAsyMS5wYWxtLm9wcy5yb3V0ZXIudjEuUHJvZmlsZS5EbnNtYXNx",
+            "Lkl0ZW0uU3RhdGljSXASEwoLZG5zX3NlcnZlcnMYYyADKAkaJwoJRGhjcFJh",
+            "bmdlEg0KBWJlZ2luGAEgASgJEgsKA2VuZBgCIAEoCRojCghTdGF0aWNJcBIL",
+            "CgNtYWMYASABKAkSCgoCaXAYAiABKAkihwEKB0NvbnRhY3QSEgoFcGhvbmUY",
+            "ASABKAlIAIgBARITCgZ3ZWNoYXQYAiABKAlIAYgBARISCgVlbWFpbBgDIAEo",
+            "CUgCiAEBEhQKB2FkZHJlc3MYYyABKAlIA4gBAUIICgZfcGhvbmVCCQoHX3dl",
+            "Y2hhdEIICgZfZW1haWxCCgoIX2FkZHJlc3MiTwoTUm91dGVyU2V0TGFuUmVx",
+            "dWVzdBIoCgdwYXlsb2FkGAEgASgLMhcucGFsbS5vcHMucm91dGVyLnYxLkxh",
+            "bhIOCgZlbmFibGUYAiABKAgiTwoTUm91dGVyU2V0RG16UmVxdWVzdBIoCgdw",
+            "YXlsb2FkGAEgASgLMhcucGFsbS5vcHMucm91dGVyLnYxLkRtehIOCgZlbmFi",
+            "bGUYAiABKAgiTwoTUm91dGVyU2V0V2FuUmVxdWVzdBIoCgdwYXlsb2FkGAEg",
+            "ASgLMhcucGFsbS5vcHMucm91dGVyLnYxLldhbhIOCgZlbmFibGUYAiABKAgi",
+            "YgoHV2FuUG9vbBIvCgVpdGVtcxgBIAMoCzIgLnBhbG0ub3BzLnJvdXRlci52",
+            "MS5XYW5Qb29sLkl0ZW0aJgoESXRlbRIOCgZkZXZpY2UYASABKAkSDgoGd2Vp",
+            "Z2h0GAIgASgNIlUKF1JvdXRlckNyZWF0ZVVzZXJSZXF1ZXN0EgwKBG5hbWUY",
+            "ASABKAkSLAoHY29udGFjdBgCIAEoCzIbLnBhbG0ub3BzLnJvdXRlci52MS5D",
+            "b250YWN0IqoBChdSb3V0ZXJJbmRleFVzZXJSZXNwb25zZRI/CgVpdGVtcxgB",
+            "IAMoCzIwLnBhbG0ub3BzLnJvdXRlci52MS5Sb3V0ZXJJbmRleFVzZXJSZXNw",
+            "b25zZS5JdGVtGk4KBEl0ZW0SCgoCaWQYASABKAUSDAoEbmFtZRgCIAEoCRIs",
+            "Cgdjb250YWN0GAMgASgLMhsucGFsbS5vcHMucm91dGVyLnYxLkNvbnRhY3Qi",
+            "jwEKF1JvdXRlclVwZGF0ZUhvc3RSZXF1ZXN0EgoKAmlkGAEgASgFEgwKBHVz",
+            "ZXIYAiABKAUSDQoFZ3JvdXAYAyABKAkSCgoCaXAYBCABKAkSDQoFZml4ZWQY",
+            "BSABKAgSDAoEem9uZRgIIAEoCRIVCghsb2NhdGlvbhgJIAEoCUgAiAEBQgsK",
+            "CV9sb2NhdGlvbiKmAgoXUm91dGVySW5kZXhSdWxlUmVzcG9uc2USPwoFaXRl",
+            "bXMYASADKAsyMC5wYWxtLm9wcy5yb3V0ZXIudjEuUm91dGVySW5kZXhSdWxl",
+            "UmVzcG9uc2UuSXRlbRrJAQoESXRlbRIKCgJpZBgBIAEoBRIMCgRuYW1lGAIg",
+            "ASgJEg0KBWdyb3VwGAMgASgJEi4KAmluGAsgASgLMiAucGFsbS5vcHMucm91",
+            "dGVyLnYxLlJ1bGUuSW5Cb3VuZEgAEjAKA291dBgMIAEoCzIhLnBhbG0ub3Bz",
+            "LnJvdXRlci52MS5SdWxlLk91dEJvdW5kSAASKwoDbmF0GA0gASgLMhwucGFs",
+            "bS5vcHMucm91dGVyLnYxLlJ1bGUuTmF0SABCCQoHcGF5bG9hZCLvAQoESG9z",
+            "dBIKCgJpZBgBIAEoBRIMCgRuYW1lGAIgASgJEgsKA21hYxgDIAEoCRIKCgJp",
+            "cBgEIAEoCRINCgVmaXhlZBgFIAEoCBINCgVncm91cBgJIAEoCRIVCghsb2Nh",
+            "dGlvbhgLIAEoCUgAiAEBEi0KBW93bmVyGAwgASgLMh4ucGFsbS5vcHMucm91",
+            "dGVyLnYxLkhvc3QuT3duZXIaQwoFT3duZXISDAoEbmFtZRgBIAEoCRIsCgdj",
+            "b250YWN0GAIgASgLMhsucGFsbS5vcHMucm91dGVyLnYxLkNvbnRhY3RCCwoJ",
+            "X2xvY2F0aW9uIr4ICgRSdWxlEgwKBG5hbWUYASABKAkSDQoFZ3JvdXAYAiAB",
+            "KAkSLgoCaW4YCyABKAsyIC5wYWxtLm9wcy5yb3V0ZXIudjEuUnVsZS5JbkJv",
+            "dW5kSAASMAoDb3V0GAwgASgLMiEucGFsbS5vcHMucm91dGVyLnYxLlJ1bGUu",
+            "T3V0Qm91bmRIABIrCgNuYXQYDSABKAsyHC5wYWxtLm9wcy5yb3V0ZXIudjEu",
+            "UnVsZS5OYXRIABpUCgdJbkJvdW5kEg4KBmRldmljZRgBIAEoCRILCgN0Y3AY",
+            "AiABKAgSDAoEcG9ydBgDIAEoDRITCgZzb3VyY2UYBCABKAlIAIgBAUIJCgdf",
+            "c291cmNlGqYECghPdXRCb3VuZBI2CgRob3N0GAEgASgLMiYucGFsbS5vcHMu",
+            "cm91dGVyLnYxLlJ1bGUuT3V0Qm91bmQuSG9zdEgAEjgKBXNwZWVkGAIgASgL",
+            "MicucGFsbS5vcHMucm91dGVyLnYxLlJ1bGUuT3V0Qm91bmQuU3BlZWRIABI2",
+            "CgR0aW1lGAMgASgLMiYucGFsbS5vcHMucm91dGVyLnYxLlJ1bGUuT3V0Qm91",
+            "bmQuVGltZUgAGlUKBEhvc3QSCgoCdG8YASABKAkSMwoIcHJvdG9jb2wYAiAB",
+            "KA4yIS5wYWxtLm9wcy5yb3V0ZXIudjEuUnVsZS5Qcm90b2NvbBIMCgRwb3J0",
+            "GAMgASgNGjsKBVNwZWVkEg8KAnVwGAEgASgNSACIAQESEQoEZG93bhgCIAEo",
+            "DUgBiAEBQgUKA191cEIHCgVfZG93bhrQAQoEVGltZRIoCgRmcm9tGAEgASgL",
+            "MhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBImCgJ0bxgCIAEoCzIaLmdv",
+            "b2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASDgoGbW9uZGF5GAsgASgIEg8KB3R1",
+            "ZXNkYXkYDCABKAgSEQoJd2VkbmVzZGF5GA0gASgIEhAKCHRodXJzZGF5GA4g",
+            "ASgIEg4KBmZyaWRheRgPIAEoCBIQCghzYXR1cmRheRgQIAEoCBIOCgZzdW5k",
+            "YXkYESABKAhCCQoHcGF5bG9hZBrXAQoDTmF0EjMKBnNvdXJjZRgBIAEoCzIj",
+            "LnBhbG0ub3BzLnJvdXRlci52MS5SdWxlLk5hdC5Tb3VyY2USCwoDdGNwGAIg",
+            "ASgIEj0KC2Rlc3RpbmF0aW9uGAMgASgLMigucGFsbS5vcHMucm91dGVyLnYx",
+            "LlJ1bGUuTmF0LkRlc3RpbmF0aW9uGiYKBlNvdXJjZRIOCgZkZXZpY2UYASAB",
+            "KAkSDAoEcG9ydBgDIAEoDRonCgtEZXN0aW5hdGlvbhIKCgJpcBgBIAEoCRIM",
+            "CgRwb3J0GAMgASgNIiYKCFByb3RvY29sEggKBEljbXAQABIHCgNUY3AQARIH",
+            "CgNVZHAQAkIJCgdwYXlsb2FkItoEChRSb3V0ZXJTdGF0dXNSZXNwb25zZRJM",
+            "CgppbnRlcmZhY2VzGAEgAygLMjgucGFsbS5vcHMucm91dGVyLnYxLlJvdXRl",
+            "clN0YXR1c1Jlc3BvbnNlLkludGVyZmFjZXNFbnRyeRIkCgNsYW4YCyABKAsy",
+            "Fy5wYWxtLm9wcy5yb3V0ZXIudjEuTGFuEiQKA2RtehgMIAEoCzIXLnBhbG0u",
+            "b3BzLnJvdXRlci52MS5EbXoSJAoDZG5zGA0gASgLMhcucGFsbS5vcHMucm91",
+            "dGVyLnYxLkRucxIkCgN3YW4YDiADKAsyFy5wYWxtLm9wcy5yb3V0ZXIudjEu",
+            "V2FuEi0KCHdhbl9wb29sGA8gASgLMhsucGFsbS5vcHMucm91dGVyLnYxLldh",
+            "blBvb2wSJwoFcnVsZXMYFSADKAsyGC5wYWxtLm9wcy5yb3V0ZXIudjEuUnVs",
+            "ZRInCgVob3N0cxgWIAMoCzIYLnBhbG0ub3BzLnJvdXRlci52MS5Ib3N0EjcK",
+            "AmlwGGEgASgLMisucGFsbS5vcHMucm91dGVyLnYxLlJvdXRlclN0YXR1c1Jl",
+            "c3BvbnNlLklwEhAKCGZpcmV3YWxsGGIgASgJEikKBnVwdGltZRhjIAEoCzIZ",
+            "Lmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvbhoxCg9JbnRlcmZhY2VzRW50cnkS",
+            "CwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ARoyCgJJcBIPCgdhZGRy",
+            "ZXNzGAEgASgJEg0KBXJvdXRlGAIgASgJEgwKBHJ1bGUYAyABKAkiQwoDTGFu",
+            "Eg4KBmRldmljZRgBIAEoCRILCgNtYWMYAiABKAkSDgoGbWV0cmljGAMgASgN",
+            "Eg8KB2FkZHJlc3MYCyABKAkiQwoDRG16Eg4KBmRldmljZRgBIAEoCRILCgNt",
+            "YWMYAiABKAkSDgoGbWV0cmljGAMgASgNEg8KB2FkZHJlc3MYCyABKAkirgEK",
+            "A1dhbhIOCgZkZXZpY2UYASABKAkSDgoGbWV0cmljGAIgASgNEgwKBG5hbWUY",
+            "CSABKAkSCwoDbWFjGAsgASgJEigKBGRoY3AYFSABKAsyGC5wYWxtLm9wcy5y",
+            "b3V0ZXIudjEuRGhjcEgAEiwKBnN0YXRpYxgWIAEoCzIaLnBhbG0ub3BzLnJv",
+            "dXRlci52MS5TdGF0aWNIABIOCgZlbmFibGUYYyABKAhCBAoCaXAiEgoERGhj",
+            "cBIKCgJ2NhgBIAEoCCJUCgZTdGF0aWMSDwoHYWRkcmVzcxgBIAEoCRIPCgdn",
+            "YXRld2F5GAMgASgJEgwKBGRuczEYBCABKAkSEQoEZG5zMhgFIAEoCUgAiAEB",
+            "QgcKBV9kbnMyIhQKA0RucxINCgVpdGVtcxgBIAMoCSIxCgtVc2VyUHJvZmls",
+            "ZRIQCghuaWNrbmFtZRgBIAEoCRIQCghwYXNzd29yZBgCIAEoCSJqChFVc2Vy",
+            "U2lnbkluUmVxdWVzdBItCgR1c2VyGAEgASgLMh8ucGFsbS5vcHMucm91dGVy",
+            "LnYxLlVzZXJQcm9maWxlEiYKA3R0bBgJIAEoCzIZLmdvb2dsZS5wcm90b2J1",
+            "Zi5EdXJhdGlvbiIjChJVc2VyU2lnbkluUmVzcG9uc2USDQoFdG9rZW4YASAB",
+            "KAkicwoRVXNlclVwZGF0ZVJlcXVlc3QSMAoHY3VycmVudBgBIAEoCzIfLnBh",
+            "bG0ub3BzLnJvdXRlci52MS5Vc2VyUHJvZmlsZRIsCgNuZXcYAiABKAsyHy5w",
+            "YWxtLm9wcy5yb3V0ZXIudjEuVXNlclByb2ZpbGUiIQoQVXNlckxvZ3NSZXNw",
+            "b25zZRINCgVpdGVtcxgBIAMoCTL+CAoGUm91dGVyEjoKBlJlYm9vdBIWLmdv",
+            "b2dsZS5wcm90b2J1Zi5FbXB0eRoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIA",
+            "EjkKBUFwcGx5EhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5GhYuZ29vZ2xlLnBy",
+            "b3RvYnVmLkVtcHR5IgASTAoGU3RhdHVzEhYuZ29vZ2xlLnByb3RvYnVmLkVt",
+            "cHR5GigucGFsbS5vcHMucm91dGVyLnYxLlJvdXRlclN0YXR1c1Jlc3BvbnNl",
+            "IgASOwoGU2V0RG5zEhcucGFsbS5vcHMucm91dGVyLnYxLkRucxoWLmdvb2ds",
+            "ZS5wcm90b2J1Zi5FbXB0eSIAEksKBlNldFdhbhInLnBhbG0ub3BzLnJvdXRl",
+            "ci52MS5Sb3V0ZXJTZXRXYW5SZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVt",
+            "cHR5IgASQwoKU2V0V2FuUG9vbBIbLnBhbG0ub3BzLnJvdXRlci52MS5XYW5Q",
+            "b29sGhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5IgASSwoGU2V0TGFuEicucGFs",
+            "bS5vcHMucm91dGVyLnYxLlJvdXRlclNldExhblJlcXVlc3QaFi5nb29nbGUu",
+            "cHJvdG9idWYuRW1wdHkiABJLCgZTZXREbXoSJy5wYWxtLm9wcy5yb3V0ZXIu",
+            "djEuUm91dGVyU2V0RG16UmVxdWVzdBoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0",
+            "eSIAEkAKCkNyZWF0ZVJ1bGUSGC5wYWxtLm9wcy5yb3V0ZXIudjEuUnVsZRoW",
+            "Lmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIAElgKClVwZGF0ZVJ1bGUSMC5wYWxt",
+            "Lm9wcy5yb3V0ZXIudjEuUm91dGVySW5kZXhSdWxlUmVzcG9uc2UuSXRlbRoW",
+            "Lmdvb2dsZS5wcm90b2J1Zi5FbXB0eSIAElIKCUluZGV4UnVsZRIWLmdvb2ds",
+            "ZS5wcm90b2J1Zi5FbXB0eRorLnBhbG0ub3BzLnJvdXRlci52MS5Sb3V0ZXJJ",
+            "bmRleFJ1bGVSZXNwb25zZSIAElMKClVwZGF0ZUhvc3QSKy5wYWxtLm9wcy5y",
+            "b3V0ZXIudjEuUm91dGVyVXBkYXRlSG9zdFJlcXVlc3QaFi5nb29nbGUucHJv",
+            "dG9idWYuRW1wdHkiABJSCglJbmRleFVzZXISFi5nb29nbGUucHJvdG9idWYu",
+            "RW1wdHkaKy5wYWxtLm9wcy5yb3V0ZXIudjEuUm91dGVySW5kZXhVc2VyUmVz",
+            "cG9uc2UiABJYCgpVcGRhdGVVc2VyEjAucGFsbS5vcHMucm91dGVyLnYxLlJv",
+            "dXRlckluZGV4VXNlclJlc3BvbnNlLkl0ZW0aFi5nb29nbGUucHJvdG9idWYu",
+            "RW1wdHkiABJTCgpDcmVhdGVVc2VyEisucGFsbS5vcHMucm91dGVyLnYxLlJv",
+            "dXRlckNyZWF0ZVVzZXJSZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5",
+            "IgAygQMKBFVzZXISWQoGU2lnbkluEiUucGFsbS5vcHMucm91dGVyLnYxLlVz",
+            "ZXJTaWduSW5SZXF1ZXN0GiYucGFsbS5vcHMucm91dGVyLnYxLlVzZXJTaWdu",
+            "SW5SZXNwb25zZSIAEk4KB1JlZnJlc2gSGS5nb29nbGUucHJvdG9idWYuRHVy",
+            "YXRpb24aJi5wYWxtLm9wcy5yb3V0ZXIudjEuVXNlclNpZ25JblJlc3BvbnNl",
+            "IgASSQoGVXBkYXRlEiUucGFsbS5vcHMucm91dGVyLnYxLlVzZXJVcGRhdGVS",
+            "ZXF1ZXN0GhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5IgASOwoHU2lnbk91dBIW",
+            "Lmdvb2dsZS5wcm90b2J1Zi5FbXB0eRoWLmdvb2dsZS5wcm90b2J1Zi5FbXB0",
+            "eSIAEkYKBExvZ3MSFi5nb29nbGUucHJvdG9idWYuRW1wdHkaJC5wYWxtLm9w",
+            "cy5yb3V0ZXIudjEuVXNlckxvZ3NSZXNwb25zZSIAQl4KMGNvbS5naXRodWIu",
+            "c2F0dXJuX3hpdi5wYWxtLnBsdWdpbnMub3BzLnJvdXRlci52MVABWihnaXRo",
+            "dWIuY29tL3NhdHVybl94aXYvYWxvZS9vcHMvcm91dGVyL3YyYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Config), global::Palm.Ops.Router.V1.Config.Parser, null, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Config.Types.Dhcp), global::Palm.Ops.Router.V1.Config.Types.Dhcp.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Config.Types.StaticIp), global::Palm.Ops.Router.V1.Config.Types.StaticIp.Parser, new[]{ "Address", "Gateway", "Dns" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Config.Types.Wan), global::Palm.Ops.Router.V1.Config.Types.Wan.Parser, new[]{ "Interfaces" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Config.Types.Wan.Types.Ethernet), global::Palm.Ops.Router.V1.Config.Types.Wan.Types.Ethernet.Parser, new[]{ "Name", "Device", "Dhcp", "StaticIp", "Metric" }, new[]{ "Ip" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Config.Types.Dmz), global::Palm.Ops.Router.V1.Config.Types.Dmz.Parser, new[]{ "Name", "Device", "Address" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Config.Types.Lan), global::Palm.Ops.Router.V1.Config.Types.Lan.Parser, new[]{ "Name", "Device", "Address" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Config.Types.Guest), global::Palm.Ops.Router.V1.Config.Types.Guest.Parser, new[]{ "Name", "Device", "Address" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile), global::Palm.Ops.Router.V1.Profile.Parser, new[]{ "Network", "Dnsmasq" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Network), global::Palm.Ops.Router.V1.Profile.Types.Network.Parser, new[]{ "Name", "Wan", "Lan", "Dmz", "Guest" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan), global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Parser, new[]{ "Interfaces" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Dhcp), global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Dhcp.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.StaticIp), global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.StaticIp.Parser, new[]{ "Address", "Gateway", "Dns" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Ethernet), global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Ethernet.Parser, new[]{ "Name", "Device", "Dhcp", "StaticIp", "Metric" }, new[]{ "Ip" }, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Dmz), global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Dmz.Parser, new[]{ "Name", "Device", "Address", "AllowHosts" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan), global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan.Parser, new[]{ "Name", "Device", "Address", "Clients" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan.Types.Client), global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan.Types.Client.Parser, new[]{ "User", "Password" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Guest), global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Guest.Parser, new[]{ "Name", "Device", "Address", "BlockHosts" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq), global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Parser, new[]{ "Items" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item), global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Parser, new[]{ "Device", "Address", "DhcpRange", "StaticIps", "DnsServers" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.DhcpRange), global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.DhcpRange.Parser, new[]{ "Begin", "End" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.StaticIp), global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.StaticIp.Parser, new[]{ "Mac", "Ip" }, null, null, null, null)})})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.Contact), global::Palm.Ops.Router.V1.Contact.Parser, new[]{ "Phone", "Wechat", "Email", "Address" }, new[]{ "Phone", "Wechat", "Email", "Address" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.RouterSetLanRequest), global::Palm.Ops.Router.V1.RouterSetLanRequest.Parser, new[]{ "Payload", "Enable" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Palm.Ops.Router.V1.RouterSetDmzRequest), global::Palm.Ops.Router.V1.RouterSetDmzRequest.Parser, new[]{ "Payload", "Enable" }, null, null, null, null),
@@ -206,16 +227,16 @@ namespace Palm.Ops.Router.V1 {
   }
   #region Messages
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class Config : pb::IMessage<Config>
+  public sealed partial class Profile : pb::IMessage<Profile>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Config> _parser = new pb::MessageParser<Config>(() => new Config());
+    private static readonly pb::MessageParser<Profile> _parser = new pb::MessageParser<Profile>(() => new Profile());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Config> Parser { get { return _parser; } }
+    public static pb::MessageParser<Profile> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -231,7 +252,7 @@ namespace Palm.Ops.Router.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Config() {
+    public Profile() {
       OnConstruction();
     }
 
@@ -239,31 +260,59 @@ namespace Palm.Ops.Router.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Config(Config other) : this() {
+    public Profile(Profile other) : this() {
+      network_ = other.network_ != null ? other.network_.Clone() : null;
+      dnsmasq_ = other.dnsmasq_ != null ? other.dnsmasq_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Config Clone() {
-      return new Config(this);
+    public Profile Clone() {
+      return new Profile(this);
+    }
+
+    /// <summary>Field number for the "network" field.</summary>
+    public const int NetworkFieldNumber = 1;
+    private global::Palm.Ops.Router.V1.Profile.Types.Network network_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Palm.Ops.Router.V1.Profile.Types.Network Network {
+      get { return network_; }
+      set {
+        network_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "dnsmasq" field.</summary>
+    public const int DnsmasqFieldNumber = 2;
+    private global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq dnsmasq_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq Dnsmasq {
+      get { return dnsmasq_; }
+      set {
+        dnsmasq_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Config);
+      return Equals(other as Profile);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Config other) {
+    public bool Equals(Profile other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!object.Equals(Network, other.Network)) return false;
+      if (!object.Equals(Dnsmasq, other.Dnsmasq)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -271,6 +320,8 @@ namespace Palm.Ops.Router.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (network_ != null) hash ^= Network.GetHashCode();
+      if (dnsmasq_ != null) hash ^= Dnsmasq.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -289,6 +340,14 @@ namespace Palm.Ops.Router.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (network_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Network);
+      }
+      if (dnsmasq_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Dnsmasq);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -299,6 +358,14 @@ namespace Palm.Ops.Router.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (network_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Network);
+      }
+      if (dnsmasq_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Dnsmasq);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -309,6 +376,12 @@ namespace Palm.Ops.Router.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (network_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Network);
+      }
+      if (dnsmasq_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Dnsmasq);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -317,9 +390,21 @@ namespace Palm.Ops.Router.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Config other) {
+    public void MergeFrom(Profile other) {
       if (other == null) {
         return;
+      }
+      if (other.network_ != null) {
+        if (network_ == null) {
+          Network = new global::Palm.Ops.Router.V1.Profile.Types.Network();
+        }
+        Network.MergeFrom(other.Network);
+      }
+      if (other.dnsmasq_ != null) {
+        if (dnsmasq_ == null) {
+          Dnsmasq = new global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq();
+        }
+        Dnsmasq.MergeFrom(other.Dnsmasq);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -336,6 +421,20 @@ namespace Palm.Ops.Router.V1 {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 10: {
+            if (network_ == null) {
+              Network = new global::Palm.Ops.Router.V1.Profile.Types.Network();
+            }
+            input.ReadMessage(Network);
+            break;
+          }
+          case 18: {
+            if (dnsmasq_ == null) {
+              Dnsmasq = new global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq();
+            }
+            input.ReadMessage(Dnsmasq);
+            break;
+          }
         }
       }
     #endif
@@ -351,32 +450,46 @@ namespace Palm.Ops.Router.V1 {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 10: {
+            if (network_ == null) {
+              Network = new global::Palm.Ops.Router.V1.Profile.Types.Network();
+            }
+            input.ReadMessage(Network);
+            break;
+          }
+          case 18: {
+            if (dnsmasq_ == null) {
+              Dnsmasq = new global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq();
+            }
+            input.ReadMessage(Dnsmasq);
+            break;
+          }
         }
       }
     }
     #endif
 
     #region Nested types
-    /// <summary>Container for nested types declared in the Config message type.</summary>
+    /// <summary>Container for nested types declared in the Profile message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static partial class Types {
       [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-      public sealed partial class Dhcp : pb::IMessage<Dhcp>
+      public sealed partial class Network : pb::IMessage<Network>
       #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           , pb::IBufferMessage
       #endif
       {
-        private static readonly pb::MessageParser<Dhcp> _parser = new pb::MessageParser<Dhcp>(() => new Dhcp());
+        private static readonly pb::MessageParser<Network> _parser = new pb::MessageParser<Network>(() => new Network());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pb::MessageParser<Dhcp> Parser { get { return _parser; } }
+        public static pb::MessageParser<Network> Parser { get { return _parser; } }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::Palm.Ops.Router.V1.Config.Descriptor.NestedTypes[0]; }
+          get { return global::Palm.Ops.Router.V1.Profile.Descriptor.NestedTypes[0]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -387,7 +500,7 @@ namespace Palm.Ops.Router.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Dhcp() {
+        public Network() {
           OnConstruction();
         }
 
@@ -395,31 +508,101 @@ namespace Palm.Ops.Router.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Dhcp(Dhcp other) : this() {
+        public Network(Network other) : this() {
+          name_ = other.name_;
+          wan_ = other.wan_ != null ? other.wan_.Clone() : null;
+          lan_ = other.lan_ != null ? other.lan_.Clone() : null;
+          dmz_ = other.dmz_ != null ? other.dmz_.Clone() : null;
+          guest_ = other.guest_ != null ? other.guest_.Clone() : null;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Dhcp Clone() {
-          return new Dhcp(this);
+        public Network Clone() {
+          return new Network(this);
+        }
+
+        /// <summary>Field number for the "name" field.</summary>
+        public const int NameFieldNumber = 1;
+        private string name_ = "";
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public string Name {
+          get { return name_; }
+          set {
+            name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "wan" field.</summary>
+        public const int WanFieldNumber = 11;
+        private global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan wan_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan Wan {
+          get { return wan_; }
+          set {
+            wan_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "lan" field.</summary>
+        public const int LanFieldNumber = 12;
+        private global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan lan_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan Lan {
+          get { return lan_; }
+          set {
+            lan_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "dmz" field.</summary>
+        public const int DmzFieldNumber = 13;
+        private global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Dmz dmz_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Dmz Dmz {
+          get { return dmz_; }
+          set {
+            dmz_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "guest" field.</summary>
+        public const int GuestFieldNumber = 14;
+        private global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Guest guest_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Guest Guest {
+          get { return guest_; }
+          set {
+            guest_ = value;
+          }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override bool Equals(object other) {
-          return Equals(other as Dhcp);
+          return Equals(other as Network);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool Equals(Dhcp other) {
+        public bool Equals(Network other) {
           if (ReferenceEquals(other, null)) {
             return false;
           }
           if (ReferenceEquals(other, this)) {
             return true;
           }
+          if (Name != other.Name) return false;
+          if (!object.Equals(Wan, other.Wan)) return false;
+          if (!object.Equals(Lan, other.Lan)) return false;
+          if (!object.Equals(Dmz, other.Dmz)) return false;
+          if (!object.Equals(Guest, other.Guest)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -427,6 +610,11 @@ namespace Palm.Ops.Router.V1 {
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override int GetHashCode() {
           int hash = 1;
+          if (Name.Length != 0) hash ^= Name.GetHashCode();
+          if (wan_ != null) hash ^= Wan.GetHashCode();
+          if (lan_ != null) hash ^= Lan.GetHashCode();
+          if (dmz_ != null) hash ^= Dmz.GetHashCode();
+          if (guest_ != null) hash ^= Guest.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -445,215 +633,25 @@ namespace Palm.Ops.Router.V1 {
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           output.WriteRawMessage(this);
         #else
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(output);
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(ref output);
-          }
-        }
-        #endif
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int CalculateSize() {
-          int size = 0;
-          if (_unknownFields != null) {
-            size += _unknownFields.CalculateSize();
-          }
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(Dhcp other) {
-          if (other == null) {
-            return;
-          }
-          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(pb::CodedInputStream input) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          input.ReadRawMessage(this);
-        #else
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                break;
-            }
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                break;
-            }
-          }
-        }
-        #endif
-
-      }
-
-      [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-      public sealed partial class StaticIp : pb::IMessage<StaticIp>
-      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          , pb::IBufferMessage
-      #endif
-      {
-        private static readonly pb::MessageParser<StaticIp> _parser = new pb::MessageParser<StaticIp>(() => new StaticIp());
-        private pb::UnknownFieldSet _unknownFields;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pb::MessageParser<StaticIp> Parser { get { return _parser; } }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::Palm.Ops.Router.V1.Config.Descriptor.NestedTypes[1]; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public StaticIp() {
-          OnConstruction();
-        }
-
-        partial void OnConstruction();
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public StaticIp(StaticIp other) : this() {
-          address_ = other.address_;
-          gateway_ = other.gateway_;
-          dns_ = other.dns_;
-          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public StaticIp Clone() {
-          return new StaticIp(this);
-        }
-
-        /// <summary>Field number for the "address" field.</summary>
-        public const int AddressFieldNumber = 1;
-        private string address_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public string Address {
-          get { return address_; }
-          set {
-            address_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "gateway" field.</summary>
-        public const int GatewayFieldNumber = 2;
-        private string gateway_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public string Gateway {
-          get { return gateway_; }
-          set {
-            gateway_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "dns" field.</summary>
-        public const int DnsFieldNumber = 3;
-        private string dns_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public string Dns {
-          get { return dns_; }
-          set {
-            dns_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override bool Equals(object other) {
-          return Equals(other as StaticIp);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool Equals(StaticIp other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if (Address != other.Address) return false;
-          if (Gateway != other.Gateway) return false;
-          if (Dns != other.Dns) return false;
-          return Equals(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override int GetHashCode() {
-          int hash = 1;
-          if (Address.Length != 0) hash ^= Address.GetHashCode();
-          if (Gateway.Length != 0) hash ^= Gateway.GetHashCode();
-          if (Dns.Length != 0) hash ^= Dns.GetHashCode();
-          if (_unknownFields != null) {
-            hash ^= _unknownFields.GetHashCode();
-          }
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void WriteTo(pb::CodedOutputStream output) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          output.WriteRawMessage(this);
-        #else
-          if (Address.Length != 0) {
+          if (Name.Length != 0) {
             output.WriteRawTag(10);
-            output.WriteString(Address);
+            output.WriteString(Name);
           }
-          if (Gateway.Length != 0) {
-            output.WriteRawTag(18);
-            output.WriteString(Gateway);
+          if (wan_ != null) {
+            output.WriteRawTag(90);
+            output.WriteMessage(Wan);
           }
-          if (Dns.Length != 0) {
-            output.WriteRawTag(26);
-            output.WriteString(Dns);
+          if (lan_ != null) {
+            output.WriteRawTag(98);
+            output.WriteMessage(Lan);
+          }
+          if (dmz_ != null) {
+            output.WriteRawTag(106);
+            output.WriteMessage(Dmz);
+          }
+          if (guest_ != null) {
+            output.WriteRawTag(114);
+            output.WriteMessage(Guest);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
@@ -665,17 +663,25 @@ namespace Palm.Ops.Router.V1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-          if (Address.Length != 0) {
+          if (Name.Length != 0) {
             output.WriteRawTag(10);
-            output.WriteString(Address);
+            output.WriteString(Name);
           }
-          if (Gateway.Length != 0) {
-            output.WriteRawTag(18);
-            output.WriteString(Gateway);
+          if (wan_ != null) {
+            output.WriteRawTag(90);
+            output.WriteMessage(Wan);
           }
-          if (Dns.Length != 0) {
-            output.WriteRawTag(26);
-            output.WriteString(Dns);
+          if (lan_ != null) {
+            output.WriteRawTag(98);
+            output.WriteMessage(Lan);
+          }
+          if (dmz_ != null) {
+            output.WriteRawTag(106);
+            output.WriteMessage(Dmz);
+          }
+          if (guest_ != null) {
+            output.WriteRawTag(114);
+            output.WriteMessage(Guest);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(ref output);
@@ -687,14 +693,20 @@ namespace Palm.Ops.Router.V1 {
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int CalculateSize() {
           int size = 0;
-          if (Address.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Address);
+          if (Name.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
           }
-          if (Gateway.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Gateway);
+          if (wan_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Wan);
           }
-          if (Dns.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Dns);
+          if (lan_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Lan);
+          }
+          if (dmz_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Dmz);
+          }
+          if (guest_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Guest);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -704,18 +716,36 @@ namespace Palm.Ops.Router.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(StaticIp other) {
+        public void MergeFrom(Network other) {
           if (other == null) {
             return;
           }
-          if (other.Address.Length != 0) {
-            Address = other.Address;
+          if (other.Name.Length != 0) {
+            Name = other.Name;
           }
-          if (other.Gateway.Length != 0) {
-            Gateway = other.Gateway;
+          if (other.wan_ != null) {
+            if (wan_ == null) {
+              Wan = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan();
+            }
+            Wan.MergeFrom(other.Wan);
           }
-          if (other.Dns.Length != 0) {
-            Dns = other.Dns;
+          if (other.lan_ != null) {
+            if (lan_ == null) {
+              Lan = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan();
+            }
+            Lan.MergeFrom(other.Lan);
+          }
+          if (other.dmz_ != null) {
+            if (dmz_ == null) {
+              Dmz = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Dmz();
+            }
+            Dmz.MergeFrom(other.Dmz);
+          }
+          if (other.guest_ != null) {
+            if (guest_ == null) {
+              Guest = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Guest();
+            }
+            Guest.MergeFrom(other.Guest);
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -733,15 +763,35 @@ namespace Palm.Ops.Router.V1 {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
               case 10: {
-                Address = input.ReadString();
+                Name = input.ReadString();
                 break;
               }
-              case 18: {
-                Gateway = input.ReadString();
+              case 90: {
+                if (wan_ == null) {
+                  Wan = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan();
+                }
+                input.ReadMessage(Wan);
                 break;
               }
-              case 26: {
-                Dns = input.ReadString();
+              case 98: {
+                if (lan_ == null) {
+                  Lan = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan();
+                }
+                input.ReadMessage(Lan);
+                break;
+              }
+              case 106: {
+                if (dmz_ == null) {
+                  Dmz = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Dmz();
+                }
+                input.ReadMessage(Dmz);
+                break;
+              }
+              case 114: {
+                if (guest_ == null) {
+                  Guest = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Guest();
+                }
+                input.ReadMessage(Guest);
                 break;
               }
             }
@@ -760,194 +810,35 @@ namespace Palm.Ops.Router.V1 {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
                 break;
               case 10: {
-                Address = input.ReadString();
+                Name = input.ReadString();
                 break;
               }
-              case 18: {
-                Gateway = input.ReadString();
+              case 90: {
+                if (wan_ == null) {
+                  Wan = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan();
+                }
+                input.ReadMessage(Wan);
                 break;
               }
-              case 26: {
-                Dns = input.ReadString();
+              case 98: {
+                if (lan_ == null) {
+                  Lan = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan();
+                }
+                input.ReadMessage(Lan);
                 break;
               }
-            }
-          }
-        }
-        #endif
-
-      }
-
-      [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-      public sealed partial class Wan : pb::IMessage<Wan>
-      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          , pb::IBufferMessage
-      #endif
-      {
-        private static readonly pb::MessageParser<Wan> _parser = new pb::MessageParser<Wan>(() => new Wan());
-        private pb::UnknownFieldSet _unknownFields;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pb::MessageParser<Wan> Parser { get { return _parser; } }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::Palm.Ops.Router.V1.Config.Descriptor.NestedTypes[2]; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Wan() {
-          OnConstruction();
-        }
-
-        partial void OnConstruction();
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Wan(Wan other) : this() {
-          interfaces_ = other.interfaces_.Clone();
-          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Wan Clone() {
-          return new Wan(this);
-        }
-
-        /// <summary>Field number for the "interfaces" field.</summary>
-        public const int InterfacesFieldNumber = 1;
-        private static readonly pb::FieldCodec<global::Palm.Ops.Router.V1.Config.Types.Wan.Types.Ethernet> _repeated_interfaces_codec
-            = pb::FieldCodec.ForMessage(10, global::Palm.Ops.Router.V1.Config.Types.Wan.Types.Ethernet.Parser);
-        private readonly pbc::RepeatedField<global::Palm.Ops.Router.V1.Config.Types.Wan.Types.Ethernet> interfaces_ = new pbc::RepeatedField<global::Palm.Ops.Router.V1.Config.Types.Wan.Types.Ethernet>();
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public pbc::RepeatedField<global::Palm.Ops.Router.V1.Config.Types.Wan.Types.Ethernet> Interfaces {
-          get { return interfaces_; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override bool Equals(object other) {
-          return Equals(other as Wan);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool Equals(Wan other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if(!interfaces_.Equals(other.interfaces_)) return false;
-          return Equals(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override int GetHashCode() {
-          int hash = 1;
-          hash ^= interfaces_.GetHashCode();
-          if (_unknownFields != null) {
-            hash ^= _unknownFields.GetHashCode();
-          }
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void WriteTo(pb::CodedOutputStream output) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          output.WriteRawMessage(this);
-        #else
-          interfaces_.WriteTo(output, _repeated_interfaces_codec);
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(output);
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-          interfaces_.WriteTo(ref output, _repeated_interfaces_codec);
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(ref output);
-          }
-        }
-        #endif
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int CalculateSize() {
-          int size = 0;
-          size += interfaces_.CalculateSize(_repeated_interfaces_codec);
-          if (_unknownFields != null) {
-            size += _unknownFields.CalculateSize();
-          }
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(Wan other) {
-          if (other == null) {
-            return;
-          }
-          interfaces_.Add(other.interfaces_);
-          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(pb::CodedInputStream input) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          input.ReadRawMessage(this);
-        #else
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                break;
-              case 10: {
-                interfaces_.AddEntriesFrom(input, _repeated_interfaces_codec);
+              case 106: {
+                if (dmz_ == null) {
+                  Dmz = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Dmz();
+                }
+                input.ReadMessage(Dmz);
                 break;
               }
-            }
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                break;
-              case 10: {
-                interfaces_.AddEntriesFrom(ref input, _repeated_interfaces_codec);
+              case 114: {
+                if (guest_ == null) {
+                  Guest = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Guest();
+                }
+                input.ReadMessage(Guest);
                 break;
               }
             }
@@ -956,26 +847,26 @@ namespace Palm.Ops.Router.V1 {
         #endif
 
         #region Nested types
-        /// <summary>Container for nested types declared in the Wan message type.</summary>
+        /// <summary>Container for nested types declared in the Network message type.</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static partial class Types {
           [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-          public sealed partial class Ethernet : pb::IMessage<Ethernet>
+          public sealed partial class Wan : pb::IMessage<Wan>
           #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
               , pb::IBufferMessage
           #endif
           {
-            private static readonly pb::MessageParser<Ethernet> _parser = new pb::MessageParser<Ethernet>(() => new Ethernet());
+            private static readonly pb::MessageParser<Wan> _parser = new pb::MessageParser<Wan>(() => new Wan());
             private pb::UnknownFieldSet _unknownFields;
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public static pb::MessageParser<Ethernet> Parser { get { return _parser; } }
+            public static pb::MessageParser<Wan> Parser { get { return _parser; } }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
             public static pbr::MessageDescriptor Descriptor {
-              get { return global::Palm.Ops.Router.V1.Config.Types.Wan.Descriptor.NestedTypes[0]; }
+              get { return global::Palm.Ops.Router.V1.Profile.Types.Network.Descriptor.NestedTypes[0]; }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -986,7 +877,7 @@ namespace Palm.Ops.Router.V1 {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public Ethernet() {
+            public Wan() {
               OnConstruction();
             }
 
@@ -994,26 +885,1019 @@ namespace Palm.Ops.Router.V1 {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public Ethernet(Ethernet other) : this() {
-              name_ = other.name_;
-              device_ = other.device_;
-              metric_ = other.metric_;
-              switch (other.IpCase) {
-                case IpOneofCase.Dhcp:
-                  Dhcp = other.Dhcp.Clone();
-                  break;
-                case IpOneofCase.StaticIp:
-                  StaticIp = other.StaticIp.Clone();
-                  break;
-              }
-
+            public Wan(Wan other) : this() {
+              interfaces_ = other.interfaces_.Clone();
               _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public Ethernet Clone() {
-              return new Ethernet(this);
+            public Wan Clone() {
+              return new Wan(this);
+            }
+
+            /// <summary>Field number for the "interfaces" field.</summary>
+            public const int InterfacesFieldNumber = 1;
+            private static readonly pb::FieldCodec<global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Ethernet> _repeated_interfaces_codec
+                = pb::FieldCodec.ForMessage(10, global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Ethernet.Parser);
+            private readonly pbc::RepeatedField<global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Ethernet> interfaces_ = new pbc::RepeatedField<global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Ethernet>();
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public pbc::RepeatedField<global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Ethernet> Interfaces {
+              get { return interfaces_; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override bool Equals(object other) {
+              return Equals(other as Wan);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool Equals(Wan other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if(!interfaces_.Equals(other.interfaces_)) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override int GetHashCode() {
+              int hash = 1;
+              hash ^= interfaces_.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void WriteTo(pb::CodedOutputStream output) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              output.WriteRawMessage(this);
+            #else
+              interfaces_.WriteTo(output, _repeated_interfaces_codec);
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+              interfaces_.WriteTo(ref output, _repeated_interfaces_codec);
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(ref output);
+              }
+            }
+            #endif
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public int CalculateSize() {
+              int size = 0;
+              size += interfaces_.CalculateSize(_repeated_interfaces_codec);
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(Wan other) {
+              if (other == null) {
+                return;
+              }
+              interfaces_.Add(other.interfaces_);
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(pb::CodedInputStream input) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              input.ReadRawMessage(this);
+            #else
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 10: {
+                    interfaces_.AddEntriesFrom(input, _repeated_interfaces_codec);
+                    break;
+                  }
+                }
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                    break;
+                  case 10: {
+                    interfaces_.AddEntriesFrom(ref input, _repeated_interfaces_codec);
+                    break;
+                  }
+                }
+              }
+            }
+            #endif
+
+            #region Nested types
+            /// <summary>Container for nested types declared in the Wan message type.</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static partial class Types {
+              [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+              public sealed partial class Dhcp : pb::IMessage<Dhcp>
+              #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  , pb::IBufferMessage
+              #endif
+              {
+                private static readonly pb::MessageParser<Dhcp> _parser = new pb::MessageParser<Dhcp>(() => new Dhcp());
+                private pb::UnknownFieldSet _unknownFields;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pb::MessageParser<Dhcp> Parser { get { return _parser; } }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pbr::MessageDescriptor Descriptor {
+                  get { return global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Descriptor.NestedTypes[0]; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                pbr::MessageDescriptor pb::IMessage.Descriptor {
+                  get { return Descriptor; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public Dhcp() {
+                  OnConstruction();
+                }
+
+                partial void OnConstruction();
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public Dhcp(Dhcp other) : this() {
+                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public Dhcp Clone() {
+                  return new Dhcp(this);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override bool Equals(object other) {
+                  return Equals(other as Dhcp);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public bool Equals(Dhcp other) {
+                  if (ReferenceEquals(other, null)) {
+                    return false;
+                  }
+                  if (ReferenceEquals(other, this)) {
+                    return true;
+                  }
+                  return Equals(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override int GetHashCode() {
+                  int hash = 1;
+                  if (_unknownFields != null) {
+                    hash ^= _unknownFields.GetHashCode();
+                  }
+                  return hash;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override string ToString() {
+                  return pb::JsonFormatter.ToDiagnosticString(this);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void WriteTo(pb::CodedOutputStream output) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  output.WriteRawMessage(this);
+                #else
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(output);
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(ref output);
+                  }
+                }
+                #endif
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public int CalculateSize() {
+                  int size = 0;
+                  if (_unknownFields != null) {
+                    size += _unknownFields.CalculateSize();
+                  }
+                  return size;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(Dhcp other) {
+                  if (other == null) {
+                    return;
+                  }
+                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(pb::CodedInputStream input) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  input.ReadRawMessage(this);
+                #else
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                        break;
+                    }
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                        break;
+                    }
+                  }
+                }
+                #endif
+
+              }
+
+              [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+              public sealed partial class StaticIp : pb::IMessage<StaticIp>
+              #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  , pb::IBufferMessage
+              #endif
+              {
+                private static readonly pb::MessageParser<StaticIp> _parser = new pb::MessageParser<StaticIp>(() => new StaticIp());
+                private pb::UnknownFieldSet _unknownFields;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pb::MessageParser<StaticIp> Parser { get { return _parser; } }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pbr::MessageDescriptor Descriptor {
+                  get { return global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Descriptor.NestedTypes[1]; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                pbr::MessageDescriptor pb::IMessage.Descriptor {
+                  get { return Descriptor; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public StaticIp() {
+                  OnConstruction();
+                }
+
+                partial void OnConstruction();
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public StaticIp(StaticIp other) : this() {
+                  address_ = other.address_;
+                  gateway_ = other.gateway_;
+                  dns_ = other.dns_;
+                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public StaticIp Clone() {
+                  return new StaticIp(this);
+                }
+
+                /// <summary>Field number for the "address" field.</summary>
+                public const int AddressFieldNumber = 1;
+                private string address_ = "";
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string Address {
+                  get { return address_; }
+                  set {
+                    address_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "gateway" field.</summary>
+                public const int GatewayFieldNumber = 2;
+                private string gateway_ = "";
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string Gateway {
+                  get { return gateway_; }
+                  set {
+                    gateway_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "dns" field.</summary>
+                public const int DnsFieldNumber = 3;
+                private string dns_ = "";
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string Dns {
+                  get { return dns_; }
+                  set {
+                    dns_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override bool Equals(object other) {
+                  return Equals(other as StaticIp);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public bool Equals(StaticIp other) {
+                  if (ReferenceEquals(other, null)) {
+                    return false;
+                  }
+                  if (ReferenceEquals(other, this)) {
+                    return true;
+                  }
+                  if (Address != other.Address) return false;
+                  if (Gateway != other.Gateway) return false;
+                  if (Dns != other.Dns) return false;
+                  return Equals(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override int GetHashCode() {
+                  int hash = 1;
+                  if (Address.Length != 0) hash ^= Address.GetHashCode();
+                  if (Gateway.Length != 0) hash ^= Gateway.GetHashCode();
+                  if (Dns.Length != 0) hash ^= Dns.GetHashCode();
+                  if (_unknownFields != null) {
+                    hash ^= _unknownFields.GetHashCode();
+                  }
+                  return hash;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override string ToString() {
+                  return pb::JsonFormatter.ToDiagnosticString(this);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void WriteTo(pb::CodedOutputStream output) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  output.WriteRawMessage(this);
+                #else
+                  if (Address.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(Address);
+                  }
+                  if (Gateway.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(Gateway);
+                  }
+                  if (Dns.Length != 0) {
+                    output.WriteRawTag(26);
+                    output.WriteString(Dns);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(output);
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                  if (Address.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(Address);
+                  }
+                  if (Gateway.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(Gateway);
+                  }
+                  if (Dns.Length != 0) {
+                    output.WriteRawTag(26);
+                    output.WriteString(Dns);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(ref output);
+                  }
+                }
+                #endif
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public int CalculateSize() {
+                  int size = 0;
+                  if (Address.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Address);
+                  }
+                  if (Gateway.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Gateway);
+                  }
+                  if (Dns.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Dns);
+                  }
+                  if (_unknownFields != null) {
+                    size += _unknownFields.CalculateSize();
+                  }
+                  return size;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(StaticIp other) {
+                  if (other == null) {
+                    return;
+                  }
+                  if (other.Address.Length != 0) {
+                    Address = other.Address;
+                  }
+                  if (other.Gateway.Length != 0) {
+                    Gateway = other.Gateway;
+                  }
+                  if (other.Dns.Length != 0) {
+                    Dns = other.Dns;
+                  }
+                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(pb::CodedInputStream input) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  input.ReadRawMessage(this);
+                #else
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                        break;
+                      case 10: {
+                        Address = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        Gateway = input.ReadString();
+                        break;
+                      }
+                      case 26: {
+                        Dns = input.ReadString();
+                        break;
+                      }
+                    }
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                        break;
+                      case 10: {
+                        Address = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        Gateway = input.ReadString();
+                        break;
+                      }
+                      case 26: {
+                        Dns = input.ReadString();
+                        break;
+                      }
+                    }
+                  }
+                }
+                #endif
+
+              }
+
+              [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+              public sealed partial class Ethernet : pb::IMessage<Ethernet>
+              #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  , pb::IBufferMessage
+              #endif
+              {
+                private static readonly pb::MessageParser<Ethernet> _parser = new pb::MessageParser<Ethernet>(() => new Ethernet());
+                private pb::UnknownFieldSet _unknownFields;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pb::MessageParser<Ethernet> Parser { get { return _parser; } }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pbr::MessageDescriptor Descriptor {
+                  get { return global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Descriptor.NestedTypes[2]; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                pbr::MessageDescriptor pb::IMessage.Descriptor {
+                  get { return Descriptor; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public Ethernet() {
+                  OnConstruction();
+                }
+
+                partial void OnConstruction();
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public Ethernet(Ethernet other) : this() {
+                  name_ = other.name_;
+                  device_ = other.device_;
+                  metric_ = other.metric_;
+                  switch (other.IpCase) {
+                    case IpOneofCase.Dhcp:
+                      Dhcp = other.Dhcp.Clone();
+                      break;
+                    case IpOneofCase.StaticIp:
+                      StaticIp = other.StaticIp.Clone();
+                      break;
+                  }
+
+                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public Ethernet Clone() {
+                  return new Ethernet(this);
+                }
+
+                /// <summary>Field number for the "name" field.</summary>
+                public const int NameFieldNumber = 1;
+                private string name_ = "";
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string Name {
+                  get { return name_; }
+                  set {
+                    name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "device" field.</summary>
+                public const int DeviceFieldNumber = 2;
+                private string device_ = "";
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string Device {
+                  get { return device_; }
+                  set {
+                    device_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "dhcp" field.</summary>
+                public const int DhcpFieldNumber = 11;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Dhcp Dhcp {
+                  get { return ipCase_ == IpOneofCase.Dhcp ? (global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Dhcp) ip_ : null; }
+                  set {
+                    ip_ = value;
+                    ipCase_ = value == null ? IpOneofCase.None : IpOneofCase.Dhcp;
+                  }
+                }
+
+                /// <summary>Field number for the "static_ip" field.</summary>
+                public const int StaticIpFieldNumber = 12;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.StaticIp StaticIp {
+                  get { return ipCase_ == IpOneofCase.StaticIp ? (global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.StaticIp) ip_ : null; }
+                  set {
+                    ip_ = value;
+                    ipCase_ = value == null ? IpOneofCase.None : IpOneofCase.StaticIp;
+                  }
+                }
+
+                /// <summary>Field number for the "metric" field.</summary>
+                public const int MetricFieldNumber = 99;
+                private uint metric_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public uint Metric {
+                  get { return metric_; }
+                  set {
+                    metric_ = value;
+                  }
+                }
+
+                private object ip_;
+                /// <summary>Enum of possible cases for the "ip" oneof.</summary>
+                public enum IpOneofCase {
+                  None = 0,
+                  Dhcp = 11,
+                  StaticIp = 12,
+                }
+                private IpOneofCase ipCase_ = IpOneofCase.None;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public IpOneofCase IpCase {
+                  get { return ipCase_; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void ClearIp() {
+                  ipCase_ = IpOneofCase.None;
+                  ip_ = null;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override bool Equals(object other) {
+                  return Equals(other as Ethernet);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public bool Equals(Ethernet other) {
+                  if (ReferenceEquals(other, null)) {
+                    return false;
+                  }
+                  if (ReferenceEquals(other, this)) {
+                    return true;
+                  }
+                  if (Name != other.Name) return false;
+                  if (Device != other.Device) return false;
+                  if (!object.Equals(Dhcp, other.Dhcp)) return false;
+                  if (!object.Equals(StaticIp, other.StaticIp)) return false;
+                  if (Metric != other.Metric) return false;
+                  if (IpCase != other.IpCase) return false;
+                  return Equals(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override int GetHashCode() {
+                  int hash = 1;
+                  if (Name.Length != 0) hash ^= Name.GetHashCode();
+                  if (Device.Length != 0) hash ^= Device.GetHashCode();
+                  if (ipCase_ == IpOneofCase.Dhcp) hash ^= Dhcp.GetHashCode();
+                  if (ipCase_ == IpOneofCase.StaticIp) hash ^= StaticIp.GetHashCode();
+                  if (Metric != 0) hash ^= Metric.GetHashCode();
+                  hash ^= (int) ipCase_;
+                  if (_unknownFields != null) {
+                    hash ^= _unknownFields.GetHashCode();
+                  }
+                  return hash;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override string ToString() {
+                  return pb::JsonFormatter.ToDiagnosticString(this);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void WriteTo(pb::CodedOutputStream output) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  output.WriteRawMessage(this);
+                #else
+                  if (Name.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(Name);
+                  }
+                  if (Device.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(Device);
+                  }
+                  if (ipCase_ == IpOneofCase.Dhcp) {
+                    output.WriteRawTag(90);
+                    output.WriteMessage(Dhcp);
+                  }
+                  if (ipCase_ == IpOneofCase.StaticIp) {
+                    output.WriteRawTag(98);
+                    output.WriteMessage(StaticIp);
+                  }
+                  if (Metric != 0) {
+                    output.WriteRawTag(152, 6);
+                    output.WriteUInt32(Metric);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(output);
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                  if (Name.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(Name);
+                  }
+                  if (Device.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(Device);
+                  }
+                  if (ipCase_ == IpOneofCase.Dhcp) {
+                    output.WriteRawTag(90);
+                    output.WriteMessage(Dhcp);
+                  }
+                  if (ipCase_ == IpOneofCase.StaticIp) {
+                    output.WriteRawTag(98);
+                    output.WriteMessage(StaticIp);
+                  }
+                  if (Metric != 0) {
+                    output.WriteRawTag(152, 6);
+                    output.WriteUInt32(Metric);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(ref output);
+                  }
+                }
+                #endif
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public int CalculateSize() {
+                  int size = 0;
+                  if (Name.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+                  }
+                  if (Device.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Device);
+                  }
+                  if (ipCase_ == IpOneofCase.Dhcp) {
+                    size += 1 + pb::CodedOutputStream.ComputeMessageSize(Dhcp);
+                  }
+                  if (ipCase_ == IpOneofCase.StaticIp) {
+                    size += 1 + pb::CodedOutputStream.ComputeMessageSize(StaticIp);
+                  }
+                  if (Metric != 0) {
+                    size += 2 + pb::CodedOutputStream.ComputeUInt32Size(Metric);
+                  }
+                  if (_unknownFields != null) {
+                    size += _unknownFields.CalculateSize();
+                  }
+                  return size;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(Ethernet other) {
+                  if (other == null) {
+                    return;
+                  }
+                  if (other.Name.Length != 0) {
+                    Name = other.Name;
+                  }
+                  if (other.Device.Length != 0) {
+                    Device = other.Device;
+                  }
+                  if (other.Metric != 0) {
+                    Metric = other.Metric;
+                  }
+                  switch (other.IpCase) {
+                    case IpOneofCase.Dhcp:
+                      if (Dhcp == null) {
+                        Dhcp = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Dhcp();
+                      }
+                      Dhcp.MergeFrom(other.Dhcp);
+                      break;
+                    case IpOneofCase.StaticIp:
+                      if (StaticIp == null) {
+                        StaticIp = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.StaticIp();
+                      }
+                      StaticIp.MergeFrom(other.StaticIp);
+                      break;
+                  }
+
+                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(pb::CodedInputStream input) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  input.ReadRawMessage(this);
+                #else
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                        break;
+                      case 10: {
+                        Name = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        Device = input.ReadString();
+                        break;
+                      }
+                      case 90: {
+                        global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Dhcp subBuilder = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Dhcp();
+                        if (ipCase_ == IpOneofCase.Dhcp) {
+                          subBuilder.MergeFrom(Dhcp);
+                        }
+                        input.ReadMessage(subBuilder);
+                        Dhcp = subBuilder;
+                        break;
+                      }
+                      case 98: {
+                        global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.StaticIp subBuilder = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.StaticIp();
+                        if (ipCase_ == IpOneofCase.StaticIp) {
+                          subBuilder.MergeFrom(StaticIp);
+                        }
+                        input.ReadMessage(subBuilder);
+                        StaticIp = subBuilder;
+                        break;
+                      }
+                      case 792: {
+                        Metric = input.ReadUInt32();
+                        break;
+                      }
+                    }
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                        break;
+                      case 10: {
+                        Name = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        Device = input.ReadString();
+                        break;
+                      }
+                      case 90: {
+                        global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Dhcp subBuilder = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.Dhcp();
+                        if (ipCase_ == IpOneofCase.Dhcp) {
+                          subBuilder.MergeFrom(Dhcp);
+                        }
+                        input.ReadMessage(subBuilder);
+                        Dhcp = subBuilder;
+                        break;
+                      }
+                      case 98: {
+                        global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.StaticIp subBuilder = new global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Wan.Types.StaticIp();
+                        if (ipCase_ == IpOneofCase.StaticIp) {
+                          subBuilder.MergeFrom(StaticIp);
+                        }
+                        input.ReadMessage(subBuilder);
+                        StaticIp = subBuilder;
+                        break;
+                      }
+                      case 792: {
+                        Metric = input.ReadUInt32();
+                        break;
+                      }
+                    }
+                  }
+                }
+                #endif
+
+              }
+
+            }
+            #endregion
+
+          }
+
+          [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+          public sealed partial class Dmz : pb::IMessage<Dmz>
+          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              , pb::IBufferMessage
+          #endif
+          {
+            private static readonly pb::MessageParser<Dmz> _parser = new pb::MessageParser<Dmz>(() => new Dmz());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pb::MessageParser<Dmz> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::Palm.Ops.Router.V1.Profile.Types.Network.Descriptor.NestedTypes[1]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Dmz() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Dmz(Dmz other) : this() {
+              name_ = other.name_;
+              device_ = other.device_;
+              address_ = other.address_;
+              allowHosts_ = other.allowHosts_.Clone();
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Dmz Clone() {
+              return new Dmz(this);
             }
 
             /// <summary>Field number for the "name" field.</summary>
@@ -1040,72 +1924,38 @@ namespace Palm.Ops.Router.V1 {
               }
             }
 
-            /// <summary>Field number for the "dhcp" field.</summary>
-            public const int DhcpFieldNumber = 11;
+            /// <summary>Field number for the "address" field.</summary>
+            public const int AddressFieldNumber = 3;
+            private string address_ = "";
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public global::Palm.Ops.Router.V1.Config.Types.Dhcp Dhcp {
-              get { return ipCase_ == IpOneofCase.Dhcp ? (global::Palm.Ops.Router.V1.Config.Types.Dhcp) ip_ : null; }
+            public string Address {
+              get { return address_; }
               set {
-                ip_ = value;
-                ipCase_ = value == null ? IpOneofCase.None : IpOneofCase.Dhcp;
+                address_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
               }
             }
 
-            /// <summary>Field number for the "static_ip" field.</summary>
-            public const int StaticIpFieldNumber = 12;
+            /// <summary>Field number for the "allow_hosts" field.</summary>
+            public const int AllowHostsFieldNumber = 9;
+            private static readonly pb::FieldCodec<string> _repeated_allowHosts_codec
+                = pb::FieldCodec.ForString(74);
+            private readonly pbc::RepeatedField<string> allowHosts_ = new pbc::RepeatedField<string>();
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public global::Palm.Ops.Router.V1.Config.Types.StaticIp StaticIp {
-              get { return ipCase_ == IpOneofCase.StaticIp ? (global::Palm.Ops.Router.V1.Config.Types.StaticIp) ip_ : null; }
-              set {
-                ip_ = value;
-                ipCase_ = value == null ? IpOneofCase.None : IpOneofCase.StaticIp;
-              }
-            }
-
-            /// <summary>Field number for the "metric" field.</summary>
-            public const int MetricFieldNumber = 99;
-            private uint metric_;
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public uint Metric {
-              get { return metric_; }
-              set {
-                metric_ = value;
-              }
-            }
-
-            private object ip_;
-            /// <summary>Enum of possible cases for the "ip" oneof.</summary>
-            public enum IpOneofCase {
-              None = 0,
-              Dhcp = 11,
-              StaticIp = 12,
-            }
-            private IpOneofCase ipCase_ = IpOneofCase.None;
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public IpOneofCase IpCase {
-              get { return ipCase_; }
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public void ClearIp() {
-              ipCase_ = IpOneofCase.None;
-              ip_ = null;
+            public pbc::RepeatedField<string> AllowHosts {
+              get { return allowHosts_; }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
             public override bool Equals(object other) {
-              return Equals(other as Ethernet);
+              return Equals(other as Dmz);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public bool Equals(Ethernet other) {
+            public bool Equals(Dmz other) {
               if (ReferenceEquals(other, null)) {
                 return false;
               }
@@ -1114,10 +1964,8 @@ namespace Palm.Ops.Router.V1 {
               }
               if (Name != other.Name) return false;
               if (Device != other.Device) return false;
-              if (!object.Equals(Dhcp, other.Dhcp)) return false;
-              if (!object.Equals(StaticIp, other.StaticIp)) return false;
-              if (Metric != other.Metric) return false;
-              if (IpCase != other.IpCase) return false;
+              if (Address != other.Address) return false;
+              if(!allowHosts_.Equals(other.allowHosts_)) return false;
               return Equals(_unknownFields, other._unknownFields);
             }
 
@@ -1127,10 +1975,8 @@ namespace Palm.Ops.Router.V1 {
               int hash = 1;
               if (Name.Length != 0) hash ^= Name.GetHashCode();
               if (Device.Length != 0) hash ^= Device.GetHashCode();
-              if (ipCase_ == IpOneofCase.Dhcp) hash ^= Dhcp.GetHashCode();
-              if (ipCase_ == IpOneofCase.StaticIp) hash ^= StaticIp.GetHashCode();
-              if (Metric != 0) hash ^= Metric.GetHashCode();
-              hash ^= (int) ipCase_;
+              if (Address.Length != 0) hash ^= Address.GetHashCode();
+              hash ^= allowHosts_.GetHashCode();
               if (_unknownFields != null) {
                 hash ^= _unknownFields.GetHashCode();
               }
@@ -1157,18 +2003,11 @@ namespace Palm.Ops.Router.V1 {
                 output.WriteRawTag(18);
                 output.WriteString(Device);
               }
-              if (ipCase_ == IpOneofCase.Dhcp) {
-                output.WriteRawTag(90);
-                output.WriteMessage(Dhcp);
+              if (Address.Length != 0) {
+                output.WriteRawTag(26);
+                output.WriteString(Address);
               }
-              if (ipCase_ == IpOneofCase.StaticIp) {
-                output.WriteRawTag(98);
-                output.WriteMessage(StaticIp);
-              }
-              if (Metric != 0) {
-                output.WriteRawTag(152, 6);
-                output.WriteUInt32(Metric);
-              }
+              allowHosts_.WriteTo(output, _repeated_allowHosts_codec);
               if (_unknownFields != null) {
                 _unknownFields.WriteTo(output);
               }
@@ -1187,18 +2026,11 @@ namespace Palm.Ops.Router.V1 {
                 output.WriteRawTag(18);
                 output.WriteString(Device);
               }
-              if (ipCase_ == IpOneofCase.Dhcp) {
-                output.WriteRawTag(90);
-                output.WriteMessage(Dhcp);
+              if (Address.Length != 0) {
+                output.WriteRawTag(26);
+                output.WriteString(Address);
               }
-              if (ipCase_ == IpOneofCase.StaticIp) {
-                output.WriteRawTag(98);
-                output.WriteMessage(StaticIp);
-              }
-              if (Metric != 0) {
-                output.WriteRawTag(152, 6);
-                output.WriteUInt32(Metric);
-              }
+              allowHosts_.WriteTo(ref output, _repeated_allowHosts_codec);
               if (_unknownFields != null) {
                 _unknownFields.WriteTo(ref output);
               }
@@ -1215,15 +2047,10 @@ namespace Palm.Ops.Router.V1 {
               if (Device.Length != 0) {
                 size += 1 + pb::CodedOutputStream.ComputeStringSize(Device);
               }
-              if (ipCase_ == IpOneofCase.Dhcp) {
-                size += 1 + pb::CodedOutputStream.ComputeMessageSize(Dhcp);
+              if (Address.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Address);
               }
-              if (ipCase_ == IpOneofCase.StaticIp) {
-                size += 1 + pb::CodedOutputStream.ComputeMessageSize(StaticIp);
-              }
-              if (Metric != 0) {
-                size += 2 + pb::CodedOutputStream.ComputeUInt32Size(Metric);
-              }
+              size += allowHosts_.CalculateSize(_repeated_allowHosts_codec);
               if (_unknownFields != null) {
                 size += _unknownFields.CalculateSize();
               }
@@ -1232,7 +2059,7 @@ namespace Palm.Ops.Router.V1 {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public void MergeFrom(Ethernet other) {
+            public void MergeFrom(Dmz other) {
               if (other == null) {
                 return;
               }
@@ -1242,24 +2069,10 @@ namespace Palm.Ops.Router.V1 {
               if (other.Device.Length != 0) {
                 Device = other.Device;
               }
-              if (other.Metric != 0) {
-                Metric = other.Metric;
+              if (other.Address.Length != 0) {
+                Address = other.Address;
               }
-              switch (other.IpCase) {
-                case IpOneofCase.Dhcp:
-                  if (Dhcp == null) {
-                    Dhcp = new global::Palm.Ops.Router.V1.Config.Types.Dhcp();
-                  }
-                  Dhcp.MergeFrom(other.Dhcp);
-                  break;
-                case IpOneofCase.StaticIp:
-                  if (StaticIp == null) {
-                    StaticIp = new global::Palm.Ops.Router.V1.Config.Types.StaticIp();
-                  }
-                  StaticIp.MergeFrom(other.StaticIp);
-                  break;
-              }
-
+              allowHosts_.Add(other.allowHosts_);
               _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
             }
 
@@ -1283,26 +2096,12 @@ namespace Palm.Ops.Router.V1 {
                     Device = input.ReadString();
                     break;
                   }
-                  case 90: {
-                    global::Palm.Ops.Router.V1.Config.Types.Dhcp subBuilder = new global::Palm.Ops.Router.V1.Config.Types.Dhcp();
-                    if (ipCase_ == IpOneofCase.Dhcp) {
-                      subBuilder.MergeFrom(Dhcp);
-                    }
-                    input.ReadMessage(subBuilder);
-                    Dhcp = subBuilder;
+                  case 26: {
+                    Address = input.ReadString();
                     break;
                   }
-                  case 98: {
-                    global::Palm.Ops.Router.V1.Config.Types.StaticIp subBuilder = new global::Palm.Ops.Router.V1.Config.Types.StaticIp();
-                    if (ipCase_ == IpOneofCase.StaticIp) {
-                      subBuilder.MergeFrom(StaticIp);
-                    }
-                    input.ReadMessage(subBuilder);
-                    StaticIp = subBuilder;
-                    break;
-                  }
-                  case 792: {
-                    Metric = input.ReadUInt32();
+                  case 74: {
+                    allowHosts_.AddEntriesFrom(input, _repeated_allowHosts_codec);
                     break;
                   }
                 }
@@ -1328,26 +2127,827 @@ namespace Palm.Ops.Router.V1 {
                     Device = input.ReadString();
                     break;
                   }
-                  case 90: {
-                    global::Palm.Ops.Router.V1.Config.Types.Dhcp subBuilder = new global::Palm.Ops.Router.V1.Config.Types.Dhcp();
-                    if (ipCase_ == IpOneofCase.Dhcp) {
-                      subBuilder.MergeFrom(Dhcp);
-                    }
-                    input.ReadMessage(subBuilder);
-                    Dhcp = subBuilder;
+                  case 26: {
+                    Address = input.ReadString();
                     break;
                   }
-                  case 98: {
-                    global::Palm.Ops.Router.V1.Config.Types.StaticIp subBuilder = new global::Palm.Ops.Router.V1.Config.Types.StaticIp();
-                    if (ipCase_ == IpOneofCase.StaticIp) {
-                      subBuilder.MergeFrom(StaticIp);
-                    }
-                    input.ReadMessage(subBuilder);
-                    StaticIp = subBuilder;
+                  case 74: {
+                    allowHosts_.AddEntriesFrom(ref input, _repeated_allowHosts_codec);
                     break;
                   }
-                  case 792: {
-                    Metric = input.ReadUInt32();
+                }
+              }
+            }
+            #endif
+
+          }
+
+          [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+          public sealed partial class Lan : pb::IMessage<Lan>
+          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              , pb::IBufferMessage
+          #endif
+          {
+            private static readonly pb::MessageParser<Lan> _parser = new pb::MessageParser<Lan>(() => new Lan());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pb::MessageParser<Lan> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::Palm.Ops.Router.V1.Profile.Types.Network.Descriptor.NestedTypes[2]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Lan() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Lan(Lan other) : this() {
+              name_ = other.name_;
+              device_ = other.device_;
+              address_ = other.address_;
+              clients_ = other.clients_.Clone();
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Lan Clone() {
+              return new Lan(this);
+            }
+
+            /// <summary>Field number for the "name" field.</summary>
+            public const int NameFieldNumber = 1;
+            private string name_ = "";
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public string Name {
+              get { return name_; }
+              set {
+                name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+
+            /// <summary>Field number for the "device" field.</summary>
+            public const int DeviceFieldNumber = 2;
+            private string device_ = "";
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public string Device {
+              get { return device_; }
+              set {
+                device_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+
+            /// <summary>Field number for the "address" field.</summary>
+            public const int AddressFieldNumber = 3;
+            private string address_ = "";
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public string Address {
+              get { return address_; }
+              set {
+                address_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+
+            /// <summary>Field number for the "clients" field.</summary>
+            public const int ClientsFieldNumber = 9;
+            private static readonly pb::FieldCodec<global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan.Types.Client> _repeated_clients_codec
+                = pb::FieldCodec.ForMessage(74, global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan.Types.Client.Parser);
+            private readonly pbc::RepeatedField<global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan.Types.Client> clients_ = new pbc::RepeatedField<global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan.Types.Client>();
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public pbc::RepeatedField<global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan.Types.Client> Clients {
+              get { return clients_; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override bool Equals(object other) {
+              return Equals(other as Lan);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool Equals(Lan other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Name != other.Name) return false;
+              if (Device != other.Device) return false;
+              if (Address != other.Address) return false;
+              if(!clients_.Equals(other.clients_)) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (Name.Length != 0) hash ^= Name.GetHashCode();
+              if (Device.Length != 0) hash ^= Device.GetHashCode();
+              if (Address.Length != 0) hash ^= Address.GetHashCode();
+              hash ^= clients_.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void WriteTo(pb::CodedOutputStream output) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              output.WriteRawMessage(this);
+            #else
+              if (Name.Length != 0) {
+                output.WriteRawTag(10);
+                output.WriteString(Name);
+              }
+              if (Device.Length != 0) {
+                output.WriteRawTag(18);
+                output.WriteString(Device);
+              }
+              if (Address.Length != 0) {
+                output.WriteRawTag(26);
+                output.WriteString(Address);
+              }
+              clients_.WriteTo(output, _repeated_clients_codec);
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+              if (Name.Length != 0) {
+                output.WriteRawTag(10);
+                output.WriteString(Name);
+              }
+              if (Device.Length != 0) {
+                output.WriteRawTag(18);
+                output.WriteString(Device);
+              }
+              if (Address.Length != 0) {
+                output.WriteRawTag(26);
+                output.WriteString(Address);
+              }
+              clients_.WriteTo(ref output, _repeated_clients_codec);
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(ref output);
+              }
+            }
+            #endif
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public int CalculateSize() {
+              int size = 0;
+              if (Name.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+              }
+              if (Device.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Device);
+              }
+              if (Address.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Address);
+              }
+              size += clients_.CalculateSize(_repeated_clients_codec);
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(Lan other) {
+              if (other == null) {
+                return;
+              }
+              if (other.Name.Length != 0) {
+                Name = other.Name;
+              }
+              if (other.Device.Length != 0) {
+                Device = other.Device;
+              }
+              if (other.Address.Length != 0) {
+                Address = other.Address;
+              }
+              clients_.Add(other.clients_);
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(pb::CodedInputStream input) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              input.ReadRawMessage(this);
+            #else
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 10: {
+                    Name = input.ReadString();
+                    break;
+                  }
+                  case 18: {
+                    Device = input.ReadString();
+                    break;
+                  }
+                  case 26: {
+                    Address = input.ReadString();
+                    break;
+                  }
+                  case 74: {
+                    clients_.AddEntriesFrom(input, _repeated_clients_codec);
+                    break;
+                  }
+                }
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                    break;
+                  case 10: {
+                    Name = input.ReadString();
+                    break;
+                  }
+                  case 18: {
+                    Device = input.ReadString();
+                    break;
+                  }
+                  case 26: {
+                    Address = input.ReadString();
+                    break;
+                  }
+                  case 74: {
+                    clients_.AddEntriesFrom(ref input, _repeated_clients_codec);
+                    break;
+                  }
+                }
+              }
+            }
+            #endif
+
+            #region Nested types
+            /// <summary>Container for nested types declared in the Lan message type.</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static partial class Types {
+              [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+              public sealed partial class Client : pb::IMessage<Client>
+              #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  , pb::IBufferMessage
+              #endif
+              {
+                private static readonly pb::MessageParser<Client> _parser = new pb::MessageParser<Client>(() => new Client());
+                private pb::UnknownFieldSet _unknownFields;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pb::MessageParser<Client> Parser { get { return _parser; } }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pbr::MessageDescriptor Descriptor {
+                  get { return global::Palm.Ops.Router.V1.Profile.Types.Network.Types.Lan.Descriptor.NestedTypes[0]; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                pbr::MessageDescriptor pb::IMessage.Descriptor {
+                  get { return Descriptor; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public Client() {
+                  OnConstruction();
+                }
+
+                partial void OnConstruction();
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public Client(Client other) : this() {
+                  user_ = other.user_;
+                  password_ = other.password_;
+                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public Client Clone() {
+                  return new Client(this);
+                }
+
+                /// <summary>Field number for the "user" field.</summary>
+                public const int UserFieldNumber = 1;
+                private string user_ = "";
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string User {
+                  get { return user_; }
+                  set {
+                    user_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "password" field.</summary>
+                public const int PasswordFieldNumber = 2;
+                private string password_ = "";
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string Password {
+                  get { return password_; }
+                  set {
+                    password_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override bool Equals(object other) {
+                  return Equals(other as Client);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public bool Equals(Client other) {
+                  if (ReferenceEquals(other, null)) {
+                    return false;
+                  }
+                  if (ReferenceEquals(other, this)) {
+                    return true;
+                  }
+                  if (User != other.User) return false;
+                  if (Password != other.Password) return false;
+                  return Equals(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override int GetHashCode() {
+                  int hash = 1;
+                  if (User.Length != 0) hash ^= User.GetHashCode();
+                  if (Password.Length != 0) hash ^= Password.GetHashCode();
+                  if (_unknownFields != null) {
+                    hash ^= _unknownFields.GetHashCode();
+                  }
+                  return hash;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override string ToString() {
+                  return pb::JsonFormatter.ToDiagnosticString(this);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void WriteTo(pb::CodedOutputStream output) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  output.WriteRawMessage(this);
+                #else
+                  if (User.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(User);
+                  }
+                  if (Password.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(Password);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(output);
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                  if (User.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(User);
+                  }
+                  if (Password.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(Password);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(ref output);
+                  }
+                }
+                #endif
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public int CalculateSize() {
+                  int size = 0;
+                  if (User.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(User);
+                  }
+                  if (Password.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Password);
+                  }
+                  if (_unknownFields != null) {
+                    size += _unknownFields.CalculateSize();
+                  }
+                  return size;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(Client other) {
+                  if (other == null) {
+                    return;
+                  }
+                  if (other.User.Length != 0) {
+                    User = other.User;
+                  }
+                  if (other.Password.Length != 0) {
+                    Password = other.Password;
+                  }
+                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(pb::CodedInputStream input) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  input.ReadRawMessage(this);
+                #else
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                        break;
+                      case 10: {
+                        User = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        Password = input.ReadString();
+                        break;
+                      }
+                    }
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                        break;
+                      case 10: {
+                        User = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        Password = input.ReadString();
+                        break;
+                      }
+                    }
+                  }
+                }
+                #endif
+
+              }
+
+            }
+            #endregion
+
+          }
+
+          [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+          public sealed partial class Guest : pb::IMessage<Guest>
+          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              , pb::IBufferMessage
+          #endif
+          {
+            private static readonly pb::MessageParser<Guest> _parser = new pb::MessageParser<Guest>(() => new Guest());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pb::MessageParser<Guest> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::Palm.Ops.Router.V1.Profile.Types.Network.Descriptor.NestedTypes[3]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Guest() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Guest(Guest other) : this() {
+              name_ = other.name_;
+              device_ = other.device_;
+              address_ = other.address_;
+              blockHosts_ = other.blockHosts_.Clone();
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Guest Clone() {
+              return new Guest(this);
+            }
+
+            /// <summary>Field number for the "name" field.</summary>
+            public const int NameFieldNumber = 1;
+            private string name_ = "";
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public string Name {
+              get { return name_; }
+              set {
+                name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+
+            /// <summary>Field number for the "device" field.</summary>
+            public const int DeviceFieldNumber = 2;
+            private string device_ = "";
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public string Device {
+              get { return device_; }
+              set {
+                device_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+
+            /// <summary>Field number for the "address" field.</summary>
+            public const int AddressFieldNumber = 3;
+            private string address_ = "";
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public string Address {
+              get { return address_; }
+              set {
+                address_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+
+            /// <summary>Field number for the "block_hosts" field.</summary>
+            public const int BlockHostsFieldNumber = 9;
+            private static readonly pb::FieldCodec<string> _repeated_blockHosts_codec
+                = pb::FieldCodec.ForString(74);
+            private readonly pbc::RepeatedField<string> blockHosts_ = new pbc::RepeatedField<string>();
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public pbc::RepeatedField<string> BlockHosts {
+              get { return blockHosts_; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override bool Equals(object other) {
+              return Equals(other as Guest);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool Equals(Guest other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Name != other.Name) return false;
+              if (Device != other.Device) return false;
+              if (Address != other.Address) return false;
+              if(!blockHosts_.Equals(other.blockHosts_)) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (Name.Length != 0) hash ^= Name.GetHashCode();
+              if (Device.Length != 0) hash ^= Device.GetHashCode();
+              if (Address.Length != 0) hash ^= Address.GetHashCode();
+              hash ^= blockHosts_.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void WriteTo(pb::CodedOutputStream output) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              output.WriteRawMessage(this);
+            #else
+              if (Name.Length != 0) {
+                output.WriteRawTag(10);
+                output.WriteString(Name);
+              }
+              if (Device.Length != 0) {
+                output.WriteRawTag(18);
+                output.WriteString(Device);
+              }
+              if (Address.Length != 0) {
+                output.WriteRawTag(26);
+                output.WriteString(Address);
+              }
+              blockHosts_.WriteTo(output, _repeated_blockHosts_codec);
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+              if (Name.Length != 0) {
+                output.WriteRawTag(10);
+                output.WriteString(Name);
+              }
+              if (Device.Length != 0) {
+                output.WriteRawTag(18);
+                output.WriteString(Device);
+              }
+              if (Address.Length != 0) {
+                output.WriteRawTag(26);
+                output.WriteString(Address);
+              }
+              blockHosts_.WriteTo(ref output, _repeated_blockHosts_codec);
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(ref output);
+              }
+            }
+            #endif
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public int CalculateSize() {
+              int size = 0;
+              if (Name.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+              }
+              if (Device.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Device);
+              }
+              if (Address.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Address);
+              }
+              size += blockHosts_.CalculateSize(_repeated_blockHosts_codec);
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(Guest other) {
+              if (other == null) {
+                return;
+              }
+              if (other.Name.Length != 0) {
+                Name = other.Name;
+              }
+              if (other.Device.Length != 0) {
+                Device = other.Device;
+              }
+              if (other.Address.Length != 0) {
+                Address = other.Address;
+              }
+              blockHosts_.Add(other.blockHosts_);
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(pb::CodedInputStream input) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              input.ReadRawMessage(this);
+            #else
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 10: {
+                    Name = input.ReadString();
+                    break;
+                  }
+                  case 18: {
+                    Device = input.ReadString();
+                    break;
+                  }
+                  case 26: {
+                    Address = input.ReadString();
+                    break;
+                  }
+                  case 74: {
+                    blockHosts_.AddEntriesFrom(input, _repeated_blockHosts_codec);
+                    break;
+                  }
+                }
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                    break;
+                  case 10: {
+                    Name = input.ReadString();
+                    break;
+                  }
+                  case 18: {
+                    Device = input.ReadString();
+                    break;
+                  }
+                  case 26: {
+                    Address = input.ReadString();
+                    break;
+                  }
+                  case 74: {
+                    blockHosts_.AddEntriesFrom(ref input, _repeated_blockHosts_codec);
                     break;
                   }
                 }
@@ -1363,21 +2963,21 @@ namespace Palm.Ops.Router.V1 {
       }
 
       [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-      public sealed partial class Dmz : pb::IMessage<Dmz>
+      public sealed partial class Dnsmasq : pb::IMessage<Dnsmasq>
       #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           , pb::IBufferMessage
       #endif
       {
-        private static readonly pb::MessageParser<Dmz> _parser = new pb::MessageParser<Dmz>(() => new Dmz());
+        private static readonly pb::MessageParser<Dnsmasq> _parser = new pb::MessageParser<Dnsmasq>(() => new Dnsmasq());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pb::MessageParser<Dmz> Parser { get { return _parser; } }
+        public static pb::MessageParser<Dnsmasq> Parser { get { return _parser; } }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::Palm.Ops.Router.V1.Config.Descriptor.NestedTypes[3]; }
+          get { return global::Palm.Ops.Router.V1.Profile.Descriptor.NestedTypes[1]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1388,7 +2988,7 @@ namespace Palm.Ops.Router.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Dmz() {
+        public Dnsmasq() {
           OnConstruction();
         }
 
@@ -1396,73 +2996,44 @@ namespace Palm.Ops.Router.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Dmz(Dmz other) : this() {
-          name_ = other.name_;
-          device_ = other.device_;
-          address_ = other.address_;
+        public Dnsmasq(Dnsmasq other) : this() {
+          items_ = other.items_.Clone();
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Dmz Clone() {
-          return new Dmz(this);
+        public Dnsmasq Clone() {
+          return new Dnsmasq(this);
         }
 
-        /// <summary>Field number for the "name" field.</summary>
-        public const int NameFieldNumber = 1;
-        private string name_ = "";
+        /// <summary>Field number for the "items" field.</summary>
+        public const int ItemsFieldNumber = 1;
+        private static readonly pb::FieldCodec<global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item> _repeated_items_codec
+            = pb::FieldCodec.ForMessage(10, global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Parser);
+        private readonly pbc::RepeatedField<global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item> items_ = new pbc::RepeatedField<global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item>();
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public string Name {
-          get { return name_; }
-          set {
-            name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "device" field.</summary>
-        public const int DeviceFieldNumber = 2;
-        private string device_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public string Device {
-          get { return device_; }
-          set {
-            device_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "address" field.</summary>
-        public const int AddressFieldNumber = 3;
-        private string address_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public string Address {
-          get { return address_; }
-          set {
-            address_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
+        public pbc::RepeatedField<global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item> Items {
+          get { return items_; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override bool Equals(object other) {
-          return Equals(other as Dmz);
+          return Equals(other as Dnsmasq);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool Equals(Dmz other) {
+        public bool Equals(Dnsmasq other) {
           if (ReferenceEquals(other, null)) {
             return false;
           }
           if (ReferenceEquals(other, this)) {
             return true;
           }
-          if (Name != other.Name) return false;
-          if (Device != other.Device) return false;
-          if (Address != other.Address) return false;
+          if(!items_.Equals(other.items_)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -1470,9 +3041,7 @@ namespace Palm.Ops.Router.V1 {
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override int GetHashCode() {
           int hash = 1;
-          if (Name.Length != 0) hash ^= Name.GetHashCode();
-          if (Device.Length != 0) hash ^= Device.GetHashCode();
-          if (Address.Length != 0) hash ^= Address.GetHashCode();
+          hash ^= items_.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -1491,18 +3060,7 @@ namespace Palm.Ops.Router.V1 {
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           output.WriteRawMessage(this);
         #else
-          if (Name.Length != 0) {
-            output.WriteRawTag(10);
-            output.WriteString(Name);
-          }
-          if (Device.Length != 0) {
-            output.WriteRawTag(18);
-            output.WriteString(Device);
-          }
-          if (Address.Length != 0) {
-            output.WriteRawTag(26);
-            output.WriteString(Address);
-          }
+          items_.WriteTo(output, _repeated_items_codec);
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -1513,18 +3071,7 @@ namespace Palm.Ops.Router.V1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-          if (Name.Length != 0) {
-            output.WriteRawTag(10);
-            output.WriteString(Name);
-          }
-          if (Device.Length != 0) {
-            output.WriteRawTag(18);
-            output.WriteString(Device);
-          }
-          if (Address.Length != 0) {
-            output.WriteRawTag(26);
-            output.WriteString(Address);
-          }
+          items_.WriteTo(ref output, _repeated_items_codec);
           if (_unknownFields != null) {
             _unknownFields.WriteTo(ref output);
           }
@@ -1535,15 +3082,7 @@ namespace Palm.Ops.Router.V1 {
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int CalculateSize() {
           int size = 0;
-          if (Name.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-          }
-          if (Device.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Device);
-          }
-          if (Address.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Address);
-          }
+          size += items_.CalculateSize(_repeated_items_codec);
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
           }
@@ -1552,19 +3091,11 @@ namespace Palm.Ops.Router.V1 {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(Dmz other) {
+        public void MergeFrom(Dnsmasq other) {
           if (other == null) {
             return;
           }
-          if (other.Name.Length != 0) {
-            Name = other.Name;
-          }
-          if (other.Device.Length != 0) {
-            Device = other.Device;
-          }
-          if (other.Address.Length != 0) {
-            Address = other.Address;
-          }
+          items_.Add(other.items_);
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
 
@@ -1581,15 +3112,7 @@ namespace Palm.Ops.Router.V1 {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
               case 10: {
-                Name = input.ReadString();
-                break;
-              }
-              case 18: {
-                Device = input.ReadString();
-                break;
-              }
-              case 26: {
-                Address = input.ReadString();
+                items_.AddEntriesFrom(input, _repeated_items_codec);
                 break;
               }
             }
@@ -1608,15 +3131,7 @@ namespace Palm.Ops.Router.V1 {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
                 break;
               case 10: {
-                Name = input.ReadString();
-                break;
-              }
-              case 18: {
-                Device = input.ReadString();
-                break;
-              }
-              case 26: {
-                Address = input.ReadString();
+                items_.AddEntriesFrom(ref input, _repeated_items_codec);
                 break;
               }
             }
@@ -1624,533 +3139,800 @@ namespace Palm.Ops.Router.V1 {
         }
         #endif
 
-      }
-
-      [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-      public sealed partial class Lan : pb::IMessage<Lan>
-      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          , pb::IBufferMessage
-      #endif
-      {
-        private static readonly pb::MessageParser<Lan> _parser = new pb::MessageParser<Lan>(() => new Lan());
-        private pb::UnknownFieldSet _unknownFields;
+        #region Nested types
+        /// <summary>Container for nested types declared in the Dnsmasq message type.</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pb::MessageParser<Lan> Parser { get { return _parser; } }
+        public static partial class Types {
+          [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+          public sealed partial class Item : pb::IMessage<Item>
+          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              , pb::IBufferMessage
+          #endif
+          {
+            private static readonly pb::MessageParser<Item> _parser = new pb::MessageParser<Item>(() => new Item());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pb::MessageParser<Item> Parser { get { return _parser; } }
 
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::Palm.Ops.Router.V1.Config.Descriptor.NestedTypes[4]; }
-        }
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Descriptor.NestedTypes[0]; }
+            }
 
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
 
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Lan() {
-          OnConstruction();
-        }
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Item() {
+              OnConstruction();
+            }
 
-        partial void OnConstruction();
+            partial void OnConstruction();
 
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Lan(Lan other) : this() {
-          name_ = other.name_;
-          device_ = other.device_;
-          address_ = other.address_;
-          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-        }
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Item(Item other) : this() {
+              device_ = other.device_;
+              address_ = other.address_;
+              dhcpRange_ = other.dhcpRange_ != null ? other.dhcpRange_.Clone() : null;
+              staticIps_ = other.staticIps_.Clone();
+              dnsServers_ = other.dnsServers_.Clone();
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
 
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Lan Clone() {
-          return new Lan(this);
-        }
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Item Clone() {
+              return new Item(this);
+            }
 
-        /// <summary>Field number for the "name" field.</summary>
-        public const int NameFieldNumber = 1;
-        private string name_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public string Name {
-          get { return name_; }
-          set {
-            name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "device" field.</summary>
-        public const int DeviceFieldNumber = 2;
-        private string device_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public string Device {
-          get { return device_; }
-          set {
-            device_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "address" field.</summary>
-        public const int AddressFieldNumber = 3;
-        private string address_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public string Address {
-          get { return address_; }
-          set {
-            address_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override bool Equals(object other) {
-          return Equals(other as Lan);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool Equals(Lan other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if (Name != other.Name) return false;
-          if (Device != other.Device) return false;
-          if (Address != other.Address) return false;
-          return Equals(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override int GetHashCode() {
-          int hash = 1;
-          if (Name.Length != 0) hash ^= Name.GetHashCode();
-          if (Device.Length != 0) hash ^= Device.GetHashCode();
-          if (Address.Length != 0) hash ^= Address.GetHashCode();
-          if (_unknownFields != null) {
-            hash ^= _unknownFields.GetHashCode();
-          }
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void WriteTo(pb::CodedOutputStream output) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          output.WriteRawMessage(this);
-        #else
-          if (Name.Length != 0) {
-            output.WriteRawTag(10);
-            output.WriteString(Name);
-          }
-          if (Device.Length != 0) {
-            output.WriteRawTag(18);
-            output.WriteString(Device);
-          }
-          if (Address.Length != 0) {
-            output.WriteRawTag(26);
-            output.WriteString(Address);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(output);
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-          if (Name.Length != 0) {
-            output.WriteRawTag(10);
-            output.WriteString(Name);
-          }
-          if (Device.Length != 0) {
-            output.WriteRawTag(18);
-            output.WriteString(Device);
-          }
-          if (Address.Length != 0) {
-            output.WriteRawTag(26);
-            output.WriteString(Address);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(ref output);
-          }
-        }
-        #endif
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int CalculateSize() {
-          int size = 0;
-          if (Name.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-          }
-          if (Device.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Device);
-          }
-          if (Address.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Address);
-          }
-          if (_unknownFields != null) {
-            size += _unknownFields.CalculateSize();
-          }
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(Lan other) {
-          if (other == null) {
-            return;
-          }
-          if (other.Name.Length != 0) {
-            Name = other.Name;
-          }
-          if (other.Device.Length != 0) {
-            Device = other.Device;
-          }
-          if (other.Address.Length != 0) {
-            Address = other.Address;
-          }
-          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(pb::CodedInputStream input) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          input.ReadRawMessage(this);
-        #else
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                break;
-              case 10: {
-                Name = input.ReadString();
-                break;
-              }
-              case 18: {
-                Device = input.ReadString();
-                break;
-              }
-              case 26: {
-                Address = input.ReadString();
-                break;
+            /// <summary>Field number for the "device" field.</summary>
+            public const int DeviceFieldNumber = 1;
+            private string device_ = "";
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public string Device {
+              get { return device_; }
+              set {
+                device_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
               }
             }
-          }
-        #endif
-        }
 
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                break;
-              case 10: {
-                Name = input.ReadString();
-                break;
-              }
-              case 18: {
-                Device = input.ReadString();
-                break;
-              }
-              case 26: {
-                Address = input.ReadString();
-                break;
+            /// <summary>Field number for the "address" field.</summary>
+            public const int AddressFieldNumber = 2;
+            private string address_ = "";
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public string Address {
+              get { return address_; }
+              set {
+                address_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
               }
             }
-          }
-        }
-        #endif
 
-      }
-
-      [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-      public sealed partial class Guest : pb::IMessage<Guest>
-      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          , pb::IBufferMessage
-      #endif
-      {
-        private static readonly pb::MessageParser<Guest> _parser = new pb::MessageParser<Guest>(() => new Guest());
-        private pb::UnknownFieldSet _unknownFields;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pb::MessageParser<Guest> Parser { get { return _parser; } }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::Palm.Ops.Router.V1.Config.Descriptor.NestedTypes[5]; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Guest() {
-          OnConstruction();
-        }
-
-        partial void OnConstruction();
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Guest(Guest other) : this() {
-          name_ = other.name_;
-          device_ = other.device_;
-          address_ = other.address_;
-          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public Guest Clone() {
-          return new Guest(this);
-        }
-
-        /// <summary>Field number for the "name" field.</summary>
-        public const int NameFieldNumber = 1;
-        private string name_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public string Name {
-          get { return name_; }
-          set {
-            name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "device" field.</summary>
-        public const int DeviceFieldNumber = 2;
-        private string device_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public string Device {
-          get { return device_; }
-          set {
-            device_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "address" field.</summary>
-        public const int AddressFieldNumber = 3;
-        private string address_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public string Address {
-          get { return address_; }
-          set {
-            address_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override bool Equals(object other) {
-          return Equals(other as Guest);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool Equals(Guest other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if (Name != other.Name) return false;
-          if (Device != other.Device) return false;
-          if (Address != other.Address) return false;
-          return Equals(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override int GetHashCode() {
-          int hash = 1;
-          if (Name.Length != 0) hash ^= Name.GetHashCode();
-          if (Device.Length != 0) hash ^= Device.GetHashCode();
-          if (Address.Length != 0) hash ^= Address.GetHashCode();
-          if (_unknownFields != null) {
-            hash ^= _unknownFields.GetHashCode();
-          }
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void WriteTo(pb::CodedOutputStream output) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          output.WriteRawMessage(this);
-        #else
-          if (Name.Length != 0) {
-            output.WriteRawTag(10);
-            output.WriteString(Name);
-          }
-          if (Device.Length != 0) {
-            output.WriteRawTag(18);
-            output.WriteString(Device);
-          }
-          if (Address.Length != 0) {
-            output.WriteRawTag(26);
-            output.WriteString(Address);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(output);
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-          if (Name.Length != 0) {
-            output.WriteRawTag(10);
-            output.WriteString(Name);
-          }
-          if (Device.Length != 0) {
-            output.WriteRawTag(18);
-            output.WriteString(Device);
-          }
-          if (Address.Length != 0) {
-            output.WriteRawTag(26);
-            output.WriteString(Address);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(ref output);
-          }
-        }
-        #endif
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int CalculateSize() {
-          int size = 0;
-          if (Name.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-          }
-          if (Device.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Device);
-          }
-          if (Address.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Address);
-          }
-          if (_unknownFields != null) {
-            size += _unknownFields.CalculateSize();
-          }
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(Guest other) {
-          if (other == null) {
-            return;
-          }
-          if (other.Name.Length != 0) {
-            Name = other.Name;
-          }
-          if (other.Device.Length != 0) {
-            Device = other.Device;
-          }
-          if (other.Address.Length != 0) {
-            Address = other.Address;
-          }
-          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(pb::CodedInputStream input) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          input.ReadRawMessage(this);
-        #else
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                break;
-              case 10: {
-                Name = input.ReadString();
-                break;
-              }
-              case 18: {
-                Device = input.ReadString();
-                break;
-              }
-              case 26: {
-                Address = input.ReadString();
-                break;
+            /// <summary>Field number for the "dhcp_range" field.</summary>
+            public const int DhcpRangeFieldNumber = 3;
+            private global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.DhcpRange dhcpRange_;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.DhcpRange DhcpRange {
+              get { return dhcpRange_; }
+              set {
+                dhcpRange_ = value;
               }
             }
-          }
-        #endif
-        }
 
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                break;
-              case 10: {
-                Name = input.ReadString();
-                break;
+            /// <summary>Field number for the "static_ips" field.</summary>
+            public const int StaticIpsFieldNumber = 4;
+            private static readonly pb::FieldCodec<global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.StaticIp> _repeated_staticIps_codec
+                = pb::FieldCodec.ForMessage(34, global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.StaticIp.Parser);
+            private readonly pbc::RepeatedField<global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.StaticIp> staticIps_ = new pbc::RepeatedField<global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.StaticIp>();
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public pbc::RepeatedField<global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.StaticIp> StaticIps {
+              get { return staticIps_; }
+            }
+
+            /// <summary>Field number for the "dns_servers" field.</summary>
+            public const int DnsServersFieldNumber = 99;
+            private static readonly pb::FieldCodec<string> _repeated_dnsServers_codec
+                = pb::FieldCodec.ForString(794);
+            private readonly pbc::RepeatedField<string> dnsServers_ = new pbc::RepeatedField<string>();
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public pbc::RepeatedField<string> DnsServers {
+              get { return dnsServers_; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override bool Equals(object other) {
+              return Equals(other as Item);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool Equals(Item other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
               }
-              case 18: {
-                Device = input.ReadString();
-                break;
+              if (ReferenceEquals(other, this)) {
+                return true;
               }
-              case 26: {
-                Address = input.ReadString();
-                break;
+              if (Device != other.Device) return false;
+              if (Address != other.Address) return false;
+              if (!object.Equals(DhcpRange, other.DhcpRange)) return false;
+              if(!staticIps_.Equals(other.staticIps_)) return false;
+              if(!dnsServers_.Equals(other.dnsServers_)) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (Device.Length != 0) hash ^= Device.GetHashCode();
+              if (Address.Length != 0) hash ^= Address.GetHashCode();
+              if (dhcpRange_ != null) hash ^= DhcpRange.GetHashCode();
+              hash ^= staticIps_.GetHashCode();
+              hash ^= dnsServers_.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void WriteTo(pb::CodedOutputStream output) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              output.WriteRawMessage(this);
+            #else
+              if (Device.Length != 0) {
+                output.WriteRawTag(10);
+                output.WriteString(Device);
+              }
+              if (Address.Length != 0) {
+                output.WriteRawTag(18);
+                output.WriteString(Address);
+              }
+              if (dhcpRange_ != null) {
+                output.WriteRawTag(26);
+                output.WriteMessage(DhcpRange);
+              }
+              staticIps_.WriteTo(output, _repeated_staticIps_codec);
+              dnsServers_.WriteTo(output, _repeated_dnsServers_codec);
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+              if (Device.Length != 0) {
+                output.WriteRawTag(10);
+                output.WriteString(Device);
+              }
+              if (Address.Length != 0) {
+                output.WriteRawTag(18);
+                output.WriteString(Address);
+              }
+              if (dhcpRange_ != null) {
+                output.WriteRawTag(26);
+                output.WriteMessage(DhcpRange);
+              }
+              staticIps_.WriteTo(ref output, _repeated_staticIps_codec);
+              dnsServers_.WriteTo(ref output, _repeated_dnsServers_codec);
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(ref output);
               }
             }
+            #endif
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public int CalculateSize() {
+              int size = 0;
+              if (Device.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Device);
+              }
+              if (Address.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Address);
+              }
+              if (dhcpRange_ != null) {
+                size += 1 + pb::CodedOutputStream.ComputeMessageSize(DhcpRange);
+              }
+              size += staticIps_.CalculateSize(_repeated_staticIps_codec);
+              size += dnsServers_.CalculateSize(_repeated_dnsServers_codec);
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(Item other) {
+              if (other == null) {
+                return;
+              }
+              if (other.Device.Length != 0) {
+                Device = other.Device;
+              }
+              if (other.Address.Length != 0) {
+                Address = other.Address;
+              }
+              if (other.dhcpRange_ != null) {
+                if (dhcpRange_ == null) {
+                  DhcpRange = new global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.DhcpRange();
+                }
+                DhcpRange.MergeFrom(other.DhcpRange);
+              }
+              staticIps_.Add(other.staticIps_);
+              dnsServers_.Add(other.dnsServers_);
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(pb::CodedInputStream input) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              input.ReadRawMessage(this);
+            #else
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 10: {
+                    Device = input.ReadString();
+                    break;
+                  }
+                  case 18: {
+                    Address = input.ReadString();
+                    break;
+                  }
+                  case 26: {
+                    if (dhcpRange_ == null) {
+                      DhcpRange = new global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.DhcpRange();
+                    }
+                    input.ReadMessage(DhcpRange);
+                    break;
+                  }
+                  case 34: {
+                    staticIps_.AddEntriesFrom(input, _repeated_staticIps_codec);
+                    break;
+                  }
+                  case 794: {
+                    dnsServers_.AddEntriesFrom(input, _repeated_dnsServers_codec);
+                    break;
+                  }
+                }
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                    break;
+                  case 10: {
+                    Device = input.ReadString();
+                    break;
+                  }
+                  case 18: {
+                    Address = input.ReadString();
+                    break;
+                  }
+                  case 26: {
+                    if (dhcpRange_ == null) {
+                      DhcpRange = new global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Types.DhcpRange();
+                    }
+                    input.ReadMessage(DhcpRange);
+                    break;
+                  }
+                  case 34: {
+                    staticIps_.AddEntriesFrom(ref input, _repeated_staticIps_codec);
+                    break;
+                  }
+                  case 794: {
+                    dnsServers_.AddEntriesFrom(ref input, _repeated_dnsServers_codec);
+                    break;
+                  }
+                }
+              }
+            }
+            #endif
+
+            #region Nested types
+            /// <summary>Container for nested types declared in the Item message type.</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static partial class Types {
+              [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+              public sealed partial class DhcpRange : pb::IMessage<DhcpRange>
+              #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  , pb::IBufferMessage
+              #endif
+              {
+                private static readonly pb::MessageParser<DhcpRange> _parser = new pb::MessageParser<DhcpRange>(() => new DhcpRange());
+                private pb::UnknownFieldSet _unknownFields;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pb::MessageParser<DhcpRange> Parser { get { return _parser; } }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pbr::MessageDescriptor Descriptor {
+                  get { return global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Descriptor.NestedTypes[0]; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                pbr::MessageDescriptor pb::IMessage.Descriptor {
+                  get { return Descriptor; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public DhcpRange() {
+                  OnConstruction();
+                }
+
+                partial void OnConstruction();
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public DhcpRange(DhcpRange other) : this() {
+                  begin_ = other.begin_;
+                  end_ = other.end_;
+                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public DhcpRange Clone() {
+                  return new DhcpRange(this);
+                }
+
+                /// <summary>Field number for the "begin" field.</summary>
+                public const int BeginFieldNumber = 1;
+                private string begin_ = "";
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string Begin {
+                  get { return begin_; }
+                  set {
+                    begin_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "end" field.</summary>
+                public const int EndFieldNumber = 2;
+                private string end_ = "";
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string End {
+                  get { return end_; }
+                  set {
+                    end_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override bool Equals(object other) {
+                  return Equals(other as DhcpRange);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public bool Equals(DhcpRange other) {
+                  if (ReferenceEquals(other, null)) {
+                    return false;
+                  }
+                  if (ReferenceEquals(other, this)) {
+                    return true;
+                  }
+                  if (Begin != other.Begin) return false;
+                  if (End != other.End) return false;
+                  return Equals(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override int GetHashCode() {
+                  int hash = 1;
+                  if (Begin.Length != 0) hash ^= Begin.GetHashCode();
+                  if (End.Length != 0) hash ^= End.GetHashCode();
+                  if (_unknownFields != null) {
+                    hash ^= _unknownFields.GetHashCode();
+                  }
+                  return hash;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override string ToString() {
+                  return pb::JsonFormatter.ToDiagnosticString(this);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void WriteTo(pb::CodedOutputStream output) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  output.WriteRawMessage(this);
+                #else
+                  if (Begin.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(Begin);
+                  }
+                  if (End.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(End);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(output);
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                  if (Begin.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(Begin);
+                  }
+                  if (End.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(End);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(ref output);
+                  }
+                }
+                #endif
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public int CalculateSize() {
+                  int size = 0;
+                  if (Begin.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Begin);
+                  }
+                  if (End.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(End);
+                  }
+                  if (_unknownFields != null) {
+                    size += _unknownFields.CalculateSize();
+                  }
+                  return size;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(DhcpRange other) {
+                  if (other == null) {
+                    return;
+                  }
+                  if (other.Begin.Length != 0) {
+                    Begin = other.Begin;
+                  }
+                  if (other.End.Length != 0) {
+                    End = other.End;
+                  }
+                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(pb::CodedInputStream input) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  input.ReadRawMessage(this);
+                #else
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                        break;
+                      case 10: {
+                        Begin = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        End = input.ReadString();
+                        break;
+                      }
+                    }
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                        break;
+                      case 10: {
+                        Begin = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        End = input.ReadString();
+                        break;
+                      }
+                    }
+                  }
+                }
+                #endif
+
+              }
+
+              [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+              public sealed partial class StaticIp : pb::IMessage<StaticIp>
+              #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  , pb::IBufferMessage
+              #endif
+              {
+                private static readonly pb::MessageParser<StaticIp> _parser = new pb::MessageParser<StaticIp>(() => new StaticIp());
+                private pb::UnknownFieldSet _unknownFields;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pb::MessageParser<StaticIp> Parser { get { return _parser; } }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pbr::MessageDescriptor Descriptor {
+                  get { return global::Palm.Ops.Router.V1.Profile.Types.Dnsmasq.Types.Item.Descriptor.NestedTypes[1]; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                pbr::MessageDescriptor pb::IMessage.Descriptor {
+                  get { return Descriptor; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public StaticIp() {
+                  OnConstruction();
+                }
+
+                partial void OnConstruction();
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public StaticIp(StaticIp other) : this() {
+                  mac_ = other.mac_;
+                  ip_ = other.ip_;
+                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public StaticIp Clone() {
+                  return new StaticIp(this);
+                }
+
+                /// <summary>Field number for the "mac" field.</summary>
+                public const int MacFieldNumber = 1;
+                private string mac_ = "";
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string Mac {
+                  get { return mac_; }
+                  set {
+                    mac_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "ip" field.</summary>
+                public const int IpFieldNumber = 2;
+                private string ip_ = "";
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string Ip {
+                  get { return ip_; }
+                  set {
+                    ip_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override bool Equals(object other) {
+                  return Equals(other as StaticIp);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public bool Equals(StaticIp other) {
+                  if (ReferenceEquals(other, null)) {
+                    return false;
+                  }
+                  if (ReferenceEquals(other, this)) {
+                    return true;
+                  }
+                  if (Mac != other.Mac) return false;
+                  if (Ip != other.Ip) return false;
+                  return Equals(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override int GetHashCode() {
+                  int hash = 1;
+                  if (Mac.Length != 0) hash ^= Mac.GetHashCode();
+                  if (Ip.Length != 0) hash ^= Ip.GetHashCode();
+                  if (_unknownFields != null) {
+                    hash ^= _unknownFields.GetHashCode();
+                  }
+                  return hash;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override string ToString() {
+                  return pb::JsonFormatter.ToDiagnosticString(this);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void WriteTo(pb::CodedOutputStream output) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  output.WriteRawMessage(this);
+                #else
+                  if (Mac.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(Mac);
+                  }
+                  if (Ip.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(Ip);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(output);
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                  if (Mac.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(Mac);
+                  }
+                  if (Ip.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(Ip);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(ref output);
+                  }
+                }
+                #endif
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public int CalculateSize() {
+                  int size = 0;
+                  if (Mac.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Mac);
+                  }
+                  if (Ip.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Ip);
+                  }
+                  if (_unknownFields != null) {
+                    size += _unknownFields.CalculateSize();
+                  }
+                  return size;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(StaticIp other) {
+                  if (other == null) {
+                    return;
+                  }
+                  if (other.Mac.Length != 0) {
+                    Mac = other.Mac;
+                  }
+                  if (other.Ip.Length != 0) {
+                    Ip = other.Ip;
+                  }
+                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(pb::CodedInputStream input) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  input.ReadRawMessage(this);
+                #else
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                        break;
+                      case 10: {
+                        Mac = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        Ip = input.ReadString();
+                        break;
+                      }
+                    }
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                        break;
+                      case 10: {
+                        Mac = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        Ip = input.ReadString();
+                        break;
+                      }
+                    }
+                  }
+                }
+                #endif
+
+              }
+
+            }
+            #endregion
+
           }
+
         }
-        #endif
+        #endregion
 
       }
 

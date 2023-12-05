@@ -8,40 +8,79 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
 
-message Config {
-  message Dhcp {}
-  message StaticIp {
-    string address = 1;
-    string gateway = 2;
-    string dns = 3;
-  }
-  message Wan {
-    message Ethernet {
+message Profile {
+  message Network {
+    message Wan {
+      message Dhcp {}
+      message StaticIp {
+        string address = 1;
+        string gateway = 2;
+        string dns = 3;
+      }
+      message Ethernet {
+        string name = 1;
+        string device = 2;
+        oneof ip {
+          Dhcp dhcp = 11;
+          StaticIp static_ip = 12;
+        }
+        uint32 metric = 99;
+      }
+      repeated Ethernet interfaces = 1;
+    }
+    message Dmz {
       string name = 1;
       string device = 2;
-      oneof ip {
-        Dhcp dhcp = 11;
-        StaticIp static_ip = 12;
-      }
-      uint32 metric = 99;
+      string address = 3;
+      repeated string allow_hosts = 9;
     }
-    repeated Ethernet interfaces = 1;
-  }
-  message Dmz {
+    message Lan {
+      message Client {
+        string user = 1;
+        string password = 2;
+      }
+      string name = 1;
+      string device = 2;
+      string address = 3;
+      repeated Client clients = 9;
+    }
+    message Guest {
+      string name = 1;
+      string device = 2;
+      string address = 3;
+      repeated string block_hosts = 9;
+    }
+
     string name = 1;
-    string device = 2;
-    string address = 3;
+    Wan wan = 11;
+    Lan lan = 12;
+    Dmz dmz = 13;
+    Guest guest = 14;
   }
-  message Lan {
-    string name = 1;
-    string device = 2;
-    string address = 3;
+
+  message Dnsmasq {
+    message Item {
+      message DhcpRange {
+        string begin = 1;
+        string end = 2;
+      }
+      message StaticIp {
+        string mac = 1;
+        string ip = 2;
+      }
+      string device = 1;
+      string address = 2;
+      DhcpRange dhcp_range = 3;
+      repeated StaticIp static_ips = 4;
+
+      repeated string dns_servers = 99;
+    }
+
+    repeated Item items = 1;
   }
-  message Guest {
-    string name = 1;
-    string device = 2;
-    string address = 3;
-  }
+
+  Network network = 1;
+  Dnsmasq dnsmasq = 2;
 }
 
 message Contact {
