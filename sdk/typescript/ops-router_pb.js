@@ -115,7 +115,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.palm.ops.router.v1.Profile.Network = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.palm.ops.router.v1.Profile.Network.repeatedFields_, null);
 };
 goog.inherits(proto.palm.ops.router.v1.Profile.Network, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -1166,7 +1166,8 @@ proto.palm.ops.router.v1.Profile.prototype.toObject = function(opt_includeInstan
 proto.palm.ops.router.v1.Profile.toObject = function(includeInstance, msg) {
   var f, obj = {
     network: (f = msg.getNetwork()) && proto.palm.ops.router.v1.Profile.Network.toObject(includeInstance, f),
-    dnsmasq: (f = msg.getDnsmasq()) && proto.palm.ops.router.v1.Profile.Dnsmasq.toObject(includeInstance, f)
+    dnsmasq: (f = msg.getDnsmasq()) && proto.palm.ops.router.v1.Profile.Dnsmasq.toObject(includeInstance, f),
+    hostname: jspb.Message.getFieldWithDefault(msg, 99, "")
   };
 
   if (includeInstance) {
@@ -1213,6 +1214,10 @@ proto.palm.ops.router.v1.Profile.deserializeBinaryFromReader = function(msg, rea
       reader.readMessage(value,proto.palm.ops.router.v1.Profile.Dnsmasq.deserializeBinaryFromReader);
       msg.setDnsmasq(value);
       break;
+    case 99:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setHostname(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1258,9 +1263,23 @@ proto.palm.ops.router.v1.Profile.serializeBinaryToWriter = function(message, wri
       proto.palm.ops.router.v1.Profile.Dnsmasq.serializeBinaryToWriter
     );
   }
+  f = message.getHostname();
+  if (f.length > 0) {
+    writer.writeString(
+      99,
+      f
+    );
+  }
 };
 
 
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.palm.ops.router.v1.Profile.Network.repeatedFields_ = [1];
 
 
 
@@ -1293,10 +1312,10 @@ proto.palm.ops.router.v1.Profile.Network.prototype.toObject = function(opt_inclu
  */
 proto.palm.ops.router.v1.Profile.Network.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    wan: (f = msg.getWan()) && proto.palm.ops.router.v1.Profile.Network.Wan.toObject(includeInstance, f),
-    lan: (f = msg.getLan()) && proto.palm.ops.router.v1.Profile.Network.Lan.toObject(includeInstance, f),
+    wanList: jspb.Message.toObjectList(msg.getWanList(),
+    proto.palm.ops.router.v1.Profile.Network.Wan.toObject, includeInstance),
     dmz: (f = msg.getDmz()) && proto.palm.ops.router.v1.Profile.Network.Dmz.toObject(includeInstance, f),
+    lan: (f = msg.getLan()) && proto.palm.ops.router.v1.Profile.Network.Lan.toObject(includeInstance, f),
     guest: (f = msg.getGuest()) && proto.palm.ops.router.v1.Profile.Network.Guest.toObject(includeInstance, f)
   };
 
@@ -1335,25 +1354,21 @@ proto.palm.ops.router.v1.Profile.Network.deserializeBinaryFromReader = function(
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    case 11:
       var value = new proto.palm.ops.router.v1.Profile.Network.Wan;
       reader.readMessage(value,proto.palm.ops.router.v1.Profile.Network.Wan.deserializeBinaryFromReader);
-      msg.setWan(value);
+      msg.addWan(value);
       break;
-    case 12:
-      var value = new proto.palm.ops.router.v1.Profile.Network.Lan;
-      reader.readMessage(value,proto.palm.ops.router.v1.Profile.Network.Lan.deserializeBinaryFromReader);
-      msg.setLan(value);
-      break;
-    case 13:
+    case 2:
       var value = new proto.palm.ops.router.v1.Profile.Network.Dmz;
       reader.readMessage(value,proto.palm.ops.router.v1.Profile.Network.Dmz.deserializeBinaryFromReader);
       msg.setDmz(value);
       break;
-    case 14:
+    case 3:
+      var value = new proto.palm.ops.router.v1.Profile.Network.Lan;
+      reader.readMessage(value,proto.palm.ops.router.v1.Profile.Network.Lan.deserializeBinaryFromReader);
+      msg.setLan(value);
+      break;
+    case 4:
       var value = new proto.palm.ops.router.v1.Profile.Network.Guest;
       reader.readMessage(value,proto.palm.ops.router.v1.Profile.Network.Guest.deserializeBinaryFromReader);
       msg.setGuest(value);
@@ -1387,41 +1402,34 @@ proto.palm.ops.router.v1.Profile.Network.prototype.serializeBinary = function() 
  */
 proto.palm.ops.router.v1.Profile.Network.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getName();
+  f = message.getWanList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedMessage(
       1,
-      f
-    );
-  }
-  f = message.getWan();
-  if (f != null) {
-    writer.writeMessage(
-      11,
       f,
       proto.palm.ops.router.v1.Profile.Network.Wan.serializeBinaryToWriter
-    );
-  }
-  f = message.getLan();
-  if (f != null) {
-    writer.writeMessage(
-      12,
-      f,
-      proto.palm.ops.router.v1.Profile.Network.Lan.serializeBinaryToWriter
     );
   }
   f = message.getDmz();
   if (f != null) {
     writer.writeMessage(
-      13,
+      2,
       f,
       proto.palm.ops.router.v1.Profile.Network.Dmz.serializeBinaryToWriter
+    );
+  }
+  f = message.getLan();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.palm.ops.router.v1.Profile.Network.Lan.serializeBinaryToWriter
     );
   }
   f = message.getGuest();
   if (f != null) {
     writer.writeMessage(
-      14,
+      4,
       f,
       proto.palm.ops.router.v1.Profile.Network.Guest.serializeBinaryToWriter
     );
@@ -3101,104 +3109,50 @@ proto.palm.ops.router.v1.Profile.Network.Guest.prototype.clearBlockHostsList = f
 
 
 /**
- * optional string name = 1;
- * @return {string}
+ * repeated Wan wan = 1;
+ * @return {!Array<!proto.palm.ops.router.v1.Profile.Network.Wan>}
  */
-proto.palm.ops.router.v1.Profile.Network.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.palm.ops.router.v1.Profile.Network.prototype.getWanList = function() {
+  return /** @type{!Array<!proto.palm.ops.router.v1.Profile.Network.Wan>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.palm.ops.router.v1.Profile.Network.Wan, 1));
 };
 
 
 /**
- * @param {string} value
- * @return {!proto.palm.ops.router.v1.Profile.Network} returns this
- */
-proto.palm.ops.router.v1.Profile.Network.prototype.setName = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional Wan wan = 11;
- * @return {?proto.palm.ops.router.v1.Profile.Network.Wan}
- */
-proto.palm.ops.router.v1.Profile.Network.prototype.getWan = function() {
-  return /** @type{?proto.palm.ops.router.v1.Profile.Network.Wan} */ (
-    jspb.Message.getWrapperField(this, proto.palm.ops.router.v1.Profile.Network.Wan, 11));
-};
-
-
-/**
- * @param {?proto.palm.ops.router.v1.Profile.Network.Wan|undefined} value
+ * @param {!Array<!proto.palm.ops.router.v1.Profile.Network.Wan>} value
  * @return {!proto.palm.ops.router.v1.Profile.Network} returns this
 */
-proto.palm.ops.router.v1.Profile.Network.prototype.setWan = function(value) {
-  return jspb.Message.setWrapperField(this, 11, value);
+proto.palm.ops.router.v1.Profile.Network.prototype.setWanList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * @param {!proto.palm.ops.router.v1.Profile.Network.Wan=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.palm.ops.router.v1.Profile.Network.Wan}
+ */
+proto.palm.ops.router.v1.Profile.Network.prototype.addWan = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.palm.ops.router.v1.Profile.Network.Wan, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
  * @return {!proto.palm.ops.router.v1.Profile.Network} returns this
  */
-proto.palm.ops.router.v1.Profile.Network.prototype.clearWan = function() {
-  return this.setWan(undefined);
+proto.palm.ops.router.v1.Profile.Network.prototype.clearWanList = function() {
+  return this.setWanList([]);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.palm.ops.router.v1.Profile.Network.prototype.hasWan = function() {
-  return jspb.Message.getField(this, 11) != null;
-};
-
-
-/**
- * optional Lan lan = 12;
- * @return {?proto.palm.ops.router.v1.Profile.Network.Lan}
- */
-proto.palm.ops.router.v1.Profile.Network.prototype.getLan = function() {
-  return /** @type{?proto.palm.ops.router.v1.Profile.Network.Lan} */ (
-    jspb.Message.getWrapperField(this, proto.palm.ops.router.v1.Profile.Network.Lan, 12));
-};
-
-
-/**
- * @param {?proto.palm.ops.router.v1.Profile.Network.Lan|undefined} value
- * @return {!proto.palm.ops.router.v1.Profile.Network} returns this
-*/
-proto.palm.ops.router.v1.Profile.Network.prototype.setLan = function(value) {
-  return jspb.Message.setWrapperField(this, 12, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.palm.ops.router.v1.Profile.Network} returns this
- */
-proto.palm.ops.router.v1.Profile.Network.prototype.clearLan = function() {
-  return this.setLan(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.palm.ops.router.v1.Profile.Network.prototype.hasLan = function() {
-  return jspb.Message.getField(this, 12) != null;
-};
-
-
-/**
- * optional Dmz dmz = 13;
+ * optional Dmz dmz = 2;
  * @return {?proto.palm.ops.router.v1.Profile.Network.Dmz}
  */
 proto.palm.ops.router.v1.Profile.Network.prototype.getDmz = function() {
   return /** @type{?proto.palm.ops.router.v1.Profile.Network.Dmz} */ (
-    jspb.Message.getWrapperField(this, proto.palm.ops.router.v1.Profile.Network.Dmz, 13));
+    jspb.Message.getWrapperField(this, proto.palm.ops.router.v1.Profile.Network.Dmz, 2));
 };
 
 
@@ -3207,7 +3161,7 @@ proto.palm.ops.router.v1.Profile.Network.prototype.getDmz = function() {
  * @return {!proto.palm.ops.router.v1.Profile.Network} returns this
 */
 proto.palm.ops.router.v1.Profile.Network.prototype.setDmz = function(value) {
-  return jspb.Message.setWrapperField(this, 13, value);
+  return jspb.Message.setWrapperField(this, 2, value);
 };
 
 
@@ -3225,17 +3179,54 @@ proto.palm.ops.router.v1.Profile.Network.prototype.clearDmz = function() {
  * @return {boolean}
  */
 proto.palm.ops.router.v1.Profile.Network.prototype.hasDmz = function() {
-  return jspb.Message.getField(this, 13) != null;
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
 /**
- * optional Guest guest = 14;
+ * optional Lan lan = 3;
+ * @return {?proto.palm.ops.router.v1.Profile.Network.Lan}
+ */
+proto.palm.ops.router.v1.Profile.Network.prototype.getLan = function() {
+  return /** @type{?proto.palm.ops.router.v1.Profile.Network.Lan} */ (
+    jspb.Message.getWrapperField(this, proto.palm.ops.router.v1.Profile.Network.Lan, 3));
+};
+
+
+/**
+ * @param {?proto.palm.ops.router.v1.Profile.Network.Lan|undefined} value
+ * @return {!proto.palm.ops.router.v1.Profile.Network} returns this
+*/
+proto.palm.ops.router.v1.Profile.Network.prototype.setLan = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.palm.ops.router.v1.Profile.Network} returns this
+ */
+proto.palm.ops.router.v1.Profile.Network.prototype.clearLan = function() {
+  return this.setLan(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.palm.ops.router.v1.Profile.Network.prototype.hasLan = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional Guest guest = 4;
  * @return {?proto.palm.ops.router.v1.Profile.Network.Guest}
  */
 proto.palm.ops.router.v1.Profile.Network.prototype.getGuest = function() {
   return /** @type{?proto.palm.ops.router.v1.Profile.Network.Guest} */ (
-    jspb.Message.getWrapperField(this, proto.palm.ops.router.v1.Profile.Network.Guest, 14));
+    jspb.Message.getWrapperField(this, proto.palm.ops.router.v1.Profile.Network.Guest, 4));
 };
 
 
@@ -3244,7 +3235,7 @@ proto.palm.ops.router.v1.Profile.Network.prototype.getGuest = function() {
  * @return {!proto.palm.ops.router.v1.Profile.Network} returns this
 */
 proto.palm.ops.router.v1.Profile.Network.prototype.setGuest = function(value) {
-  return jspb.Message.setWrapperField(this, 14, value);
+  return jspb.Message.setWrapperField(this, 4, value);
 };
 
 
@@ -3262,7 +3253,7 @@ proto.palm.ops.router.v1.Profile.Network.prototype.clearGuest = function() {
  * @return {boolean}
  */
 proto.palm.ops.router.v1.Profile.Network.prototype.hasGuest = function() {
-  return jspb.Message.getField(this, 14) != null;
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -4137,6 +4128,24 @@ proto.palm.ops.router.v1.Profile.prototype.clearDnsmasq = function() {
  */
 proto.palm.ops.router.v1.Profile.prototype.hasDnsmasq = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional string hostname = 99;
+ * @return {string}
+ */
+proto.palm.ops.router.v1.Profile.prototype.getHostname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 99, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.palm.ops.router.v1.Profile} returns this
+ */
+proto.palm.ops.router.v1.Profile.prototype.setHostname = function(value) {
+  return jspb.Message.setProto3StringField(this, 99, value);
 };
 
 

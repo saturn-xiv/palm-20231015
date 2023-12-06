@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Profile() {
+    hostname_ = "";
   }
 
   @java.lang.Override
@@ -44,74 +45,71 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string name = 1;</code>
-     * @return The name.
+     * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
      */
-    java.lang.String getName();
+    java.util.List<com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan> 
+        getWanList();
     /**
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
+     * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
      */
-    com.google.protobuf.ByteString
-        getNameBytes();
+    com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan getWan(int index);
+    /**
+     * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+     */
+    int getWanCount();
+    /**
+     * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+     */
+    java.util.List<? extends com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.WanOrBuilder> 
+        getWanOrBuilderList();
+    /**
+     * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+     */
+    com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.WanOrBuilder getWanOrBuilder(
+        int index);
 
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
-     * @return Whether the wan field is set.
-     */
-    boolean hasWan();
-    /**
-     * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
-     * @return The wan.
-     */
-    com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan getWan();
-    /**
-     * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
-     */
-    com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.WanOrBuilder getWanOrBuilder();
-
-    /**
-     * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
-     * @return Whether the lan field is set.
-     */
-    boolean hasLan();
-    /**
-     * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
-     * @return The lan.
-     */
-    com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan getLan();
-    /**
-     * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
-     */
-    com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.LanOrBuilder getLanOrBuilder();
-
-    /**
-     * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
+     * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
      * @return Whether the dmz field is set.
      */
     boolean hasDmz();
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
+     * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
      * @return The dmz.
      */
     com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz getDmz();
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
+     * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
      */
     com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.DmzOrBuilder getDmzOrBuilder();
 
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+     * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
+     * @return Whether the lan field is set.
+     */
+    boolean hasLan();
+    /**
+     * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
+     * @return The lan.
+     */
+    com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan getLan();
+    /**
+     * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
+     */
+    com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.LanOrBuilder getLanOrBuilder();
+
+    /**
+     * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
      * @return Whether the guest field is set.
      */
     boolean hasGuest();
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+     * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
      * @return The guest.
      */
     com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest getGuest();
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+     * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
      */
     com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.GuestOrBuilder getGuestOrBuilder();
   }
@@ -128,7 +126,7 @@ private static final long serialVersionUID = 0L;
       super(builder);
     }
     private Network() {
-      name_ = "";
+      wan_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -7524,109 +7522,59 @@ private static final long serialVersionUID = 0L;
     }
 
     private int bitField0_;
-    public static final int NAME_FIELD_NUMBER = 1;
+    public static final int WAN_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private volatile java.lang.Object name_ = "";
+    private java.util.List<com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan> wan_;
     /**
-     * <code>string name = 1;</code>
-     * @return The name.
+     * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
      */
     @java.lang.Override
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      }
+    public java.util.List<com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan> getWanList() {
+      return wan_;
     }
     /**
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
+     * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int WAN_FIELD_NUMBER = 11;
-    private com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan wan_;
-    /**
-     * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
-     * @return Whether the wan field is set.
-     */
-    @java.lang.Override
-    public boolean hasWan() {
-      return ((bitField0_ & 0x00000001) != 0);
+    public java.util.List<? extends com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.WanOrBuilder> 
+        getWanOrBuilderList() {
+      return wan_;
     }
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
-     * @return The wan.
+     * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
      */
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan getWan() {
-      return wan_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.getDefaultInstance() : wan_;
+    public int getWanCount() {
+      return wan_.size();
     }
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
+     * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
      */
     @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.WanOrBuilder getWanOrBuilder() {
-      return wan_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.getDefaultInstance() : wan_;
+    public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan getWan(int index) {
+      return wan_.get(index);
+    }
+    /**
+     * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+     */
+    @java.lang.Override
+    public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.WanOrBuilder getWanOrBuilder(
+        int index) {
+      return wan_.get(index);
     }
 
-    public static final int LAN_FIELD_NUMBER = 12;
-    private com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan lan_;
-    /**
-     * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
-     * @return Whether the lan field is set.
-     */
-    @java.lang.Override
-    public boolean hasLan() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
-     * @return The lan.
-     */
-    @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan getLan() {
-      return lan_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan.getDefaultInstance() : lan_;
-    }
-    /**
-     * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
-     */
-    @java.lang.Override
-    public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.LanOrBuilder getLanOrBuilder() {
-      return lan_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan.getDefaultInstance() : lan_;
-    }
-
-    public static final int DMZ_FIELD_NUMBER = 13;
+    public static final int DMZ_FIELD_NUMBER = 2;
     private com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz dmz_;
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
+     * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
      * @return Whether the dmz field is set.
      */
     @java.lang.Override
     public boolean hasDmz() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
+     * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
      * @return The dmz.
      */
     @java.lang.Override
@@ -7634,25 +7582,51 @@ private static final long serialVersionUID = 0L;
       return dmz_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.getDefaultInstance() : dmz_;
     }
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
+     * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
      */
     @java.lang.Override
     public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.DmzOrBuilder getDmzOrBuilder() {
       return dmz_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.getDefaultInstance() : dmz_;
     }
 
-    public static final int GUEST_FIELD_NUMBER = 14;
+    public static final int LAN_FIELD_NUMBER = 3;
+    private com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan lan_;
+    /**
+     * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
+     * @return Whether the lan field is set.
+     */
+    @java.lang.Override
+    public boolean hasLan() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
+     * @return The lan.
+     */
+    @java.lang.Override
+    public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan getLan() {
+      return lan_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan.getDefaultInstance() : lan_;
+    }
+    /**
+     * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
+     */
+    @java.lang.Override
+    public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.LanOrBuilder getLanOrBuilder() {
+      return lan_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan.getDefaultInstance() : lan_;
+    }
+
+    public static final int GUEST_FIELD_NUMBER = 4;
     private com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest guest_;
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+     * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
      * @return Whether the guest field is set.
      */
     @java.lang.Override
     public boolean hasGuest() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+     * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
      * @return The guest.
      */
     @java.lang.Override
@@ -7660,7 +7634,7 @@ private static final long serialVersionUID = 0L;
       return guest_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest.getDefaultInstance() : guest_;
     }
     /**
-     * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+     * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
      */
     @java.lang.Override
     public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.GuestOrBuilder getGuestOrBuilder() {
@@ -7681,20 +7655,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      for (int i = 0; i < wan_.size(); i++) {
+        output.writeMessage(1, wan_.get(i));
       }
       if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeMessage(11, getWan());
+        output.writeMessage(2, getDmz());
       }
       if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(12, getLan());
+        output.writeMessage(3, getLan());
       }
       if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeMessage(13, getDmz());
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeMessage(14, getGuest());
+        output.writeMessage(4, getGuest());
       }
       getUnknownFields().writeTo(output);
     }
@@ -7705,24 +7676,21 @@ private static final long serialVersionUID = 0L;
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      for (int i = 0; i < wan_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, wan_.get(i));
       }
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(11, getWan());
+          .computeMessageSize(2, getDmz());
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(12, getLan());
+          .computeMessageSize(3, getLan());
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(13, getDmz());
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(14, getGuest());
+          .computeMessageSize(4, getGuest());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -7739,22 +7707,17 @@ private static final long serialVersionUID = 0L;
       }
       com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network other = (com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network) obj;
 
-      if (!getName()
-          .equals(other.getName())) return false;
-      if (hasWan() != other.hasWan()) return false;
-      if (hasWan()) {
-        if (!getWan()
-            .equals(other.getWan())) return false;
+      if (!getWanList()
+          .equals(other.getWanList())) return false;
+      if (hasDmz() != other.hasDmz()) return false;
+      if (hasDmz()) {
+        if (!getDmz()
+            .equals(other.getDmz())) return false;
       }
       if (hasLan() != other.hasLan()) return false;
       if (hasLan()) {
         if (!getLan()
             .equals(other.getLan())) return false;
-      }
-      if (hasDmz() != other.hasDmz()) return false;
-      if (hasDmz()) {
-        if (!getDmz()
-            .equals(other.getDmz())) return false;
       }
       if (hasGuest() != other.hasGuest()) return false;
       if (hasGuest()) {
@@ -7772,19 +7735,17 @@ private static final long serialVersionUID = 0L;
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
-      if (hasWan()) {
+      if (getWanCount() > 0) {
         hash = (37 * hash) + WAN_FIELD_NUMBER;
-        hash = (53 * hash) + getWan().hashCode();
-      }
-      if (hasLan()) {
-        hash = (37 * hash) + LAN_FIELD_NUMBER;
-        hash = (53 * hash) + getLan().hashCode();
+        hash = (53 * hash) + getWanList().hashCode();
       }
       if (hasDmz()) {
         hash = (37 * hash) + DMZ_FIELD_NUMBER;
         hash = (53 * hash) + getDmz().hashCode();
+      }
+      if (hasLan()) {
+        hash = (37 * hash) + LAN_FIELD_NUMBER;
+        hash = (53 * hash) + getLan().hashCode();
       }
       if (hasGuest()) {
         hash = (37 * hash) + GUEST_FIELD_NUMBER;
@@ -7921,8 +7882,8 @@ private static final long serialVersionUID = 0L;
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getWanFieldBuilder();
-          getLanFieldBuilder();
           getDmzFieldBuilder();
+          getLanFieldBuilder();
           getGuestFieldBuilder();
         }
       }
@@ -7930,21 +7891,22 @@ private static final long serialVersionUID = 0L;
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        name_ = "";
-        wan_ = null;
-        if (wanBuilder_ != null) {
-          wanBuilder_.dispose();
-          wanBuilder_ = null;
+        if (wanBuilder_ == null) {
+          wan_ = java.util.Collections.emptyList();
+        } else {
+          wan_ = null;
+          wanBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        dmz_ = null;
+        if (dmzBuilder_ != null) {
+          dmzBuilder_.dispose();
+          dmzBuilder_ = null;
         }
         lan_ = null;
         if (lanBuilder_ != null) {
           lanBuilder_.dispose();
           lanBuilder_ = null;
-        }
-        dmz_ = null;
-        if (dmzBuilder_ != null) {
-          dmzBuilder_.dispose();
-          dmzBuilder_ = null;
         }
         guest_ = null;
         if (guestBuilder_ != null) {
@@ -7977,21 +7939,31 @@ private static final long serialVersionUID = 0L;
       @java.lang.Override
       public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network buildPartial() {
         com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network result = new com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network(this);
+        buildPartialRepeatedFields(result);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
+      private void buildPartialRepeatedFields(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network result) {
+        if (wanBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            wan_ = java.util.Collections.unmodifiableList(wan_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.wan_ = wan_;
+        } else {
+          result.wan_ = wanBuilder_.build();
+        }
+      }
+
       private void buildPartial0(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network result) {
         int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.name_ = name_;
-        }
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.wan_ = wanBuilder_ == null
-              ? wan_
-              : wanBuilder_.build();
+          result.dmz_ = dmzBuilder_ == null
+              ? dmz_
+              : dmzBuilder_.build();
           to_bitField0_ |= 0x00000001;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
@@ -8001,16 +7973,10 @@ private static final long serialVersionUID = 0L;
           to_bitField0_ |= 0x00000002;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.dmz_ = dmzBuilder_ == null
-              ? dmz_
-              : dmzBuilder_.build();
-          to_bitField0_ |= 0x00000004;
-        }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
           result.guest_ = guestBuilder_ == null
               ? guest_
               : guestBuilder_.build();
-          to_bitField0_ |= 0x00000008;
+          to_bitField0_ |= 0x00000004;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -8059,19 +8025,37 @@ private static final long serialVersionUID = 0L;
 
       public Builder mergeFrom(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network other) {
         if (other == com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.getDefaultInstance()) return this;
-        if (!other.getName().isEmpty()) {
-          name_ = other.name_;
-          bitField0_ |= 0x00000001;
-          onChanged();
-        }
-        if (other.hasWan()) {
-          mergeWan(other.getWan());
-        }
-        if (other.hasLan()) {
-          mergeLan(other.getLan());
+        if (wanBuilder_ == null) {
+          if (!other.wan_.isEmpty()) {
+            if (wan_.isEmpty()) {
+              wan_ = other.wan_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureWanIsMutable();
+              wan_.addAll(other.wan_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.wan_.isEmpty()) {
+            if (wanBuilder_.isEmpty()) {
+              wanBuilder_.dispose();
+              wanBuilder_ = null;
+              wan_ = other.wan_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              wanBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getWanFieldBuilder() : null;
+            } else {
+              wanBuilder_.addAllMessages(other.wan_);
+            }
+          }
         }
         if (other.hasDmz()) {
           mergeDmz(other.getDmz());
+        }
+        if (other.hasLan()) {
+          mergeLan(other.getLan());
         }
         if (other.hasGuest()) {
           mergeGuest(other.getGuest());
@@ -8103,38 +8087,39 @@ private static final long serialVersionUID = 0L;
                 done = true;
                 break;
               case 10: {
-                name_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
+                com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan m =
+                    input.readMessage(
+                        com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.parser(),
+                        extensionRegistry);
+                if (wanBuilder_ == null) {
+                  ensureWanIsMutable();
+                  wan_.add(m);
+                } else {
+                  wanBuilder_.addMessage(m);
+                }
                 break;
               } // case 10
-              case 90: {
+              case 18: {
                 input.readMessage(
-                    getWanFieldBuilder().getBuilder(),
+                    getDmzFieldBuilder().getBuilder(),
                     extensionRegistry);
                 bitField0_ |= 0x00000002;
                 break;
-              } // case 90
-              case 98: {
+              } // case 18
+              case 26: {
                 input.readMessage(
                     getLanFieldBuilder().getBuilder(),
                     extensionRegistry);
                 bitField0_ |= 0x00000004;
                 break;
-              } // case 98
-              case 106: {
-                input.readMessage(
-                    getDmzFieldBuilder().getBuilder(),
-                    extensionRegistry);
-                bitField0_ |= 0x00000008;
-                break;
-              } // case 106
-              case 114: {
+              } // case 26
+              case 34: {
                 input.readMessage(
                     getGuestFieldBuilder().getBuilder(),
                     extensionRegistry);
-                bitField0_ |= 0x00000010;
+                bitField0_ |= 0x00000008;
                 break;
-              } // case 114
+              } // case 34
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -8152,192 +8137,239 @@ private static final long serialVersionUID = 0L;
       }
       private int bitField0_;
 
-      private java.lang.Object name_ = "";
-      /**
-       * <code>string name = 1;</code>
-       * @return The name.
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string name = 1;</code>
-       * @return The bytes for name.
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string name = 1;</code>
-       * @param value The name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        name_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string name = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearName() {
-        name_ = getDefaultInstance().getName();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string name = 1;</code>
-       * @param value The bytes for name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        name_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
+      private java.util.List<com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan> wan_ =
+        java.util.Collections.emptyList();
+      private void ensureWanIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          wan_ = new java.util.ArrayList<com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan>(wan_);
+          bitField0_ |= 0x00000001;
+         }
       }
 
-      private com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan wan_;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.WanOrBuilder> wanBuilder_;
+
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
-       * @return Whether the wan field is set.
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
        */
-      public boolean hasWan() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
-       * @return The wan.
-       */
-      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan getWan() {
+      public java.util.List<com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan> getWanList() {
         if (wanBuilder_ == null) {
-          return wan_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.getDefaultInstance() : wan_;
+          return java.util.Collections.unmodifiableList(wan_);
         } else {
-          return wanBuilder_.getMessage();
+          return wanBuilder_.getMessageList();
         }
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
        */
-      public Builder setWan(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan value) {
+      public int getWanCount() {
+        if (wanBuilder_ == null) {
+          return wan_.size();
+        } else {
+          return wanBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+       */
+      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan getWan(int index) {
+        if (wanBuilder_ == null) {
+          return wan_.get(index);
+        } else {
+          return wanBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+       */
+      public Builder setWan(
+          int index, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan value) {
         if (wanBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          wan_ = value;
+          ensureWanIsMutable();
+          wan_.set(index, value);
+          onChanged();
         } else {
-          wanBuilder_.setMessage(value);
+          wanBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000002;
-        onChanged();
         return this;
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
        */
       public Builder setWan(
+          int index, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.Builder builderForValue) {
+        if (wanBuilder_ == null) {
+          ensureWanIsMutable();
+          wan_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          wanBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+       */
+      public Builder addWan(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan value) {
+        if (wanBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureWanIsMutable();
+          wan_.add(value);
+          onChanged();
+        } else {
+          wanBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+       */
+      public Builder addWan(
+          int index, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan value) {
+        if (wanBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureWanIsMutable();
+          wan_.add(index, value);
+          onChanged();
+        } else {
+          wanBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+       */
+      public Builder addWan(
           com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.Builder builderForValue) {
         if (wanBuilder_ == null) {
-          wan_ = builderForValue.build();
-        } else {
-          wanBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
-       */
-      public Builder mergeWan(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan value) {
-        if (wanBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-            wan_ != null &&
-            wan_ != com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.getDefaultInstance()) {
-            getWanBuilder().mergeFrom(value);
-          } else {
-            wan_ = value;
-          }
-        } else {
-          wanBuilder_.mergeFrom(value);
-        }
-        if (wan_ != null) {
-          bitField0_ |= 0x00000002;
+          ensureWanIsMutable();
+          wan_.add(builderForValue.build());
           onChanged();
+        } else {
+          wanBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+       */
+      public Builder addWan(
+          int index, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.Builder builderForValue) {
+        if (wanBuilder_ == null) {
+          ensureWanIsMutable();
+          wan_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          wanBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+       */
+      public Builder addAllWan(
+          java.lang.Iterable<? extends com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan> values) {
+        if (wanBuilder_ == null) {
+          ensureWanIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, wan_);
+          onChanged();
+        } else {
+          wanBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
        */
       public Builder clearWan() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        wan_ = null;
-        if (wanBuilder_ != null) {
-          wanBuilder_.dispose();
-          wanBuilder_ = null;
+        if (wanBuilder_ == null) {
+          wan_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          wanBuilder_.clear();
         }
-        onChanged();
         return this;
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
        */
-      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.Builder getWanBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getWanFieldBuilder().getBuilder();
+      public Builder removeWan(int index) {
+        if (wanBuilder_ == null) {
+          ensureWanIsMutable();
+          wan_.remove(index);
+          onChanged();
+        } else {
+          wanBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
        */
-      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.WanOrBuilder getWanOrBuilder() {
-        if (wanBuilder_ != null) {
-          return wanBuilder_.getMessageOrBuilder();
-        } else {
-          return wan_ == null ?
-              com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.getDefaultInstance() : wan_;
+      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.Builder getWanBuilder(
+          int index) {
+        return getWanFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+       */
+      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.WanOrBuilder getWanOrBuilder(
+          int index) {
+        if (wanBuilder_ == null) {
+          return wan_.get(index);  } else {
+          return wanBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      public java.util.List<? extends com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.WanOrBuilder> 
+           getWanOrBuilderList() {
+        if (wanBuilder_ != null) {
+          return wanBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(wan_);
+        }
+      }
+      /**
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+       */
+      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.Builder addWanBuilder() {
+        return getWanFieldBuilder().addBuilder(
+            com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+       */
+      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.Builder addWanBuilder(
+          int index) {
+        return getWanFieldBuilder().addBuilder(
+            index, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+       */
+      public java.util.List<com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.Builder> 
+           getWanBuilderList() {
+        return getWanFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.WanOrBuilder> 
           getWanFieldBuilder() {
         if (wanBuilder_ == null) {
-          wanBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          wanBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Wan.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.WanOrBuilder>(
-                  getWan(),
+                  wan_,
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           wan_ = null;
@@ -8345,18 +8377,139 @@ private static final long serialVersionUID = 0L;
         return wanBuilder_;
       }
 
+      private com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz dmz_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.DmzOrBuilder> dmzBuilder_;
+      /**
+       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
+       * @return Whether the dmz field is set.
+       */
+      public boolean hasDmz() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
+       * @return The dmz.
+       */
+      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz getDmz() {
+        if (dmzBuilder_ == null) {
+          return dmz_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.getDefaultInstance() : dmz_;
+        } else {
+          return dmzBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
+       */
+      public Builder setDmz(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz value) {
+        if (dmzBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          dmz_ = value;
+        } else {
+          dmzBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
+       */
+      public Builder setDmz(
+          com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.Builder builderForValue) {
+        if (dmzBuilder_ == null) {
+          dmz_ = builderForValue.build();
+        } else {
+          dmzBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
+       */
+      public Builder mergeDmz(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz value) {
+        if (dmzBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0) &&
+            dmz_ != null &&
+            dmz_ != com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.getDefaultInstance()) {
+            getDmzBuilder().mergeFrom(value);
+          } else {
+            dmz_ = value;
+          }
+        } else {
+          dmzBuilder_.mergeFrom(value);
+        }
+        if (dmz_ != null) {
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
+       */
+      public Builder clearDmz() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        dmz_ = null;
+        if (dmzBuilder_ != null) {
+          dmzBuilder_.dispose();
+          dmzBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
+       */
+      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.Builder getDmzBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getDmzFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
+       */
+      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.DmzOrBuilder getDmzOrBuilder() {
+        if (dmzBuilder_ != null) {
+          return dmzBuilder_.getMessageOrBuilder();
+        } else {
+          return dmz_ == null ?
+              com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.getDefaultInstance() : dmz_;
+        }
+      }
+      /**
+       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.DmzOrBuilder> 
+          getDmzFieldBuilder() {
+        if (dmzBuilder_ == null) {
+          dmzBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.DmzOrBuilder>(
+                  getDmz(),
+                  getParentForChildren(),
+                  isClean());
+          dmz_ = null;
+        }
+        return dmzBuilder_;
+      }
+
       private com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan lan_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.LanOrBuilder> lanBuilder_;
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
        * @return Whether the lan field is set.
        */
       public boolean hasLan() {
         return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
        * @return The lan.
        */
       public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan getLan() {
@@ -8367,7 +8520,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
        */
       public Builder setLan(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan value) {
         if (lanBuilder_ == null) {
@@ -8383,7 +8536,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
        */
       public Builder setLan(
           com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan.Builder builderForValue) {
@@ -8397,7 +8550,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
        */
       public Builder mergeLan(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan value) {
         if (lanBuilder_ == null) {
@@ -8418,7 +8571,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
        */
       public Builder clearLan() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -8431,7 +8584,7 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
        */
       public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan.Builder getLanBuilder() {
         bitField0_ |= 0x00000004;
@@ -8439,7 +8592,7 @@ private static final long serialVersionUID = 0L;
         return getLanFieldBuilder().getBuilder();
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
        */
       public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.LanOrBuilder getLanOrBuilder() {
         if (lanBuilder_ != null) {
@@ -8450,7 +8603,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Lan.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.LanOrBuilder> 
@@ -8466,139 +8619,18 @@ private static final long serialVersionUID = 0L;
         return lanBuilder_;
       }
 
-      private com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz dmz_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.DmzOrBuilder> dmzBuilder_;
-      /**
-       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
-       * @return Whether the dmz field is set.
-       */
-      public boolean hasDmz() {
-        return ((bitField0_ & 0x00000008) != 0);
-      }
-      /**
-       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
-       * @return The dmz.
-       */
-      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz getDmz() {
-        if (dmzBuilder_ == null) {
-          return dmz_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.getDefaultInstance() : dmz_;
-        } else {
-          return dmzBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
-       */
-      public Builder setDmz(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz value) {
-        if (dmzBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          dmz_ = value;
-        } else {
-          dmzBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
-       */
-      public Builder setDmz(
-          com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.Builder builderForValue) {
-        if (dmzBuilder_ == null) {
-          dmz_ = builderForValue.build();
-        } else {
-          dmzBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
-       */
-      public Builder mergeDmz(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz value) {
-        if (dmzBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) != 0) &&
-            dmz_ != null &&
-            dmz_ != com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.getDefaultInstance()) {
-            getDmzBuilder().mergeFrom(value);
-          } else {
-            dmz_ = value;
-          }
-        } else {
-          dmzBuilder_.mergeFrom(value);
-        }
-        if (dmz_ != null) {
-          bitField0_ |= 0x00000008;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
-       */
-      public Builder clearDmz() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        dmz_ = null;
-        if (dmzBuilder_ != null) {
-          dmzBuilder_.dispose();
-          dmzBuilder_ = null;
-        }
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
-       */
-      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.Builder getDmzBuilder() {
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return getDmzFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
-       */
-      public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.DmzOrBuilder getDmzOrBuilder() {
-        if (dmzBuilder_ != null) {
-          return dmzBuilder_.getMessageOrBuilder();
-        } else {
-          return dmz_ == null ?
-              com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.getDefaultInstance() : dmz_;
-        }
-      }
-      /**
-       * <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.DmzOrBuilder> 
-          getDmzFieldBuilder() {
-        if (dmzBuilder_ == null) {
-          dmzBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Dmz.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.DmzOrBuilder>(
-                  getDmz(),
-                  getParentForChildren(),
-                  isClean());
-          dmz_ = null;
-        }
-        return dmzBuilder_;
-      }
-
       private com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest guest_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.GuestOrBuilder> guestBuilder_;
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
        * @return Whether the guest field is set.
        */
       public boolean hasGuest() {
-        return ((bitField0_ & 0x00000010) != 0);
+        return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
        * @return The guest.
        */
       public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest getGuest() {
@@ -8609,7 +8641,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
        */
       public Builder setGuest(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest value) {
         if (guestBuilder_ == null) {
@@ -8620,12 +8652,12 @@ private static final long serialVersionUID = 0L;
         } else {
           guestBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
        */
       public Builder setGuest(
           com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest.Builder builderForValue) {
@@ -8634,16 +8666,16 @@ private static final long serialVersionUID = 0L;
         } else {
           guestBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
        */
       public Builder mergeGuest(com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest value) {
         if (guestBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) != 0) &&
+          if (((bitField0_ & 0x00000008) != 0) &&
             guest_ != null &&
             guest_ != com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest.getDefaultInstance()) {
             getGuestBuilder().mergeFrom(value);
@@ -8654,16 +8686,16 @@ private static final long serialVersionUID = 0L;
           guestBuilder_.mergeFrom(value);
         }
         if (guest_ != null) {
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000008;
           onChanged();
         }
         return this;
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
        */
       public Builder clearGuest() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         guest_ = null;
         if (guestBuilder_ != null) {
           guestBuilder_.dispose();
@@ -8673,15 +8705,15 @@ private static final long serialVersionUID = 0L;
         return this;
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
        */
       public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest.Builder getGuestBuilder() {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         onChanged();
         return getGuestFieldBuilder().getBuilder();
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
        */
       public com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.GuestOrBuilder getGuestOrBuilder() {
         if (guestBuilder_ != null) {
@@ -8692,7 +8724,7 @@ private static final long serialVersionUID = 0L;
         }
       }
       /**
-       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+       * <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.Guest.Builder, com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Network.GuestOrBuilder> 
@@ -12507,6 +12539,45 @@ private static final long serialVersionUID = 0L;
     return dnsmasq_ == null ? com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.Dnsmasq.getDefaultInstance() : dnsmasq_;
   }
 
+  public static final int HOSTNAME_FIELD_NUMBER = 99;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object hostname_ = "";
+  /**
+   * <code>string hostname = 99;</code>
+   * @return The hostname.
+   */
+  @java.lang.Override
+  public java.lang.String getHostname() {
+    java.lang.Object ref = hostname_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      hostname_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string hostname = 99;</code>
+   * @return The bytes for hostname.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getHostnameBytes() {
+    java.lang.Object ref = hostname_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      hostname_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -12527,6 +12598,9 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeMessage(2, getDnsmasq());
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(hostname_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 99, hostname_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -12543,6 +12617,9 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getDnsmasq());
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(hostname_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(99, hostname_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -12569,6 +12646,8 @@ private static final long serialVersionUID = 0L;
       if (!getDnsmasq()
           .equals(other.getDnsmasq())) return false;
     }
+    if (!getHostname()
+        .equals(other.getHostname())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -12588,6 +12667,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + DNSMASQ_FIELD_NUMBER;
       hash = (53 * hash) + getDnsmasq().hashCode();
     }
+    hash = (37 * hash) + HOSTNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getHostname().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -12736,6 +12817,7 @@ private static final long serialVersionUID = 0L;
         dnsmasqBuilder_.dispose();
         dnsmasqBuilder_ = null;
       }
+      hostname_ = "";
       return this;
     }
 
@@ -12781,6 +12863,9 @@ private static final long serialVersionUID = 0L;
             ? dnsmasq_
             : dnsmasqBuilder_.build();
         to_bitField0_ |= 0x00000002;
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.hostname_ = hostname_;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -12835,6 +12920,11 @@ private static final long serialVersionUID = 0L;
       if (other.hasDnsmasq()) {
         mergeDnsmasq(other.getDnsmasq());
       }
+      if (!other.getHostname().isEmpty()) {
+        hostname_ = other.hostname_;
+        bitField0_ |= 0x00000004;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -12875,6 +12965,11 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000002;
               break;
             } // case 18
+            case 794: {
+              hostname_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 794
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -13132,6 +13227,78 @@ private static final long serialVersionUID = 0L;
         dnsmasq_ = null;
       }
       return dnsmasqBuilder_;
+    }
+
+    private java.lang.Object hostname_ = "";
+    /**
+     * <code>string hostname = 99;</code>
+     * @return The hostname.
+     */
+    public java.lang.String getHostname() {
+      java.lang.Object ref = hostname_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        hostname_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string hostname = 99;</code>
+     * @return The bytes for hostname.
+     */
+    public com.google.protobuf.ByteString
+        getHostnameBytes() {
+      java.lang.Object ref = hostname_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        hostname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string hostname = 99;</code>
+     * @param value The hostname to set.
+     * @return This builder for chaining.
+     */
+    public Builder setHostname(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      hostname_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string hostname = 99;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearHostname() {
+      hostname_ = getDefaultInstance().getHostname();
+      bitField0_ = (bitField0_ & ~0x00000004);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string hostname = 99;</code>
+     * @param value The bytes for hostname to set.
+     * @return This builder for chaining.
+     */
+    public Builder setHostnameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      hostname_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

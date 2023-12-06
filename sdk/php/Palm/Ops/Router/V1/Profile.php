@@ -21,6 +21,10 @@ class Profile extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Dnsmasq dnsmasq = 2;</code>
      */
     protected $dnsmasq = null;
+    /**
+     * Generated from protobuf field <code>string hostname = 99;</code>
+     */
+    protected $hostname = '';
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class Profile extends \Google\Protobuf\Internal\Message
      *
      *     @type \Palm\Ops\Router\V1\Profile\Network $network
      *     @type \Palm\Ops\Router\V1\Profile\Dnsmasq $dnsmasq
+     *     @type string $hostname
      * }
      */
     public function __construct($data = NULL) {
@@ -97,6 +102,28 @@ class Profile extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Palm\Ops\Router\V1\Profile\Dnsmasq::class);
         $this->dnsmasq = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string hostname = 99;</code>
+     * @return string
+     */
+    public function getHostname()
+    {
+        return $this->hostname;
+    }
+
+    /**
+     * Generated from protobuf field <code>string hostname = 99;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setHostname($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->hostname = $var;
 
         return $this;
     }

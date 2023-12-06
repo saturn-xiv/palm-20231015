@@ -282,180 +282,180 @@ public final class OpsRouter {
       "\n\020ops-router.proto\022\022palm.ops.router.v1\032\033" +
       "google/protobuf/empty.proto\032\037google/prot" +
       "obuf/timestamp.proto\032\036google/protobuf/du" +
-      "ration.proto\"\335\n\n\007Profile\0224\n\007network\030\001 \001(" +
+      "ration.proto\"\341\n\n\007Profile\0224\n\007network\030\001 \001(" +
       "\0132#.palm.ops.router.v1.Profile.Network\0224" +
       "\n\007dnsmasq\030\002 \001(\0132#.palm.ops.router.v1.Pro" +
-      "file.Dnsmasq\032\204\007\n\007Network\022\014\n\004name\030\001 \001(\t\0224" +
-      "\n\003wan\030\013 \001(\0132\'.palm.ops.router.v1.Profile" +
-      ".Network.Wan\0224\n\003lan\030\014 \001(\0132\'.palm.ops.rou" +
-      "ter.v1.Profile.Network.Lan\0224\n\003dmz\030\r \001(\0132" +
-      "\'.palm.ops.router.v1.Profile.Network.Dmz" +
-      "\0228\n\005guest\030\016 \001(\0132).palm.ops.router.v1.Pro" +
-      "file.Network.Guest\032\324\002\n\003Wan\022D\n\ninterfaces" +
-      "\030\001 \003(\01320.palm.ops.router.v1.Profile.Netw" +
-      "ork.Wan.Ethernet\032\006\n\004Dhcp\0329\n\010StaticIp\022\017\n\007" +
-      "address\030\001 \001(\t\022\017\n\007gateway\030\002 \001(\t\022\013\n\003dns\030\003 " +
-      "\001(\t\032\303\001\n\010Ethernet\022\014\n\004name\030\001 \001(\t\022\016\n\006device" +
-      "\030\002 \001(\t\022<\n\004dhcp\030\013 \001(\0132,.palm.ops.router.v" +
-      "1.Profile.Network.Wan.DhcpH\000\022E\n\tstatic_i" +
-      "p\030\014 \001(\01320.palm.ops.router.v1.Profile.Net" +
-      "work.Wan.StaticIpH\000\022\016\n\006metric\030c \001(\rB\004\n\002i" +
-      "p\032I\n\003Dmz\022\014\n\004name\030\001 \001(\t\022\016\n\006device\030\002 \001(\t\022\017" +
-      "\n\007address\030\003 \001(\t\022\023\n\013allow_hosts\030\t \003(\t\032\237\001\n" +
-      "\003Lan\022\014\n\004name\030\001 \001(\t\022\016\n\006device\030\002 \001(\t\022\017\n\007ad" +
-      "dress\030\003 \001(\t\022?\n\007clients\030\t \003(\0132..palm.ops." +
-      "router.v1.Profile.Network.Lan.Client\032(\n\006" +
-      "Client\022\014\n\004user\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\032K" +
-      "\n\005Guest\022\014\n\004name\030\001 \001(\t\022\016\n\006device\030\002 \001(\t\022\017\n" +
-      "\007address\030\003 \001(\t\022\023\n\013block_hosts\030\t \003(\t\032\336\002\n\007" +
-      "Dnsmasq\0227\n\005items\030\001 \003(\0132(.palm.ops.router" +
-      ".v1.Profile.Dnsmasq.Item\032\231\002\n\004Item\022\016\n\006dev" +
-      "ice\030\001 \001(\t\022\017\n\007address\030\002 \001(\t\022F\n\ndhcp_range" +
-      "\030\003 \001(\01322.palm.ops.router.v1.Profile.Dnsm" +
-      "asq.Item.DhcpRange\022E\n\nstatic_ips\030\004 \003(\01321" +
-      ".palm.ops.router.v1.Profile.Dnsmasq.Item" +
-      ".StaticIp\022\023\n\013dns_servers\030c \003(\t\032\'\n\tDhcpRa" +
-      "nge\022\r\n\005begin\030\001 \001(\t\022\013\n\003end\030\002 \001(\t\032#\n\010Stati" +
-      "cIp\022\013\n\003mac\030\001 \001(\t\022\n\n\002ip\030\002 \001(\t\"\207\001\n\007Contact" +
-      "\022\022\n\005phone\030\001 \001(\tH\000\210\001\001\022\023\n\006wechat\030\002 \001(\tH\001\210\001" +
-      "\001\022\022\n\005email\030\003 \001(\tH\002\210\001\001\022\024\n\007address\030c \001(\tH\003" +
-      "\210\001\001B\010\n\006_phoneB\t\n\007_wechatB\010\n\006_emailB\n\n\010_a" +
-      "ddress\"O\n\023RouterSetLanRequest\022(\n\007payload" +
-      "\030\001 \001(\0132\027.palm.ops.router.v1.Lan\022\016\n\006enabl" +
-      "e\030\002 \001(\010\"O\n\023RouterSetDmzRequest\022(\n\007payloa" +
-      "d\030\001 \001(\0132\027.palm.ops.router.v1.Dmz\022\016\n\006enab" +
-      "le\030\002 \001(\010\"O\n\023RouterSetWanRequest\022(\n\007paylo" +
-      "ad\030\001 \001(\0132\027.palm.ops.router.v1.Wan\022\016\n\006ena" +
-      "ble\030\002 \001(\010\"b\n\007WanPool\022/\n\005items\030\001 \003(\0132 .pa" +
-      "lm.ops.router.v1.WanPool.Item\032&\n\004Item\022\016\n" +
-      "\006device\030\001 \001(\t\022\016\n\006weight\030\002 \001(\r\"U\n\027RouterC" +
-      "reateUserRequest\022\014\n\004name\030\001 \001(\t\022,\n\007contac" +
-      "t\030\002 \001(\0132\033.palm.ops.router.v1.Contact\"\252\001\n" +
-      "\027RouterIndexUserResponse\022?\n\005items\030\001 \003(\0132" +
-      "0.palm.ops.router.v1.RouterIndexUserResp" +
-      "onse.Item\032N\n\004Item\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 " +
-      "\001(\t\022,\n\007contact\030\003 \001(\0132\033.palm.ops.router.v" +
-      "1.Contact\"\217\001\n\027RouterUpdateHostRequest\022\n\n" +
-      "\002id\030\001 \001(\005\022\014\n\004user\030\002 \001(\005\022\r\n\005group\030\003 \001(\t\022\n" +
-      "\n\002ip\030\004 \001(\t\022\r\n\005fixed\030\005 \001(\010\022\014\n\004zone\030\010 \001(\t\022" +
-      "\025\n\010location\030\t \001(\tH\000\210\001\001B\013\n\t_location\"\246\002\n\027" +
-      "RouterIndexRuleResponse\022?\n\005items\030\001 \003(\01320" +
-      ".palm.ops.router.v1.RouterIndexRuleRespo" +
-      "nse.Item\032\311\001\n\004Item\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 " +
-      "\001(\t\022\r\n\005group\030\003 \001(\t\022.\n\002in\030\013 \001(\0132 .palm.op" +
-      "s.router.v1.Rule.InBoundH\000\0220\n\003out\030\014 \001(\0132" +
-      "!.palm.ops.router.v1.Rule.OutBoundH\000\022+\n\003" +
-      "nat\030\r \001(\0132\034.palm.ops.router.v1.Rule.NatH" +
-      "\000B\t\n\007payload\"\357\001\n\004Host\022\n\n\002id\030\001 \001(\005\022\014\n\004nam" +
-      "e\030\002 \001(\t\022\013\n\003mac\030\003 \001(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005fixe" +
-      "d\030\005 \001(\010\022\r\n\005group\030\t \001(\t\022\025\n\010location\030\013 \001(\t" +
-      "H\000\210\001\001\022-\n\005owner\030\014 \001(\0132\036.palm.ops.router.v" +
-      "1.Host.Owner\032C\n\005Owner\022\014\n\004name\030\001 \001(\t\022,\n\007c" +
-      "ontact\030\002 \001(\0132\033.palm.ops.router.v1.Contac" +
-      "tB\013\n\t_location\"\276\010\n\004Rule\022\014\n\004name\030\001 \001(\t\022\r\n" +
-      "\005group\030\002 \001(\t\022.\n\002in\030\013 \001(\0132 .palm.ops.rout" +
-      "er.v1.Rule.InBoundH\000\0220\n\003out\030\014 \001(\0132!.palm" +
-      ".ops.router.v1.Rule.OutBoundH\000\022+\n\003nat\030\r " +
-      "\001(\0132\034.palm.ops.router.v1.Rule.NatH\000\032T\n\007I" +
-      "nBound\022\016\n\006device\030\001 \001(\t\022\013\n\003tcp\030\002 \001(\010\022\014\n\004p" +
-      "ort\030\003 \001(\r\022\023\n\006source\030\004 \001(\tH\000\210\001\001B\t\n\007_sourc" +
-      "e\032\246\004\n\010OutBound\0226\n\004host\030\001 \001(\0132&.palm.ops." +
-      "router.v1.Rule.OutBound.HostH\000\0228\n\005speed\030" +
-      "\002 \001(\0132\'.palm.ops.router.v1.Rule.OutBound" +
-      ".SpeedH\000\0226\n\004time\030\003 \001(\0132&.palm.ops.router" +
-      ".v1.Rule.OutBound.TimeH\000\032U\n\004Host\022\n\n\002to\030\001" +
-      " \001(\t\0223\n\010protocol\030\002 \001(\0162!.palm.ops.router" +
-      ".v1.Rule.Protocol\022\014\n\004port\030\003 \001(\r\032;\n\005Speed" +
-      "\022\017\n\002up\030\001 \001(\rH\000\210\001\001\022\021\n\004down\030\002 \001(\rH\001\210\001\001B\005\n\003" +
-      "_upB\007\n\005_down\032\320\001\n\004Time\022(\n\004from\030\001 \001(\0132\032.go" +
-      "ogle.protobuf.Timestamp\022&\n\002to\030\002 \001(\0132\032.go" +
-      "ogle.protobuf.Timestamp\022\016\n\006monday\030\013 \001(\010\022" +
-      "\017\n\007tuesday\030\014 \001(\010\022\021\n\twednesday\030\r \001(\010\022\020\n\010t" +
-      "hursday\030\016 \001(\010\022\016\n\006friday\030\017 \001(\010\022\020\n\010saturda" +
-      "y\030\020 \001(\010\022\016\n\006sunday\030\021 \001(\010B\t\n\007payload\032\327\001\n\003N" +
-      "at\0223\n\006source\030\001 \001(\0132#.palm.ops.router.v1." +
-      "Rule.Nat.Source\022\013\n\003tcp\030\002 \001(\010\022=\n\013destinat" +
-      "ion\030\003 \001(\0132(.palm.ops.router.v1.Rule.Nat." +
-      "Destination\032&\n\006Source\022\016\n\006device\030\001 \001(\t\022\014\n" +
-      "\004port\030\003 \001(\r\032\'\n\013Destination\022\n\n\002ip\030\001 \001(\t\022\014" +
-      "\n\004port\030\003 \001(\r\"&\n\010Protocol\022\010\n\004Icmp\020\000\022\007\n\003Tc" +
-      "p\020\001\022\007\n\003Udp\020\002B\t\n\007payload\"\332\004\n\024RouterStatus" +
-      "Response\022L\n\ninterfaces\030\001 \003(\01328.palm.ops." +
-      "router.v1.RouterStatusResponse.Interface" +
-      "sEntry\022$\n\003lan\030\013 \001(\0132\027.palm.ops.router.v1" +
-      ".Lan\022$\n\003dmz\030\014 \001(\0132\027.palm.ops.router.v1.D" +
-      "mz\022$\n\003dns\030\r \001(\0132\027.palm.ops.router.v1.Dns" +
-      "\022$\n\003wan\030\016 \003(\0132\027.palm.ops.router.v1.Wan\022-" +
-      "\n\010wan_pool\030\017 \001(\0132\033.palm.ops.router.v1.Wa" +
-      "nPool\022\'\n\005rules\030\025 \003(\0132\030.palm.ops.router.v" +
-      "1.Rule\022\'\n\005hosts\030\026 \003(\0132\030.palm.ops.router." +
-      "v1.Host\0227\n\002ip\030a \001(\0132+.palm.ops.router.v1" +
-      ".RouterStatusResponse.Ip\022\020\n\010firewall\030b \001" +
-      "(\t\022)\n\006uptime\030c \001(\0132\031.google.protobuf.Dur" +
-      "ation\0321\n\017InterfacesEntry\022\013\n\003key\030\001 \001(\t\022\r\n" +
-      "\005value\030\002 \001(\t:\0028\001\0322\n\002Ip\022\017\n\007address\030\001 \001(\t\022" +
-      "\r\n\005route\030\002 \001(\t\022\014\n\004rule\030\003 \001(\t\"C\n\003Lan\022\016\n\006d" +
-      "evice\030\001 \001(\t\022\013\n\003mac\030\002 \001(\t\022\016\n\006metric\030\003 \001(\r" +
-      "\022\017\n\007address\030\013 \001(\t\"C\n\003Dmz\022\016\n\006device\030\001 \001(\t" +
-      "\022\013\n\003mac\030\002 \001(\t\022\016\n\006metric\030\003 \001(\r\022\017\n\007address" +
-      "\030\013 \001(\t\"\256\001\n\003Wan\022\016\n\006device\030\001 \001(\t\022\016\n\006metric" +
-      "\030\002 \001(\r\022\014\n\004name\030\t \001(\t\022\013\n\003mac\030\013 \001(\t\022(\n\004dhc" +
-      "p\030\025 \001(\0132\030.palm.ops.router.v1.DhcpH\000\022,\n\006s" +
-      "tatic\030\026 \001(\0132\032.palm.ops.router.v1.StaticH" +
-      "\000\022\016\n\006enable\030c \001(\010B\004\n\002ip\"\022\n\004Dhcp\022\n\n\002v6\030\001 " +
-      "\001(\010\"T\n\006Static\022\017\n\007address\030\001 \001(\t\022\017\n\007gatewa" +
-      "y\030\003 \001(\t\022\014\n\004dns1\030\004 \001(\t\022\021\n\004dns2\030\005 \001(\tH\000\210\001\001" +
-      "B\007\n\005_dns2\"\024\n\003Dns\022\r\n\005items\030\001 \003(\t\"1\n\013UserP" +
-      "rofile\022\020\n\010nickname\030\001 \001(\t\022\020\n\010password\030\002 \001" +
-      "(\t\"j\n\021UserSignInRequest\022-\n\004user\030\001 \001(\0132\037." +
-      "palm.ops.router.v1.UserProfile\022&\n\003ttl\030\t " +
-      "\001(\0132\031.google.protobuf.Duration\"#\n\022UserSi" +
-      "gnInResponse\022\r\n\005token\030\001 \001(\t\"s\n\021UserUpdat" +
-      "eRequest\0220\n\007current\030\001 \001(\0132\037.palm.ops.rou" +
-      "ter.v1.UserProfile\022,\n\003new\030\002 \001(\0132\037.palm.o" +
-      "ps.router.v1.UserProfile\"!\n\020UserLogsResp" +
-      "onse\022\r\n\005items\030\001 \003(\t2\376\010\n\006Router\022:\n\006Reboot" +
-      "\022\026.google.protobuf.Empty\032\026.google.protob" +
-      "uf.Empty\"\000\0229\n\005Apply\022\026.google.protobuf.Em" +
-      "pty\032\026.google.protobuf.Empty\"\000\022L\n\006Status\022" +
-      "\026.google.protobuf.Empty\032(.palm.ops.route" +
-      "r.v1.RouterStatusResponse\"\000\022;\n\006SetDns\022\027." +
-      "palm.ops.router.v1.Dns\032\026.google.protobuf" +
-      ".Empty\"\000\022K\n\006SetWan\022\'.palm.ops.router.v1." +
-      "RouterSetWanRequest\032\026.google.protobuf.Em" +
-      "pty\"\000\022C\n\nSetWanPool\022\033.palm.ops.router.v1" +
-      ".WanPool\032\026.google.protobuf.Empty\"\000\022K\n\006Se" +
-      "tLan\022\'.palm.ops.router.v1.RouterSetLanRe" +
-      "quest\032\026.google.protobuf.Empty\"\000\022K\n\006SetDm" +
-      "z\022\'.palm.ops.router.v1.RouterSetDmzReque" +
-      "st\032\026.google.protobuf.Empty\"\000\022@\n\nCreateRu" +
-      "le\022\030.palm.ops.router.v1.Rule\032\026.google.pr" +
-      "otobuf.Empty\"\000\022X\n\nUpdateRule\0220.palm.ops." +
-      "router.v1.RouterIndexRuleResponse.Item\032\026" +
-      ".google.protobuf.Empty\"\000\022R\n\tIndexRule\022\026." +
-      "google.protobuf.Empty\032+.palm.ops.router." +
-      "v1.RouterIndexRuleResponse\"\000\022S\n\nUpdateHo" +
-      "st\022+.palm.ops.router.v1.RouterUpdateHost" +
-      "Request\032\026.google.protobuf.Empty\"\000\022R\n\tInd" +
-      "exUser\022\026.google.protobuf.Empty\032+.palm.op" +
-      "s.router.v1.RouterIndexUserResponse\"\000\022X\n" +
-      "\nUpdateUser\0220.palm.ops.router.v1.RouterI" +
-      "ndexUserResponse.Item\032\026.google.protobuf." +
-      "Empty\"\000\022S\n\nCreateUser\022+.palm.ops.router." +
-      "v1.RouterCreateUserRequest\032\026.google.prot" +
-      "obuf.Empty\"\0002\201\003\n\004User\022Y\n\006SignIn\022%.palm.o" +
-      "ps.router.v1.UserSignInRequest\032&.palm.op" +
-      "s.router.v1.UserSignInResponse\"\000\022N\n\007Refr" +
-      "esh\022\031.google.protobuf.Duration\032&.palm.op" +
-      "s.router.v1.UserSignInResponse\"\000\022I\n\006Upda" +
-      "te\022%.palm.ops.router.v1.UserUpdateReques" +
-      "t\032\026.google.protobuf.Empty\"\000\022;\n\007SignOut\022\026" +
-      ".google.protobuf.Empty\032\026.google.protobuf" +
-      ".Empty\"\000\022F\n\004Logs\022\026.google.protobuf.Empty" +
-      "\032$.palm.ops.router.v1.UserLogsResponse\"\000" +
-      "B^\n0com.github.saturn_xiv.palm.plugins.o" +
-      "ps.router.v1P\001Z(github.com/saturn_xiv/al" +
-      "oe/ops/router/v2b\006proto3"
+      "file.Dnsmasq\022\020\n\010hostname\030c \001(\t\032\366\006\n\007Netwo" +
+      "rk\0224\n\003wan\030\001 \003(\0132\'.palm.ops.router.v1.Pro" +
+      "file.Network.Wan\0224\n\003dmz\030\002 \001(\0132\'.palm.ops" +
+      ".router.v1.Profile.Network.Dmz\0224\n\003lan\030\003 " +
+      "\001(\0132\'.palm.ops.router.v1.Profile.Network" +
+      ".Lan\0228\n\005guest\030\004 \001(\0132).palm.ops.router.v1" +
+      ".Profile.Network.Guest\032\324\002\n\003Wan\022D\n\ninterf" +
+      "aces\030\001 \003(\01320.palm.ops.router.v1.Profile." +
+      "Network.Wan.Ethernet\032\006\n\004Dhcp\0329\n\010StaticIp" +
+      "\022\017\n\007address\030\001 \001(\t\022\017\n\007gateway\030\002 \001(\t\022\013\n\003dn" +
+      "s\030\003 \001(\t\032\303\001\n\010Ethernet\022\014\n\004name\030\001 \001(\t\022\016\n\006de" +
+      "vice\030\002 \001(\t\022<\n\004dhcp\030\013 \001(\0132,.palm.ops.rout" +
+      "er.v1.Profile.Network.Wan.DhcpH\000\022E\n\tstat" +
+      "ic_ip\030\014 \001(\01320.palm.ops.router.v1.Profile" +
+      ".Network.Wan.StaticIpH\000\022\016\n\006metric\030c \001(\rB" +
+      "\004\n\002ip\032I\n\003Dmz\022\014\n\004name\030\001 \001(\t\022\016\n\006device\030\002 \001" +
+      "(\t\022\017\n\007address\030\003 \001(\t\022\023\n\013allow_hosts\030\t \003(\t" +
+      "\032\237\001\n\003Lan\022\014\n\004name\030\001 \001(\t\022\016\n\006device\030\002 \001(\t\022\017" +
+      "\n\007address\030\003 \001(\t\022?\n\007clients\030\t \003(\0132..palm." +
+      "ops.router.v1.Profile.Network.Lan.Client" +
+      "\032(\n\006Client\022\014\n\004user\030\001 \001(\t\022\020\n\010password\030\002 \001" +
+      "(\t\032K\n\005Guest\022\014\n\004name\030\001 \001(\t\022\016\n\006device\030\002 \001(" +
+      "\t\022\017\n\007address\030\003 \001(\t\022\023\n\013block_hosts\030\t \003(\t\032" +
+      "\336\002\n\007Dnsmasq\0227\n\005items\030\001 \003(\0132(.palm.ops.ro" +
+      "uter.v1.Profile.Dnsmasq.Item\032\231\002\n\004Item\022\016\n" +
+      "\006device\030\001 \001(\t\022\017\n\007address\030\002 \001(\t\022F\n\ndhcp_r" +
+      "ange\030\003 \001(\01322.palm.ops.router.v1.Profile." +
+      "Dnsmasq.Item.DhcpRange\022E\n\nstatic_ips\030\004 \003" +
+      "(\01321.palm.ops.router.v1.Profile.Dnsmasq." +
+      "Item.StaticIp\022\023\n\013dns_servers\030c \003(\t\032\'\n\tDh" +
+      "cpRange\022\r\n\005begin\030\001 \001(\t\022\013\n\003end\030\002 \001(\t\032#\n\010S" +
+      "taticIp\022\013\n\003mac\030\001 \001(\t\022\n\n\002ip\030\002 \001(\t\"\207\001\n\007Con" +
+      "tact\022\022\n\005phone\030\001 \001(\tH\000\210\001\001\022\023\n\006wechat\030\002 \001(\t" +
+      "H\001\210\001\001\022\022\n\005email\030\003 \001(\tH\002\210\001\001\022\024\n\007address\030c \001" +
+      "(\tH\003\210\001\001B\010\n\006_phoneB\t\n\007_wechatB\010\n\006_emailB\n" +
+      "\n\010_address\"O\n\023RouterSetLanRequest\022(\n\007pay" +
+      "load\030\001 \001(\0132\027.palm.ops.router.v1.Lan\022\016\n\006e" +
+      "nable\030\002 \001(\010\"O\n\023RouterSetDmzRequest\022(\n\007pa" +
+      "yload\030\001 \001(\0132\027.palm.ops.router.v1.Dmz\022\016\n\006" +
+      "enable\030\002 \001(\010\"O\n\023RouterSetWanRequest\022(\n\007p" +
+      "ayload\030\001 \001(\0132\027.palm.ops.router.v1.Wan\022\016\n" +
+      "\006enable\030\002 \001(\010\"b\n\007WanPool\022/\n\005items\030\001 \003(\0132" +
+      " .palm.ops.router.v1.WanPool.Item\032&\n\004Ite" +
+      "m\022\016\n\006device\030\001 \001(\t\022\016\n\006weight\030\002 \001(\r\"U\n\027Rou" +
+      "terCreateUserRequest\022\014\n\004name\030\001 \001(\t\022,\n\007co" +
+      "ntact\030\002 \001(\0132\033.palm.ops.router.v1.Contact" +
+      "\"\252\001\n\027RouterIndexUserResponse\022?\n\005items\030\001 " +
+      "\003(\01320.palm.ops.router.v1.RouterIndexUser" +
+      "Response.Item\032N\n\004Item\022\n\n\002id\030\001 \001(\005\022\014\n\004nam" +
+      "e\030\002 \001(\t\022,\n\007contact\030\003 \001(\0132\033.palm.ops.rout" +
+      "er.v1.Contact\"\217\001\n\027RouterUpdateHostReques" +
+      "t\022\n\n\002id\030\001 \001(\005\022\014\n\004user\030\002 \001(\005\022\r\n\005group\030\003 \001" +
+      "(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005fixed\030\005 \001(\010\022\014\n\004zone\030\010 " +
+      "\001(\t\022\025\n\010location\030\t \001(\tH\000\210\001\001B\013\n\t_location\"" +
+      "\246\002\n\027RouterIndexRuleResponse\022?\n\005items\030\001 \003" +
+      "(\01320.palm.ops.router.v1.RouterIndexRuleR" +
+      "esponse.Item\032\311\001\n\004Item\022\n\n\002id\030\001 \001(\005\022\014\n\004nam" +
+      "e\030\002 \001(\t\022\r\n\005group\030\003 \001(\t\022.\n\002in\030\013 \001(\0132 .pal" +
+      "m.ops.router.v1.Rule.InBoundH\000\0220\n\003out\030\014 " +
+      "\001(\0132!.palm.ops.router.v1.Rule.OutBoundH\000" +
+      "\022+\n\003nat\030\r \001(\0132\034.palm.ops.router.v1.Rule." +
+      "NatH\000B\t\n\007payload\"\357\001\n\004Host\022\n\n\002id\030\001 \001(\005\022\014\n" +
+      "\004name\030\002 \001(\t\022\013\n\003mac\030\003 \001(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005" +
+      "fixed\030\005 \001(\010\022\r\n\005group\030\t \001(\t\022\025\n\010location\030\013" +
+      " \001(\tH\000\210\001\001\022-\n\005owner\030\014 \001(\0132\036.palm.ops.rout" +
+      "er.v1.Host.Owner\032C\n\005Owner\022\014\n\004name\030\001 \001(\t\022" +
+      ",\n\007contact\030\002 \001(\0132\033.palm.ops.router.v1.Co" +
+      "ntactB\013\n\t_location\"\276\010\n\004Rule\022\014\n\004name\030\001 \001(" +
+      "\t\022\r\n\005group\030\002 \001(\t\022.\n\002in\030\013 \001(\0132 .palm.ops." +
+      "router.v1.Rule.InBoundH\000\0220\n\003out\030\014 \001(\0132!." +
+      "palm.ops.router.v1.Rule.OutBoundH\000\022+\n\003na" +
+      "t\030\r \001(\0132\034.palm.ops.router.v1.Rule.NatH\000\032" +
+      "T\n\007InBound\022\016\n\006device\030\001 \001(\t\022\013\n\003tcp\030\002 \001(\010\022" +
+      "\014\n\004port\030\003 \001(\r\022\023\n\006source\030\004 \001(\tH\000\210\001\001B\t\n\007_s" +
+      "ource\032\246\004\n\010OutBound\0226\n\004host\030\001 \001(\0132&.palm." +
+      "ops.router.v1.Rule.OutBound.HostH\000\0228\n\005sp" +
+      "eed\030\002 \001(\0132\'.palm.ops.router.v1.Rule.OutB" +
+      "ound.SpeedH\000\0226\n\004time\030\003 \001(\0132&.palm.ops.ro" +
+      "uter.v1.Rule.OutBound.TimeH\000\032U\n\004Host\022\n\n\002" +
+      "to\030\001 \001(\t\0223\n\010protocol\030\002 \001(\0162!.palm.ops.ro" +
+      "uter.v1.Rule.Protocol\022\014\n\004port\030\003 \001(\r\032;\n\005S" +
+      "peed\022\017\n\002up\030\001 \001(\rH\000\210\001\001\022\021\n\004down\030\002 \001(\rH\001\210\001\001" +
+      "B\005\n\003_upB\007\n\005_down\032\320\001\n\004Time\022(\n\004from\030\001 \001(\0132" +
+      "\032.google.protobuf.Timestamp\022&\n\002to\030\002 \001(\0132" +
+      "\032.google.protobuf.Timestamp\022\016\n\006monday\030\013 " +
+      "\001(\010\022\017\n\007tuesday\030\014 \001(\010\022\021\n\twednesday\030\r \001(\010\022" +
+      "\020\n\010thursday\030\016 \001(\010\022\016\n\006friday\030\017 \001(\010\022\020\n\010sat" +
+      "urday\030\020 \001(\010\022\016\n\006sunday\030\021 \001(\010B\t\n\007payload\032\327" +
+      "\001\n\003Nat\0223\n\006source\030\001 \001(\0132#.palm.ops.router" +
+      ".v1.Rule.Nat.Source\022\013\n\003tcp\030\002 \001(\010\022=\n\013dest" +
+      "ination\030\003 \001(\0132(.palm.ops.router.v1.Rule." +
+      "Nat.Destination\032&\n\006Source\022\016\n\006device\030\001 \001(" +
+      "\t\022\014\n\004port\030\003 \001(\r\032\'\n\013Destination\022\n\n\002ip\030\001 \001" +
+      "(\t\022\014\n\004port\030\003 \001(\r\"&\n\010Protocol\022\010\n\004Icmp\020\000\022\007" +
+      "\n\003Tcp\020\001\022\007\n\003Udp\020\002B\t\n\007payload\"\332\004\n\024RouterSt" +
+      "atusResponse\022L\n\ninterfaces\030\001 \003(\01328.palm." +
+      "ops.router.v1.RouterStatusResponse.Inter" +
+      "facesEntry\022$\n\003lan\030\013 \001(\0132\027.palm.ops.route" +
+      "r.v1.Lan\022$\n\003dmz\030\014 \001(\0132\027.palm.ops.router." +
+      "v1.Dmz\022$\n\003dns\030\r \001(\0132\027.palm.ops.router.v1" +
+      ".Dns\022$\n\003wan\030\016 \003(\0132\027.palm.ops.router.v1.W" +
+      "an\022-\n\010wan_pool\030\017 \001(\0132\033.palm.ops.router.v" +
+      "1.WanPool\022\'\n\005rules\030\025 \003(\0132\030.palm.ops.rout" +
+      "er.v1.Rule\022\'\n\005hosts\030\026 \003(\0132\030.palm.ops.rou" +
+      "ter.v1.Host\0227\n\002ip\030a \001(\0132+.palm.ops.route" +
+      "r.v1.RouterStatusResponse.Ip\022\020\n\010firewall" +
+      "\030b \001(\t\022)\n\006uptime\030c \001(\0132\031.google.protobuf" +
+      ".Duration\0321\n\017InterfacesEntry\022\013\n\003key\030\001 \001(" +
+      "\t\022\r\n\005value\030\002 \001(\t:\0028\001\0322\n\002Ip\022\017\n\007address\030\001 " +
+      "\001(\t\022\r\n\005route\030\002 \001(\t\022\014\n\004rule\030\003 \001(\t\"C\n\003Lan\022" +
+      "\016\n\006device\030\001 \001(\t\022\013\n\003mac\030\002 \001(\t\022\016\n\006metric\030\003" +
+      " \001(\r\022\017\n\007address\030\013 \001(\t\"C\n\003Dmz\022\016\n\006device\030\001" +
+      " \001(\t\022\013\n\003mac\030\002 \001(\t\022\016\n\006metric\030\003 \001(\r\022\017\n\007add" +
+      "ress\030\013 \001(\t\"\256\001\n\003Wan\022\016\n\006device\030\001 \001(\t\022\016\n\006me" +
+      "tric\030\002 \001(\r\022\014\n\004name\030\t \001(\t\022\013\n\003mac\030\013 \001(\t\022(\n" +
+      "\004dhcp\030\025 \001(\0132\030.palm.ops.router.v1.DhcpH\000\022" +
+      ",\n\006static\030\026 \001(\0132\032.palm.ops.router.v1.Sta" +
+      "ticH\000\022\016\n\006enable\030c \001(\010B\004\n\002ip\"\022\n\004Dhcp\022\n\n\002v" +
+      "6\030\001 \001(\010\"T\n\006Static\022\017\n\007address\030\001 \001(\t\022\017\n\007ga" +
+      "teway\030\003 \001(\t\022\014\n\004dns1\030\004 \001(\t\022\021\n\004dns2\030\005 \001(\tH" +
+      "\000\210\001\001B\007\n\005_dns2\"\024\n\003Dns\022\r\n\005items\030\001 \003(\t\"1\n\013U" +
+      "serProfile\022\020\n\010nickname\030\001 \001(\t\022\020\n\010password" +
+      "\030\002 \001(\t\"j\n\021UserSignInRequest\022-\n\004user\030\001 \001(" +
+      "\0132\037.palm.ops.router.v1.UserProfile\022&\n\003tt" +
+      "l\030\t \001(\0132\031.google.protobuf.Duration\"#\n\022Us" +
+      "erSignInResponse\022\r\n\005token\030\001 \001(\t\"s\n\021UserU" +
+      "pdateRequest\0220\n\007current\030\001 \001(\0132\037.palm.ops" +
+      ".router.v1.UserProfile\022,\n\003new\030\002 \001(\0132\037.pa" +
+      "lm.ops.router.v1.UserProfile\"!\n\020UserLogs" +
+      "Response\022\r\n\005items\030\001 \003(\t2\376\010\n\006Router\022:\n\006Re" +
+      "boot\022\026.google.protobuf.Empty\032\026.google.pr" +
+      "otobuf.Empty\"\000\0229\n\005Apply\022\026.google.protobu" +
+      "f.Empty\032\026.google.protobuf.Empty\"\000\022L\n\006Sta" +
+      "tus\022\026.google.protobuf.Empty\032(.palm.ops.r" +
+      "outer.v1.RouterStatusResponse\"\000\022;\n\006SetDn" +
+      "s\022\027.palm.ops.router.v1.Dns\032\026.google.prot" +
+      "obuf.Empty\"\000\022K\n\006SetWan\022\'.palm.ops.router" +
+      ".v1.RouterSetWanRequest\032\026.google.protobu" +
+      "f.Empty\"\000\022C\n\nSetWanPool\022\033.palm.ops.route" +
+      "r.v1.WanPool\032\026.google.protobuf.Empty\"\000\022K" +
+      "\n\006SetLan\022\'.palm.ops.router.v1.RouterSetL" +
+      "anRequest\032\026.google.protobuf.Empty\"\000\022K\n\006S" +
+      "etDmz\022\'.palm.ops.router.v1.RouterSetDmzR" +
+      "equest\032\026.google.protobuf.Empty\"\000\022@\n\nCrea" +
+      "teRule\022\030.palm.ops.router.v1.Rule\032\026.googl" +
+      "e.protobuf.Empty\"\000\022X\n\nUpdateRule\0220.palm." +
+      "ops.router.v1.RouterIndexRuleResponse.It" +
+      "em\032\026.google.protobuf.Empty\"\000\022R\n\tIndexRul" +
+      "e\022\026.google.protobuf.Empty\032+.palm.ops.rou" +
+      "ter.v1.RouterIndexRuleResponse\"\000\022S\n\nUpda" +
+      "teHost\022+.palm.ops.router.v1.RouterUpdate" +
+      "HostRequest\032\026.google.protobuf.Empty\"\000\022R\n" +
+      "\tIndexUser\022\026.google.protobuf.Empty\032+.pal" +
+      "m.ops.router.v1.RouterIndexUserResponse\"" +
+      "\000\022X\n\nUpdateUser\0220.palm.ops.router.v1.Rou" +
+      "terIndexUserResponse.Item\032\026.google.proto" +
+      "buf.Empty\"\000\022S\n\nCreateUser\022+.palm.ops.rou" +
+      "ter.v1.RouterCreateUserRequest\032\026.google." +
+      "protobuf.Empty\"\0002\201\003\n\004User\022Y\n\006SignIn\022%.pa" +
+      "lm.ops.router.v1.UserSignInRequest\032&.pal" +
+      "m.ops.router.v1.UserSignInResponse\"\000\022N\n\007" +
+      "Refresh\022\031.google.protobuf.Duration\032&.pal" +
+      "m.ops.router.v1.UserSignInResponse\"\000\022I\n\006" +
+      "Update\022%.palm.ops.router.v1.UserUpdateRe" +
+      "quest\032\026.google.protobuf.Empty\"\000\022;\n\007SignO" +
+      "ut\022\026.google.protobuf.Empty\032\026.google.prot" +
+      "obuf.Empty\"\000\022F\n\004Logs\022\026.google.protobuf.E" +
+      "mpty\032$.palm.ops.router.v1.UserLogsRespon" +
+      "se\"\000B^\n0com.github.saturn_xiv.palm.plugi" +
+      "ns.ops.router.v1P\001Z(github.com/saturn_xi" +
+      "v/aloe/ops/router/v2b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -469,13 +469,13 @@ public final class OpsRouter {
     internal_static_palm_ops_router_v1_Profile_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_ops_router_v1_Profile_descriptor,
-        new java.lang.String[] { "Network", "Dnsmasq", });
+        new java.lang.String[] { "Network", "Dnsmasq", "Hostname", });
     internal_static_palm_ops_router_v1_Profile_Network_descriptor =
       internal_static_palm_ops_router_v1_Profile_descriptor.getNestedTypes().get(0);
     internal_static_palm_ops_router_v1_Profile_Network_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_palm_ops_router_v1_Profile_Network_descriptor,
-        new java.lang.String[] { "Name", "Wan", "Lan", "Dmz", "Guest", });
+        new java.lang.String[] { "Wan", "Dmz", "Lan", "Guest", });
     internal_static_palm_ops_router_v1_Profile_Network_Wan_descriptor =
       internal_static_palm_ops_router_v1_Profile_Network_descriptor.getNestedTypes().get(0);
     internal_static_palm_ops_router_v1_Profile_Network_Wan_fieldAccessorTable = new

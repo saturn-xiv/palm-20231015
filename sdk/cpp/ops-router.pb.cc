@@ -1133,12 +1133,9 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr Profile_Network::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
-        name_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        wan_{nullptr},
-        lan_{nullptr},
+        wan_{},
         dmz_{nullptr},
+        lan_{nullptr},
         guest_{nullptr} {}
 
 template <typename>
@@ -1208,6 +1205,9 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr Profile::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
+        hostname_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         network_{nullptr},
         dnsmasq_{nullptr} {}
 
@@ -1330,16 +1330,14 @@ const ::uint32_t TableStruct_ops_2drouter_2eproto::offsets[] PROTOBUF_SECTION_VA
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Profile_Network, _impl_.name_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Profile_Network, _impl_.wan_),
-    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Profile_Network, _impl_.lan_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Profile_Network, _impl_.dmz_),
+    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Profile_Network, _impl_.lan_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Profile_Network, _impl_.guest_),
     ~0u,
     0,
     1,
     2,
-    3,
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -1397,8 +1395,10 @@ const ::uint32_t TableStruct_ops_2drouter_2eproto::offsets[] PROTOBUF_SECTION_VA
     ~0u,  // no sizeof(Split)
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Profile, _impl_.network_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Profile, _impl_.dnsmasq_),
+    PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Profile, _impl_.hostname_),
     0,
     1,
+    ~0u,
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _impl_._has_bits_),
     PROTOBUF_FIELD_OFFSET(::palm::ops::router::v1::Contact, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -1903,12 +1903,12 @@ static const ::_pbi::MigrationSchema
         {54, -1, -1, sizeof(::palm::ops::router::v1::Profile_Network_Lan_Client)},
         {64, -1, -1, sizeof(::palm::ops::router::v1::Profile_Network_Lan)},
         {76, -1, -1, sizeof(::palm::ops::router::v1::Profile_Network_Guest)},
-        {88, 101, -1, sizeof(::palm::ops::router::v1::Profile_Network)},
-        {106, -1, -1, sizeof(::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange)},
-        {116, -1, -1, sizeof(::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp)},
-        {126, 139, -1, sizeof(::palm::ops::router::v1::Profile_Dnsmasq_Item)},
-        {144, -1, -1, sizeof(::palm::ops::router::v1::Profile_Dnsmasq)},
-        {153, 163, -1, sizeof(::palm::ops::router::v1::Profile)},
+        {88, 100, -1, sizeof(::palm::ops::router::v1::Profile_Network)},
+        {104, -1, -1, sizeof(::palm::ops::router::v1::Profile_Dnsmasq_Item_DhcpRange)},
+        {114, -1, -1, sizeof(::palm::ops::router::v1::Profile_Dnsmasq_Item_StaticIp)},
+        {124, 137, -1, sizeof(::palm::ops::router::v1::Profile_Dnsmasq_Item)},
+        {142, -1, -1, sizeof(::palm::ops::router::v1::Profile_Dnsmasq)},
+        {151, 162, -1, sizeof(::palm::ops::router::v1::Profile)},
         {165, 177, -1, sizeof(::palm::ops::router::v1::Contact)},
         {181, 191, -1, sizeof(::palm::ops::router::v1::RouterSetLanRequest)},
         {193, 203, -1, sizeof(::palm::ops::router::v1::RouterSetDmzRequest)},
@@ -2005,180 +2005,180 @@ const char descriptor_table_protodef_ops_2drouter_2eproto[] PROTOBUF_SECTION_VAR
     "\n\020ops-router.proto\022\022palm.ops.router.v1\032\033"
     "google/protobuf/empty.proto\032\037google/prot"
     "obuf/timestamp.proto\032\036google/protobuf/du"
-    "ration.proto\"\335\n\n\007Profile\0224\n\007network\030\001 \001("
+    "ration.proto\"\341\n\n\007Profile\0224\n\007network\030\001 \001("
     "\0132#.palm.ops.router.v1.Profile.Network\0224"
     "\n\007dnsmasq\030\002 \001(\0132#.palm.ops.router.v1.Pro"
-    "file.Dnsmasq\032\204\007\n\007Network\022\014\n\004name\030\001 \001(\t\0224"
-    "\n\003wan\030\013 \001(\0132\'.palm.ops.router.v1.Profile"
-    ".Network.Wan\0224\n\003lan\030\014 \001(\0132\'.palm.ops.rou"
-    "ter.v1.Profile.Network.Lan\0224\n\003dmz\030\r \001(\0132"
-    "\'.palm.ops.router.v1.Profile.Network.Dmz"
-    "\0228\n\005guest\030\016 \001(\0132).palm.ops.router.v1.Pro"
-    "file.Network.Guest\032\324\002\n\003Wan\022D\n\ninterfaces"
-    "\030\001 \003(\01320.palm.ops.router.v1.Profile.Netw"
-    "ork.Wan.Ethernet\032\006\n\004Dhcp\0329\n\010StaticIp\022\017\n\007"
-    "address\030\001 \001(\t\022\017\n\007gateway\030\002 \001(\t\022\013\n\003dns\030\003 "
-    "\001(\t\032\303\001\n\010Ethernet\022\014\n\004name\030\001 \001(\t\022\016\n\006device"
-    "\030\002 \001(\t\022<\n\004dhcp\030\013 \001(\0132,.palm.ops.router.v"
-    "1.Profile.Network.Wan.DhcpH\000\022E\n\tstatic_i"
-    "p\030\014 \001(\01320.palm.ops.router.v1.Profile.Net"
-    "work.Wan.StaticIpH\000\022\016\n\006metric\030c \001(\rB\004\n\002i"
-    "p\032I\n\003Dmz\022\014\n\004name\030\001 \001(\t\022\016\n\006device\030\002 \001(\t\022\017"
-    "\n\007address\030\003 \001(\t\022\023\n\013allow_hosts\030\t \003(\t\032\237\001\n"
-    "\003Lan\022\014\n\004name\030\001 \001(\t\022\016\n\006device\030\002 \001(\t\022\017\n\007ad"
-    "dress\030\003 \001(\t\022\?\n\007clients\030\t \003(\0132..palm.ops."
-    "router.v1.Profile.Network.Lan.Client\032(\n\006"
-    "Client\022\014\n\004user\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\032K"
-    "\n\005Guest\022\014\n\004name\030\001 \001(\t\022\016\n\006device\030\002 \001(\t\022\017\n"
-    "\007address\030\003 \001(\t\022\023\n\013block_hosts\030\t \003(\t\032\336\002\n\007"
-    "Dnsmasq\0227\n\005items\030\001 \003(\0132(.palm.ops.router"
-    ".v1.Profile.Dnsmasq.Item\032\231\002\n\004Item\022\016\n\006dev"
-    "ice\030\001 \001(\t\022\017\n\007address\030\002 \001(\t\022F\n\ndhcp_range"
-    "\030\003 \001(\01322.palm.ops.router.v1.Profile.Dnsm"
-    "asq.Item.DhcpRange\022E\n\nstatic_ips\030\004 \003(\01321"
-    ".palm.ops.router.v1.Profile.Dnsmasq.Item"
-    ".StaticIp\022\023\n\013dns_servers\030c \003(\t\032\'\n\tDhcpRa"
-    "nge\022\r\n\005begin\030\001 \001(\t\022\013\n\003end\030\002 \001(\t\032#\n\010Stati"
-    "cIp\022\013\n\003mac\030\001 \001(\t\022\n\n\002ip\030\002 \001(\t\"\207\001\n\007Contact"
-    "\022\022\n\005phone\030\001 \001(\tH\000\210\001\001\022\023\n\006wechat\030\002 \001(\tH\001\210\001"
-    "\001\022\022\n\005email\030\003 \001(\tH\002\210\001\001\022\024\n\007address\030c \001(\tH\003"
-    "\210\001\001B\010\n\006_phoneB\t\n\007_wechatB\010\n\006_emailB\n\n\010_a"
-    "ddress\"O\n\023RouterSetLanRequest\022(\n\007payload"
-    "\030\001 \001(\0132\027.palm.ops.router.v1.Lan\022\016\n\006enabl"
-    "e\030\002 \001(\010\"O\n\023RouterSetDmzRequest\022(\n\007payloa"
-    "d\030\001 \001(\0132\027.palm.ops.router.v1.Dmz\022\016\n\006enab"
-    "le\030\002 \001(\010\"O\n\023RouterSetWanRequest\022(\n\007paylo"
-    "ad\030\001 \001(\0132\027.palm.ops.router.v1.Wan\022\016\n\006ena"
-    "ble\030\002 \001(\010\"b\n\007WanPool\022/\n\005items\030\001 \003(\0132 .pa"
-    "lm.ops.router.v1.WanPool.Item\032&\n\004Item\022\016\n"
-    "\006device\030\001 \001(\t\022\016\n\006weight\030\002 \001(\r\"U\n\027RouterC"
-    "reateUserRequest\022\014\n\004name\030\001 \001(\t\022,\n\007contac"
-    "t\030\002 \001(\0132\033.palm.ops.router.v1.Contact\"\252\001\n"
-    "\027RouterIndexUserResponse\022\?\n\005items\030\001 \003(\0132"
-    "0.palm.ops.router.v1.RouterIndexUserResp"
-    "onse.Item\032N\n\004Item\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 "
-    "\001(\t\022,\n\007contact\030\003 \001(\0132\033.palm.ops.router.v"
-    "1.Contact\"\217\001\n\027RouterUpdateHostRequest\022\n\n"
-    "\002id\030\001 \001(\005\022\014\n\004user\030\002 \001(\005\022\r\n\005group\030\003 \001(\t\022\n"
-    "\n\002ip\030\004 \001(\t\022\r\n\005fixed\030\005 \001(\010\022\014\n\004zone\030\010 \001(\t\022"
-    "\025\n\010location\030\t \001(\tH\000\210\001\001B\013\n\t_location\"\246\002\n\027"
-    "RouterIndexRuleResponse\022\?\n\005items\030\001 \003(\01320"
-    ".palm.ops.router.v1.RouterIndexRuleRespo"
-    "nse.Item\032\311\001\n\004Item\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 "
-    "\001(\t\022\r\n\005group\030\003 \001(\t\022.\n\002in\030\013 \001(\0132 .palm.op"
-    "s.router.v1.Rule.InBoundH\000\0220\n\003out\030\014 \001(\0132"
-    "!.palm.ops.router.v1.Rule.OutBoundH\000\022+\n\003"
-    "nat\030\r \001(\0132\034.palm.ops.router.v1.Rule.NatH"
-    "\000B\t\n\007payload\"\357\001\n\004Host\022\n\n\002id\030\001 \001(\005\022\014\n\004nam"
-    "e\030\002 \001(\t\022\013\n\003mac\030\003 \001(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005fixe"
-    "d\030\005 \001(\010\022\r\n\005group\030\t \001(\t\022\025\n\010location\030\013 \001(\t"
-    "H\000\210\001\001\022-\n\005owner\030\014 \001(\0132\036.palm.ops.router.v"
-    "1.Host.Owner\032C\n\005Owner\022\014\n\004name\030\001 \001(\t\022,\n\007c"
-    "ontact\030\002 \001(\0132\033.palm.ops.router.v1.Contac"
-    "tB\013\n\t_location\"\276\010\n\004Rule\022\014\n\004name\030\001 \001(\t\022\r\n"
-    "\005group\030\002 \001(\t\022.\n\002in\030\013 \001(\0132 .palm.ops.rout"
-    "er.v1.Rule.InBoundH\000\0220\n\003out\030\014 \001(\0132!.palm"
-    ".ops.router.v1.Rule.OutBoundH\000\022+\n\003nat\030\r "
-    "\001(\0132\034.palm.ops.router.v1.Rule.NatH\000\032T\n\007I"
-    "nBound\022\016\n\006device\030\001 \001(\t\022\013\n\003tcp\030\002 \001(\010\022\014\n\004p"
-    "ort\030\003 \001(\r\022\023\n\006source\030\004 \001(\tH\000\210\001\001B\t\n\007_sourc"
-    "e\032\246\004\n\010OutBound\0226\n\004host\030\001 \001(\0132&.palm.ops."
-    "router.v1.Rule.OutBound.HostH\000\0228\n\005speed\030"
-    "\002 \001(\0132\'.palm.ops.router.v1.Rule.OutBound"
-    ".SpeedH\000\0226\n\004time\030\003 \001(\0132&.palm.ops.router"
-    ".v1.Rule.OutBound.TimeH\000\032U\n\004Host\022\n\n\002to\030\001"
-    " \001(\t\0223\n\010protocol\030\002 \001(\0162!.palm.ops.router"
-    ".v1.Rule.Protocol\022\014\n\004port\030\003 \001(\r\032;\n\005Speed"
-    "\022\017\n\002up\030\001 \001(\rH\000\210\001\001\022\021\n\004down\030\002 \001(\rH\001\210\001\001B\005\n\003"
-    "_upB\007\n\005_down\032\320\001\n\004Time\022(\n\004from\030\001 \001(\0132\032.go"
-    "ogle.protobuf.Timestamp\022&\n\002to\030\002 \001(\0132\032.go"
-    "ogle.protobuf.Timestamp\022\016\n\006monday\030\013 \001(\010\022"
-    "\017\n\007tuesday\030\014 \001(\010\022\021\n\twednesday\030\r \001(\010\022\020\n\010t"
-    "hursday\030\016 \001(\010\022\016\n\006friday\030\017 \001(\010\022\020\n\010saturda"
-    "y\030\020 \001(\010\022\016\n\006sunday\030\021 \001(\010B\t\n\007payload\032\327\001\n\003N"
-    "at\0223\n\006source\030\001 \001(\0132#.palm.ops.router.v1."
-    "Rule.Nat.Source\022\013\n\003tcp\030\002 \001(\010\022=\n\013destinat"
-    "ion\030\003 \001(\0132(.palm.ops.router.v1.Rule.Nat."
-    "Destination\032&\n\006Source\022\016\n\006device\030\001 \001(\t\022\014\n"
-    "\004port\030\003 \001(\r\032\'\n\013Destination\022\n\n\002ip\030\001 \001(\t\022\014"
-    "\n\004port\030\003 \001(\r\"&\n\010Protocol\022\010\n\004Icmp\020\000\022\007\n\003Tc"
-    "p\020\001\022\007\n\003Udp\020\002B\t\n\007payload\"\332\004\n\024RouterStatus"
-    "Response\022L\n\ninterfaces\030\001 \003(\01328.palm.ops."
-    "router.v1.RouterStatusResponse.Interface"
-    "sEntry\022$\n\003lan\030\013 \001(\0132\027.palm.ops.router.v1"
-    ".Lan\022$\n\003dmz\030\014 \001(\0132\027.palm.ops.router.v1.D"
-    "mz\022$\n\003dns\030\r \001(\0132\027.palm.ops.router.v1.Dns"
-    "\022$\n\003wan\030\016 \003(\0132\027.palm.ops.router.v1.Wan\022-"
-    "\n\010wan_pool\030\017 \001(\0132\033.palm.ops.router.v1.Wa"
-    "nPool\022\'\n\005rules\030\025 \003(\0132\030.palm.ops.router.v"
-    "1.Rule\022\'\n\005hosts\030\026 \003(\0132\030.palm.ops.router."
-    "v1.Host\0227\n\002ip\030a \001(\0132+.palm.ops.router.v1"
-    ".RouterStatusResponse.Ip\022\020\n\010firewall\030b \001"
-    "(\t\022)\n\006uptime\030c \001(\0132\031.google.protobuf.Dur"
-    "ation\0321\n\017InterfacesEntry\022\013\n\003key\030\001 \001(\t\022\r\n"
-    "\005value\030\002 \001(\t:\0028\001\0322\n\002Ip\022\017\n\007address\030\001 \001(\t\022"
-    "\r\n\005route\030\002 \001(\t\022\014\n\004rule\030\003 \001(\t\"C\n\003Lan\022\016\n\006d"
-    "evice\030\001 \001(\t\022\013\n\003mac\030\002 \001(\t\022\016\n\006metric\030\003 \001(\r"
-    "\022\017\n\007address\030\013 \001(\t\"C\n\003Dmz\022\016\n\006device\030\001 \001(\t"
-    "\022\013\n\003mac\030\002 \001(\t\022\016\n\006metric\030\003 \001(\r\022\017\n\007address"
-    "\030\013 \001(\t\"\256\001\n\003Wan\022\016\n\006device\030\001 \001(\t\022\016\n\006metric"
-    "\030\002 \001(\r\022\014\n\004name\030\t \001(\t\022\013\n\003mac\030\013 \001(\t\022(\n\004dhc"
-    "p\030\025 \001(\0132\030.palm.ops.router.v1.DhcpH\000\022,\n\006s"
-    "tatic\030\026 \001(\0132\032.palm.ops.router.v1.StaticH"
-    "\000\022\016\n\006enable\030c \001(\010B\004\n\002ip\"\022\n\004Dhcp\022\n\n\002v6\030\001 "
-    "\001(\010\"T\n\006Static\022\017\n\007address\030\001 \001(\t\022\017\n\007gatewa"
-    "y\030\003 \001(\t\022\014\n\004dns1\030\004 \001(\t\022\021\n\004dns2\030\005 \001(\tH\000\210\001\001"
-    "B\007\n\005_dns2\"\024\n\003Dns\022\r\n\005items\030\001 \003(\t\"1\n\013UserP"
-    "rofile\022\020\n\010nickname\030\001 \001(\t\022\020\n\010password\030\002 \001"
-    "(\t\"j\n\021UserSignInRequest\022-\n\004user\030\001 \001(\0132\037."
-    "palm.ops.router.v1.UserProfile\022&\n\003ttl\030\t "
-    "\001(\0132\031.google.protobuf.Duration\"#\n\022UserSi"
-    "gnInResponse\022\r\n\005token\030\001 \001(\t\"s\n\021UserUpdat"
-    "eRequest\0220\n\007current\030\001 \001(\0132\037.palm.ops.rou"
-    "ter.v1.UserProfile\022,\n\003new\030\002 \001(\0132\037.palm.o"
-    "ps.router.v1.UserProfile\"!\n\020UserLogsResp"
-    "onse\022\r\n\005items\030\001 \003(\t2\376\010\n\006Router\022:\n\006Reboot"
-    "\022\026.google.protobuf.Empty\032\026.google.protob"
-    "uf.Empty\"\000\0229\n\005Apply\022\026.google.protobuf.Em"
-    "pty\032\026.google.protobuf.Empty\"\000\022L\n\006Status\022"
-    "\026.google.protobuf.Empty\032(.palm.ops.route"
-    "r.v1.RouterStatusResponse\"\000\022;\n\006SetDns\022\027."
-    "palm.ops.router.v1.Dns\032\026.google.protobuf"
-    ".Empty\"\000\022K\n\006SetWan\022\'.palm.ops.router.v1."
-    "RouterSetWanRequest\032\026.google.protobuf.Em"
-    "pty\"\000\022C\n\nSetWanPool\022\033.palm.ops.router.v1"
-    ".WanPool\032\026.google.protobuf.Empty\"\000\022K\n\006Se"
-    "tLan\022\'.palm.ops.router.v1.RouterSetLanRe"
-    "quest\032\026.google.protobuf.Empty\"\000\022K\n\006SetDm"
-    "z\022\'.palm.ops.router.v1.RouterSetDmzReque"
-    "st\032\026.google.protobuf.Empty\"\000\022@\n\nCreateRu"
-    "le\022\030.palm.ops.router.v1.Rule\032\026.google.pr"
-    "otobuf.Empty\"\000\022X\n\nUpdateRule\0220.palm.ops."
-    "router.v1.RouterIndexRuleResponse.Item\032\026"
-    ".google.protobuf.Empty\"\000\022R\n\tIndexRule\022\026."
-    "google.protobuf.Empty\032+.palm.ops.router."
-    "v1.RouterIndexRuleResponse\"\000\022S\n\nUpdateHo"
-    "st\022+.palm.ops.router.v1.RouterUpdateHost"
-    "Request\032\026.google.protobuf.Empty\"\000\022R\n\tInd"
-    "exUser\022\026.google.protobuf.Empty\032+.palm.op"
-    "s.router.v1.RouterIndexUserResponse\"\000\022X\n"
-    "\nUpdateUser\0220.palm.ops.router.v1.RouterI"
-    "ndexUserResponse.Item\032\026.google.protobuf."
-    "Empty\"\000\022S\n\nCreateUser\022+.palm.ops.router."
-    "v1.RouterCreateUserRequest\032\026.google.prot"
-    "obuf.Empty\"\0002\201\003\n\004User\022Y\n\006SignIn\022%.palm.o"
-    "ps.router.v1.UserSignInRequest\032&.palm.op"
-    "s.router.v1.UserSignInResponse\"\000\022N\n\007Refr"
-    "esh\022\031.google.protobuf.Duration\032&.palm.op"
-    "s.router.v1.UserSignInResponse\"\000\022I\n\006Upda"
-    "te\022%.palm.ops.router.v1.UserUpdateReques"
-    "t\032\026.google.protobuf.Empty\"\000\022;\n\007SignOut\022\026"
-    ".google.protobuf.Empty\032\026.google.protobuf"
-    ".Empty\"\000\022F\n\004Logs\022\026.google.protobuf.Empty"
-    "\032$.palm.ops.router.v1.UserLogsResponse\"\000"
-    "B^\n0com.github.saturn_xiv.palm.plugins.o"
-    "ps.router.v1P\001Z(github.com/saturn_xiv/al"
-    "oe/ops/router/v2b\006proto3"
+    "file.Dnsmasq\022\020\n\010hostname\030c \001(\t\032\366\006\n\007Netwo"
+    "rk\0224\n\003wan\030\001 \003(\0132\'.palm.ops.router.v1.Pro"
+    "file.Network.Wan\0224\n\003dmz\030\002 \001(\0132\'.palm.ops"
+    ".router.v1.Profile.Network.Dmz\0224\n\003lan\030\003 "
+    "\001(\0132\'.palm.ops.router.v1.Profile.Network"
+    ".Lan\0228\n\005guest\030\004 \001(\0132).palm.ops.router.v1"
+    ".Profile.Network.Guest\032\324\002\n\003Wan\022D\n\ninterf"
+    "aces\030\001 \003(\01320.palm.ops.router.v1.Profile."
+    "Network.Wan.Ethernet\032\006\n\004Dhcp\0329\n\010StaticIp"
+    "\022\017\n\007address\030\001 \001(\t\022\017\n\007gateway\030\002 \001(\t\022\013\n\003dn"
+    "s\030\003 \001(\t\032\303\001\n\010Ethernet\022\014\n\004name\030\001 \001(\t\022\016\n\006de"
+    "vice\030\002 \001(\t\022<\n\004dhcp\030\013 \001(\0132,.palm.ops.rout"
+    "er.v1.Profile.Network.Wan.DhcpH\000\022E\n\tstat"
+    "ic_ip\030\014 \001(\01320.palm.ops.router.v1.Profile"
+    ".Network.Wan.StaticIpH\000\022\016\n\006metric\030c \001(\rB"
+    "\004\n\002ip\032I\n\003Dmz\022\014\n\004name\030\001 \001(\t\022\016\n\006device\030\002 \001"
+    "(\t\022\017\n\007address\030\003 \001(\t\022\023\n\013allow_hosts\030\t \003(\t"
+    "\032\237\001\n\003Lan\022\014\n\004name\030\001 \001(\t\022\016\n\006device\030\002 \001(\t\022\017"
+    "\n\007address\030\003 \001(\t\022\?\n\007clients\030\t \003(\0132..palm."
+    "ops.router.v1.Profile.Network.Lan.Client"
+    "\032(\n\006Client\022\014\n\004user\030\001 \001(\t\022\020\n\010password\030\002 \001"
+    "(\t\032K\n\005Guest\022\014\n\004name\030\001 \001(\t\022\016\n\006device\030\002 \001("
+    "\t\022\017\n\007address\030\003 \001(\t\022\023\n\013block_hosts\030\t \003(\t\032"
+    "\336\002\n\007Dnsmasq\0227\n\005items\030\001 \003(\0132(.palm.ops.ro"
+    "uter.v1.Profile.Dnsmasq.Item\032\231\002\n\004Item\022\016\n"
+    "\006device\030\001 \001(\t\022\017\n\007address\030\002 \001(\t\022F\n\ndhcp_r"
+    "ange\030\003 \001(\01322.palm.ops.router.v1.Profile."
+    "Dnsmasq.Item.DhcpRange\022E\n\nstatic_ips\030\004 \003"
+    "(\01321.palm.ops.router.v1.Profile.Dnsmasq."
+    "Item.StaticIp\022\023\n\013dns_servers\030c \003(\t\032\'\n\tDh"
+    "cpRange\022\r\n\005begin\030\001 \001(\t\022\013\n\003end\030\002 \001(\t\032#\n\010S"
+    "taticIp\022\013\n\003mac\030\001 \001(\t\022\n\n\002ip\030\002 \001(\t\"\207\001\n\007Con"
+    "tact\022\022\n\005phone\030\001 \001(\tH\000\210\001\001\022\023\n\006wechat\030\002 \001(\t"
+    "H\001\210\001\001\022\022\n\005email\030\003 \001(\tH\002\210\001\001\022\024\n\007address\030c \001"
+    "(\tH\003\210\001\001B\010\n\006_phoneB\t\n\007_wechatB\010\n\006_emailB\n"
+    "\n\010_address\"O\n\023RouterSetLanRequest\022(\n\007pay"
+    "load\030\001 \001(\0132\027.palm.ops.router.v1.Lan\022\016\n\006e"
+    "nable\030\002 \001(\010\"O\n\023RouterSetDmzRequest\022(\n\007pa"
+    "yload\030\001 \001(\0132\027.palm.ops.router.v1.Dmz\022\016\n\006"
+    "enable\030\002 \001(\010\"O\n\023RouterSetWanRequest\022(\n\007p"
+    "ayload\030\001 \001(\0132\027.palm.ops.router.v1.Wan\022\016\n"
+    "\006enable\030\002 \001(\010\"b\n\007WanPool\022/\n\005items\030\001 \003(\0132"
+    " .palm.ops.router.v1.WanPool.Item\032&\n\004Ite"
+    "m\022\016\n\006device\030\001 \001(\t\022\016\n\006weight\030\002 \001(\r\"U\n\027Rou"
+    "terCreateUserRequest\022\014\n\004name\030\001 \001(\t\022,\n\007co"
+    "ntact\030\002 \001(\0132\033.palm.ops.router.v1.Contact"
+    "\"\252\001\n\027RouterIndexUserResponse\022\?\n\005items\030\001 "
+    "\003(\01320.palm.ops.router.v1.RouterIndexUser"
+    "Response.Item\032N\n\004Item\022\n\n\002id\030\001 \001(\005\022\014\n\004nam"
+    "e\030\002 \001(\t\022,\n\007contact\030\003 \001(\0132\033.palm.ops.rout"
+    "er.v1.Contact\"\217\001\n\027RouterUpdateHostReques"
+    "t\022\n\n\002id\030\001 \001(\005\022\014\n\004user\030\002 \001(\005\022\r\n\005group\030\003 \001"
+    "(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005fixed\030\005 \001(\010\022\014\n\004zone\030\010 "
+    "\001(\t\022\025\n\010location\030\t \001(\tH\000\210\001\001B\013\n\t_location\""
+    "\246\002\n\027RouterIndexRuleResponse\022\?\n\005items\030\001 \003"
+    "(\01320.palm.ops.router.v1.RouterIndexRuleR"
+    "esponse.Item\032\311\001\n\004Item\022\n\n\002id\030\001 \001(\005\022\014\n\004nam"
+    "e\030\002 \001(\t\022\r\n\005group\030\003 \001(\t\022.\n\002in\030\013 \001(\0132 .pal"
+    "m.ops.router.v1.Rule.InBoundH\000\0220\n\003out\030\014 "
+    "\001(\0132!.palm.ops.router.v1.Rule.OutBoundH\000"
+    "\022+\n\003nat\030\r \001(\0132\034.palm.ops.router.v1.Rule."
+    "NatH\000B\t\n\007payload\"\357\001\n\004Host\022\n\n\002id\030\001 \001(\005\022\014\n"
+    "\004name\030\002 \001(\t\022\013\n\003mac\030\003 \001(\t\022\n\n\002ip\030\004 \001(\t\022\r\n\005"
+    "fixed\030\005 \001(\010\022\r\n\005group\030\t \001(\t\022\025\n\010location\030\013"
+    " \001(\tH\000\210\001\001\022-\n\005owner\030\014 \001(\0132\036.palm.ops.rout"
+    "er.v1.Host.Owner\032C\n\005Owner\022\014\n\004name\030\001 \001(\t\022"
+    ",\n\007contact\030\002 \001(\0132\033.palm.ops.router.v1.Co"
+    "ntactB\013\n\t_location\"\276\010\n\004Rule\022\014\n\004name\030\001 \001("
+    "\t\022\r\n\005group\030\002 \001(\t\022.\n\002in\030\013 \001(\0132 .palm.ops."
+    "router.v1.Rule.InBoundH\000\0220\n\003out\030\014 \001(\0132!."
+    "palm.ops.router.v1.Rule.OutBoundH\000\022+\n\003na"
+    "t\030\r \001(\0132\034.palm.ops.router.v1.Rule.NatH\000\032"
+    "T\n\007InBound\022\016\n\006device\030\001 \001(\t\022\013\n\003tcp\030\002 \001(\010\022"
+    "\014\n\004port\030\003 \001(\r\022\023\n\006source\030\004 \001(\tH\000\210\001\001B\t\n\007_s"
+    "ource\032\246\004\n\010OutBound\0226\n\004host\030\001 \001(\0132&.palm."
+    "ops.router.v1.Rule.OutBound.HostH\000\0228\n\005sp"
+    "eed\030\002 \001(\0132\'.palm.ops.router.v1.Rule.OutB"
+    "ound.SpeedH\000\0226\n\004time\030\003 \001(\0132&.palm.ops.ro"
+    "uter.v1.Rule.OutBound.TimeH\000\032U\n\004Host\022\n\n\002"
+    "to\030\001 \001(\t\0223\n\010protocol\030\002 \001(\0162!.palm.ops.ro"
+    "uter.v1.Rule.Protocol\022\014\n\004port\030\003 \001(\r\032;\n\005S"
+    "peed\022\017\n\002up\030\001 \001(\rH\000\210\001\001\022\021\n\004down\030\002 \001(\rH\001\210\001\001"
+    "B\005\n\003_upB\007\n\005_down\032\320\001\n\004Time\022(\n\004from\030\001 \001(\0132"
+    "\032.google.protobuf.Timestamp\022&\n\002to\030\002 \001(\0132"
+    "\032.google.protobuf.Timestamp\022\016\n\006monday\030\013 "
+    "\001(\010\022\017\n\007tuesday\030\014 \001(\010\022\021\n\twednesday\030\r \001(\010\022"
+    "\020\n\010thursday\030\016 \001(\010\022\016\n\006friday\030\017 \001(\010\022\020\n\010sat"
+    "urday\030\020 \001(\010\022\016\n\006sunday\030\021 \001(\010B\t\n\007payload\032\327"
+    "\001\n\003Nat\0223\n\006source\030\001 \001(\0132#.palm.ops.router"
+    ".v1.Rule.Nat.Source\022\013\n\003tcp\030\002 \001(\010\022=\n\013dest"
+    "ination\030\003 \001(\0132(.palm.ops.router.v1.Rule."
+    "Nat.Destination\032&\n\006Source\022\016\n\006device\030\001 \001("
+    "\t\022\014\n\004port\030\003 \001(\r\032\'\n\013Destination\022\n\n\002ip\030\001 \001"
+    "(\t\022\014\n\004port\030\003 \001(\r\"&\n\010Protocol\022\010\n\004Icmp\020\000\022\007"
+    "\n\003Tcp\020\001\022\007\n\003Udp\020\002B\t\n\007payload\"\332\004\n\024RouterSt"
+    "atusResponse\022L\n\ninterfaces\030\001 \003(\01328.palm."
+    "ops.router.v1.RouterStatusResponse.Inter"
+    "facesEntry\022$\n\003lan\030\013 \001(\0132\027.palm.ops.route"
+    "r.v1.Lan\022$\n\003dmz\030\014 \001(\0132\027.palm.ops.router."
+    "v1.Dmz\022$\n\003dns\030\r \001(\0132\027.palm.ops.router.v1"
+    ".Dns\022$\n\003wan\030\016 \003(\0132\027.palm.ops.router.v1.W"
+    "an\022-\n\010wan_pool\030\017 \001(\0132\033.palm.ops.router.v"
+    "1.WanPool\022\'\n\005rules\030\025 \003(\0132\030.palm.ops.rout"
+    "er.v1.Rule\022\'\n\005hosts\030\026 \003(\0132\030.palm.ops.rou"
+    "ter.v1.Host\0227\n\002ip\030a \001(\0132+.palm.ops.route"
+    "r.v1.RouterStatusResponse.Ip\022\020\n\010firewall"
+    "\030b \001(\t\022)\n\006uptime\030c \001(\0132\031.google.protobuf"
+    ".Duration\0321\n\017InterfacesEntry\022\013\n\003key\030\001 \001("
+    "\t\022\r\n\005value\030\002 \001(\t:\0028\001\0322\n\002Ip\022\017\n\007address\030\001 "
+    "\001(\t\022\r\n\005route\030\002 \001(\t\022\014\n\004rule\030\003 \001(\t\"C\n\003Lan\022"
+    "\016\n\006device\030\001 \001(\t\022\013\n\003mac\030\002 \001(\t\022\016\n\006metric\030\003"
+    " \001(\r\022\017\n\007address\030\013 \001(\t\"C\n\003Dmz\022\016\n\006device\030\001"
+    " \001(\t\022\013\n\003mac\030\002 \001(\t\022\016\n\006metric\030\003 \001(\r\022\017\n\007add"
+    "ress\030\013 \001(\t\"\256\001\n\003Wan\022\016\n\006device\030\001 \001(\t\022\016\n\006me"
+    "tric\030\002 \001(\r\022\014\n\004name\030\t \001(\t\022\013\n\003mac\030\013 \001(\t\022(\n"
+    "\004dhcp\030\025 \001(\0132\030.palm.ops.router.v1.DhcpH\000\022"
+    ",\n\006static\030\026 \001(\0132\032.palm.ops.router.v1.Sta"
+    "ticH\000\022\016\n\006enable\030c \001(\010B\004\n\002ip\"\022\n\004Dhcp\022\n\n\002v"
+    "6\030\001 \001(\010\"T\n\006Static\022\017\n\007address\030\001 \001(\t\022\017\n\007ga"
+    "teway\030\003 \001(\t\022\014\n\004dns1\030\004 \001(\t\022\021\n\004dns2\030\005 \001(\tH"
+    "\000\210\001\001B\007\n\005_dns2\"\024\n\003Dns\022\r\n\005items\030\001 \003(\t\"1\n\013U"
+    "serProfile\022\020\n\010nickname\030\001 \001(\t\022\020\n\010password"
+    "\030\002 \001(\t\"j\n\021UserSignInRequest\022-\n\004user\030\001 \001("
+    "\0132\037.palm.ops.router.v1.UserProfile\022&\n\003tt"
+    "l\030\t \001(\0132\031.google.protobuf.Duration\"#\n\022Us"
+    "erSignInResponse\022\r\n\005token\030\001 \001(\t\"s\n\021UserU"
+    "pdateRequest\0220\n\007current\030\001 \001(\0132\037.palm.ops"
+    ".router.v1.UserProfile\022,\n\003new\030\002 \001(\0132\037.pa"
+    "lm.ops.router.v1.UserProfile\"!\n\020UserLogs"
+    "Response\022\r\n\005items\030\001 \003(\t2\376\010\n\006Router\022:\n\006Re"
+    "boot\022\026.google.protobuf.Empty\032\026.google.pr"
+    "otobuf.Empty\"\000\0229\n\005Apply\022\026.google.protobu"
+    "f.Empty\032\026.google.protobuf.Empty\"\000\022L\n\006Sta"
+    "tus\022\026.google.protobuf.Empty\032(.palm.ops.r"
+    "outer.v1.RouterStatusResponse\"\000\022;\n\006SetDn"
+    "s\022\027.palm.ops.router.v1.Dns\032\026.google.prot"
+    "obuf.Empty\"\000\022K\n\006SetWan\022\'.palm.ops.router"
+    ".v1.RouterSetWanRequest\032\026.google.protobu"
+    "f.Empty\"\000\022C\n\nSetWanPool\022\033.palm.ops.route"
+    "r.v1.WanPool\032\026.google.protobuf.Empty\"\000\022K"
+    "\n\006SetLan\022\'.palm.ops.router.v1.RouterSetL"
+    "anRequest\032\026.google.protobuf.Empty\"\000\022K\n\006S"
+    "etDmz\022\'.palm.ops.router.v1.RouterSetDmzR"
+    "equest\032\026.google.protobuf.Empty\"\000\022@\n\nCrea"
+    "teRule\022\030.palm.ops.router.v1.Rule\032\026.googl"
+    "e.protobuf.Empty\"\000\022X\n\nUpdateRule\0220.palm."
+    "ops.router.v1.RouterIndexRuleResponse.It"
+    "em\032\026.google.protobuf.Empty\"\000\022R\n\tIndexRul"
+    "e\022\026.google.protobuf.Empty\032+.palm.ops.rou"
+    "ter.v1.RouterIndexRuleResponse\"\000\022S\n\nUpda"
+    "teHost\022+.palm.ops.router.v1.RouterUpdate"
+    "HostRequest\032\026.google.protobuf.Empty\"\000\022R\n"
+    "\tIndexUser\022\026.google.protobuf.Empty\032+.pal"
+    "m.ops.router.v1.RouterIndexUserResponse\""
+    "\000\022X\n\nUpdateUser\0220.palm.ops.router.v1.Rou"
+    "terIndexUserResponse.Item\032\026.google.proto"
+    "buf.Empty\"\000\022S\n\nCreateUser\022+.palm.ops.rou"
+    "ter.v1.RouterCreateUserRequest\032\026.google."
+    "protobuf.Empty\"\0002\201\003\n\004User\022Y\n\006SignIn\022%.pa"
+    "lm.ops.router.v1.UserSignInRequest\032&.pal"
+    "m.ops.router.v1.UserSignInResponse\"\000\022N\n\007"
+    "Refresh\022\031.google.protobuf.Duration\032&.pal"
+    "m.ops.router.v1.UserSignInResponse\"\000\022I\n\006"
+    "Update\022%.palm.ops.router.v1.UserUpdateRe"
+    "quest\032\026.google.protobuf.Empty\"\000\022;\n\007SignO"
+    "ut\022\026.google.protobuf.Empty\032\026.google.prot"
+    "obuf.Empty\"\000\022F\n\004Logs\022\026.google.protobuf.E"
+    "mpty\032$.palm.ops.router.v1.UserLogsRespon"
+    "se\"\000B^\n0com.github.saturn_xiv.palm.plugi"
+    "ns.ops.router.v1P\001Z(github.com/saturn_xi"
+    "v/aloe/ops/router/v2b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_ops_2drouter_2eproto_deps[3] =
     {
@@ -2190,7 +2190,7 @@ static ::absl::once_flag descriptor_table_ops_2drouter_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ops_2drouter_2eproto = {
     false,
     false,
-    7064,
+    7068,
     descriptor_table_protodef_ops_2drouter_2eproto,
     "ops-router.proto",
     &descriptor_table_ops_2drouter_2eproto_once,
@@ -4139,32 +4139,25 @@ class Profile_Network::_Internal {
   using HasBits = decltype(std::declval<Profile_Network>()._impl_._has_bits_);
   static constexpr ::int32_t kHasBitsOffset =
     8 * PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_._has_bits_);
-  static const ::palm::ops::router::v1::Profile_Network_Wan& wan(const Profile_Network* msg);
-  static void set_has_wan(HasBits* has_bits) {
+  static const ::palm::ops::router::v1::Profile_Network_Dmz& dmz(const Profile_Network* msg);
+  static void set_has_dmz(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
   static const ::palm::ops::router::v1::Profile_Network_Lan& lan(const Profile_Network* msg);
   static void set_has_lan(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
-  static const ::palm::ops::router::v1::Profile_Network_Dmz& dmz(const Profile_Network* msg);
-  static void set_has_dmz(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
-  }
   static const ::palm::ops::router::v1::Profile_Network_Guest& guest(const Profile_Network* msg);
   static void set_has_guest(HasBits* has_bits) {
-    (*has_bits)[0] |= 8u;
+    (*has_bits)[0] |= 4u;
   }
 };
 
-const ::palm::ops::router::v1::Profile_Network_Wan& Profile_Network::_Internal::wan(const Profile_Network* msg) {
-  return *msg->_impl_.wan_;
+const ::palm::ops::router::v1::Profile_Network_Dmz& Profile_Network::_Internal::dmz(const Profile_Network* msg) {
+  return *msg->_impl_.dmz_;
 }
 const ::palm::ops::router::v1::Profile_Network_Lan& Profile_Network::_Internal::lan(const Profile_Network* msg) {
   return *msg->_impl_.lan_;
-}
-const ::palm::ops::router::v1::Profile_Network_Dmz& Profile_Network::_Internal::dmz(const Profile_Network* msg) {
-  return *msg->_impl_.dmz_;
 }
 const ::palm::ops::router::v1::Profile_Network_Guest& Profile_Network::_Internal::guest(const Profile_Network* msg) {
   return *msg->_impl_.guest_;
@@ -4179,7 +4172,7 @@ inline PROTOBUF_NDEBUG_INLINE Profile_Network::Impl_::Impl_(
     const Impl_& from)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
-        name_(arena, from.name_) {}
+        wan_{visibility, arena, from.wan_} {}
 
 Profile_Network::Profile_Network(
     ::google::protobuf::Arena* arena,
@@ -4191,16 +4184,13 @@ Profile_Network::Profile_Network(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
   ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.wan_ = (cached_has_bits & 0x00000001u)
-                ? CreateMaybeMessage<::palm::ops::router::v1::Profile_Network_Wan>(arena, *from._impl_.wan_)
+  _impl_.dmz_ = (cached_has_bits & 0x00000001u)
+                ? CreateMaybeMessage<::palm::ops::router::v1::Profile_Network_Dmz>(arena, *from._impl_.dmz_)
                 : nullptr;
   _impl_.lan_ = (cached_has_bits & 0x00000002u)
                 ? CreateMaybeMessage<::palm::ops::router::v1::Profile_Network_Lan>(arena, *from._impl_.lan_)
                 : nullptr;
-  _impl_.dmz_ = (cached_has_bits & 0x00000004u)
-                ? CreateMaybeMessage<::palm::ops::router::v1::Profile_Network_Dmz>(arena, *from._impl_.dmz_)
-                : nullptr;
-  _impl_.guest_ = (cached_has_bits & 0x00000008u)
+  _impl_.guest_ = (cached_has_bits & 0x00000004u)
                 ? CreateMaybeMessage<::palm::ops::router::v1::Profile_Network_Guest>(arena, *from._impl_.guest_)
                 : nullptr;
 
@@ -4210,15 +4200,15 @@ inline PROTOBUF_NDEBUG_INLINE Profile_Network::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
-        name_(arena) {}
+        wan_{visibility, arena} {}
 
 inline void Profile_Network::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, wan_),
+               offsetof(Impl_, dmz_),
            0,
            offsetof(Impl_, guest_) -
-               offsetof(Impl_, wan_) +
+               offsetof(Impl_, dmz_) +
                sizeof(Impl_::guest_));
 }
 Profile_Network::~Profile_Network() {
@@ -4228,10 +4218,8 @@ Profile_Network::~Profile_Network() {
 }
 inline void Profile_Network::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.name_.Destroy();
-  delete _impl_.wan_;
-  delete _impl_.lan_;
   delete _impl_.dmz_;
+  delete _impl_.lan_;
   delete _impl_.guest_;
   _impl_.~Impl_();
 }
@@ -4243,22 +4231,18 @@ PROTOBUF_NOINLINE void Profile_Network::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.name_.ClearToEmpty();
+  _impl_.wan_.Clear();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
-      ABSL_DCHECK(_impl_.wan_ != nullptr);
-      _impl_.wan_->Clear();
+      ABSL_DCHECK(_impl_.dmz_ != nullptr);
+      _impl_.dmz_->Clear();
     }
     if (cached_has_bits & 0x00000002u) {
       ABSL_DCHECK(_impl_.lan_ != nullptr);
       _impl_.lan_->Clear();
     }
     if (cached_has_bits & 0x00000004u) {
-      ABSL_DCHECK(_impl_.dmz_ != nullptr);
-      _impl_.dmz_->Clear();
-    }
-    if (cached_has_bits & 0x00000008u) {
       ABSL_DCHECK(_impl_.guest_ != nullptr);
       _impl_.guest_->Clear();
     }
@@ -4275,65 +4259,53 @@ const char* Profile_Network::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 4, 47, 2> Profile_Network::_table_ = {
+const ::_pbi::TcParseTable<2, 4, 4, 0, 2> Profile_Network::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_._has_bits_),
     0, // no _extensions_
-    14, 56,  // max_field_number, fast_idx_mask
+    4, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294951934,  // skipmap
+    4294967280,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
+    4,  // num_field_entries
     4,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     &_Profile_Network_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // string name = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.name_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    // .palm.ops.router.v1.Profile.Network.Wan wan = 11;
+    // .palm.ops.router.v1.Profile.Network.Guest guest = 4;
     {::_pbi::TcParser::FastMtS1,
-     {90, 0, 0, PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.wan_)}},
-    // .palm.ops.router.v1.Profile.Network.Lan lan = 12;
+     {34, 2, 3, PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.guest_)}},
+    // repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.wan_)}},
+    // .palm.ops.router.v1.Profile.Network.Dmz dmz = 2;
     {::_pbi::TcParser::FastMtS1,
-     {98, 1, 1, PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.lan_)}},
-    // .palm.ops.router.v1.Profile.Network.Dmz dmz = 13;
+     {18, 0, 1, PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.dmz_)}},
+    // .palm.ops.router.v1.Profile.Network.Lan lan = 3;
     {::_pbi::TcParser::FastMtS1,
-     {106, 2, 2, PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.dmz_)}},
-    // .palm.ops.router.v1.Profile.Network.Guest guest = 14;
-    {::_pbi::TcParser::FastMtS1,
-     {114, 3, 3, PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.guest_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+     {26, 1, 2, PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.lan_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // string name = 1;
-    {PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.name_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .palm.ops.router.v1.Profile.Network.Wan wan = 11;
-    {PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.wan_), _Internal::kHasBitsOffset + 0, 0,
+    // repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;
+    {PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.wan_), -1, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .palm.ops.router.v1.Profile.Network.Dmz dmz = 2;
+    {PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.dmz_), _Internal::kHasBitsOffset + 0, 1,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.Profile.Network.Lan lan = 12;
-    {PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.lan_), _Internal::kHasBitsOffset + 1, 1,
+    // .palm.ops.router.v1.Profile.Network.Lan lan = 3;
+    {PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.lan_), _Internal::kHasBitsOffset + 1, 2,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.Profile.Network.Dmz dmz = 13;
-    {PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.dmz_), _Internal::kHasBitsOffset + 2, 2,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .palm.ops.router.v1.Profile.Network.Guest guest = 14;
-    {PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.guest_), _Internal::kHasBitsOffset + 3, 3,
+    // .palm.ops.router.v1.Profile.Network.Guest guest = 4;
+    {PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.guest_), _Internal::kHasBitsOffset + 2, 3,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Profile_Network_Wan>()},
-    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Profile_Network_Lan>()},
     {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Profile_Network_Dmz>()},
+    {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Profile_Network_Lan>()},
     {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Profile_Network_Guest>()},
   }}, {{
-    "\42\4\0\0\0\0\0\0"
-    "palm.ops.router.v1.Profile.Network"
-    "name"
   }},
 };
 
@@ -4344,40 +4316,33 @@ const ::_pbi::TcParseTable<3, 5, 4, 47, 2> Profile_Network::_table_ = {
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  // string name = 1;
-  if (!this->_internal_name().empty()) {
-    const std::string& _s = this->_internal_name();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Profile.Network.name");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+  // repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_wan_size()); i < n; i++) {
+    const auto& repfield = this->_internal_wan().Get(i);
+    target = ::google::protobuf::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   cached_has_bits = _impl_._has_bits_[0];
-  // .palm.ops.router.v1.Profile.Network.Wan wan = 11;
+  // .palm.ops.router.v1.Profile.Network.Dmz dmz = 2;
   if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        11, _Internal::wan(this),
-        _Internal::wan(this).GetCachedSize(), target, stream);
-  }
-
-  // .palm.ops.router.v1.Profile.Network.Lan lan = 12;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        12, _Internal::lan(this),
-        _Internal::lan(this).GetCachedSize(), target, stream);
-  }
-
-  // .palm.ops.router.v1.Profile.Network.Dmz dmz = 13;
-  if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        13, _Internal::dmz(this),
+        2, _Internal::dmz(this),
         _Internal::dmz(this).GetCachedSize(), target, stream);
   }
 
-  // .palm.ops.router.v1.Profile.Network.Guest guest = 14;
-  if (cached_has_bits & 0x00000008u) {
+  // .palm.ops.router.v1.Profile.Network.Lan lan = 3;
+  if (cached_has_bits & 0x00000002u) {
     target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-        14, _Internal::guest(this),
+        3, _Internal::lan(this),
+        _Internal::lan(this).GetCachedSize(), target, stream);
+  }
+
+  // .palm.ops.router.v1.Profile.Network.Guest guest = 4;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+        4, _Internal::guest(this),
         _Internal::guest(this).GetCachedSize(), target, stream);
   }
 
@@ -4398,34 +4363,28 @@ const ::_pbi::TcParseTable<3, 5, 4, 47, 2> Profile_Network::_table_ = {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string name = 1;
-  if (!this->_internal_name().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_name());
+  // repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;
+  total_size += 1UL * this->_internal_wan_size();
+  for (const auto& msg : this->_internal_wan()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
   }
-
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
-    // .palm.ops.router.v1.Profile.Network.Wan wan = 11;
+  if (cached_has_bits & 0x00000007u) {
+    // .palm.ops.router.v1.Profile.Network.Dmz dmz = 2;
     if (cached_has_bits & 0x00000001u) {
       total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.wan_);
+          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.dmz_);
     }
 
-    // .palm.ops.router.v1.Profile.Network.Lan lan = 12;
+    // .palm.ops.router.v1.Profile.Network.Lan lan = 3;
     if (cached_has_bits & 0x00000002u) {
       total_size +=
           1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.lan_);
     }
 
-    // .palm.ops.router.v1.Profile.Network.Dmz dmz = 13;
+    // .palm.ops.router.v1.Profile.Network.Guest guest = 4;
     if (cached_has_bits & 0x00000004u) {
-      total_size +=
-          1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.dmz_);
-    }
-
-    // .palm.ops.router.v1.Profile.Network.Guest guest = 14;
-    if (cached_has_bits & 0x00000008u) {
       total_size +=
           1 + ::google::protobuf::internal::WireFormatLite::MessageSize(*_impl_.guest_);
     }
@@ -4450,24 +4409,19 @@ void Profile_Network::MergeImpl(::google::protobuf::Message& to_msg, const ::goo
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_name().empty()) {
-    _this->_internal_set_name(from._internal_name());
-  }
+  _this->_internal_mutable_wan()->MergeFrom(
+      from._internal_wan());
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000000fu) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
-      _this->_internal_mutable_wan()->::palm::ops::router::v1::Profile_Network_Wan::MergeFrom(
-          from._internal_wan());
+      _this->_internal_mutable_dmz()->::palm::ops::router::v1::Profile_Network_Dmz::MergeFrom(
+          from._internal_dmz());
     }
     if (cached_has_bits & 0x00000002u) {
       _this->_internal_mutable_lan()->::palm::ops::router::v1::Profile_Network_Lan::MergeFrom(
           from._internal_lan());
     }
     if (cached_has_bits & 0x00000004u) {
-      _this->_internal_mutable_dmz()->::palm::ops::router::v1::Profile_Network_Dmz::MergeFrom(
-          from._internal_dmz());
-    }
-    if (cached_has_bits & 0x00000008u) {
       _this->_internal_mutable_guest()->::palm::ops::router::v1::Profile_Network_Guest::MergeFrom(
           from._internal_guest());
     }
@@ -4491,17 +4445,15 @@ PROTOBUF_NOINLINE bool Profile_Network::IsInitialized() const {
 }
 void Profile_Network::InternalSwap(Profile_Network* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  _impl_.wan_.InternalSwap(&other->_impl_.wan_);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.guest_)
       + sizeof(Profile_Network::_impl_.guest_)
-      - PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.wan_)>(
-          reinterpret_cast<char*>(&_impl_.wan_),
-          reinterpret_cast<char*>(&other->_impl_.wan_));
+      - PROTOBUF_FIELD_OFFSET(Profile_Network, _impl_.dmz_)>(
+          reinterpret_cast<char*>(&_impl_.dmz_),
+          reinterpret_cast<char*>(&other->_impl_.dmz_));
 }
 
 ::google::protobuf::Metadata Profile_Network::GetMetadata() const {
@@ -5483,7 +5435,8 @@ inline PROTOBUF_NDEBUG_INLINE Profile::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from)
       : _has_bits_{from._has_bits_},
-        _cached_size_{0} {}
+        _cached_size_{0},
+        hostname_(arena, from.hostname_) {}
 
 Profile::Profile(
     ::google::protobuf::Arena* arena,
@@ -5507,7 +5460,8 @@ Profile::Profile(
 inline PROTOBUF_NDEBUG_INLINE Profile::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
+      : _cached_size_{0},
+        hostname_(arena) {}
 
 inline void Profile::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
@@ -5525,6 +5479,7 @@ Profile::~Profile() {
 }
 inline void Profile::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.hostname_.Destroy();
   delete _impl_.network_;
   delete _impl_.dnsmasq_;
   _impl_.~Impl_();
@@ -5537,6 +5492,7 @@ PROTOBUF_NOINLINE void Profile::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.hostname_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
@@ -5560,27 +5516,33 @@ const char* Profile::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 2, 0, 2> Profile::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 2, 43, 7> Profile::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(Profile, _impl_._has_bits_),
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    99, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
     4294967292,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    3,  // num_field_entries
     2,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     &_Profile_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // .palm.ops.router.v1.Profile.Dnsmasq dnsmasq = 2;
-    {::_pbi::TcParser::FastMtS1,
-     {18, 1, 1, PROTOBUF_FIELD_OFFSET(Profile, _impl_.dnsmasq_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // .palm.ops.router.v1.Profile.Network network = 1;
     {::_pbi::TcParser::FastMtS1,
      {10, 0, 0, PROTOBUF_FIELD_OFFSET(Profile, _impl_.network_)}},
+    // .palm.ops.router.v1.Profile.Dnsmasq dnsmasq = 2;
+    {::_pbi::TcParser::FastMtS1,
+     {18, 1, 1, PROTOBUF_FIELD_OFFSET(Profile, _impl_.dnsmasq_)}},
+    // string hostname = 99;
+    {::_pbi::TcParser::FastUS2,
+     {1690, 63, 0, PROTOBUF_FIELD_OFFSET(Profile, _impl_.hostname_)}},
   }}, {{
+    99, 0, 1,
+    65534, 2,
     65535, 65535
   }}, {{
     // .palm.ops.router.v1.Profile.Network network = 1;
@@ -5589,10 +5551,16 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> Profile::_table_ = {
     // .palm.ops.router.v1.Profile.Dnsmasq dnsmasq = 2;
     {PROTOBUF_FIELD_OFFSET(Profile, _impl_.dnsmasq_), _Internal::kHasBitsOffset + 1, 1,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string hostname = 99;
+    {PROTOBUF_FIELD_OFFSET(Profile, _impl_.hostname_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }}, {{
     {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Profile_Network>()},
     {::_pbi::TcParser::GetTable<::palm::ops::router::v1::Profile_Dnsmasq>()},
   }}, {{
+    "\32\0\0\10\0\0\0\0"
+    "palm.ops.router.v1.Profile"
+    "hostname"
   }},
 };
 
@@ -5618,6 +5586,14 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> Profile::_table_ = {
         _Internal::dnsmasq(this).GetCachedSize(), target, stream);
   }
 
+  // string hostname = 99;
+  if (!this->_internal_hostname().empty()) {
+    const std::string& _s = this->_internal_hostname();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "palm.ops.router.v1.Profile.hostname");
+    target = stream->WriteStringMaybeAliased(99, _s, target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -5634,6 +5610,12 @@ const ::_pbi::TcParseTable<1, 2, 2, 0, 2> Profile::_table_ = {
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // string hostname = 99;
+  if (!this->_internal_hostname().empty()) {
+    total_size += 2 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_hostname());
+  }
 
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
@@ -5669,6 +5651,9 @@ void Profile::MergeImpl(::google::protobuf::Message& to_msg, const ::google::pro
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (!from._internal_hostname().empty()) {
+    _this->_internal_set_hostname(from._internal_hostname());
+  }
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
@@ -5699,8 +5684,11 @@ PROTOBUF_NOINLINE bool Profile::IsInitialized() const {
 }
 void Profile::InternalSwap(Profile* PROTOBUF_RESTRICT other) {
   using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.hostname_, &other->_impl_.hostname_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Profile, _impl_.dnsmasq_)
       + sizeof(Profile::_impl_.dnsmasq_)

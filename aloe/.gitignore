@@ -1,5 +1,7 @@
 /*.toml
+/*.sh
 /.stop
 /go.sum
 
 /aloe
+/tmp/

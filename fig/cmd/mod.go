@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/BurntSushi/toml"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -64,11 +63,13 @@ func init() {
 
 			log.Debugf("run on debug mode")
 			log.Debugf("load configuration from %s", gl_config)
-			var config env.Config
-			if _, err := toml.DecodeFile(gl_config, &config); err != nil {
-				log.Fatalf("parse file: %s", err)
+
+			config, err := env.NewConfig(gl_config)
+			if err != nil {
+				log.Fatal(err)
 			}
-			if err := launch_worker(config.RabbitMq.URI(), gl_worker_queue_name); err != nil {
+
+			if err = launch_worker(config.RabbitMq.URI(), gl_worker_queue_name); err != nil {
 				log.Fatal(err)
 				return
 			}
@@ -90,9 +91,10 @@ func init() {
 
 			log.Debugf("run on debug mode")
 			log.Debugf("load configuration from %s", gl_config)
-			var config env.Config
-			if _, err := toml.DecodeFile(gl_config, &config); err != nil {
-				log.Fatalf("parse file: %s", err)
+
+			config, err := env.NewConfig(gl_config)
+			if err != nil {
+				log.Fatal(err)
 			}
 
 			aes, hmac, jwt, err := config.OpenSecrets()
@@ -137,11 +139,11 @@ func init() {
 
 			log.Debugf("run on debug mode")
 			log.Debugf("load configuration from %s", gl_config)
-			var config env.Config
-			if _, err := toml.DecodeFile(gl_config, &config); err != nil {
+			config, err := env.NewConfig(gl_config)
+			if err != nil {
 				log.Fatalf("parse file: %s", err)
 			}
-			if err := launch_http_server(gl_http_port); err != nil {
+			if err = launch_http_server(gl_http_port, config); err != nil {
 				log.Fatalf("start HTTP server: %s", err)
 			}
 		},

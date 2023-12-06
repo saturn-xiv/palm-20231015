@@ -51,11 +51,10 @@ message Profile {
       repeated string block_hosts = 9;
     }
 
-    string name = 1;
-    Wan wan = 11;
-    Lan lan = 12;
-    Dmz dmz = 13;
-    Guest guest = 14;
+    repeated Wan wan = 1;
+    Dmz dmz = 2;
+    Lan lan = 3;
+    Guest guest = 4;
   }
 
   message Dnsmasq {
@@ -81,6 +80,7 @@ message Profile {
 
   Network network = 1;
   Dnsmasq dnsmasq = 2;
+  string hostname = 99;
 }
 
 message Contact {

@@ -14,23 +14,19 @@ use Google\Protobuf\Internal\GPBUtil;
 class Network extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>string name = 1;</code>
+     * Generated from protobuf field <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
      */
-    protected $name = '';
+    private $wan;
     /**
-     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
-     */
-    protected $wan = null;
-    /**
-     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
-     */
-    protected $lan = null;
-    /**
-     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
+     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
      */
     protected $dmz = null;
     /**
-     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
+     */
+    protected $lan = null;
+    /**
+     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
      */
     protected $guest = null;
 
@@ -40,10 +36,9 @@ class Network extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type string $name
-     *     @type \Palm\Ops\Router\V1\Profile\Network\Wan $wan
-     *     @type \Palm\Ops\Router\V1\Profile\Network\Lan $lan
+     *     @type array<\Palm\Ops\Router\V1\Profile\Network\Wan>|\Google\Protobuf\Internal\RepeatedField $wan
      *     @type \Palm\Ops\Router\V1\Profile\Network\Dmz $dmz
+     *     @type \Palm\Ops\Router\V1\Profile\Network\Lan $lan
      *     @type \Palm\Ops\Router\V1\Profile\Network\Guest $guest
      * }
      */
@@ -53,93 +48,29 @@ class Network extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>string name = 1;</code>
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Generated from protobuf field <code>string name = 1;</code>
-     * @param string $var
-     * @return $this
-     */
-    public function setName($var)
-    {
-        GPBUtil::checkString($var, True);
-        $this->name = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
-     * @return \Palm\Ops\Router\V1\Profile\Network\Wan|null
+     * Generated from protobuf field <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
     public function getWan()
     {
         return $this->wan;
     }
 
-    public function hasWan()
-    {
-        return isset($this->wan);
-    }
-
-    public function clearWan()
-    {
-        unset($this->wan);
-    }
-
     /**
-     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Wan wan = 11;</code>
-     * @param \Palm\Ops\Router\V1\Profile\Network\Wan $var
+     * Generated from protobuf field <code>repeated .palm.ops.router.v1.Profile.Network.Wan wan = 1;</code>
+     * @param array<\Palm\Ops\Router\V1\Profile\Network\Wan>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setWan($var)
     {
-        GPBUtil::checkMessage($var, \Palm\Ops\Router\V1\Profile\Network\Wan::class);
-        $this->wan = $var;
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Palm\Ops\Router\V1\Profile\Network\Wan::class);
+        $this->wan = $arr;
 
         return $this;
     }
 
     /**
-     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
-     * @return \Palm\Ops\Router\V1\Profile\Network\Lan|null
-     */
-    public function getLan()
-    {
-        return $this->lan;
-    }
-
-    public function hasLan()
-    {
-        return isset($this->lan);
-    }
-
-    public function clearLan()
-    {
-        unset($this->lan);
-    }
-
-    /**
-     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Lan lan = 12;</code>
-     * @param \Palm\Ops\Router\V1\Profile\Network\Lan $var
-     * @return $this
-     */
-    public function setLan($var)
-    {
-        GPBUtil::checkMessage($var, \Palm\Ops\Router\V1\Profile\Network\Lan::class);
-        $this->lan = $var;
-
-        return $this;
-    }
-
-    /**
-     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
+     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
      * @return \Palm\Ops\Router\V1\Profile\Network\Dmz|null
      */
     public function getDmz()
@@ -158,7 +89,7 @@ class Network extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 13;</code>
+     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Dmz dmz = 2;</code>
      * @param \Palm\Ops\Router\V1\Profile\Network\Dmz $var
      * @return $this
      */
@@ -171,7 +102,39 @@ class Network extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
+     * @return \Palm\Ops\Router\V1\Profile\Network\Lan|null
+     */
+    public function getLan()
+    {
+        return $this->lan;
+    }
+
+    public function hasLan()
+    {
+        return isset($this->lan);
+    }
+
+    public function clearLan()
+    {
+        unset($this->lan);
+    }
+
+    /**
+     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Lan lan = 3;</code>
+     * @param \Palm\Ops\Router\V1\Profile\Network\Lan $var
+     * @return $this
+     */
+    public function setLan($var)
+    {
+        GPBUtil::checkMessage($var, \Palm\Ops\Router\V1\Profile\Network\Lan::class);
+        $this->lan = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
      * @return \Palm\Ops\Router\V1\Profile\Network\Guest|null
      */
     public function getGuest()
@@ -190,7 +153,7 @@ class Network extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Guest guest = 14;</code>
+     * Generated from protobuf field <code>.palm.ops.router.v1.Profile.Network.Guest guest = 4;</code>
      * @param \Palm\Ops\Router\V1\Profile\Network\Guest $var
      * @return $this
      */

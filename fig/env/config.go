@@ -4,6 +4,7 @@ import (
 	"errors"
 	"os"
 
+	"github.com/pelletier/go-toml/v2"
 	log "github.com/sirupsen/logrus"
 	"github.com/tink-crypto/tink-go/v2/aead"
 	"github.com/tink-crypto/tink-go/v2/insecurecleartextkeyset"
@@ -17,6 +18,20 @@ type Config struct {
 	Redis      Redis      `toml:"redis"`
 	Postgresql PostgreSql `toml:"postgresql"`
 	RabbitMq   RabbitMq   `toml:"rabbitmq"`
+}
+
+func NewConfig(name string) (*Config, error) {
+	file, err := os.Open(name)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	decoder := toml.NewDecoder(file)
+	var config Config
+	if err = decoder.Decode(&config); err != nil {
+		return nil, err
+	}
+	return &config, err
 }
 
 func (p *Config) OpenSecrets() (*Aes, *HMac, *Jwt, error) {

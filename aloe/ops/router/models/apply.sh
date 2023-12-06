@@ -7,7 +7,7 @@ echo "setup system"
 modprobe bonding miimon=100  mode=6
 # modinfo bonding
 
-echo "{{ .Name }}" > /etc/hostname
+echo "{{ .Hostname }}" > /etc/hostname
 
 cat > /etc/locale.gen <<EOF
 en_US.UTF-8 UTF-8
@@ -31,7 +31,7 @@ then
 fi
 mkdir -p /etc/systemd/network
 
-{{ range .Wan }}
+{{ range .Network.Wan }}
     cat > /etc/systemd/network/20-wan-{{ .Device }}.network <<EOF
 [Match]
 Name={{ .Device }}
@@ -52,21 +52,21 @@ Metric={{ .Metric }}
 EOF
 {{ end }}
 
-cat > /etc/systemd/network/20-dmz-{{ .Dmz.Device }}.network <<EOF
+cat > /etc/systemd/network/20-dmz-{{ .Network.Dmz.Device }}.network <<EOF
 [Match]
 Name={{ .Device }}
 
 [Network]
 Address={{ .Address }}
 EOF
-cat > /etc/systemd/network/20-lan-{{ .Lan.Device }}.network <<EOF
+cat > /etc/systemd/network/20-lan-{{ .Network.Lan.Device }}.network <<EOF
 [Match]
 Name={{ .Device }}
 
 [Network]
 Address={{ .Address }}
 EOF
-cat > /etc/systemd/network/20-guest-{{ .Guest.Device }}.network <<EOF
+cat > /etc/systemd/network/20-guest-{{ .Network.Guest.Device }}.network <<EOF
 [Match]
 Name={{ .Device }}
 
@@ -135,7 +135,6 @@ ProtectSystem=full
 
 [Install]
 WantedBy=multi-user.target
-{{ end }}
 EOF
 
 systemctl enable dnsmasq-{{ .Device }}

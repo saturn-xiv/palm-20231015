@@ -3,7 +3,6 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/BurntSushi/toml"
 	"github.com/saturn_xiv/aloe/ops/router/env"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -57,11 +56,11 @@ func init() {
 
 			log.Debugf("run on debug mode")
 			log.Debugf("load configuration from %s", gl_config)
-			var config env.Config
-			if _, err := toml.DecodeFile(gl_config, &config); err != nil {
+			config, err := env.NewEnvironment(gl_config)
+			if err != nil {
 				log.Fatalf("parse file: %s", err)
 			}
-			if err := launch_dump(&config); err != nil {
+			if err := launch_dump(config); err != nil {
 				log.Fatal(err)
 				return
 			}
@@ -81,12 +80,12 @@ func init() {
 
 			log.Debugf("run on debug mode")
 			log.Debugf("load configuration from %s", gl_config)
-			var config env.Config
-			if _, err := toml.DecodeFile(gl_config, &config); err != nil {
+			config, err := env.NewRpc(gl_config)
+			if err != nil {
 				log.Fatalf("parse file: %s", err)
 			}
 
-			if err := launch_rpc_server(&config, gl_rpc_port); err != nil {
+			if err := launch_rpc_server(config, gl_rpc_port); err != nil {
 				log.Fatalf("start gRPC server: %s", err)
 			}
 		},

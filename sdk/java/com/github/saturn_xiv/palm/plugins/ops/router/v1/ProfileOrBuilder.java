@@ -37,4 +37,16 @@ public interface ProfileOrBuilder extends
    * <code>.palm.ops.router.v1.Profile.Dnsmasq dnsmasq = 2;</code>
    */
   com.github.saturn_xiv.palm.plugins.ops.router.v1.Profile.DnsmasqOrBuilder getDnsmasqOrBuilder();
+
+  /**
+   * <code>string hostname = 99;</code>
+   * @return The hostname.
+   */
+  java.lang.String getHostname();
+  /**
+   * <code>string hostname = 99;</code>
+   * @return The bytes for hostname.
+   */
+  com.google.protobuf.ByteString
+      getHostnameBytes();
 }

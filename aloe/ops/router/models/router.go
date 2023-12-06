@@ -15,6 +15,7 @@ type Log struct {
 }
 
 type Client struct {
+	Id        int32
 	Mac       string
 	Ip        string
 	Username  string

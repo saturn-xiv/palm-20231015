@@ -16,6 +16,9 @@ export class Profile extends jspb.Message {
   hasDnsmasq(): boolean;
   clearDnsmasq(): Profile;
 
+  getHostname(): string;
+  setHostname(value: string): Profile;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Profile.AsObject;
   static toObject(includeInstance: boolean, msg: Profile): Profile.AsObject;
@@ -28,26 +31,24 @@ export namespace Profile {
   export type AsObject = {
     network?: Profile.Network.AsObject,
     dnsmasq?: Profile.Dnsmasq.AsObject,
+    hostname: string,
   }
 
   export class Network extends jspb.Message {
-    getName(): string;
-    setName(value: string): Network;
-
-    getWan(): Profile.Network.Wan | undefined;
-    setWan(value?: Profile.Network.Wan): Network;
-    hasWan(): boolean;
-    clearWan(): Network;
-
-    getLan(): Profile.Network.Lan | undefined;
-    setLan(value?: Profile.Network.Lan): Network;
-    hasLan(): boolean;
-    clearLan(): Network;
+    getWanList(): Array<Profile.Network.Wan>;
+    setWanList(value: Array<Profile.Network.Wan>): Network;
+    clearWanList(): Network;
+    addWan(value?: Profile.Network.Wan, index?: number): Profile.Network.Wan;
 
     getDmz(): Profile.Network.Dmz | undefined;
     setDmz(value?: Profile.Network.Dmz): Network;
     hasDmz(): boolean;
     clearDmz(): Network;
+
+    getLan(): Profile.Network.Lan | undefined;
+    setLan(value?: Profile.Network.Lan): Network;
+    hasLan(): boolean;
+    clearLan(): Network;
 
     getGuest(): Profile.Network.Guest | undefined;
     setGuest(value?: Profile.Network.Guest): Network;
@@ -64,10 +65,9 @@ export namespace Profile {
 
   export namespace Network {
     export type AsObject = {
-      name: string,
-      wan?: Profile.Network.Wan.AsObject,
-      lan?: Profile.Network.Lan.AsObject,
+      wanList: Array<Profile.Network.Wan.AsObject>,
       dmz?: Profile.Network.Dmz.AsObject,
+      lan?: Profile.Network.Lan.AsObject,
       guest?: Profile.Network.Guest.AsObject,
     }
 
