@@ -96,7 +96,7 @@ RUN wget -q -P $HOME/downloads https://more.musl.cc/x86_64-linux-musl/riscv64-li
     && echo 'export PATH=/opt/riscv64-linux-musl-cross/bin:$PATH' >> $HOME/.zshrc
 
 # https://github.com/nvm-sh/nvm
-ENV NVM_VERSION "v0.39.6"
+ENV NVM_VERSION "v0.39.7"
 RUN git clone -b ${NVM_VERSION} https://github.com/nvm-sh/nvm.git $HOME/.nvm
 RUN echo 'export NVM_DIR="$HOME/.nvm"' >> $HOME/.zshrc
 RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $HOME/.zshrc
