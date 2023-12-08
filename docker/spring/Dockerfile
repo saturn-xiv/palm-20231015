@@ -226,10 +226,10 @@ RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/grpc \
     && cd $HOME/build/grpc \
     && cmake -DCMAKE_BUILD_TYPE=Release \
-        -DgRPC_INSTALL=ON \
-        -DgRPC_SSL_PROVIDER=package \
-        -DgRPC_BUILD_TESTS=OFF \
-        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
+    -DgRPC_INSTALL=ON \
+    -DgRPC_SSL_PROVIDER=package \
+    -DgRPC_BUILD_TESTS=OFF \
+    -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
     && make \
     && make install"
 
@@ -273,7 +273,7 @@ RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/flatbuffers \
     && cd $HOME/build/flatbuffers \
     && CC=/usr/bin/clang CXX=/usr/bin/clang++ cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release -DFLATBUFFERS_BUILD_TESTS=OFF \
-        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/flatbuffers \
+    -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/flatbuffers \
     && make \
     && make install"
 

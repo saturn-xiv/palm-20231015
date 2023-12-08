@@ -13,7 +13,7 @@ function build_go() {
     local pkg="github.com/saturn_xiv/$1/cmd"
     local ldflags="-s -w -X '$pkg.repo_url=$(git remote get-url origin)' -X '$pkg.author_name=$(git config --get user.name)' -X '$pkg.author_email=$(git config --get user.email)' -X '$pkg.build_time=$(date -R)' -X '$pkg.git_version=$(git describe --tags --always --dirty --first-parent)'"
 
-    echo "build $1@x86_64"    
+    echo "build $1@x86_64"
     go build -ldflags "$ldflags"
     mkdir -p $TARGET/bin/x86_64
     mv $1 $TARGET/bin/x86_64/$1
@@ -27,15 +27,13 @@ function build_go() {
 function build_morus() {
     echo "build morus"
     cd $WORKSPACE/morus
-    if [ ! -d node_modules ]
-    then
+    if [ ! -d node_modules ]; then
         npm install
     fi
-    if [ -d dist ]
-    then
+    if [ -d dist ]; then
         rm -r dist
     fi
-    npx webpack --mode=production    
+    npx webpack --mode=production
     cp -r dist $TARGET/morus
     cp README.md config.orig.json $TARGET/morus/
 }
@@ -46,8 +44,7 @@ function build_musa() {
     mvn package -Dmaven.test.skip=true
 
     mkdir -p $TARGET/musa
-    cp -r README.md application-orig.properties com mybatis-config.xml wechatpay-orig\
-        target/musa-*.jar $TARGET/musa/
+    cp -r README.md application-orig.properties com mybatis-config.xml wechatpay-orig target/musa-*.jar $TARGET/musa/
 }
 
 function build_gardenia() {
@@ -72,12 +69,11 @@ copy_node() {
     local node_version="v20.10.0"
     local node_file="node-${node_version}-linux-$1.tar.xz"
 
-    if [ ! -f $HOME/downloads/$node_file ]
-    then
+    if [ ! -f $HOME/downloads/$node_file ]; then
         wget -P $HOME/downloads https://nodejs.org/dist/${node_version}/$node_file
     fi
     tar xf $HOME/downloads/$node_file
-    mv node-${node_version}-linux-$1 node-$1    
+    mv node-${node_version}-linux-$1 node-$1
 }
 
 copy_jdk() {
@@ -86,8 +82,7 @@ copy_jdk() {
     local jdk_hash="415e3f918a1f4062a0074a2794853d0d"
     local jdk_file="openjdk-${jdk_version}_linux-$1_bin.tar.gz"
 
-    if [ ! -f $HOME/downloads/$jdk_file ]
-    then
+    if [ ! -f $HOME/downloads/$jdk_file ]; then
         wget -P $HOME/downloads https://download.java.net/java/GA/jdk21.0.1/${jdk_hash}/12/GPL/$jdk_file
     fi
     tar xf $HOME/downloads/$jdk_file
@@ -152,13 +147,13 @@ copy_node arm64
 
 cd $WORKSPACE
 cp -r README.md LICENSE protocols $TARGET/
-echo "$GIT_VERSION" > $TARGET/VERSION
-echo "$(date -R)" >> $TARGET/VERSION
+echo "$GIT_VERSION" >$TARGET/VERSION
+echo "$(date -R)" >>$TARGET/VERSION
 
 cd $WORKSPACE/tmp
 echo "compressing $PACKAGE_NAME..."
 XZ_OPT=-9 tar -cJf $PACKAGE_NAME.tar.xz $PACKAGE_NAME
-md5sum $PACKAGE_NAME.tar.xz > $PACKAGE_NAME.txt
+md5sum $PACKAGE_NAME.tar.xz >$PACKAGE_NAME.txt
 
 echo "done($PACKAGE_NAME)."
 exit 0

@@ -10,16 +10,14 @@ export INSTALL_ROOT=$HOME/.local
 
 function build_grpc() {
     # https://grpc.io/docs/languages/cpp/quickstart/
-    if [ -L $HOME/.local/bin/protoc ]
-    then
+    if [ -L $HOME/.local/bin/protoc ]; then
         echo 'already exists!'
         exit 0
     fi
-    if [ -d $SOURCE_ROOT ]
-    then
+    if [ -d $SOURCE_ROOT ]; then
         cd $SOURCE_ROOT
         git checkout master
-        git pull        
+        git pull
         git checkout $1
         # fix unable to find current revision in submodule path
         # git pull --recurse-submodules
@@ -27,30 +25,26 @@ function build_grpc() {
     else
         git clone --recurse-submodules -b $1 https://github.com/grpc/grpc.git $SOURCE_ROOT
     fi
-   
-    if [ -d $BUILD_ROOT ]
-    then
+
+    if [ -d $BUILD_ROOT ]; then
         rm -r $BUILD_ROOT
-    fi    
+    fi
     CC=clang CXX=clang++ cmake -DCMAKE_BUILD_TYPE=Release \
-    -DABSL_PROPAGATE_CXX_STD=ON \
-    -DgRPC_INSTALL=ON -DgRPC_SSL_PROVIDER=package -DgRPC_BUILD_TESTS=OFF \
-    -DCMAKE_INSTALL_PREFIX=$INSTALL_ROOT -B $BUILD_ROOT -S $SOURCE_ROOT
+        -DABSL_PROPAGATE_CXX_STD=ON \
+        -DgRPC_INSTALL=ON -DgRPC_SSL_PROVIDER=package -DgRPC_BUILD_TESTS=OFF \
+        -DCMAKE_INSTALL_PREFIX=$INSTALL_ROOT -B $BUILD_ROOT -S $SOURCE_ROOT
     make -j $(nproc --ignore=2) -C $BUILD_ROOT
     make install -C $BUILD_ROOT
 }
 
-if [ "$#" -ne 1 ]
-then
+if [ "$#" -ne 1 ]; then
     echo "USAGE: $0 GRPC_VERSION"
     exit 1
 fi
 
 build_grpc $1
 
-
-if [[ $UBUNTU_CODENAME == "bionic" ]]
-then
+if [[ $UBUNTU_CODENAME == "bionic" ]]; then
     cp $SOURCE_ROOT/third_party/re2/re2.pc $HOME/.local/lib/pkgconfig/
 fi
 

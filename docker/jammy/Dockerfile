@@ -111,7 +111,7 @@ RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
 RUN echo 'export PATH=$HOME/local/go/bin:$PATH' >> $HOME/.zshrc \
     && echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc \
     && echo 'export PATH="$(go env GOPATH)/bin:$PATH"' >> $HOME/.zshrc
-        
+
 ENV JDK_VERSION "21.0.1-open"
 # https://docs.gradle.org/current/userguide/compatibility.html
 ENV GRADLE_VERSION "8.4"
@@ -129,7 +129,7 @@ RUN tar xf $HOME/downloads/go${GO_VERSION}.linux-amd64.tar.gz -C $HOME/local
 RUN echo 'export PATH=$HOME/local/go/bin:$PATH' >> $HOME/.zshrc \
     && echo 'export GOPATH=$HOME/go' >> $HOME/.zshrc \
     && echo 'export PATH="$(go env GOPATH)/bin:$PATH"' >> $HOME/.zshrc
-    
+
 # https://www.rust-lang.org/tools/install
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN zsh -c "source $HOME/.cargo/env \
@@ -152,10 +152,10 @@ RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/grpc \
     && cd $HOME/build/grpc \
     && cmake -DCMAKE_BUILD_TYPE=Release \
-        -DgRPC_INSTALL=ON \
-        -DgRPC_SSL_PROVIDER=package \
-        -DgRPC_BUILD_TESTS=OFF \
-        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
+    -DgRPC_INSTALL=ON \
+    -DgRPC_SSL_PROVIDER=package \
+    -DgRPC_BUILD_TESTS=OFF \
+    -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
     && make \
     && make install"
 

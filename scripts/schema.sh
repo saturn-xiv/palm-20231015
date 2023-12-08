@@ -11,8 +11,7 @@ export PALM_PROTOCOLS=$WORKSPACE/protocols
 function generate_grpc_by_lang() {
     local target=$WORKSPACE/sdk/$1
     echo "generate sdk for grpc-$1"
-    if [ -d $target ]
-    then
+    if [ -d $target ]; then
         rm -r $target
     fi
     mkdir -p $target
@@ -26,8 +25,7 @@ function generate_grpc_by_lang() {
 function generate_grpc_for_php() {
     local target=$WORKSPACE/sdk/php
     echo "generate sdk for grpc-php"
-    if [ -d $target ]
-    then
+    if [ -d $target ]; then
         rm -r $target
     fi
     mkdir -p $target
@@ -38,16 +36,14 @@ function generate_grpc_for_php() {
         $PALM_PROTOCOLS/*.proto
 }
 
-
 # https://github.com/grpc/grpc-web#code-generator-plugin
 function generate_typescript() {
-    echo "generate typescript sdk($1)"    
-    if [ -d $1 ]
-    then
+    echo "generate typescript sdk($1)"
+    if [ -d $1 ]; then
         rm -r $1
     fi
     mkdir -p $1
-    
+
     $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
         -I $PROTOBUF_ROOT/include/google/protobuf \
         --js_out=import_style=commonjs,binary:$1 \
@@ -58,8 +54,7 @@ function generate_typescript() {
 function generate_morus() {
     echo "generate code for morus"
     local target=$WORKSPACE/morus/src/protocols
-    if [ -d $target ]
-    then
+    if [ -d $target ]; then
         rm -r $target
     fi
     mkdir -p $target
@@ -75,8 +70,7 @@ function generate_gardenia() {
 
     echo "generate gRPC for gardenia"
     local gardenia_target=$target/com/github/saturn_xiv/palm/plugins/gardenia/v1
-    if [ -d $gardenia_target ]
-    then
+    if [ -d $gardenia_target ]; then
         rm -r $gardenia_target
     fi
     $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
@@ -95,14 +89,12 @@ function generate_lily() {
         "lily_pb2_grpc.py"
     )
 
-    for f in "${files[@]}"
-    do
-        if [ -f $target/$f ]
-        then
+    for f in "${files[@]}"; do
+        if [ -f $target/$f ]; then
             rm $target/$f
         fi
     done
-    
+
     $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
         -I $PROTOBUF_ROOT/include/google/protobuf \
         --python_out=$target --grpc_out=$target \
@@ -117,8 +109,7 @@ function generate_musa() {
 
     echo "generate code for musa"
     local musa_target=$target/com/github/saturn_xiv/palm/plugins/musa/v1
-    if [ -d $musa_target ]
-    then
+    if [ -d $musa_target ]; then
         rm -r $musa_target
     fi
     $PROTOBUF_ROOT/bin/protoc -I $PALM_PROTOCOLS \
@@ -130,8 +121,7 @@ function generate_musa() {
 }
 
 function generate_grpc_for_go() {
-    if [ -d $2 ]
-    then
+    if [ -d $2 ]; then
         rm -r $2
     fi
     mkdir -p $2
@@ -158,8 +148,7 @@ function generate_fig() {
         "cbeta"
         "cscd"
     )
-    for p in "${plugins[@]}"
-    do
+    for p in "${plugins[@]}"; do
         generate_grpc_for_go $p $target/$p/v2
     done
 
@@ -170,8 +159,7 @@ function generate_fig() {
         "vpn"
     )
 
-    for p in "${ops_plugins[@]}"
-    do
+    for p in "${ops_plugins[@]}"; do
         generate_grpc_for_go ops-$p $target/ops/$p/v2
     done
 }
@@ -185,20 +173,18 @@ declare -a languages=(
     "cpp"
     "csharp"
     # https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/
-    "java" 
+    "java"
     # "objective_c"
 )
 
-
 function generate_aloe() {
-    echo "generate code for aloe"    
-    generate_grpc_for_go ops-router $WORKSPACE/aloe/ops/router/v2    
+    echo "generate code for aloe"
+    generate_grpc_for_go ops-router $WORKSPACE/aloe/ops/router/v2
 }
 
 # ----------------------------------------------------------
 
-for l in "${languages[@]}"
-do
+for l in "${languages[@]}"; do
     generate_grpc_by_lang $l
 done
 

@@ -6,7 +6,7 @@
   "editor.fontFamily": "source code pro",
   "editor.mouseWheelZoom": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
@@ -34,6 +34,12 @@
   },
   "[go]": {
     "editor.defaultFormatter": "golang.go"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
   "python.analysis.autoImportCompletions": false,
   "python.analysis.typeCheckingMode": "off"

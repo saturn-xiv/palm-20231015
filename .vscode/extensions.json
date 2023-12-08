@@ -6,6 +6,7 @@
     "redhat.ansible",
     "redhat.vscode-xml",
     "redhat.vscode-yaml",
+    "foxundermoon.shell-format",
     "mtxr.sqltools",
     "tamasfe.even-better-toml",
     "yzhang.markdown-all-in-one",

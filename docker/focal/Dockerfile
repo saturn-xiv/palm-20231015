@@ -50,7 +50,7 @@ RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${CL
     && update-alternatives --install /usr/bin/arm-linux-gnueabihf-g++ arm-linux-gnueabihf-g++ /usr/bin/arm-linux-gnueabihf-g++-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/riscv64-linux-gnu-gcc riscv64-linux-gnu-gcc /usr/bin/riscv64-linux-gnu-gcc-${GCC_VERSION} 100 \
     && update-alternatives --install /usr/bin/riscv64-linux-gnu-g++ riscv64-linux-gnu-g++ /usr/bin/riscv64-linux-gnu-g++-${GCC_VERSION} 100
-   
+
 
 RUN apt -y autoremove && apt -y clean
 
@@ -150,10 +150,10 @@ RUN zsh -c "source $HOME/.zshrc \
     && mkdir -pv $HOME/build/grpc \
     && cd $HOME/build/grpc \
     && cmake -DCMAKE_BUILD_TYPE=Release \
-        -DgRPC_INSTALL=ON \
-        -DgRPC_SSL_PROVIDER=package \
-        -DgRPC_BUILD_TESTS=OFF \
-        -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
+    -DgRPC_INSTALL=ON \
+    -DgRPC_SSL_PROVIDER=package \
+    -DgRPC_BUILD_TESTS=OFF \
+    -DCMAKE_INSTALL_PREFIX=$HOME/.local $HOME/downloads/grpc \
     && make \
     && make install"
 
