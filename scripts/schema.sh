@@ -4,7 +4,7 @@ set -e
 
 export PROTOBUF_ROOT=$HOME/.local
 export WORKSPACE=$PWD
-export PALM_PROTOCOLS=$WORKSPACE/protocols
+export PALM_PROTOCOLS=$WORKSPACE/palm/protocols
 
 # -----------------------------------------------------------------------------
 
