@@ -1,0 +1,38 @@
+[profile.release]
+lto = true
+strip = true
+
+[workspace]
+
+resolver = "2"
+
+members = [
+    "palm",
+    # "bamboo",
+    # "ficus",
+    # "nut",
+
+    # "cms",
+    # "forum",
+    # "courses",
+    # "erp",
+    # "crm",
+    # "mall",
+    # "cscd",
+    # "cbeta",
+    # "flashcard",
+
+    # "ops/mail",
+    # "ops/vpn",
+    # "ops/metrics",
+    # "ops/ddns",
+    # "ops/router",
+
+    # "orchid",
+    # "balsam",
+    # "fig",
+    # "camellia",
+    # "coconut",
+    # "aloe",
+
+]

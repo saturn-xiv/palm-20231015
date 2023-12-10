@@ -1,2 +1,6 @@
 /go.work.sum
+
+/Cargo.lock
+/target/
+
 /tmp/
