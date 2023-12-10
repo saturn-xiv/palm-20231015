@@ -47,6 +47,7 @@
   "[ignore]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
+  "rust-analyzer.cargo.buildScripts.enable": true,
   "python.analysis.autoImportCompletions": false,
   "python.analysis.typeCheckingMode": "off"
 }
