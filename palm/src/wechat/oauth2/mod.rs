@@ -175,7 +175,12 @@ impl Client for super::Client {
         let access_token_key = self.access_token_key(openid);
         let refresh_token_key = self.refresh_token_key(openid);
 
-        Commands::set_ex(cache, &access_token_key, access_token, expires_in - 60)?;
+        Commands::set_ex(
+            cache,
+            &access_token_key,
+            access_token,
+            (expires_in as u64) - 60,
+        )?;
         Commands::set_ex(
             cache,
             &refresh_token_key,

@@ -103,7 +103,7 @@ impl Client for super::Client {
             ch,
             &key,
             &response.access_token,
-            response.expires_in - 60 * (5 - 1),
+            (response.expires_in as u64) - 60 * (5 - 1),
         )?;
         Ok(response.access_token)
     }

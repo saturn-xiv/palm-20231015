@@ -21,10 +21,6 @@ log = "0.4"
 num-complex = "0.4"
 sitemap = "0.4"
 yaml-rust = "0.4"
-actix-cors = "0.6"
-actix-files = "0.6"
-actix-identity = "0.6"
-actix-multipart = "0.6"
 serde-xml-rs = "0.6"
 encoding_rs = "0.8"
 r2d2 = "0.8"
@@ -41,7 +37,6 @@ prost = "0.12"
 prost-types = "0.12"
 thrift = "0.17"
 git2 = "0.18"
-actix-web-lab = "0.20"
 ipnetwork = "0.20"
 imageproc = "0.23"
 image = "0.24"
@@ -75,9 +70,6 @@ flatbuffers = "23"
 version = "0.4"
 features = ["serde", "std"]
 
-[dependencies.actix-session]
-version = "0.8"
-features = ["cookie-session", "redis-rs-session"]
 
 [dependencies.chrono-tz]
 version = "0.8"
@@ -104,7 +96,7 @@ version = "0.18"
 features = ["secure", "private", "percent-encode"]
 
 [dependencies.redis]
-version = "0.23"
+version = "0.24"
 features = ["tokio-comp", "r2d2", "cluster", "connection-manager"]
 
 [dependencies.nix]
@@ -147,10 +139,6 @@ features = ["validation"]
 [dependencies.url]
 version = "2"
 features = ["serde"]
-
-[dependencies.actix-web]
-version = "4"
-features = ["cookies"]
 
 [dependencies.openssl]
 version = "*"

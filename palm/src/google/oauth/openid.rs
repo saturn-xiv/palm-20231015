@@ -2,7 +2,6 @@ use std::collections::HashMap;
 use std::fmt::Display;
 
 use hyper::StatusCode;
-use log::debug;
 use rand::{distributions::Alphanumeric, thread_rng, Rng};
 use serde::{Deserialize, Serialize};
 use url::form_urlencoded;
@@ -73,7 +72,7 @@ impl super::Web {
             .form(&body)
             .send()
             .await?;
-        debug!("{:#?}", res);
+        log::debug!("{:#?}", res);
         if res.status().is_success() {
             return Ok(res.json().await?);
         }
